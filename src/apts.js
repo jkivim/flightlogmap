@@ -1,8621 +1,8949 @@
-var airports = [
-['AAA','NTGA','Anaa Airport','Anaa,Tuamotus,French Polynesia'],
-
-['AAC','HEAR','El Arish International Airport','El Arish,Egypt'],
-
-
-['AAH','EDKA','Merzbruck Airport','Aachen,North Rhine-Westphalia,Germany'],
-
-['AAJ','SMCA','Cayana Airstrip','Awaradam,Suriname'],
-['AAK','NGUK','Aranuka Airport','Aranuka,Kiribati'],
-['AAL','EKYT','Aalborg Airport','Aalborg,Denmark'],
-['AAM','FAMD','Mala Mala Airport','Mala Mala,South Africa'],
-['AAN','OMAL','Al Ain International Airport','Al Ain,United Arab Emirates'],
-['AAO','SVAN','Anaco Airport','Anaco,Venezuela'],
-
-['AAR','EKAH','Aarhus Airport','Aarhus,Denmark'],
-
-
-['AAU','NSAU','Asau Airport','Asau,Savaii Island,Samoa'],
-['AAV','RPMA','Allah Valley Airport','Surallah,Philippines'],
-
-
-['AAZ','MGQZ','Quetzaltenango Airport','Quetzaltenango,Guatemala'],
-
-
-['ABC','LEAB','Albacete Airport','Albacete,Castilla-La Mancha,Spain'],
-
-['ABE','KABE','Lehigh Valley International Airport','Allentown,Pennsylvania,United States'],
-['ABF','NGAB','Abaiang Atoll Airport','Abaiang,Kiribati'],
-
-
-['ABJ','DIAP','Port Bouet Airport ','Abidjan,Cote dIvoire'],
-
-['ABL','PAFM','Ambler Airport ','Ambler,Alaska,United States'],
-
-['ABN','SMBN','Albina Airstrip','Albina,Suriname'],
-['ABO','DIAO','Aboisso Airport','Aboisso,Cote dIvoire'],
-
-['ABQ','KABQ','Albuquerque International Sunport','Albuquerque,New Mexico,United States'],
-['ABS','HEBL','Abu Simbel Airport','Abu Simbel,Egypt'],
-
-['ABU','WATA','Haliwen Airport','Atambua,Indonesia'],
-
-
-
-['ABZ','EGPD','Aberdeen Airport','Aberdeen,Scotland,United Kingdom'],
-['ACA','MMAA','General Juan N. alvarez International Airport','Acapulco,Guerrero,Mexico'],
-['ACB','KACB','Antrim County Airport','Bellaire,Michigan,United States'],
-['ACC','DGAA','Kotoka International Airport','Accra,Ghana'],
-['ACD','SKAD','Alcides Fernandez Airport','Acandi,Colombia'],
-['ACE','GCRR','Lanzarote Airport','Lanzarote,Canary Islands,Spain'],
-['ACH','LSZR','St. Gallen-Altenrhein Airport','Altenrhein,Switzerland'],
-['ACI','EGJA','Alderney Airport','Alderney,Channel Islands,United Kingdom'],
-['ACJ','VCCA','Anuradhapura Airport','Anuradhapura,Sri Lanka'],
-['ACK','KACK','Nantucket Memorial Airport','Nantucket,Massachusetts,United States'],
-
-
-['ACN','MMCC','Ciudad Acuna International Airport','Ciudad Acuna,Coahuila,Mexico'],
-
-['ACR','SKAC','Araracuara Airport','Araracuara,Colombia'],
-
-
-['ACV','KACV','Arcata-Eureka Airport','Eureka Arcata,California,United States'],
-
-['ACY','KACY','Atlantic City International Airport','Atlantic City,New Jersey,United States'],
-
-['ADA','LTAF','Adana akirpaa Airport','Adana,Turkey'],
-['ADB','LTBJ','Adnan Menderes Airport','zmir,Turkey'],
-['ADC','AYAN','Andakombe Airport','Andakombe,Papua New Guinea'],
-
-
-['ADF','LTCP','Adyaman Airport','Adyaman,Turkey'],
-['ADG','KADG','Lenawee County Airport','Adrian,Michigan,United States'],
-
-['ADI','FYAR','Arandis Airport','Arandis,Namibia'],
-['ADJ','OJAM','Amman Civil Airport ','Amman,Jordan'],
-['ADK','PADK','Adak Airport','Adak Island,Alaska,United States'],
-
-
-['ADN','SKAN','Andes Airport','Andes,Colombia'],
-
-['ADP','VCCG','Ampara Airport','Ampara,Sri Lanka'],
-['ADQ','PADQ','Kodiak Airport','Kodiak,Alaska,United States'],
-['ADR','KPHH','Robert F. Swinnie Airport ','Andrews,South Carolina,United States'],
-['ADS','KADS','Addison Airport','Dallas,Texas,United States'],
-
-
-
-['ADW','KADW','Andrews Field ','Camp Springs,Maryland,United States'],
-['ADX','EGQL','RAF Leuchars','St Andrews,Scotland,United Kingdom'],
-['ADY','FAAL','Alldays Airport','Alldays,South Africa'],
-['ADZ','SKSP','Gustavo Rojas Pinilla International Airport','San Andres Island,Colombia'],
-['AEA','NGTB','Abemama Atoll Airport','Abemama Atoll,Kiribati'],
-
-
-['AEG','WIME','Aek Godang Airport','Padang Sidempuan,Indonesia'],
-
-['AEK','AYAX','Aseki Airport','Aseki,Papua New Guinea'],
-
-
-['AEP','SABE','Jorge Newbery Airpark','Buenos Aires,Argentina'],
-
-['AES','ENAL','Ã…lesund Airport,Vigra','Ã…lesund,Norway'],
-['AET','PFAL','Allakaket Airport ','Allakaket,Alaska,United States'],
-
-['AEX','KAEX','Alexandria International Airport','Alexandria,Louisiana,United States'],
-['AEY','BIAR','Akureyri Airport','Akureyri,Iceland'],
-['AFA','SAMR','San Rafael Airport','San Rafael,Mendoza,Argentina'],
-['AFD','FAPA','Port Alfred Airport','Port Alfred,South Africa'],
-
-['AFI','SKAM','Amalfi Airport','Amalfi,Colombia'],
-
-
-['AFN','KAFN','Jaffrey Airport-Silver Ranch','Jaffrey,New Hampshire,United States'],
-
-['AFR','AYAF','Afore Airport','Afore,Papua New Guinea'],
-
-['AFT','AGAF','Afutara Airport','Afutara,Malaita,Solomon Islands'],
-['AFW','KAFW','Fort Worth Alliance Airport','Fort Worth,Texas,United States'],
-['AFY','LTAH','Afyon Airport','Afyon,Turkey'],
-
-['AGA','GMAD','Agadir-Al Massira Airport','Agadir,Morocco'],
-['AGB','EDMA','Augsburg Airport','Augsburg,Bavaria,Germany'],
-['AGC','KAGC','Allegheny County Airport','Pittsburgh,Pennsylvania,United States'],
-['AGD','WASG','Anggi Airport','Anggi,Indonesia'],
-['AGE','EDWG','Wangerooge Airport','Wangerooge,Lower Saxony,Germany'],
-['AGF','LFBA','Agen La Garenne Airport','Agen,Aquitaine,France'],
-
-['AGH','ESTA','Ã„ngelholm-Helsingborg Airport ','Ã„ngelholm,Sweden'],
-['AGI','SMWA','Wageningen Airstrip','Wageningen,Suriname'],
-['AGJ','RORA','Aguni Airport','Aguni,Okinawa,Japan'],
-
-['AGL','AYWG','Wanigela Airport','Wanigela,Papua New Guinea'],
-['AGN','PAGN','Angoon Seaplane Base','Angoon,Alaska,United States'],
-
-['AGP','LEMG','Malaga Airport','Malaga,Andalusia,Spain'],
-['AGQ','LGAG','Agrinion Airport','Agrinion,Greece'],
-['AGR','VIAG','Agra Airport','Agra,Uttar Pradesh,India'],
-['AGT','SGES','Guarani International Airport','Ciudad del Este,Paraguay'],
-['AGU','MMAS','Lic. Jesus Teran Peredo International Airport','Aguascalientes,Aguascalientes,Mexico'],
-['AGV','SVAC','Oswaldo Guevara Mujica Airport','Acarigua,Venezuela'],
-
-['AGX','VOAT','Agatti Aerodrome','Agatti Island,Lakshadweep,India'],
-['AGZ','FAAG','Aggeneys Airport','Aggeneys,South Africa'],
-
-['AHE','NTHE','Ahe Airport','Ahe,Tuamotus,French Polynesia'],
-
-
-['AHI','WAPA','Amahai Airport','Amahai,Indonesia'],
-
-['AHL','SYAH','Aishalton Airstrip','Aishalton,Guyana'],
-
-['AHN','KAHN','Athens Ben Epps Airport','Athens,Georgia,United States'],
-['AHO','LIEA','Alghero-Fertilia Airport','Alghero,Sardinia,Italy'],
-['AHS','MHAH','Ahuas Airport','Ahuas,Honduras'],
-['AHU','GMTA','Cherif Al Idrissi Airport','Al Hoceima,Morocco'],
-
-
-['AHZ','LFHU','Alpe dHuez Airport','Alpe dHuez,Rhone-Alpes,France'],
-
-
-
-['AIE','AYAO','Aiome Airport','Aiome,Papua New Guinea'],
-
-['AIG','FEFY','Yalinga Airport','Yalinga,Central African Republic'],
-['AIH','AYAK','Aiambak Airport','Aiambak,Papua New Guinea'],
-['AII','HDAS','Ali-Sabieh Airport','Ali Sabieh,Djibouti'],
-
-
-
-['AIN','PAWI','Wainwright Airport ','Fort Wainwright,Alaska,United States'],
-
-
-['AIS','NGTR','Arorae Island Airport','Arorae Island,Kiribati'],
-['AIT','NCAI','Aitutaki Airport','Aitutaki,Cook Islands'],
-['AIU','NCAT','Atiu Island Airport','Atiu Island,Cook Islands'],
-['AIV','KAIV','George Downer Airport','Aliceville,Alabama,United States'],
-
-
-['AIZ','KAIZ','Lee C. Fine Memorial Airport','Lake Ozark,Missouri,United States'],
-['AJA','LFKJ','Ajaccio Napoleon Bonaparte Airport','Ajaccio,Corsica,France'],
-
-['AJI','LTCO','Ar Airport','Ar,Turkey'],
-
-
-['AJL','VELP[2]','Lengpui Airport','Aizawl,Mizoram,India'],
-['AJN','FMCV','Ouani Airport','Anjouan,Comoros'],
-['AJR','ESNX','Arvidsjaur Airport','Arvidsjaur,Sweden'],
-
-
-['AJY','DRZA','Mano Dayak International Airport','Agadez,Niger'],
-
-['AKB','PAAK','Atka Airport ','Atka,Alaska,United States'],
-['AKC','KAKR','Akron Fulton International Airport ','Akron,Ohio,United States'],
-['AKD','VAAK','Akola Airport','Akola,Maharashtra,India'],
-['AKE','FOGA','Akieni Airport','Akieni,Gabon'],
-
-['AKG','AYGU','Anguganak Airport','Anguganak,Papua New Guinea'],
-
-['AKI','PFAK','Akiak Airport','Akiak,Alaska,United States'],
-['AKJ','RJEC','Asahikawa Airport','Asahikawa,Hokkaido,Japan'],
-['AKK','PAKH','Akhiok Airport','Akhiok,Alaska,United States'],
-['AKL','NZAA','Auckland Airport','Auckland,New Zealand'],
-
-['AKN','PAKN','King Salmon Airport','King Salmon,Alaska,United States'],
-['AKP','PAKP','Anaktuvuk Pass Airport','Anaktuvuk Pass,Alaska,United States'],
-['AKQ','WIAG','Gunung Batin Airport','Astraksetra,Indonesia'],
-
-['AKS','AGGA','Auki Gwaunaruu Airport','Auki,Malaita,Solomon Islands'],
-['AKT','LCRA','RAF Akrotiri','Akrotiri,Cyprus'],
-
-['AKV','CYKO','Akulivik Airport','Akulivik,Quebec,Canada'],
-
-
-['AKY','VYSW','Sittwe Airport','Sittwe,Myanmar'],
-
-['ALB','KALB','Albany International Airport','Albany,New York,United States'],
-['ALC','LEAL','Alicante-Elche Airport','Alicante,Valencia,Spain'],
-['ALD','SPAR','Alerta Airport','Alerta,Peru'],
-
-['ALF','ENAT','Alta Airport','Alta,Norway'],
-
-
-['ALI','KALI','Alice International Airport','Alice,Texas,United States'],
-['ALJ','FAAB','Alexander Bay Airport','Alexander Bay,South Africa'],
-
-['ALL','LIMG','Albenga Airport','Albenga,Liguria,Italy'],
-['ALP','OSAP','Aleppo International Airport','Aleppo,Syria'],
-
-['ALR','NZLX','Alexandra Aerodrome','Alexandra,New Zealand'],
-
-
-['ALX','KALX','Thomas C. Russell Field','Alexander City,Alabama,United States'],
-['ALY','HEAX','El Nouzha Airport','Alexandria,Egypt'],
-
-['AMA','KAMA','Rick Husband Amarillo International Airport','Amarillo,Texas,United States'],
-['AMB','FMNE','Ambilobe Airport','Ambilobe,Madagascar'],
-
-['AMD','VAAH','Sardar Vallabhbhai Patel International Airport','Ahmedabad,Gujarat,India'],
-
-['AMF','AYAA','Ama Airport','Ama,Papua New Guinea'],
-
-
-['AMI','WADA','Selaparang Airport ','Mataram,Indonesia'],
-
-
-
-['AMM','OJAI','Queen Alia International Airport','Amman,Jordan'],
-['AMN','KAMN','Gratiot Community Airport','Alma,Michigan,United States'],
-
-['AMP','FMSY','Ampanihy Airport','Ampanihy,Madagascar'],
-['AMQ','WAPP','Pattimura Airport','Ambon,Indonesia'],
-['AMS','EHAM','Amsterdam Airport Schiphol','Amsterdam,Netherlands'],
-
-['AMU','AYAM','Amanab Airport','Amanab,Papua New Guinea'],
-
-
-
-
-['AMZ','NZAR','Ardmore Airport','Ardmore,New Zealand'],
-['ANC','PANC','Ted Stevens Anchorage International Airport','Anchorage,Alaska,United States'],
-['ANE','LFJR','Angers - Loire Airport','Angers,Pays de la Loire,France'],
-['ANF','SCFA','Cerro Moreno International Airport','Antofagasta,Chile'],
-['ANG','LFBU','Angouleme - Cognac International Airport','Angouleme,Poitou-Charentes,France'],
-['ANI','PANI','Aniak Airport','Aniak,Alaska,United States'],
-
-['ANK','LTAD','Etimesgut Air Base','Ankara,Turkey'],
-
-['ANM','FMNH','Antsirabato Airport','Antalaha,Madagascar'],
-['ANN','PANT','Annette Island Airport','Annette Island,Alaska,United States'],
-['ANO','FQAG','Angoche Airport','Angoche,Mozambique'],
-['ANP','KANP','Lee Airport','Annapolis,Maryland,United States'],
-
-['ANR','EBAW','Antwerp International Airport','Antwerp,Belgium'],
-['ANS','SPHY','Andahuaylas Airport','Andahuaylas,Peru'],
-['ANU','TAPA','V. C. Bird International Airport','Antigua,Antigua and Barbuda'],
-['ANV','PANV','Anvik Airport','Anvik,Alaska,United States'],
-['ANX','ENAN','Andoya Airport,Andenes','Andenes,Norway'],
-
-
-
-
-['AOC','EDAC','Leipzig-Altenburg Airport','Altenburg,Thuringia,Germany'],
-
-['AOE','LTBY','Anadolu Airport','Eskiehir,Turkey'],
-
-['AOH','KAOH','Lima Allen County Airport','Lima,Ohio,United States'],
-['AOI','LIPY','Ancona Falconara Airport','Ancona,Marche,Italy'],
-['AOJ','RJSA','Aomori Airport','Aomori,Honshu,Japan'],
-['AOK','LGKP','Karpathos Island National Airport','Karpathos,Greece'],
-['AOL','SARL','Paso de los Libres Airport','Paso de los Libres,Corrientes,Argentina'],
-
-
-['AOO','KAOO','Altoona-Blair County Airport','Altoona,Pennsylvania,United States'],
-
-['AOR','WMKA','Sultan Abdul Halim Airport','Alor Setar,Kedah,Malaysia'],
-
-['AOT','LIMW','Aosta Valley Airport','Aosta,Aosta Valley,Italy'],
-['AOU','VLAP','Attapeu Airport','Attapeu,Laos'],
-['APA','KAPA','Centennial Airport','Denver,Colorado,United States'],
-['APB','SLAP','Apolo Airport','Apolo,Bolivia'],
-['APC','KAPC','Napa County Airport','Napa,California,United States'],
-
-['API','SKAP','Captain Luis F. Gomez Nino Air Base','Apiay,Colombia'],
-['APK','NTGD','Apataki Airport','Apataki,Tuamotus,French Polynesia'],
-['APL','FQNP','Nampula Airport','Nampula,Mozambique'],
-['APO','SKLC','Antonio Roldan Betancourt Airport','Apartado,Colombia'],
-
-
-['APR','AYPE','April River Airport','April River,Papua New Guinea'],
-
-['APT','KAPT','Marion County Airport ','Jasper,Tennessee,United States'],
-
-['APV','KAPV','Apple Valley Airport','Apple Valley,California,United States'],
-['APW','NSFA','Faleolo International Airport','Apia,Upolu Island,Samoa'],
-
-
-['APZ','SAHZ','Zapala Airport','Zapala,Neuquen,Argentina'],
-
-['AQB','MGQC','Quiche Airport','Quiche,Guatemala'],
-
-
-['AQJ','OJAQ','King Hussein International Airport','Aqaba,Jordan'],
-
-['AQP','SPQU','Rodriguez Ballon International Airport','Arequipa,Peru'],
-
-
-
-['ARC','PARC','Arctic Village Airport','Arctic Village,Alaska,United States'],
-['ARD','WATM','Alor Island Airport','Alor Island,Indonesia'],
-['ARE','TJAB','Antonio ','Arecibo,Puerto Rico,United States'],
-
-
-['ARI','SCAR','Chacalluta International Airport','Arica,Chile'],
-['ARJ','WAJA','Arso Airport','Arso,Indonesia'],
-['ARK','HTAR','Arusha Airport','Arusha,Tanzania'],
-['ARL','DFER','Arly Airport','Arly,Burkina Faso'],
-
-['ARN','ESSA','Stockholm Arlanda Airport','Stockholm,Sweden'],
-
-
-['ARQ','SKAT[3]','El Troncal Airport','Arauquita,Colombia'],
-['ARR','SAVR','Alto Rio Senguer Airport','Alto Rio Senguer,Chubut,Argentina'],
-
-['ART','KART','Watertown International Airport','Watertown,New York,United States'],
-
-['ARV','KARV','Lakeland Airport ','Minocqua Woodruff,Wisconsin,United States'],
-['ARW','LRAR','Arad International Airport','Arad,Romania'],
-
-
-['ASA','HHSB','Assab International Airport','Assab,Eritrea'],
-
-['ASC','SLAS','Ascencion de Guarayos Airport','Ascencion de Guarayos,Bolivia'],
-['ASD','MYAF','Andros Town International Airport','Andros Town,Andros Island,Bahamas'],
-['ASE','KASE','Aspen-Pitkin County Airport ','Aspen,Colorado,United States'],
-
-['ASG','NZAS','Ashburton Aerodrome','Ashburton,New Zealand'],
-['ASH','KASH','Nashua Airport ','Nashua,New Hampshire,United States'],
-['ASI','FHAW','RAF Ascension Island ','Ascension Island,British Overseas Territory'],
-
-['ASJ','RJKA','Amami Airport','Amami,Satsunan Islands,Japan'],
-['ASK','DIYO','Yamoussoukro Airport','Yamoussoukro,Cote dIvoire'],
-['ASL','KASL','Harrison County Airport','Marshall,Texas,United States'],
-['ASM','HHAS','Asmara International Airport','Asmara,Eritrea'],
-
-
-
-
-['ASR','LTAU','Erkilet International Airport','Kayseri,Turkey'],
-['ASU','SGAS','Silvio Pettirossi International Airport','Asuncion,Paraguay'],
-['ASV','HKAM','Amboseli Airport','Amboseli,Kenya'],
-['ASW','HESN','Aswan International Airport','Aswan,Egypt'],
-['ASX','KASX','John F. Kennedy Memorial Airport','Ashland,Wisconsin,United States'],
-
-
-['ATA','SPHZ','Comandante FAP German Arias Graziani Airport','Huaraz,Peru'],
-
-['ATC','MYCA','Arthurs Town Airport','Arthurs Town,Cat Island,Bahamas'],
-['ATD','AGAT','Uru Harbour Airport','Atoifi,Malaita,Solomon Islands'],
-
-['ATF','SEAM','Chachoan Airport','Ambato,Ecuador'],
-
-['ATH','LGAV','Athens International Airport ','Athens,Greece'],
-['ATI','SUAG','Artigas International Airport','Artigas,Uruguay'],
-['ATJ','FMME','Antsirabe Airport','Antsirabe,Madagascar'],
-['ATK','PATQ','Atqasuk Edward Burnell Sr. Memorial Airport','Atqasuk,Alaska,United States'],
-['ATL','KATL','Hartsfield-Jackson Atlanta International Airport','Atlanta,Georgia,United States'],
-
-['ATN','AYNX','Namatanai Airport','Namatanai,Papua New Guinea'],
-['ATO','KUNI','Ohio University Airport ','Athens Albany,Ohio,United States'],
-['ATP','AYAI','Aitape Airstrip','Aitape,Papua New Guinea'],
-['ATQ','VIAR','Sri Guru Ram Dass Jee International Airport','Amritsar,Punjab,India'],
-
-
-
-['ATU','PAAT','Casco Cove Coast Guard Station','Attu Island,Alaska,United States'],
-
-['ATW','KATW','Appleton International Airport','Appleton,Wisconsin,United States'],
-
-['ATZ','HEAT','Assiut Airport','Assiut,Egypt'],
-['AUA','TNCA','Queen Beatrix International Airport','Aruba,Kingdom of the Netherlands'],
-['AUC','SKUC','Santiago Perez Quiroz Airport','Arauca,Colombia'],
-
-
-['AUF','LFLA','Auxerre - Branches Aerodrome','Auxerre,Burgundy,France'],
-['AUG','KAUG','Augusta State Airport','Augusta,Maine,United States'],
-['AUH','OMAA','Abu Dhabi International Airport','Abu Dhabi,United Arab Emirates'],
-['AUI','AYND','Aua Island Airport','Aua Island,Papua New Guinea'],
-['AUJ','AYAT','Ambunti Airport','Ambunti,Papua New Guinea'],
-
-
-
-
-['AUP','AYAG','Agaun Airport','Agaun,Papua New Guinea'],
-['AUQ','NTMN','Atuona Airport','Atuona,Marquesas Islands,French Polynesia'],
-['AUR','LFLW','Aurillac - Tronquieres Airport','Aurillac,Auvergne,France'],
-['AUS','KAUS','Austin-Bergstrom International Airport','Austin,Texas,United States'],
-['AUT','WPAT','Atauro Airport','Atauro Island,East Timor'],
-
-['AUV','AYUM','Aumo Airport','Aumo,Papua New Guinea'],
-['AUW','KAUW','Wausau Downtown Airport','Wausau,Wisconsin,United States'],
-
-['AUY','NVVA','Anatom Airport','Anatom Island,Tafea,Vanuatu'],
-
-
-['AVB','LIPA','Aviano Air Base','Aviano,Pordenone,Italy'],
-
-['AVI','MUCA','Maximo Gomez Airport','Ciego de avila,Cuba'],
-['AVK','ZMAH','Arvaikheer Airport','Arvaikheer,Mongolia'],
-['AVN','LFMV','Avignon - Provence Airport','Avignon,Provence-Alpes-Cote dAzur,France'],
-['AVO','KAVO','Avon Park Executive Airport','Avon Park,Florida,United States'],
-['AVP','KAVP','Wilkes-Barre Scranton International Airport','Wilkes-Barre Scranton,Pennsylvania,United States'],
-['AVU','AGGJ','Avu Avu Airport','Avu Avu,Guadalcanal,Solomon Islands'],
-
-['AVX','KAVX','Catalina Airport','Avalon,California,United States'],
-
-['AWB','AYAW','Awaba Airport','Awaba,Papua New Guinea'],
-['AWD','NVVB','Aniwa Airport','Aniwa Island,Tafea,Vanuatu'],
-
-['AWK','PWAK','Wake Island Airfield','Wake Island,United States Minor Outlying Islands'],
-
-
-
-
-
-['AXA','TQPF','Clayton J. Lloyd International Airport','The Valley,British Overseas Territory of Anguilla'],
-
-
-['AXD','LGAL','Alexandroupoli Airport ','Alexandroupoli,Greece'],
-
-
-
-['AXJ','RJDA','Amakusa Airfield[1]','Amakusa,Amakusa Islands,Japan'],
-
-
-['AXM','SKAR','El Eden International Airport','Armenia,Colombia'],
-
-['AXP','MYAP','Spring Point Airport','Spring Point,Acklins Island,Bahamas'],
-['AXR','NTGU','Arutua Airport','Arutua,Tuamotus,French Polynesia'],
-['AXT','RJSK','Akita Airport','Akita,Honshu,Japan'],
-
-['AXV','KAXV','Neil Armstrong Airport','Wapakoneta,Ohio,United States'],
-['AXX','KAXX','Angel Fire Airport','Angel Fire,New Mexico,United States'],
-
-
-
-['AYG','SKYA','Yaguara Airport','Yaguara,Colombia'],
-
-
-
-
-
-['AYO','SGAY','Juan de Ayolas Airport','Ayolas,Paraguay'],
-['AYP','SPHO','Coronel FAP Alfredo Mendivil Duarte Airport','Ayacucho,Peru'],
-
-
-['AYS','KAYS','Waycross-Ware County Airport','Waycross,Georgia,United States'],
-['AYT','LTAI','Antalya Airport','Antalya,Turkey'],
-['AYU','AYAY','Aiyura Airport','Aiyura,Papua New Guinea'],
-
-
-['AZA','KIWA','Phoenix-Mesa Gateway Airport ','Phoenix,Arizona,United States'],
-
-
-
-['AZI','OMAD','Al Bateen Executive Airport','Abu Dhabi,United Arab Emirates'],
-
-
-['AZO','KAZO','Kalamazoo Battle Creek International Airport','Kalamazoo,Michigan,United States'],
-['AZP','MMJC','Jorge Jimenez Cantu National Airport','Ciudad Lopez Mateos,State of Mexico,Mexico'],
-
-['AZS','MDCY','Samana El Catey International Airport','El Catey,Dominican Republic'],
-
-
-['BAA','AYBL','Bialla Airport','Bialla,Papua New Guinea'],
-
-
-
-['BAE','LFMR','Barcelonnette - Saint-Pons Airport','Barcelonnette,Alpes-de-Haute-Provence,France'],
-['BAG','RPUB','Loakan Airport','Baguio,Philippines'],
-['BAH','OBBI','Bahrain International Airport','Manama,Bahrain'],
-['BAI','MRBA','Buenos Aires Airport','Buenos Aires,Costa Rica'],
-
-
-['BAL','LTCJ','Batman Airport','Batman,Turkey'],
-['BAM','KBAM','Battle Mountain Airport ','Battle Mountain,Nevada,United States'],
-
-
-['BAQ','SKBQ','Ernesto Cortissoz International Airport','Barranquilla,Colombia'],
-
-['BAS','AGGE','Balalae Airport','Balalae Island,Western,Solomon Islands'],
-
-
-
-
-['BAY','LRBM','Baia Mare Airport','Baia Mare,Romania'],
-
-['BBA','SCBA','Balmaceda Airport','Balmaceda,Chile'],
-
-
-['BBD','KBBD','Curtis Field','Brady,Texas,United States'],
-['BBG','NGTU','Butaritari Atoll Airport','Butaritari Atoll,Kiribati'],
-['BBH','EDBH','Stralsund-Barth Airport','Stralsund Barth,Mecklenburg-Vorpommern,Germany'],
-['BBI','VEBS','Biju Patnaik International Airport','Bhubaneswar,Odisha,India'],
-['BBJ','EDRB','Bitburg Airport ','Bitburg,Rhineland-Palatinate,Germany'],
-['BBK','FBKE','Kasane Airport','Kasane,Botswana'],
-
-['BBM','VDBG','Battambang Airport','Battambang,Cambodia'],
-['BBN','WBGZ','Bario Airport','Bario,Sarawak,Malaysia'],
-
-['BBP','EGHJ','Bembridge Airport','Bembridge,England,United Kingdom'],
-['BBQ','TAPH','Barbuda Codrington Airport','Barbuda,Antigua and Barbuda'],
-['BBR','TFFB','Baillif Airport','Basse-Terre,Guadeloupe'],
-['BBS','EGLK','Blackbushe Airport','Yateley,England,United Kingdom'],
-['BBT','FEFT','Berberati Airport','Berberati,Central African Republic'],
-['BBU','LRBS','Aurel Vlaicu International Airport ','Bucharest,Romania'],
-['BBV','DIGN','Nero-Mer Airport','Grand-Bereby,Ivory Coast'],
-
-['BBX','KLOM','Wings Field ','Philadelphia,Pennsylvania,United States'],
-['BBY','FEFM','Bambari Airport','Bambari,Central African Republic'],
-['BBZ','FLZB','Zambezi Airport','Zambezi,Zambia'],
-['BCA','MUBA','Gustavo Rizo Airport','Baracoa,Cuba'],
-['BCB','KBCB','Virginia Tech Montgomery Executive Airport','Blacksburg,Virginia,United States'],
-
-['BCD','RPVB','Bacolod-Silay International Airport','Bacolod,Philippines'],
-['BCE','KBCE','Bryce Canyon Airport','Bryce Canyon,Utah,United States'],
-['BCF','FEGU','Bouca Airport','Bouca,Central African Republic'],
-
-['BCH','WPEC','Baucau Airport','Baucau,East Timor'],
-
-
-['BCL','MRBC','Barra del Colorado Airport','Barra del Colorado,Costa Rica'],
-['BCM','LRBC','Bacu International Airport','Bacu,Romania'],
-['BCN','LEBL','Barcelona-El Prat Airport','Barcelona,Catalonia,Spain'],
-
-['BCP','AYBC','Bambu Airport','Bambu,Papua New Guinea'],
-
-
-
-['BCT','KBCT','Boca Raton Airport','Boca Raton,Florida,United States'],
-
-
-
-
-
-
-['BDA','TXKF','L.F. Wade International Airport','Hamilton,British Overseas Territory of Bermuda'],
-
-
-
-['BDE','KBDE','Baudette International Airport','Baudette,Minnesota,United States'],
-
-
-
-['BDI','FSSB','Bird Island Airport','Bird Island,Seychelles'],
-['BDJ','WAOO','Syamsudin Noor Airport','Banjarmasin,Indonesia'],
-['BDK','DIBU','Soko Airport','Bondoukou,Ivory Coast'],
-['BDL','KBDL','Bradley International Airport','Windsor Locks Hartford,Connecticut,United States'],
-['BDM','LTBG','Bandrma Airport','Bandrma,Turkey'],
-
-['BDO','WICC','Husein Sastranegara International Airport','Bandung,Indonesia'],
-['BDP','VNCG','Bhadrapur Airport ','Bhadrapur Chandragadhi,Nepal'],
-['BDQ','VABO','Vadodara Airport ','Vadodara,Gujarat,India'],
-['BDR','KBDR','Igor I. Sikorsky Memorial Airport','Bridgeport,Connecticut,United States'],
-['BDS','LIBR','Brindisi - Salento Airport','Brindisi,Apulia,Italy'],
-
-['BDU','ENDU','Bardufoss Airport','Bardufoss,Norway'],
-
-
-
-
-['BDZ','AYBG','Baindoung Airport','Baindoung,Papua New Guinea'],
-
-['BEB','EGPL','Benbecula Airport','Benbecula,Scotland,United Kingdom'],
-['BEC','KBEC','Beech Factory Airport','Wichita,Kansas,United States'],
-['BED','KBED','Laurence G. Hanscom Field','Bedford,Massachusetts,United States'],
-
-['BEF','MNBL','Bluefields Airport','Bluefields,Nicaragua'],
-['BEG','LYBE','Belgrade Nikola Tesla Airport','Belgrade,Serbia'],
-
-['BEJ','WALK','Kalimarau Airport','Tanjung Redeb,Indonesia'],
-['BEK','VIBY','Bareilly Airport','Bareilly,Uttar Pradesh,India'],
-
-['BEM','GMMD','Beni Mellal Airport[1]','Beni Mellal,Morocco'],
-
-
-['BEP','VOBI','Bellary Airport','Bellary,Karnataka,India'],
-['BEQ','EGXH','RAF Honington','Bury St Edmunds,England,United Kingdom'],
-['BER','EDDB','Berlin Brandenburg Airport ','Berlin,Germany'],
-['BES','LFRB','Brest Bretagne Airport','Brest,Brittany,France'],
-['BET','PABE','Bethel Airport','Bethel,Alaska,United States'],
-
-['BEV','LLBS','Beersheba Airport','Beersheba,Israel'],
-['BEW','FQBR','Beira Airport','Beira,Mozambique'],
-['BEX','EGUB','RAF Benson','Benson,England,United Kingdom'],
-['BEY','OLBA','Beirut-Rafic Hariri International Airport Beirut Air Base','Beirut,Lebanon'],
-['BEZ','NGBR','Beru Island Airport','Beru Island,Kiribati'],
-['BFA[1]','SGBN[2]','Bahia Negra Airport[1]','Bahia Negra,Paraguay'],
-
-['BFE','EDLI','Bielefeld Airport','Bielefeld,North Rhine-Westphalia,Germany'],
-
-
-['BFI','KBFI','Boeing Field King County International Airport','Seattle,Washington,United States'],
-
-
-['BFL','KBFL','Meadows Field Airport','Bakersfield,California,United States'],
-['BFM','KBFM','Mobile Downtown Airport','Mobile,Alabama,United States'],
-['BFN','FABL','Bloemfontein Airport','Bloemfontein,South Africa'],
-
-['BFP','KBVI','Beaver County Airport ','Beaver Falls,Pennsylvania,United States'],
-
-
-['BFS','EGAA','Belfast International Airport','Belfast,Northern Ireland,United Kingdom'],
-['BFT','KARW','Beaufort County Airport ','Beaufort County,South Carolina,United States'],
-
-['BFV','VTUO','Buriram Airport','Buriram,Thailand'],
-
-
-['BGA','SKBG','Palonegro International Airport','Bucaramanga,Colombia'],
-['BGB','FOGB','Booue Airport','Booue,Gabon'],
-['BGC','LPBG','Braganca Airport','Braganca,Portugal'],
-['BGD','KBGD','Hutchinson County Airport','Borger,Texas,United States'],
-['BGE','KBGE','Decatur County Industrial Air Park','Bainbridge,Georgia,United States'],
-['BGF','FEFF','Bangui MPoko International Airport','Bangui,Central African Republic'],
-['BGG','LTCU','BingÃ¶l Airport[1]','BingÃ¶l,Turkey'],
-
-['BGI','TBPB','Grantley Adams International Airport','Bridgetown,Barbados'],
-['BGJ','BIBF','BorgarfjÃ¶rour Airport','BorgarfjÃ¶rour,Iceland'],
-
-['BGL','VNBL','Balewa Airport','Baglung,Nepal'],
-['BGM','KBGM','Greater Binghamton Airport ','Binghamton,New York,United States'],
-
-['BGO','ENBR','Bergen Airport,Flesland','Bergen,Norway'],
-
-['BGQ','PAGQ','Big Lake Airport','Big Lake,Alaska,United States'],
-['BGR','KBGR','Bangor International Airport','Bangor,Maine,United States'],
-
-['BGU','FEFG','Bangassou Airport','Bangassou,Central African Republic'],
-
-
-
-['BGY','LIME','Il Caravaggio International Airport ','Milan Bergamo,Lombardy,Italy'],
-['BGZ','LPBR','Braga Airport','Braga,Portugal'],
-['BHA','SESV','Los Perales Airport','Bahia de Caraquez,Ecuador'],
-['BHB','KBHB','Hancock County-Bar Harbor Airport','Bar Harbor,Maine,United States'],
-['BHD','EGAC','George Best Belfast City Airport','Belfast,Northern Ireland,United Kingdom'],
-['BHE','NZWB','Woodbourne Airport','Blenheim,New Zealand'],
-['BHF','SKCP','Bahia Cupica Airport','Bahia Cupica,Colombia'],
-
-
-['BHI','SAZB','Comandante Espora Airport','Bahia Blanca,Buenos Aires,Argentina'],
-
-
-
-['BHM','KBHM','Birmingham-Shuttlesworth International Airport','Birmingham,Alabama,United States'],
-
-['BHO','VABP','Raja Bhoj Airport','Bhopal,Madhya Pradesh,India'],
-['BHP','VNBJ','Bhojpur Airport','Bhojpur,Nepal'],
-
-['BHR','VNBP','Bharatpur Airport','Bharatpur,Nepal'],
-
-
-['BHU','VABV','Bhavnagar Airport','Bhavnagar,Gujarat,India'],
-
-
-['BHX','EGBB','Birmingham Airport','Birmingham,England,United Kingdom'],
-
-
-['BIA','LFKB','Bastia - Poretta Airport','Bastia,Corsica,France'],
-
-['BID','KBID','Block Island State Airport','Block Island,Rhode Island,United States'],
-
-
-
-['BIK','WABB','Frans Kaisiepo Airport','Biak,Indonesia'],
-['BIL','KBIL','Billings Logan International Airport','Billings,Montana,United States'],
-['BIM','MYBS','South Bimini Airport','Bimini,Bahamas'],
-
-['BIO','LEBB','Bilbao Airport','Bilbao,Basque Country,Spain'],
-
-['BIQ','LFBZ','Biarritz Pays Basque Airport','Biarritz,Aquitaine,France'],
-['BIR','VNVT','Biratnagar Airport','Biratnagar,Nepal'],
-
-['BIT','VNBT','Baitadi Airport','Baitadi,Nepal'],
-['BIU','BIBD','Bildudalur Airport','Bildudalur,Iceland'],
-['BIV','FEFR','Bria Airport','Bria,Central African Republic'],
-
-
-['BIY','FABE','Bhisho Airport','Bhisho,South Africa'],
-
-
-
-['BJC','KBJC','Rocky Mountain Metropolitan Airport','Denver,Colorado,United States'],
-['BJD','BIBK','BakkafjÃ¶rour Airport','BakkafjÃ¶rour,Iceland'],
-
-['BJF','ENBS','BÃ¥tsfjord Airport','BÃ¥tsfjord,Norway'],
-
-['BJH','VNBG','Bajhang Airport','Bajhang,Nepal'],
-['BJJ','KBJJ','Wayne County Airport','Wooster,Ohio,United States'],
-['BJK','WAPK','Benjina Airport ','Benjina,Indonesia'],
-['BJL','GBYD','Banjul International Airport','Banjul,Gambia'],
-['BJM','HBBA','Bujumbura International Airport','Bujumbura,Burundi'],
-
-['BJO','SLBJ','Bermejo Airport','Bermejo,Bolivia'],
-
-
-
-
-
-['BJU','VNBR','Bajura Airport','Bajura,Nepal'],
-['BJV','LTFE','Milas-Bodrum Airport','Milas Bodrum,Turkey'],
-['BJW','WRKB','Bajawa Soa Airport','Bajawa,Indonesia'],
-['BJX','MMLO','Del Bajio International Airport ','Leon,Guanajuato,Mexico'],
-['BJY','LYBT','Batajnica Air Base','Batajnica,Serbia'],
-['BJZ','LEBZ','Badajoz Airport ','Badajoz,Extremadura,Spain'],
-
-['BKB','VIBK','Nal Airport','Bikaner,Rajasthan,India'],
-['BKC','PABL','Buckland Airport ','Buckland,Alaska,United States'],
-['BKD','KBKD','Stephens County Airport','Breckenridge,Texas,United States'],
-
-
-['BKG','KBBG','Branson Airport ','Branson,Missouri,United States'],
-['BKH','PHBK','Barking Sands PMRF','Kekaha,Hawaii,United States'],
-['BKI','WBKK','Kota Kinabalu International Airport','Kota Kinabalu,Sabah,Malaysia'],
-['BKJ','GUOK','Boke Baralande Airport','Boke,Guinea'],
-['BKK','VTBS','Suvarnabhumi Airport','Bangkok,Thailand'],
-['BKL','KBKL','Cleveland Burke Lakefront Airport','Cleveland,Ohio,United States'],
-['BKM','WBGQ','Bakelalan Airport','Bakelalan,Sarawak,Malaysia'],
-
-['BKO','GABS','Bamako-Senou International Airport','Bamako,Mali'],
-
-
-
-['BKS','WIPL','Fatmawati Soekarno Airport','Bengkulu,Indonesia'],
-['BKU','FMSV','Betioky Airport','Betioky,Madagascar'],
-['BKW','KBKW','Raleigh County Memorial Airport','Beckley,West Virginia,United States'],
-
-['BKZ','HTBU','Bukoba Airport','Bukoba,Tanzania'],
-['BLA','SVBC','General Jose Antonio Anzoategui International Airport','Barcelona,Venezuela'],
-['BLB','MPHO','Panama Pacifico International Airport ','Panama Pacifico,Panama'],
-
-
-['BLE','ESSD','Dala Airport ','BorlÃ¤nge,Sweden'],
-['BLF','KBLF','Mercer County Airport','Bluefield,West Virginia,United States'],
-['BLG','WBGC','Belaga Airport','Belaga,Sarawak,Malaysia'],
-['BLH','KBLH','Blythe Airport','Blythe,California,United States'],
-['BLI','KBLI','Bellingham International Airport','Bellingham,Washington,United States'],
-
-['BLK','EGNH','Blackpool Airport','Blackpool,England,United Kingdom'],
-['BLL','EKBI','Billund Airport','Billund,Denmark'],
-['BLM','KBLM','Monmouth Executive Airport','Belmar Farmingdale,New Jersey,United States'],
-
-['BLO','BIBL','BlÃ¶nduos Airport','BlÃ¶nduos,Iceland'],
-['BLP','SPBL','Huallaga Airport','Bellavista,Peru'],
-['BLQ','LIPE','Bologna Guglielmo Marconi Airport','Bologna,Emilia-Romagna,Italy'],
-['BLR','VOBL','Kempegowda International Airport','Bangalore,Karnataka,India'],
-
-
-['BLU','KBLU','Blue Canyon-Nyack Airport','Emigrant Gap,California,United States'],
-
-['BLX','LIDB','Belluno Airport','Belluno,Veneto,Italy'],
-['BLY','EIBT','Belmullet Aerodrome','Belmullet,Ireland'],
-['BLZ','FWCL','Chileka International Airport','Blantyre,Malawi'],
-['BMA','ESSB','Stockholm Bromma Airport','Stockholm,Sweden'],
-
-['BMC','KBMC','Brigham City Airport','Brigham City,Utah,United States'],
-['BMD','FMML','Belo sur Tsiribihina Airport','Belo sur Tsiribihina,Madagascar'],
-
-['BMF','FEGM','Bakouma Airport','Bakouma,Central African Republic'],
-['BMG','KBMG','Monroe County Airport','Bloomington,Indiana,United States'],
-['BMH','AYBO','Bomai Airport','Bomai,Papua New Guinea'],
-['BMJ','SYBR','Baramita Airport','Baramita,Guyana'],
-['BMK','EDWR','Borkum Airfield','Borkum,Lower Saxony,Germany'],
-['BMM','FOOB','Bitam Airport','Bitam,Gabon'],
-
-['BMO','VYBM','Bhamo Airport','Bhamo,Myanmar'],
-
-
-['BMR','EDWZ','Baltrum Airport','Baltrum,Lower Saxony,Germany'],
-
-
-['BMU','WADB','Sultan Muhammad Salahudin Airport ','Bima,Indonesia'],
-['BMV','VVBM','Buon Ma Thuot Airport','Buon Ma Thuot,Vietnam'],
-
-
-['BMY','NWWC','Ile Art - Waala Airport','Waala,Belep Islands,New Caledonia'],
-['BMZ','AYBF','Bamu Airport','Bamu,Papua New Guinea'],
-['BNA','KBNA','Nashville International Airport','Nashville,Tennessee,United States'],
-
-
-
-['BNE','YBBN','Brisbane Airport','Brisbane,Queensland,Australia'],
-
-
-
-
-['BNM','AYBD','Bodinumu Airport','Bodinumu,Papua New Guinea'],
-['BNN','ENBN','Bronnoysund Airport,Bronnoy','Bronnoysund,Norway'],
-
-
-
-['BNR','DFOB','Banfora Airport','Banfora,Burkina Faso'],
-['BNS','SVBI','Barinas Airport','Barinas,Venezuela'],
-['BNT','AYDI','Bundi Airport','Bundi,Papua New Guinea'],
-
-
-
-['BNX','LQBK','Banja Luka International Airport','Banja Luka,Bosnia and Herzegovina'],
-['BNY','AGGB','Bellona Anua Airport','Bellona Island,Rennell and Bellona,Solomon Islands'],
-
-
-['BOB','NTTB','Bora Bora Airport ','Bora Bora,French Polynesia'],
-['BOC','MPBO','Bocas del Toro Isla Colon International Airport','Bocas Town,Panama'],
-['BOD','LFBD','Bordeaux-Merignac Airport','Bordeaux,Aquitaine,France'],
-
-['BOG','SKBO','El Dorado International Airport','Bogota,Colombia'],
-['BOH','EGHH','Bournemouth Airport','Bournemouth,England,United Kingdom'],
-['BOI','KBOI','Boise Air Terminal ','Boise,Idaho,United States'],
-['BOJ','LBBG','Burgas Airport','Burgas,Bulgaria'],
-['BOK','KBOK','Brookings Airport','Brookings,Oregon,United States'],
-['BOL','EGQB','Ballykelly Airfield ','Ballykelly,Northern Ireland,United Kingdom'],
-['BOM','VABB','Chhatrapati Shivaji International Airport','Mumbai,Maharashtra,India'],
-['BON','TNCB','Flamingo International Airport','Kralendijk,Bonaire,Caribbean Netherlands'],
-['BOO','ENBO','Bodo Airport','Bodo,Norway'],
-['BOP','FEFO','Bouar Airport','Bouar,Central African Republic'],
-
-['BOS','KBOS','Logan International Airport','Boston,Massachusetts,United States'],
-['BOT','AYET','Bosset Airport','Bosset,Papua New Guinea'],
-['BOU','LFLD','Bourges Airport','Bourges,Centre-Val de Loire,France'],
-
-
-
-['BOY','DFOO','Bobo Dioulasso Airport','Bobo-Dioulasso,Burkina Faso'],
-['BOZ','FEGZ','Bozoum Airport','Bozoum,Central African Republic'],
-
-
-['BPD','AYBP','Bapi Airport','Bapi,Papua New Guinea'],
-
-['BPF','AGBT','Batuna Airport','Batuna,Solomon Islands'],
-
-['BPH','RPMF','Bislig Airport','Bislig,Philippines'],
-['BPI','KBPI','Miley Memorial Field','Big Piney,Wyoming,United States'],
-['BPK','AYBQ','Biangabip Airport','Biangabip,Papua New Guinea'],
-
-['BPM','VOHY','Begumpet Airport','Hyderabad,Telangana,India'],
-['BPN','WALL','Sultan Aji Muhammad Sulaiman Airport','Balikpapan,Indonesia'],
-
-
-['BPY','FMNQ','Besalampy Airport','Besalampy,Madagascar'],
-['BQA','RPUR','Dr. Juan C. Angara Airport','Baler,Philippines'],
-['BQE','GGBU','Bubaque Airport','Bubaque,Guinea-Bissau'],
-
-['BQH','EGKB','London Biggin Hill Airport','London Biggin Hill,England,United Kingdom'],
-
-
-['BQK','KBQK','Brunswick Golden Isles Airport','Brunswick,Georgia,United States'],
-
-['BQN','TJBQ','Rafael Hernandez Airport','Aguadilla,Puerto Rico,United States'],
-['BQO','DIBN','Tehini Airport','Bouna,Ivory Coast'],
-
-
-['BQT','UMBB','Brest Airport','Brest,Belarus'],
-['BQU','TVSB','J. F. Mitchell Airport','Bequia,Saint Vincent and the Grenadines'],
-
-
-
-
-['BRC','SAZS','San Carlos de Bariloche Airport','San Carlos de Bariloche,Rio Negro,Argentina'],
-['BRE','EDDW','Bremen Airport','Bremen,Bremen,Germany'],
-
-['BRI','LIBD','Bari Karol Wojtya Airport','Bari,Apulia,Italy'],
-
-
-['BRM','SVBM','Jacinto Lara International Airport','Barquisimeto,Venezuela'],
-['BRN','LSZB','Bern Airport','Bern,Switzerland'],
-['BRO','KBRO','Brownsville South Padre Island International Airport','Brownsville,Texas,United States'],
-['BRP','AYBR','Biaru Airport','Biaru,Papua New Guinea'],
-['BRQ','LKTB','Brno-Tuany Airport','Brno,Czech Republic'],
-['BRR','EGPR','Barra Airport','Barra,Scotland,United Kingdom'],
-['BRS','EGGD','Bristol Airport','Bristol,England,United Kingdom'],
-
-['BRU','EBBR','Brussels Airport ','Brussels,Belgium'],
-['BRV','EDWB','Bremerhaven Airport','Bremerhaven,Bremen,Germany'],
-['BRW','PABR','Wiley Post-Will Rogers Memorial Airport','Barrow,Alaska,United States'],
-['BRX','MDBH','Maria Montez International Airport','Barahona,Dominican Republic'],
-['BRY','KBRY','Samuels Field','Bardstown,Kentucky,United States'],
-
-
-['BSC','SKBS','Jose Celestino Mutis Airport','Bahia Solano,Colombia'],
-
-['BSE','WBGN','Sematan Airport','Sematan,Sarawak,Malaysia'],
-['BSG','FGBT','Bata Airport','Bata,Equatorial Guinea'],
-
-
-['BSL','LFSB','EuroAirport Basel-Mulhouse-Freiburg','Basel,Switzerland'],
-
-['BSN','FEFS','Bossangoa Airport','Bossangoa,Central African Republic'],
-['BSO','RPUO','Basco Airport','Basco,Philippines'],
-['BSP','AYBH','Bensbach Airport','Bensbach,Papua New Guinea'],
-
-
-
-
-
-
-
-['BSX','VYPN','Pathein Airport','Pathein,Myanmar'],
-
-
-
-['BTC','VCCB','Batticaloa Airport','Batticaloa,Sri Lanka'],
-
-['BTE','GFBN','Sherbro International Airport','Bonthe,Sierra Leone'],
-['BTF','KBTF','Skypark Airport','Bountiful,Utah,United States'],
-['BTG','FEGF','Batangafo Airport','Batangafo,Central African Republic'],
-['BTH','WIDD','Hang Nadim Airport','Batam,Indonesia'],
-['BTI','PABA','Barter Island LRRS Airport','Barter Island,Alaska,United States'],
-['BTJ','WITT','Sultan Iskandar Muda International Airport','Banda Aceh,Indonesia'],
-
-['BTL','KBTL','W. K. Kellogg Airport','Battle Creek,Michigan,United States'],
-['BTM','KBTM','Bert Mooney Airport','Butte,Montana,United States'],
-['BTN','KBBP','Marlboro County Jetport ','Bennettsville,South Carolina,United States'],
-
-['BTP','KBTP','Butler County Airport ','Butler,Pennsylvania,United States'],
-['BTQ','HRYI','Butare Airport','Butare,Rwanda'],
-['BTR','KBTR','Baton Rouge Metropolitan Airport ','Baton Rouge,Louisiana,United States'],
-['BTS','LZIB','M. R. Stefanik Airport','Bratislava,Slovakia'],
-['BTT','PABT','Bettles Airport','Bettles,Alaska,United States'],
-['BTU','WBGB','Bintulu Airport','Bintulu,Sarawak,Malaysia'],
-['BTV','KBTV','Burlington International Airport','Burlington,Vermont,United States'],
-['BTW','WAOC','Batu Licin Airport','Batu Licin,Indonesia'],
-
-['BTY','KBTY','Beatty Airport','Beatty,Nevada,United States'],
-['BUA','AYBK','Buka Island Airport','Buka Island,Papua New Guinea'],
-['BUB','KBUB','Cram Field','Burwell,Nebraska,United States'],
-
-['BUD','LHBP','Budapest Ferenc Liszt International Airport','Budapest,Hungary'],
-
-['BUF','KBUF','Buffalo Niagara International Airport','Buffalo,New York,United States'],
-
-
-['BUI','WAJB','Bokondini Airport','Bokondini,Indonesia'],
-
-
-['BUL','AYBU','Bulolo Airport','Bulolo,Papua New Guinea'],
-['BUM','KBUM','Butler Memorial Airport','Butler,Missouri,United States'],
-['BUN','SKBU','Gerardo Tobar Lopez Airport','Buenaventura,Colombia'],
-
-['BUP','VIBT','Bathinda Airport ','Bathinda,Punjab,India'],
-
-['BUR','KBUR','Bob Hope Airport','Burbank,California,United States'],
-['BUS','UGSB','Batumi International Airport ','Batumi,Georgia'],
-['BUT','VQBT','Bathpalathang Airport','Jakar,Bhutan'],
-['BUV','SUBU','Placeres Airport','Bella Union,Uruguay'],
-['BUW','WAWB','Betoambari Airport','Bau-Bau,Indonesia'],
-
-
-
-['BVA','LFOB','Beauvais-Tille Airport','Beauvais,Picardy,France'],
-
-['BVC','GVBA','Aristides Pereira International Airport ','Boa Vista,Cape Verde'],
-['BVE','LFSL','Brive-Souillac Airport','Brive-la-Gaillarde,Limousin,France'],
-['BVF','NFNU','Dama Airport','Bua,Fiji'],
-['BVG','ENBV','BerlevÃ¥g Airport','BerlevÃ¥g,Norway'],
-
-
-['BVK','SLHJ','Huacaraje Airport','Huacaraje,Bolivia'],
-['BVL','SLBU','Baures Airport','Baures,Bolivia'],
-
-
-
-['BVR','GVBR','Esperadinha Airport','Brava,Cape Verde'],
-
-['BVU','PABG','Beluga Airport ','Beluga,Alaska,United States'],
-
-
-
-
-['BWA','VNBW','Gautam Buddha Airport','Siddharthanagar ,Nepal'],
-
-
-['BWE','EDVE','Braunschweig-Wolfsburg Airport','Braunschweig,Lower Saxony,Germany'],
-['BWF','EGNL','Barrow Walney Island Airport','Barrow-in-Furness,England,United Kingdom'],
-['BWH','WMKB','RMAF Butterworth','Butterworth,Penang,Malaysia'],
-['BWI','KBWI','Baltimore Washington International Thurgood Marshall Airport','Baltimore-Washington metropolitan area,United States'],
-
-['BWK','LDSB','Bol Airport ','Bol,Croatia'],
-
-
-['BWN','WBSB','Brunei International Airport','Bandar Seri Begawan,Brunei'],
-
-['BWP','AYBI','Bewani Airport','Bewani,Papua New Guinea'],
-
-
-
-['BWW','MUBR','Las Brujas Airport[1]','Cayo Santa Maria,Cuba'],
-['BWX','WARB','Blimbingsari Airport','Banyuwangi,Indonesia'],
-['BXA','KBXA','George R. Carr Memorial Air Field','Bogalusa,Louisiana,United States'],
-['BXB','WASO','Babo Airport','Babo,Indonesia'],
-['BXD','WAKE','Bade Airport','Bade,Indonesia'],
-['BXE','GOTB','Bakel Airport','Bakel,Senegal'],
-
-
-
-['BXI','DIBI','Boundiali Airport','Boundiali,Ivory Coast'],
-
-
-
-
-['BXN','LTBV','Bodrum-Imsik Airport','Bodrum,Turkey'],
-['BXO','LSZC','Buochs Airport','Buochs,Switzerland'],
-['BXP','EPBP','Biaa Podlaska Airport','Biaa Podlaska,Poland'],
-
-
-['BXT','WRLC','PT Badak Bontang Airport','Bontang,Indonesia'],
-['BXU','RPME','Bancasi Airport','Butuan,Philippines'],
-['BXV','BIBV','Breiodalsvik Airport','Breiodalsvik,Iceland'],
-
-['BXZ','AYNS','Bunsil Airport','Bunsil,Papua New Guinea'],
-
-
-['BYC','SLYA','Yacuiba Airport','Yacuiba,Bolivia'],
-
-['BYF','LFAQ','Albert - Picardie Airport[1]','Albert,Picardy,France'],
-['BYG','KBYG','Johnson County Airport','Buffalo,Wyoming,United States'],
-['BYH','KBYH','Arkansas International Airport','Blytheville,Arkansas,United States'],
-
-['BYJ','LPBJ','Beja Airport','Beja,Portugal'],
-['BYK','DIBK','Bouake Airport','Bouake,Ivory Coast'],
-
-['BYM','MUBY','Carlos Manuel de Cespedes Airport','Bayamo,Cuba'],
-['BYN','ZMBH','Bayankhongor Airport','Bayankhongor,Mongolia'],
-
-
-['BYQ','WALV','Bunyu Airport','Bunyu,Indonesia'],
-['BYR','EKLS','Laeso Airport','Laeso,Denmark'],
-['BYT','EIBN','Bantry Aerodrome','Bantry,Ireland'],
-['BYU','EDQD','Bindlacher Berg Airport','Bayreuth,Bavaria,Germany'],
-
-
-
-['BZA','MNBZ','San Pedro Airport','Bonanza,Nicaragua'],
-
-
-
-['BZE','MZBZ','Philip S. W. Goldson International Airport','Belize City,Belize'],
-
-['BZG','EPBY','Bydgoszcz Ignacy Jan Paderewski Airport','Bydgoszcz,Poland'],
-
-['BZI','LTBF','Balkesir Airport ','Balkesir,Turkey'],
-
-['BZL','VGBR','Barisal Airport','Barisal,Bangladesh'],
-
-['BZN','KBZN','Bozeman Yellowstone International Airport ','Bozeman,Montana,United States'],
-['BZO','LIPB','Bolzano Airport','Bolzano,Trentino-Alto Adige Sudtirol,Italy'],
-
-['BZR','LFMU','Beziers Cap dAgde Airport','Beziers,Languedoc-Roussillon,France'],
-
-
-
-['BZY','LUBL','Bli International Airport','Bli,Moldova'],
-['BZZ','EGVN','RAF Brize Norton','Carterton,England,United Kingdom'],
-['CAA','MHCA','Catacamas Airport','Catacamas,Honduras'],
-
-
-['CAD','KCAD','Wexford County Airport','Cadillac,Michigan,United States'],
-['CAE','KCAE','Columbia Metropolitan Airport','Columbia,South Carolina,United States'],
-
-['CAG','LIEE','Cagliari Elmas Airport','Cagliari,Sardinia,Italy'],
-['CAH','VVCM','Ca Mau Airport','Ca Mau,Vietnam'],
-['CAI','HECA','Cairo International Airport','Cairo,Egypt'],
-['CAJ','SVCN','Canaima Airport','Canaima,Venezuela'],
-['CAK','KCAK','Akron-Canton Airport','Akron Canton,Ohio,United States'],
-['CAL','EGEC','Campbeltown Airport RAF Machrihanish','Campbeltown,Scotland,United Kingdom'],
-['CAM','SLCA','Camiri Airport','Camiri,Bolivia'],
-
-
-['CAP','MTCH','Hugo Chavez International Airport','Cap-Haitien,Haiti'],
-['CAQ','SKCU','Juan H. White Airport','Caucasia,Colombia'],
-
-['CAS','GMMC','Anfa Airport','Casablanca,Morocco'],
-['CAT','LPCS','Cascais Municipal Aerodrome[1]','Cascais,Portugal'],
-
-
-
-['CAX','EGNC','Carlisle Lake District Airport','Carlisle,England,United Kingdom'],
-['CAY','SOCA','Cayenne - Felix Eboue Airport','Cayenne,French Guiana'],
-
-['CBB','SLCB','Jorge Wilstermann International Airport','Cochabamba,Bolivia'],
-
-
-
-['CBG','EGSC','Cambridge Airport','Cambridge,England,United Kingdom'],
-
-
-['CBJ','MDCR','Cabo Rojo Airport','Pedernales,Dominican Republic'],
-
-['CBL','SVCB','Tomas de Heres Airport','Ciudad Bolivar,Venezuela'],
-
-['CBN','WICD','Penggung Airport ','Cirebon,Indonesia'],
-['CBO','RPMC','Awang Airport','Cotabato City,Philippines'],
-['CBP','LPCO','Coimbra Airport','Coimbra,Portugal'],
-
-
-['CBS','SVON','Oro Negro Airport','Cabimas,Venezuela'],
-
-['CBU','EDCD','Cottbus-Drewitz Airport','Cottbus,Brandenburg,Germany'],
-['CBV','MGCB','Coban Airport','Coban,Guatemala'],
-
-
-
-['CCB','KCCB','Cable Airport','Upland,California,United States'],
-['CCC','MUCC','Jardines del Rey Airport','Cayo Coco,Cuba'],
-['CCF','LFMK','Carcassonne Airport','Carcassonne,Languedoc-Roussillon,France'],
-
-['CCH','SCCC','Chile Chico Airfield','Chile Chico,Chile'],
-
-['CCJ','VOCL','Calicut International Airport','Kozhikode ,Kerala,India'],
-
-
-
-
-['CCO','SKCI','Carimagua Airport','Carimagua,Colombia'],
-['CCP','SCIE','Carriel Sur International Airport','Concepcion,Chile'],
-['CCR','KCCR','Buchanan Field Airport','Concord,California,United States'],
-['CCS','SVMI','Simon Bolivar International Airport','Caracas,Venezuela'],
-
-['CCU','VECC','Netaji Subhas Chandra Bose International Airport','Kolkata,West Bengal,India'],
-['CCV','NVSF','Craig Cove Airport','Craig Cove,Ambrym Island,Malampa,Vanuatu'],
-
-
-['CCZ','MYBC','Chub Cay International Airport','Chub Cay,Berry Islands,Bahamas'],
-
-['CDB','PACD','Cold Bay Airport','Cold Bay,Alaska,United States'],
-
-['CDG','LFPG','Charles de Gaulle Airport ','Paris,Ile-de-France,France'],
-['CDH','KCDH','Harrell Field','Camden,Arkansas,United States'],
-
-
-['CDK','KCDK','George T. Lewis Airport','Cedar Key,Florida,United States'],
-
-['CDN','KCDN','Woodward Field','Camden,South Carolina,United States'],
-['CDO','FACD','Cradock Airport','Cradock,South Africa'],
-['CDP','VOCP','Kadapa Airport','Kadapa,Andhra Pradesh,India'],
-
-
-
-['CDT','LECS','Castellon-Costa Azahar Airport','Castellon de la Plana,Valencia,Spain'],
-
-['CDV','PACV','Merle K.  Smith Airport','Cordova,Alaska,United States'],
-['CDW','KCDW','Essex County Airport','Caldwell,New Jersey,United States'],
-['CDY','RPMU','Cagayan de Sulu Airport','Mapun,Philippines'],
-['CEA','KCEA','Cessna Aircraft Field','Wichita,Kansas,United States'],
-['CEB','RPVM','Mactan-Cebu International Airport','Lapu-Lapu,Philippines'],
-['CEC','KCEC','Del Norte County Airport ','Crescent City,California,United States'],
-
-
-['CEF','KCEF','Westover Metropolitan Airport Westover Air Reserve Base','Springfield,Massachusetts,United States'],
-['CEG','EGNR','Hawarden Airport ','Chester,England,United Kingdom'],
-['CEH','FWCD','Chelinda Airport','Chelinda,Malawi'],
-['CEI','VTCT','Chiang Rai International Airport ','Chiang Rai,Thailand'],
-
-['CEM','PARL','Central Airport','Central,Alaska,United States'],
-['CEN','MMCN','Ciudad Obregon International Airport','Ciudad Obregon,Sonora,Mexico'],
-
-['CEP','SLCP','Concepcion Airport','Concepcion,Bolivia'],
-['CEQ','LFMD','Cannes - Mandelieu Airport','Cannes,Provence-Alpes-Cote dAzur,France'],
-['CER','LFRC','Cherbourg - Maupertus Airport','Cherbourg-Octeville,Lower Normandy,France'],
-
-['CET','LFOU','Cholet Le Pontreau Airport','Cholet,Pays de la Loire,France'],
-['CEV','KCEV','Mettel Field','Connersville,Indiana,United States'],
-['CEW','KCEW','Bob Sikes Airport','Crestview,Florida,United States'],
-
-['CEY','KCEY','Murray-Calloway County Airport','Murray,Kentucky,United States'],
-
-
-
-['CFD','KCFD','Coulter Field','Bryan,Texas,United States'],
-['CFE','LFLC','Clermont-Ferrand Auvergne Airport','Clermont-Ferrand,Auvergne,France'],
-
-['CFG','MUCF','Jaime Gonzalez Airport','Cienfuegos,Cuba'],
-
-
-
-['CFN','EIDL','Donegal Airport','Donegal,Ireland'],
-
-
-
-['CFR','LFRK','Caen - Carpiquet Airport','Caen,Lower Normandy,France'],
-
-['CFT','KCFT','Greenlee County Airport','Clifton Morenci,Arizona,United States'],
-['CFU','LGKR','Corfu International Airport ','Corfu,Greece'],
-
-
-
-['CGC','AYCG','Cape Gloucester Airport','Cape Gloucester,Papua New Guinea'],
-
-['CGE','KCGE','Cambridge-Dorchester Airport','Cambridge,Maryland,United States'],
-['CGF','KCGF','Cuyahoga County Airport','Cleveland,Ohio,United States'],
-
-
-
-['CGK','WIII','Soekarno-Hatta International Airport','Jakarta,Indonesia'],
-['CGM','RPMH','Camiguin Airport','Mambajao,Philippines'],
-['CGN','EDDK','Cologne Bonn Airport','Cologne Bonn,North Rhine-Westphalia,Germany'],
-
-['CGP','VGEG','Shah Amanat International Airport','Chittagong,Bangladesh'],
-
-
-['CGS','KCGS','College Park Airport','College Park,Maryland,United States'],
-
-
-['CGY','RPMY','Laguindingan Airport','Cagayan de Oro,Philippines'],
-
-['CHA','KCHA','Chattanooga Metropolitan Airport ','Chattanooga,Tennessee,United States'],
-
-['CHC','NZCH','Christchurch International Airport','Christchurch,New Zealand'],
-['CHF','RKPE','Jinhae Airport','Jinhae,South Korea'],
-
-['CHH','SPPY','Chachapoyas Airport','Chachapoyas,Peru'],
-
-
-
-['CHL','KLLJ','Challis Airport ','Challis,Idaho,United States'],
-['CHM','SPEO','Tnte. FAP Jaime Montreuil Morales Airport','Chimbote,Peru'],
-['CHN','RKJU','Jeonju Airport','Jeonju,South Korea'],
-['CHO','KCHO','Charlottesville-Albemarle Airport','Charlottesville,Virginia,United States'],
-
-['CHQ','LGSA','Chania International Airport ','Chania,Greece'],
-['CHR','LFLX','Chateauroux-Centre Marcel Dassault Airport','Chateauroux,Centre-Val de Loire,France'],
-
-['CHT','NZCI','Chatham Islands Tuuta Airport','Chatham Islands,New Zealand'],
-
-['CHV','LPCH','Chaves Airport','Chaves,Portugal'],
-['CHX','MPCH','Changuinola Capitan Manuel Nino International Airport','Changuinola,Panama'],
-['CHY','AGGC','Choiseul Bay Airport','Choiseul Bay,Taro Island,Solomon Islands'],
-
-['CIA','LIRA','Ciampino-G. B. Pastine International Airport','Rome,Lazio,Italy'],
-
-['CID','KCID','The Eastern Iowa Airport','Cedar Rapids,Iowa,United States'],
-
-
-['CIG','KCAG','Craig-Moffat Airport ','Craig,Colorado,United States'],
-
-['CII','LTBD','Aydn Airport[1] ','Aydn,Turkey'],
-['CIJ','SLCO','Captain Anibal Arab Airport','Cobija,Bolivia'],
-['CIK','PACI','Chalkyitsik Airport','Chalkyitsik,Alaska,United States'],
-
-['CIM','SKCM','Cimitarra Airport','Cimitarra,Colombia'],
-['CIN','KCIN','Arthur N. Neu Airport','Carroll,Iowa,United States'],
-['CIO','SGCO','Teniente Coronel Carmelo Peralta Airport','Concepcion,Paraguay'],
-['CIP','FLCP','Chipata Airport','Chipata,Zambia'],
-
-['CIS','PCIS','Canton Island Airport','Canton Island,Kiribati'],
-
-['CIU','KCIU','Chippewa County International Airport','Sault Ste Marie,Michigan,United States'],
-['CIW','TVSC','Canouan Airport','Canouan,Saint Vincent and the Grenadines'],
-['CIX','SPHI','FAP Captain Jose Abelardo Quinones Gonzales International Airport','Chiclayo,Peru'],
-['CIY','LICB','Comiso Airport','Comiso,Sicily,Italy'],
-
-['CJA','SPJR','Mayor General FAP Armando Revoredo Iglesias Airport','Cajamarca,Peru'],
-['CJB','VOCB','Coimbatore International Airport','Coimbatore,Tamil Nadu,India'],
-['CJC','SCCF','El Loa Airport','Calama,Chile'],
-
-
-
-['CJJ','RKTU','Cheongju International Airport','Cheongju,South Korea'],
-
-['CJM','VTSE','Chumphon Airport','Chumphon,Thailand'],
-['CJS','MMCS','Abraham Gonzalez International Airport','Ciudad Juarez,Chihuahua,Mexico'],
-['CJT','MMCO','Copalar Airport','Comitan,Chiapas,Mexico'],
-['CJU','RKPC','Jeju International Airport','Jeju,South Korea'],
-
-['CKB','KCKB','North Central West Virginia Airport','Clarksburg,West Virginia,United States'],
-
-
-
-
-
-
-
-['CKM','KCKM','Fletcher Field','Clarksdale,Mississippi,United States'],
-
-
-
-
-
-
-
-
-['CKY','GUCY','Conakry International Airport ','Conakry,Guinea'],
-['CKZ','LTBH','canakkale Airport','canakkale,Turkey'],
-['CLA','VGCM','Comilla Airport','Comilla,Bangladesh'],
-['CLD','KCRQ','McClellan-Palomar Airport ','Carlsbad,California,United States'],
-['CLE','KCLE','Cleveland Hopkins International Airport','Cleveland,Ohio,United States'],
-
-
-
-['CLJ','LRCL','Cluj-Napoca International Airport','Cluj-Napoca,Romania'],
-['CLL','KCLL','Easterwood Airport ','College Station,Texas,United States'],
-['CLM','KCLM','William R. Fairchild International Airport','Port Angeles,Washington,United States'],
-
-['CLO','SKCL','Alfonso Bonilla Aragon International Airport','Cali,Colombia'],
-['CLP','PFCL','Clarks Point Airport','Clarks Point,Alaska,United States'],
-['CLQ','MMIA','Licenciado Miguel de la Madrid Airport','Colima City,Colima,Mexico'],
-['CLR','KCLR','Cliff Hatfield Memorial Airport[1]','Calipatria,California,United States'],
-['CLS','KCLS','Chehalis-Centralia Airport','Chehalis,Washington,United States'],
-['CLT','KCLT','Charlotte Douglas International Airport','Charlotte,North Carolina,United States'],
-
-
-['CLW','KCLW','Clearwater Air Park','Clearwater,Florida,United States'],
-['CLX','SATC','Clorinda Airport','Clorinda,Formosa,Argentina'],
-['CLY','LFKC','Calvi - Sainte-Catherine Airport','Calvi,Corsica,France'],
-['CLZ','SVCL','Calabozo Airport','Calabozo,Venezuela'],
-
-['CMB','VCBI','Bandaranaike International Airport','Colombo,Sri Lanka'],
-
-
-['CME','MMCE','Ciudad del Carmen International Airport','Ciudad del Carmen,Campeche,Mexico'],
-['CMF','LFLB','Chambery-Savoie Airport','Chambery,Rhone-Alpes,France'],
-
-['CMH','KCMH','Port Columbus International Airport','Columbus,Ohio,United States'],
-['CMI','KCMI','University of Illinois Willard Airport','Champaign,Illinois,United States'],
-['CMJ','RCCM','Qimei Airport','Qimei,Taiwan'],
-['CMK','FWCM','Club Makokola Airport','Club Makokola,Malawi'],
-
-['CMM','MGCR','Carmelita Airport','Carmelita,Guatemala'],
-['CMN','GMMN','Mohammed V International Airport','Casablanca,Morocco'],
-
-
-
-['CMR','LFGA','Colmar - Houssen Airport','Colmar,Alsace,France'],
-
-
-['CMU','AYCH','Chimbu Airport','Kundiawa,Papua New Guinea'],
-['CMV','NZCX','Coromandel Aerodrome','Coromandel,New Zealand'],
-['CMW','MUCM','Ignacio Agramonte International Airport','Camaguey,Cuba'],
-['CMX','KCMX','Houghton County Memorial Airport','Hancock,Michigan,United States'],
-['CMY','KCMY','Sparta Fort McCoy Airport','Sparta,Wisconsin,United States'],
-
-['CNA','MMCA','Cananea National Airport','Cananea,Sonora,Mexico'],
-
-
-['CND','LRCK','Mihail Koglniceanu International Airport','Constana,Romania'],
-
-
-['CNG','LFBG','Cognac - Chateaubernard Air Base','Cognac,Poitou-Charentes,France'],
-
-
-
-
-['CNL','EKSN','Sindal Airport','Sindal,Denmark'],
-['CNM','KCNM','Cavern City Air Terminal','Carlsbad,New Mexico,United States'],
-['CNO','KCNO','Chino Airport','Chino,California,United States'],
-['CNP','BGCO','Nerlerit Inaat Airport ','Ittoqqortoormiit,Greenland'],
-['CNQ','SARC','Doctor Fernando Piragine Niveyro International Airport','Corrientes,Corrientes,Argentina'],
-['CNR','SCRA','Chanaral Airport','Chanaral,Chile'],
-['CNS','YBCS','Cairns Airport','Cairns,Queensland,Australia'],
-
-['CNU','KCNU','Chanute Martin Johnson Airport','Chanute,Kansas,United States'],
-
-['CNW','KCNW','TSTC Waco Airport','Waco,Texas,United States'],
-['CNX','VTCC','Chiang Mai International Airport','Chiang Mai,Thailand'],
-['CNY','KCNY','Canyonlands Field','Moab,Utah,United States'],
-
-
-
-['COC','SAAC','Comodoro Pierrestegui Airport','Concordia,Entre Rios,Argentina'],
-['COE','KCOE','Coeur dAlene Airport','Coeur dAlene,Idaho,United States'],
-
-['COG','SKCD','Mandinga Airport','Condoto,Colombia'],
-['COH','VECO','Cooch Behar Airport','Cooch Behar,West Bengal,India'],
-['COI','KCOI','Merritt Island Airport','Merritt Island,Florida,United States'],
-
-['COK','VOCI','Cochin International Airport ,Kerala,India'],
-
-
-
-['COO','DBBB','Cadjehoun Airport','Cotonou,Benin'],
-
-['COQ','ZMCD','Choibalsan Airport','Choibalsan,Mongolia'],
-['COR','SACO','Ingeniero Aeronautico Ambrosio L.V. Taravella International Airport ','Cordoba,Cordoba,Argentina'],
-['COS','KCOS','Colorado Springs Airport','Colorado Springs,Colorado,United States'],
-['COT','KCOT','Cotulla-La Salle County Airport','Cotulla,Texas,United States'],
-['COW','SCQB','Coquimbo Airport','Coquimbo,Chile'],
-
-['COZ','MDCZ','Constanza Airport','Constanza,Dominican Republic'],
-['CPA','GLCP','Cape Palmas Airport','Harper,Liberia'],
-['CPB','SKCA','Capurgana Airport','Capurgana,Colombia'],
-['CPC','SAZY','Aviador Carlos Campos Airport','San Martin de los Andes,Neuquen,Argentina'],
-
-['CPE','MMCP','Ing. Alberto Acuna Ongay International Airport','Campeche,Campeche,Mexico'],
-['CPF','WARC','Ngloram Airport','Cepu,Indonesia'],
-
-['CPH','EKCH','Copenhagen Airport,Kastrup','Copenhagen,Denmark'],
-
-['CPL','SKHA','General Navas Pardo Airport','Chaparral,Colombia'],
-['CPM','KCPM','Compton Woodley Airport','Compton,California,United States'],
-
-['CPO','SCAT','Desierto de Atacama Airport','Copiapo,Chile'],
-['CPR','KCPR','Casper-Natrona County International Airport','Casper,Wyoming,United States'],
-['CPS','KCPS','St. Louis Downtown Airport','Cahokia ,Illinois,United States'],
-['CPT','FACT','Cape Town International Airport','Cape Town,South Africa'],
-
-
-['CPX','TJCP','Benjamin Rivera Noriega Airport','Culebra,Puerto Rico,United States'],
-
-
-['CQF','LFAC','Calais-Dunkerque Airport','Calais Dunkirk,Nord-Pas-de-Calais,France'],
-['CQM','LERL','Ciudad Real Central Airport','Ciudad Real,Castilla-La Mancha,Spain'],
-
-
-
-['CRA','LRCV','Craiova International Airport','Craiova,Romania'],
-
-['CRC','SKGO','Santa Ana Airport','Cartago,Colombia'],
-['CRD','SAVC','General Enrique Mosconi International Airport','Comodoro Rivadavia,Chubut,Argentina'],
-['CRE','KCRE','Grand Strand Airport','North Myrtle Beach,South Carolina,United States'],
-['CRF','FEFC','Carnot Airport','Carnot,Central African Republic'],
-['CRG','KCRG','Jacksonville Executive at Craig Airport','Jacksonville,Florida,United States'],
-
-['CRI','MYCI','Colonel Hill Airport ','Colonel Hill,Crooked Island,Bahamas'],
-
-['CRK','RPLC','Clark International Airport','Clark Special Economic Zone,Philippines'],
-['CRL','EBCI','Brussels South Charleroi Airport','Charleroi,Belgium'],
-['CRM','RPVF','Catarman National Airport','Catarman,Philippines'],
-['CRO','KCRO','Corcoran Airport','Corcoran,California,United States'],
-['CRP','KCRP','Corpus Christi International Airport','Corpus Christi,Texas,United States'],
-
-['CRR','SANW','Ceres Airport','Ceres,Santa Fe,Argentina'],
-['CRS','KCRS','C. David Campbell Field ','Corsicana,Texas,United States'],
-['CRT','KCRT','Z. M. Jack Stell Field','Crossett,Arkansas,United States'],
-
-['CRV','LIBC','Crotone Airport ','Crotone,Calabria,Italy'],
-['CRW','KCRW','Yeager Airport','Charleston,West Virginia,United States'],
-['CRX','KCRX','Roscoe Turner Airport','Corinth,Mississippi,United States'],
-
-
-
-['CSB','LRCS','Caransebe Airport','Caransebe,Romania'],
-['CSC','MRMJ[2]','Canas Mojica Airport','Canas,Costa Rica'],
-
-
-['CSF','LFPC','Creil Air Base','Creil,Picardy,France'],
-['CSG','KCSG','Columbus Airport','Columbus,Georgia,United States'],
-
-
-['CSK','GOGS','Cap Skirring Airport','Cap Skirring,Senegal'],
-['CSM','KCSM','Clinton-Sherman Airport','Clinton,Oklahoma,United States'],
-['CSN','KCXP','Carson Airport ','Carson City,Nevada,United States'],
-['CSO','EDBC','Magdeburg-Cochstedt Airport','Magdeburg,Saxony-Anhalt,Germany'],
-
-
-
-['CST','NFCS','Castaway Island Seaplane Base','Castaway Island,Mamanuca Islands,Fiji'],
-
-['CSV','KCSV','Crossville Memorial-Whitson Field','Crossville,Tennessee,United States'],
-
-
-['CSZ','SAZC','Brigadier Hector Eduardo Ruiz Airport','Coronel Suarez,Buenos Aires,Argentina'],
-['CTA','LICC','Catania-Fontanarossa Airport','Catania,Sicily,Italy'],
-
-['CTC','SANC','Coronel Felipe Varela International Airport','Catamarca,Catamarca,Argentina'],
-['CTD','MPCE','Chitre Alonso Valderrama Airport','Chitre,Panama'],
-
-['CTF','MGCT','Coatepeque Airport','Coatepeque,Guatemala'],
-['CTG','SKCG','Rafael Nunez International Airport','Cartagena,Colombia'],
-['CTH','KMQS','Chester County G. O. Carlson Airport ','Coatesville,Pennsylvania,United States'],
-
-
-
-['CTM','MMCM','Chetumal International Airport','Chetumal,Quintana Roo,Mexico'],
-
-
-
-
-
-['CTS','RJCC','New Chitose Airport','Sapporo,Hokkaido,Japan'],
-['CTT','LFMQ','Le Castellet Airport','Le Castellet,Provence-Alpes-Cote dAzur,France'],
-
-
-
-['CTY','KCTY','Cross City Airport','Cross City,Florida,United States'],
-['CTZ','KCTZ','Clinton-Sampson County Airport','Clinton,North Carolina,United States'],
-
-['CUB','KCUB','Jim Hamilton-L.B. Owens Airport','Columbia,South Carolina,United States'],
-['CUC','SKCC','Camilo Daza International Airport','Cucuta,Colombia'],
-
-['CUE','SECU','Mariscal Lamar International Airport','Cuenca,Ecuador'],
-['CUF','LIMZ','Cuneo International Airport','Cuneo,Piedmont,Italy'],
-
-
-
-
-
-['CUL','MMCL','Bachigualato Federal International Airport','Culiacan,Sinaloa,Mexico'],
-['CUM','SVCU','Antonio Jose de Sucre Airport','Cumana,Venezuela'],
-['CUN','MMUN','Cancun International Airport','Cancun,Quintana Roo,Mexico'],
-['CUO','SKCR','Caruru Airport','Caruru,Colombia'],
-['CUP','SVCP','General Jose Francisco Bermudez Airport','Carupano,Venezuela'],
-
-['CUR','TNCC','Curacao International Airport ','Willemstad,Curacao'],
-
-['CUT','SAZW','Cutral Co Airport','Cutral Co,Neuquen,Argentina'],
-['CUU','MMCU','General Roberto Fierro Villalobos International Airport','Chihuahua,Chihuahua,Mexico'],
-['CUV','SVCG','Casigua El Cubo Airport','Casigua El Cubo,Venezuela'],
-
-
-['CUZ','SPZO','Alejandro Velasco Astete International Airport','Cusco,Peru'],
-['CVB','AYCB','Chungrebu Airport','Chungrebu,Papua New Guinea'],
-
-['CVE','SKCV','Covenas Airport','Covenas,Colombia'],
-['CVF','LFLJ','Courchevel Altiport','Courchevel,Rhone-Alpes,France'],
-['CVG','KCVG','Cincinnati Northern Kentucky International Airport','Hebron ,Kentucky,United States'],
-
-
-['CVJ','MMCB','General Mariano Matamoros Airport','Cuernavaca,Morelos,Mexico'],
-
-['CVM','MMCV','General Pedro J. Mendez International Airport','Ciudad Victoria,Tamaulipas,Mexico'],
-
-
-
-
-['CVT','EGBE','Coventry Airport','Coventry,England,United Kingdom'],
-['CVU','LPCR','Corvo Airport','Corvo Island,Azores,Portugal'],
-['CWA','KCWA','Central Wisconsin Airport','Wausau,Wisconsin,United States'],
-
-
-['CWF','KCWF','Chennault International Airport','Lake Charles,Louisiana,United States'],
-
-['CWL','EGFF','Cardiff Airport','Cardiff,Wales,United Kingdom'],
-
-
-
-
-
-['CXA','SVCD','Caicara del Orinoco Airport','Caicara del Orinoco,Venezuela'],
-['CXB','VGCB','Coxs Bazar Airport','Coxs Bazar,Bangladesh'],
-
-['CXF','PACX','Coldfoot Airport','Coldfoot,Alaska,United States'],
-['CXH','CYHC','Vancouver Harbour Flight Centre ','Vancouver,British Columbia,Canada'],
-['CXI','PLCH','Cassidy International Airport','Christmas Island,Kiribati'],
-
-['CXL','KCXL','Calexico International Airport','Calexico,California,United States'],
-
-['CXO','KCXO','Lone Star Executive Airport','Houston,Texas,United States'],
-['CXP','WIHL','Tunggul Wulung Airport','Cilacap,Indonesia'],
-
-['CXR','VVCR','Cam Ranh International Airport','Cam Ranh,Vietnam'],
-
-['CXY','MYCC','Cat Cay Airport','Cat Cays,Bimini,Bahamas'],
-['CYA','MTCA','Antoine-Simon Airport','Les Cayes,Haiti'],
-['CYB','MWCB','Charles Kirkconnell International Airport','Cayman Brac,British Overseas Territory of Cayman Islands'],
-
-
-['CYF','PACK','Chefornak Airport ','Chefornak,Alaska,United States'],
-
-['CYI','RCKU','Chiayi Airport','Chiayi,Taiwan'],
-['CYL','MHCS[3]','Coyoles Airport','Coyoles,Honduras'],
-
-['CYO','MUCL','Vilo Acuna Airport','Cayo Largo del Sur,Cuba'],
-['CYP','RPVC','Calbayog Airport','Calbayog,Philippines'],
-['CYR','SUCA','Colonia Airport ','Colonia del Sacramento,Uruguay'],
-['CYT','PACY','Yakataga Airport','Yakataga,Alaska,United States'],
-['CYU','RPLO','Cuyo Airport','Cuyo,Philippines'],
-['CYW','MMCY','Captain Rogelio Castillo National Airport','Celaya,Guanajuato,Mexico'],
-
-['CYZ','RPUY','Cauayan Airport','Cauayan,Philippines'],
-['CZA','MMCT','Chichen Itza International Airport','Chichen Itza,Yucatan,Mexico'],
-
-
-['CZE','SVCR','Jose Leonardo Chirino Airport','Coro,Venezuela'],
-['CZF','PACZ','Cape Romanzof LRRS Airport','Cape Romanzof,Alaska,United States'],
-
-
-['CZK','KCZK','Cascade Locks State Airport','Cascade Locks,Oregon,United States'],
-
-['CZM','MMCZ','Cozumel International Airport','Cozumel,Quintana Roo,Mexico'],
-
-
-
-
-['CZT','KCZT','Dimmit County Airport','Carrizo Springs,Texas,United States'],
-['CZU','SKCZ','Las Brujas Airport','Corozal,Colombia'],
-['CZW','EPCH','Czstochowa-Rudniki Airport','Czstochowa,Poland'],
-
-
-
-['DAB','KDAB','Daytona Beach International Airport','Daytona Beach,Florida,United States'],
-['DAC','VGHS','Shahjalal International Airport','Dhaka,Bangladesh'],
-['DAD','VVDN','Da Nang International Airport','Da Nang,Vietnam'],
-
-['DAG','KDAG','Barstow-Daggett Airport','Daggett,California,United States'],
-
-['DAK','HEDK','Dakhla Oasis Airport','Dakhla Oasis,Egypt'],
-['DAL','KDAL','Dallas Love Field','Dallas,Texas,United States'],
-['DAM','OSDI','Damascus International Airport','Damascus,Syria'],
-
-['DAP','VNDL','Darchula Airport','Darchula,Nepal'],
-['DAR','HTDA','Julius Nyerere International Airport','Dar es Salaam,Tanzania'],
-
-
-['DAU','AYDU','Daru Airport','Daru,Papua New Guinea'],
-['DAV','MPDA','Enrique Malek International Airport','David,Panama'],
-
-['DAY','KDAY','Dayton International Airport','Dayton,Ohio,United States'],
-
-
-['DBB','HEAL[2]','Al Alamain International Airport[1]','El Alamein,Egypt'],
-
-['DBD','VEDB','Dhanbad Airport','Dhanbad,Jharkhand,India'],
-
-
-['DBN','KDBN','W. H. Bud Barron Airport','Dublin,Georgia,United States'],
-['DBP','AYDB','Debepare Airport','Debepare,Papua New Guinea'],
-
-
-
-['DBV','LDDU','Dubrovnik Airport','Dubrovnik,Croatia'],
-
-['DCA','KDCA','Ronald Reagan Washington National Airport','Arlington County ,Virginia,United States'],
-['DCF','TDCF','Canefield Airport','Canefield,Dominica'],
-
-['DCI','LIED','Decimomannu Air Base','Decimomannu,Sardinia,Italy'],
-
-['DCM','LFCK','Castres-Mazamet Airport','Castres,Midi-Pyrenees,France'],
-
-['DCT','MYRD','Duncan Town Airport','Duncan Town,Ragged Island,Bahamas'],
-
-
-
-
-
-
-['DEB','LHDC','Debrecen International Airport','Debrecen,Hungary'],
-['DEC','KDEC','Decatur Airport','Decatur,Illinois,United States'],
-['DED','VIDN','Jolly Grant Airport','Dehradun,Uttarakhand,India'],
-
-
-
-['DEI','FSSD','Denis Island Airport','Denis Island,Seychelles'],
-['DEL','VIDP','Indira Gandhi International Airport','Delhi,India'],
-
-['DEN','KDEN','Denver International Airport','Denver,Colorado,United States'],
-['DEP','VEDZ','Daporijo Airport','Daporijo,Arunachal Pradesh,India'],
-['DER','AYDE','Derim Airport','Derim,Papua New Guinea'],
-['DES','FSDR','Desroches Airport','Desroches Island,Seychelles'],
-['DET','KDET','Coleman A. Young International Airport','Detroit,Michigan,United States'],
-
-['DEZ','OSDZ','Deir ez-Zor Airport','Deir ez-Zor,Syria'],
-['DFI','KDFI','Defiance Memorial Airport','Defiance,Ohio,United States'],
-
-['DFW','KDFW','Dallas Fort Worth International Airport','Dallas Fort Worth,Texas,United States'],
-
-
-
-
-
-
-
-
-['DGN','KNDY','Naval Surface Warfare Center Dahlgren Division ','Dahlgren,Virginia,United States'],
-['DGO','MMDO','General Guadalupe Victoria International Airport','Durango,Durango,Mexico'],
-['DGP','EVDA','Daugavpils International Airport','Daugavpils,Latvia'],
-['DGR','NZDA','Dargaville Aerodrome','Dargaville,New Zealand'],
-['DGT','RPVD','Sibulan Airport ','Dumaguete,Philippines'],
-['DGU','DFOD','Dedougou Airport','Dedougou,Burkina Faso'],
-['DGW','KDGW','Converse County Airport','Douglas,Wyoming,United States'],
-
-
-
-['DHF','OMAM','Al Dhafra Air Base','Abu Dhabi,United Arab Emirates'],
-['DHI','VNDH','Dhangadhi Airport','Dhangadhi,Nepal'],
-
-['DHM','VIGG','Gaggal Airport','Kangra,Himachal Pradesh,India'],
-['DHR','EHKD','De Kooy Airfield','Den Helder,Netherlands'],
-
-['DIB','VEMN','Dibrugarh Airport ','Dibrugarh,Assam,India'],
-['DIE','FMNA','Arrachart Airport','Antsiranana,Madagascar'],
-
-['DIJ','LFSD','Dijon Air Base','Dijon,Burgundy,France'],
-['DIL','WPDL','Presidente Nicolau Lobato International Airport','Dili,East Timor'],
-['DIM','DIDK','Dimbokro Airport','Dimbokro,Ivory Coast'],
-['DIN','VVDB','Dien Bien Phu Airport','Dien Bien Phu,Vietnam'],
-['DIP','DFED','Diapaga Airport','Diapaga,Burkina Faso'],
-
-
-
-
-['DIV','DIDV','Divo Airport','Divo,Ivory Coast'],
-
-['DIY','LTCC','Diyarbakr Airport','Diyarbakr,Turkey'],
-['DJA','DBBD','Djougou Airport','Djougou,Benin'],
-['DJB','WIPA','Sultan Thaha Airport','Jambi,Indonesia'],
-['DJE','DTTJ','Djerba-Zarzis International Airport','Djerba,Tunisia'],
-
-
-['DJJ','WAJJ','Sentani Airport','Jayapura,Indonesia'],
-
-
-['DJO','DIDL','Daloa Airport','Daloa,Ivory Coast'],
-['DJU','BIDV','Djupivogur Airport','Djupivogur,Iceland'],
-
-
-['DKK','KDKK','Chautauqua County Dunkirk Airport','Dunkirk,New York,United States'],
-['DKR','GOOY','Leopold Sedar Senghor International Airport','Dakar,Senegal'],
-
-
-
-
-
-['DLE','LFGJ','Dole-Jura Airport','Dole,Franche-Comte,France'],
-
-['DLG','PADL','Dillingham Airport','Dillingham,Alaska,United States'],
-['DLH','KDLH','Duluth International Airport','Duluth,Minnesota,United States'],
-['DLI','VVDL','Lien Khuong Airport','Da Lat,Vietnam'],
-
-['DLL','KDLC','Dillon County Airport ','Dillon,South Carolina,United States'],
-['DLM','LTBS','Dalaman Airport','Dalaman,Turkey'],
-['DLN','KDLN','Dillon Airport','Dillon,Montana,United States'],
-
-
-['DLY','NVVD','Dillons Bay Airport','Dillons Bay,Erromango,Tafea,Vanuatu'],
-['DLZ','ZMDZ','Dalanzadgad Airport','Dalanzadgad,Mongolia'],
-
-
-
-
-['DMK','VTBD','Don Mueang International Airport','Bangkok,Thailand'],
-
-
-
-
-['DMU','VEMR','Dimapur Airport','Dimapur,Nagaland,India'],
-['DNA','RODN','Kadena Air Base','Kadena,Okinawa,Japan'],
-
-['DND','EGPN','Dundee Airport','Dundee,Scotland,United Kingdom'],
-
-
-
-
-
-['DNL','KDNL','Daniel Field','Augusta,Georgia,United States'],
-
-
-
-['DNP','VNDG','Tribhuvannagar Airport ','Tribhuwannagar,Nepal'],
-
-['DNR','LFRD','Dinard-Pleurtuit-Saint-Malo Airport','Dinard Saint-Malo,Brittany,France'],
-
-['DNU','AYDN','Dinangat Airport','Dinangat,Papua New Guinea'],
-
-['DNZ','LTAY','Denizli cardak Airport','Denizli,Turkey'],
-
-['DOB','WAPD','Dobo Airport','Dobo,Indonesia'],
-
-['DOD','HTDO','Dodoma Airport','Dodoma,Tanzania'],
-
-
-['DOH','OTHH','Hamad International Airport','Doha,Qatar'],
-['DOI','AYDO','Doini Island Airport','Doini Island,Papua New Guinea'],
-
-['DOL','LFRG','Deauville - Saint-Gatien Airport','Deauville,Lower Normandy,France'],
-['DOM','TDPD','Douglas-Charles Airport','St Andrew Parish,Dominica'],
-
-['DOO','AYDR','Dorobisoro Airstrip','Dorobisoro,Papua New Guinea'],
-['DOP','VNDP','Dolpa Airport','Dolpa,Nepal'],
-['DOR','DFEE','Dori Airport','Dori,Burkina Faso'],
-
-
-
-
-
-['DPA','KDPA','DuPage Airport','West Chicago,Illinois,United States'],
-['DPE','LFAB','Dieppe - Saint-Aubin Airport','Dieppe,Upper Normandy,France'],
-['DPL','RPMG','Dipolog Airport','Dipolog,Philippines'],
-
-['DPS','WADD','Ngurah Rai International Airport','Denpasar ,Indonesia'],
-
-
-
-
-['DRA','KDRA','Desert Rock Airport','Mercury,Nevada,United States'],
-
-
-
-['DRE','KDRM','Drummond Island Airport ','Drummond Island,Michigan,United States'],
-
-['DRG','PADE','Deering Airport ','Deering,Alaska,United States'],
-
-['DRJ','SMDA','Drietabbetje Airstrip','Drietabbetje,Suriname'],
-['DRK','MRDK','Drake Bay Airport','Drake Bay,Costa Rica'],
-
-['DRO','KDRO','Durango-La Plata County Airport','Durango,Colorado,United States'],
-
-['DRS','EDDC','Dresden Airport','Dresden,Saxony,Germany'],
-['DRT','KDRT','Del Rio International Airport','Del Rio,Texas,United States'],
-
-['DRV','VRMD','Dharavandhoo Airport[1]','Dharavandhoo Island,Baa Atoll,Maldives'],
-
-
-['DSA','EGCN','Robin Hood Airport Doncaster Sheffield','Doncaster,England,United Kingdom'],
-
-['DSD','TFFA','La Desirade Airport ','La Desirade,Guadeloupe'],
-
-
-['DSI','KDTS','Destin Executive Airport ','Destin,Florida,United States'],
-
-['DSM','KDSM','Des Moines International Airport','Des Moines,Iowa,United States'],
-
-['DSO','ZKSD','Sondok Airport[1]','Sondok,North Korea'],
-
-['DSX','RCLM','Dongsha Island Airport[1]','Pratas  Islands,Taiwan'],
-
-['DTB','WIMN','Silangit Airport[1]','Siborong-Borong,Indonesia'],
-['DTD','WALJ','Datadawai Airport','Datadawai,Indonesia'],
-['DTE','RPUD','Bagasbas Airport','Daet,Philippines'],
-
-
-['DTL','KDTL','Detroit Lakes Airport ','Detroit Lakes,Minnesota,United States'],
-['DTM','EDLW','Dortmund Airport','Dortmund,North Rhine-Westphalia,Germany'],
-['DTN','KDTN','Shreveport Downtown Airport','Shreveport,Louisiana,United States'],
-
-
-
-['DTW','KDTW','Detroit Metropolitan Wayne County Airport','Detroit,Michigan,United States'],
-['DUB','EIDW','Dublin Airport','Dublin,Ireland'],
-['DUC','KDUC','Halliburton Field','Duncan,Oklahoma,United States'],
-['DUD','NZDN','Dunedin International Airport','Dunedin,New Zealand'],
-
-
-['DUG','KDUG','Bisbee Douglas International Airport','Bisbee Douglas,Arizona,United States'],
-['DUK','FADK','Dukuduku Airport','Mtubatuba,South Africa'],
-['DUM','WIBD','Pinang Kampai Airport','Dumai,Indonesia'],
-
-['DUR','FALE','King Shaka International Airport','Durban,South Africa'],
-['DUS','EDDL','Dusseldorf Airport','Dusseldorf,North Rhine-Westphalia,Germany'],
-['DUT','PADU','Unalaska Airport','Unalaska,Alaska,United States'],
-
-
-
-['DVO','RPMD','Francisco Bangoy International Airport','Davao City,Philippines'],
-
-
-['DVT','KDVT','Phoenix Deer Valley Airport','Phoenix,Arizona,United States'],
-['DWA','FWDW','Dwanga Airport ','Dwangwa,Malawi'],
-['DWB','FMNO','Soalala Airport','Soalala,Madagascar'],
-['DWC','OMDW','Al Maktoum International Airport','Dubai,United Arab Emirates'],
-
-['DWH','KDWH','David Wayne Hooks Memorial Airport','Houston,Texas,United States'],
-
-
-['DXB','OMDB','Dubai International Airport','Dubai,United Arab Emirates'],
-
-['DXE','KMBO','Bruce Campbell Field[1] ','Madison,Mississippi,United States'],
-
-
-
-['DYL','KDYL','Doylestown Airport','Doylestown,Pennsylvania,United States'],
-
-
-
-
-
-['DZA','FMCZ','Dzaoudzi-Pamandzi International Airport','Dzaoudzi,Mayotte'],
-
-
-['DZO','SUDU','Santa Bernardina International Airport','Durazno,Uruguay'],
-
-
-['EAA','PAEG','Eagle Airport','Eagle,Alaska,United States'],
-
-['EAE','NVSE','Siwo Airport','Emae Island,Shefa,Vanuatu'],
-
-
-['EAN','KEAN','Phifer Airfield','Wheatland,Wyoming,United States'],
-
-['EAS','LESO','San Sebastian Airport','San Sebastian,Basque Country,Spain'],
-['EAT','KEAT','Pangborn Memorial Airport','Wenatchee,Washington,United States'],
-['EBA','LIRJ','Marina di Campo Airport','Elba Island,Tuscany,Italy'],
-['EBB','HUEN','Entebbe International Airport','Entebbe,Uganda'],
-
-['EBG','SKEB','El Bagre Airport ','El Bagre,Colombia'],
-
-['EBJ','EKEB','Esbjerg Airport','Esbjerg,Denmark'],
-
-['EBM','DTTR','El Borma Airport','El Borma,Tunisia'],
-
-
-
-['EBU','LFMH','Saint-etienne-Boutheon Airport','Saint-etienne,Rhone-Alpes,France'],
-
-
-
-['ECI','MNLP','Costa Esmeralda Airport[1]','Rivas,Nicaragua'],
-['ECN','LCEN','Ercan International Airport[1]','Nicosia ,Northern Cyprus'],
-
-['ECP','KECP','Northwest Florida Beaches International Airport','Panama City,Florida,United States'],
-['ECR','SKEH[2]','El Charco Airport','El Charco,Colombia'],
-['ECS','KECS','Mondell Field','Newcastle,Wyoming,United States'],
-
-
-
-
-['EDI','EGPH','Edinburgh Airport','Edinburgh,Scotland,United Kingdom'],
-['EDK','KEQA','Captain Jack Thomas El Dorado Airport ','El Dorado,Kansas,United States'],
-['EDL','HKEL','Eldoret International Airport','Eldoret,Kenya'],
-['EDM','LFRI','La Roche-sur-Yon Aerodrome','La Roche-sur-Yon,Pays de la Loire,France'],
-['EDO','LTFD','Balkesir Koca Seyit Airport','Edremit,Turkey'],
-
-
-
-['EED','KEED','Needles Airport','Needles,California,United States'],
-['EEK','PAEE','Eek Airport','Eek,Alaska,United States'],
-['EEN','KEEN','Dillant-Hopkins Airport','Keene,New Hampshire,United States'],
-['EFD','KEFD','Ellington Field','Houston,Texas,United States'],
-['EFG','AYEF','Efogi Airport','Efogi,Papua New Guinea'],
-['EFK','KEFK','Newport State Airport','Newport,Vermont,United States'],
-['EFL','LGKF','Cephalonia International Airport','Cephalonia,Greece'],
-
-['EGA','AYEN','Engati Airport','Engati,Papua New Guinea'],
-['EGC','LFBE','Bergerac Dordogne Perigord Airport','Bergerac,Aquitaine,France'],
-['EGI','KEGI','Duke Field ','Crestview,Florida,United States'],
-
-['EGM','AGGS','Seghe Airport','Seghe,Western Province,Solomon Islands'],
-
-
-
-['EGS','BIEG','Egilsstaoir Airport','Egilsstaoir,Iceland'],
-['EGV','KEGV','Eagle River Union Airport','Eagle River,Wisconsin,United States'],
-['EGX','PAII','Egegik Airport ','Egegik,Alaska,United States'],
-['EHL','SAVB','El Bolson Airport','El Bolson,Rio Negro,Argentina'],
-['EHM','PAEH','Cape Newenham LRRS Airport','Cape Newenham,Alaska,United States'],
-
-['EIB','EDGE','Eisenach-Kindel Airport[1]','Eisenach,Thuringia,Germany'],
-
-
-
-
-['EIN','EHEH','Eindhoven Airport','Eindhoven,Netherlands'],
-['EIS','TUPJ','Terrance B. Lettsome International Airport','Tortola,British Overseas Territory of Virgin Islands'],
-['EIY','LLEY','Ein Yahav Airfield','Ein Yahav,Israel'],
-['EJA','SKEJ','Yariguies Airport','Barrancabermeja,Colombia'],
-
-
-
-['EKA','KEKA','Murray Field','Eureka,California,United States'],
-
-
-
-
-['EKN','KEKN','Elkins-Randolph County Airport','Elkins,West Virginia,United States'],
-
-['EKT','ESSU','Eskilstuna Airport','Eskilstuna,Sweden'],
-['ELA','KELA','Eagle Lake Airport','Eagle Lake,Texas,United States'],
-['ELB','SKBC','Las Flores Airport','El Banco,Colombia'],
-
-
-
-
-['ELH','MYEH','North Eleuthera Airport','North Eleuthera,Eleuthera Island,Bahamas'],
-['ELI','PFEL','Elim Airport','Elim,Alaska,United States'],
-['ELJ','SVWX[3]','El Recreo Airport','El Recreo,Colombia'],
-['ELL','FAER','Ellisras Airport','Ellisras,South Africa'],
-['ELN','KELN','Bowers Field','Ellensburg,Washington,United States'],
-['ELO','SATD','Eldorado Airport','Eldorado,Misiones,Argentina'],
-['ELP','KELP','El Paso International Airport','El Paso,Texas,United States'],
-
-['ELS','FAEL','East London Airport','East London,South Africa'],
-['ELT','HETR','El Tor Airport','El Tor,Egypt'],
-
-['ELV','PAEL','Elfin Cove Seaplane Base','Elfin Cove,Alaska,United States'],
-
-
-['ELY','KELY','Ely Airport','Ely,Nevada,United States'],
-
-['EMA','EGNX','East Midlands Airport','Nottingham Leicester Derby,England,United Kingdom'],
-
-['EME','EDWE','Emden Airport','Emden,Lower Saxony,Germany'],
-['EMG','FAEM','Empangeni Airport','Empangeni,South Africa'],
-['EMI','AYEE','Emirau Airport','Emirau Island,Papua New Guinea'],
-['EMK','PAEM','Emmonak Airport ','Emmonak,Alaska,United States'],
-['EML','LSME','Emmen Air Base','Emmen,Switzerland'],
-
-
-['EMO','AYEO','Emo Airport','Emo,Papua New Guinea'],
-
-['EMS','AYEB','Embessa Airport','Embessa,Papua New Guinea'],
-['EMT','KEMT','San Gabriel Valley Airport','El Monte,California,United States'],
-['EMX','SAVD','El Maiten Airport','El Maiten,Chubut,Argentina'],
-['EMY','HEMN','El Minya Airport','El Minya,Egypt'],
-
-
-['ENC','LFSN','Nancy-Essey Airport','Nancy,Lorraine,France'],
-
-['ENE','WATE','H. Hasan Aroeboesman Airport','Ende,Indonesia'],
-['ENF','EFET','EnontekiÃ¶ Airport','EnontekiÃ¶,Finland'],
-
-['ENI','RPEN','El Nido Airport','El Nido,Philippines'],
-
-['ENK','EGAB','Enniskillen St Angelo Airport','Enniskillen,Northern Ireland,United Kingdom'],
-
-
-['ENO','SGEN','Teniente Amin Ayub Gonzalez Airport','Encarnacion,Paraguay'],
-['ENS','EHTW','Enschede Airport Twente','Enschede,Netherlands'],
-['ENT','PKMA','Enewetak Auxiliary Airfield','Enewetak,Marshall Islands'],
-
-['ENV','KENV','Wendover Airport','Wendover,Utah,United States'],
-
-['EOH','SKMD','Olaya Herrera Airport','Medellin,Colombia'],
-['EOI','EGED','Eday Airport','Eday,Scotland,United Kingdom'],
-
-['EOR','SVED','El Dorado Airport','El Dorado,Venezuela'],
-['EOS','KEOS','Neosho Hugh Robinson Airport','Neosho,Missouri,United States'],
-['EOZ','SVEZ','Elorza Airport','Elorza,Venezuela'],
-['EPA','SADP','El Palomar Airport[1]','El Palomar,Buenos Aires,Argentina'],
-
-
-['EPL','LFSG','epinal - Mirecourt Airport','epinal Mirecourt,Lorraine,France'],
-
-
-['EPS','MDAB','Arroyo Barril Airport','Samana,Dominican Republic'],
-['EPT','AYEL','Eliptamin Airport','Eliptamin,Papua New Guinea'],
-['EPU','EEPU','PÃ¤rnu Airport','PÃ¤rnu,Estonia'],
-['EQS','SAVE','Esquel Airport','Esquel,Chubut,Argentina'],
-
-
-['ERC','LTCD','Erzincan Airport','Erzincan,Turkey'],
-
-['ERE','AYEV','Erave Airport','Erave,Papua New Guinea'],
-['ERF','EDDE','Erfurt-Weimar Airport','Erfurt,Thuringia,Germany'],
-
-['ERH','GMFK','Moulay Ali Cherif Airport','Errachidia,Morocco'],
-['ERI','KERI','Erie International Airport ','Erie,Pennsylvania,United States'],
-
-
-
-
-['ERR','KERR','Errol Airport','Errol,New Hampshire,United States'],
-['ERS','FYWE','Eros Airport','Windhoek,Namibia'],
-
-['ERU','AYER','Erume Airport','Erume,Papua New Guinea'],
-
-['ERZ','LTCE','Erzurum Airport','Erzurum,Turkey'],
-
-['ESB','LTAC','Esenboa International Airport','Ankara,Turkey'],
-['ESC','KESC','Delta County Airport','Escanaba,Michigan,United States'],
-['ESD','KORS','Orcas Island Airport ','Eastsound,Washington,United States'],
-['ESE','MMES','Ensenada Airport','Ensenada,Baja California,Mexico'],
-['ESF','KESF','Esler Airfield ','Alexandria,Louisiana,United States'],
-['ESG','SGME','Dr. Luis Maria Argana International Airport','Mariscal Estigarribia,Paraguay'],
-['ESH','EGKA','Shoreham Airport ','Shoreham-by-Sea,England,United Kingdom'],
-
-['ESK','LTBI','Eskiehir Airport','Eskiehir,Turkey'],
-
-['ESM','SETN','Carlos Concha Torres International Airport','Esmeraldas,Ecuador'],
-['ESN','KESN','Easton Airport ','Easton,Maryland,United States'],
-
-
-['ESR','SCES','Ricardo Garcia Posada Airport','El Salvador,Chile'],
-['ESS','EDLE','Essen Mulheim Airport','Essen,North Rhine-Westphalia,Germany'],
-
-['ESU','GMMI','Essaouira-Mogador Airport','Essaouira,Morocco'],
-['ESW','KESW','Easton State Airport','Easton,Washington,United States'],
-
-
-
-['ETH','LLET','J. Hozman Airport','Eilat,Israel'],
-
-['ETR','SERO','Santa Rosa International Airport','Santa Rosa,Ecuador'],
-
-['ETZ','LFJL','Metz-Nancy-Lorraine Airport','Metz Nancy,Lorraine,France'],
-['EUA','NFTE','Eua Airport ','Eua,Tonga'],
-
-
-['EUF','KEUF','Weedon Field','Eufaula,Alabama,United States'],
-['EUG','KEUG','Eugene Airport ','Eugene,Oregon,United States'],
-['EUM','EDHN','Neumunster Airport','Neumunster,Schleswig-Holstein,Germany'],
-['EUN','GMML','Hassan I Airport','Laayoune,Morocco'],
-
-['EUQ','RPVS','Evelio Javier Airport ','San Jose de Buenavista,Philippines'],
-['EUX','TNCE','F. D. Roosevelt Airport','Oranjestad,Sint Eustatius,Caribbean Netherlands'],
-
-
-['EVE','ENEV','Harstad Narvik Airport,Evenes','Harstad Narvik,Norway'],
-['EVG','ESND','Sveg Airport','Sveg,Sweden'],
-
-
-['EVN','UDYZ','Zvartnots International Airport','Yerevan,Armenia'],
-['EVW','KEVW','Evanston-Uinta County Burns Field','Evanston,Wyoming,United States'],
-['EVX','LFOE','evreux-Fauville Air Base','evreux,Upper Normandy,France'],
-
-['EWI','WABT','Enarotali Airport','Enarotali,Indonesia'],
-['EWK','KEWK','Newton City County Airport','Newton,Kansas,United States'],
-
-['EWR','KEWR','Newark Liberty International Airport','Newark,New Jersey,United States'],
-
-
-['EXT','EGTE','Exeter International Airport','Exeter,England,United Kingdom'],
-
-['EYL','GAYE','Yelimane Airport','Yelimane,Mali'],
-['EYP','SKYP','El Alcaravan Airport','Yopal,Colombia'],
-
-['EYS','HKES','Eliye Springs Airport','Eliye Springs,Kenya'],
-['EYW','KEYW','Key West International Airport','Key West,Florida,United States'],
-['EZE','SAEZ','Ministro Pistarini International Airport','Buenos Aires,Argentina'],
-['EZS','LTCA','Elaz Airport','Elaz,Turkey'],
-
-['FAA','GUFH','Faranah Airport','Faranah,Guinea'],
-['FAB','EGLF','Farnborough Airport','Farnborough,England,United Kingdom'],
-['FAC','NTKF','Faaite Airport','Faaite,Tuamotus,French Polynesia'],
-['FAE','EKVG','Vagar Airport','Vagar,Faroe Islands'],
-['FAG','BIFM','Fagurholsmyri Airport','Fagurholsmyri,Iceland'],
-
-['FAI','PAFA','Fairbanks International Airport','Fairbanks,Alaska,United States'],
-['FAJ','TJFA','Diego Jimenez Torres Airport ','Fajardo,Puerto Rico,United States'],
-
-['FAO','LPFR','Faro Airport','Faro,Portugal'],
-['FAQ','AYFR','Frieda River Airport','Frieda River,Papua New Guinea'],
-['FAR','KFAR','Hector International Airport','Fargo,North Dakota,United States'],
-['FAS','BIFF','FaskruosfjÃ¶rour Airport','FaskruosfjÃ¶rour,Iceland'],
-['FAT','KFAT','Fresno Yosemite International Airport','Fresno,California,United States'],
-['FAU','OOFD','Fahud Airport[1]','Fahud,Oman'],
-['FAV','NTGF','Fakarava Airport','Fakarava,Tuamotus,French Polynesia'],
-
-
-
-
-
-
-['FBR','KFBR','Fort Bridger Airport','Fort Bridger,Wyoming,United States'],
-
-
-['FCA','KGPI','Glacier Park International Airport ','Kalispell,Montana,United States'],
-['FCB','FAFB','Ficksburg Airport','Ficksburg,South Africa'],
-['FCH','KFCH','Fresno Chandler Executive Airport','Fresno,California,United States'],
-['FCM','KFCM','Flying Cloud Airport','Eden Prairie,Minnesota,United States'],
-['FCN','ETMN','Nordholz Naval Airbase','Cuxhaven,Lower Saxony,Germany'],
-['FCO','LIRF','Leonardo da Vinci-Fiumicino Airport','Rome,Lazio,Italy'],
-
-['FDE','ENBL','Forde Airport,Bringeland','Forde,Norway'],
-['FDF','TFFF','Martinique Aime Cesaire International Airport','Fort-de-France,Martinique'],
-['FDH','EDNY','Friedrichshafen Airport ','Friedrichshafen,Baden-Wurttemberg,Germany'],
-
-
-['FDY','KFDY','Findlay Airport','Findlay,Ohio,United States'],
-
-['FEB','VNSR','Sanfebagar Airport','Sanfebagar,Nepal'],
-
-
-
-['FEK','DIFK','Ferkessedougou Airport','Ferkessedougou,Ivory Coast'],
-['FEL','ETSF','Furstenfeldbruck Air Base','Furstenfeldbruck,Bavaria,Germany'],
-
-['FEP','KFEP','Albertus Airport','Freeport,Illinois,United States'],
-
-['FEZ','GMFF','Fes-Saiss Airport','Fez,Morocco'],
-['FFA','KFFA','First Flight Airport','Kill Devil Hills,North Carolina,United States'],
-['FFD','EGVA','RAF Fairford','Fairford,England,United Kingdom'],
-
-
-
-['FFT','KFFT','Capital City Airport','Frankfort,Kentucky,United States'],
-['FFU','SCFT','Futaleufu Airfield','Futaleufu,Chile'],
-
-['FGI','NSFI','Fagalii Airport','Apia,Upolu Island,Samoa'],
-['FGU','NTGB','Fangatau Airport','Fangatau,Tuamotus,French Polynesia'],
-
-['FHZ','NTKH','Fakahina Airport','Fakahina,Tuamotus,French Polynesia'],
-
-['FIE','EGEF','Fair Isle Airport','Fair Isle,Scotland,United Kingdom'],
-['FIG','GUFA','Fria Airport','Fria,Guinea'],
-
-
-
-['FIN','AYFI','Finschhafen Airport','Finschhafen,Papua New Guinea'],
-
-['FJR','OMFJ','Fujairah International Airport','Fujairah,United Arab Emirates'],
-['FKB','EDSB','Karlsruhe Baden-Baden Airport','Karlsruhe Baden-Baden,Baden-Wurttemberg,Germany'],
-
-['FKJ','RJNF','Fukui Airport','Fukui,Honshu,Japan'],
-
-['FKQ','WASF','Fakfak Torea Airport','Fakfak,Indonesia'],
-['FKS','RJSF','Fukushima Airport','Sukagawa,Honshu,Japan'],
-['FLA','SKFL','Gustavo Artunduaga Paredes Airport','Florencia ,Colombia'],
-
-['FLD','KFLD','Fond du Lac County Airport','Fond du Lac,Wisconsin,United States'],
-['FLF','EDXF','Flensburg-SchÃ¤ferhaus Airport','Flensburg,Schleswig-Holstein,Germany'],
-['FLG','KFLG','Flagstaff Pulliam Airport','Flagstaff,Arizona,United States'],
-
-
-['FLL','KFLL','Fort Lauderdale-Hollywood International Airport','Fort Lauderdale Hollywood,Florida,United States'],
-['FLM','SGFI','Filadelfia Airport','Filadelfia,Paraguay'],
-
-['FLR','LIRQ','Florence Airport,Peretola ','Florence,Tuscany,Italy'],
-
-
-['FLW','LPFL','Flores Airport','Flores Island,Azores,Portugal'],
-
-
-['FLZ','WIMS','Ferdinand Lumban Tobing Airport[1]','Sibolga,Indonesia'],
-['FMA','SARF','Formosa International Airport ','Formosa,Argentina'],
-['FME','KFME','Tipton Airport','Fort Meade Odenton,Maryland,United States'],
-['FMH','KFMH','Otis Air National Guard Base','Falmouth,Massachusetts,United States'],
-
-['FMM','EDJA','Memmingen Airport','Memmingen,Bavaria,Germany'],
-['FMO','EDDG','Munster Osnabruck International Airport','Munster Osnabruck ,North Rhine-Westphalia,Germany'],
-
-
-['FMY','KFMY','Page Field','Fort Myers,Florida,United States'],
-['FNA','GFLL','Lungi International Airport','Freetown,Sierra Leone'],
-['FNB','ETNU','Neubrandenburg Airport','Neubrandenburg,Mecklenburg-Vorpommern,Germany'],
-['FNC','LPMA','Madeira Airport','Funchal,Madeira,Portugal'],
-['FNE','AYFA','Fane Airport','Fane,Papua New Guinea'],
-['FNG','DFEF','Fada Ngourma Airport','Fada Ngourma,Burkina Faso'],
-
-['FNI','LFTW','NImes-Ales-Camargue-Cevennes Airport ','NImes,Languedoc-Roussillon,France'],
-['FNJ','ZKPY','Pyongyang Sunan International Airport','Pyongyang,North Korea'],
-
-['FNR','PANR','Funter Bay Seaplane Base','Funter Bay,Alaska,United States'],
-['FNT','KFNT','Bishop International Airport','Flint,Michigan,United States'],
-['FNU','LIER','Oristano-Fenosu Airport[1]','Oristano,Sardinia,Italy'],
-
-
-
-['FOG','LIBF','Foggia Gino Lisa Airport','Foggia,Apulia,Italy'],
-['FOK','KFOK','Francis S. Gabreski Airport','Westhampton Beach,New York,United States'],
-
-['FON','MRAN','La Fortuna Airport','La Fortuna,Costa Rica'],
-
-
-
-
-['FOU','FOGF','Fougamou Airport','Fougamou,Gabon'],
-
-['FPO','MYGF','Grand Bahama International Airport','Freeport,Grand Bahama,Bahamas'],
-['FPR','KFPR','St. Lucie County International Airport','Fort Pierce,Florida,United States'],
-
-['FRA','EDDF','Frankfurt Airport','Frankfurt,Hesse,Germany'],
-
-
-['FRD','KFHR','Friday Harbor Airport ','Friday Harbor,Washington,United States'],
-['FRE','AGGF','Fera Airport ','Fera Island,Isabel Province,Solomon Islands'],
-['FRG','KFRG','Republic Airport','Farmingdale,New York,United States'],
-
-['FRK','FSSF','Fregate Island Airport','Fregate Island,Seychelles'],
-['FRL','LIPK','Forli International Airport ','Forli,Emilia-Romagna,Italy'],
-
-['FRO','ENFL','Floro Airport','Floro,Norway'],
-['FRQ','AYFE','Feramin Airport','Feramin,Papua New Guinea'],
-['FRR','KFRR','Front Royal-Warren County Airport','Front Royal,Virginia,United States'],
-['FRS','MGTK','Mundo Maya International Airport','Flores,Guatemala'],
-['FRT','SCFI','Frutillar Airport','Frutillar,Chile'],
-['FRU','UAFM','Manas International Airport','Bishkek,Kyrgyzstan'],
-['FRW','FBFT','Francistown Airport','Francistown,Botswana'],
-['FRZ','ETHF','Fritzlar Air Base','Fritzlar,Hesse,Germany'],
-['FSC','LFKF','Figari-Sud Corse Airport','Figari,Corsica,France'],
-
-
-['FSP','LFVP','Saint-Pierre Airport','Saint-Pierre,Saint Pierre and Miquelon'],
-['FSS','EGQK','RAF Kinloss','Forres,Scotland,United Kingdom'],
-['FST','KFST','Fort Stockton-Pecos County Airport','Fort Stockton,Texas,United States'],
-
-['FSZ','RJNS','Shizuoka Airport ','Shizuoka,Honshu,Japan'],
-['FTA','NVVF','Futuna Airport','Futuna Island,Tafea,Vanuatu'],
-['FTE','SAWA','Comandante Armando Tola International Airport','El Calafate,Santa Cruz,Argentina'],
-['FTI','NSFQ','Fitiuta Airport ','Fitiuta,American Samoa,United States'],
-['FTU','FMSD','Tolanaro Airport ','Tolanaro,Madagascar'],
-['FTW','KFTW','Fort Worth Meacham International Airport','Fort Worth,Texas,United States'],
-
-['FTY','KFTY','Fulton County Airport ','Atlanta,Georgia,United States'],
-
-['FUE','GCFV','Fuerteventura Airport','Fuerteventura,Canary Islands,Spain'],
-
-['FUJ','RJFE','Fukue Airport ','Got,Got Islands,Japan'],
-['FUK','RJFF','Fukuoka Airport ','Fukuoka,Kyushu,Japan'],
-
-
-['FUN','NGFU','Funafuti International Airport','Funafuti,Tuvalu'],
-
-['FUT','NLWF','Pointe Vele Airport','Futuna Island,Wallis and Futuna'],
-
-['FVM','VRMF','Fuvahmulah Airport','Fuvahmulah,Gnaviyani Atoll,Maldives'],
-
-['FWA','KFWA','Fort Wayne International Airport','Fort Wayne,Indiana,United States'],
-['FWH','KNFW','NAS Fort Worth JRB Carswell Field ','Fort Worth,Texas,United States'],
-['FWL','PAFW','Farewell Airport','Farewell,Alaska,United States'],
-['FXE','KFXE','Fort Lauderdale Executive Airport','Fort Lauderdale,Florida,United States'],
-['FXO','FQCB','Cuamba Airport','Cuamba,Mozambique'],
-
-
-
-
-
-['FYU','PFYU','Fort Yukon Airport','Fort Yukon,Alaska,United States'],
-['FYV','KFYV','Drake Field ','Fayetteville,Arkansas,United States'],
-['FZO','EGTG','Bristol Filton Airport','Bristol,England,United Kingdom'],
-
-['GAB','KGAB','Gabbs Airport','Gabbs,Nevada,United States'],
-['GAC','MHGS[1]','Gracias Airport','Gracias,Honduras'],
-['GAE','DTTG','Gabes - Matmata International Airport','Gabes,Tunisia'],
-['GAF','DTTF','Gafsa - Ksar International Airport','Gafsa,Tunisia'],
-['GAG','KGAG','Gage Airport','Gage,Oklahoma,United States'],
-
-['GAI','KGAI','Montgomery County Airpark','Gaithersburg,Maryland,United States'],
-['GAJ','RJSC','Yamagata Airport ','Yamagata,Honshu,Japan'],
-['GAL','PAGA','Edward G. Pitka Sr. Airport','Galena,Alaska,United States'],
-['GAM','PAGM','Gambell Airport','Gambell,Alaska,United States'],
-['GAN','VRMG','Gan International Airport','Gan Island,Addu Atoll,Maldives'],
-['GAO','MUGT','Mariana Grajales Airport','Guantanamo,Cuba'],
-['GAP','AYGP','Gusap Airport','Gusap,Papua New Guinea'],
-['GAQ','GAGO','Gao International Airport ','Gao,Mali'],
-['GAR','AYGI','Garaina Airport','Garaina,Papua New Guinea'],
-['GAS','HKGA','Garissa Airport','Garissa,Kenya'],
-['GAT','LFNA','Gap-Tallard Airport','Gap,Provence-Alpes-Cote dAzur,France'],
-['GAU','VEGT','Lokpriya Gopinath Bordoloi International Airport','Guwahati,Assam,India'],
-
-['GAW','VYGG','Gangaw Airport','Gangaw,Myanmar'],
-
-['GAY','VEGY','Gaya Airport ','Gaya,Bihar,India'],
-
-['GBA','EGBP','Cotswold Airport[2]','Kemble,England,United Kingdom'],
-
-['GBC','AYGS','Gasuke Airport','Gasuke,Papua New Guinea'],
-
-['GBE','FBSK','Sir Seretse Khama International Airport','Gaborone,Botswana'],
-['GBF','AYNE','Negarbo Airport','Negarbo,Papua New Guinea'],
-
-['GBH','PAGB','Galbraith Lake Airport','Galbraith Lake,Alaska,United States'],
-['GBJ','TFFM','Marie-Galante Airport ','Grand-Bourg,Marie-Galante Island,Guadeloupe'],
-['GBK','GFGK','Gbangbatok Airport','Gbangbatok,Sierra Leone'],
-
-
-
-['GBR','KGBR','Walter J. Koladza Airport','Great Barrington,Massachusetts,United States'],
-
-
-
-
-['GBZ','NZGB','Great Barrier Aerodrome','Great Barrier Island,New Zealand'],
-
-['GCC','KGCC','Gillette-Campbell County Airport','Gillette,Wyoming,United States'],
-
-
-['GCI','EGJB','Guernsey Airport','Guernsey,Channel Islands,United Kingdom'],
-['GCJ','FAGC','Grand Central Airport','Johannesburg,South Africa'],
-['GCM','MWCR','Owen Roberts International Airport','Grand Cayman,British Overseas Territory of Cayman Islands'],
-['GCN','KGCN','Grand Canyon National Park Airport','Tusayan,Arizona,United States'],
-
-
-
-['GDC','KGYH','Donaldson Center Airport ','Greenville,South Carolina,United States'],
-
-
-
-
-
-
-['GDL','MMGL','Guadalajara International Airport ','Guadalajara,Jalisco,Mexico'],
-
-['GDN','EPGD','Gdask Lech Wasa Airport','Gdask,Poland'],
-['GDO','SVGD','Guasdualito Airport ','Guasdualito,Venezuela'],
-
-
-['GDT','MBGT','JAGS McCartney International Airport ','Grand Turk Island,British Overseas Territory'],
-
-['GDV','KGDV','Dawson Community Airport','Glendive,Montana,United States'],
-['GDW','KGDW','Gladwin Zettel Memorial Airport','Gladwin,Michigan,United States'],
-
-
-['GEA','NWWM','Noumea Magenta Airport','Noumea,New Caledonia'],
-['GEB','WAMJ','Gebe Airport','Gebe,Indonesia'],
-
-['GED','KGED','Delaware Coastal Airport','Georgetown,Delaware,United States'],
-
-['GEF','AGEV','Geva Airport','Liangai,Vella Lavella,Solomon Islands'],
-['GEG','KGEG','Spokane International Airport','Spokane,Washington,United States'],
-
-['GEM','FGMY','President Obiang Nguema International Airport[2]','Mengomeyen,Equatorial Guinea'],
-['GEO','SYCJ','Cheddi Jagan International Airport','Georgetown,Guyana'],
-['GER','MUNG','Rafael Cabrera Mustelier Airport','Nueva Gerona,Cuba'],
-['GES','RPMR','General Santos International Airport ','General Santos,Philippines'],
-
-['GEV','ESNG','GÃ¤llivare Airport','GÃ¤llivare,Sweden'],
-['GEW','AYGC','Gewoia Airport','Gewoia,Papua New Guinea'],
-
-['GEY','KGEY','South Big Horn County Airport','Greybull,Wyoming,United States'],
-['GFD','KGFD','Pope Field','Greenfield,Indiana,United States'],
-
-
-['GFK','KGFK','Grand Forks International Airport','Grand Forks,North Dakota,United States'],
-['GFL','KGFL','Floyd Bennett Memorial Airport','Glens Falls,New York,United States'],
-['GFO','SYBT','Bartica Airport','Bartica,Guyana'],
-['GFR','LFRF','Granville-Mont-Saint-Michel Airport','Granville,Lower Normandy,France'],
-['GFY','FYGF','Grootfontein Air Base','Grootfontein,Namibia'],
-
-
-['GGE','KGGE','Georgetown County Airport','Georgetown,South Carolina,United States'],
-
-['GGM','HKKG','Kakamega Airport[2]','Kakamega,Kenya'],
-['GGN','DIGA','Gagnoa Airport','Gagnoa,Ivory Coast'],
-['GGO','DIGL','Guiglo Airport','Guiglo,Ivory Coast'],
-
-['GGS','SAWR','Gobernador Gregores Airport','Gobernador Gregores,Santa Cruz,Argentina'],
-['GGT','MYEF','Exuma International Airport','Moss Town,Great Exuma Island,Bahamas'],
-['GGW','KGGW','Glasgow Airport ','Glasgow,Montana,United States'],
-
-['GHB','MYEM','Governors Harbour Airport','Governors Harbour,Eleuthera Island,Bahamas'],
-['GHC','MYBG','Great Harbour Cay Airport','Great Harbour Cay,Berry Islands,Bahamas'],
-
-['GHF','ETEU','Giebelstadt Airport','Giebelstadt,Bavaria,Germany'],
-
-
-
-
-['GHU','SAAG','Gualeguaychu Airport','Gualeguaychu,Entre Rios,Argentina'],
-['GIB','LXGB','Gibraltar International Airport ','British Overseas Territory of Gibraltar'],
-
-['GID','HBBE','Gitega Airport','Gitega,Burundi'],
-['GIF','KGIF','Winter Havens Gilbert Airport','Winter Haven,Florida,United States'],
-['GIG','SBGL','Rio de Janeiro-Galeao International Airport','Rio de Janeiro,Brazil'],
-['GII','GUSI','Siguiri Airport','Siguiri,Guinea'],
-
-
-['GIR','SKGI','Santiago Vila Airport','Girardot,Colombia'],
-['GIS','NZGS','Gisborne Airport','Gisborne,New Zealand'],
-
-['GIU','VCCS','Sigiriya Airport[2]','Dambulla,Sri Lanka'],
-['GIY','FAGI','Giyani Airport','Giyani,South Africa'],
-['GJA','MHNJ','Guanaja Airport','Guanaja,Honduras'],
-
-
-['GJR','BIGJ','GjÃ¶gur Airport','GjÃ¶gur,Iceland'],
-['GKA','AYGA','Goroka Airport','Goroka,Papua New Guinea'],
-['GKD','LTFK','GÃ¶kceada Airport','GÃ¶kceada,Turkey'],
-['GKE','ETNG','NATO Air Base Geilenkirchen','Geilenkirchen,North Rhine-Westphalia,Germany'],
-['GKH','VNGK','Palungtar Airport','Gorkha,Nepal'],
-['GKK','VRMO','Kooddoo Airport[2]','Kooddoo,Gaafu Alif Atoll,Maldives'],
-
-['GKN','PAGK','Gulkana Airport','Gulkana,Alaska,United States'],
-
-['GKT','KGKT','Gatlinburg-Pigeon Forge Airport','Sevierville,Tennessee,United States'],
-['GLA','EGPF','Glasgow Airport','Glasgow,Scotland,United Kingdom'],
-
-
-
-
-['GLF','MRGF','Golfito Airport','Golfito,Costa Rica'],
-
-
-
-['GLL','ENKL','Gol Airport,Klanten','Gol,Norway'],
-
-
-['GLO','EGBJ','Gloucestershire Airport','Gloucester Cheltenham,England,United Kingdom'],
-['GLP','AYUP','Gulgubip Airport','Gulgubip,Papua New Guinea'],
-['GLS','KGLS','Scholes International Airport at Galveston','Galveston,Texas,United States'],
-
-['GLU','VQGP','Gelephu Airport[2]','Gelephu,Bhutan'],
-['GLV','PAGL','Golovin Airport','Golovin,Alaska,United States'],
-
-['GLX','WAMA','Gamarmalamo Airport','Galela,Indonesia'],
-
-['GLZ','EHGR','Gilze-Rijen Air Base','Breda,Netherlands'],
-
-
-
-['GMD','GMMB','Ben Slimane Airport[2]','Ben Slimane,Morocco'],
-['GME','UMGG','Gomel Airport','Gomel,Belarus'],
-['GMI','AYGT','Gasmata Airport','Gasmata,Papua New Guinea'],
-
-['GMN','NZGM','Greymouth Airport','Greymouth,New Zealand'],
-
-['GMP','RKSS','Gimpo International Airport','Seoul,South Korea'],
-
-['GMR','NTGJ','Totegegie Airport ','Mangareva,Gambier Islands,French Polynesia'],
-
-['GMT','PAGZ','Granite Mountain Air Station ','Granite Mountain,Alaska,United States'],
-['GMU','KGMU','Greenville Downtown Airport','Greenville,South Carolina,United States'],
-
-['GMZ','GCGM','La Gomera Airport','La Gomera Canary Islands,Spain'],
-['GNA','UMMG','Grodno Airport','Grodno,Belarus'],
-['GNB','LFLS','Grenoble-Isere Airport','Grenoble,Rhone-Alpes,France'],
-['GND','TGPY','Maurice Bishop International Airport','St. Georges,Grenada'],
-
-
-['GNI','RCGI','Lyudao Airport ,Taiwan'],
-
-
-['GNR','SAHR','Dr. Arturo Umberto Illia Airport','General Roca,Rio Negro,Argentina'],
-['GNS','WIMB','Binaka Airport','Gunungsitoli,Indonesia'],
-
-
-['GNY','LTCS','anlurfa GAP Airport','anlurfa,Turkey'],
-['GNZ','FBGZ','Ghanzi Airport','Ghanzi,Botswana'],
-['GOA','LIMJ','Genoa Cristoforo Colombo Airport','Genoa,Liguria,Italy'],
-
-['GOC','AYGX','Gora Airport','Gora,Papua New Guinea'],
-
-['GOG','FYGB','Gobabis Airport','Gobabis,Namibia'],
-['GOH','BGGH','Nuuk Airport','Nuuk,Greenland'],
-['GOI','VOGO','Goa International Airport ','Dabolim,Goa,India'],
-
-
-
-['GON','KGON','Groton-New London Airport','Groton New London,Connecticut,United States'],
-
-['GOP','VEGK','Gorakhpur Airport','Gorakhpur,Uttar Pradesh,India'],
-
-
-
-['GOT','ESGG','GÃ¶teborg Landvetter Airport','Gothenburg,Sweden'],
-
-
-['GOZ','LBGO','Gorna Oryahovitsa Airport','Gorna Oryahovitsa,Bulgaria'],
-['GPA','LGRX','Araxos Airport','Patras,Greece'],
-
-
-['GPI','SKGP','Guapi Airport ','Guapi,Colombia'],
-['GPL','MRGP','Guapiles Airport','Guapiles,Costa Rica'],
-
-['GPO','SAZG','General Pico Airport','General Pico,La Pampa,Argentina'],
-['GPS','SEGS','Seymour Airport','Baltra Island,Galapagos Islands,Ecuador'],
-['GPT','KGPT','Gulfport-Biloxi International Airport','Gulfport Biloxi,Mississippi,United States'],
-['GPZ','KGPZ','Grand Rapids-Itasca County Airport ','Grand Rapids,Minnesota,United States'],
-
-
-['GRB','KGRB','Austin Straubel International Airport','Green Bay,Wisconsin,United States'],
-
-['GRD','KGRD','Greenwood County Airport','Greenwood,South Carolina,United States'],
-['GRE','KGRE','Greenville Airport','Greenville,Illinois,United States'],
-
-
-['GRJ','FAGG','George Airport','George,South Africa'],
-['GRL','AYGG','Garasa Airport','Garasa,Papua New Guinea'],
-['GRM','KCKC','Grand Marais Cook County Airport ','Grand Marais,Minnesota,United States'],
-
-['GRO','LEGE','Girona-Costa Brava Airport','Girona,Catalonia,Spain'],
-
-['GRQ','EHGG','Groningen Airport Eelde','Groningen,Netherlands'],
-['GRR','KGRR','Gerald R. Ford International Airport','Grand Rapids,Michigan,United States'],
-['GRS','LIRS','Grosseto Airport','Grosseto,Tuscany,Italy'],
-
-['GRU','SBGR','Sao Paulo-Guarulhos International Airport','Sao Paulo,Brazil'],
-
-['GRW','LPGR','Graciosa Airport','Graciosa,Azores,Portugal'],
-['GRX','LEGR','Federico Garcia Lorca Airport ','Granada,Andalusia,Spain'],
-['GRY','BIGR','Grimsey Airport','Grimsey,Iceland'],
-['GRZ','LOWG','Graz Airport','Graz,Austria'],
-['GSA','WBKN','Long Pasia Airport','Long Pasia,Sabah,Malaysia'],
-
-
-['GSE','ESGP','GÃ¶teborg City Airport','Gothenburg,Sweden'],
-
-['GSI','SOGS','Grand-Santi Airport[2]','Grand-Santi,French Guiana'],
-['GSJ','MGSJ','San Jose Airport[2]','Puerto San Jose,Guatemala'],
-
-
-
-['GSO','KGSO','Piedmont Triad International Airport','Greensboro,North Carolina,United States'],
-['GSP','KGSP','Greenville-Spartanburg International Airport','Greenville Spartanburg,South Carolina,United States'],
-['GSQ','HEOW','Sharq Al-Owainat Airport','Sharq Al-Owainat,Egypt'],
-
-
-['GST','PAGS','Gustavus Airport','Gustavus,Alaska,United States'],
-
-['GTA','AGOK','Gatokae Aerodrome','Gatokae,Solomon Islands'],
-
-['GTF','KGTF','Great Falls International Airport','Great Falls,Montana,United States'],
-
-['GTI','EDCG','Rugen Airport ','Guttin,Mecklenburg-Vorpommern,Germany'],
-['GTN','NZGT','Glentanner Aerodrome','Mount Cook,New Zealand'],
-['GTO','WAMG','Jalaluddin Airport','Gorontalo,Indonesia'],
-
-
-
-['GTW','LKHO','HoleSov Airport','Zlin,Czech Republic'],
-
-['GUA','MGGT','La Aurora International Airport','Guatemala City,Guatemala'],
-['GUB','MMGR','Guerrero Negro Airport','Guerrero Negro,Baja California Sur,2 Mexico'],
-['GUD','GAGM','Goundam Airport','Goundam,Mali'],
-
-['GUF','KJKA','Jack Edwards Airport ','Gulf Shores,Alabama,United States'],
-['GUG','AYGF','Guari Airport','Guari,Papua New Guinea'],
-
-['GUI','SVGI','Guiria Airport','Guiria,Venezuela'],
-
-
-['GUM','PGUM','Antonio B. Won Pat International Airport ','HagÃ¥tna,Guam'],
-
-['GUQ','SVGU','Guanare Airport','Guanare,Venezuela'],
-['GUR','AYGN','Gurney Airport','Alotau,Papua New Guinea'],
-['GUS','KGUS','Grissom Air Reserve Base','Peru,Indiana,United States'],
-['GUT','ETUO','RAF Gutersloh','Gutersloh,North Rhine-Westphalia,Germany'],
-['GUU','BIGF','GrundarfjÃ¶rour Airport','GrundarfjÃ¶rour,Iceland'],
-['GUV','AYML','Mougulu Airport','Mougulu,Papua New Guinea'],
-
-['GUX','VAGN','Guna Airport','Guna,Madhya Pradesh,India'],
-
-
-['GVA','LSGG','Geneva Airport','Geneva,Switzerland'],
-
-['GVI','AYGV','Green River Airport','Green River,Papua New Guinea'],
-['GVL','KGVL','Lee Gilmer Memorial Airport','Gainesville,Georgia,United States'],
-
-
-
-['GVT','KGVT','Majors Airport','Greenville,Texas,United States'],
-['GVX','ESSK','GÃ¤vle-Sandviken Airport','GÃ¤vle,Sweden'],
-['GWA','VYGW','Gwa Airport','Gwa,Myanmar'],
-
-
-['GWL','VIGR','Rajmata Vijaya Raje Scindia Airport ','Gwalior,Madhya Pradesh,India'],
-
-['GWO','KGWO','Greenwood-Leflore Airport','Greenwood,Mississippi,United States'],
-
-['GWT','EDXW','Sylt Airport ','Sylt,Schleswig-Holstein,Germany'],
-
-['GWY','EICM','Galway Airport','Galway,Ireland'],
-
-
-
-['GXQ','SCCY','Teniente Vidal Airfield','Coyhaique,Chile'],
-
-['GXY','KGXY','Greeley-Weld County Airport','Greeley,Colorado,United States'],
-['GYA','SLGY','Guayaramerin Airport','Guayaramerin,Bolivia'],
-
-['GYE','SEGU','Jose Joaquin de Olmedo International Airport','Guayaquil,Ecuador'],
-
-['GYI','HRYG','Gisenyi Airport','Gisenyi,Rwanda'],
-
-['GYM','MMGM','General Jose Maria Yanez International Airport','Guaymas,Sonora,Mexico'],
-
-
-['GYR','KGYR','Phoenix Goodyear Airport','Goodyear,Arizona,United States'],
-
-
-['GYY','KGYY','Gary Chicago International Airport','Gary,Indiana ,United States'],
-['GZA','LVGZ','Yasser Arafat International Airport','Gaza,Palestine'],
-
-['GZO','AGGN','Nusatupe Airport','Gizo,Western Province,Solomon Islands'],
-['GZP','LTFG','Gazipaa-Alanya Airport[2]','Gazipaa,Turkey'],
-['GZT','LTAJ','Gaziantep Ouzeli International Airport','Gaziantep,Turkey'],
-
-
-['HAA','ENHK','Hasvik Airport','Hasvik,Norway'],
-['HAB','KHAB','Marion County - Rankin Fite Airport','Hamilton,Alabama,United States'],
-['HAC','RJTH','Hachijojima Airport','Hachij-jima ,Izu Islands,Japan'],
-['HAD','ESMT','Halmstad Airport ','Halmstad,Sweden'],
-['HAF','KHAF','Half Moon Bay Airport','Half Moon Bay,California,United States'],
-['HAH','FMCH','Prince Said Ibrahim International Airport','Moroni,Comoros'],
-
-['HAJ','EDDV','Hannover Airport','Hanover,Lower Saxony,Germany'],
-
-['HAL','FYHI','Halali Airport','Halali,Namibia'],
-['HAM','EDDH','Hamburg Airport','Hamburg,Germany'],
-['HAN','VVNB','Noi Bai International Airport','Hanoi,Vietnam'],
-['HAQ','VRMH','Hanimaadhoo International Airport','Hanimaadhoo,Haa Dhaalu Atoll,Maldives'],
-['HAR','KCXY','Capital City Airport ','Harrisburg,Pennsylvania,United States'],
-
-['HAU','ENHD','Haugesund Airport,Karmoy','Haugesund,Norway'],
-['HAV','MUHA','Jose Marti International Airport','Havana,Cuba'],
-['HAW','EGFE','Haverfordwest Aerodrome','Haverfordwest,Wales,United Kingdom'],
-
-
-
-
-['HBE','HEBA','Borg El Arab Airport','Alexandria Borg El Arab,Egypt'],
-
-
-
-
-['HBU','ZMBS','Bulgan Airport,Khovd[1]','Bulgan ,Mongolia'],
-['HBX','VAHB','Hubli Airport','Hubli Dharwad,Karnataka,India'],
-['HCA','KBPG','Big Spring McMahon-Wrinkle Airport[1] ','Big Spring,Texas,United States'],
-
-
-
-['HCN','RCKW','Hengchun Airport','Hengchun,Taiwan'],
-
-['HCR','PAHC','Holy Cross Airport ','Holy Cross,Alaska,United States'],
-
-['HDB','EDIU','Heidelberg Airport','Heidelberg,Baden-Wurttemberg,Germany'],
-
-['HDE','KHDE','Brewster Field','Holdrege,Nebraska,United States'],
-['HDF','EDAH','Heringsdorf Airport','Heringsdorf,Mecklenburg-Vorpommern,Germany'],
-
-['HDH','PHDH','Dillingham Airfield','Mokulia,Hawaii,United States'],
-
-['HDN','KHDN','Yampa Valley Airport','Hayden,Colorado,United States'],
-
-
-['HDY','VTSS','Hat Yai International Airport','Hat Yai,Thailand'],
-
-['HEB','VBHD','Hinthada Airport','Hinthada,Myanmar'],
-
-['HEE','KHEE','Thompson-Robbins Airport','Helena-West Helena,Arkansas,United States'],
-['HEH','VYHH','Heho Airport','Heho,Myanmar'],
-['HEI','EDXB','Heide-Busum Airport','Heide Busum,Schleswig-Holstein,Germany'],
-
-['HEL','EFHK','Helsinki Airport ','Helsinki,Finland'],
-['HEM','EFHF','Helsinki-Malmi Airport','Helsinki,Finland'],
-
-['HER','LGIR','Heraklion International Airport ','Heraklion,Greece'],
-
-
-['HEZ','KHEZ','Natchez-Adams County Airport ','Natchez,Mississippi,United States'],
-['HFA','LLHA','Haifa Airport ','Haifa,Israel'],
-['HFD','KHFD','Hartford-Brainard Airport','Hartford,Connecticut,United States'],
-
-['HFN','BIHN','HornafjÃ¶rour Airport','HÃ¶fn,Iceland'],
-['HFS','ESOH','Hagfors Airport','Hagfors,Sweden'],
-['HFT','ENHF','Hammerfest Airport','Hammerfest,Norway'],
-
-
-['HGE','SVHG[2]','Higuerote Airport[1]','Higuerote,Venezuela'],
-
-
-['HGL','EDXH','Heligoland Airport ','Heligoland,Schleswig-Holstein,Germany'],
-['HGN','VTCH','Mae Hong Son Airport','Mae Hong Son,Thailand'],
-['HGO','DIKO','Korhogo Airport','Korhogo,Ivory Coast'],
-['HGS','GFHA','Hastings Airport','Freetown,Sierra Leone'],
-['HGU','AYMH','Mount Hagen Airport','Mount Hagen,Papua New Guinea'],
-
-['HHE','RJSH','JMSDF Hachinohe Air Base','Hachinohe,Honshu,Japan'],
-['HHH','KHXD','Hilton Head Airport ','Hilton Head Island,South Carolina,United States'],
-['HHN','EDFH','Frankfurt-Hahn Airport','Hahn,Rhineland-Palatinate,Germany'],
-['HHQ','VTPH','Hua Hin Airport','Hua Hin,Thailand'],
-
-['HHZ','NTGH','Hikueru Airport','Hikueru Atoll,French Polynesia'],
-
-
-
-
-['HII','KHII','Lake Havasu City Airport','Lake Havasu City,Arizona,United States'],
-['HIJ','RJOA','Hiroshima Airport','Hiroshima,Honshu,Japan'],
-
-['HIM','VCCH','Hingurakgoda Airport ','Hingurakgoda,Sri Lanka'],
-['HIN','RKPS','Sacheon Airport','Jinju,South Korea'],
-['HIO','KHIO','Hillsboro Airport ','Hillsboro Portland,Oregon,United States'],
-
-['HIR','AGGH','Honiara International Airport','Honiara,Guadalcanal,Solomon Islands'],
-['HIT','AYHO','Haivaro Airport','Haivaro,Papua New Guinea'],
-['HIW','RJBH','Hiroshima-Nishi Airport','Hiroshima,Honshu,Japan'],
-
-['HJR','VAKJ','Civil Aerodrome Khajuraho','Khajuraho,Madhya Pradesh,India'],
-['HJT','ZMHU','Khujirt Airport','Khujirt,Mongolia'],
-
-
-['HKD','RJCH','Hakodate Airport','Hakodate,Hokkaido,Japan'],
-['HKG','VHHH','Hong Kong International Airport ','Hong Kong'],
-['HKK','NZHK','Hokitika Airport','Hokitika,New Zealand'],
-['HKN','AYHK','Hoskins Airport','Kimbe,Papua New Guinea'],
-['HKS','KHKS','Hawkins Field','Jackson,Mississippi,United States'],
-['HKT','VTSP','Phuket International Airport','Phuket,Thailand'],
-['HKV','LBHS','Haskovo Malevo Airport','Haskovo,Bulgaria'],
-['HLA','FALA','Lanseria International Airport','Johannesburg,South Africa'],
-['HLB','KHLB','Hillenbrand Industries Airport','Batesville,Indiana,United States'],
-
-
-['HLE','FHSH','Saint Helena Airport ','Jamestown,British Overseas Territory'],
-
-['HLF','ESSF','Hultsfred-Vimmerby Airport','Hultsfred Vimmerby,Sweden'],
-['HLG','KHLG','Wheeling Ohio County Airport','Wheeling,West Virginia,United States'],
-
-
-
-['HLM','KHLM','Park Township Airport','Holland,Michigan,United States'],
-['HLP','WIHH','Halim Perdanakusuma International Airport','Jakarta,Indonesia'],
-
-
-
-['HLW','FAHL','Hluhluwe Airport','Hluhluwe,South Africa'],
-['HLZ','NZHN','Hamilton Airport','Hamilton,New Zealand'],
-
-['HMB','HEMK','Sohag International Airport[1]','Sohag,Egypt'],
-
-
-
-
-
-['HMO','MMHO','General Ignacio Pesqueira Garcia International Airport','Hermosillo,Sonora,Mexico'],
-['HMR','ENHA','Hamar Airport,Stafsberg','Hamar,Norway'],
-['HMT','KHMT','Hemet-Ryan Airport','Hemet,California,United States'],
-['HMV','ESUT','Hemavan TÃ¤rnaby Airport','Hemavan TÃ¤rnaby,Sweden'],
-['HMY','RKTP','Seosan Air Base[1]','Seosan,South Korea'],
-['HNA','RJSI','Hanamaki Airport','Hanamaki,Honshu,Japan'],
-['HNB','KHNB','Huntingburg Airport','Huntingburg,Indiana,United States'],
-['HNC','KHSE','Billy Mitchell Airport ','Hatteras,North Carolina,United States'],
-['HND','RJTT','Haneda Airport','Tokyo,Honshu,Japan'],
-['HNH','PAOH','Hoonah Airport','Hoonah,Alaska,United States'],
-
-['HNL','PHNL','Honolulu International Airport','Honolulu,Hawaii,United States'],
-['HNM','PHHN','Hana Airport','Hana,Hawaii,United States'],
-
-['HNS','PAHN','Haines Airport','Haines,Alaska,United States'],
-
-['HOA','HKHO','Hola Airport','Hola,Kenya'],
-
-
-['HOE','VLHS','Ban Huoeisay Airport','Ban Houayxay ,Laos'],
-
-['HOG','MUHG','Frank Pais Airport','Holguin,Cuba'],
-['HOH','LOIH','Hohenems-Dornbirn Airport','Dornbirn,Austria'],
-['HOI','NTTO','Hao Airport','Hao,Tuamotus,French Polynesia'],
-
-['HOM','PAHO','Homer Airport','Homer,Alaska,United States'],
-
-['HOQ','EDQM','Hof-Plauen Airport','Hof,Bavaria,Germany'],
-['HOR','LPHR','Horta Airport','Horta,Azores,Portugal'],
-['HOS','SAHC','Chos Malal Airport','Chos Malal,Neuquen,Argentina'],
-['HOT','KHOT','Memorial Field Airport','Hot Springs,Arkansas,United States'],
-['HOU','KHOU','William P. Hobby Airport','Houston,Texas,United States'],
-['HOV','ENOV','orsta-Volda Airport,Hovden','orsta Volda,Norway'],
-['HOX','VYHL','Homalin Airport','Homalin,Myanmar'],
-
-['HPA','NFTL','Lifuka Island Airport ','Lifuka,Haapai,Tonga'],
-['HPB','PAHP','Hooper Bay Airport','Hooper Bay,Alaska,United States'],
-
-
-['HPH','VVCI','Cat Bi International Airport','Haiphong,Vietnam'],
-['HPN','KHPN','Westchester County Airport','White Plains,New York,United States'],
-
-
-['HPY','KHPY','Baytown Airport','Baytown,Texas,United States'],
-['HQM','KHQM','Bowerman Airport','Hoquiam,Washington,United States'],
-
-
-
-['HRG','HEGN','Hurghada International Airport','Hurghada,Egypt'],
-['HRI','VCRI','Mattala Rajapaksa International Airport','Hambantota,Sri Lanka'],
-
-['HRL','KHRL','Valley International Airport','Harlingen,Texas,United States'],
-
-['HRO','KHRO','Boone County Airport','Harrison,Arkansas,United States'],
-
-['HRS','FAHR','Harrismith Airport','Harrismith,South Africa'],
-['HRT','EGXU','RAF Linton-on-Ouse','Linton-on-Ouse,England,United Kingdom'],
-
-
-['HSB','KHSB','Harrisburg-Raleigh Airport','Harrisburg,Illinois,United States'],
-
-['HSG','RJFS','Saga Airport','Saga,Kyushu,Japan'],
-['HSH','KHND','Henderson Executive Airport ','Las Vegas,Nevada,United States'],
-
-
-['HSK','LEHC','Huesca-Pirineos Airport','Huesca,Aragon,Spain'],
-['HSL','PAHL','Huslia Airport ','Huslia,Alaska,United States'],
-
-
-['HSP','KHSP','Ingalls Field','Hot Springs,Virginia,United States'],
-['HSS','VIHR','Hisar Airport','Hisar,Haryana,India'],
-['HST','KHST','Homestead Air Reserve Base','Homestead,Florida,United States'],
-['HSV','KHSV','Huntsville International Airport ','Huntsville,Alabama,United States'],
-['HSZ','RCPO','Hsinchu Air Base','Hsinchu,Taiwan'],
-
-
-['HTH','KHTH','Hawthorne Industrial Airport','Hawthorne,Nevada,United States'],
-
-['HTL','KHTL','Roscommon County-Blodgett Memorial Airport','Houghton Lake,Michigan,United States'],
-['HTM','ZMHG','Khatgal Airport[1]','Khatgal,Mongolia'],
-
-['HTO','KHTO','East Hampton Airport','East Hampton,New York,United States'],
-['HTR','RORH','Hateruma Airport','Hateruma,Yaeyama Islands,Japan'],
-['HTS','KHTS','Tri-State Airport ','Huntington,West Virginia,United States'],
-
-
-
-['HTW','KHTW','Lawrence County Airpark','Chesapeake Huntington ,Ohio,United States'],
-['HTY','LTDA','Hatay Airport','Hatay,Turkey'],
-['HTZ','SKHC','Hato Corozal Airport','Hato Corozal,Colombia'],
-
-
-
-
-['HUF','KHUF','Terre Haute International Airport ','Terre Haute,Indiana,United States'],
-['HUG','MGHT','Huehuetenango Airport','Huehuetenango,Guatemala'],
-['HUH','NTTH','Huahine - Fare Airport','Huahine,Society Islands,French Polynesia'],
-['HUI','VVPB','Phu Bai International Airport','Hu,Vietnam'],
-
-
-['HUL','KHUL','Houlton International Airport','Houlton,Maine,United States'],
-['HUM','KHUM','Houma-Terrebonne Airport','Houma,Louisiana,United States'],
-['HUN','RCYU','Hualien Airport','Hualien,Taiwan'],
-
-
-['HUS','PAHU','Hughes Airport','Hughes,Alaska,United States'],
-
-['HUU','SPNC','Alferez FAP David Figueroa Fernandini Airport','Huanuco,Peru'],
-['HUV','ESNH','Hudiksvall Airport','Hudiksvall,Sweden'],
-
-['HUX','MMBT','Bahias de Huatulco International Airport','Huatulco,Oaxaca,Mexico'],
-['HUY','EGNJ','Humberside Airport','Humberside,England,United Kingdom'],
-
-['HVA','FMNL','Analalava Airport','Analalava,Madagascar'],
-
-['HVD','ZMKD','Khovd Airport','Khovd,Mongolia'],
-['HVE','KHVE','Hanksville Airport','Hanksville,Utah,United States'],
-['HVG','ENHV','HonningsvÃ¥g Airport,Valan','HonningsvÃ¥g,Norway'],
-['HVK','BIHK','Holmavik Airport','Holmavik,Iceland'],
-['HVN','KHVN','Tweed New Haven Airport','New Haven,Connecticut,United States'],
-['HVR','KHVR','Havre City-County Airport','Havre,Montana,United States'],
-
-['HWD','KHWD','Hayward Executive Airport','Hayward,California,United States'],
-
-
-
-['HWO','KHWO','North Perry Airport','Hollywood,Florida,United States'],
-
-
-
-['HYC','EGTB[4]','Wycombe Air Park','High Wycombe,England,United Kingdom'],
-['HYD','VOHS','Rajiv Gandhi International Airport','Hyderabad,Telangana,India'],
-
-['HYG','PAHY','Hydaburg Seaplane Base','Hydaburg,Alaska,United States'],
-
-
-['HYR','KHYR','Sawyer County Airport','Hayward,Wisconsin,United States'],
-['HYV','EFHV','HyvinkÃ¤Ã¤ Airfield','HyvinkÃ¤Ã¤,Finland'],
-['HZB','LFQT','Merville-Calonne Airport','Hazebrouck,Nord-Pas-de-Calais,France'],
-
-
-['HZK','BIHU','Husavik Airport','Husavik,Iceland'],
-
-['HZP','CYNR','Fort MacKay Horizon Airport[1]','Fort MacKay,Alberta,Canada'],
-['HZV','FAHW','Hazyview Airport','Hazyview,South Africa'],
-
-
-['IAD','KIAD','Washington Dulles International Airport','Washington,D.C.,1 United States'],
-['IAG','KIAG','Niagara Falls International Airport','Niagara Falls,New York,United States'],
-['IAH','KIAH','George Bush Intercontinental Airport','Houston,Texas,United States'],
-
-['IAN','PAIK','Bob Baker Memorial Airport','Kiana,Alaska,United States'],
-['IAO','RPNS','Sayak Airport[1] ','Del Carmen,Philippines'],
-
-
-['IAS','LRIA','Iai International Airport','Iai,Romania'],
-
-
-['IBB','SEII[3]','General Villamil Airport[1]','Isabela Island,Galapagos Islands,Ecuador'],
-['IBE','SKIB','Perales Airport','Ibague,Colombia'],
-
-
-
-['IBP','SPBR','Iberia Airport','Iberia,Peru'],
-['IBR','RJAH','Ibaraki Airport','Omitama,Honshu,Japan'],
-['IBZ','LEIB','Ibiza Airport','Ibiza,Balearic Islands,Spain'],
-['ICA','SVIC','Icabaru Airport','Icabaru,Venezuela'],
-['ICC','SVIE','Andres Miguel Salazar Marcano Airport[1]','Coche Island,Venezuela'],
-['ICI','NFCI','Cicia Airport','Cicia Island,Fiji'],
-['ICK','SMNI','Majoor Henry Fernandes Airport ','Nieuw Nickerie,Suriname'],
-['ICL','KICL','Schenck Field','Clarinda,Iowa,United States'],
-['ICN','RKSI','Incheon International Airport','Seoul,South Korea'],
-['ICO','RPSG','Sicogon Airport','Sicogon,Philippines'],
-
-['ICT','KICT','Wichita Dwight D. Eisenhower National Airport','Wichita,Kansas,United States'],
-
-['IDB','ESUE','Idre Airport','Idre,Sweden'],
-
-
-
-['IDH','KGIC','Idaho County Airport[1] ','Grangeville,Idaho,United States'],
-['IDI','KIDI','Indiana County-Jimmy Stewart Airport','Indiana,Pennsylvania,United States'],
-
-
-
-
-['IDR','VAID','Devi Ahilyabai Holkar International Airport','Indore,Madhya Pradesh,India'],
-['IDY','LFEY','Ile dYeu Aerodrome','Ile dYeu,Pays de la Loire,France'],
-['IEG','EPZG','Zielona Gora Airport','Zielona Gora,Poland'],
-['IEJ','RORE','Iejima Airport','Iejima,Okinawa,Japan'],
-['IES','EDAU','Riesa-GÃ¶hlis Airfield','Riesa,Saxony,Germany'],
-
-
-
-
-['IFJ','BIIS','isafjÃ¶rour Airport','isafjÃ¶rour,Iceland'],
-
-
-
-['IFP','KIFP','Laughlin Bullhead International Airport','Bullhead City,Arizona,United States'],
-['IFU','VREI','Ifuru Airport[1]','Ifuru,Raa Atoll,Maldives'],
-['IGA','MYIG','Inagua Airport ','Inagua Islands,Bahamas'],
-['IGB','SAVJ','Ingeniero Jacobacci Airport ','Ingeniero Jacobacci,Rio Negro,Argentina'],
-['IGD','LTCT','Idr Airport[1]','Idr,Turkey'],
-['IGE','FOOI','Tchongorove Airport','Iguela,Gabon'],
-['IGG','PAIG','Igiugig Airport','Igiugig,Alaska,United States'],
-
-['IGL','LTBL','cili Air Base','zmir,Turkey'],
-['IGM','KIGM','Kingman Airport','Kingman,Arizona,United States'],
-['IGN','RPMI','Maria Cristina Airport ','Iligan,Philippines'],
-['IGO','SKIG','Jaime Ortiz Betancur Airport','Chigorodo,Colombia'],
-['IGR','SARI','Cataratas del Iguazu International Airport','Puerto Iguazu,Misiones,Argentina'],
-['IGS','ETSI','Ingolstadt Manching Airport','Ingolstadt,Bavaria,Germany'],
-
-
-['IHC','FQIA','Inhaca Airport[1]','Inhaca Island,Mozambique'],
-
-['IHO','FMSI','Ihosy Airport','Ihosy,Madagascar'],
-
-
-['IIA','EIMN','Inishmaan Aerodrome','Inishmaan,Ireland'],
-
-['IIS','AYIA','Nissan Island Airport','Nissan Island,Papua New Guinea'],
-
-
-
-
-['IKB','KUKF','Wilkes County Airport ','North Wilkesboro,North Carolina,United States'],
-['IKI','RJDB','Iki Airport','Iki,Iki Island,Japan'],
-['IKK','KIKK','Greater Kankakee Airport','Kankakee,Illinois,United States'],
-
-['IKO','PAKO','Nikolski Air Station','Nikolski,Alaska,United States'],
-
-
-
-['ILA','WABL','Illaga Airport','Illaga,Indonesia'],
-['ILD','LEDA','Lleida-Alguaire Airport','Lleida,Catalonia,Spain'],
-['ILE','KILE','Skylark Field','Killeen,Texas,United States'],
-['ILF','CZBD','Ilford Airport','Ilford,Manitoba,Canada'],
-['ILG','KILG','Wilmington Airport ','Wilmington,Delaware,United States'],
-['ILI','PAIL','Iliamna Airport','Iliamna,Alaska,United States'],
-['ILK','FMMQ','Ilaka-Est Airport ','Ilaka,Madagascar'],
-
-['ILM','KILM','Wilmington International Airport','Wilmington,North Carolina,United States'],
-['ILN','KILN','Wilmington Air Park','Wilmington,Ohio,United States'],
-['ILO','RPVI','Iloilo International Airport','Iloilo,Philippines'],
-['ILP','NWWE','Ile des Pins Airport','Ile des Pins,New Caledonia'],
-['ILQ','SPLO','Ilo Airport','Ilo,Peru'],
-
-['ILU','HKKL','Kilaguni Airport','Kilaguni,Kenya'],
-
-['ILY','EGPI','Islay Airport ','Islay,Scotland,United Kingdom'],
-['ILZ','LZZI','Zilina Airport','Zilina,Slovakia'],
-
-['IMB','SYIB','Imbaimadai Airport','Imbaimadai,Guyana'],
-
-['IMF','VEIM','Imphal International Airport ','Imphal,Manipur,India'],
-
-
-['IMK','VNST','Simikot Airport','Simikot,Nepal'],
-
-['IMN','AYII','Imane Airport','Imane,Papua New Guinea'],
-['IMO','FEFZ','Zemio Airport','Zemio,Central African Republic'],
-
-['IMT','KIMT','Ford Airport','Iron Mountain Kingsford,Michigan,United States'],
-
-
-
-['IND','KIND','Indianapolis International Airport','Indianapolis,Indiana,United States'],
-
-
-['INH','FQIN','Inhambane Airport','Inhambane,Mozambique'],
-['INI','LYNI','NiS Constantine the Great Airport','NiS,Serbia'],
-
-['INK','KINK','Winkler County Airport','Wink,Texas,United States'],
-['INL','KINL','Falls International Airport','International Falls,Minnesota,United States'],
-
-['INN','LOWI','Innsbruck Airport ','Innsbruck,Austria'],
-
-['INQ','EIIR','Inisheer Aerodrome','Inisheer,Ireland'],
-
-['INT','KINT','Smith Reynolds Airport','Winston-Salem,North Carolina,United States'],
-['INU','ANYN','Nauru International Airport','Yaren,Nauru'],
-['INV','EGPE','Inverness Airport','Inverness,Scotland,United Kingdom'],
-['INX','WASI','Inanwatan Airport','Inanwatan,Indonesia'],
-
-
-['IOA','LGIO','Ioannina National Airport','Ioannina,Greece'],
-
-['IOM','EGNS','Isle of Man Airport ','Isle of Man,United Kingdom'],
-
-
-['IOR','EIIM','Inishmore Aerodrome ','Inishmore,Ireland'],
-
-
-['IPA','NVVI','Ipota Airport','Erromango,Tafea,Vanuatu'],
-['IPC','SCIP','Mataveri International Airport ','Easter Island,Chile'],
-['IPE','RPMV','Ipil Airport','Ipil,Philippines'],
-
-['IPH','WMKI','Sultan Azlan Shah Airport','Ipoh,Perak,Malaysia'],
-['IPI','SKIP','San Luis Airport','Ipiales,Colombia'],
-['IPL','KIPL','Imperial County Airport ','Imperial El Centro,California,United States'],
-
-
-
-
-
-['IQQ','SCDA','Diego Aracena International Airport','Iquique,Chile'],
-['IQT','SPQT','Coronel FAP Francisco Secada Vignetta International Airport','Iquitos,Peru'],
-['IRA','AGGK','Kirakira Airport ','Kirakira,Makira Island,Solomon Islands'],
-
-['IRC','PACR','Circle City Airport ','Circle,Alaska,United States'],
-['IRD','VGIS','Ishwardi Airport','Ishwardi,Bangladesh'],
-
-
-['IRI','HTIR','Iringa Airport ','Iringa,Tanzania'],
-['IRJ','SANL','Capitan Vicente Almandos Almonacid Airport','La Rioja,Argentina'],
-
-['IRN','MHIR','Iriona Airport','Iriona,Honduras'],
-['IRO','FEFI','Birao Airport','Birao,Central African Republic'],
-
-
-
-
-
-
-['ISC','EGHE','St Marys Airport','St Marys,Isles of Scilly,United Kingdom'],
-
-['ISE','LTFC','Isparta Suleyman Demirel Airport','Isparta,Turkey'],
-['ISG','ROIG','New Ishigaki Airport','Ishigaki,Yaeyama Islands,Japan'],
-
-['ISJ','MMIM','Isla Mujeres Airport','Isla Mujeres,Quintana Roo,Mexico'],
-['ISK','VAOZ','Ozar Airport','Nashik,Maharashtra,India'],
-['ISM','KISM','Kissimmee Gateway Airport','Orlando,Florida,United States'],
-['ISN','KISN','Sloulin Field International Airport','Williston,North Dakota,United States'],
-['ISP','KISP','Long Island MacArthur Airport','Islip,New York,United States'],
-['ISQ','KISQ','Schoolcraft County Airport','Manistique,Michigan,United States'],
-['ISS','KIWI','Wiscasset Airport ','Wiscasset,Maine,United States'],
-['IST','LTBA','Istanbul Ataturk Airport','Istanbul,Turkey'],
-
-['ISW','KISW','South Wood County Airport ','Wisconsin Rapids,Wisconsin,United States'],
-
-
-
-
-
-['ITM','RJOO','Osaka International Airport ','Osaka,Honshu,Japan'],
-
-['ITO','PHTO','Hilo International Airport','Hilo,Hawaii,United States'],
-
-
-
-
-['IUE','NIUE','Niue International Airport ','Alofi,Niue'],
-
-
-['IVA','FMNJ','Ambanja Airport','Ambanja,Madagascar'],
-['IVC','NZNV','Invercargill Airport','Invercargill,New Zealand'],
-['IVG','LYBR','Dolac Airport','Berane,Montenegro'],
-
-['IVL','EFIV','Ivalo Airport','Ivalo,Finland'],
-
-
-
-
-['IWD','KIWD','Gogebic-Iron County Airport','Ironwood,Michigan,United States'],
-['IWJ','RJOW','Iwami Airport ','Masuda,Honshu,Japan'],
-['IWK','RJOI','Marine Corps Air Station Iwakuni[1]','Iwakuni,Honshu,Japan'],
-['IWO','RJAW','Iwo Jima Air Base','Iwo Jima,Bonin Islands,Japan'],
-['IWS','KIWS','West Houston Airport','Houston,Texas,United States'],
-['IXA','VEAT','Agartala Airport ','Agartala,Tripura,India'],
-['IXB','VEBD','Bagdogra Airport','Siliguri,West Bengal,India'],
-['IXC','VICG','Chandigarh International Airport','Chandigarh,India'],
-['IXD','VIAL','Allahabad Airport ','Allahabad,Uttar Pradesh,India'],
-['IXE','VOML','Mangalore Airport','Mangalore,Karnataka,India'],
-['IXG','VABM','Belgaum Airport','Belgaum,Karnataka,India'],
-['IXH','VEKR','Kailashahar Airport','Kailashahar,Tripura,India'],
-['IXI','VELR','Lilabari Airport','North Lakhimpur,Assam,India'],
-['IXJ','VIJU','Jammu Airport ','Jammu,Jammu and Kashmir,India'],
-['IXK','VAKS','Keshod Airport','Keshod,Gujarat,India'],
-['IXL','VILH','Kushok Bakula Rimpochee Airport','Leh,Jammu and Kashmir,India'],
-['IXM','VOMD','Madurai Airport','Madurai,Tamil Nadu,India'],
-['IXN','VEKW','Khowai Airport','Khowai,Tripura,India'],
-['IXP','VIPK','Pathankot Airport','Pathankot,Punjab,India'],
-['IXQ','VEKM','Kamalpur Airport','Kamalpur,Tripura,India'],
-['IXR','VERC','Birsa Munda Airport','Ranchi,Jharkhand,India'],
-['IXS','VEKU','Silchar Airport ','Silchar,Assam,India'],
-['IXT','VEPG','Pasighat Airport','Pasighat,Arunachal Pradesh,India'],
-['IXU','VAAU','Aurangabad Airport ','Aurangabad,Maharashtra,India'],
-['IXV','VEAN','Along Airport','Along ,Arunachal Pradesh,India'],
-['IXW','VEJS','Sonari Airport','Jamshedpur,Jharkhand,India'],
-['IXY','VAKE','Kandla Airport ','Kandla Gandhidham,Gujarat,India'],
-['IXZ','VOPB','Veer Savarkar International Airport ','Port Blair,Andaman and Nicobar Islands,India'],
-['IYK','KIYK','Inyokern Airport','Inyokern,California,United States'],
-
-
-['IZO','RJOC','Izumo Airport','Izumo,Honshu,Japan'],
-['IZT','MMIT','Ixtepec Airport','Ixtepec,Oaxaca,Mexico'],
-
-
-
-['JAC','KJAC','Jackson Hole Airport','Jackson,Wyoming,United States'],
-
-['JAE','SPJE','Shumba Airport','Jaen,Peru'],
-['JAF','VCCJ','Jaffna Airport','Jaffna,Sri Lanka'],
-
-['JAI','VIJP','Jaipur International Airport','Jaipur,Rajasthan,India'],
-['JAK','MTJA','Jacmel Airport','Jacmel,Haiti'],
-['JAL','MMJA','El Lencero Airport','Xalapa ,Veracruz,Mexico'],
-
-['JAN','KJAN','Jackson-Evers International Airport','Jackson,Mississippi,United States'],
-['JAP','MRCH','Chacarita Airport[1]','Puntarenas,Costa Rica'],
-
-
-['JAS','KJAS','Jasper County Airport ','Jasper,Texas,United States'],
-
-['JAU','SPJJ','Francisco Carle Airport','Jauja,Peru'],
-['JAV','BGJN','Ilulissat Airport','Ilulissat,Greenland'],
-['JAX','KJAX','Jacksonville International Airport','Jacksonville,Florida,United States'],
-
-['JBQ','MDJB','La Isabela International Airport ','La Isabela,Dominican Republic'],
-
-
-
-['JCH','BGCH','Qasigiannguit Heliport','Qasigiannguit,Greenland'],
-['JCI','KIXD','New Century AirCenter ','Olathe,Kansas,United States'],
-
-
-
-['JCT','KJCT','Kimble County Airport','Junction,Texas,United States'],
-
-
-['JDG','RKPD','Jeongseok Airport','Seogwipo,South Korea'],
-['JDH','VIJO','Jodhpur Airport','Jodhpur,Rajasthan,India'],
-['JDN','KJDN','Jordan Airport','Jordan,Montana,United States'],
-
-
-
-
-['JEE','MTJE','Jeremie Airport','Jeremie,Haiti'],
-['JEF','KJEF','Jefferson City Memorial Airport','Jefferson City,Missouri,United States'],
-['JEG','BGAA','Aasiaat Airport','Aasiaat,Greenland'],
-
-
-
-['JER','EGJJ','Jersey Airport','Jersey,Channel Islands,United Kingdom'],
-['JFK','KJFK','John F. Kennedy International Airport','New York City,New York,United States'],
-['JFR','BGPT','Paamiut Airport','Paamiut,Greenland'],
-['JGA','VAJM','Jamnagar Airport ','Jamnagar,Gujarat,India'],
-
-
-
-
-['JHB','WMKJ','Senai International Airport','Johor Bahru,Johor,Malaysia'],
-
-
-['JHM','PHJH','Kapalua Airport','Kapalua,Hawaii,United States'],
-['JHS','BGSS','Sisimiut Airport','Sisimiut,Greenland'],
-['JHW','KJHW','Chautauqua County-Jamestown Airport','Jamestown,New York,United States'],
-
-['JIB','HDAM','Djibouti-Ambouli International Airport','Djibouti,Djibouti'],
-
-
-['JIK','LGIK','Ikaria Island National Airport','Ikaria Island,Greece'],
-
-
-['JIN','HUJI','Jinja Airport','Jinja,Uganda'],
-['JIP','SEJI','Jipijapa Airport','Jipijapa,Ecuador'],
-
-['JIR','VNJI','Jiri Airport','Jiri,Nepal'],
-
-
-['JJA','AGJO[2]','Jajao Airport[1]','Jajao,Isabel Province,Solomon Islands'],
-['JJI','SPJI','Juanjui Airport','Juanjui,Peru'],
-['JJM','HKMK','Mulika Lodge Airport[1]','Meru National Park,Kenya'],
-
-['JKG','ESGJ','JÃ¶nkÃ¶ping Airport','JÃ¶nkÃ¶ping,Sweden'],
-['JKH','LGHI','Chios Island National Airport','Chios,Greece'],
-['JKL','LGKY','Kalymnos Island National Airport','Kalymnos,Greece'],
-['JKR','VNJP','Janakpur Airport','Janakpur,Nepal'],
-
-['JKV','KJSO','Cherokee County Airport ','Jacksonville,Texas,United States'],
-
-['JLR','VAJB','Jabalpur Airport ','Jabalpur,Madhya Pradesh,India'],
-
-
-['JMK','LGMK','Mykonos Island National Airport','Mykonos,Greece'],
-['JMO','VNJS','Jomsom Airport','Jomsom,Nepal'],
-
-
-['JNB','FAOR','O. R. Tambo International Airport','Johannesburg,South Africa'],
-
-['JNI','SAAJ','Junin Airport','Junin,Buenos Aires,Argentina'],
-
-['JNU','PAJN','Juneau International Airport','Juneau,Alaska,United States'],
-['JNX','LGNX','Naxos Island National Airport','Naxos,Greece'],
-
-['JOE','EFJO','Joensuu Airport','Joensuu,Finland'],
-['JOG','WIIJ','Adisucipto International Airport','Yogyakarta,Indonesia'],
-['JOH','FAPJ','Port St. Johns Airport','Port St. Johns,South Africa'],
-
-
-
-['JOL','RPMJ','Jolo Airport','Jolo,Philippines'],
-['JOM','HTNJ','Njombe Airport','Njombe,Tanzania'],
-
-
-
-
-['JQA','BGUQ','Qaarsut Airport ','Qaarsut,Greenland'],
-['JQE','MPJE','Jaque Airport','Jaque,Panama'],
-['JRF','PHJR','Kalaeloa Airport[1] ','Kapalua,Hawaii,United States'],
-['JRH','VEJT','Jorhat Airport ','Jorhat,Assam,India'],
-
-['JRO','HTKJ','Kilimanjaro International Airport','Kilimanjaro,Tanzania'],
-['JRS','OJJR','Atarot Airport ','Jerusalem,Israel1'],
-['JSA','VIJR','Jaisalmer Airport','Jaisalmer,Rajasthan,India'],
-['JSH','LGST','Sitia Public Airport','Sitia,Greece'],
-['JSI','LGSK','Skiathos Island National Airport','Skiathos,Greece'],
-['JSM','SAWS','Jose de San Martin Airport','Jose de San Martin,Chubut,Argentina'],
-['JSR','VGJR','Jessore Airport','Jessore,Bangladesh'],
-['JST','KJST','John Murtha Johnstown-Cambria County Airport','Johnstown,Pennsylvania,United States'],
-['JSU','BGMQ','Maniitsoq Airport','Maniitsoq,Greenland'],
-['JSY','LGSO','Syros Island National Airport','Syros,Greece'],
-
-
-['JTR','LGSR','Santorini ,Greece'],
-['JTY','LGPL','Astypalaia Island National Airport','Astypalaia,Greece'],
-
-
-
-['JUI','EDWJ','Juist Airport','Juist,Lower Saxony,Germany'],
-['JUJ','SASJ','Gobernador Horacio Guzman International Airport','San Salvador de Jujuy,Jujuy,Argentina'],
-['JUL','SPJL','Inca Manco Capac International Airport','Juliaca,Peru'],
-['JUM','VNJL','Jumla Airport','Jumla,Nepal'],
-
-['JUO','SKJU[5]','Jurado Airport','Jurado,Colombia'],
-
-['JUT','MHJU','Juticalpa Airport','Juticalpa,Honduras'],
-['JUV','BGUK','Upernavik Airport','Upernavik,Greenland'],
-
-['JVA','FMMK','Ankavandra Airport','Ankavandra,Madagascar'],
-['JWA','FBJW','Jwaneng Airport','Jwaneng,Botswana'],
-
-['JWO','RKTI','Jungwon Air Base[1]','Chungju,South Korea'],
-
-['JXN','KJXN','Jackson County Airport ','Jackson,Michigan,United States'],
-
-['JYV','EFJY','JyvÃ¤skylÃ¤ Airport','JyvÃ¤skylÃ¤,Finland'],
-
-['KAA','FLKS','Kasama Airport','Kasama,Zambia'],
-
-['KAC','OSKL','Kamishly Airport','Al-Qamishli ,Syria'],
-
-['KAE','PAFE','Kake Airport ','Kake,Alaska,United States'],
-
-['KAG','RKNN','Gangneung Air Base','Gangneung,South Korea'],
-['KAI','SYKA','Kaieteur International Airport','Kaieteur,Guyana'],
-['KAJ','EFKI','Kajaani Airport','Kajaani,Finland'],
-
-['KAL','PAKV','Kaltag Airport','Kaltag,Alaska,United States'],
-
-
-['KAO','EFKS','Kuusamo Airport','Kuusamo,Finland'],
-
-['KAQ','AYKH','Kamulai Airport[1]','Kamulai,Papua New Guinea'],
-['KAR','SYKM','Kamarang Airport','Kamarang,Guyana'],
-['KAS','FYKB','Karasburg Airport','Karasburg,Namibia'],
-['KAT','NZKT','Kaitaia Airport','Kaitaia,New Zealand'],
-['KAU','EFKA','Kauhava Airfield','Kauhava,Finland'],
-['KAV','SVKA','Kavanayen Airport','Kavanayen,Venezuela'],
-['KAW','VYKT','Kawthaung Airport','Kawthaung,Myanmar'],
-
-['KAY','NFNW','Wakaya Airport','Wakaya Island,Fiji'],
-['KAZ','WAMK','Kao Airport','Kao,Indonesia'],
-['KBA','GFKB','Kabala Airport','Kabala,Sierra Leone'],
-
-
-
-
-['KBF','WABK','Karubaga Airport','Karubaga,Indonesia'],
-['KBG','HUKF','Kabalega Falls Airport','Kabalega Falls,Uganda'],
-
-
-
-['KBM','AYKB','Kabwum Airport','Kabwum,Papua New Guinea'],
-
-
-
-['KBQ','FWKG','Kasungu Airport','Kasungu,Malawi'],
-['KBR','WMKC','Sultan Ismail Petra Airport','Kota Bharu,Kelantan,Malaysia'],
-['KBS','GFBO','Bo Airport','Bo,Sierra Leone'],
-
-['KBU','WRBK','Gusti Syamsir Alam Airport ','Kotabaru,Indonesia'],
-['KBV','VTSG','Krabi Airport','Krabi,Thailand'],
-
-['KBX','WASU','Kambuaya Airport','Ayamaru,Indonesia'],
-
-['KBZ','NZKI','Kaikoura Aerodrome','Kaikoura,New Zealand'],
-
-['KCB','SMTP','Tepoe Airstrip','Kasikasima,Suriname'],
-
-
-
-
-
-['KCH','WBGG','Kuching International Airport','Kuching,Sarawak,Malaysia'],
-
-
-
-
-['KCM','LTCN','Kahramanmara Airport','Kahramanmara,Turkey'],
-
-['KCO','LTBQ','Cengiz Topel Naval Air Station','zmit,Turkey'],
-
-
-
-
-['KCT','VCCK','Koggala Airport','Koggala,Sri Lanka'],
-['KCU','HUMI','Masindi Airport','Masindi,Uganda'],
-['KCZ','RJOK','Kchi Ryma Airport','Kchi,Shikoku,Japan'],
-['KDA','GOGK','Kolda North Airport','Kolda,Senegal'],
-
-['KDC','DBBK','Kandi Airport','Kandi,Benin'],
-
-['KDE','AYOW','Koroba Airport','Koroba,Papua New Guinea'],
-
-['KDI','WAWW','Haluoleo Airport','Kendari,Indonesia'],
-['KDJ','FOGJ','Ndjole Ville Airport','Ndjole,Gabon'],
-
-['KDL','EEKA','KÃ¤rdla Airport','KÃ¤rdla,Estonia'],
-['KDM','VRMT','Kaadedhdhoo Airport','Kaadedhdhoo Island,Gaafu Dhaalu Atoll,Maldives'],
-['KDN','FOGE','Ndende Airport','Ndende,Gabon'],
-['KDO','VRMK','Kadhdhoo Airport','Kadhdhoo Island,Laamu Atoll,Maldives'],
-['KDP','AYNN','Kandep Airport','Kandep,Papua New Guinea'],
-['KDQ','AYTO','Kamberatoro Airport','Kamberatoro,Papua New Guinea'],
-['KDR','AYKC','Kandrian Airport','Kandrian,Papua New Guinea'],
-
-['KDT','VTBK','Kamphaeng Saen Airport','Kamphaeng Saen,Thailand'],
-
-['KDV','NFKD','Vunisea Airport','Vunisea,Kadavu Island,Fiji'],
-
-
-
-
-
-
-
-
-['KEF','BIKF','Keflavik International Airport','Reykjavik,Iceland'],
-['KEG','AYLG','Keglsugl Airport','Keglsugl,Papua New Guinea'],
-
-['KEI','WAKP','Kepi Airport','Kepi,Indonesia'],
-
-
-['KEL','EDHK','Kiel Airport','Kiel,Schleswig-Holstein,Germany'],
-['KEM','EFKE','Kemi-Tornio Airport','Kemi Tornio,Finland'],
-['KEN','GFKE','Kenema Airport','Kenema,Sierra Leone'],
-['KEO','DIOD','Odienne Airport','Odienne,Ivory Coast'],
-['KEP','VNNG','Nepalgunj Airport','Nepalgunj,Nepal'],
-['KEQ','WASE','Kebar Airport','Kebar,Indonesia'],
-
-['KES','CZEE','Kelsey Airport','Kelsey,Manitoba,Canada'],
-['KET','VYKG','Kengtung Airport','Kengtung,Myanmar'],
-['KEU','HKKE','Keekorok Airport[1]','Keekorok,Kenya'],
-['KEV','EFHA','Halli Airport','Kuorevesi,Finland'],
-
-['KEX','AYNB','Kanabea Airport','Kanabea,Papua New Guinea'],
-['KEY','HKKR','Kericho Airport','Kericho,Kenya'],
-
-
-
-
-['KFP','PAKF','False Pass Airport','False Pass,Alaska,United States'],
-['KFS','LTAL','Kastamonu Airport','Kastamonu,Turkey'],
-
-['KGB','AYOE','Konge Airport','Konge,Papua New Guinea'],
-
-
-['KGE','AGKG','Kaghau Airport','Kaghau Island,Solomon Islands'],
-
-['KGG','GOTK','Kedougou Airport','Kedougou,Senegal'],
-['KGH','AYJO','Yongai Airport','Yongai,Papua New Guinea'],
-
-['KGJ','FWKA','Karonga Airport','Karonga,Malawi'],
-['KGK','PAJZ','Koliganek Airport ','Koliganek,Alaska,United States'],
-['KGL','HRYR','Kigali International Airport ','Kigali,Rwanda'],
-
-
-
-
-
-['KGS','LGKO','Kos Island International Airport','Kos,Greece'],
-
-['KGU','WBKG','Keningau Airport','Keningau,Sabah,Malaysia'],
-['KGW','AYKQ','Kagi Airport','Kagi,Papua New Guinea'],
-
-
-
-
-
-
-
-
-['KHH','RCKH','Kaohsiung International Airport','Kaohsiung,Taiwan'],
-
-['KHJ','EFKJ','Kauhajoki Airfield','Kauhajoki,Finland'],
-
-['KHM','VYKI','Khamti Airport','Khamti,Myanmar'],
-
-
-['KHR','ZMHH','Kharkhorin Airport','Kharkhorin,Mongolia'],
-['KHS','OOKB','Khasab Airport','Khasab,Oman'],
-
-
-
-['KHW','FBKR','Khwai River Airport','Khwai River Lodge,Botswana'],
-
-
-['KHZ','NTKA','Kauehi Airport','Kauehi,Tuamotus,French Polynesia'],
-
-
-['KIC','KKIC','Mesa Del Rey Airport','King City,California,United States'],
-['KID','ESMK','Kristianstad Airport','Kristianstad,Sweden'],
-['KIE','AYKT','Aropa Airport','Kieta,Papua New Guinea'],
-
-
-
-['KII','AYLI','Kibuli Airport','Kibuli,Papua New Guinea'],
-['KIJ','RJSN','Niigata Airport','Niigata,Honshu,Japan'],
-
-
-['KIM','FAKM','Kimberley Airport','Kimberley,South Africa'],
-['KIN','MKJP','Norman Manley International Airport','Kingston,Jamaica'],
-
-['KIP','KCWC','Kickapoo Downtown Airport ','Wichita Falls,Texas,United States'],
-['KIQ','AYRA','Kira Airport','Kira,Papua New Guinea'],
-['KIR','EIKY','Kerry Airport ','Kerry,Ireland'],
-['KIS','HKKI','Kisumu International Airport','Kisumu,Kenya'],
-['KIT','LGKC','Kithira Island National Airport','Kythira,Greece'],
-
-['KIV','LUKK','Chiinu International Airport','Chiinu,Moldova'],
-['KIW','FLSO','Southdowns Airport','Kitwe,Zambia'],
-['KIX','RJBB','Kansai International Airport','Osaka,Honshu,Japan'],
-['KIY','HTKI','Kilwa Masoko Airport','Kilwa Masoko,Tanzania'],
-
-
-
-
-['KJK','EBKT','Kortrijk-Wevelgem International Airport','Kortrijk,Belgium'],
-['KJP','ROKR','Kerama Airport','Fukaji Island,Kerama Islands,Japan'],
-
-['KKA','PAKK','Koyuk Alfred Adams Airport','Koyuk,Alaska,United States'],
-
-['KKC','VTUK','Khon Kaen Airport','Khon Kaen,Thailand'],
-['KKD','AYKO','Kokoda Airport','Kokoda,Papua New Guinea'],
-['KKE','NZKK','Kerikeri Airport ','Kerikeri,New Zealand'],
-
-['KKH','PADY','Kongiganak Airport ','Kongiganak,Alaska,United States'],
-
-['KKJ','RJFR','Kitakyushu Airport','Kitakyushu,Kyushu,Japan'],
-
-
-
-['KKN','ENKR','Kirkenes Airport,Hoybuktmoen','Kirkenes,Norway'],
-['KKO','NZKO','Kaikohe Aerodrome','Kaikohe,New Zealand'],
-
-
-['KKR','NTGK','Kaukura Airport','Kaukura Atoll,Tuamotus,French Polynesia'],
-
-
-
-['KKX','RJKI','Kikai Airport ','Kikai,Satsunan Islands,Japan'],
-['KKY','EIKL','Kilkenny Airport','Kilkenny,Ireland'],
-['KKZ','VDKK','Koh Kong Airport','Koh Kong,Cambodia'],
-['KLB','FLKL','Kalabo Airport','Kalabo,Zambia'],
-['KLC','GOOK','Kaolack Airport','Kaolack,Senegal'],
-
-
-
-['KLG','PALG','Kalskag Airport','Kalskag,Alaska,United States'],
-['KLH','VAKP','Kolhapur Airport','Kolhapur,Maharashtra,India'],
-
-['KLK','HKFG','Kalokol Airport ','Kalokol,Kenya'],
-
-
-['KLN','PALB','Larsen Bay Airport ','Larsen Bay,Alaska,United States'],
-['KLO','RPVK','Kalibo International Airport','Kalibo,Philippines'],
-['KLQ','WIPV','Keluang Airport','Keluang,Indonesia'],
-['KLR','ESMQ','Kalmar Airport','Kalmar,Sweden'],
-['KLU','LOWK','Klagenfurt Airport','Klagenfurt,Austria'],
-['KLV','LKKV','Karlovy Vary Airport','Karlovy Vary,Czech Republic'],
-['KLW','PAKW','Klawock Airport ','Klawock,Alaska,United States'],
-['KLX','LGKL','Kalamata International Airport','Kalamata,Greece'],
-
-['KLZ','FAKZ','Kleinzee Airport','Kleinzee,South Africa'],
-['KMA','AYKM','Kerema Airport','Kerema,Papua New Guinea'],
-
-
-['KME','HRZA','Kamembe Airport','Cyangugu,Rwanda'],
-['KMF','AYKD','Kamina Airport','Kamina,Papua New Guinea'],
-
-['KMH','FAKU','Johan Pienaar Airport','Kuruman,South Africa'],
-['KMI','RJFM','Miyazaki Airport','Miyazaki,Kyushu,Japan'],
-['KMJ','RJFT','Kumamoto Airport','Mashiki,Kyushu,Japan'],
-
-
-
-
-['KMO','PAMB','Manokotak Airport ','Manokotak,Alaska,United States'],
-['KMP','FYKT','Keetmanshoop Airport','Keetmanshoop,Namibia'],
-['KMQ','RJNK','Komatsu Airport ','Komatsu,Honshu,Japan'],
-['KMR','AYRI','Karimui Airport','Karimui,Papua New Guinea'],
-['KMS','DGSI','Kumasi Airport','Kumasi,Ghana'],
-
-
-['KMV','VYKL','Kalaymyo Airport ','Kalaymyo,Myanmar'],
-
-
-
-['KMZ','FLKO','Kaoma Airport','Kaoma,Zambia'],
-['KNA','SCVM','Vina del Mar Airport','Vina del Mar,Chile'],
-
-
-['KNE','AYKJ','Kanainj Airport','Kanainj,Papua New Guinea'],
-['KNF','EGYM','RAF Marham','Kings Lynn,England,United Kingdom'],
-['KNG','WASK','Kaimana Airport','Kaimana,Indonesia'],
-['KNH','RCBS','Kinmen Airport ','Kinmen,Taiwan'],
-
-
-['KNK','PFKK','Kokhanok Airport ','Kokhanok,Alaska,United States'],
-
-
-['KNN','GUXN','Kankan Airport ','Kankan,Guinea'],
-['KNO','WIMM','Kualanamu International Airport','Medan,Indonesia'],
-
-['KNQ','NWWD','Kone Airport','Kone,New Caledonia'],
-
-
-['KNT','KTKX','Kennett Memorial Airport ','Kennett,Missouri,United States'],
-['KNU','VIKA','Kanpur Airport ','Kanpur,Uttar Pradesh,India'],
-['KNW','PANW','New Stuyahok Airport','New Stuyahok,Alaska,United States'],
-['KNZ','GAKA','Kenieba Airport','Kenieba,Mali'],
-['KOA','PHKO','Kona International Airport at Kehole','Kailua Kona,Hawaii,United States'],
-['KOC','NWWK','Koumac Airport','Koumac,New Caledonia'],
-
-['KOE','WATT','El Tari Airport','Kupang,Indonesia'],
-['KOF','FAKP','Komatipoort Airport','Komatipoort,South Africa'],
-['KOG','VLKG','Khong Island Airport','Khong,Laos'],
-
-['KOI','EGPA','Kirkwall Airport','Kirkwall,Scotland,United Kingdom'],
-['KOJ','RJFK','Kagoshima Airport','Kagoshima,Kyushu,Japan'],
-['KOK','EFKK','Kokkola-Pietarsaari Airport','Kokkola Jakobstad,Finland'],
-
-
-
-
-['KOP','VTUW','Nakhon Phanom Airport','Nakhon Phanom,Thailand'],
-['KOQ','EDCK','KÃ¶then Airport','KÃ¶then,Saxony-Anhalt,Germany'],
-['KOR','AYRO','Kakoro Airport','Kakoro,Papua New Guinea'],
-['KOS','VDSV','Sihanoukville International Airport ','Sihanoukville,Cambodia'],
-['KOT','PFKO','Kotlik Airport ','Kotlik,Alaska,United States'],
-['KOU','FOGK','Koulamoutou Airport','Koulamoutou,Gabon'],
-
-
-['KOX','WABN','Kokonao Airport','Kokonao,Indonesia'],
-
-
-['KPA','AYKG','Kopiago Airport','Kopiago,Papua New Guinea'],
-
-['KPC','PAPC','Port Clarence Coast Guard Station','Port Clarence,Alaska,United States'],
-['KPE','AYYP','Yapsiei Airport','Yapsiei,Papua New Guinea'],
-['KPF','AYDL','Kondubol Airport','Kondubol,Papua New Guinea'],
-
-['KPI','WBGP','Kapit Airport','Kapit,Sarawak,Malaysia'],
-
-['KPM','AYAQ','Kompiam Airport','Kompiam,Papua New Guinea'],
-['KPN','PAKI','Kipnuk Airport ','Kipnuk,Alaska,United States'],
-['KPO','RKTH','Pohang Airport','Pohang,South Korea'],
-
-
-
-
-['KPV','PAPE','Perryville Airport ','Perryville,Alaska,United States'],
-
-
-
-['KQL','AYOL','Kol Airport','Kol,Papua New Guinea'],
-
-
-
-
-['KRC','WIPH','Depati Parbo Airport','Kerinci,Indonesia'],
-
-['KRE','HBBO','Kirundo Airport','Kirundo,Burundi'],
-['KRF','ESNK','HÃ¶ga Kusten Airport ','Kramfors SollefteÃ¥,Sweden'],
-['KRG','SYKS','Karasabai Airport','Karasabai,Guyana'],
-['KRI','AYKK','Kikori Airport','Kikori,Papua New Guinea'],
-['KRJ','AYQA','Karawari Airport','Karawari,Papua New Guinea'],
-['KRK','EPKK','John Paul II International Airport Krakow-Balice','Krakow,Poland'],
-
-['KRM','SYKR','Karanambo Airport','Karanambo,Guyana'],
-['KRN','ESNQ','Kiruna Airport','Kiruna,Sweden'],
-
-['KRP','EKKA','Karup Airport','Karup,Denmark'],
-
-
-['KRS','ENCN','Kristiansand Airport,Kjevik','Kristiansand,Norway'],
-
-['KRU','AYEA','Kerau Airport','Kerau,Papua New Guinea'],
-
-
-['KRX','AYKR','Karkar Airport','Karkar Island,Papua New Guinea'],
-
-
-['KSA','PTSA','Kosrae International Airport ','Kosrae,Federated States of Micronesia'],
-['KSB','AYNM','Kasanombe Airport','Kasanombe,Papua New Guinea'],
-['KSC','LZKZ','KoSice International Airport','KoSice,Slovakia'],
-['KSD','ESOK','Karlstad Airport','Karlstad,Sweden'],
-['KSE','HUKS','Kasese Airport','Kasese,Uganda'],
-['KSF','EDVK','Kassel Airport','Kassel,Hesse,Germany'],
-
-
-['KSI','GUKU','Kissidougou Airport','Kissidougou,Guinea'],
-['KSJ','LGKS','Kasos Island Public Airport','Kasos Island,Greece'],
-['KSK','ESKK','Karlskoga Airport','Karlskoga,Sweden'],
-
-['KSM','PASM','St. Marys Airport','St. Marys,Alaska,United States'],
-
-['KSO','LGKA','Kastoria National Airport ','Kastoria,Greece'],
-['KSP','AYOP','Kosipe Airport','Kosipe,Papua New Guinea'],
-
-['KSS','GASK','Sikasso Airport','Sikasso,Mali'],
-
-['KSU','ENKB','Kristiansund Airport,Kvernberget','Kristiansund,Norway'],
-
-['KSW','LLKS','Kiryat Shmona Airport','Kiryat Shmona,Israel'],
-['KSX','AYYR','Yasuru Airport','Yasuru,Papua New Guinea'],
-['KSY','LTCF','Kars Harakani Airport','Kars,Turkey'],
-
-
-
-
-['KTD','RORK','Kitadaito Airport','Kitadaito,Dait Islands,Japan'],
-['KTE','WMKE','Kerteh Airport','Kerteh,Terengganu,Malaysia'],
-['KTF','NZTK','Takaka Aerodrome','Takaka,New Zealand'],
-['KTG','WIOK','Rahadi Osman Airport ','Ketapang,Indonesia'],
-
-['KTI','VDKT','Kratie Airport','Kratie,Cambodia'],
-
-
-['KTL','HKKT','Kitale Airport','Kitale,Kenya'],
-['KTM','VNKT','Tribhuvan International Airport','Kathmandu,Nepal'],
-['KTN','PAKT','Ketchikan International Airport','Ketchikan,Alaska,United States'],
-['KTO','SYKT','Kato Airport','Kato,Guyana'],
-['KTP','MKTP','Tinson Pen Aerodrome','Kingston,Jamaica'],
-['KTQ','EFIT','Kitee Airfield','Kitee,Finland'],
-
-['KTS','PFKT','Brevig Mission Airport','Brevig Mission,Alaska,United States'],
-['KTT','EFKT','KittilÃ¤ Airport','KittilÃ¤,Finland'],
-['KTU','VIKO','Kota Airport','Kota,Rajasthan,India'],
-['KTV','SVKM','Kamarata Airport','Kamarata,Venezuela'],
-['KTW','EPKT','Katowice International Airport','Katowice,Poland'],
-['KTX','GAKO','Koutiala Airport','Koutiala,Mali'],
-['KTY','VCCN','Katukurunda Airport[1]','Kalutara,Sri Lanka'],
-['KUA','WMKD','Sultan Haji Ahmad Shah Airport ','Kuantan,Pahang,Malaysia'],
-['KUC','NGKT','Kuria Airport','Kuria,Kiribati'],
-['KUD','WBKT','Kudat Airport','Kudat,Sabah,Malaysia'],
-['KUE','AGKU','Kukundu Airport','Kolombangara,Western Province,Solomon Islands'],
-
-
-['KUH','RJCK','Kushiro Airport','Kushiro,Hokkaido,Japan'],
-['KUK','PFKA','Kasigluk Airport ','Kasigluk,Alaska,United States'],
-['KUL','WMKK','Kuala Lumpur International Airport','Kuala Lumpur,Malaysia'],
-['KUM','RJFC','Yakushima Airport','Yakushima,sumi Islands,Japan'],
-['KUN','EYKA','Kaunas International Airport','Kaunas,Lithuania'],
-['KUO','EFKU','Kuopio Airport','Kuopio,Finland'],
-
-['KUQ','AYKU','Kuri Airport','Kuri,Papua New Guinea'],
-
-['KUS','BGKK','Kulusuk Airport','Kulusuk,Greenland'],
-['KUT','UGKO','David the Builder Kutaisi International Airport','Kutaisi,Georgia'],
-['KUU','VIBR','Bhuntar Airport ','Kullu,Himachal Pradesh,India'],
-['KUV','RKJK','Gunsan Airport','Gunsan,South Korea'],
-
-
-['KVA','LGKV','Kavala International Airport ','Kavala,Greece'],
-['KVB','ESGR','SkÃ¶vde Airport','SkÃ¶vde,Sweden'],
-['KVC','PAVC','King Cove Airport','King Cove,Alaska,United States'],
-
-
-['KVG','AYKV','Kavieng Airport','Kavieng,Papua New Guinea'],
-
-['KVL','PAVL','Kivalina Airport','Kivalina,Alaska,United States'],
-
-
-
-
-
-
-
-
-
-
-['KWI','OKBK','Kuwait International Airport','Kuwait City,Kuwait'],
-['KWJ','RKJJ','Gwangju Airport','Gwangju ,South Korea'],
-['KWK','PAGG','Kwigillingok Airport ','Kwigillingok,Alaska,United States'],
-
-
-['KWN','PAQH','Quinhagak Airport ','Quinhagak,Alaska,United States'],
-['KWO','AYKW','Kawito Airport','Kawito,Papua New Guinea'],
-
-
-['KWS','AGKW[3]','Kwailabesi Airport','Kwailabesi,Solomon Islands'],
-['KWT','PFKW','Kwethluk Airport','Kwethluk,Alaska,United States'],
-
-
-
-
-
-
-['KXE','FAKD','Klerksdorp Airport ','Klerksdorp,South Africa'],
-['KXF','NFNO','Koro Airport','Koro Island,Fiji'],
-
-
-['KXU','NTKT','Katiu Airport[1]','Katiu,Tuamotus,French Polynesia'],
-['KYA','LTAN','Konya Airport','Konya,Turkey'],
-['KYD','RCLY','Lanyu Airport','Orchid Island,Taiwan'],
-['KYE','OLKA','Rene Mouawad Air Base ','Tripoli,Lebanon'],
-
-
-['KYK','PAKY','Karluk Airport','Karluk,Alaska,United States'],
-
-['KYP','VYKP','Kyaukpyu Airport','Kyaukpyu,Myanmar'],
-['KYS','GAKY','Kayes Airport ','Kayes,Mali'],
-['KYT','VYKU','Kyauktu Airport','Kyauktu,Myanmar'],
-['KYU','PFKU','Koyukuk Airport','Koyukuk,Alaska,United States'],
-['KYX','AYYE','Yalumet Airport','Yalumet,Papua New Guinea'],
-
-
-['KZC','VDKH','Kampong Chhnang Airport','Kampong Chhnang,Cambodia'],
-
-['KZF','AYKT','Kaintiba Airport','Kaintiba,Papua New Guinea'],
-['KZG','ETIN','Kitzingen Airport','Kitzingen,Bavaria,Germany'],
-['KZI','LGKZ','Kozani National Airport ','Kozani,Greece'],
-
-
-['KZR','LTBZ','Zafer Airport','Kutahya,Turkey'],
-['KZS','LGKJ','Kastellorizo Island Public Airport','Kastellorizo,Greece'],
-
-
-
-
-
-['LAE','AYNZ','Lae Nadzab Airport','Lae,Papua New Guinea'],
-['LAF','KLAF','Purdue University Airport','Lafayette,Indiana,United States'],
-['LAH','WAPH[1]','Oesman Sadik Airport','Labuha,Indonesia'],
-['LAI','LFRO','Lannion - Cote de Granit Airport','Lannion,Brittany,France'],
-
-['LAK','CYKD','Aklavik Freddie Carmichael Airport','Aklavik,Northwest Territories,Canada'],
-['LAM','KLAM','Los Alamos County Airport','Los Alamos,New Mexico,United States'],
-['LAN','KLAN','Capital Region International Airport','Lansing,Michigan,United States'],
-['LAO','RPLI','Laoag International Airport','Laoag,Philippines'],
-['LAP','MMLP','Manuel Marquez de Leon International Airport','La Paz,Baja California Sur,Mexico'],
-
-['LAS','KLAS','McCarran International Airport','Las Vegas,Nevada,United States'],
-['LAU','HKLU','Manda Airport','Lamu,Kenya'],
-['LAX','KLAX','Los Angeles International Airport','Los Angeles,California,United States'],
-['LAY','FALY','Ladysmith Airport','Ladysmith,South Africa'],
-
-['LBA','EGNM','Leeds Bradford Airport','Leeds Bradford,England,United Kingdom'],
-['LBB','KLBB','Lubbock Preston Smith International Airport','Lubbock,Texas,United States'],
-['LBC','EDHL','Lubeck Airport','Lubeck,Schleswig-Holstein,Germany'],
-
-['LBG','LFPB','Paris-Le Bourget Airport','Paris,Ile-de-France,France'],
-
-['LBI','LFCI','Le Sequestre Airport','Albi,Midi-Pyrenees,France'],
-['LBJ','WATO','Komodo Airport','Labuan Bajo,Indonesia'],
-
-
-
-
-
-['LBQ','FOGR','Lambarene Airport','Lambarene,Gabon'],
-
-['LBS','NFNL','Labasa Airport','Labasa,Fiji'],
-
-['LBU','WBKL','Labuan Airport','Labuan,Malaysia'],
-['LBV','FOOL','Libreville International Airport','Libreville,Gabon'],
-['LBW','WRLB','Juvai Semaring Airport ','Long Bawan,Indonesia'],
-['LBX','RPLU','Lubang Airport','Lubang,Philippines'],
-['LBY','LFRE','La Baule-Escoublac Airport','La Baule-Escoublac,Pays de la Loire,France'],
-
-['LCA','LCLK','Larnaca International Airport','Larnaca,Cyprus'],
-
-['LCC','LIBN','Lecce Galatina Air Base','Lecce,Apulia,Italy'],
-['LCD','FALO','Louis Trichardt Airport','Louis Trichardt,South Africa'],
-['LCE','MHLC','Goloson International Airport','La Ceiba,Honduras'],
-['LCF','MGRD','Rio Dulce Airport ','Rio Dulce,Guatemala'],
-['LCG','LECO','A Coruna Airport','A Coruna,Galicia,Spain'],
-
-['LCJ','EPLL','od Wadysaw Reymont Airport','od,Poland'],
-['LCK','KLCK','Rickenbacker International Airport','Columbus,Ohio,United States'],
-['LCL','MULM','La Coloma Airport','Pinar del Rio,Cuba'],
-['LCM','SACC','La Cumbre Airport','La Cumbre,Cordoba,Argentina'],
-
-
-
-['LCQ','KLCQ','Lake City Gateway Airport','Lake City,Florida,United States'],
-
-['LCV','LIQL','Lucca-Tassignano Airport','Lucca,Tuscany,Italy'],
-
-['LCY','EGLC','London City Airport','London,England,United Kingdom'],
-['LDA','VEMH','Malda Airport','Malda,West Bengal,India'],
-
-
-['LDE','LFBT','Tarbes-Lourdes-Pyrenees Airport','Tarbes Lourdes,Midi-Pyrenees,France'],
-
-
-['LDI','HTLI','Lindi Airport ','Lindi,Tanzania'],
-['LDJ','KLDJ','Linden Airport','Linden,New Jersey,United States'],
-['LDK','ESGL','LidkÃ¶ping-Hovby Airport','LidkÃ¶ping,Sweden'],
-['LDM','KLDM','Mason County Airport','Ludington,Michigan,United States'],
-['LDN','VNLD','Lamidanda Airport','Lamidanda,Nepal'],
-['LDO','SMDO','Laduani Airstrip','Aurora,Suriname'],
-
-
-['LDU','WBKD','Lahad Datu Airport','Lahad Datu,Sabah,Malaysia'],
-['LDV','LFRJ','Landivisiau Air Base','Landivisiau,Brittany,France'],
-
-['LDX','SOOM','Saint-Laurent-du-Maroni Airport','Saint-Laurent-du-Maroni,French Guiana'],
-['LDY','EGAE','City of Derry Airport','Derry ,Northern Ireland,United Kingdom'],
-['LDZ','FALD','Londolozi Airport','Londolozi,South Africa'],
-
-
-
-
-['LEE','KLEE','Leesburg International Airport','Leesburg,Florida,United States'],
-['LEF','FXLK','Lebakeng Airport','Lebakeng,Lesotho'],
-
-['LEH','LFOH','Le Havre - Octeville Airport','Le Havre,Upper Normandy,France'],
-['LEI','LEAM','Almeria Airport','Almeria,Andalusia,Spain'],
-['LEJ','EDDP','Leipzig Halle Airport','Leipzig,Saxony Halle,Saxony-Anhalt,2 Germany'],
-['LEK','GULB','Tata Airport','Labe,Guinea'],
-
-
-['LEN','LELN','Leon Airport','Leon,Castile and Leon,Spain'],
-
-
-['LEQ','EGHC','Lands End Airport','St Just,England,United Kingdom'],
-
-['LES','FXLS','Lesobeng Airport','Lesobeng,Lesotho'],
-['LET','SKLT','Alfredo Vasquez Cobo International Airport','Leticia,Colombia'],
-['LEU','LESU','La Seu dUrgell Airport','La Seu dUrgell,Catalonia,Spain'],
-['LEV','NFNB','Levuka Airfield ','Levuka,Ovalau Island,Fiji'],
-
-['LEX','KLEX','Blue Grass Airport','Lexington,Kentucky,United States'],
-['LEY','EHLE','Lelystad Airport','Lelystad,Netherlands'],
-['LEZ','MHLE','La Esperanza Airport','La Esperanza,Honduras'],
-['LFB','FQLU','Lumbo Airport[2]','Lumbo,Mozambique'],
-
-['LFK','KLFK','Angelina County Airport','Lufkin,Texas,United States'],
-
-['LFN','KLHZ','Triangle North Executive Airport ','Louisburg,North Carolina,United States'],
-
-
-
-['LFR','SVLF','La Fria Airport','La Fria,Venezuela'],
-['LFW','DXXX','Lome-Tokoin Airport ','Lome,Togo'],
-['LGA','KLGA','LaGuardia Airport','New York City,New York,United States'],
-['LGB','KLGB','Long Beach Airport','Long Beach,California,United States'],
-['LGC','KLGC','LaGrange Callaway Airport','LaGrange,Georgia,United States'],
-['LGD','KLGD','La Grande Union County Airport','La Grande,Oregon,United States'],
-
-['LGG','EBLG','Liege Airport','Liege,Belgium'],
-
-['LGI','MYLD','Deadmans Cay Airport','Deadmans Cay,Long Island,Bahamas'],
-['LGK','WMKL','Langkawi International Airport','Langkawi,Kedah,Malaysia'],
-['LGL','WBGF','Long Lellang Airport','Long Lellang,Sarawak,Malaysia'],
-
-
-['LGO','EDWL','Langeoog Airport','Langeoog,Lower Saxony,Germany'],
-['LGP','RPLP','Legazpi International Airport','Legazpi,Philippines'],
-['LGQ','SENL','Lago Agrio Airport','Nueva Loja ,Ecuador'],
-['LGR','SCHR','Cochrane Airfield','Cochrane,Chile'],
-['LGS','SAMM','Comodoro D. Ricardo Salomon Airport','Malargue,Mendoza,Argentina'],
-['LGT','SKGA','Las Gaviotas Airport','Gaviotas,Colombia'],
-['LGU','KLGU','Logan-Cache Airport','Logan,Utah,United States'],
-['LGW','EGKK','Gatwick Airport','London,England,United Kingdom'],
-
-
-['LHA','EDTL','Black Forest Airport ','Lahr,Baden-Wurttemberg,Germany'],
-
-
-['LHI','WAJL','Lereh Airport','Lereh,Indonesia'],
-
-
-['LHR','EGLL','Heathrow Airport','London,England,United Kingdom'],
-['LHS','SAVH','Las Heras Airport','Las Heras,Santa Cruz,Argentina'],
-['LHU','FYLS[3]','Lianshulu Airport','Lianshulu,Namibia'],
-['LHV','KLHV','William T. Piper Memorial Airport','Lock Haven,Pennsylvania,United States'],
-
-
-
-
-
-['LIF','NWWL','Ouanaham Airport','Lifou,Loyalty Islands,New Caledonia'],
-['LIG','LFBL','Limoges - Bellegarde Airport','Limoges,Limousin,France'],
-['LIH','PHLI','Lihue Airport','Lihue,Hawaii,United States'],
-['LII','WAJM','Mulia Airport','Mulia,Indonesia'],
-
-['LIL','LFQQ','Lille Airport ','Lille,Nord-Pas-de-Calais,France'],
-['LIM','SPIM','Jorge Chavez International Airport','Lima,Peru'],
-['LIN','LIML','Linate Airport','Milan,Lombardy,Italy'],
-['LIO','MRLM','Limon International Airport','Limon,Costa Rica'],
-
-
-['LIR','MRLB','Daniel Oduber Quiros International Airport','Liberia,Costa Rica'],
-['LIS','LPPT','Lisbon Portela Airport','Lisbon,Portugal'],
-['LIT','KLIT','Clinton National Airport ','Little Rock,Arkansas,United States'],
-
-['LIW','VYLK','Loikaw Airport','Loikaw,Myanmar'],
-['LIX','FWLK','Likoma Airport','Likoma Island,Malawi'],
-
-
-
-['LJU','LJLJ','Ljubljana JoZe Punik Airport ','Ljubljana,Slovenia'],
-['LKA','WATL[4]','Gewayantana Airport','Larantuka,Indonesia'],
-['LKB','NFNK','Lakeba Airport','Lakeba Island,Fiji'],
-
-
-
-['LKG','HKLK','Lokichogio Airport','Lokichogio,Kenya'],
-['LKH','WBGL','Long Akah Airport[2]','Long Akah,Sarawak,Malaysia'],
-['LKK','PAKL','Kulik Lake Airport','Kulik Lake,Alaska,United States'],
-['LKL','ENNA','Lakselv Airport,Banak','Lakselv,Norway'],
-['LKN','ENLK','Leknes Airport','Leknes,Norway'],
-['LKO','VILK','Chaudhary Charan Singh International Airport','Lucknow,Uttar Pradesh,India'],
-['LKP','KLKP','Lake Placid Airport','Lake Placid,New York,United States'],
-
-
-['LKV','KLKV','Lake County Airport','Lakeview,Oregon,United States'],
-['LKW','OOLK','Lekhwair Airport[2]','Lekhwair,Oman'],
-['LKY','HTLM','Lake Manyara Airport','Lake Manyara,Tanzania'],
-['LKZ','EGUL','RAF Lakenheath','Brandon,England,United Kingdom'],
-['LLA','ESPA','LuleÃ¥ Airport ','LuleÃ¥,Sweden'],
-
-['LLE','FAMN','Malelane Airport','Malalane,South Africa'],
-
-
-
-
-
-
-['LLN','WAJV','Kelila Airport','Kelila,Indonesia'],
-
-
-['LLS','SATK','Alferez Armando Rodriguez Airport','Las Lomitas,Formosa,Argentina'],
-
-
-['LLW','FWKI','Lilongwe International Airport ','Lilongwe,Malawi'],
-['LLX','KCDA','Caledonia County Airport ','Lyndonville,Vermont,United States'],
-['LMA','PAMH','Lake Minchumina Airport ','Lake Minchumina,Alaska,United States'],
-['LMB','FWSM','Salima Airport','Salima,Malawi'],
-['LMC','SKNA','La Macarena Airport','La Macarena,Colombia'],
-
-['LME','LFRM','Le Mans Arnage Airport','Le Mans,Pays de la Loire,France'],
-
-
-
-
-['LMM','MMLM','Fort Valley Federal International Airport','Los Mochis,Sinaloa,Mexico'],
-['LMN','WBGJ','Limbang Airport','Limbang,Sarawak,Malaysia'],
-['LMO','EGQS','RAF Lossiemouth','Lossiemouth,Scotland,United Kingdom'],
-['LMP','LICD','Lampedusa Airport','Lampedusa,Sicily,Italy'],
-
-['LMR','FALC','Finsch Mine Airport','Lime Acres,South Africa'],
-['LMS','KLMS','Louisville Winston County Airport','Louisville,Mississippi,United States'],
-['LMT','KLMT','Klamath Falls Airport','Klamath Falls,Oregon,United States'],
-
-
-
-['LNA','KLNA','Palm Beach County Park Airport','West Palm Beach,Florida,United States'],
-['LNB','NVSM','Lamen Bay Airport','Lamen Bay,Epi Island,Shefa Province,Vanuatu'],
-
-['LND','KLND','Hunt Field','Lander,Wyoming,United States'],
-['LNE','NVSO','Lonorore Airport','Lonorore,Pentecost Island,Penama Province,Vanuatu'],
-
-
-
-['LNI','PALN','Point Lonely Short Range Radar Site ','Lonely,Alaska,United States'],
-
-['LNK','KLNK','Lincoln Airport','Lincoln,Nebraska,United States'],
-
-['LNN','KLNN','Lost Nation Airport','Willoughby,Ohio,United States'],
-
-['LNP','KLNP','Lonesome Pine Airport','Wise,Virginia,United States'],
-
-['LNS','KLNS','Lancaster Airport','Lancaster,Pennsylvania,United States'],
-['LNV','AYKY','Lihir Island Airport','Lihir Island,Papua New Guinea'],
-
-['LNY','PHNY','Lanai Airport','Lanai City,Hawaii,United States'],
-['LNZ','LOWL','Linz Airport ','Linz,Austria'],
-
-['LOB','SCAN','San Rafael Airport','Los Andes,Chile'],
-
-['LOD','NVSG','Longana Airport','Longana,Aoba Island,Penama Province,Vanuatu'],
-['LOE','VTUL','Loei Airport','Loei,Thailand'],
-
-['LOH','SETM','Ciudad de Catamayo Airport','Loja,Ecuador'],
-
-['LOK','HKLO','Lodwar Airport','Lodwar,Kenya'],
-['LOL','KLOL','Derby Field','Lovelock,Nevada,United States'],
-
-
-
-['LOP','WADL','Lombok International Airport','Praya,Indonesia'],
-['LOQ','FBLO','Lobatse Airport','Lobatse,Botswana'],
-
-['LOT','KLOT','Lewis University Airport','Romeoville,Illinois,United States'],
-['LOU','KLOU','Bowman Field','Louisville,Kentucky,United States'],
-['LOV','MMMV','Venustiano Carranza International Airport','Monclova,Coahuila,Mexico'],
-['LOW','KLKU','Louisa County Airport ','Louisa,Virginia,United States'],
-
-['LOY','HKLY','Loiyangalani Airport','Loiyangalani,Kenya'],
-['LOZ','KLOZ','London-Corbin Airport ','London,Kentucky,United States'],
-['LPA','GCLP','Gran Canaria Airport','Gran Canaria,Canary Islands,Spain'],
-['LPB','SLLP','El Alto International Airport','La Paz,Bolivia'],
-['LPC','KLPC','Lompoc Airport','Lompoc,California,United States'],
-['LPD','SKLP','La Pedrera Airport','La Pedrera,Colombia'],
-['LPE','SKIM','La Primavera Airport','La Primavera,Colombia'],
-
-['LPG','SADL','La Plata Airport','La Plata,Buenos Aires,Argentina'],
-['LPI','ESSL','LinkÃ¶ping City Airport','LinkÃ¶ping,Sweden'],
-['LPJ','SVAS','Armando Schwarck Airport','Los Pijiguaos,Venezuela'],
-
-['LPL','EGGP','Liverpool John Lennon Airport','Liverpool,England,United Kingdom'],
-['LPM','NVSL','Malekoula Airport ','Lamap,Malampa,Vanuatu'],
-
-
-['LPP','EFLP','Lappeenranta Airport','Lappeenranta,Finland'],
-['LPQ','VLLB','Luang Prabang International Airport','Luang Prabang,Laos'],
-
-['LPT','VTCL','Lampang Airport','Lampang,Thailand'],
-['LPU','WRLP','Long Apung Airport','Long Apung,Indonesia'],
-['LPX','EVLA','Liepja International Airport','Liepja,Latvia'],
-['LPY','LFHP','Le Puy - Loudes Airport','Le Puy-en-Velay,Auvergne,France'],
-['LQK','KLQK','Pickens County Airport','Pickens,South Carolina,United States'],
-['LQM','SKLG','Caucaya Airport','Puerto Leguizamo,Colombia'],
-
-['LRA','LGLR','Larissa National Airport','Larissa,Greece'],
-['LRB','FXLR','Leribe Airport','Leribe ,Lesotho'],
-['LRD','KLRD','Laredo International Airport','Laredo,Texas,United States'],
-
-
-
-['LRH','LFBH','La Rochelle - Ile de Re Airport','La Rochelle,Poitou-Charentes,France'],
-
-
-['LRL','DXNG','Niamtougou International Airport','Niamtougou,Togo'],
-['LRM','MDLR','La Romana International Airport ','La Romana,Dominican Republic'],
-
-
-['LRS','LGLE','Leros Municipal Airport','Leros,Greece'],
-['LRT','LFRH','Lorient South Brittany Airport ','Lorient,Brittany,France'],
-['LRU','KLRU','Las Cruces International Airport','Las Cruces,New Mexico,United States'],
-['LRV','SVRS','Los Roques Airport','Los Roques,Venezuela'],
-['LSA','AYKA','Losuia Airport','Kiriwina Island,Papua New Guinea'],
-
-['LSC','SCSE','La Florida Airport','La Serena,Chile'],
-['LSH','VYLS','Lashio Airport','Lashio,Myanmar'],
-['LSI','EGPB','Sumburgh Airport','Shetland Islands,Scotland,United Kingdom'],
-
-
-['LSL','MRLC','Los Chiles Airport','Los Chiles,Costa Rica'],
-['LSM','WBGD','Long Semado Airport','Long Semado,Sarawak,Malaysia'],
-
-['LSO','LFOO','Les Sables-dOlonne - Talmont Airport','Les Sables-dOlonne,Pays de la Loire,France'],
-['LSP','SVJC','Josefa Camejo International Airport','Punto Fijo,Venezuela'],
-['LSQ','SCGE','Maria Dolores Airport','Los angeles,Chile'],
-['LSS','TFFS','Les Saintes Airport','Terre-de-Haut Island,Iles des Saintes,Guadeloupe'],
-
-['LSU','WBGU','Long Sukang Airport','Long Sukang,Sarawak,Malaysia'],
-
-['LSW','WITM','Malikus Saleh Airport','Lhokseumawe,Indonesia'],
-['LSX','WITL','Lhok Sukon Airport','Lhoksukon,Indonesia'],
-
-['LSZ','LDLO','LoSinj Airport','LoSinj,Croatia'],
-['LTA','FATZ','Tzaneen Airport ','Tzaneen,South Africa'],
-
-
-
-
-['LTG','VNLT','Langtang Airport','Langtang,Nepal'],
-['LTI','ZMAT','Altai Airport','Altai,Mongolia'],
-['LTK','OSLK','Bassel Al-Assad International Airport','Latakia,Syria'],
-['LTL','FOOR','Lastourville Airport','Lastoursville,Gabon'],
-['LTM','SYLT','Lethem Airport','Lethem,Guyana'],
-['LTN','EGGW','Luton Airport','London,England,United Kingdom'],
-['LTO','MMLT','Loreto International Airport','Loreto,Baja California Sur,Mexico'],
-
-['LTQ','LFAT','Le Touquet - Cote dOpale Airport','Le Touquet-Paris-Plage,Nord-Pas-de-Calais,France'],
-['LTR','EILT','Letterkenny Airfield','Letterkenny,Ireland'],
-
-['LTT','LFTZ','La Mole - Saint-Tropez Airport','Saint-Tropez,Provence-Alpes-Cote dAzur,France'],
-['LTU','VALT','Latur Airport','Latur,Maharashtra,India'],
-
-
-
-['LUA','VNLK','Tenzing-Hillary Airport','Lukla,Nepal'],
-['LUB','SYLP','Lumid Pau Airport','Lumid Pau,Guyana'],
-['LUC','NFNH','Laucala Airport','Laucala Island,Fiji'],
-['LUD','FYLZ','Luderitz Airport','Luderitz,Namibia'],
-['LUE','LZLU','Bokovce Airport','Luenec,Slovakia'],
-
-['LUG','LSZA','Lugano Airport','Lugano,Switzerland'],
-['LUH','VILD','Sahnewal Airport ','Ludhiana,Punjab,India'],
-
-
-['LUL','KLUL','Hesler-Noble Field','Laurel,Mississippi,United States'],
-
-['LUN','FLLS','Kenneth Kaunda International Airport','Lusaka,Zambia'],
-
-['LUP','PHLU','Kalaupapa Airport','Kalaupapa,Hawaii,United States'],
-['LUQ','SAOU','Brigadier Mayor Cesar Raul Ojeda Airport','San Luis,San Luis,Argentina'],
-['LUR','PALU','Cape Lisburne LRRS Airport','Cape Lisburne,Alaska,United States'],
-
-
-
-['LUV','WAPL','Dumatubun Airport','Langgur,Indonesia'],
-['LUW','WAMW','Syukuran Aminuddin Amir Airport','Luwuk,Indonesia'],
-['LUX','ELLX','Luxembourg Findel Airport','Luxembourg,Luxembourg'],
-['LUZ','EPLB','Lublin Airport','Lublin,Poland'],
-['LVA','LFOV','Laval Entrammes Airport','Laval,Pays de la Loire,France'],
-['LVB','SSLI','Galpoes Airport','Santana do Livramento,Rio Grande do Sul,Brazil'],
-
-['LVI','FLLI','Harry Mwanga Nkumbula International Airport','Livingstone,Zambia'],
-
-
-['LVM','KLVM','Mission Field','Livingston,Montana,United States'],
-
-
-
-
-
-['LWB','KLWB','Greenbrier Valley Airport','Lewisburg,West Virginia,United States'],
-
-['LWE','WATW','Wonopito Airport','Lewoleba,Indonesia'],
-
-
-['LWK','EGET','Tingwall Airport ','Lerwick,Scotland,United Kingdom'],
-
-
-['LWN','UDSG','Shirak Airport','Gyumri,Armenia'],
-
-['LWR','EHLW','Leeuwarden Air Base','Leeuwarden,Netherlands'],
-['LWS','KLWS','Lewiston-Nez Perce County Airport','Lewiston,Idaho,United States'],
-
-['LWV','KLWV','Lawrenceville-Vincennes International Airport','Lawrenceville,Illinois,United States'],
-['LWY','WBGW','Lawas Airport','Lawas,Sarawak,Malaysia'],
-
-['LXG','VLLN','Louangnamtha Airport','Luang Namtha,Laos'],
-['LXN','KLXN','Jim Kelly Field','Lexington,Nebraska,United States'],
-['LXR','HELX','Luxor International Airport','Luxor,Egypt'],
-['LXS','LGLM','Lemnos International Airport','Lemnos ,Greece'],
-['LXU','FLLK','Lukulu Airport','Lukulu,Zambia'],
-['LXV','KLXV','Lake County Airport','Leadville,Colorado,United States'],
-
-['LYB','MWCL','Edward Bodden Airfield','Little Cayman,British Overseas Territory of Cayman Islands'],
-['LYC','ESNL','Lycksele Airport','Lycksele,Sweden'],
-['LYE','EGDL','RAF Lyneham','Lyneham,England,United Kingdom'],
-
-
-
-['LYN','LFLY','Lyon-Bron Airport','Lyon,Rhone-Alpes,France'],
-
-
-['LYR','ENSB','Svalbard Airport,Longyear','Longyearbyen,Svalbard,Norway'],
-['LYS','LFLL','Lyon-Saint-Exupery Airport','Lyon,Rhone-Alpes,France'],
-
-
-['LYX','EGMD','Lydd Airport ','Lydd,England,United Kingdom'],
-
-['LZC','MMLC','Lazaro Cardenas Airport','Lazaro Cardenas,Michoacan,Mexico'],
-
-
-
-['LZN','RCFG','Matsu Nangan Airport','Nangan,Taiwan'],
-
-
-['LZU','KLZU','Gwinnett County Airport[2] ','LaGrange,Georgia,United States'],
-
-['MAA','VOMM','Chennai International Airport','Chennai,Tamil Nadu,India'],
-
-['MAC','KMAC','Macon Downtown Airport','Macon,Georgia,United States'],
-['MAD','LEMD','Adolfo Suarez Madrid-Barajas Airport','Madrid,Spain'],
-
-['MAF','KMAF','Midland International Air and Space Port','Midland,Texas,United States'],
-['MAG','AYMD','Madang Airport','Madang,Papua New Guinea'],
-['MAH','LEMH','Menorca Airport ','Menorca,Balearic Islands,Spain'],
-['MAI','FWMG','Mangochi Airport','Mangochi,Malawi'],
-['MAJ','PKMJ','Marshall Islands International Airport ','Majuro,Marshall Islands'],
-
-['MAL','WAPE','Mangole Airport','Mangole Island,Indonesia'],
-['MAM','MMMA','General Servando Canales International Airport','Matamoros,Tamaulipas,Mexico'],
-['MAN','EGCC','Manchester Airport','Manchester,England,United Kingdom'],
-
-
-['MAQ','VTPM','Mae Sot Airport','Mae Sot,Thailand'],
-['MAR','SVMC','La Chinita International Airport','Maracaibo,Venezuela'],
-['MAS','AYMO','Momote Airport','Manus Island,Papua New Guinea'],
-
-['MAU','NTTP','Maupiti Airport','Maupiti,Leeward Islands,French Polynesia'],
-
-['MAX','GOSM','Ouro Sogui Airport','Matam,Senegal'],
-['MAY','MYAB','Clarence A. Bain Airport','Mangrove Cay,Andros Island,Bahamas'],
-['MAZ','TJMZ','Eugenio Maria de Hostos Airport','Mayaguez,Puerto Rico,United States'],
-['MBA','HKMO','Moi International Airport','Mombasa,Kenya'],
-
-['MBC','FOGG','Mbigou Airport','Mbigou,Gabon'],
-['MBD','FAMM','Mahikeng Airport ','Mmabatho,South Africa'],
-['MBE','RJEB','Monbetsu Airport','Monbetsu,Hokkaido,Hokkaido,Japan'],
-
-
-
-['MBI','HTMB','Mbeya Airport','Mbeya,Tanzania'],
-['MBJ','MKJS','Sangster International Airport','Montego Bay,Jamaica'],
-['MBL','KMBL','Manistee County Blacker Airport','Manistee,Michigan,United States'],
-
-
-['MBO','RPUM','Mamburao Airport','Mamburao,Philippines'],
-['MBP','SPBB','Moyobamba Airport','Moyobamba,Peru'],
-['MBQ','HUMA','Mbarara Airport','Mbarara,Uganda'],
-
-['MBS','KMBS','MBS International Airport','Saginaw Midland Bay City,Michigan,United States'],
-['MBT','RPVJ','Moises R. Espinosa Airport ','Masbate,Philippines'],
-['MBU','AGGD','Mbambanakira Airport','Mbambanakira,Solomon Islands'],
-
-
-['MBX','LJMB','Maribor Edvard Rusjan Airport','Maribor,Slovenia'],
-['MBY','KMBY','Omar N. Bradley Airport','Moberly,Missouri,United States'],
-
-['MCA','GUMA','Macenta Airport','Macenta,Guinea'],
-['MCB','KMCB','McComb-Pike County Airport ','McComb,Mississippi,United States'],
-['MCC','KMCC','McClellan Airfield','Sacramento,California,United States'],
-['MCD','KMCD','Mackinac Island Airport','Mackinac Island,Michigan,United States'],
-
-['MCG','PAMC','McGrath Airport','McGrath,Alaska,United States'],
-['MCH','SEMH','General Manuel Serrano Airport','Machala,Ecuador'],
-['MCI','KMCI','Kansas City International Airport','Kansas City,Missouri,United States'],
-['MCJ','SKLM','Jorge Isaacs Airport ','Maicao,Colombia'],
-['MCL','PAIN','McKinley National Park Airport ','McKinley Park,Alaska,United States'],
-['MCO','KMCO','Orlando International Airport','Orlando,Florida,United States'],
-
-['MCQ','LHMC','Miskolc Airport','Miskolc,Hungary'],
-['MCS','SARM','Monte Caseros Airport','Monte Caseros,Corrientes,Argentina'],
-['MCT','OOMS','Muscat International Airport','Muscat,Oman'],
-['MCU','LFBK','Montlucon - Gueret Airport','Montlucon,Auvergne,France'],
-
-
-
-
-
-
-['MDC','WAMM','Sam Ratulangi International Airport','Manado,Indonesia'],
-['MDD','KMDD','Midland Airpark','Midland,Texas,United States'],
-['MDE','SKRG','Jose Maria Cordova International Airport','Medellin,Colombia'],
-['MDF','KMDZ','Taylor County Airport','Medford,Wisconsin,United States'],
-
-['MDH','KMDH','Southern Illinois Airport','Carbondale Murphysboro,Illinois,United States'],
-
-
-
-['MDL','VYMD','Mandalay International Airport','Mandalay,Myanmar'],
-
-
-['MDO','PAMD','Middleton Island Airport','Middleton Island,Alaska,United States'],
-['MDP','WAKD','Mindiptana Airport','Mindiptana,Indonesia'],
-['MDQ','SAZM','Astor Piazzolla International Airport','Mar del Plata,Buenos Aires,Argentina'],
-['MDS','MBMC','Middle Caicos Airport','Middle Caicos,British Overseas Territory'],
-
-['MDT','KMDT','Harrisburg International Airport','Harrisburg,Pennsylvania,United States'],
-['MDU','AYMN','Mendi Airport','Mendi,Papua New Guinea'],
-
-['MDW','KMDW','Midway International Airport','Chicago,Illinois,United States'],
-['MDX','SATM','Mercedes Airport','Mercedes,Corrientes,Argentina'],
-['MDY','PMDY','Henderson Field','Sand Island,Midway Atoll,United States'],
-['MDZ','SAME','Gov. Francisco Gabrielli International Airport ','Mendoza,Mendoza,Argentina'],
-
-
-['MEC','SEMT','Eloy Alfaro International Airport','Manta,Ecuador'],
-
-['MEE','NWWR','Mare Airport','Mare,Loyalty Islands,New Caledonia'],
-
-
-['MEH','ENMH','Mehamn Airport','Mehamn,Norway'],
-['MEJ','KGKJ','Port Meadville Airport ','Meadville,Pennsylvania,United States'],
-['MEK','GMFM','Bassatine Air Base[1]','Meknes,Morocco'],
-
-['MEM','KMEM','Memphis International Airport','Memphis,Tennessee,United States'],
-['MEN','LFNB','Brenoux Airport','Mende,Languedoc-Roussillon,France'],
-['MEP','WMAU','Mersing Airport','Mersing,Johor,Malaysia'],
-['MEQ','WITC','Cut Nyak Dhien Airport','Meulaboh,Indonesia'],
-['MER','KMER','Castle Airport','Merced,California,United States'],
-
-
-
-['MEV','KMEV','Minden-Tahoe Airport','Minden,Nevada,United States'],
-
-['MEX','MMMX','Mexico City International Airport','Mexico City,Mexico'],
-['MEY','VNMG','Meghauli Airport','Meghauli,Nepal'],
-['MEZ','FAMS','Messina Airport','Messina,South Africa'],
-['MFA','HTMA','Mafia Airport','Mafia Island,Tanzania'],
-
-['MFC','FXMF','Mafeteng Airport','Mafeteng,Lesotho'],
-['MFE','KMFE','McAllen Miller International Airport','McAllen,Texas,United States'],
-['MFF','FOOD','Moanda Airport','Moanda,Gabon'],
-
-
-
-['MFJ','NFMO','Moala Airport','Moala Island,Fiji'],
-['MFK','RCMT','Matsu Beigan Airport[1]','Beigan,Taiwan'],
-
-['MFM','VMMC','Macau International Airport','Macau'],
-['MFN','NZMF','Milford Sound Airport','Milford Sound,New Zealand'],
-
-
-['MFQ','DRRM','Maradi Airport','Maradi,Niger'],
-['MFR','KMFR','Rogue Valley International-Medford Airport','Medford,Oregon,United States'],
-['MFS','SKMF','Miraflores Airport','Miraflores,Colombia'],
-['MFU','FLMF','Mfuwe Airport','Mfuwe,Zambia'],
-['MFV','KMFV','Accomack County Airport','Melfa,Virginia,United States'],
-
-['MFX','LFKX','Meribel Altiport','Meribel,Rhone-Alpes,France'],
-
-
-['MGA','MNMG','Augusto C. Sandino International Airport','Managua,Nicaragua'],
-
-
-['MGD','SLMG','Magdalena Airport','Magdalena,Bolivia'],
-['MGE','KMGE','Dobbins Air Reserve Base','Marietta,Georgia,United States'],
-
-['MGH','FAMG','Margate Airport','Margate,South Africa'],
-
-['MGJ','KMGJ','Orange County Airport','Montgomery,New York,United States'],
-['MGK','VYMT','Mong Ton Airport','Mong Ton,Myanmar'],
-['MGL','EDLN','Dusseldorf MÃ¶nchengladbach Airport','MÃ¶nchengladbach,North Rhine-Westphalia,Germany'],
-
-
-
-
-['MGS','NCMG','Mangaia Airport','Mangaia Island,Cook Islands'],
-
-['MGU','VYMN','Manaung Airport[1]','Manaung,Myanmar'],
-
-
-['MGX','FOGI','Moabi Airport','Moabi,Gabon'],
-['MGY','KMGY','Dayton-Wright Brothers Airport','Dayton,Ohio,United States'],
-['MGZ','VYME','Myeik Airport','Myeik,Myanmar'],
-['MHA','SYMD','Mahdia Airport','Mahdia,Guyana'],
-['MHC','SCPQ','Mocopulli Airport','Castro,Chile'],
-
-
-
-['MHG','EDFM','Mannheim City Airport','Mannheim,Baden-Wurttemberg,Germany'],
-['MHH','MYAM','Marsh Harbour Airport','Marsh Harbour,Abaco Islands,Bahamas'],
-['MHI','HDMO','Moucha Airport','Moucha Island,Djibouti'],
-
-['MHN','KMHN','Hooker County Airport','Mullen,Nebraska,United States'],
-
-['MHP','UMMM','Minsk-1 Airport','Minsk,Belarus'],
-['MHQ','EFMA','Mariehamn Airport','Mariehamn,Ã…land Islands,Finland'],
-['MHR','KMHR','Sacramento Mather Airport','Sacramento,California,United States'],
-
-
-['MHV','KMHV','Mojave Air and Space Port','Mojave,California,United States'],
-['MHW','SLAG','Monteagudo Airport[1]','Monteagudo,Bolivia'],
-['MHX','NCMH','Manihiki Island Airport','Manihiki,Cook Islands'],
-
-['MHZ','EGUN','RAF Mildenhall','Mildenhall,England,United Kingdom'],
-['MIA','KMIA','Miami International Airport','Miami,Florida,United States'],
-
-['MIC','KMIC','Crystal Airport','Minneapolis St Paul,Minnesota,United States'],
-['MID','MMMD','Manuel Crescencio Rejon International Airport','Merida,Yucatan,Mexico'],
-
-
-
-
-['MIJ','MLIP','Mili Airport ','Mili Atoll,Marshall Islands'],
-['MIK','EFMI','Mikkeli Airport','Mikkeli,Finland'],
-
-
-
-
-['MIP','LLMR','Mitzpe Ramon Airport','Mitzpe Ramon,Israel'],
-['MIQ','KMLE','Millard Airport ','Omaha,Nebraska,United States'],
-['MIR','DTMB','Monastir Habib Bourguiba International Airport','Monastir,Tunisia'],
-['MIS','AYMS','Misima Island Airport','Misima Island,Papua New Guinea'],
-['MIT','KMIT','Shafter Airport ','Shafter,California,United States'],
-
-
-
-
-
-
-['MJA','FMSJ','Manja Airport','Manja,Madagascar'],
-
-['MJC','DIMN','Man Airport','Man,Ivory Coast'],
-
-
-['MJF','ENMS','Mosjoen Airport,Kjaerstad','Mosjoen,Norway'],
-
-
-
-['MJL','FOGM','Mouila Airport','Mouila,Gabon'],
-
-['MJN','FMNM','Amborovy Airport ','Mahajanga,Madagascar'],
-['MJO','FYME','Mount Etjo Airport[1]','Mount Etjo,Namibia'],
-
-
-
-
-['MJT','LGMT','Mytilene International Airport','Mytilene,Lesbos,Greece'],
-['MJU','WAAJ','Tampa Padang Airport','Mamuju,Indonesia'],
-['MJV','LELC','Murcia-San Javier Airport','Murcia,Region of Murcia,Spain'],
-
-['MJX','KMJX','Robert J. Miller Air Park ','Toms River,New Jersey,United States'],
-
-['MKA','LKMR','Marianske Lazn Airport','Marianske Lazn,Czech Republic'],
-['MKB','FOOE','Mekambo Airport','Mekambo,Gabon'],
-['MKC','KMKC','Charles B. Wheeler Downtown Airport','Kansas City,Missouri,United States'],
-['MKE','KMKE','General Mitchell International Airport','Milwaukee,Wisconsin,United States'],
-['MKG','KMKG','Muskegon County Airport','Muskegon,Michigan,United States'],
-['MKH','FXMK','Mokhotlong Airport','Mokhotlong,Lesotho'],
-['MKI','FEGE','MBoki Airport','Obo,Central African Republic'],
-
-['MKK','PHMK','Molokai Airport','Kaunakakai,Hawaii,United States'],
-['MKM','WBGK','Mukah Airport','Mukah,Sarawak,Malaysia'],
-
-['MKO','KMKO','Davis Field','Muskogee,Oklahoma,United States'],
-['MKP','NTGM','Makemo Airport','Makemo,French Polynesia'],
-['MKQ','WAKK','Mopah Airport','Merauke,Indonesia'],
-
-
-['MKU','FOOK','Makokou Airport','Makokou,Gabon'],
-
-['MKW','WASR','Rendani Airport','Manokwari,Indonesia'],
-
-['MKZ','WMKM','Malacca International Airport','Malacca City,Malacca,Malaysia'],
-['MLA','LMML','Malta International Airport ','Luqa,Malta'],
-['MLB','KMLB','Orlando Melbourne International Airport','Melbourne,Florida,United States'],
-['MLD','KMLD','Malad City Airport','Malad City,Idaho,United States'],
-['MLE','VRMM','Ibrahim Nasir International Airport','Male,Maldives'],
-
-['MLG','WARA','Abdul Rachman Saleh Airport','Malang,Indonesia'],
-['MLH','LFSB','EuroAirport Basel Mulhouse Freiburg','Mulhouse,Alsace,France'],
-['MLI','KMLI','Quad City International Airport','Moline,Illinois,United States'],
-['MLJ','KMLJ','Baldwin County Airport','Milledgeville,Georgia,United States'],
-
-['MLL','PADM','Marshall Don Hunter Sr. Airport ','Marshall,Alaska,United States'],
-['MLM','MMMM','General Francisco J. Mujica International Airport','Morelia,Michoacan,Mexico'],
-['MLN','GEML','Melilla Airport','Melilla,Spain'],
-['MLO','LGML','Milos Island National Airport','Milos,Greece'],
-['MLP','RPMM','Malabang Airport','Malabang,Philippines'],
-
-
-['MLS','KMLS','Miles City Airport ','Miles City,Montana,United States'],
-
-
-['MLW','GLMR','Spriggs Payne Airport','Monrovia,Liberia'],
-['MLX','LTAT','Malatya Erhac Airport','Malatya,Turkey'],
-['MLY','PAML','Manley Hot Springs Airport','Manley Hot Springs,Alaska,United States'],
-['MLZ','SUMO','Cerro Largo International Airport','Melo,Uruguay'],
-
-['MMB','RJCM','Memanbetsu Airport','zora,Hokkaido,Japan'],
-['MMC','MMDM','Ciudad Mante National Airport','Ciudad Mante,Tamaulipas,Mexico'],
-['MMD','ROMD','Minami-Daito Airport','Minamidait,Dait Islands,Japan'],
-['MME','EGNV','Durham Tees Valley Airport','Teesside,England,United Kingdom'],
-
-
-['MMH','KMMH','Mammoth Yosemite Airport','Mammoth Lakes,California,United States'],
-['MMI','KMMI','McMinn County Airport','Athens,Tennessee,United States'],
-['MMJ','RJAF','Matsumoto Airport','Matsumoto,Honshu,Japan'],
-
-
-
-['MMO','GVMA','Maio Airport','Maio Island,Cape Verde'],
-['MMP','SKMP','San Bernardo Airport','Mompos ,Colombia'],
-['MMQ','FLBA','Mbala Airport','Mbala,Zambia'],
-['MMS','KMMS','Selfs Airport','Marks,Mississippi,United States'],
-['MMT','KMMT','McEntire Joint National Guard Base','Columbia,South Carolina,United States'],
-
-
-
-['MMX','ESMS','MalmÃ¶ Airport','MalmÃ¶,Sweden'],
-['MMY','ROMY','Miyako Airport','Miyakojima,Miyako Islands,Japan'],
-
-['MNA','WAMN','Melangguane Airport','Melonguane,Indonesia'],
-
-['MNC','FQNC','Nacala Airport','Nacala,Mozambique'],
-
-
-['MNF','NFMA','Mana Island Airport','Mana Island,Fiji'],
-
-
-['MNI','TRPG','John A. Osborne Airport','British Overseas Territory of Montserrat'],
-['MNJ','FMSM','Mananjary Airport','Mananjary,Madagascar'],
-['MNK','NGMA','Maiana Airport','Maiana,Kiribati'],
-['MNL','RPLL','Ninoy Aquino International Airport Villamor Air Base','Manila,Philippines'],
-['MNM','KMNM','Menominee-Marinette Twin County Airport','Menominee,Michigan,United States'],
-
-
-
-
-['MNR','FLMG','Mongu Airport','Mongu,Zambia'],
-['MNS','FLMA','Mansa Airport','Mansa,Zambia'],
-
-['MNU','VYMM','Mawlamyaing Airport','Mawlamyine ,Myanmar'],
-
-
-
-['MNY','AGGO','Mono Airport','Mono Island,Treasury Islands,Solomon Islands'],
-['MOA','MUMO','Orestes Acosta Airport','Moa,Cuba'],
-
-['MOD','KMOD','Modesto City-County Airport ','Modesto,California,United States'],
-['MOE','VYMO','Momeik Airport','Momeik,Myanmar'],
-['MOF','WATC','Frans Seda Airport ','Maumere,Indonesia'],
-['MOG','VYMS','Monghsat Airport','Mong Hsat ,Myanmar'],
-['MOI','NCMR','Mitiaro Airport ','Mitiaro Island,Cook Islands'],
-['MOJ','MEMO','Moengo Airstrip','Moengo,Suriname'],
-['MOL','ENML','Molde Airport,Ã…ro','Molde,Norway'],
-
-['MON','NZMC','Mount Cook Aerodrome','Mount Cook,New Zealand'],
-
-
-['MOQ','FMMV','Morondava Airport[1]','Morondava,Madagascar'],
-
-['MOT','KMOT','Minot International Airport','Minot,North Dakota,United States'],
-['MOU','PAMO','Mountain Village Airport','Mountain Village,Alaska,United States'],
-
-
-
-
-['MOZ','NTTM','Moorea Airport ','Moorea,Windward Islands,French Polynesia'],
-['MPA','FYKM','Katima Mulilo Airport ','Katima Mulilo,Namibia'],
-
-['MPC','WIPU','Muko-Muko Airport','Muko-Muko,Indonesia'],
-
-
-
-['MPH','RPVE','Godofredo P. Ramos Airport ','Malay,Philippines'],
-
-['MPJ','KMPJ','Petit Jean Park Airport','Morrilton,Arkansas,United States'],
-['MPL','LFMT','Montpellier-Mediterranee Airport ','Montpellier,Languedoc-Roussillon,France'],
-['MPM','FQMA','Maputo International Airport','Maputo,Mozambique'],
-['MPN','EGYP','RAF Mount Pleasant','British Overseas Territory of Falkland Islands'],
-
-
-['MPQ','OJMN','Maan Airport','Maan,Jordan'],
-['MPR','KMPR','McPherson Airport','McPherson,Kansas,United States'],
-['MPT','WPMN','Maliana Airport','Maliana,East Timor'],
-
-['MPV','KMPV','Edward F. Knapp State Airport','Barre Montpelier,Vermont,United States'],
-
-
-['MPY','SOOA','Maripasoula Airport','Maripasoula,French Guiana'],
-
-
-
-['MQC','LFVM','Miquelon Airport','Miquelon,Saint Pierre and Miquelon'],
-['MQD','SAVQ','Maquinchao Airport','Maquinchao,Rio Negro,Argentina'],
-
-
-['MQG','FYMG','Midgard Airport[1]','Midgard,Namibia'],
-
-
-['MQK','SLTI','San Matias Airport[1]','San Matias,Bolivia'],
-
-['MQM','LTCR','Mardin Airport','Mardin,Turkey'],
-['MQN','ENRA','Mo i Rana Airport,Rossvoll','Mo i Rana,Norway'],
-
-['MQP','FAKN','Kruger Mpumalanga International Airport','Nelspruit,South Africa'],
-
-
-['MQS','TVSM','Mustique Airport','Mustique Island,Saint Vincent and the Grenadines'],
-['MQT','KSAW','Sawyer International Airport ','Marquette,Michigan,United States'],
-['MQU','SKQU','Mariquita Airport','Mariquita,Colombia'],
-
-['MQW','KMQW','Telfair-Wheeler Airport','McRae,Georgia,United States'],
-
-['MQY','KMQY','Smyrna Airport','Smyrna,Tennessee,United States'],
-
-
-['MRC','KMRC','Maury County Airport','Columbia Mount Pleasant,Tennessee,United States'],
-['MRD','SVMD','Alberto Carnevalli Airport','Merida,Venezuela'],
-
-
-
-
-['MRI','PAMR','Merrill Field','Anchorage,Alaska,United States'],
-['MRJ','MHMA','Marcala Airport','Marcala,Honduras'],
-['MRK','KMKY','Marco Island Airport ','Marco Island,Florida,United States'],
-
-['MRM','AYMA','Manari Airport','Manari,Papua New Guinea'],
-['MRO','NZMS','Hood Aerodrome','Masterton,New Zealand'],
-
-['MRQ','RPUW','Marinduque Airport','Marinduque Island,Philippines'],
-['MRR','SEMA','Jose Maria Velasco Ibarra Airport','Macara,Ecuador'],
-['MRS','LFML','Marseille Provence Airport','Marseille,Provence-Alpes-Cote dAzur,France'],
-
-['MRU','FIMP','Sir Seewoosagur Ramgoolam International Airport','Plaine Magnien,Mauritius'],
-
-['MRW','EKMB','Lolland Falster Airport','Maribo,Denmark'],
-
-
-['MSA','CZMD','Muskrat Dam Airport','Muskrat Dam,Ontario,Canada'],
-['MSC','KFFZ','Falcon Field Airport ','Phoenix,Arizona,United States'],
-
-['MSE','EGMH','Manston Airport ','Manston,England,United Kingdom'],
-
-['MSG','FXMA','Matsaile Airport[1]','Matsaile,Lesotho'],
-['MSH','OOMA','Masirah Air Base','Masirah Island,Oman'],
-
-['MSJ','RJSM','Misawa Air Base','Misawa,Honshu,Japan'],
-
-['MSO','KMSO','Missoula International Airport','Missoula,Montana,United States'],
-['MSP','KMSP','Minneapolis-Saint Paul International Airport ','Minneapolis St Paul,Minnesota,United States'],
-['MSQ','UMMS','Minsk National Airport','Minsk,Belarus'],
-['MSR','LTCK','Mu Airport','Mu,Turkey'],
-['MSS','KMSS','Massena International Airport ','Massena,New York,United States'],
-['MST','EHBK','Maastricht Aachen Airport','Maastricht,Netherlands'],
-['MSU','FXMM','Moshoeshoe I International Airport','Maseru,Lesotho'],
-['MSV','KMSV','Sullivan County International Airport','Monticello,New York,United States'],
-['MSW','HHMS','Massawa International Airport','Massawa,Eritrea'],
-
-['MSY','KMSY','Louis Armstrong New Orleans International Airport','New Orleans,Louisiana,United States'],
-
-['MTA','NZMA','Matamata Airport','Matamata,New Zealand'],
-['MTB','SKML','Montelibano Airport','Montelibano,Colombia'],
-
-
-
-
-
-
-['MTI','GVMT','Mosteiros Airport','Mosteiros,Cape Verde'],
-['MTK','NGMN','Makin Airport','Makin Island ,Kiribati'],
-
-
-
-
-
-
-['MTR','SKMR','Los Garzones Airport','Monteria,Colombia'],
-['MTS','FDMS','Matsapha Airport','Manzini,Swaziland'],
-['MTT','MMMT','Minatitlan Coatzacoalcos International Airport','Minatitlan,Veracruz,Mexico'],
-
-['MTV','NVSA','Mota Lava Airport','Mota Lava,Vanuatu'],
-
-
-['MTY','MMMY','General Mariano Escobedo International Airport','Monterrey,Nuevo Leon,Mexico'],
-['MTZ','LLMZ','Bar Yehuda Airfield ','Masada,Israel'],
-['MUA','AGGM','Munda Airport','Munda,New Georgia,Solomon Islands'],
-['MUB','FBMN','Maun Airport','Maun,Botswana'],
-['MUC','EDDM','Munich Airport','Munich,Bavaria,Germany'],
-['MUD','FQMD','Mueda Airport','Mueda,Mozambique'],
-['MUE','PHMU','Waimea-Kohala Airport','Kamuela,Hawaii,United States'],
-
-['MUG','MMMG','Mulege Airstrip','Mulege,Baja California Sur,Mexico'],
-['MUH','HEMM','Marsa Matruh International Airport','Mersa Matruh,Egypt'],
-
-['MUK','NCMK','Mauke Airport','Mauke Island,Cook Islands'],
-
-['MUN','SVMT','Jose Tadeo Monagas International Airport','Maturin,Venezuela'],
-
-
-
-['MUR','WBGM','Marudi Airport','Marudi,Sarawak,Malaysia'],
-['MUS','RJAM','Minami Torishima Airport','Minami-Tori-shima,Japan'],
-
-
-
-
-['MUZ','HTMU','Musoma Airport','Musoma,Tanzania'],
-['MVA','BIRL','Myvatn Airport','Myvatn,Iceland'],
-['MVB','FOON','MVengue El Hadj Omar Bongo Ondimba International Airport','Franceville,Gabon'],
-
-['MVD','SUMU','Carrasco Gral. Cesareo L. Berisso International Airport','Montevideo,Uruguay'],
-
-
-
-
-
-
-
-
-
-
-['MVP','SKMU','Fabio Alberto Leon Bentley Airport','Mitu,Colombia'],
-['MVQ','UMOO','Mogilev Airport','Mogilev,Belarus'],
-
-
-['MVT','NTGV','Mataiva Airport','Mataiva,Tuamotus,French Polynesia'],
-
-['MVV','LFHM','Megeve Altiport','Megeve,Rhone-Alpes,France'],
-['MVX','FOGV','Minvoul Airport','Minvoul,Gabon'],
-
-
-
-
-
-
-['MWF','NVSN','Maewo-Naone Airport','Maewo,Vanuatu'],
-
-['MWH','KMWH','Grant County International Airport','Moses Lake,Washington,United States'],
-
-['MWJ','SYMR','Matthews Ridge Airport','Matthews Ridge,Guyana'],
-['MWK','WIOM','Matak Airport ','Matak,Indonesia'],
-
-
-['MWN','HTMD','Mwadui Airport[1]','Mwadui,Tanzania'],
-['MWQ','VYMW','Magway Airport','Magway,Myanmar'],
-
-
-
-['MWV','VDMK','Mondulkiri Airport[1]','Senmonorom,Cambodia'],
-['MWX','RKJB','Muan International Airport[1]','Muan,South Korea'],
-
-['MWZ','HTMW','Mwanza Airport','Mwanza,Tanzania'],
-
-['MXB','WAWM','Andi Jemma Airport','Masamba,Indonesia'],
-
-
-
-
-
-['MXH','AYMR','Moro Airport','Moro,Papua New Guinea'],
-['MXI','RPMQ','Mati Airport ','Mati,Philippines'],
-
-
-['MXL','MMML','General Rodolfo Sanchez Taboada International Airport','Mexicali,Baja California,Mexico'],
-['MXM','FMSR','Morombe Airport','Morombe,Madagascar'],
-['MXN','LFRU','Morlaix - Ploujean Airport','Morlaix,Brittany,France'],
-['MXP','LIMC','Milan-Malpensa Airport','Milan,Lombardy,Italy'],
-
-['MXS','NSMA','Maota Airport','Maota,Samoa'],
-['MXT','FMMO','Maintirano Airport','Maintirano,Madagascar'],
-
-['MXV','ZMMN','MÃ¶rÃ¶n Airport','MÃ¶rÃ¶n,Mongolia'],
-['MXW','ZMMG','Mandalgovi Airport','Mandalgovi,Mongolia'],
-['MXX','ESKM','Mora-Siljan Airport','Mora,Sweden'],
-
-
-
-['MYB','FOOY','Mayumba Airport','Mayumba,Gabon'],
-['MYC','SVBS','Mariscal Sucre Airport[1]','Maracay,Venezuela'],
-['MYD','HKML','Malindi Airport','Malindi,Kenya'],
-['MYE','RJTQ','Miyakejima Airport','Miyake-jima,Japan'],
-
-['MYG','MYMM','Mayaguana Airport ','Mayaguana,Bahamas'],
-
-
-['MYJ','RJOM','Matsuyama Airport','Matsuyama,Shikoku,Japan'],
-
-
-['MYM','SYMM','Monkey Mountain Airport','Monkey Mountain,Guyana'],
-
-
-
-['MYQ','VOMY','Mysore Airport ','Mysore,Karnataka,India'],
-['MYR','KMYR','Myrtle Beach International Airport','Myrtle Beach,South Carolina,United States'],
-['MYT','VYMK','Myitkyina Airport','Myitkyina,Myanmar'],
-
-
-['MYW','HTMT','Mtwara Airport','Mtwara,Tanzania'],
-
-['MYY','WBGR','Miri Airport','Miri,Sarawak,Malaysia'],
-['MYZ','FWMY','Monkey Bay Airport','Monkey Bay,Malawi'],
-['MZA','SPMF','Manuel Prado Ugarteche Airport[1]','Mazamari,Peru'],
-['MZB','FQMP','Mocimboa da Praia Airport','Mocimboa da Praia,Mozambique'],
-['MZC','FOOM','Mitzic Airport','Mitzic,Gabon'],
-
-
-['MZF','FAMW','Wild Coast Sun Airport','Mzamba,South Africa'],
-['MZG','RCQC','Magong Airport','Magong,Taiwan'],
-['MZH','LTAP','Amasya Merzifon Airport','Amasya,Turkey'],
-['MZI','GAMB','Mopti Airport ','Mopti,Mali'],
-
-['MZK','NGMK','Marakei Airport','Marakei,Kiribati'],
-['MZL','SKMZ','La Nubia Airport ','Manizales,Colombia'],
-['MZM','LFSF','Metz-Frescaty Air Base','Metz,Lorraine,France'],
-
-['MZO','MUMZ','Sierra Maestra Airport','Manzanillo,Cuba'],
-['MZP','NZMK','Motueka Aerodrome','Motueka,New Zealand'],
-['MZQ','FAMU','Mkuze Airport[1]','Mkuze,South Africa'],
-
-['MZT','MMMZ','General Rafael Buelna International Airport','Mazatlan,Sinaloa,Mexico'],
-['MZU','VEMZ','Muzaffarpur Airport','Muzaffarpur,Bihar,India'],
-['MZV','WBMU','Mulu Airport','Mulu,Sarawak,Malaysia'],
-
-
-['MZY','FAMO','Mossel Bay Airport','Mossel Bay,South Africa'],
-
-
-
-
-['NAE','DBBN','Boundetingou Airport','Natitingou,Benin'],
-
-['NAG','VANP','Dr. Babasaheb Ambedkar International Airport','Nagpur,Maharashtra,India'],
-['NAH','WAMH','Naha Airport','Tahuna,Indonesia'],
-['NAI','SYAN','Annai Airport','Annai,Guyana'],
-
-['NAK','VTUQ','Nakhon Ratchasima Airport','Nakhon Ratchasima,Thailand'],
-
-['NAM','WAPR','Namlea Airport[1]','Namlea,Indonesia'],
-['NAN','NFFN','Nadi International Airport','Nadi,Fiji'],
-
-['NAP','LIRN','Naples International Airport','Naples,Campania,Italy'],
-['NAQ','BGQQ','Qaanaaq Airport[1]','Qaanaaq,Greenland'],
-['NAR','SKPN','Puerto Nare Airport[1]','Puerto Nare,Colombia'],
-['NAS','MYNN','Lynden Pindling International Airport','Nassau,New Providence,Bahamas'],
-
-['NAU','NTGN','Napuka Airport[1]','Napuka,Tuamotus,French Polynesia'],
-['NAV','LTAZ','Nevehir Kapadokya Airport','Nevehir,Turkey'],
-['NAW','VTSC','Narathiwat Airport[1]','Narathiwat,Thailand'],
-
-['NAZ','AGNA','Nana Airport[1]','Star Harbour,Solomon Islands'],
-
-['NBB','SKBM','Barranco Minas Airport[1]','Barranco Minas,Colombia'],
-
-['NBE','DTNH','Enfidha-Hammamet International Airport','Enfidha,Tunisia'],
-['NBG','KNBG','NAS JRB New Orleans ','New Orleans,Louisiana,United States'],
-
-['NBL','MPWN','Wannukandi Airport[1]','San Blas,Panama'],
-['NBN','FGAB','Annobon Airport','Annobon,Equatorial Guinea'],
-['NBO','HKJK','Jomo Kenyatta International Airport','Nairobi,Kenya'],
-
-['NBW','KNBW','Guantanamo Bay Naval Base','Guantanamo Bay,Cuba'],
-['NBX','WABI','Nabire Airport','Nabire,Indonesia'],
-['NCA','MBNC','North Caicos Airport','North Caicos,British Overseas Territory'],
-
-['NCE','LFMN','Nice Cote dAzur Airport','Nice,Provence-Alpes-Cote dAzur,France'],
-['NCG','MMCG','Nuevo Casas Grandes Municipal Airport','Nuevo Casas Grandes,Chihuahua,Mexico'],
-['NCH','HTNA','Nachingwea Airport[1]','Nachingwea,Tanzania'],
-['NCI','SKNC','Antioquia Airport[1]','Necocli,Colombia'],
-['NCJ','SAFS','Sunchales Airport[1]','Sunchales,Santa Fe,Argentina'],
-['NCL','EGNT','Newcastle Airport','Newcastle upon Tyne,England,United Kingdom'],
-
-
-['NCR','MNSC','San Carlos Airport[1]','San Carlos,Nicaragua'],
-['NCS','FANC','Newcastle Airport[1]','Newcastle,South Africa'],
-['NCT','MRNC','Nicoya Guanacaste Airport[1]','Nicoya,Costa Rica'],
-
-['NCY','LFLP','Annecy - Haute-Savoie - Mont Blanc Airport','Annecy,Rhone-Alpes,France'],
-['NDA','WAPC','Bandanaira Airport[1]','Banda Islands,Indonesia'],
-
-['NDC','VAND','Shri Guru Gobind Singh Ji Airport','Nanded,Maharashtra,India'],
-
-['NDE','HKMA','Mandera Airport[1]','Mandera,Kenya'],
-
-
-
-
-
-['NDL','FEFN','NDele Airport[1]','NDele ,Central African Republic'],
-
-
-['NDR','GMMW','Nador International Airport','Nador,Morocco'],
-
-['NDU','FYRU','Rundu Airport','Rundu,Namibia'],
-['NDY','EGES','Sanday Airport','Sanday,Scotland,United Kingdom'],
-
-['NEC','SAZO','Necochea Airport','Necochea,Buenos Aires,Argentina'],
-
-['NEG','MKNG','Negril Aerodrome','Negril,Jamaica'],
-
-
-
-
-
-['NEU','VLSN','Sam Neua Airport[1]','Sam Neua,Laos'],
-['NEV','TKPN','Vance W. Amory International Airport','Nevis,Saint Kitts and Nevis'],
-
-
-
-['NFO','NFTO','Niuafoou Airport','Niuafoou,Tonga'],
-
-
-
-['NGD','TUPA','Auguste George Airport','Anegada,British Overseas Territory of Virgin Islands'],
-
-
-['NGI','NFNG','Gau Airport[1]','Gau Island,Fiji'],
-
-['NGL','FANG','Ngala Airfield[1]','Ngala,South Africa'],
-
-['NGO','RJGG','Chbu Centrair International Airport','Nagoya,Honshu,Japan'],
-
-
-
-['NGS','RJFU','Nagasaki Airport','Nagasaki,Kyushu,Japan'],
-
-
-['NGX','VNMA','Manang Airport[1]','Manang,Nepal'],
-['NHA','VVNT','Nha Trang Air Base[1]','Nha Trang,Vietnam'],
-['NHD','OMDM','Al Minhad Air Base[1]','Dubai,United Arab Emirates'],
-
-
-
-['NHT','EGWU','RAF Northolt','Northolt,England,United Kingdom'],
-['NHV','NTMD','Nuku Hiva Airport[1]','Nuku Hiva,Marquesas Islands,French Polynesia'],
-
-
-['NIA','GLNA','Nimba Airport','Nimba,Liberia'],
-
-['NIC','LCNC','Nicosia International Airport1','Nicosia,Cyprus'],
-
-['NIG','NGNU','Nikunau Airport[1]','Nikunau,Kiribati'],
-
-['NIM','DRRN','Diori Hamani International Airport','Niamey,Niger'],
-
-
-
-
-
-['NIT','LFBN','Niort - Souche Airport[1]','Niort,Poitou-Charentes,France'],
-['NIU','NTKN','Niau Airport[1]','Niau,Tuamotus,French Polynesia'],
-['NIX','GANR','Nioro Airport','Nioro du Sahel,Mali'],
-['NJA','RJTA','Naval Air Facility Atsugi[1]','Atsugi,Honshu,Japan'],
-
-
-
-
-
-
-
-
-
-
-['NKM','RJNA','Nagoya Airfield ','Nagoya,Honshu,Japan'],
-
-
-
-
-['NKT','LTCV','rnak Airport','rnak Cizre,Turkey'],
-['NKU','FXNK','Nkaus Airport[1]','Nkau,Lesotho'],
-
-
-['NLA','FLND','Simon Mwansa Kapwepwe International Airport','Ndola,Zambia'],
-
-['NLD','MMNL','Quetzalcoatl International Airport','Nuevo Laredo,Tamaulipas,Mexico'],
-
-
-
-
-
-
-
-
-
-['NLP','FANS','Nelspruit Airport[1]','Nelspruit,South Africa'],
-
-
-
-
-
-['NMB','VADN','Daman Airport','Daman,Daman and Diu,India'],
-['NMC','MYEN','Normans Cay Airport[1]','Normans Cay,Exuma Islands,Bahamas'],
-
-
-
-
-
-
-['NMS','VYNS','Nansang Airport[1]','Nansang ,Myanmar'],
-['NMT','VYNT','Namtu Airport[1]','Namtu,Myanmar'],
-['NNA','GMMY','Kenitra Air Base','Kenitra,Morocco'],
-['NNB','AGGT','Santa Ana Airport[1]','Santa Ana Island ,Solomon Islands'],
-
-
-['NNI','FYNA','Namutoni Airport[1]','Namutoni,Namibia'],
-
-
-
-['NNR','EICA','Connemara Airport','Spiddal,Ireland'],
-['NNT','VTCN','Nan Nakhon Airport[1]','Nan,Thailand'],
-
-['NNX','WRLF','Nunukan Airport','Nunukan,Indonesia'],
-
-
-['NOB','MRNS','Nosara Airport','Nosara,Costa Rica'],
-['NOC','EIKN','Ireland West Airport Knock','Knock,Ireland'],
-['NOD','EDWS','Norddeich Airport','Norden,Lower Saxony,Germany'],
-['NOG','MMNG','Nogales International Airport','Nogales,Sonora,Mexico'],
-
-
-
-['NOM','ATNR','Nomad River Airport[1]','Nomad River,Papua New Guinea'],
-['NON','NGTO','Nonouti Airport[1]','Nonouti,Kiribati'],
-
-['NOP','LTCM','Sinop Airport','Sinop,Turkey'],
-['NOR','BINF','NorofjÃ¶rour Airport[1]','Nordfjordur,Iceland'],
-['NOS','FMNN','Fascene Airport[1]','Nosy Be,Madagascar'],
-
-['NOU','NWWW','La Tontouta International Airport','Noumea,New Caledonia'],
-
-
-
-['NPE','NZNR','Hawkes Bay Airport','Napier Hastings,New Zealand'],
-
-
-['NPL','NZNP','New Plymouth Airport','New Plymouth,New Zealand'],
-['NPO','WIOG','Nanga Pinoh Airport[1]','Nanga Pinoh,Indonesia'],
-
-
-
-
-
-
-['NQN','SAZN','Presidente Peron International Airport','Neuquen,Neuquen,Argentina'],
-['NQT','EGBN','Nottingham Airport[1]','Nottingham,England,United Kingdom'],
-['NQU','SKNQ','Reyes Murillo Airport','Nuqui,Colombia'],
-
-['NQY','EGDG','Cornwall Airport Newquay','Newquay,England,United Kingdom'],
-
-
-
-['NRD','EDWY','Norderney Airport','Norderney,Lower Saxony,Germany'],
-['NRE','WAPG','Namrole Airport','Namrole,Indonesia'],
-
-['NRK','ESSP','NorrkÃ¶ping Airport','NorrkÃ¶ping,Sweden'],
-['NRL','EGEN','North Ronaldsay Airport[1]','North Ronaldsay,Scotland,United Kingdom'],
-['NRM','GANK','Keibane Airport','Nara,Mali'],
-['NRN','EDLV','Weeze Airport ','Weeze,North Rhine-Westphalia,Germany'],
-
-
-['NRT','RJAA','Narita International Airport','Tokyo,Honshu,Japan'],
-
-
-
-
-
-
-
-
-['NSN','NZNS','Nelson Airport','Nelson,New Zealand'],
-
-['NST','VTSF','Nakhon Si Thammarat Airport','Nakhon Si Thammarat,Thailand'],
-
-['NSY','LICZ','Naval Air Station Sigonella','Catania,Sicily,Italy'],
-
-['NTB','ENNO','Notodden Airport,Tuven','Notodden,Norway'],
-
-
-['NTE','LFRS','Nantes Atlantique Airport','Nantes,Pays de la Loire,France'],
-
-
-
-
-
-
-['NTO','GVAN','Agostinho Neto Airport','Santo Antao,Cape Verde'],
-['NTQ','RJNW','Noto Airport[1]','Wajima,Honshu,Japan'],
-['NTR','MMAN','Del Norte International Airport[1]','Monterrey,Nuevo Leon,Mexico'],
-['NTT','NFTP','Niuatoputapu Airport','Niuatoputapu,Tonga'],
-
-['NTX','WION','Ranai Airport','Natuna Islands,Indonesia'],
-['NTY','FAPN','Pilanesberg International Airport','Sun City,South Africa'],
-
-
-
-['NUE','EDDN','Nuremberg Airport','Nuremberg,Bavaria,Germany'],
-
-
-
-
-
-['NUK','NTGW','Nukutavake Airport','Nukutavake,Tuamotus,French Polynesia'],
-
-
-
-
-
-['NUS','NVSP','Norsup Airport','Norsup,Malakula,Vanuatu'],
-
-['NUU','HKNK','Nakuru Airport[1]','Nakuru,Kenya'],
-
-
-['NVA','SKNV','Benito Salas Airport','Neiva,Colombia'],
-
-['NVG','MNNG','Nueva Guinea Airport[1]','Nueva Guinea,Nicaragua'],
-
-['NVK','ENNK','Narvik Airport,Framnes','Narvik,Norway'],
-
-
-
-['NVS','LFQG','Nevers - Fourchambault Airport[1]','Nevers,Burgundy,France'],
-
-['NVY','VONV','Neyveli Airport','Neyveli,Tamil Nadu,India'],
-['NWA','FMCI','Moheli Bandar Es Eslam Airport[1]','Moheli,Comoros'],
-
-['NWI','EGSH','Norwich International Airport','Norwich,England,United Kingdom'],
-
-
-
-['NYE','HKNI','Nyeri Airport[1]','Nyeri,Kenya'],
-
-['NYI','DGSN','Sunyani Airport','Sunyani,Ghana'],
-['NYK','HKNY','Nanyuki Airport','Nanyuki,Kenya'],
-
-
-['NYO','ESKN','Stockholm Skavsta Airport','Stockholm NykÃ¶ping,Sweden'],
-
-['NYT','VYNT','Naypyidaw Airport','Naypyidaw ,Myanmar'],
-['NYU','VYBG','Nyaung U Airport','Bagan Nyaung-U,Myanmar'],
-['NYW','VYMY','Monywa Airport[1]','Monywa,Myanmar'],
-
-['NZC','SPZA','Maria Reiche Neuman Airport','Nazca,Peru'],
-['NZE','GUNZ','Nzerekore Airport','Nzerekore,Guinea'],
-
-
-
-
-
-
-
-
-['OAK','KOAK','Oakland International Airport','Oakland,California,United States'],
-
-['OAM','NZOU','Oamaru Airport','Oamaru,New Zealand'],
-['OAN','MHEA','El Arrayan Airport[1]','Olanchito,Honduras'],
-
-
-['OAX','MMOX','Xoxocotlan International Airport','Oaxaca de Juarez,Oaxaca,Mexico'],
-
-
-['OBC','HDOB','Obock Airport','Obock,Djibouti'],
-
-
-['OBF','EDMO','Oberpfaffenhofen Airport','Oberpfaffenhofen,Bavaria,Germany'],
-
-['OBL','EBZR','Oostmalle Airfield','Zoersel,Belgium'],
-
-['OBN','EGEO','Oban Airport[1] ','Oban,Scotland,United Kingdom'],
-['OBO','RJCB','Tokachi-Obihiro Airport','Obihiro,Hokkaido,Japan'],
-['OBS','LFHO','Aubenas Aerodrome[1] ','Aubenas,Rhone-Alpes,France'],
-
-['OBX','AYOB','Obo Airport','Obo,Papua New Guinea'],
-
-['OCC','SECO','Francisco de Orellana Airport','Puerto Francisco de Orellana ,Ecuador'],
-['OCF','KOCF','Ocala International Airport ','Ocala,Florida,United States'],
-['OCJ','MKBS','Ian Fleming International Airport','Ocho Rios,Jamaica'],
-
-
-
-['OCV','SKOC','Aguas Claras Airport[1]','Ocana,Colombia'],
-
-['ODA','FEFW','Ouadda Airport[1]','Ouadda,Central African Republic'],
-['ODB','LEBA','Cordoba Airport','Cordoba,Andalusia,Spain'],
-
-
-['ODE','EKOD','Hans Christian Andersen Airport','Odense,Denmark'],
-['ODH','EGVO','RAF Odiham','Odiham,England,United Kingdom'],
-['ODJ','FEGO','Ouanda Djalle Airport[1]','Ouanda Djalle,Central African Republic'],
-
-
-['ODN','WBGI','Long Seridan Airport[1]','Long Seridan,Sarawak,Malaysia'],
-
-
-
-
-['ODY','VLOS','Oudomsay Airport','Muang Xay ,Laos'],
-['OEC','WPOC','Oecusse Airport','Oecussi,East Timor'],
-
-['OEM','SMPA','Vincent Fayks Airport','Paloemeu,Suriname'],
-
-['OER','ESNO','Ã–rnskÃ¶ldsvik Airport','Ã–rnskÃ¶ldsvik,Sweden'],
-['OES','SAVN','Antoine de Saint Exupery Airport','San Antonio Oeste,Rio Negro,Argentina'],
-
-['OFI','DIOF','Ouango Fitini Airport[1]','Ouango Fitini,Ivory Coast'],
-['OFJ','BIOF','olafsfjÃ¶rour Airport[1]','olafsfjÃ¶rour,Iceland'],
-['OFU','NSAS','Ofu Airport ','Ofu Island,American Samoa'],
-
-
-
-
-
-['OGL','SYGO','Ogle Airport','Georgetown,Guyana'],
-
-['OGN','ROYN','Yonaguni Airport','Yonaguni,Yaeyama Islands,Japan'],
-['OGO','DIAU','Abengourou Airport[1]','Abengourou,Ivory Coast'],
-
-['OGS','KOGS','Ogdensburg International Airport','Ogdensburg,New York,United States'],
-['OGU','LTCB','Ordu-Giresun Airport','Ordu Giresun,Turkey'],
-['OGV','FYNG','Ongava Airstrip[1]','Ongava,Namibia'],
-
-
-['OHA','NZOH','RNZAF Base Ohakea[1]','Bulls,New Zealand'],
-
-['OHD','LWOH','Ohrid St. Paul the Apostle Airport','Ohrid,Republic of Macedonia'],
-
-
-['OHI','FYOS','Oshakati Airport[1]','Oshakati,Namibia'],
-
-['OHR','EDXY','Wyk auf FÃ¶hr Airport[1]','Wyk auf FÃ¶hr,Schleswig-Holstein,Germany'],
-['OHS','OOSH','Sohar Airport[1]','Sohar,Oman'],
-
-
-
-['OIM','RJTO','Oshima Airport[1]','shima,Izu Islands,Japan'],
-['OIR','RJEO','Okushiri Airport','Okushiri,Okushiri Island,Japan'],
-['OIT','RJFO','Oita Airport','Oita,Kyushu,Japan'],
-
-['OKA','ROAH','Naha Airport','Okinawa,Ryukyu Islands,Japan'],
-
-
-['OKD','RJCO','Okadama Airport[1]','Sapporo,Hokkaido,Japan'],
-['OKE','RJKB','Okinoerabu Airport[1]','Okinoerabujima,Amami Islands,Japan'],
-['OKF','FYOO','Okaukuejo Airport[1]','Okaukuejo,Namibia'],
-
-['OKH','EGXJ','RAF Cottesmore','Oakham,England,United Kingdom'],
-['OKI','RJNO','Oki Airport[1]','Dogo,Oki Islands,Japan'],
-['OKJ','RJOB','Okayama Airport','Okayama,Honshu,Japan'],
-
-['OKL','WAJO','Gunung Bintang Airport','Oksibil,Indonesia'],
-['OKN','FOGQ','Okondja Airport[1]','Okondja,Gabon'],
-['OKO','RJTY','Yokota Air Base[1]','Fussa,Honshu,Japan'],
-
-['OKQ','WAKO','Okaba Airport[1]','Okaba,Indonesia'],
-
-
-
-['OKU','FYMO','Mokuti Lodge Airport[1]','Mokuti Lodge,Namibia'],
-
-['OLA','ENOL','orland Airport[1]','orland,Norway'],
-['OLB','LIEO','Olbia Costa Smeralda Airport','Olbia,Sardinia,Italy'],
-
-
-
-
-
-['OLI','BIRF','Rif Airport[1]','olafsvik,Iceland'],
-['OLJ','NVSZ','Olpoi Airport[1] ','Olpoi,Vanuatu'],
-['OLK','SGOL','Fuerte Olimpo Airport','Fuerte Olimpo,Paraguay'],
-
-['OLN','SAVM','Lago Musters Airport[1]','Sarmiento,Chubut,Argentina'],
-['OLO','LKOL','Olomouc Airport ','Olomouc,Czech Republic'],
-
-
-
-['OLS','KOLS','Nogales International Airport','Nogales,Arizona,United States'],
-
-
-
-
-
-
-['OMB','FOOH','Omboue Hospital Airport[1]','Omboue,Gabon'],
-['OMC','RPVO','Ormoc Airport','Ormoc,Philippines'],
-['OMD','FYOG','Oranjemund Airport[1]','Oranjemund,Namibia'],
-
-['OMF','OJMF','King Hussein Air Base','Mafraq,Jordan'],
-['OMG','FYOE','Omega Airport[1]','Omega,Namibia'],
-
-
-['OMJ','RJDU','mura Airport[1]','Nagasaki mura,Kyushu,Japan'],
-
-
-['OMM','OOMX','Marmul Airport[1]','Marmul,Oman'],
-['OMO','LQMO','Mostar Airport','Mostar,Bosnia and Herzegovina'],
-['OMR','LROD','Oradea International Airport','Oradea,Romania'],
-
-
-
-['ONB','AYQQ','Ononge Airport[1]','Ononge,Papua New Guinea'],
-['OND','FYOA','Ondangwa Airport[1]','Ondangwa,Namibia'],
-
-
-
-['ONI','WABD','Moanamani Airport[1]','Moanemani ,Indonesia'],
-['ONJ','RJSR','Odate-Noshiro Airport','date Noshiro,Honshu,Japan'],
-
-
-
-
-
-['ONQ','LTAS','Zonguldak Airport','Zonguldak,Turkey'],
-
-
-['ONT','KONT','Ontario International Airport','Ontario,California,United States'],
-['ONU','NFOL','Ono-i-Lau Airport[1]','Ono-i-Lau,Fiji'],
-['ONX','MPEJ','Enrique Adolfo Jimenez Airport','Colon,Panama'],
-
-
-['OOL','YBCG','Gold Coast Airport','Gold Coast,Queensland,Australia'],
-
-
-
-['OOT','NGON','Onotoa Airport[1]','Onotoa,Kiribati'],
-['OPA','BIKP','Kopasker Airport[1]','Kopasker,Iceland'],
-
-
-
-
-['OPO','LPPR','Francisco de Sa Carneiro Airport','Porto,Portugal'],
-
-['OPU','AYBM','Balimo Airport[1]','Balimo,Papua New Guinea'],
-['OPW','FYOP','Opuwa Airport[1]','Opuwo,Namibia'],
-['ORA','SASO','Oran Airport','Oran,Salta,Argentina'],
-['ORB','ESOE','Ã–rebro Airport','Ã–rebro,Sweden'],
-['ORC','SKOE','Orocue Airport[1]','Orocue,Colombia'],
-['ORD','KORD','OHare International Airport','Chicago,Illinois,United States'],
-['ORE','LFOZ','Orleans - Saint-Denis-de-lHotel Airport[1]','Orleans,Centre-Val de Loire,France'],
-['ORF','KORF','Norfolk International Airport','Norfolk,Virginia,United States'],
-['ORG','SMZO','Zorg en Hoop Airport','Paramaribo,Suriname'],
-
-['ORJ','SYDR','Orinduik Airport','Orinduik,Guyana'],
-['ORK','EICK','Cork Airport','Cork,Ireland'],
-
-['ORM','EGBK','Sywell Aerodrome','Northampton,England,United Kingdom'],
-
-['ORO','MHYR','Yoro Airport[1]','Yoro,Honduras'],
-['ORP','FBOR','Orapa Airport[1]','Orapa,Botswana'],
-
-
-
-['ORU','SLOR','Juan Mendoza Airport','Oruro,Bolivia'],
-
-
-
-['ORY','LFPO','Orly Airport','Paris,Ile-de-France,France'],
-
-
-
-
-['OSD','ESNZ','Ã…re Ã–stersund Airport','Ã–stersund,Sweden'],
-
-
-
-['OSI','LDOS','Osijek Airport','Osijek,Croatia'],
-['OSK','ESMO','Oskarshamn Airport','Oskarshamn,Sweden'],
-['OSL','ENGM','Oslo Airport,Gardermoen','Oslo,Norway'],
-
-['OSN','RKSO','Osan Air Base[1]','Osan,South Korea'],
-
-['OSR','LKMT','LeoS Janaek Airport Ostrava','Ostrava,Czech Republic'],
-['OSS','UAFO','Osh Airport','Osh,Kyrgyzstan'],
-['OST','EBOS','Ostend-Bruges International Airport','Ostend Bruges,Belgium'],
-
-
-
-['OSY','ENNM','Namsos Airport,Hoknesora','Namsos,Norway'],
-['OSZ','EPKZ','Koszalin-Zegrze Pomorskie Airport[1]','Koszalin,Poland'],
-
-
-
-
-['OTI','WAMR','Pitu Airport[1]','Morotai Island,Indonesia'],
-['OTJ','FYOW','Otjiwarongo Airport[1]','Otjiwarongo,Namibia'],
-
-
-
-['OTP','LROP','Henri Coand International Airport','Bucharest,Romania'],
-['OTR','MRCC','Coto 47 Airport','Coto 47,Costa Rica'],
-
-
-['OTU','SKOT','Otu Airport[1]','Remedios,Colombia'],
-['OTV','AGGQ','Ontong Java Airport[1]','Ontong Java Atoll,Solomon Islands'],
-
-
-['OUA','DFFD','Ouagadougou Airport','Ouagadougou,Burkina Faso'],
-['OUD','GMFO','Angads Airport','Oujda,Morocco'],
-
-['OUG','DFCC','Ouahigouya Airport','Ouahigouya,Burkina Faso'],
-['OUH','FAOH','Oudtshoorn Airport[1]','Oudtshoorn,South Africa'],
-
-['OUL','EFOU','Oulu Airport','Oulu,Finland'],
-
-
-
-
-
-
-
-['OVA','FMSL','Bekily Airport[1]','Bekily,Madagascar'],
-
-['OVD','LEAS','Asturias Airport ','Oviedo,Asturias,Spain'],
-
-
-['OVL','SCOV','El Tuqui Airport[1]','Ovalle,Chile'],
-['OVR','SAZF','Olavarria Airport','Olavarria,Buenos Aires,Argentina'],
-
-
-
-
-
-['OXB','GGOV','Osvaldo Vieira International Airport','Bissau,Guinea-Bissau'],
-
-
-['OXF','EGTK','Oxford Airport ','Oxford,England,United Kingdom'],
-
-
-
-['OYA','SATG','Goya Airport[1]','Goya,Corrientes,Argentina'],
-['OYE','FOGO','Oyem Airport[1]','Oyem,Gabon'],
-
-
-['OYL','HKMY','Moyale Airport[1]','Moyale,Kenya'],
-
-['OYO','SAZH','Tres Arroyos Airport','Tres Arroyos,Buenos Aires,Argentina'],
-['OYP','SOOG','Saint-Georges-de-lOyapock Airport[1]','Saint-Georges-de-lOyapock,French Guiana'],
-
-['OZC','RPMO','Labo Airport','Ozamiz,Philippines'],
-['OZG','GMAZ','Zagora Airport[1]','Zagora,Morocco'],
-
-['OZP','LEMO','Moron Air Base[1]','Moron de la Frontera,Andalusia,Spain'],
-['OZZ','GMMZ','Ouarzazate Airport','Ouarzazate,Morocco'],
-['PAA','VYPA','Hpa-An Airport[1]','Hpa-An,Myanmar'],
-['PAB','VEBU','Bilaspur Airport','Bilaspur,Chhattisgarh,India'],
-['PAC','MPMG','Albrook Marcos A. Gelabert International Airport','Panama City,Panama'],
-['PAD','EDLP','Paderborn Lippstadt Airport','Paderborn Lippstadt,North Rhine-Westphalia,Germany'],
-
-['PAF','HUPA','Pakuba Airfield','Pakuba,Uganda'],
-['PAG','RPMP','Pagadian Airport','Pagadian,Philippines'],
-
-
-['PAL','SKPQ','Captain German Olano Moreno Air Base[1]','Palanquero,Colombia'],
-
-['PAN','VTSK','Pattani Airport','Pattani,Thailand'],
-
-['PAP','MTPP','Toussaint LOuverture International Airport','Port-au-Prince,Haiti'],
-
-
-['PAS','LGPA','Paros National Airport','Paros,Greece'],
-['PAT','VEPT','Lok Nayak Jayaprakash Airport','Patna,Bihar,India'],
-['PAU','VYPK','Pauk Airport[1]','Pauk,Myanmar'],
-
-
-['PAX','MTPX','Port-de-Paix Airport[1]','Port-de-Paix,Haiti'],
-['PAY','WBKP','Pamol Airport[1]','Pamol,Sabah,Malaysia'],
-['PAZ','MMPA','El Tajin National Airport','Poza Rica,Veracruz,Mexico'],
-
-['PBC','MMPB','Hermanos Serdan International Airport','Puebla City,Puebla,Mexico'],
-['PBD','VAPR','Porbandar Airport[1]','Porbandar,Gujarat,India'],
-['PBE','SKPR','Morela Airport[1] ','Puerto Berrio,Colombia'],
-
-['PBG','KPBG','Plattsburgh International Airport','Plattsburgh,New York,United States'],
-['PBH','VQPR','Paro Airport','Paro,Bhutan'],
-['PBI','KPBI','Palm Beach International Airport','West Palm Beach,Florida,United States'],
-['PBJ','NVSI','Paama Airport[1]','Paama,Vanuatu'],
-['PBL','SVPC','Bartolome Salom Airport[1]','Puerto Cabello,Venezuela'],
-['PBM','SMJP','Johan Adolf Pengel International Airport','Paramaribo,Suriname'],
-
-
-['PBP','MRIA','Punta Islita Airport','Punta Islita,Costa Rica'],
-
-['PBR','MGPB','Puerto Barrios Airport[1]','Puerto Barrios,Guatemala'],
-
-['PBU','VYPT','Putao Airport[1]','Putao,Myanmar'],
-
-
-['PBZ','FAPG','Plettenberg Bay Airport[1]','Plettenberg Bay,South Africa'],
-
-['PCB','WIHP','Pondok Cabe Airport[1]','South Tangerang,Indonesia'],
-
-
-['PCF','FAPS','Potchefstroom Airport[1]','Potchefstroom,South Africa'],
-['PCH','MHPC','Palacios Airport[1]','Palacios,Honduras'],
-
-['PCL','SPCL','FAP Captain David Abensur Rengifo International Airport','Pucallpa,Peru'],
-
-['PCN','NZOK','Picton Aerodrome','Picton,New Zealand'],
-['PCO','MMPL','Punta Colorada Airstrip[1]','La Ribera,Baja California Sur,Mexico'],
-['PCP','FPPR','Principe Airport[1]','Principe Island,Sao Tome and Principe'],
-
-['PCR','SKPC','German Olano Airport','Puerto Carreno,Colombia'],
-
-
-
-
-['PDA','SKPD','Obando Airport','Puerto Inirida,Colombia'],
-
-['PDC','NWWQ','Mueo Nickel Airport','Mueo,New Caledonia'],
-['PDD','FQPO','Ponta do Ouro Airport[1]','Ponta do Ouro,Mozambique'],
-
-
-['PDG','WIPT','Minangkabau International Airport','Padang,Indonesia'],
-
-
-['PDL','LPPD','Joao Paulo II Airport','Ponta Delgada,Azores,Portugal'],
-
-
-['PDO','WIPQ','Pendopo Airport[1]','Pendopo,Indonesia'],
-['PDP','SULS','Capitan de Corbeta Carlos A. Curbelo International Airport','Punta del Este,Uruguay'],
-
-['PDS','MMPG','Piedras Negras International Airport','Piedras Negras,Coahuila,Mexico'],
-['PDU','SUPU','Tydeo Larre Borges International Airport','Paysandu,Uruguay'],
-['PDV','LBPD','Plovdiv Airport','Plovdiv,Bulgaria'],
-['PDX','KPDX','Portland International Airport','Portland,Oregon,United States'],
-['PDZ','SVPE','Pedernales Airport[1]','Pedernales,Venezuela'],
-
-
-
-['PED','LKPD','Pardubice Airport','Pardubice,Czech Republic'],
-
-['PEF','EDCP','Peenemunde Airfield[1]','Peenemunde,Mecklenburg-Vorpommern,Germany'],
-['PEG','LIRZ','Perugia San Francesco dAssisi - Umbria International Airport','Perugia,Umbria,Italy'],
-['PEH','SAZP','Comodoro Pedro Zanni Airport','Pehuajo,Buenos Aires,Argentina'],
-['PEI','SKPE','Matecana International Airport','Pereira,Colombia'],
-['PEK','ZBAA','Beijing Capital International Airport','Beijing,China'],
-['PEL','FXPG','Pelaneng Airport[1]','Pelaneng,Lesotho'],
-['PEM','SPTU','Padre Aldamiz International Airport','Puerto Maldonado,Peru'],
-['PEN','WMKP','Penang International Airport','Penang,Malaysia'],
-
-
-
-
-
-['PEU','MHPL','Puerto Lempira Airport[1]','Puerto Lempira,Honduras'],
-['PEV','LHPP','Pecs-Pogany International Airport[1]','Pecs,Hungary'],
-
-
-
-
-
-
-['PFJ','BIPA','PatreksfjÃ¶rour Airport','PatreksfjÃ¶rour,Iceland'],
-['PFO','LCPH','Paphos International Airport','Paphos,Cyprus'],
-
-
-
-
-
-
-
-['PGF','LFMP','Perpignan-Rivesaltes Airport','Perpignan,Languedoc-Roussillon,France'],
-['PGH','VIPT','Pantnagar Airport[1]','Pantnagar,Uttarakhand,India'],
-
-['PGK','WIPK','Depati Amir Airport[1]','Pangkal Pinang ,Indonesia'],
-['PGL','KPQL','Trent Lott International Airport ','Pascagoula,Mississippi,United States'],
-
-
-
-
-
-
-
-['PGX','LFBX','Perigueux Bassillac Airport','Perigueux,Aquitaine,France'],
-
-['PHA','VVPR','Phan Rang Air Base[1]','Phan Rang-Thap Cham,Vietnam'],
-
-
-
-
-['PHF','KPHF','Newport News Williamsburg International Airport','Newport News Williamsburg,Virginia,United States'],
-
-
-
-['PHL','KPHL','Philadelphia International Airport','Philadelphia,Pennsylvania,United States'],
-
-
-
-
-['PHR','NFND','Pacific Harbour Airport[1]','Pacific Harbour,Fiji'],
-['PHS','VTPP','Phitsanulok Airport','Phitsanulok,Thailand'],
-
-['PHW','FAPH','Hendrik Van Eck Airport','Phalaborwa,South Africa'],
-['PHX','KPHX','Phoenix Sky Harbor International Airport','Phoenix,Arizona,United States'],
-['PHY','VTPB','Phetchabun Airport','Phetchabun,Thailand'],
-['PIA','KPIA','General Wayne A. Downing Peoria International Airport','Peoria,Illinois,United States'],
-['PIC','MBPI','Pine Cay Airport[1]','Pine Cay,British Overseas Territory of Turks and Caicos Islands'],
-['PIE','KPIE','St. Pete-Clearwater International Airport','St. Petersburg Clearwater,United States'],
-['PIF','RCDC[2]','Pingtung South Airport[1]','Pingtung City,Taiwan'],
-['PIK','EGPK','Glasgow Prestwick Airport','Glasgow,Scotland,United Kingdom'],
-['PIL','SGPI','Carlos Miguel Jimenez Airport','Pilar,Paraguay'],
-
-
-['PIO','SPSO','Capitan FAP Renan Elias Olivera Airport','Pisco,Peru'],
-
-
-['PIS','LFBI','Poitiers-Biard Airport','Poitiers,Poitou-Charentes,France'],
-['PIT','KPIT','Pittsburgh International Airport','Pittsburgh,Pennsylvania,United States'],
-['PIU','SPUR','FAP Captain Guillermo Concha Iberico International Airport','Piura,Peru'],
-
-['PIW','CZMN','Pikwitonei Airport[1]','Pikwitonei,Manitoba,Canada'],
-['PIX','LPPI','Pico Airport','Pico Island,Azores,Portugal'],
-
-['PJA','ESUP','Pajala Airport','Pajala,Sweden'],
-
-['PJC','SGPJ','Dr. Augusto Roberto Fuster International Airport','Pedro Juan Caballero,Paraguay'],
-
-['PJM','MRPJ','Puerto Jimenez Airport','Puerto Jimenez,Costa Rica'],
-
-
-
-
-
-['PKG','WMPA','Pangkor Airport[1]','Pangkor Island,Perak,Malaysia'],
-['PKH','LGHL','Porto Cheli Airport','Porto Cheli ,Greece'],
-['PKJ','MGPG','Playa Grande Airport[1]','Playa Grande,Guatemala'],
-['PKK','VYPU','Pakokku Airport[1]','Pakokku,Myanmar'],
-
-['PKN','WAOI','Iskandar Airport[1]','Pangkalan Bun ,Indonesia'],
-['PKO','DBBP','Parakou Airport','Parakou,Benin'],
-['PKP','NTGP','Puka-Puka Airport[1]','Puka-Puka,Tuamotus,French Polynesia'],
-['PKR','VNPK','Pokhara Airport','Pokhara,Nepal'],
-
-['PKU','WIBB','Sultan Syarif Kasim II International Airport','Pekanbaru,Indonesia'],
-
-['PKW','FBSP','Selebi-Phikwe Airport','Selebi-Phikwe,Botswana'],
-['PKY','WAGG','Tjilik Riwut Airport[1]','Palangkaraya,Indonesia'],
-['PKZ','VLPS','Pakse International Airport','Pakse,Laos'],
-
-
-['PLD','MRCR','Carrillo Airport[1] ','Samara Puerto Carrillo,Costa Rica'],
-
-
-['PLH','EGHD','Plymouth City Airport','Plymouth,England,United Kingdom'],
-
-
-
-
-['PLM','WIPP','Sultan Mahmud Badaruddin II International Airport','Palembang,Indonesia'],
-
-['PLP','MPLP','Captain Ramon Xatruch Airport[1]','La Palma,Panama'],
-['PLQ','EYPA','Palanga International Airport','Palanga,Lithuania'],
-
-['PLS','MBPV','Providenciales International Airport','Providenciales,British Overseas Territory'],
-
-['PLT','SKPL','Plato Airport[1]','Plato,Colombia'],
-
-
-['PLW','WAFF','Mutiara Airport[1]','Palu,Indonesia'],
-
-
-['PLZ','FAPE','Port Elizabeth Airport','Port Elizabeth,South Africa'],
-['PMA','HTPE','Pemba Airport[1]','Pemba Island,Tanzania'],
-
-['PMC','SCTE','El Tepual Airport','Puerto Montt,Chile'],
-['PMF','LIMP','Parma Airport ','Parma,Emilia-Romagna,Italy'],
-
-['PMI','LEPA','Palma de Mallorca Airport','Palma de Mallorca,Balearic Islands,Spain'],
-
-
-
-
-['PMO','LICJ','Falcone-Borsellino Airport ','Palermo,Sicily,Italy'],
-
-['PMQ','SAWP','Perito Moreno Airport','Perito Moreno,Santa Cruz,Argentina'],
-['PMR','NZPM','Palmerston North Airport','Palmerston North,New Zealand'],
-['PMS','OSPR','Palmyra Airport','Palmyra ,Syria'],
-
-['PMV','SVMG','Santiago Marino Caribbean International Airport','Porlamar,Venezuela'],
-
-
-['PMY','SAVY','El Tehuelche Airport','Puerto Madryn,Chubut,Argentina'],
-['PMZ','MRPM','Palmar Sur Airport','Palmar Sur,Costa Rica'],
-['PNA','LEPP','Pamplona Airport','Pamplona,Navarre,Spain'],
-
-
-
-
-['PNH','VDPP','Phnom Penh International Airport','Phnom Penh,Cambodia'],
-['PNI','PTPN','Pohnpei International Airport','Pohnpei,Federated States of Micronesia'],
-
-['PNK','WIOO','Supadio Airport','Pontianak,Indonesia'],
-['PNL','LICG','Pantelleria Airport[1]','Pantelleria,Sicily,Italy'],
-
-['PNP','AYGR','Girua Airport[1]','Popondetta,Papua New Guinea'],
-['PNQ','VAPO','Pune Airport','Pune,Maharashtra,India'],
-
-['PNS','KPNS','Pensacola International Airport','Pensacola,Florida,United States'],
-['PNT','SCNT','Teniente Julio Gallardo Airport','Puerto Natales,Chile'],
-
-['PNV','EYPP','PanevZys Air Base[1] ','PanevZys,Lithuania'],
-['PNY','VOTY','Puducherry Airport','Pondicherry,Puducherry,India'],
-
-
-
-
-['POD','GOSP','Podor Airport','Podor,Senegal'],
-
-['POG','FOOG','Port-Gentil International Airport','Port-Gentil,Gabon'],
-
-['POI','SLPO','Captain Nicolas Rojas Airport[1]','Potosi,Bolivia'],
-
-['POL','FQPB','Pemba Airport','Pemba,Mozambique'],
-['POM','AYPY','Jacksons International Airport','Port Moresby,Papua New Guinea'],
-['PON','MGPP','Poptun Airport[1]','Poptun,Guatemala'],
-
-['POP','MDPP','Gregorio Luperon International Airport','San Felipe de Puerto Plata,Dominican Republic'],
-['POR','EFPO','Pori Airport','Pori,Finland'],
-['POS','TTPP','Piarco International Airport','Port of Spain,Trinidad and Tobago'],
-['POT','MKKJ','Ken Jones Aerodrome','Port Antonio,Jamaica'],
-
-['POV','LZPW','PreSov Air Base[1]','PreSov,Slovakia'],
-['POW','LJPZ','PortoroZ Airport','PortoroZ,Slovenia'],
-['POX','LFPT','Pontoise - Cormeilles Aerodrome','Paris,Ile-de-France,France'],
-
-['POZ','EPPO','Pozna-awica Airport','Pozna,Poland'],
-
-
-
-['PPE','MMPE','Puerto Penasco International Airport','Puerto Penasco,Sonora,Mexico'],
-['PPF','KPPF','Tri-City Airport','Parsons,Kansas,United States'],
-['PPG','NSTU','Pago Pago International Airport','Pago Pago,American Samoa'],
-
-
-['PPJ','WIIG','Panjang Island Airport[1]','Panjang Island,Indonesia'],
-
-['PPL','VNPL','Phaplu Airport','Phaphlu,Nepal'],
-['PPM','KPMP','Pompano Beach Airpark ','Pompano Beach,Florida,United States'],
-['PPN','SKPP','Guillermo Leon Valencia Airport','Popayan,Colombia'],
-
-['PPQ','NZPP','Kapiti Coast Airport','Paraparaumu Beach,New Zealand'],
-['PPR','WIDE','Tuanku Tambusai Airport[1]','Pasir Pangaraian ,Indonesia'],
-['PPS','RPVP','Puerto Princesa International Airport','Puerto Princesa,Philippines'],
-['PPT','NTAA','Faa International Airport','Papeete,Tahiti,French Polynesia'],
-['PPU','VYPP','Papun Airport[1]','Papun,Myanmar'],
-
-['PPW','EGEP','Papa Westray Airport','Papa Westray,Scotland,United Kingdom'],
-
-
-
-['PQC','VVPQ','Phu Quoc International Airport','Phu Quoc Island,Vietnam'],
-
-['PQM','MMPQ','Palenque International Airport[1]','Palenque,Chiapas,Mexico'],
-
-
-['PRA','SAAP','General Justo Jose de Urquiza Airport','Parana,Entre Rios,Argentina'],
-
-['PRC','KPRC','Ernest A. Love Field','Prescott,Arizona,United States'],
-
-
-['PRG','LKPR','Vaclav Havel Airport Prague','Prague,Czech Republic'],
-['PRH','VTCP','Phrae Airport','Phrae,Thailand'],
-['PRI','FSPP','Praslin Island Airport','Praslin Island,Seychelles'],
-['PRK','FAPK','Prieska Airport[1]','Prieska,South Africa'],
-['PRM','LPPM','Portimao Airport','Portimao,Portugal'],
-['PRN','BKPR','Pristina International Airport','Pristina,Kosovo'],
-
-['PRP','LFKO','Propriano Airport','Propriano,Corsica,France'],
-['PRQ','SARS','Presidencia Roque Saenz Pena','Presidencia Roque Saenz Pena,Chaco,Argentina'],
-['PRR','SYPR','Paruima Airport','Paruima,Guyana'],
-
-['PRU','VYPY','Pyay Airport[1]','Pyay ,Myanmar'],
-['PRV','LKPO','Perov Airport[1]','Perov,Czech Republic'],
-
-['PRX','KPRX','Cox Field','Paris,Texas,United States'],
-['PRY','FAWB','Wonderboom Airport','Pretoria,South Africa'],
-
-['PSA','LIRP','Pisa International Airport ','Pisa,Tuscany,Italy'],
-
-['PSC','KPSC','Tri-Cities Airport','Pasco,Washington,United States'],
-['PSD','HEPS','Port Said Airport[1]','Port Said,Egypt'],
-['PSE','TJPS','Mercedita Airport','Ponce,Puerto Rico'],
-
-['PSG','PAPG','Petersburg James A. Johnson Airport','Petersburg,Alaska,United States'],
-['PSH','EDXO','Sankt Peter-Ording Airport[1]','Sankt Peter-Ording,Schleswig-Holstein,Germany'],
-
-['PSJ','WAMP','Kasiguncu Airport[1]','Poso,Indonesia'],
-['PSK','KPSK','New River Valley Airport','Dublin,Virginia,United States'],
-['PSL','EGPT','Perth Airport ','Perth,Scotland,United Kingdom'],
-['PSM','KPSM','Portsmouth International Airport at Pease','Portsmouth,New Hampshire,United States'],
-
-['PSO','SKPS','Antonio Narino Airport','Pasto,Colombia'],
-['PSP','KPSP','Palm Springs International Airport','Palm Springs,California,United States'],
-
-['PSR','LIBP','Abruzzo Airport','Pescara,Abruzzo,Italy'],
-['PSS','SARP','Libertador General Jose de San Martin Airport','Posadas,Misiones,Argentina'],
-['PSU','WIOP','Pangsuma Airport[1]','Putussibau,Indonesia'],
-
-
-
-['PSY','SFAL','Port Stanley Airport','Stanley,British Overseas Territory of Falkland Islands'],
-['PSZ','SLPS','Puerto Suarez International Airport','Puerto Suarez,Bolivia'],
-['PTA','PALJ','Port Alsworth Airport ','Port Alsworth,Alaska,United States'],
-['PTB','KPTB','Dinwiddie County Airport','Petersburg,Virginia,United States'],
-
-['PTD','PAAP','Port Alexander Seaplane Base ','Port Alexander,Alaska,United States'],
-['PTF','NFFO','Malolo Lailai Airport[1]','Malolo Lailai,Fiji'],
-['PTG','FAPP','Polokwane International Airport','Polokwane,South Africa'],
-['PTH','PAPH','Port Heiden Airport','Port Heiden,Alaska,United States'],
-
-['PTK','KPTK','Oakland County International Airport','Pontiac,Michigan,United States'],
-['PTM','SVPT','Palmarito Airport[1]','Palmarito,Venezuela'],
-['PTN','KPTN','Harry P. Williams Memorial Airport','Patterson,Louisiana,United States'],
-
-['PTP','TFFR','Pointe-a-Pitre International Airport ','Pointe-a-Pitre,Guadeloupe'],
-
-
-['PTU','PAPM','Platinum Airport','Platinum,Alaska,United States'],
-
-['PTW','KPTW','Heritage Field','Pottstown,Pennsylvania,United States'],
-['PTX','SKPI','Contador Airport[1]','Pitalito,Colombia'],
-['PTY','MPTO','Tocumen International Airport','Panama City,Panama'],
-['PTZ','SEPA','Rio Amazonas Airport','Shell Mera,Ecuador'],
-
-['PUB','KPUB','Pueblo Memorial Airport','Pueblo,Colorado,United States'],
-['PUD','SAWD','Puerto Deseado Airport','Puerto Deseado,Santa Cruz,Argentina'],
-['PUE','MPOA','Puerto Obaldia Airport[1]','Puerto Obaldia,Panama'],
-['PUF','LFBP','Pau Pyrenees Airport','Pau,Aquitaine,France'],
-
-
-['PUJ','MDPC','Punta Cana International Airport','Punta Cana,Dominican Republic'],
-['PUK','NTGQ','Pukarua Airport','Pukarua,Tuamotus,French Polynesia'],
-
-['PUM','WAWP','Kolaka Pomala Airport[1]','Kolaka,Indonesia'],
-
-['PUP','DFCP','Po Airport','Po,Burkina Faso'],
-['PUQ','SCCI','Presidente Carlos Ibanez del Campo International Airport','Punta Arenas,Chile'],
-['PUR','SLPR','Puerto Rico Airport[1]','Puerto Rico,Bolivia'],
-['PUS','RKPK','Gimhae International Airport','Busan,South Korea'],
-['PUT','VOPN','Sri Sathya Sai Airport[1]','Puttaparthi,Andhra Pradesh,India'],
-['PUU','SKAS','Tres de Mayo Airport','Puerto Asis,Colombia'],
-['PUV','NWWP','Malabou Airport[1]','Poum,New Caledonia'],
-['PUX','SCPV','El Mirador Airport[1]','Puerto Varas,Chile'],
-['PUY','LDPL','Pula Airport','Pula,Croatia'],
-['PUZ','MNPC','Puerto Cabezas Airport','Puerto Cabezas,Nicaragua'],
-['PVA','SKPV','El Embrujo Airport','Providencia Island,Colombia'],
-
-['PVD','KPVD','Theodore Francis Green State Airport','Providence,Rhode Island,United States'],
-['PVE','MPVR','El Porvenir Airport[1]','El Porvenir,Panama'],
-['PVF','KPVF','Placerville Airport','Placerville,California,United States'],
-
-
-
-['PVK','LGPZ','Aktion National Airport','Preveza Lefkada,Greece'],
-['PVL','KPBX','Pike County Airport[1] ','Pikeville,Kentucky,United States'],
-['PVO','SEPV','Reales Tamarindos Airport','Portoviejo,Ecuador'],
-['PVR','MMPR','Licenciado Gustavo Diaz Ordaz International Airport','Puerto Vallarta,Jalisco,Mexico'],
-
-
-['PVW','KPVW','Hale County Airport','Plainview,Texas,United States'],
-['PWA','KPWA','Wiley Post Airport','Oklahoma City,Oklahoma,United States'],
-['PWD','KPWD','Sher-Wood Airport','Plentywood,Montana,United States'],
-
-
-['PWK','KPWK','Chicago Executive Airport','Chicago,Illinois,United States'],
-['PWL','WICP','Wirasaba Airport','Purwokerto,Indonesia'],
-['PWM','KPWM','Portland International Jetport','Portland,Maine,United States'],
-['PWN','MYCP','Pitts Town Airport[1]','Pitts Town,Crooked Island,Bahamas'],
-
-
-
-['PWT','KPWT','Bremerton National Airport','Bremerton,Washington,United States'],
-['PWY','KPNA','Ralph Wenz Field ','Pinedale,Wyoming,United States'],
-
-
-['PXM','MMPS','Puerto Escondido International Airport','Puerto Escondido,Oaxaca,Mexico'],
-['PXO','LPPS','Porto Santo Airport','Porto Santo Island,Madeira,Portugal'],
-['PXR','VTUJ','Surin Airport[1]','Surin,Thailand'],
-['PXU','VVPK','Pleiku Airport','Pleiku,Vietnam'],
-['PYA','SKVL','Velasquez Airport[1]','Puerto Boyaca,Colombia'],
-['PYB','VEJP','Jeypore Airport[1]','Jeypore,Odisha,India'],
-
-['PYE','NCPY','Tongareva Airport[1]','Penrhyn Atoll,Cook Islands'],
-['PYH','SVPA','Cacique Aramare Airport','Puerto Ayacucho,Venezuela'],
-
-
-
-
-
-['PYO','SEPT','Putumayo Airport[1]','Puerto El Carmen de Putumayo,Ecuador'],
-['PYR','LGAD','Andravida Air Base[1]','Pyrgos,Greece'],
-
-
-['PYX','VTBF','Pattaya Airpark[1]','Pattaya,Thailand'],
-
-['PZA','SKPZ','Paz de Ariporo Airport[1]','Paz de Ariporo,Colombia'],
-['PZB','FAPM','Pietermaritzburg Airport','Pietermaritzburg,South Africa'],
-
-
-['PZK','NCPK','Pukapuka Island Airfield[1]','Pukapuka Island,Cook Islands'],
-['PZL','FADQ','Zulu Inyala Airport[1]','Phinda,South Africa'],
-['PZO','SVPR','Manuel Carlos Piar Guayana Airport','Ciudad Guayana Puerto Ordaz,Venezuela'],
-['PZS','SCTC','Maquehue Airport[1]','Temuco,Chile'],
-
-['PZY','LZPP','PieSany Airport','PieSany,Slovakia'],
-['QAQ','LIAP','LAquila-Preturo Airport[1]','LAquila,Abruzzo,Italy'],
-['QBC','CYBD','Bella Coola Airport','Bella Coola,British Columbia,Canada'],
-['QCY','EGXC','RAF Coningsby','Coningsby,England,United Kingdom'],
-['QHU','EDXJ','Husum Schwesing Airport[1]','Husum,Schleswig-Holstein,Germany'],
-
-['QPG','WSAP','Paya Lebar Air Base','Singapore'],
-['QRA','FAGM','Rand Airport','Johannesburg,South Africa'],
-['QRO','MMQT','Queretaro Intercontinental Airport','Queretaro City,Queretaro,Mexico'],
-
-
-
-['QSR','LIRI','Salerno Costa dAmalfi Airport ','Salerno,Campania,Italy'],
-
-['QUG','EGHR','Chichester Goodwood Airport','Chichester,England,United Kingdom'],
-
-['QUY','EGUY','RAF Wyton[1]','Wyton,England,United Kingdom'],
-
-['QXB','LFMA','Aix les Milles,France','Bouches-du-Rhone,Provence-Alpes-Cote dAzur region,France'],
-
-['RAB','AYTK','Rabaul Airport ','Rabaul,Papua New Guinea'],
-['RAC','KRAC','John H. Batten Airport','Racine,Wisconsin,United States'],
-
-
-['RAF','SAFR','Rafaela Airport[1]','Rafaela,Santa Fe,Argentina'],
-['RAG','NZRA','Raglan Aerodrome[1]','Raglan,New Zealand'],
-
-['RAI','GVNP','Nelson Mandela International Airport','Praia,Cape Verde'],
-['RAJ','VARK','Rajkot Airport','Rajkot,Gujarat,India'],
-['RAK','GMMX','Marrakesh Menara Airport','Marrakesh,Morocco'],
-
-
-['RAN','LIDR','Ravenna Airport[1]','Ravenna,Emilia-Romagna,Italy'],
-
-['RAQ','WAWR','Sugimanuru Airport[1]','Muna Island,Indonesia'],
-['RAR','NCRG','Rarotonga International Airport','Avarua,Rarotonga,Cook Islands'],
-
-
-['RAV','SKCN','Cravo Norte Airport[1]','Cravo Norte,Colombia'],
-
-
-
-['RBA','GMME','Rabat-Sale Airport','Rabat,Morocco'],
-
-
-['RBD','KRBD','Dallas Executive Airport','Dallas,Texas,United States'],
-['RBE','VDRK','Ratanakiri Airport','Ratanakiri,Cambodia'],
-
-['RBI','NFFR','Rabi Airport[1]','Rabi Island,Fiji'],
-['RBJ','RJCR','Rebun Airport[1]','Rebun,Rebun Island,Japan'],
-
-
-['RBM','EDMS','Straubing Wallmuhle Airport','Straubing,Bavaria,Germany'],
-['RBO','SLRB','Robore Airport[1]','Robore,Bolivia'],
-
-['RBQ','SLRQ','Rurrenabaque Airport','Rurrenabaque,Bolivia'],
-
-
-['RBT','HKMB','Marsabit Airport[1]','Marsabit,Kenya'],
-
-['RBV','AGRM','Ramata Airport[1]','Ramata Island,Solomon Islands'],
-
-['RBY','PARY','Ruby Airport','Ruby,Alaska,United States'],
-
-['RCB','FARB','Richards Bay Airport','Richards Bay,South Africa'],
-
-['RCH','SKRH','Almirante Padilla Airport','Riohacha,Colombia'],
-['RCL','NVSR','Redcliffe Airport[1]','Redcliffe,Aoba Island,Vanuatu'],
-
-
-['RCO','LFDN','Rochefort - Saint-Agnant Airport[1]','Rochefort,Poitou-Charentes,France'],
-['RCQ','SATR','Reconquista Airport','Reconquista,Santa Fe,Argentina'],
-['RCR','KRCR','Fulton County Airport','Rochester,Indiana,United States'],
-['RCS','EGTO','Rochester Airport','Rochester,England,United Kingdom'],
-['RCT','KRCT','Nartron Field','Reed City,Michigan,United States'],
-['RCU','SAOC','Las Higueras Airport','Rio Cuarto,Cordoba,Argentina'],
-['RCY','MYRP','Port Nelson Airport[1]','Port Nelson,Rum Cay Island,Bahamas'],
-
-['RDB','PADG','Red Dog Airport','Red Dog,Alaska,United States'],
-
-
-
-['RDM','KRDM','Roberts Field','Redmond Bend,Oregon,United States'],
-['RDN','WMPR','Redang Airport[1]','Redang Island,Terengganu,Malaysia'],
-['RDO','EPRA','Radom Airport[1]','Radom,Poland'],
-['RDP','VEDG','Kazi Nazrul Islam Airport','Durgapur,West Bengal,India'],
-
-['RDS','SAHS','Rincon de los Sauces Airport[1]','Rincon de los Sauces,Neuquen,Argentina'],
-['RDT','GOSR','Richard Toll Airport','Richard Toll,Senegal'],
-['RDU','KRDU','Raleigh-Durham International Airport','Raleigh Durham,North Carolina,United States'],
-
-['RDZ','LFCR','Rodez-Marcillac Airport','Rodez,Midi-Pyrenees,France'],
-['REA','NTGE','Reao Airport[1]','Reao,Tuamotus,French Polynesia'],
-['REB','EDAX','Rechlin-LÃ¤rz Airfield[1]','Rechlin,Mecklenburg-Vorpommern,Germany'],
-
-['RED','KRVL','Mifflin County Airport ','Reedsville Lewistown,Pennsylvania,United States'],
-
-['REG','LICR','Reggio di Calabria Airport','Reggio di Calabria,Calabria,Italy'],
-['REI','SOOR','Regina Airport[1]','Regina,French Guiana'],
-
-['REL','SAVT','Almirante Marcos A. Zar Airport','Trelew,Chubut,Argentina'],
-
-['REO','KREO','Rome State Airport','Rome,Oregon,United States'],
-['REP','VDSR','Siem Reap International Airport ','Siem Reap,Cambodia'],
-
-['RER','MGRT','Retalhuleu Airport','Retalhuleu,Guatemala'],
-['RES','SARE','Resistencia International Airport','Resistencia,Chaco,Argentina'],
-['RET','ENRS','Rost Airport','Rost,Norway'],
-['REU','LERS','Reus Airport','Reus,Catalonia,Spain'],
-
-['REX','MMRX','General Lucio Blanco International Airport','Reynosa,Tamaulipas,Mexico'],
-['REY','SLRY','Reyes Airport[1]','Reyes,Bolivia'],
-
-['RFA','FEGR','Rafai Airport[1]','Rafai,Central African Republic'],
-['RFD','KRFD','Chicago Rockford International Airport ','Rockford,Illinois,United States'],
-['RFG','KRFG','Rooke Field','Refugio,Texas,United States'],
-
-['RFN','BIRG','RaufarhÃ¶fn Airport[1]','RaufarhÃ¶fn,Iceland'],
-['RFP','NTTR','Raiatea Airport[1] ','Raiatea,Society Islands,French Polynesia'],
-['RFR','MRRF','Rio Frio Airport[1]','Rio Frio,Costa Rica'],
-['RFS','MNRT','Rosita Airport[1]','Rosita,Nicaragua'],
-['RGA','SAWE','Hermes Quijada International Airport','Rio Grande,Tierra del Fuego,Argentina'],
-
-['RGH','VEBG','Balurghat Airport[1]','Balurghat,West Bengal,India'],
-['RGI','NTTG','Rangiroa Airport[1]','Rangiroa,Tuamotus,French Polynesia'],
-
-['RGL','SAWG','Piloto Civil Norberto Fernandez International Airport','Rio Gallegos,Santa Cruz,Argentina'],
-['RGN','VYYY','Yangon International Airport','Yangon,Myanmar'],
-['RGO','ZKHM','Chongjin Airport','Chongjin,North Korea'],
-
-['RGS','LEBG','Burgos Airport','Burgos,Castile and Leon,Spain'],
-['RGT','WIPR','Japura Airport[1]','Rengat,Indonesia'],
-['RHA','BIRE','Reykholar Airport[1]','Reykholar,Iceland'],
-['RHD','SANR[2]','Termas de Rio Hondo Airport[1]','Termas de Rio Hondo,Santiago del Estero,Argentina'],
-['RHE','LFSR','Reims - Champagne Air Base','Reims,Champagne-Ardenne,France'],
-['RHG','HRYU','Ruhengeri Airport[1]','Ruhengeri,Rwanda'],
-['RHI','KRHI','Rhinelander-Oneida County Airport','Rhinelander,Wisconsin,United States'],
-
-['RHN','FYSA','Skorpion Mine Airport[1]','Rosh Pinah,Namibia'],
-['RHO','LGRP','Rhodes International Airport','Rhodes,Greece'],
-['RHP','VNRC','Ramechhap Airport','Ramechhap,Nepal'],
-
-
-['RHV','KRHV','Reid-Hillview Airport of Santa Clara County','San Jose,California,United States'],
-
-['RIB','SLRI','Riberalta Airport','Riberalta,Bolivia'],
-['RIC','KRIC','Richmond International Airport','Richmond,Virginia,United States'],
-
-
-['RIH','MPSM','Scarlett Martinez International Airport','Rio Hato,Panama'],
-['RIJ','SPJA','Juan Simons Vela Airport[1]','Rioja,Peru'],
-['RIM','SPLN','San Nicolas Airport[1]','Rodriguez de Mendoza,Peru'],
-['RIN','AGRC','Ringgi Cove Airport[1]','Ringgi Cove,Solomon Islands'],
-
-['RIR','KRIR','Flabob Airport','Riverside,California,United States'],
-['RIS','RJER','Rishiri Airport[1]','Rishiri,Rishiri Island,Japan'],
-['RIV','KRIV','March Air Reserve Base','Riverside,California,United States'],
-['RIX','EVRA','Riga International Airport','Riga,Latvia'],
-
-
-['RJA','VORY','Rajahmundry Airport','Rajahmundry,Andhra Pradesh,India'],
-['RJB','VNRB','Rajbiraj Airport[1]','Rajbiraj,Nepal'],
-['RJH','VGRJ','Shah Makhdum Airport','Rajshahi,Bangladesh'],
-
-['RJK','LDRI','Rijeka Airport','Rijeka,Croatia'],
-['RJL','LELO','Logrono-Agoncillo Airport','Logrono,La Rioja,Spain'],
-
-
-['RKA','NTKK','Aratika-Nord Airport[1]','Aratika,Tuamotus,French Polynesia'],
-['RKE','EKRK','Roskilde Airport','Copenhagen,Denmark'],
-['RKH','KUZA','Rock Hill York County Airport[1] ','Rock Hill,South Carolina,United States'],
-['RKI','WIBR','Rokot Airport','Sipura,Indonesia'],
-['RKP','KRKP','Aransas County Airport','Rockport,Texas,United States'],
-['RKR','KRKR','Robert S. Kerr Airport','Poteau,Oklahoma,United States'],
-['RKS','KRKS','Rock Springs-Sweetwater County Airport','Rock Springs,Wyoming,United States'],
-['RKT','OMRK','Ras Al Khaimah International Airport','Ras al-Khaimah,United Arab Emirates'],
-
-['RKV','BIRK','Reykjavik Airport','Reykjavik,Iceland'],
-
-
-
-['RLD','KRLD','Richland Airport','Richland,Washington,United States'],
-['RLG','ETNL','Rostock-Laage Airport','Rostock,Mecklenburg-Vorpommern,Germany'],
-
-['RLO','SAOS','Valle del Conlara Airport[1]','Villa de Merlo,San Luis,Argentina'],
-
-
-['RLT','DRZL','Arlit Airport','Arlit,Niger'],
-
-['RMB','OOBR','Buraimi Airport[1]','Buraimi,Oman'],
-['RMD','VORG','Ramagundam Airport ','Ramagundam,Telangana,India'],
-['RME','KRME','Griffiss International Airport','Rome,New York,United States'],
-['RMF','HEMA','Marsa Alam International Airport','Marsa Alam,Egypt'],
-['RMG','KRMG','Richard B. Russell Airport','Rome,Georgia,United States'],
-['RMI','LIPR','Federico Fellini International Airport','Rimini,Emilia-Romagna,Italy'],
-
-['RML','VCCC','Ratmalana Airport','Colombo,Sri Lanka'],
-
-
-['RMQ','RCMQ','Taichung Airport ','Taichung,Taiwan'],
-['RMS','ETAR','Ramstein Air Base','Ramstein,Rhineland-Palatinate,Germany'],
-['RMT','NTAM','Rimatara Airport[1]','Rimatara,Austral Islands,French Polynesia'],
-['RMU','LEMI','Region de Murcia International Airport[1]','Murcia Cartagena,Murcia,Spain'],
-['RMY','KMPI','Mariposa-Yosemite Airport[1] ','Mariposa,California,United States'],
-['RNA','AGAR','Ulawa Airport','Arona,Ulawa Island,Solomon Islands'],
-['RNB','ESDF','Ronneby Airport','Ronneby Karlskrona,Sweden'],
-['RNC','KRNC','Warren County Memorial Airport','McMinnville,Tennessee,United States'],
-
-['RNE','LFLO','Roanne Renaison Airport','Roanne,Rhone-Alpes,France'],
-
-['RNI','MNCI','Corn Island Airport','Corn Islands,Nicaragua'],
-['RNJ','RORY','Yoron Airport[1]','Yoronjima,Amami Islands,Japan'],
-['RNL','AGGR','Rennell Tingoa Airport[1]','Rennell Island,Solomon Islands'],
-['RNM','OOGB','Qarn Alam Airport[1]','Qarn Alam,Oman'],
-['RNN','EKRN','Bornholm Airport','Ronne,Denmark'],
-['RNO','KRNO','Reno-Tahoe International Airport','Reno,Nevada,United States'],
-
-
-['RNS','LFRN','Rennes-Saint-Jacques Airport','Rennes,Brittany,France'],
-
-['RNU','WBKR','Ranau Airport[1]','Ranau,Sabah,Malaysia'],
-['RNZ','KRZL','Jasper County Airport ','Rensselaer,Indiana,United States'],
-['ROB','GLRB','Roberts International Airport','Monrovia,Liberia'],
-['ROC','KROC','Greater Rochester International Airport','Rochester,New York,United States'],
-['ROD','FARS','Robertson Airfield[1]','Robertson,South Africa'],
-
-
-
-['ROI','VTUV','Roi Et Airport','Roi Et,Thailand'],
-
-
-
-['RON','SKPA','Juan Jose Rondon Airport[1]','Paipa,Colombia'],
-
-['ROP','PGRO','Rota International Airport ','Rota,Northern Mariana Islands'],
-['ROR','PTRO','Roman Tmetuchl International Airport','Koror,Palau'],
-['ROS','SAAR','Rosario - Islas Malvinas International Airport','Rosario,Santa Fe,Argentina'],
-['ROU','LBRS','Ruse Airport','Ruse,Bulgaria'],
-
-['ROW','KROW','Roswell International Air Center','Roswell,New Mexico,United States'],
-
-['ROY','SAWM','Rio Mayo Airport[1]','Rio Mayo,Chubut,Argentina'],
-['ROZ','LERT','US Naval Station Rota[1]','Rota,Andalusia,Spain'],
-['RPA','VNRP','Rolpa Airport[1]','Rolpa,Nepal'],
-
-
-['RPN','LLIB','Rosh Pina Airport','Rosh Pinna,Israel'],
-['RPR','VARP','Swami Vivekananda Airport','Raipur,Chhattisgarh,India'],
-
-['RPX','KRPX','Roundup Airport','Roundup,Montana,United States'],
-
-
-['RRG','FIMR','Sir Gaetan Duval Airport','Rodrigues Island,Mauritius'],
-
-['RRK','VERK','Rourkela Airport','Rourkela,Odisha,India'],
-
-
-['RRR','NTKO','Raroia Airport','Raroia,Tuamotus,French Polynesia'],
-['RRS','ENRO','Roros Airport','Roros,Norway'],
-['RRT','KRRT','Warroad International Memorial Airport ','Warroad,Minnesota,United States'],
-
-['RSA','SAZR','Santa Rosa Airport','Santa Rosa,La Pampa,Argentina'],
-
-['RSD','MYER','Rock Sound International Airport[1]','Rock Sound,Eleuthera Island,Bahamas'],
-
-
-
-['RSK','WASC','Abresso Airport[1]','Ransiki,Indonesia'],
-
-
-['RST','KRST','Rochester International Airport','Rochester,Minnesota,United States'],
-['RSU','RKJY','Yeosu Suncheon Airport[1]','Yeosu Suncheon,South Korea'],
-['RSW','KRSW','Southwest Florida International Airport','Fort Myers,Florida,United States'],
-
-['RTA','NFNR','Rotuma Airport[1]','Rotuma Island,Fiji'],
-['RTB','MHRO','Juan Manuel Galvez International Airport','Roatan,Honduras'],
-['RTC','VARG','Ratnagiri Airport','Ratnagiri,Maharashtra,India'],
-['RTG','WATG','Frans Sales Lega Airport[1]','Ruteng,Indonesia'],
-
-
-['RTM','EHRD','Rotterdam The Hague Airport','Rotterdam,Netherlands'],
-
-
-
-
-
-['RUA','HUAR','Arua Airport','Arua,Uganda'],
-
-
-['RUF','WAJE','Yuruf Airport[1]','Yuruf,Indonesia'],
-
-
-['RUK','VNRK','Chaurjahari Airport','Rukumkot,Nepal'],
-['RUM','VNRT','Rumjatar Airport','Rumjatar,Nepal'],
-['RUN','FMEE','Roland Garros Airport','St-Denis,Reunion,France'],
-['RUP','VERU','Rupsi Airport','Rupsi,Assam,India'],
-['RUR','NTAR','Rurutu Airport','Rurutu,French Polynesia'],
-['RUS','AGGU','Marau Airport','Marau,Solomon Islands'],
-
-['RUV','MGRB','Rubelsanto Airport[1]','Rubelsanto,Guatemala'],
-['RUY','MHRU','Copan Ruinas Airport[1]','Copan Ruinas,Honduras'],
-['RVA','FMSG','Farafangana Airport[1]','Farafangana,Madagascar'],
-
-
-['RVE','SKSA','Los Colonizadores Airport','Saravena,Colombia'],
-
-['RVK','ENRM','Rorvik Airport,Ryum','Rorvik,Norway'],
-['RVN','EFRO','Rovaniemi Airport','Rovaniemi,Finland'],
-['RVO','FARI','Reivilo Airport[1]','Reivilo,South Africa'],
-
-['RVS','KRVS','Richard Lloyd Jones Jr. Airport','Tulsa,Oklahoma,United States'],
-
-['RVV','NTAV','Raivavae Airport','Raivavae,Austral Islands,French Polynesia'],
-['RVY','SURV','Pres. Gral. oscar D. Gestido International Airport','Rivera,Uruguay'],
-
-
-
-
-['RXE','KRXE','Rexburg-Madison County Airport','Rexburg,Idaho,United States'],
-['RXS','RPVR','Roxas Airport','Roxas,Philippines'],
-
-['RYG','ENRY','Moss Airport,Rygge Rygge Air Station','Oslo Moss,Norway'],
-
-
-['RYN','LFCY','Royan - Medis Aerodrome','Royan,Poitou-Charentes,France'],
-['RYO','SAWT','Rio Turbio Airport[1]','Rio Turbio,Santa Cruz,Argentina'],
-['RZA','SAWU','Santa Cruz Airport[1]','Puerto Santa Cruz,Santa Cruz,Argentina'],
-['RZE','EPRZ','Rzeszow-Jasionka Airport','Rzeszow,Poland'],
-
-['RZP','RPSD','Cesar Lim Rodriguez Airport','Taytay,Philippines'],
-
-
-['RZZ','KRZZ','Halifax County Airport','Roanoke Rapids,North Carolina,United States'],
-['SAA','KSAA','Shively Field','Saratoga,Wyoming,United States'],
-['SAB','TNCS','Juancho E. Yrausquin Airport','Saba,Caribbean Netherlands'],
-['SAC','KSAC','Sacramento Executive Airport','Sacramento,California,United States'],
-
-
-['SAK','BIKR','Sauoarkrokur Airport','Sauoarkrokur,Iceland'],
-['SAL','MSLP','Monsenor oscar Arnulfo Romero International Airport','San Salvador,El Salvador'],
-
-['SAN','KSAN','San Diego International Airport','San Diego,California,United States'],
-
-['SAP','MHLM','Ramon Villeda Morales International Airport','San Pedro Sula,Honduras'],
-['SAQ','MYAN','San Andros Airport[1]','Nicholls Town,Andros Island,Bahamas'],
-['SAR','KSAR','Sparta Community Airport ','Sparta,Illinois,United States'],
-['SAS','KSAS','Salton Sea Airport','Salton City,California,United States'],
-['SAT','KSAT','San Antonio International Airport','San Antonio,Texas,United States'],
-['SAU','WATS','Tardamu Airport','Savu ,Indonesia'],
-['SAV','KSAV','Savannah Hilton Head International Airport','Savannah,Georgia,United States'],
-['SAW','LTFJ','Sabiha GÃ¶kcen International Airport','Istanbul,Turkey'],
-
-['SAY','LIQS','Siena-Ampugnano Airport','Siena,Tuscany,Italy'],
-['SAZ','GLST','Sasstown Airport','Sasstown,Liberia'],
-
-['SBB','SVSB','Santa Barbara de Barinas Airport[1]','Santa Barbara,Venezuela'],
-
-['SBD','KSBD','San Bernardino International Airport','San Bernardino,California,United States'],
-['SBE','AYSA','Suabi Airport[1]','Suabi,Papua New Guinea'],
-
-['SBG','WITN','Maimun Saleh Airport[1]','Sabang,Indonesia'],
-['SBH','TFFJ','Gustaf III Airport','Gustavia,Saint Barthelemy'],
-['SBI','GUSB','Sambailo Airport','Koundara,Guinea'],
-
-['SBK','LFRT','Saint-Brieuc - Armor Airport','Saint-Brieuc,Brittany,France'],
-['SBL','SLSA','Santa Ana del Yacuma Airport','Santa Ana del Yacuma,Bolivia'],
-['SBM','KSBM','Sheboygan County Memorial Airport','Sheboygan,Wisconsin,United States'],
-['SBN','KSBN','South Bend International Airport','South Bend,Indiana,United States'],
-
-
-
-['SBS','KSBS','Steamboat Springs Airport ','Steamboat Springs,Colorado,United States'],
-
-['SBU','FASB','Springbok Airport','Springbok,South Africa'],
-['SBV','AYSH','Sabah Airport[1]','Sabah,Papua New Guinea'],
-['SBW','WBGS','Sibu Airport','Sibu,Sarawak,Malaysia'],
-['SBX','KSBX','Shelby Airport','Shelby,Montana,United States'],
-['SBZ','LRSB','Sibiu International Airport','Sibiu,Romania'],
-
-['SCB','KSCB','Scribner State Airport','Scribner,Nebraska,United States'],
-['SCC','PASC','Deadhorse Airport','Prudhoe Bay Deadhorse,Alaska,United States'],
-['SCD','MHUL','Sulaco Airport','Sulaco,Honduras'],
-['SCE','KUNV','University Park Airport ','State College,Pennsylvania,United States'],
-['SCF','KSDL','Scottsdale Airport ','Phoenix Scottsdale,Arizona,United States'],
-
-['SCH','KSCH','Schenectady County Airport','Schenectady,New York,United States'],
-['SCI','SVPM','Paramillo Airport[1]','San Cristobal,Venezuela'],
-['SCK','KSCK','Stockton Metropolitan Airport','Stockton,California,United States'],
-['SCL','SCEL','Comodoro Arturo Merino Benitez International Airport','Santiago,Chile'],
-['SCM','PACM','Scammon Bay Airport','Scammon Bay,Alaska,United States'],
-['SCN','EDDR','Saarbrucken Airport','Saarbrucken,Saarland,Germany'],
-
-['SCP','LFNC','Mont-Dauphin - Saint-Crepin Airport[1]','Mont-Dauphin,Provence-Alpes-Cote dAzur,France'],
-['SCQ','LEST','Santiago de Compostela Airport','Santiago de Compostela,Galicia,Spain'],
-['SCS','EGPM','Scatsta Airport','Shetland Islands,Scotland,United Kingdom'],
-
-['SCU','MUCU','Antonio Maceo International Airport','Santiago de Cuba,Cuba'],
-['SCV','LRSV','Suceava International Airport ','Suceava,Romania'],
-
-['SCX','MMSZ','Salina Cruz Airport','Salina Cruz,Oaxaca,Mexico'],
-['SCY','SEST','San Cristobal Airport','San Cristobal Island,Galapagos Islands,Ecuador'],
-['SCZ','AGGL','Santa Cruz Graciosa Bay Luova Airport[1]','Santa Cruz Islands,Solomon Islands'],
-
-
-
-['SDE','SANE','Vicecomodoro angel de la Paz Aragones Airport','Santiago del Estero,Santiago del Estero,Argentina'],
-['SDF','KSDF','Louisville International Airport ','Louisville,Kentucky,United States'],
-
-['SDH','MHSR','Santa Rosa de Copan Airport[1]','Santa Rosa de Copan,Honduras'],
-['SDI','AYSD','Saidor Airport[1]','Saidor,Papua New Guinea'],
-['SDJ','RJSS','Sendai Airport','Sendai,Honshu,Japan'],
-['SDK','WBKS','Sandakan Airport','Sandakan,Sabah,Malaysia'],
-['SDL','ESNN','Sundsvall-TimrÃ¥ Airport ','Sundsvall HÃ¤rnÃ¶sand,Sweden'],
-
-['SDN','ENSD','Sandane Airport,Anda','Sandane,Norway'],
-['SDP','PASD','Sand Point Airport','Sand Point,Alaska,United States'],
-['SDQ','MDSD','Las Americas International Airport','Santo Domingo,Dominican Republic'],
-['SDR','LEXJ','Santander Airport','Santander,Cantabria,Spain'],
-['SDS','RJSD','Sado Airport[1]','Sado,Niigata,Japan'],
-
-
-['SDV','LLSD','Sde Dov Airport','Tel Aviv,Israel'],
-['SDX','KSEZ','Sedona Airport ','Sedona,Arizona,United States'],
-
-
-['SEA','KSEA','Seattle-Tacoma International Airport','Seattle,Washington,United States'],
-
-
-['SEE','KSEE','Gillespie Field','San Diego,California,United States'],
-['SEG','KSEG','Penn Valley Airport','Selinsgrove,Pennsylvania,United States'],
-['SEH','WAJS','Senggeh Airport','Senggeh,Indonesia'],
-
-
-['SEM','KSEM','Craig Field','Selma,Alabama,United States'],
-['SEN','EGMC','London Southend Airport','London Southend,England United Kingdom'],
-['SEO','DISG','Seguela Airport[1]','Seguela,Ivory Coast'],
-['SEQ','WIBS','Sei Pakning Airport','Bengkalis,Indonesia'],
-
-['SEU','HTSN','Seronera Airstrip[1]','Seronera,Tanzania'],
-
-
-
-['SEZ','FSIA','Seychelles International Airport','Mahe,Seychelles'],
-['SFA','DTTX','Sfax-Thyna International Airport','Sfax,Tunisia'],
-['SFB','KSFB','Orlando Sanford International Airport','Orlando,Florida,United States'],
-['SFC','TFFC','Saint-Francois Airport[1]','Saint-Francois,Guadeloupe'],
-['SFD','SVSR','Las Flecheras Airport','San Fernando de Apure,Venezuela'],
-['SFE','RPUS','San Fernando Airport','San Fernando,Philippines'],
-['SFF','KSFF','Felts Field','Spokane,Washington,United States'],
-['SFG','TFFG','LEsperance Airport[1] ','Grand Case,Saint Martin'],
-['SFH','MMSF','San Felipe International Airport','San Felipe,Baja California,Mexico'],
-['SFJ','BGSF','Kangerlussuaq Airport','Kangerlussuaq,Greenland'],
-
-['SFL','GVSF','Sao Filipe Airport','Sao Filipe,Fogo,Cape Verde'],
-['SFN','SAAV','Sauce Viejo Airport[1]','Santa Fe de la Vera Cruz,Santa Fe,Argentina'],
-['SFO','KSFO','San Francisco International Airport','San Francisco,California,United States'],
-['SFQ','LTCH','anlurfa Airport','anlurfa,Turkey'],
-['SFS','RPLB','Subic Bay International Airport','Subic Bay,Philippines'],
-['SFT','ESNS','SkellefteÃ¥ Airport','SkellefteÃ¥,Sweden'],
-
-
-
-
-['SFZ','KSFZ','North Central State Airport','Pawtucket,Rhode Island,United States'],
-
-
-
-['SGD','EKSB','Sonderborg Airport','Sonderborg,Denmark'],
-['SGE','EDGS','Siegerland Airport','Siegen,North Rhine-Westphalia,Germany'],
-['SGF','KSGF','Springfield-Branson National Airport','Springfield,Missouri,United States'],
-
-
-
-['SGK','AYSK','Sangapi Airport','Sangapi,Papua New Guinea'],
-['SGL','RPLS','Danilo Atienza Air Base','Manila,Philippines'],
-
-['SGN','VVTS','Tan Son Nhat International Airport','Ho Chi Minh City,Vietnam'],
-
-
-['SGQ','WRLA','Sangkimah Airport[1]','Sangatta,Indonesia'],
-
-['SGV','SAVS','Sierra Grande Airport[1]','Sierra Grande,Rio Negro,Argentina'],
-
-['SGX','HTSO','Songea Airport[1]','Songea,Tanzania'],
-['SGY','PAGY','Skagway Airport','Skagway,Alaska,United States'],
-['SGZ','VTSH','Songkhla Airport[1]','Songkhla,Thailand'],
-
-['SHB','RJCN','Nakashibetsu Airport','Nakashibetsu,Hokkaido,Japan'],
-
-
-
-['SHG','PAHG','Shungnak Airport','Shungnak,Alaska,United States'],
-['SHH','PASH','Shishmaref Airport','Shishmaref,Alaska,United States'],
-['SHI','RORS','Shimojishima Airport','Shimoji-shima,Miyako Islands,Japan'],
-['SHJ','OMSJ','Sharjah International Airport','Sharjah,United Arab Emirates'],
-['SHK','FXSH','Sehonghong Airport[1]','Sehonghong,Lesotho'],
-['SHL','VEBI','Shillong Airport ','Shillong,Meghalaya,India'],
-['SHM','RJBD','Nanki-Shirahama Airport','Shirahama,Honshu,Japan'],
-['SHN','KSHN','Sanderson Field','Shelton,Washington,United States'],
-['SHO','FDSK','King Mswati III International Airport[1] ','Manzini,Swaziland'],
-
-['SHR','KSHR','Sheridan County Airport','Sheridan,Wyoming,United States'],
-
-
-
-
-['SHX','PAHX','Shageluk Airport','Shageluk,Alaska,United States'],
-['SHY','HTSY','Shinyanga Airport[1]','Shinyanga,Tanzania'],
-['SHZ','FXSS','Seshutes Airport[1]','Seshote,Lesotho'],
-
-
-
-['SID','GVAC','Amilcar Cabral International Airport','Sal,Cape Verde'],
-['SIE','LPSI','Sines Airport[1]','Sines,Portugal'],
-['SIF','VNSI','Simara Airport[1]','Simara,Nepal'],
-['SIG','TJIG','Fernando Luis Ribas Dominicci Airport','San Juan,Puerto Rico'],
-['SIH','VNDT','Silgadhi Airport[1]','Dipayal Silgadhi,Nepal'],
-['SII','GMMF','Sidi Ifni Airport ','Sidi Ifni,Morocco'],
-['SIJ','BISI','SiglufjÃ¶rour Airport','SiglufjÃ¶rour,Iceland'],
-
-
-
-['SIN','WSSS','Singapore Changi Airport','Singapore'],
-
-
-['SIQ','WIDS','Dabo Singkep Airport[1]','Singkep,Indonesia'],
-['SIR','LSGS','Sion Airport','Sion,Switzerland'],
-['SIS','FASS','Sishen Airport','Dingleton,South Africa'],
-['SIT','PASI','Sitka Rocky Gutierrez Airport','Sitka,Alaska,United States'],
-['SIU','MNSI','Siuna Airport','Siuna,Nicaragua'],
-['SIV','KSIV','Sullivan County Airport','Sullivan,Indiana,United States'],
-['SIW','WIMP','Sibisa Airport[1]','Parapat,Indonesia'],
-
-['SIY','KSIY','Siskiyou County Airport','Montague Yreka,California,United States'],
-
-['SJA','SPJN','San Juan de Marcona Airport[1]','San Juan de Marcona,Peru'],
-['SJB','SLJO','San Joaquin Airport[1]','San Joaquin,Bolivia'],
-['SJC','KSJC','San Jose International Airport','San Jose,California,United States'],
-['SJD','MMSD','Los Cabos International Airport','San Jose del Cabo,Baja California Sur,Mexico'],
-['SJE','SKSJ','Jorge Enrique Gonzalez Torres Airport','San Jose del Guaviare,Colombia'],
-
-
-
-['SJI','RPUH','San Jose Airport','San Jose,Philippines'],
-['SJJ','LQSA','Sarajevo International Airport','Sarajevo,Bosnia and Herzegovina'],
-
-
-['SJN','KSJN','St. Johns Industrial Air Park','St. Johns,Arizona,United States'],
-['SJO','MROC','Juan Santamaria International Airport','San Jose,Costa Rica'],
-
-['SJQ','FLSS','Sesheke Airport[1]','Sesheke,Zambia'],
-
-['SJS','SLJE','San Jose de Chiquitos Airport[1]','San Jose de Chiquitos,Bolivia'],
-['SJU','TJSJ','Luis Munoz Marin International Airport','San Juan,Puerto Rico'],
-['SJV','SLJV','San Javier Airport[1]','San Javier,Bolivia'],
-
-
-['SJY','EFSI','SeinÃ¤joki Airport','SeinÃ¤joki,Finland'],
-['SJZ','LPSJ','Sao Jorge Airport','Sao Jorge Island,Azores,Portugal'],
-
-['SKB','TKPK','Robert L. Bradshaw International Airport','Saint Kitts,Saint Kitts and Nevis'],
-['SKC','AYSU','Suki Airport[1]','Suki,Papua New Guinea'],
-
-['SKE','ENSN','Skien Airport,Geiteryggen','Skien,Norway'],
-
-['SKG','LGTS','Thessaloniki Airport Macedonia','Thessaloniki,Greece'],
-['SKH','VNSK','Surkhet Airport[1]','Surkhet,Nepal'],
-
-['SKK','PFSH','Shaktoolik Airport ','Shaktoolik,Alaska,United States'],
-['SKL','EGEI','Broadford Airfield[1]','Isle of Skye,Scotland,United Kingdom'],
-
-['SKN','ENSK','Stokmarknes Airport,Skagen','Stokmarknes,Norway'],
-
-['SKP','LWSK','Skopje Alexander the Great Airport','Skopje,Macedonia'],
-['SKQ','FXSK','Sekake Airport[1]','Sekake,Lesotho'],
-
-['SKS','EKSP','Vojens Airport ','Vojens,Denmark'],
-
-['SKU','LGSY','Skyros Island National Airport','Skyros,Greece'],
-['SKV','HESC','St. Catherine International Airport','Saint Catherine,Egypt'],
-['SKW','PASW','Skwentna Airport','Skwentna,Alaska,United States'],
-
-['SKY','KSKY','Griffing Sandusky Airport','Sandusky,Ohio,United States'],
-
-['SLA','SASA','Martin Miguel de Guemes International Airport','Salta,Salta,Argentina'],
-
-['SLC','KSLC','Salt Lake City International Airport','Salt Lake City,Utah,United States'],
-['SLD','LZSL','Slia Airport','Slia,Slovakia'],
-['SLE','KSLE','McNary Field','Salem,Oregon,United States'],
-
-['SLG','KSLG','Smith Field','Siloam Springs,Arkansas,United States'],
-['SLH','NVSC','Vanua Lava Airport','Sola,Vanua Lava,Vanuatu'],
-['SLI','FLSW','Solwezi Airport','Solwezi,Zambia'],
-
-['SLL','OOSA','Salalah International Airport','Salalah,Oman'],
-['SLM','LESA','Salamanca Airport','Salamanca,Castile and Leon,Spain'],
-['SLO','KSLO','Salem-Leckrone Airport','Salem,Illinois,United States'],
-['SLP','MMSP','Ponciano Arriaga International Airport','San Luis Potosi City,San Luis Potosi,Mexico'],
-['SLQ','PASL','Sleetmute Airport','Sleetmute,Alaska,United States'],
-
-['SLS','LBSS','Silistra Airfield','Silistra,Bulgaria'],
-['SLT','KANK','Harriet Alexander Field ','Salida,Colorado,United States'],
-['SLU','TLPC','George F. L. Charles Airport','Castries,Saint Lucia'],
-['SLV','VISM','Shimla Airport','Simla,Himachal Pradesh,India'],
-['SLW','MMIO','Plan de Guadalupe International Airport','Saltillo,Coahuila,Mexico'],
-['SLX','MBSY','Salt Cay Airport[1]','Salt Cay,British Overseas Territory of Turks and Caicos Islands'],
-
-
-['SMA','LPAZ','Santa Maria Airport','Santa Maria Island,Azores,Portugal'],
-['SMB','SCSB','Franco Bianco Airport[1]','Cerro Sombrero,Chile'],
-
-['SMD','KSMD','Smith Field','Fort Wayne,Indiana,United States'],
-['SMF','KSMF','Sacramento International Airport','Sacramento,California,United States'],
-['SMG','SPMR','Santa Maria Airport[1]','Santa Maria del Mar,Peru'],
-['SMH','AYSP','Sapmanga Airport','Sapmanga,Papua New Guinea'],
-['SMI','LGSM','Samos International Airport Aristarchos of Samos','Samos,Greece'],
-
-['SMK','PAMK','St. Michael Airport','St. Michael,Alaska,United States'],
-['SML','MYLS','Stella Maris Airport[1]','Stella Maris,Long Island,Bahamas'],
-['SMM','WBKA','Semporna Airport','Semporna,Sabah,Malaysia'],
-['SMN','KSMN','Lemhi County Airport','Salmon,Idaho,United States'],
-
-
-['SMQ','WAOS','H. Asan Airport','Sampit,Indonesia'],
-['SMR','SKSM','Simon Bolivar International Airport','Santa Marta,Colombia'],
-['SMS','FMMS','Sainte Marie Airport','Ile Sainte-Marie,Madagascar'],
-['SMU','PASP','Sheep Mountain Airport','Sheep Mountain,Alaska,United States'],
-['SMV','LSZS','Samedan Airport ','St. Moritz,Switzerland'],
-['SMW','GMMA','Smara Airport[1]','Smara,Morocco'],
-['SMX','KSMX','Santa Maria Public Airport ','Santa Maria,California,United States'],
-['SMY','GOTS','Simenti Airport','Simenti,Senegal'],
-['SMZ','SMST','Stoelmans Eiland Airstrip','Stoelmans Eiland ,Suriname'],
-['SNA','KSNA','John Wayne Airport ','Santa Ana,California,United States'],
-
-['SNC','SESA','General Ulpiano Paez Airport','Salinas,Ecuador'],
-['SNE','GVSN','Preguica Airport','Sao Nicolau,Cape Verde'],
-['SNF','SVSP','Sub Teniente Nestor Arias Airport[1]','San Felipe,Venezuela'],
-['SNG','SLSI','Capitan Av. Juan Cochamanidis Airport[1]','San Ignacio de Velasco,Bolivia'],
-
-['SNI','GLGE','Greenville Sinoe Airport ','Greenville,Liberia'],
-['SNJ','MUSJ','San Julian Air Base[1]','Guane,Cuba'],
-['SNK','KSNK','Winston Field','Snyder,Texas,United States'],
-['SNM','SLSM','San Ignacio de Moxos Airport[1]','San Ignacio de Moxos,Bolivia'],
-['SNN','EINN','Shannon Airport','Shannon,Ireland'],
-['SNO','VTUI','Sakon Nakhon Airport[1]','Sakon Nakhon,Thailand'],
-['SNP','PASN','St. Paul Island Airport','St. Paul Island,Alaska,United States'],
-
-['SNR','LFRZ','Saint-Nazaire Montoir Airport','Saint-Nazaire,Pays de la Loire,France'],
-
-['SNT','SKRU','Las Cruces Airport[1]','Sabana de Torres,Colombia'],
-['SNU','MUSC','Abel Santamaria Airport','Santa Clara,Cuba'],
-['SNV','SVSE','Santa Elena de Uairen Airport[1]','Santa Elena de Uairen,Venezuela'],
-['SNW','VYTD','Thandwe Airport[1]','Thandwe,Myanmar'],
-
-
-
-['SOB','LHSM','Heviz-Balaton Airport','Heviz,Hungary'],
-['SOC','WARQ','Adisumarmo International Airport','Surakarta ,Indonesia'],
-
-
-['SOF','LBSF','Sofia Airport','Sofia,Bulgaria'],
-['SOG','ENSG','Sogndal Airport,HaukÃ¥sen','Sogndal,Norway'],
-['SOJ','ENSR','Sorkjosen Airport','Sorkjosen,Norway'],
-['SOK','FXSM','Semonkong Airport','Semonkong,Lesotho'],
-
-['SOM','SVST','San Tome Airport','San Tome,Venezuela'],
-['SON','NVSS','Santo-Pekoa International Airport','Luganville,Vanuatu'],
-['SOO','ESNY','SÃ¶derhamn Airport[1] ','SÃ¶derhamn,Sweden'],
-['SOP','KSOP','Moore County Airport','Pinehurst Southern Pines,North Carolina,United States'],
-['SOQ','WASS','Dominique Edward Osok Airport[1]','Sorong,Indonesia'],
-['SOT','EFSO','SodankylÃ¤ Airfield[1]','SodankylÃ¤,Finland'],
-['SOU','EGHI','Southampton Airport','Southampton,England,United Kingdom'],
-['SOV','PASO','Seldovia Airport','Seldovia,Alaska,United States'],
-['SOX','SKSO','Alberto Lleras Camargo Airport[1]','Sogamoso,Colombia'],
-['SOY','EGER','Stronsay Airport','Stronsay,Scotland,United Kingdom'],
-['SOZ','LFKS','Solenzara Air Base[1]','Sari-Solenzara,Corsica,France'],
-['SPA','KSPA','Spartanburg Downtown Memorial Airport','Spartanburg,South Carolina,United States'],
-
-['SPC','GCLA','La Palma Airport','La Palma,Canary Islands,Spain'],
-['SPD','VGSD','Saidpur Airport','Saidpur,Bangladesh'],
-['SPE','WBKO','Sepulot Airport[1]','Sapulut,Sabah,Malaysia'],
-['SPF','KSPF','Black Hills Airport ','Spearfish,South Dakota,United States'],
-['SPG','KSPG','Albert Whitted Airport','St. Petersburg,Florida,United States'],
-
-['SPI','KSPI','Abraham Lincoln Capital Airport','Springfield,Illinois,United States'],
-['SPJ','LGSP','Sparti Airport','Sparti ,Greece'],
-
-['SPM','ETAD','Spangdahlem Air Base','Spangdahlem,Rhineland-Palatinate,Germany'],
-['SPN','PGSN','Saipan International Airport ','Saipan,Northern Mariana Islands'],
-
-
-
-
-['SPU','LDSP','Split Airport','Split,Croatia'],
-
-
-['SPY','DISP','San Pedro Airport[1]','San-Pedro,Ivory Coast'],
-
-['SQA','KIZA','Santa Ynez Airport ','Santa Ynez,California,United States'],
-
-
-
-
-['SQG','WIOS','Sintang Airport[1] ','Sintang,Indonesia'],
-['SQH','VVNS','Na Sn Airport[1]','Sn La,Vietnam'],
-['SQI','KSQI','Whiteside County Airport ','Sterling Rock Falls,Illinois,United States'],
-
-
-['SQL','KSQL','San Carlos Airport','San Carlos,California,United States'],
-
-['SQN','WAPN','Sanana Airport[1]','Sanana Island,Indonesia'],
-['SQO','ESUD','Storuman Airport[1]','Storuman,Sweden'],
-['SQQ','EYSA','Siauliai International Airport','Siauliai,Lithuania'],
-['SQR','WAWS','Soroako Airport','Soroako,Indonesia'],
-
-
-['SQU','SPOA','Saposoa Airport[1]','Saposoa,Peru'],
-
-['SQW','EKSV','Skive Airport','Skive,Denmark'],
-
-
-['SQZ','EGXP','RAF Scampton[1]','Scampton,England,United Kingdom'],
-
-['SRB','SLSR','Santa Rosa Airport[1]','Santa Rosa de Yacuma,Bolivia'],
-
-['SRD','SLRA','San Ramon Airport[1]','San Ramon,Bolivia'],
-['SRE','SLSU','Juana Azurduy de Padilla International Airport','Sucre,Bolivia'],
-
-['SRG','WARS','Achmad Yani International Airport','Semarang,Indonesia'],
-
-['SRI','WALS','Temindung Airport','Samarinda,Indonesia'],
-['SRJ','SLSB','Capitan German Quiroga Guardia Airport','San Borja,Bolivia'],
-
-
-
-
-['SRP','ENSA','Stord Airport,Sorstokken','Stord,Norway'],
-['SRQ','KSRQ','Sarasota-Bradenton International Airport','Sarasota Bradenton,Florida,United States'],
-
-
-['SRT','HUSO','Soroti Airport','Soroti,Uganda'],
-
-['SRW','KRUQ','Rowan County Airport ','Salisbury,North Carolina,United States'],
-
-
-['SRZ','SLET','El Trompillo Airport','Santa Cruz de la Sierra,Bolivia'],
-
-
-
-
-['SSE','VASL','Solapur Airport','Solapur,Maharashtra,India'],
-
-['SSG','FGSL','Malabo International Airport ','Malabo,Equatorial Guinea'],
-['SSH','HESH','Sharm el-Sheikh International Airport','Sharm el-Sheikh,Egypt'],
-['SSI','KSSI','Malcolm McKinnon Airport','Brunswick,Georgia,United States'],
-['SSJ','ENST','Sandnessjoen Airport,Stokka','Sandnessjoen,Norway'],
-
-['SSL','SKSL','Santa Rosalia Airport[1]','Santa Rosalia,Colombia'],
-['SSN','RKSM','Seoul Air Base','Seoul,South Korea'],
-
-
-
-['SSR','NVSH','Sara Airport','Sara,Vanuatu'],
-
-['SST','SAZL','Santa Teresita Airport[1]','Santa Teresita,Buenos Aires,Argentina'],
-
-
-
-
-['STA','EKVJ','Stauning Vestjylland Airport','Skjern,Denmark'],
-['STB','SVSZ','Miguel Urdaneta Fernandez Airport','Santa Barbara del Zulia,Venezuela'],
-['STD','SVSO','Mayor Buenaventura Vivas Airport','Santo Domingo,Venezuela'],
-
-
-['STG','PAPB','St. George Airport ','St. George,Alaska,United States'],
-
-['STI','MDST','Cibao International Airport','Santiago de los Caballeros,Dominican Republic'],
-['STJ','KSTJ','Rosecrans Memorial Airport','St. Joseph,Missouri,United States'],
-
-['STL','KSTL','Lambert-St. Louis International Airport','St. Louis,Missouri,United States'],
-
-['STN','EGSS','London Stansted Airport','London,England,United Kingdom'],
-
-['STP','KSTP','St. Paul Downtown Airport ','St. Paul Minneapolis,Minnesota,United States'],
-
-['STR','EDDS','Stuttgart Airport','Stuttgart,Baden-Wurttemberg,Germany'],
-['STS','KSTS','Charles M. Schulz-Sonoma County Airport','Santa Rosa,California,United States'],
-['STT','TIST','Cyril E. King Airport','St. Thomas Island,United States Virgin Islands'],
-['STV','VASU','Surat Airport','Surat,Gujarat,India'],
-
-['STX','TISX','Henry E. Rohlsen Airport','Saint Croix,United States Virgin Islands'],
-['STY','SUSO','Nueva Hesperides International Airport','Salto,Uruguay'],
-
-['SUA','KSUA','Witham Field','Stuart,Florida,United States'],
-['SUB','WARR','Juanda International Airport','Surabaya,Indonesia'],
-
-['SUE','KSUE','Door County Cherryland Airport','Sturgeon Bay,Wisconsin,United States'],
-['SUF','LICA','Lamezia Terme International Airport','Lamezia Terme,Calabria,Italy'],
-['SUG','RPMS','Surigao Airport','Surigao City,Philippines'],
-['SUH','OOSR','Sur Airport[1]','Sur,Oman'],
-['SUI','UGSS','Sukhumi Babushara Airport ','Sukhumi,Georgia'],
-['SUJ','LRSM','Satu Mare International Airport','Satu Mare,Romania'],
-
-
-['SUM','KSMS','Sumter Airport ','Sumter,South Carolina,United States'],
-['SUN','KSUN','Friedman Memorial Airport','Hailey Sun Valley,Idaho,United States'],
-
-['SUP','WART','Trunojoyo Airport[1]','Sumenep,Indonesia'],
-['SUQ','SESC','Sucua Airport[1]','Sucua,Ecuador'],
-
-['SUS','KSUS','Spirit of St. Louis Airport','St. Louis,Missouri,United States'],
-['SUT','HTSU','Sumbawanga Airport','Sumbawanga,Tanzania'],
-
-['SUV','NFNA','Nausori International Airport','Suva,Fiji'],
-['SUW','KSUW','Richard I. Bong Airport','Superior,Wisconsin,United States'],
-['SUX','KSUX','Sioux Gateway Airport ','Sioux City,Iowa,United States'],
-
-
-['SVA','PASA','Savoonga Airport','Savoonga,Alaska,United States'],
-['SVB','FMNS','Sambava Airport[1]','Sambava,Madagascar'],
-['SVC','KSVC','Grant County Airport','Silver City,New Mexico,United States'],
-['SVD','TVSV','E. T. Joshua Airport','Saint Vincent,Saint Vincent and the Grenadines'],
-
-['SVF','DBBS','Save Airport','Save,Benin'],
-['SVG','ENZV','Stavanger Airport,Sola','Stavanger,Norway'],
-['SVI','SKSV','Eduardo Falla Solano Airport[1]','San Vicente del Caguan,Colombia'],
-['SVJ','ENSH','Svolvaer Airport,Helle','Svolvaer,Norway'],
-
-['SVL','EFSA','Savonlinna Airport[1]','Savonlinna,Finland'],
-
-
-
-['SVQ','LEZL','Seville Airport','Seville,Andalusia,Spain'],
-
-['SVT','FBSV','Savuti Airport[1]','Savuti,Botswana'],
-['SVU','NFNS','Savusavu Airport','Savusavu,Fiji'],
-['SVW','PASV','Sparrevohn LRRS Airport','Sparrevohn,Alaska,United States'],
-
-
-['SVZ','SVSA','Juan Vicente Gomez International Airport','San Antonio del Tachira,Venezuela'],
-
-
-
-['SWD','PAWD','Seward Airport','Seward,Alaska,United States'],
-
-['SWF','KSWF','Stewart International Airport','Newburgh,New York,United States'],
-
-
-['SWJ','NVSX','South West Bay Airport[1]','South West Bay,Vanuatu'],
-
-
-['SWP','FYSM','Swakopmund Airport[1]','Swakopmund,Namibia'],
-['SWQ','WADS','Sultan Muhammad Kaharuddin III Airport[1] ','Sumbawa Besar,Indonesia'],
-
-['SWS','EGFH','Swansea Airport','Swansea,Wales,United Kingdom'],
-
-['SWU','RKSW','Suwon Air Base[1]','Suwon,South Korea'],
-
-['SWW','KSWW','Avenger Field','Sweetwater,Texas,United States'],
-['SWX','FBSW','Shakawe Airport[1]','Shakawe,Botswana'],
-['SWY','WMBA','Sitiawan Airport','Sitiawan,Perak,Malaysia'],
-
-['SXB','LFST','Strasbourg Airport','Strasbourg,Alsace,France'],
-
-['SXF','EDDB','Berlin SchÃ¶nefeld Airport','Berlin,Germany'],
-['SXG','FLSN','Senanga Airport[1]','Senanga,Zambia'],
-
-
-
-['SXK','WAPI','Saumlaki Airport[1] ','Saumlaki,Indonesia'],
-['SXL','EISG','Sligo Airport','Sligo,Ireland'],
-['SXM','TNCM','Princess Juliana International Airport','Sint Maarten,Kingdom of the Netherlands'],
-['SXN','FBSN','Sua Pan Airport[1]','Sua Pan,Botswana'],
-
-
-['SXQ','PASX','Soldotna Airport','Soldotna,Alaska,United States'],
-['SXR','VISR','Srinagar International Airport ','Srinagar,Jammu and Kashmir,India'],
-['SXS','WBKH','Sahabat Airport[1]','Sahabat,Sabah,Malaysia'],
-['SXT','WMAN','Sungai Tiang Airport[1]','Taman Negara,Pahang,Malaysia'],
-
-['SXV','VOSM','Salem Airport','Salem,Tamil Nadu,India'],
-
-
-
-['SXZ','LTCL','Siirt Airport','Siirt,Turkey'],
-['SYA','PASY','Eareckson Air Station','Shemya,Alaska,United States'],
-
-['SYC','SPSY','Shiringayoc Airport[1]','Shiringayoc,Peru'],
-['SYD','YSSY','Sydney Airport ','Sydney,New South Wales,Australia'],
-
-
-['SYG','VNSB','Syangboche Airport[1]','Namche Bazaar,Nepal'],
-
-
-['SYK','BIST','Stykkisholmur Airport','Stykkisholmur,Iceland'],
-
-['SYN','KSYN','Stanton Airfield','Stanton,Minnesota,United States'],
-['SYO','RJSY','Shonai Airport','Shnai,Honshu,Japan'],
-['SYP','MPSA','Ruben Cantu Airport','Santiago de Veraguas,Panama'],
-['SYQ','MRPV','Tobias Bolanos International Airport','San Jose,Costa Rica'],
-['SYR','KSYR','Syracuse Hancock International Airport','Syracuse,New York,United States'],
-
-['SYT','LFLN','Saint-Yan Airport[1] ','Saint-Yan,Burgundy,France'],
-
-['SYV','KSYV','Sylvester Airport','Sylvester,Georgia,United States'],
-
-
-['SYY','EGPO','Stornoway Airport','Stornoway,Scotland,United Kingdom'],
-
-
-['SZB','WMSA','Sultan Abdul Aziz Shah Airport','Kuala Lumpur,7 Malaysia'],
-
-['SZF','LTFH','Samsun-caramba Airport','Samsun,Turkey'],
-['SZG','LOWS','Salzburg Airport','Salzburg,Austria'],
-
-['SZJ','MUSN','Siguanea Airport[1]','Isla de la Juventud,Cuba'],
-['SZK','FASZ','Skukuza Airport[1]','Skukuza,South Africa'],
-
-
-['SZN','KSZN','Santa Cruz Island Airport','Santa Cruz Island,California,United States'],
-['SZP','KSZP','Santa Paula Airport','Santa Paula,California,United States'],
-['SZR','LBSZ','Stara Zagora Airport','Stara Zagora,Bulgaria'],
-['SZS','NZRC','Ryans Creek Aerodrome','Stewart Island,New Zealand'],
-
-
-['SZW','EDOP','Schwerin-Parchim International Airport','Schwerin,Mecklenburg-Vorpommern,Germany'],
-
-['SZZ','EPSC','Solidarity Szczecin-Goleniow Airport','Szczecin,Poland'],
-
-['TAB','TTCP','Arthur Napoleon Raymond Robinson International Airport','Tobago,Trinidad and Tobago'],
-['TAC','RPVA','Daniel Z. Romualdez Airport','Tacloban,Philippines'],
-['TAD','KTAD','Perry Stokes Airport','Trinidad,Colorado,United States'],
-['TAE','RKTN','Daegu International Airport','Daegu,South Korea'],
-
-['TAG','RPVT','Tagbilaran Airport','Tagbilaran,Philippines'],
-['TAH','NVVW','Whitegrass Airport','Tanna Island,Vanuatu'],
-
-
-['TAK','RJOT','Takamatsu Airport','Takamatsu,Shikoku,Japan'],
-['TAL','PATA','Ralph M. Calhoun Memorial Airport','Tanana,Alaska,United States'],
-['TAM','MMTM','General Francisco Javier Mina International Airport','Tampico,Tamaulipas,Mexico'],
-
-
-['TAP','MMTP','Tapachula International Airport','Tapachula,Chiapas,Mexico'],
-
-['TAR','LIBG','Taranto-Grottaglie Airport','Taranto,Apulia,Italy'],
-
-['TAT','LZTT','Poprad-Tatry Airport','Poprad,Slovakia'],
-
-
-['TAW','SUTB','Tacuarembo Airport','Tacuarembo,Uruguay'],
-['TAX','WAPT','Taliabu Airport','Taliabu,Indonesia'],
-['TAY','EETU','Tartu Airport','Tartu,Estonia'],
-
-
-['TBB','VVTH','Dong Tac Airport[1]','Tuy Hoa,Vietnam'],
-
-['TBD','SKMB','Timbiqui Airport[1]','Timbiqui,Colombia'],
-
-['TBF','NGTE','Tabiteuea North Airport[1]','Tabiteuea North,Kiribati'],
-['TBG','AYTB','Tabubil Airport[1]','Tabubil,Papua New Guinea'],
-['TBH','RPVU','Tugdan Airport','Tablas Island,Philippines'],
-['TBI','MYCB','New Bight Airport','New Bight,Cat Island,Bahamas'],
-['TBJ','DTKA','Tabarka-Ain Draham International Airport','Tabarka,Tunisia'],
-
-
-['TBM','WAOW','Tumbang Samba Airport[1]','Tumbang Samba,Indonesia'],
-['TBO','HTTB','Tabora Airport[1]','Tabora,Tanzania'],
-['TBP','SPME','Cap. FAP Pedro Canga Rodriguez Airport','Tumbes,Peru'],
-
-['TBR','KTBR','Statesboro-Bulloch County Airport','Statesboro,Georgia,United States'],
-['TBS','UGTB','Tbilisi International Airport','Tbilisi,Georgia'],
-
-['TBU','NFTF','Fuaamotu International Airport','Nukualofa,Tonga'],
-
-
-['TBY','FBTS','Tshabong Airport[1]','Tsabong,Botswana'],
-
-
-['TCB','MYAT','Treasure Cay Airport','Treasure Cay,Abaco Islands,Bahamas'],
-
-['TCD','SKRA','Tarapaca Airport[1]','Tarapaca,Colombia'],
-['TCE','LRTC','Tulcea Danube Delta Airport[1]','Tulcea,Romania'],
-
-
-['TCH','FOOT','Tchibanga Airport[1]','Tchibanga,Gabon'],
-
-
-
-['TCM','KTCM','McChord Field','Tacoma,Washington,United States'],
-['TCN','MMHC','Tehuacan Airport','Tehuacan,Puebla,Mexico'],
-['TCO','SKCO','La Florida Airport[1]','Tumaco,Colombia'],
-['TCP','HETB','Taba International Airport','Taba,Egypt'],
-['TCQ','SPTN','Coronel FAP Carlos Ciriani Santa Rosa International Airport[1]','Tacna,Peru'],
-['TCR','VOTK','Tuticorin Airport[1]','Thoothukudi ,Tamil Nadu,India'],
-
-
-['TCU','FATN','Thaba Nchu Airport[1]','Thaba Nchu,South Africa'],
-
-
-['TCY','FYTE','Terrace Bay Airport[1]','Terrace Bay,Namibia'],
-
-['TDA','SKTD','Trinidad Airport[1]','Trinidad,Colombia'],
-
-['TDD','SLTR','Teniente Jorge Henrich Arauz Airport','Trinidad,Bolivia'],
-['TDG','RPMW','Tandag Airport','Tandag,Philippines'],
-['TDJ','HDTJ','Tadjoura Airport[1]','Tadjoura,Djibouti'],
-
-['TDL','SAZT','Tandil Airport','Tandil,Buenos Aires,Argentina'],
-
-['TDO','KTDO','South Lewis County Airport ','Toledo,Washington,United States'],
-['TDP','SPDR','Trompeteros Airport[1]','Trompeteros,Peru'],
-
-['TDS','AYSS','Sasereme Airport','Sasereme,Papua New Guinea'],
-
-['TDV','FMSN','Samangoky Airport','Tanandava,Madagascar'],
-['TDW','KTDW','Tradewind Airport','Amarillo,Texas,United States'],
-['TDX','VTBO','Trat Airport','Trat,Thailand'],
-['TDZ','KTDZ','Toledo Executive Airport','Toledo,Ohio,United States'],
-['TEA','MHTE','Tela Airport[1]','Tela,Honduras'],
-['TEB','KTEB','Teterboro Airport','Teterboro,New Jersey,United States'],
-
-['TED','EKTS','Thisted Airport','Thisted,Denmark'],
-
-
-['TEG','DFET','Tenkodogo Airport','Tenkodogo,Burkina Faso'],
-
-['TEI','VETJ','Tezu Airport','Tezu,Arunachal Pradesh,India'],
-
-['TEL','WBKE','Telupid Airport[1]','Telupid,Sabah,Malaysia'],
-
-
-
-
-['TEQ','LTBU','Tekirda corlu Airport','Tekirda,Turkey'],
-['TER','LPLA','Lajes Field','Terceira Island,Azores,Portugal'],
-['TES','HHTS','Teseney Airport[1]','Teseney,Eritrea'],
-['TET','FQTT','Chingozi Airport','Tete,Mozambique'],
-['TEU','NZMO','Te Anau Airport[1] ','Te Anau,New Zealand'],
-['TEV','LETL','Teruel Airport[1]','Teruel,Aragon,Spain'],
-['TEY','BITE','Thingeyri Airport[1]','Thingeyri ,Iceland'],
-['TEZ','VETZ','Tezpur Airport','Tezpur,Assam,India'],
-
-
-['TFI','AYTU','Tufi Airport[1]','Tufi,Papua New Guinea'],
-
-['TFM','AYTE','Telefomin Airport[1]','Telefomin,Papua New Guinea'],
-['TFN','GCXO','Tenerife-North Airport ','Tenerife,Canary Islands,Spain'],
-
-['TFS','GCTS','Tenerife-South Airport ','Tenerife,Canary Islands,Spain'],
-
-['TGA','WSAT','Tengah Air Base','Singapore'],
-
-['TGC','WBTM','Tanjung Manis Airport[1]','Tanjung Manis,Sarawak,Malaysia'],
-['TGD','LYPG','Podgorica Airport','Podgorica,Montenegro'],
-
-['TGG','WMKN','Sultan Mahmud Airport','Kuala Terengganu,Terengganu,Malaysia'],
-['TGH','NVST','Tongoa Airport','Tongoa,Shefa,Vanuatu'],
-['TGI','SPGM','Tingo Maria Airport','Tingo Maria,Peru'],
-['TGJ','NWWA','Tiga Airport[1]','Tiga Island,Loyalty Islands,New Caledonia'],
-
-
-['TGM','LRTM','Targu Mure International Airport','Targu Mure,Romania'],
-
-
-
-
-
-['TGT','HTTG','Tanga Airport[1]','Tanga,Tanzania'],
-['TGU','MHTG','Toncontin International Airport','Tegucigalpa,Honduras'],
-['TGV','LBTG','Targovishte Airport[1] ','Targovishte,Bulgaria'],
-['TGZ','MMTG','angel Albino Corzo International Airport','Tuxtla Gutierrez,Chiapas,Mexico'],
-['THB','FXTA','Thaba Tseka Airport[1]','Thaba-Tseka,Lesotho'],
-['THC','GLTN','Tchien Airport','Tchien,Liberia'],
-['THD','VVTX','Tho Xuan Airport','Thanh Hoa,Vietnam'],
-
-
-
-
-['THK','VLTK','Thakhek Airport[1]','Thakhek,Laos'],
-['THL','VYTL','Tachilek Airport','Tachileik ,Myanmar'],
-['THM','KTHM','Thompson Falls Airport[1]','Thompson Falls,Montana,United States'],
-['THN','ESGT','TrollhÃ¤ttan-VÃ¤nersborg Airport','TrollhÃ¤ttan VÃ¤nersborg,Sweden'],
-['THO','BITN','Thorshofn Airport','Thorshofn ,Iceland'],
-
-
-
-['THS','VTPO','Sukhothai Airport','Sukhothai,Thailand'],
-
-['THU','BGTL','Thule Air Base','Pituffik,Greenland'],
-['THV','KTHV','York Airport','York,Pennsylvania,United States'],
-
-
-['THY','FATH','P.R. Mphephu Airport[1]','Thohoyandou,South Africa'],
-['THZ','DRRT','Tahoua Airport','Tahoua,Niger'],
-['TIA','LATI','Tirana International Airport Nene Tereza','Tirana,Albania'],
-['TIB','SKTB','Tibu Airport[1]','Tibu,Colombia'],
-
-
-
-
-['TIH','NTGC','Tikehau Airport[1]','Tikehau,Tuamotus,French Polynesia'],
-
-['TIJ','MMTJ','Tijuana International Airport','Tijuana,Baja California,Mexico'],
-
-
-['TIM','WABP','Mozes Kilangin Airport','Tembagapura Timika,Indonesia'],
-
-['TIO','VYHN','Tilin Airport[1]','Htilin ,Myanmar'],
-
-['TIQ','PGWT','Tinian International Airport ','Tinian,Northern Mariana Islands'],
-['TIR','VOTP','Tirupati Airport','Tirupati,Andhra Pradesh,India'],
-['TIU','NZTU','Richard Pearse Airport','Timaru,New Zealand'],
-['TIV','LYTV','Tivat Airport','Tivat,Montenegro'],
-['TIW','KTIW','Tacoma Narrows Airport','Tacoma,Washington,United States'],
-
-['TIZ','AYTA','Tari Airport[1]','Tari,Papua New Guinea'],
-['TJA','SLTJ','Capitan Oriel Lea Plaza Airport','Tarija,Bolivia'],
-['TJB','WIBT','Sei Bati Airport[1]','Tanjung Balai,Indonesia'],
-
-['TJG','WAON','Warukin Airport[1]','Tanjung,Indonesia'],
-['TJH','RJBT','Tajima Airport[1]','Toyooka,Honshu,Japan'],
-['TJI','MHTJ','Trujillo Airport[1] ','Trujillo,Honduras'],
-['TJK','LTAW','Tokat Airport','Tokat,Turkey'],
-
-
-['TJN','NTKM','Takume Airport[1]','Takume,Tuamotus,French Polynesia'],
-['TJQ','WIKD','H.A.S. Hanandjoeddin Airport ','Tanjung Pandan,Indonesia'],
-['TJS','WAGD','Tanjung Harapan Airport[1]','Tanjung Selor,Indonesia'],
-
-
-['TKA','PATK','Talkeetna Airport','Talkeetna,Alaska,United States'],
-
-
-['TKD','DGTK','Takoradi Airport','Sekondi-Takoradi,Ghana'],
-
-['TKF','KTRK','Truckee Tahoe Airport ','Truckee,California,United States'],
-['TKG','WILL','Radin Inten II Airport','Bandar Lampung,Indonesia'],
-
-
-['TKJ','PFTO','Tok Junction Airport[1] ','Tok,Alaska,United States'],
-['TKK','PTKK','Chuuk International Airport','Chuuk,Federated States of Micronesia'],
-
-['TKN','RJKN','Tokunoshima Airport[1]','Tokunoshima,Amami Islands,Japan'],
-['TKO','FXTK','Tlokoeng Airport[1]','Tlokoeng,Lesotho'],
-['TKP','NTGT','Takapoto Airport[1]','Takapoto,Tuamotus,French Polynesia'],
-['TKQ','HTKA','Kigoma Airport','Kigoma,Tanzania'],
-['TKR','VGSG','Thakurgaon Airport[1]','Thakurgaon,Bangladesh'],
-['TKS','RJOS','Tokushima Airport[1]','Tokushima,Shikoku,Japan'],
-['TKT','VTPT','Tak Airport','Tak,Thailand'],
-['TKU','EFTU','Turku Airport','Turku,Finland'],
-['TKV','NTGO','Tatakoto Airport[1]','Tatakoto,Tuamotus,French Polynesia'],
-
-['TKX','NTKR','Takaroa Airport[1]','Takaroa,Tuamotus,French Polynesia'],
-
-['TKZ','NZTO','Tokoroa Aerodrome[1]','Tokoroa,New Zealand'],
-['TLA','PATE','Teller Airport ','Teller,Alaska,United States'],
-
-['TLC','MMTO','Licenciado Adolfo Lopez Mateos International Airport','Toluca,State of Mexico,Mexico'],
-['TLD','FBTL','Tuli Lodge Airport[1]','Tuli Lodge,Botswana'],
-['TLE','FMST','Toliara Airport[1]','Toliara,Madagascar'],
-
-['TLG','AGTI','Tulaghi Heliport[1]','Tulagi,Solomon Islands'],
-['TLH','KTLH','Tallahassee International Airport','Tallahassee,Florida,United States'],
-['TLI','WAMI','Sultan Bantilan Airport[1] ','Tolitoli,Indonesia'],
-['TLJ','PATL','Tatalina LRRS Airport','Tatalina,Alaska,United States'],
-
-['TLL','EETN','Tallinn Airport ','Tallinn,Estonia'],
-
-['TLN','LFTH','Toulon-Hyeres Airport ','Toulon Hyeres,Provence-Alpes-Cote dAzur,France'],
-
-
-
-['TLR','KTLR','Mefford Field Airport','Tulare,California,United States'],
-['TLS','LFBO','Toulouse-Blagnac Airport','Toulouse,Midi-Pyrenees,France'],
-
-['TLU','SKTL','Golfo de Morrosquillo Airport[1]','Tolu,Colombia'],
-['TLV','LLBG','Ben Gurion Airport','Tel Aviv,Israel'],
-['TLW','AYVL','Talasea Airport[1]','Talasea,Papua New Guinea'],
-['TLX','SCTL','Panguilemo Airport[1]','Talca,Chile'],
-
-
-['TMA','KTMA','Henry Tift Myers Airport','Tifton,Georgia,United States'],
-['TMB','KTMB','Miami Executive Airport','Miami,Florida,United States'],
-['TMC','WADT','Tambolaka Airport[1] ','Tambolaka,Indonesia'],
-
-['TME','SKTM','Gabriel Vargas Santos Airport','Tame,Colombia'],
-['TMF','VRNT','Thimarafushi Airport','Thimarafushi,Thaa Atoll,Maldives'],
-['TMG','WBKM','Tommanggong Airport[1]','Tommanggong,Sabah,Malaysia'],
-['TMH','WAKT','Tanah Merah Airport[1]','Tanahmerah,Indonesia'],
-['TMI','VNTR','Tumlingtar Airport[1]','Tumlingtar,Nepal'],
-
-
-['TML','DGLE','Tamale Airport','Tamale,Ghana'],
-['TMM','FMMT','Toamasina Airport','Toamasina,Madagascar'],
-['TMN','NGTM','Tamana Airport[1]','Tamana,Kiribati'],
-['TMO','SVTM','Tumeremo Airport[1]','Tumeremo,Venezuela'],
-['TMP','EFTP','Tampere-Pirkkala Airport','Tampere,Finland'],
-['TMQ','DFEM','Tambao Airport','Tambao,Burkina Faso'],
-
-['TMS','FPST','Sao Tome International Airport','Sao Tome,Sao Tome and Principe'],
-
-['TMU','MRTR','Tambor Airport','Tambor,Costa Rica'],
-
-
-
-['TMZ','NZTH','Thames Aerodrome','Thames,New Zealand'],
-
-['TNB','WRLH','Tanah Grogot Airport[1]','Tanah Grogot,Indonesia'],
-['TNC','PATC','Tin City LRRS Airport','Tin City,Alaska,United States'],
-['TND','MUTD','Alberto Delgado Airport[1]','Trinidad,Cuba'],
-['TNE','RJFG','New Tanegashima Airport[1]','Tanegashima,sumi Islands,Japan'],
-['TNF','LFPN','Toussus-le-Noble Airport','Toussus-le-Noble,Ile-de-France,France'],
-['TNG','GMTT','Tangier Ibn Battouta Airport','Tangier,Morocco'],
-
-['TNI','VIST','Satna Airport','Satna,Madhya Pradesh,India'],
-['TNJ','WIDN','Raja Haji Fisabilillah Airport','Tanjung Pinang,Indonesia'],
-
-
-['TNM','SCRM','Teniente R. Marsh Airport','King George Island,Antarctica'],
-['TNN','RCNN','Tainan Airport','Tainan,Taiwan'],
-['TNO','MRTM','Tamarindo Airport','Tamarindo,Costa Rica'],
-['TNP','KTNP','Twentynine Palms Airport','Twentynine Palms,California,United States'],
-
-['TNR','FMMI','Ivato International Airport','Antananarivo,Madagascar'],
-
-['TNT','KTNT','Dade-Collier Training and Transition Airport','Miami,Florida,United States'],
-
-
-['TNW','SEJD','Jumandy Airport[1]','Tena,Ecuador'],
-['TNX','VDST','Steung Treng Airport[1]','Stung Treng,Cambodia'],
-['TNZ','ZMTL','Tosontsengel Airport[1]','Tosontsengel,Mongolia'],
-['TOA','KTOA','Zamperini Field','Torrance,California,United States'],
-
-['TOC','KTOC','Toccoa Airport ','Toccoa,Georgia,United States'],
-['TOD','WMBT','Tioman Airport','Tioman Island,Pahang,Malaysia'],
-['TOE','DTTZ','Tozeur-Nefta International Airport','Tozeur,Tunisia'],
-
-['TOG','PATG','Togiak Airport','Togiak,Alaska,United States'],
-['TOH','NVSD','Torres Airport[1]','Torres Islands,Vanuatu'],
-
-['TOJ','LETO','Madrid-Torrejon Airport','Madrid,Community of Madrid,Spain'],
-
-['TOL','KTOL','Toledo Express Airport','Toledo,Ohio,United States'],
-['TOM','GATB','Timbuktu Airport','Timbuktu ,Mali'],
-
-['TOO','MRSV','San Vito de Java Airport[1]','San Vito,Costa Rica'],
-
-['TOQ','SCBE','Barriles Airport[1]','Tocopilla,Chile'],
-
-['TOS','ENTC','Tromso Airport,Langnes','Tromso,Norway'],
-['TOT','SMCO','Totness Airstrip','Totness,Suriname'],
-['TOU','NWWU','Touho Airport[1]','Touho,New Caledonia'],
-
-
-
-['TOY','RJNT','Toyama Airport','Toyama,Honshu,Japan'],
-['TOZ','DITM','Mahana Airport[1]','Touba,Ivory Coast'],
-['TPA','KTPA','Tampa International Airport','Tampa,Florida,United States'],
-['TPC','SETR','Tarapoa Airport[1]','Tarapoa,Ecuador'],
-['TPE','RCTP','Taiwan Taoyuan International Airport','Taipei,Taiwan'],
-['TPF','KTPF','Peter O. Knight Airport','Tampa,Florida,United States'],
-['TPG','WMBI','Taiping Airport[1]','Taiping,Perak,Malaysia'],
-['TPH','KTPH','Tonopah Airport','Tonopah,Nevada,United States'],
-['TPI','AYTI','Tapini Airport[1]','Tapini,Papua New Guinea'],
-['TPJ','VNTJ','Taplejung Airport[1]','Taplejung,Nepal'],
-['TPK','WITA','Teuku Cut Ali Airport[1]','Tapaktuan,Indonesia'],
-['TPN','SETI','Tiputini Airport[1]','Tiputini,Ecuador'],
-['TPP','SPST','Cad. FAP Guillermo del Castillo Paredes Airport[1]','Tarapoto,Peru'],
-['TPQ','MMEP','Amado Nervo International Airport','Tepic,Nayarit,Mexico'],
-
-['TPS','LICT','Vincenzo Florio Airport Trapani-Birgi','Trapani,Sicily,Italy'],
-
-['TPU','VNTP','Tikapur Airport[1]','Tikapur,Nepal'],
-['TPX','NTTU','Tupai Airport[1]','Tpai,Society Islands,French Polynesia'],
-
-
-
-
-
-['TQS','SKTQ','Captain Ernesto Esguerra Cubides Air Base[1]','Tres Esquinas,Colombia'],
-['TRA','RORT','Tarama Airport[1]','Tarama,Miyako Islands,Japan'],
-['TRB','SKTU','Gonzalo Mejia Airport[1]','Turbo,Colombia'],
-['TRC','MMTC','Francisco Sarabia International Airport ','Torreon,Coahuila,Mexico'],
-['TRD','ENVA','Trondheim Airport,Vaernes','Trondheim,Norway'],
-['TRE','EGPU','Tiree Airport','Tiree,Scotland,United Kingdom'],
-['TRF','ENTO','Sandefjord Airport,Torp','Sandefjord Oslo,Norway'],
-['TRG','NZTG','Tauranga Airport','Tauranga,New Zealand'],
-
-
-['TRK','WALR','Juwata International Airport','Tarakan,Indonesia'],
-
-['TRN','LIMF','Turin Airport ','Turin,Piedmont,Italy'],
-
-
-
-['TRS','LIPQ','Trieste - Friuli Venezia Giulia Airport ','Trieste,Friuli-Venezia Giulia,Italy'],
-['TRU','SPRU','FAP Captain Carlos Martinez de Pinillos International Airport','Trujillo,Peru'],
-['TRV','VOTV','Trivandrum International Airport','Thiruvananthapuram,Kerala,India'],
-['TRW','NGTA','Bonriki International Airport','Tarawa,Kiribati'],
-
-['TRY','HUTO','Tororo Airport[1]','Tororo,Uganda'],
-['TRZ','VOTR','Tiruchirappalli International Airport','Tiruchirappalli ,Tamil Nadu,India'],
-['TSA','RCSS','Taipei Songshan Airport','Taipei,Taiwan'],
-['TSB','FYTM','Tsumeb Airport[1]','Tsumeb,Namibia'],
-['TSC','SETH','Taisha Airport[1]','Taisha,Ecuador'],
-
-
-['TSF','LIPH','Treviso-SantAngelo Airport','Treviso Venice,Veneto,Italy'],
-
-
-
-['TSJ','RJDT','Tsushima Airport','Tsushima,Tsushima Island,Japan'],
-
-['TSL','MMTN','Tamuin National Airport','Tamuin,San Luis Potosi,Mexico'],
-
-
-
-['TSR','LRTR','Timioara Traian Vuia International Airport','Timioara,Romania'],
-['TST','VTST','Trang Airport','Trang,Thailand'],
-['TSU','NGTS','Tabiteuea South Airport[1]','Tabiteuea South,Kiribati'],
-['TSV','YBTL','Townsville Airport','Townsville,Queensland,Australia'],
-
-['TSX','WRLT','Tanjung Santan Airport[1]','Tanjung Santan,Indonesia'],
-['TSY','WICM','Tasikmalaya Airport[1] ','Tasikmalaya,West Java,Indonesia'],
-['TSZ','ZMTG','Tsetserleg Airport','Tsetserleg,Mongolia'],
-['TTA','GMAT','Tan Tan Airport ','Tan-Tan,Morocco'],
-['TTB','LIET','Tortoli Airport ','Tortoli,Sardinia,Italy'],
-['TTC','SCTT','Las Breas Airport[1]','Taltal,Chile'],
-['TTD','KTTD','Portland-Troutdale Airport','Portland,Oregon,United States'],
-['TTE','WAEE','Sultan Babullah Airport[1]','Ternate,Indonesia'],
-['TTG','SAST','Tartagal General Enrique Mosconi Airport','Tartagal,Salta,Argentina'],
-['TTH','OOTH','RAFO Thumrait[1]','Thumrait,Oman'],
-['TTI','NTTE','Tetiaroa Airport[1]','Tetiaroa,Society Islands,French Polynesia'],
-['TTJ','RJOR','Tottori Airport[1]','Tottori,Honshu,Japan'],
-
-
-['TTN','KTTN','Trenton-Mercer Airport','Trenton,New Jersey,United States'],
-
-['TTQ','MRBT','Tortuguero Airport ','Tortuguero,Costa Rica'],
-['TTR','WAWT','Pongtiku Airport[1]','Tana Toraja,Indonesia'],
-['TTS','FMNT','Tsaratanana Airport','Tsaratanana,Madagascar'],
-['TTT','RCFN','Taitung Airport ','Taitung,Taiwan'],
-
-
-
-['TUA','SETU','Teniente Coronel Luis a Mantilla International Airport','Tulcan,Ecuador'],
-['TUB','NTAT','Tubuai - Mataura Airport[1]','Tubuai,French Polynesia'],
-['TUC','SANT','Teniente General Benjamin Matienzo International Airport','San Miguel de Tucuman,Tucuman,Argentina'],
-['TUD','GOTT','Tambacounda Airport','Tambacounda,Senegal'],
-['TUF','LFOT','Tours Val de Loire Airport','Tours,Centre-Val de Loire,France'],
-['TUG','RPUT','Tuguegarao Airport','Tuguegarao,Philippines'],
-
-
-
-['TUL','KTUL','Tulsa International Airport','Tulsa,Oklahoma,United States'],
-
-['TUN','DTTA','Tunis-Carthage International Airport','Tunis,Tunisia'],
-['TUO','NZAP','Taupo Airport','Taupo,New Zealand'],
-['TUQ','DFOT','Tougan Airport','Tougan,Burkina Faso'],
-
-['TUS','KTUS','Tucson International Airport','Tucson,Arizona,United States'],
-
-['TUV','SVTC','San Rafael Airport[1]','Tucupita,Venezuela'],
-
-
-
-
-['TVA','FMMR','Morafenobe Airport[1]','Morafenobe,Madagascar'],
-['TVC','KTVC','Cherry Capital Airport','Traverse City,Michigan,United States'],
-['TVL','KTVL','Lake Tahoe Airport','South Lake Tahoe,California,United States'],
-
-['TVU','NFNM','Matei Airport','Taveuni,Fiji'],
-['TVY','VYDW','Dawei Airport','Dawei,Myanmar'],
-
-
-
-
-
-
-['TWT','RPMN','Sanga-Sanga Airport','Tawitawi Island ,Philippines'],
-['TWU','WBKW','Tawau Airport','Tawau,Sabah,Malaysia'],
-
-['TWZ','NZUK','Pukaki Airport[1] ','Twizel,New Zealand'],
-
-['TXL','EDDT','Berlin Tegel Airport','Berlin,Germany'],
-['TXM','WAST','Teminabuan Airport[1]','Teminabuan,Indonesia'],
-
-
-['TXU','DITB','Tabou Airport[1]','Tabou,Ivory Coast'],
-
-
-
-
-['TYF','ESST','Torsby Airport[1]','Torsby,Sweden'],
-
-['TYL','SPYL','Capitan FAP Victor Montes Arias International Airport','Talara,Peru'],
-['TYM','MYES','Staniel Cay Airport[1]','Staniel Cay,Exuma Islands,Bahamas'],
-
-
-
-['TYS','KTYS','McGhee Tyson Airport','Knoxville,Tennessee,United States'],
-['TYT','SUTR','Treinta y Tres Airport','Treinta y Tres,Uruguay'],
-['TYZ','KTYL','Taylor Airport ','Taylor,Arizona,United States'],
-
-['TZC','KCFS','Tuscola Area Airport[1] ','Caro,Michigan,United States'],
-['TZL','LQTZ','Tuzla International Airport','Tuzla,Bosnia and Herzegovina'],
-
-['TZN','MYAK','South Andros Airport ','South Andros,Andros Island,Bahamas'],
-
-['TZX','LTCG','Trabzon Airport','Trabzon,Turkey'],
-['UAB','LTAG','Incirlik Air Base[1]','Adana,Turkey'],
-
-
-['UAH','NTMU','Ua Huka Airport[1]','Ua Huka,Marquesas Islands,French Polynesia'],
-['UAI','WPDB','Suai Airport[1]','Suai,East Timor'],
-['UAK','BGBW','Narsarsuaq Airport','Narsarsuaq,Greenland'],
-
-
-['UAP','NTMP','Ua Pou Airport[1]','Ua Pu,Marquesas Islands,French Polynesia'],
-['UAQ','SANU','Domingo Faustino Sarmiento Airport','San Juan,San Juan,Argentina'],
-['UAR','GMFB','Bouarfa Airport[1]','Bouarfa,Morocco'],
-['UAS','HKSB','Samburu Airport[1] ','Samburu,Kenya'],
-
-
-
-
-['UBJ','RJDC','Yamaguchi Ube Airport','Ube,Honshu,Japan'],
-['UBP','VTUU','Ubon Ratchathani Airport','Ubon Ratchathani,Thailand'],
-['UBR','WAJU','Ubrub Airport[1]','Ubrub,Indonesia'],
-['UBS','KUBS','Columbus-Lowndes County Airport','Columbus,Mississippi,United States'],
-
-
-
-['UCC','KUCC','Yucca Airstrip ','Mercury,Nevada,United States'],
-
-
-['UCN','GLBU','Buchanan Airport','Buchanan,Liberia'],
-
-
-['UDD','KUDD','Bermuda Dunes Airport','Palm Springs,California,United States'],
-['UDE','EHVK','Volkel Air Base','Uden,Netherlands'],
-
-
-['UDN','LIPD','Campoformido Airport[1]','Udine,Friuli-Venezia Giulia,Italy'],
-['UDR','VAUD','Maharana Pratap Airport','Udaipur,Rajasthan,India'],
-
-['UEL','FQQL','Quelimane Airport','Quelimane,Mozambique'],
-
-['UEO','ROKJ','Kumejima Airport[1]','Kumejima,Okinawa Islands,Japan'],
-['UES','KUES','Waukesha County Airport ','Waukesha,Wisconsin,United States'],
-
-
-['UGA','ZMBN','Bulgan Airport','Bulgan,Mongolia'],
-
-
-
-['UGN','KUGN','Waukegan National Airport','Waukegan,Illinois,United States'],
-
-
-['UGT','ZMBR','Bulagtai Airport[1]','Bulagtai,Mongolia'],
-
-['UHE','LKKU','Kunovice Airport','Uherske HradiSt,Czech Republic'],
-['UIB','SKUI','El Carano Airport','Quibdo,Colombia'],
-['UIH','VVPC','Phu Cat Airport','Qui Nhn,Vietnam'],
-['UII','MHUT','utila Airport','utila,Honduras'],
-
-['UIL','KUIL','Quillayute Airport','Forks,Washington,United States'],
-['UIO','SEQM','Mariscal Sucre International Airport','Quito,Ecuador'],
-['UIP','LFRQ','Quimper-Cornouaille Airport ','Quimper,Brittany,France'],
-['UIQ','NVVQ','Quoin Hill Airfield','Quoin Hill,Vanuatu'],
-
-
-
-['UJN','RKTL','Uljin Airport[1]','Uljin,South Korea'],
-['UJU','ZKUJ','Uiju Airfield[1]','Uiju,North Korea'],
-['UKA','HKUK','Ukunda Airport[1] ','Ukunda,Kenya'],
-['UKB','RJBE','Kobe Airport','Kobe Osaka,Honshu,Japan'],
-
-['UKH','OOMK','Mukhaizna Airport[1]','Mukhaizna,Oman'],
-
-
-
-
-
-['UKT','KUKT','Quakertown Airport','Quakertown,Pennsylvania,United States'],
-
-
-['ULA','SAWJ','Capitan Jose Daniel Vazquez Airport[1]','Puerto San Julian,Santa Cruz,Argentina'],
-['ULB','NVSU','Ulei Airport[1]','Ulei,Vanuatu'],
-['ULD','FAUL','Ulundi Airport[1]','Ulundi,South Africa'],
-
-['ULG','ZMUL','Ã–lgii Airport[1]','Ã–lgii,Mongolia'],
-
-
-
-
-
-['ULN','ZMUB','Chinggis Khaan International Airport','Ulaanbaatar,Mongolia'],
-['ULO','ZMUG','Ulaangom Airport','Ulaangom,Mongolia'],
-
-['ULQ','SKUL','Heriberto Gil Martinez Airport[1]','Tulua,Colombia'],
-
-['ULU','HUGU','Gulu Airport[1]','Gulu,Uganda'],
-
-
-
-['ULZ','ZMDN','Donoi Airport[1]','Uliastai,Mongolia'],
-
-
-['UME','ESNU','UmeÃ¥ Airport','UmeÃ¥,Sweden'],
-['UMI','SPIL','Quince Mil Airport[1]','Quince Mil,Peru'],
-['UMM','PAST','Summit Airport','Summit,Alaska,United States'],
-
-
-['UMT','PAUM','Umiat Airport','Umiat,Alaska,United States'],
-
-
-
-
-
-['UNE','FXQN','Qachas Nek Airport[1]','Qachas Nek,Lesotho'],
-['UNG','AYKI','Kiunga Airport[1]','Kiunga,Papua New Guinea'],
-['UNI','TVSU','Union Island Airport','Union Island,Saint Vincent and the Grenadines'],
-['UNK','PAUN','Unalakleet Airport','Unalakleet,Alaska,United States'],
-['UNN','VTSR','Ranong Airport','Ranong,Thailand'],
-['UNR','ZMUH','Ã–ndÃ¶rkhaan Airport','Ã–ndÃ¶rkhaan,Mongolia'],
-
-['UNU','KUNU','Dodge County Airport','Juneau,Wisconsin,United States'],
-['UOA','NTTX','Mururoa Airport[1]','Moruroa ,Tuamotus,French Polynesia'],
-['UOL','WAMY','Pogogul Airport','Buol,Indonesia'],
-['UOS','KUOS','Franklin County Airport','Sewanee,Tennessee,United States'],
-['UOX','KUOX','University-Oxford Airport','Oxford,Mississippi,United States'],
-['UPB','MUPB','Playa Baracoa Airport[1]','Havana,Cuba'],
-['UPG','WAAA','Sultan Hasanuddin International Airport','Makassar,Indonesia'],
-['UPL','MRUP','Upala Airport','Upala,Costa Rica'],
-['UPN','MMPN','Ignacio Lopez Rayon International Airport','Uruapan,Michoacan,Mexico'],
-['UPP','PHUP','Upolu Airport','Hawi,Hawaii,United States'],
-
-['UPV','EGDJ','RAF Upavon[1]','Upavon,England,United Kingdom'],
-
-
-
-['URD','EDQE','Burg Feuerstein Airport[1]','Burg Feuerstein,Bavaria,Germany'],
-['URE','EEKE','Kuressaare Airport','Kuressaare,Estonia'],
-
-['URI','SKUB','Uribe Airport','La Uribe,Colombia'],
-['URJ','USHU','Uray Airport','Uray,Khanty-Mansi Autonomous Okrug,'],
-['URM','SVUM','Uriman Airport[1]','Uriman,Venezuela'],
-
-['URO','LFOP','Rouen Airport ','Rouen,Upper Normandy,France'],
-['URR','SKUR','Ali Piedrahita Airport[1]','Urrao,Colombia'],
-
-['URT','VTSB','Surat Thani Airport','Surat Thani,Thailand'],
-
-
-
-['USH','SAWH','Ushuaia - Malvinas Argentinas International Airport','Ushuaia,Tierra del Fuego,Argentina'],
-['USI','SYMB','Mabaruma Airport','Mabaruma,Guyana'],
-
-
-['USM','VTSM','Samui Airport','Ko Samui,Thailand'],
-['USN','RKPU','Ulsan Airport[1]','Ulsan,South Korea'],
-
-['USQ','LTBO','Uak Airport','Uak,Turkey'],
-
-['USS','MUSS','Sancti Spiritus Airport[1]','Sancti Spiritus,Cuba'],
-['USU','RPVV','Francisco B. Reyes Airport','Busuanga,Philippines'],
-
-
-['UTC','EHSB','Soesterberg Air Base','Utrecht,Netherlands'],
-
-['UTG','FXQG','Quthing Airport[1]','Quthing,Lesotho'],
-['UTH','VTUD','Udon Thani International Airport','Udon Thani,Thailand'],
-['UTI','EFUT','Utti Airport','Utti,Finland'],
-
-
-['UTN','FAUP','Upington Airport','Upington,South Africa'],
-['UTO','PAIM','Indian Mountain LRRS Airport','Utopia Creek,Alaska,United States'],
-['UTP','VTBU','U-Tapao International Airport','Rayong,Thailand'],
-['UTR','VTPU','Uttaradit Airport[1]','Uttaradit,Thailand'],
-
-['UTT','FAUT','Mthatha Airport','Mthatha ,South Africa'],
-
-['UTW','FAQT','Queenstown Airport[1]','Queenstown,South Africa'],
-
-
-['UUK','PAKU','Ugnu-Kuparuk Airport ','Kuparuk,Alaska,United States'],
-['UUN','ZMBU','Baruun-Urt Airport[1]','Baruun-Urt,Mongolia'],
-
-
-['UVA','KUVA','Garner Field','Uvalde,Texas,United States'],
-['UVE','NWWV','Ouvea Airport[1] ','Ouvea,New Caledonia'],
-['UVF','TLPL','Hewanorra International Airport','Vieux Fort,Saint Lucia'],
-['UVL','HEKG','El Kharga Airport[1]','Kharga Oasis,Egypt'],
-
-
-
-
-['UYU','SLUY','Uyuni Airport ','Uyuni,Bolivia'],
-['UZC','LYUZ','UZice-Ponikve Airport','UZice,Serbia'],
-
-
-
-['UZU','SATU','Curuzu Cuatia Airport','Curuzu Cuatia,Corrientes,Argentina'],
-['VAA','EFVA','Vaasa Airport','Vaasa,Finland'],
-
-['VAC','EDWU','Varrelbusch Airport[1]','Cloppenburg,Lower Saxony,Germany'],
-
-['VAF','LFLU','Valence-Chabeuil Airport','Valence,Rhone-Alpes,France'],
-
-['VAH','SLVG','Cap. Av. Vidal Villagomez Toledo Airport[1]','Vallegrande,Bolivia'],
-['VAI','AYVN','Vanimo Airport[1]','Vanimo,Papua New Guinea'],
-['VAK','PAVA','Chevak Airport','Chevak,Alaska,United States'],
-
-['VAM','VRMV','Villa International Airport','Maamigili,Maldives'],
-['VAN','LTCI','Van Ferit Melen Airport','Van,Turkey'],
-['VAO','AGGV','Suavanao Airport[1]','Suavanao,Solomon Islands'],
-['VAP','SCRD','Rodelillo Airfield[1]','Valparaiso,Chile'],
-['VAR','LBWN','Varna Airport','Varna,Bulgaria'],
-['VAS','LTAR','Sivas Airport','Sivas,Turkey'],
-['VAT','FMMY','Vatomandry Airport[1]','Vatomandry,Madagascar'],
-['VAU','NFNV','Vatukoula Airport[1]','Vatukoula,Fiji'],
-['VAV','NFTV','Vavau International Airport[1]','Vavau,Tonga'],
-['VAW','ENSS','Vardo Airport,Svartnes','Vardo,Norway'],
-['VBA','VYAN','Ann Airport[1]','Ann,Myanmar'],
-['VBC','VYCZ','Mandalay Chanmyathazi Airport[1]','Mandalay,Myanmar'],
-
-['VBP','VYBP','Bokpyin Airport[1]','Bokpyin,Myanmar'],
-['VBS','LIPO','Brescia Airport ','Brescia,Lombardy,Italy'],
-['VBV','NFVB','Vanuabalavu Airport[1]','Vanua Balavu,Fiji'],
-['VBY','ESSV','Visby Airport','Visby,Sweden'],
-['VCA','VVCT','Can Tho International Airport','Can Tho ,Vietnam'],
-
-['VCE','LIPZ','Venice Marco Polo Airport','Venice,Veneto,Italy'],
-
-['VCH','SUVO','Vichadero Airport','Vichadero,Uruguay'],
-['VCL','VVCA','Chu Lai International Airport','Chu Lai,Vietnam'],
-
-['VCR','SVCO','Carora Airport[1]','Carora,Venezuela'],
-['VCS','VVCS','Con Dao Airport ,Vietnam'],
-['VCV','KVCV','Southern California Logistics Airport','Victorville,California,United States'],
-['VDA','LLOV','Ovda Airport','Ovda ,Israel'],
-['VDB','ENFG','Fagernes Airport,Leirin','Fagernes,Norway'],
-
-['VDE','GCHI','El Hierro Airport[1]','Valverde,Canary Islands,Spain'],
-['VDH','VVDH','Dong Hoi Airport[1]','Dong Hoi ,Vietnam'],
-['VDM','SAVV','Gobernador Edgardo Castello Airport','Viedma,Rio Negro,Argentina'],
-['VDP','SVVP','Valle de la Pascua Airport','Valle de la Pascua,Venezuela'],
-['VDR','SAOD','Villa Dolores Airport','Villa Dolores,Cordoba,Argentina'],
-['VDS','ENVD','Vadso Airport','Vadso,Norway'],
-['VDY','VOJV','Vidyanagar Airport[1] ','Toranagallu,Karnataka,India'],
-['VDZ','PAVD','Valdez Airport ','Valdez,Alaska,United States'],
-['VEE','PAVE','Venetie Airport','Venetie,Alaska,United States'],
-
-['VER','MMVR','General Heriberto Jara International Airport','Veracruz,Veracruz,Mexico'],
-['VEV','AGBA','Barakoma Airport[1]','Barakoma,Solomon Islands'],
-
-['VEY','BIVM','Vestmannaeyjar Airport','Vestmannaeyjar,Iceland'],
-
-['VGA','VOBZ','Vijayawada Airport','Vijayawada,Andhra Pradesh,India'],
-
-['VGO','LEVX','Vigo-Peinador Airport','Vigo,Galicia,Spain'],
-
-['VGT','KVGT','North Las Vegas Airport','Las Vegas,Nevada,United States'],
-['VGZ','SKVG','Villa Garzon Airport','Villagarzon,Colombia'],
-
-['VHM','ESNV','Vilhelmina Airport','Vilhelmina,Sweden'],
-['VHN','KVHN','Culberson County Airport','Van Horn,Texas,United States'],
-
-['VHY','LFLV','Vichy - Charmeil Airport[1]','Vichy,Auvergne,France'],
-['VHZ','NTUV','Vahitahi Airport[1]','Vahitahi,Tuamotus,French Polynesia'],
-
-
-['VIC','LIPT','Vicenza Airport','Vicenza,Veneto,Italy'],
-['VIE','LOWW','Vienna International Airport','Vienna,Austria'],
-['VIG','SVVG','Juan Pablo Perez Alfonzo Airport','El Vigia,Venezuela'],
-['VIH','KVIH','Rolla National Airport','Rolla Vichy,Missouri,United States'],
-['VII','VVVH','Vinh International Airport','Vinh,Vietnam'],
-['VIJ','TUPW','Virgin Gorda Airport','Virgin Gorda,British Overseas Territory of Virgin Islands'],
-['VIL','GMMH','Dakhla Airport','Dakhla,Morocco'],
-
-['VIQ','WPVQ','Viqueque Airport','Viqueque,East Timor'],
-['VIR','FAVG','Virginia Airport[1]','Durban,South Africa'],
-
-['VIT','LEVT','Vitoria Airport','Vitoria-Gasteiz,Basque Country,Spain'],
-
-
-
-['VIY','LFPV','Velizy - Villacoublay Air Base[1]','Paris,Ile-de-France,France'],
-['VJB','FQXA','Xai-Xai Airport','Xai-Xai,Mozambique'],
-['VJI','KVJI','Virginia Highlands Airport','Abingdon,Virginia,United States'],
-
-['VKG','VVRG','Rach Gia Airport','Rach Gia ,Vietnam'],
-
-
-
-
-['VLC','LEVC','Valencia Airport','Valencia,Valencian Community,Spain'],
-
-['VLG','SAZV','Villa Gesell Airport','Villa Gesell,Buenos Aires,Argentina'],
-['VLI','NVVV','Bauerfield International Airport','Port Vila,Vanuatu'],
-
-['VLL','LEVD','Valladolid Airport','Valladolid,Castile and Leon,Spain'],
-['VLM','SLVM','Lieutenant Colonel Rafael Pabon Airport[1]','Villamontes,Bolivia'],
-['VLN','SVVA','Arturo Michelena International Airport','Valencia,Venezuela'],
-
-['VLR','SCLL','Vallenar Airport[1]','Vallenar,Chile'],
-['VLS','NVSV','Valesdir Airport[1]','Valesdir,Vanuatu'],
-
-['VLV','SVVL','Dr. Antonio Nicolas Briceno Airport','Valera,Venezuela'],
-['VLY','EGOV','Anglesey Airport RAF Valley','Anglesey,Wales,United Kingdom'],
-['VME','SAOR','Villa Reynolds Airport','Villa Mercedes,San Luis,Argentina'],
-
-['VMU','AYBA','Baimuru Airport','Baimuru,Papua New Guinea'],
-['VNA','VLSV','Salavan Airport[1]','Salavan ,Laos'],
-
-['VND','FMSU','Vangaindrano Airport[1]','Vangaindrano,Madagascar'],
-['VNE','LFRV','Meucon Airport','Vannes,Brittany,France'],
-['VNO','EYVI','Vilnius Airport','Vilnius,Lithuania'],
-
-['VNS','VEBN','Lal Bahadur Shastri Airport','Varanasi,Uttar Pradesh,India'],
-['VNT','EVVA','Ventspils International Airport','Ventspils,Latvia'],
-['VNX','FQVL','Vilankulo Airport','Vilankulo,Mozambique'],
-['VNY','KVNY','Van Nuys Airport','Los Angeles,California,United States'],
-['VOD','LKVO','Vodochody Airport','Prague,Czech Republic'],
-
-['VOH','FMNV','Vohemar Airport[1]','Vohemar ,Madagascar'],
-['VOI','GLVA','Voinjama Airport ','Voinjama,Liberia'],
-['VOK','KVOK','Volk Field Air National Guard Base','Camp Douglas,Wisconsin,United States'],
-['VOL','LGBL','Nea Anchialos National Airport','Volos,Greece'],
-
-
-
-
-['VPN','BIVO','VopnafjÃ¶rour Airport','VopnafjÃ¶rour,Iceland'],
-
-['VPY','FQCH','Chimoio Airport','Chimoio,Mozambique'],
-['VQQ','KVQQ','Cecil Airport[1]','Jacksonville,Florida,United States'],
-['VQS','TJVQ','Antonio Rivera Rodriguez Airport','Vieques,Puerto Rico,United States'],
-['VRA','MUVR','Juan Gualberto Gomez Airport','Varadero,Cuba'],
-
-['VRC','RPUV','Virac Airport','Virac,Philippines'],
-['VRE','FAVR','Vredendal Airport[1]','Vredendal,South Africa'],
-
-['VRK','EFVR','Varkaus Airport','Varkaus,Finland'],
-['VRL','LPVR','Vila Real Airport','Vila Real,Portugal'],
-['VRN','LIPX','Verona Villafranca Airport','Verona,Veneto,Italy'],
-['VRO','MUKW','Kawama Airport','Varadero,Cuba'],
-
-['VRU','FAVB','Vryburg Airport[1]','Vryburg,South Africa'],
-['VSA','MMVA','Carlos Rovirosa Perez International Airport','Villahermosa,Tabasco,Mexico'],
-['VSE','LPVZ','Viseu Airport[1]','Viseu,Portugal'],
-['VSF','KVSF','Hartness State Airport','Springfield,Vermont,United States'],
-
-['VST','ESOW','Stockholm VÃ¤sterÃ¥s Airport','Stockholm VÃ¤sterÃ¥s,Sweden'],
-['VTB','UMII','Vitebsk Vostochny Airport[1]','Vitebsk,Belarus'],
-['VTE','VLVT','Wattay International Airport','Vientiane,Laos'],
-['VTF','NFVL','Vatulele Airport[1]','Vatulele,Fiji'],
-['VTG','VVVT','Vung Tau Airport','Vung Tau ,Vietnam'],
-['VTL','LFSZ','Vittel - Champ-de-Courses Airport[1]','Vittel,Lorraine,France'],
-['VTM','LLNV','Nevatim Airbase[1]','Nevatim,Israel'],
-['VTN','KVTN','Miller Field','Valentine,Nebraska,United States'],
-['VTU','MUVT','Hermanos Ameijeiras Airport[1]','Las Tunas,Cuba'],
-['VTZ','VEVZ','Visakhapatnam Airport','Visakhapatnam ,Andhra Pradesh,India'],
-['VUP','SKVP','Alfonso Lopez Pumarejo Airport','Valledupar,Colombia'],
-
-
-['VVB','FMMH','Mahanoro Airport[1]','Mahanoro,Madagascar'],
-['VVC','SKVV','La Vanguardia Airport[1]','Villavicencio,Colombia'],
-['VVI','SLVR','Viru Viru International Airport','Santa Cruz de la Sierra,Bolivia'],
-['VVK','ESSW','VÃ¤stervik Airport[1]','VÃ¤stervik,Sweden'],
-
-
-
-['VXC','FQLC','Lichinga Airport','Lichinga,Mozambique'],
-['VXE','GVSV','Cesaria evora Airport ','Sao Vicente,Cape Verde'],
-['VXO','ESMX','VÃ¤xjÃ¶ SmÃ¥land Airport','VÃ¤xjÃ¶,Sweden'],
-['VYD','FAVY','Vryheid Airport','Vryheid,South Africa'],
-
-['WAA','PAIW','Wales Airport ','Wales,Alaska,United States'],
-
-
-
-
-
-['WAG','NZWU','Whanganui Airport','Whanganui,New Zealand'],
-['WAH','KBWP','Harry Stern Airport ','Wahpeton,North Dakota,United States'],
-['WAI','FMNW','Ambalabe Airport[1]','Antsohihy,Madagascar'],
-
-['WAK','FMSZ','Ankazoabo Airport[1]','Ankazoabo,Madagascar'],
-['WAL','KWAL','Wallops Flight Facility','Wallops Island,Virginia,United States'],
-['WAM','FMMZ','Ambatondrazaka Airport[1]','Ambatondrazaka,Madagascar'],
-
-['WAO','AYWB','Wabo Airport[1]','Wabo,Papua New Guinea'],
-['WAP','SCAP','Alto Palena Airfield[1]','Palena,Chile'],
-['WAQ','FMMG','Antsalova Airport[1]','Antsalova,Madagascar'],
-['WAR','WAJR','Waris Airport[1]','Waris,Indonesia'],
-
-['WAT','EIWF','Waterford Airport','Waterford,Ireland'],
-
-
-['WAW','EPWA','Warsaw Chopin Airport','Warsaw,Poland'],
-
-['WAY','KWAY','Greene County Airport','Waynesburg,Pennsylvania,United States'],
-
-['WBA','WAPV','Wahai Airport[1]','Seram Island,Indonesia'],
-
-
-['WBD','FMNF','Befandriana Airport[1]','Befandriana-Avaratra,Madagascar'],
-
-['WBG','ETNS','Schleswig Air Base','Schleswig,Schleswig-Holstein,Germany'],
-
-['WBM','AYWD','Wapenamanda Airport[1]','Wapenamanda,Papua New Guinea'],
-['WBO','FMSB','Antsoa Airport[1]','Beroroha,Madagascar'],
-['WBQ','PAWB','Beaver Airport','Beaver,Alaska,United States'],
-['WBR','KRQB','Roben-Hood Airport ','Big Rapids,Michigan,United States'],
-
-['WBW','KWBW','Wilkes-Barre Wyoming Valley Airport','Wilkes-Barre,Pennsylvania,United States'],
-['WCA','SCST','Gamboa Airport','Castro,Chile'],
-['WCH','SCTN','Chaiten Airfield','Chaiten,Chile'],
-['WCR','PALR','Chandalar Lake Airport','Chandalar Lake,Alaska,United States'],
-
-['WDH','FYWH','Hosea Kutako International Airport','Windhoek,Namibia'],
-
-
-['WDR','KWDR','Barrow County Airport','Winder,Georgia,United States'],
-
-['WEA','KWEA','Parker County Airport','Weatherford,Texas,United States'],
-
-
-
-
-['WEL','FAWM','Welkom Airport[1]','Welkom,South Africa'],
-
-['WET','WABG','Waghete Airport[1]','Waghete,Indonesia'],
-
-
-['WFD','EGCD','Woodford Aerodrome[1]','Woodford,England,United Kingdom'],
-['WFI','FMSF','Fianarantsoa Airport','Fianarantsoa,Madagascar'],
-
-['WGC','VOWA','Warangal Airport[1]','Warangal,Telangana,India'],
-
-['WGP','WADW','Mau Hau Airport ','Waingapu,Indonesia'],
-
-
-
-
-
-['WHK','NZWK','Whakatane Airport','Whakatane,New Zealand'],
-
-
-['WHP','KWHP','Whiteman Airport','Los Angeles,California,United States'],
-['WHS','EGEH','Whalsay Airstrip[1]','Whalsay,Scotland,United Kingdom'],
-
-
-['WIC','EGPC','Wick Airport','Wick,Scotland,United Kingdom'],
-['WIK','NZKE','Waiheke Island Aerodrome[1]','Waiheke Island,New Zealand'],
-['WIL','HKNW','Wilson Airport','Nairobi,Kenya'],
-
-
-['WIR','NZWO','Wairoa Aerodrome[1]','Wairoa,New Zealand'],
-
-
-
-['WJF','KWJF','General William J. Fox Airfield','Lancaster,California,United States'],
-['WJR','HKWJ','Wajir Airport[1]','Wajir,Kenya'],
-['WJU','RKNW','Wonju Airport','Wonju,South Korea'],
-['WKA','NZWF','Wanaka Airport','Wanaka,New Zealand'],
-
-
-
-['WKJ','RJCW','Wakkanai Airport','Wakkanai,Hokkaido,Japan'],
-
-
-
-['WKR','MYAW','Walkers Cay Airport[1]','Walkers Cay,Abaco Islands,Bahamas'],
-
-
-['WLD','KWLD','Strother Field','Winfield Arkansas City,Kansas,United States'],
-
-['WLG','NZWN','Wellington International Airport','Wellington,New Zealand'],
-['WLH','NVSW','Walaha Airport[1]','Walaha,Vanuatu'],
-['WLK','PASK','Selawik Airport','Selawik,Alaska,United States'],
-
-
-
-
-['WLS','NLWW','Hihifo Airport','Wallis Island,Wallis and Futuna'],
-['WLW','KWLW','Willows-Glenn County Airport','Willows,California,United States'],
-['WMA','FMNX','Mandritsara Airport','Mandritsara,Madagascar'],
-
-
-['WMD','FMSC','Mandabe Airport[1]','Mandabe,Madagascar'],
-
-['WMI','EPMO','Warsaw Modlin Airport','Warsaw,Poland'],
-
-['WML','FMMC','Malaimbandy Airport','Malaimbandy,Madagascar'],
-['WMN','FMNR','Maroantsetra Airport[1]','Maroantsetra,Madagascar'],
-['WMO','PAWM','White Mountain Airport','White Mountain,Alaska,United States'],
-['WMP','FMNP','Mampikony Airport[1]','Mampikony,Madagascar'],
-['WMR','FMNC','Mananara Nord Airport[1]','Mananara Nord ,Madagascar'],
-
-['WMX','WAVV','Wamena Airport[1]','Wamena,Indonesia'],
-['WNA','PANA','Napakiak Airport','Napakiak,Alaska,United States'],
-
-
-
-
-['WNP','RPUN','Naga Airport','Naga,Philippines'],
-
-
-
-
-
-['WOE','EHWO','Woensdrecht Air Base','Bergen op Zoom,Netherlands'],
-['WOK','SVUQ','Uonquen Airport[1]','Uonquen,Venezuela'],
-
-
-['WOS','ZKWS','Wonsan Kalma International Airport[1]','Wonsan,North Korea'],
-['WOT','RCWA','Wang-an Airport','Wangan,Taiwan'],
-['WOW','PAUO','Willow Airport ','Willow,Alaska,United States'],
-['WPA','SCAS','Cabo Juan Roman Airfield','Puerto Aisen,Chile'],
-['WPB','FMNG','Port Berge Airport','Boriziny ,Madagascar'],
-['WPC','CZPC','Pincher Creek Airport','Pincher Creek,Alberta,Canada'],
-
-
-['WPM','AYXP','Wipim Airport[1]','Wipim,Papua New Guinea'],
-
-['WPR','SCFM','Capitan Fuentes Martinez Airport[1]','Porvenir,Chile'],
-['WPU','SCGZ','Guardiamarina Zanartu Airport[1]','Puerto Williams,Chile'],
-
-
-['WRE','NZWR','Whangarei Airport','Whangarei,New Zealand'],
-['WRG','PAWG','Wrangell Airport','Wrangell,Alaska,United States'],
-
-
-
-
-['WRO','EPWR','Copernicus Airport Wrocaw','Wrocaw,Poland'],
-['WRT','EGNO','Warton Aerodrome','Warton,England,United Kingdom'],
-
-['WRY','EGEW','Westray Airport[1]','Westray,Scotland,United Kingdom'],
-['WRZ','VCCW','Weerawila Airport','Weerawila,Sri Lanka'],
-
-
-['WSF','PACS','Cape Sarichef Airport[1] ','Cape Sarichef,Alaska,United States'],
-['WSG','KAFJ','Washington County Airport ','Washington,Pennsylvania,United States'],
-['WSH','KHWV','Brookhaven Airport ','Shirley,New York,United States'],
-
-['WSN','PFWS','South Naknek Airport','South Naknek,Alaska,United States'],
-['WSO','SMWS','Washabo Airport','Washabo ,Suriname'],
-['WSP','MNWP','Waspam Airport','Waspam,Nicaragua'],
-['WSR','WASW','Wasior Airport[1]','Wasior,Indonesia'],
-['WST','KWST','Westerly State Airport','Westerly,Rhode Island,United States'],
-
-
-
-['WSZ','NZWS','Westport Airport','Westport,New Zealand'],
-['WTA','FMMU','Tambohorano Airport','Tambohorano,Madagascar'],
-
-['WTD','MYGW','West End Airport','West End,Grand Bahama,Bahamas'],
-
-['WTK','PAWN','Noatak Airport','Noatak,Alaska,United States'],
-
-['WTN','EGXW','RAF Waddington[1]','Waddington,England,United Kingdom'],
-
-['WTP','AYWT','Woitape Airport[1]','Woitape,Papua New Guinea'],
-
-['WTS','FMMX','Tsiroanomandidy Airport','Tsiroanomandidy,Madagascar'],
-
-['WTZ','NZWT','Whitianga Aerodrome[1]','Whitianga,New Zealand'],
-
-
-['WUG','AYWU','Wau Airport[1]','Wau,Papua New Guinea'],
-
-
-
-
-
-
-
-
-
-
-['WVB','FYWB','Walvis Bay Airport','Walvis Bay,Namibia'],
-
-['WVK','FMSK','Manakara Airport[1]','Manakara,Madagascar'],
-['WVL','KWVL','Waterville Robert LaFleur Airport','Waterville,Maine,United States'],
-['WVN','EDWI','JadeWeserAirport','Wilhelmshaven,Lower Saxony,Germany'],
-['WWA','PAWS','Wasilla Airport ','Wasilla,Alaska,United States'],
-['WWD','KWWD','Cape May Airport','Wildwood,New Jersey,United States'],
-
-['WWK','AYWK','Wewak Airport[1]','Wewak,Papua New Guinea'],
-
-['WWR','KWWR','West Woodward Airport','Woodward,Oklahoma,United States'],
-['WWT','PAEW','Newtok Airport ','Newtok,Alaska,United States'],
-
-
-
-
-['WYE','GFYE','Yengema Airport','Yengema,Sierra Leone'],
-
-['WYS','KWYS','Yellowstone Airport','West Yellowstone,Montana,United States'],
-
-
-
-['XAR','DFOY','Aribinda Airport','Aribinda,Burkina Faso'],
-['XAU','SOOS','Saul Airport','Saul,French Guiana'],
-
-
-['XBG','DFEB','Bogande Airport','Bogande,Burkina Faso'],
-
-
-
-['XBO','DFEA','Boulsa Airport','Boulsa,Burkina Faso'],
-
-
-['XCM','CYCK','Chatham-Kent Airport','Chatham-Kent,Ontario,Canada'],
-
-
-['XCR','LFOK','Chalons Vatry Airport','Chalons-en-Champagne,Champagne-Ardenne,France'],
-['XDE','DFOU','Diebougou Airport','Diebougou,Burkina Faso'],
-['XDJ','DFCJ','Djibo Airport','Djibo,Burkina Faso'],
-
-
-
-['XFW','EDHI','Hamburg Finkenwerder Airport','Hamburg,Germany'],
-['XGA','DFOG','Gaoua Airport ','Gaoua,Burkina Faso'],
-['XGG','DFEG','Gorom Gorom Airport','Gorom-Gorom,Burkina Faso'],
-
-
-['XGR','CYLU','Kangiqsualujjuaq  Airport','Kangiqsualujjuaq,Quebec,Canada'],
-
-
-
-['XIJ','OKAJ','Ahmed Al Jaber Air Base[1]','Al Ahmadi,Kuwait'],
-
-
-
-['XJD','OTBH','Al Udeid Air Base[1]','Al Rayyan,Qatar'],
-
-['XKA','DFEL','Kantchari Airport','Kantchari,Burkina Faso'],
-['XKH','VLXK','Xieng Khouang Airport','Phonsavan,Laos'],
-['XKS','CYAQ','Kasabonika Airport','Kasabonika,Ontario,Canada'],
-['XKY','DFCA','Kaya Airport','Kaya,Burkina Faso'],
-['XLB','CZWH','Lac Brochet Airport','Lac Brochet,Manitoba,Canada'],
-
-['XLS','GOSS','Saint-Louis Airport','Saint-Louis,Senegal'],
-['XLU','DFCL','Leo Airport','Leo,Burkina Faso'],
-['XLW','EDWD','Lemwerder Airport','Lemwerder,Lower Saxony,Germany'],
-
-
-
-['XMG','VNMN','Mahendranagar Airport','Bhimdatta ,Nepal'],
-['XMH','NTGI','Manihi Airport','Manihi,Tuamotus,French Polynesia'],
-['XMI','HTMI','Masasi Airport','Masasi,Tanzania'],
-
-
-
-['XMS','SEMC','Edmundo Carvajal Airport','Macas,Ecuador'],
-
-
-
-
-['XNU','DFON','Nouna Airport','Nouna,Burkina Faso'],
-['XPA','DFEP','Pama Airport','Pama,Burkina Faso'],
-['XPK','CZFG','Pukatawagan Airport','Pukatawagan,Manitoba,Canada'],
-['XPL','MHSC','Soto Cano Air Base','Comayagua,Honduras'],
-['XPP','CZNG','Poplar River Airport','Poplar River,Manitoba,Canada'],
-['XPR','KIEN','Pine Ridge Airport ','Pine Ridge,South Dakota,United States'],
-['XQP','MRQP','Quepos La Managua Airport','Quepos,Costa Rica'],
-
-
-['XRR','CYDM','Ross River Airport','Ross River,Yukon,Canada'],
-['XRY','LEJR','Jerez Airport ','Jerez de la Frontera,Andalusia,Spain'],
-['XSB','OMBY','Sir Bani Yas Airport[1]','Sir Bani Yas,United Arab Emirates'],
-['XSC','MBSC','South Caicos Airport','South Caicos,British Overseas Territory of Turks and Caicos Islands'],
-['XSD','KTNX','Tonopah Test Range Airport ','Tonopah,Nevada,United States'],
-['XSE','DFES','Sebba Airport','Sebba,Burkina Faso'],
-['XSI','CZSN','South Indian Lake Airport','South Indian Lake,Manitoba,Canada'],
-['XSO','RPNO','Siocon Airport','Siocon,Philippines'],
-['XSP','WSSL','Seletar Airport','Singapore'],
-
-['XTL','CYBQ','Tadoule Lake Airport','Tadoule Lake,Manitoba,Canada'],
-
-
-
-
-['XYA','AGGY','Yandina Airport','Yandina,Solomon Islands'],
-['XYE','VYYE','Ye Airport','Ye,Myanmar'],
-['XYR','AYED','Edwaki Airport[1]','Yellow River,Papua New Guinea'],
-['XZA','DFEZ','Zabre Airport','Zabre,Burkina Faso'],
-
-['YAB','CYAB','Arctic Bay Airport ','Arctic Bay,Nunavut,Canada'],
-['YAC','CYAC','Cat Lake Airport','Cat Lake,Ontario,Canada'],
-
-['YAG','CYAG','Fort Frances Municipal Airport','Fort Frances,Ontario,Canada'],
-['YAH','CYAH','La Grande-4 Airport','La Grande-4,Quebec,Canada'],
-['YAI','SCCH','General Bernardo OHiggins Airport','Chillan,Chile'],
-
-['YAK','PAYA','Yakutat Airport','Yakutat,Alaska,United States'],
-['YAL','CYAL','Alert Bay Airport','Alert Bay,British Columbia,Canada'],
-['YAM','CYAM','Sault Ste. Marie Airport','Sault Ste. Marie,Ontario,Canada'],
-
-
-['YAP','PTYA','Yap International Airport ','Yap,Federated States of Micronesia'],
-
-['YAR','CYAD','La Grande-3 Airport','La Grande-3,Quebec,Canada'],
-['YAS','NFSW','Yasawa Island Airport','Yasawa,Fiji'],
-['YAT','CYAT','Attawapiskat Airport','Attawapiskat,Ontario,Canada'],
-
-
-
-['YAY','CYAY','St. Anthony Airport','St. Anthony,Newfoundland and Labrador,Canada'],
-['YAZ','CYAZ','Tofino Long Beach Airport','Tofino,British Columbia,Canada'],
-['YBA','CYBA','Banff Airport','Banff,Alberta,Canada'],
-['YBB','CYBB','Kugaaruk Airport','Kugaaruk,Nunavut,Canada'],
-['YBC','CYBC','Baie-Comeau Airport','Baie-Comeau,Quebec,Canada'],
-['YBE','CYBE','Uranium City Airport','Uranium City,Saskatchewan,Canada'],
-
-['YBG','CYBG','Canadian Forces Base Bagotville','La Baie ,Quebec,Canada'],
-['YBH','CYBH','Bull Harbour Waterdrome','Bull Harbour,British Columbia,Canada'],
-
-
-['YBK','CYBK','Baker Lake Airport','Baker Lake,Nunavut,Canada'],
-['YBL','CYBL','Campbell River Airport','Campbell River,British Columbia,Canada'],
-
-
-
-['YBR','CYBR','Brandon Municipal Airport ','Brandon,Manitoba,Canada'],
-
-['YBT','CYBT','Brochet Airport','Brochet,Manitoba,Canada'],
-['YBV','CYBV','Berens River Airport','Berens River,Manitoba,Canada'],
-
-['YBX','CYBX','Lourdes-de-Blanc-Sablon Airport','Blanc-Sablon,Quebec,Canada'],
-['YBY','CYBF','Bonnyville Airport','Bonnyville,Alberta,Canada'],
-
-['YCB','CYCB','Cambridge Bay Airport','Cambridge Bay,Nunavut,Canada'],
-['YCD','CYCD','Nanaimo Airport','Nanaimo,British Columbia,Canada'],
-['YCE','CYCE','Centralia James T. Field Memorial Aerodrome','Centralia,Ontario,Canada'],
-
-['YCH','CYCH','Miramichi Airport','Miramichi,New Brunswick,Canada'],
-['YCK','CYVL','Colville Lake Tommy Kochon Aerodrome','Colville Lake,Northwest Territories,Canada'],
-['YCL','CYCL','Charlo Airport','Charlo,New Brunswick,Canada'],
-['YCM','CYSN','St. Catharines Niagara District Airport','St. Catharines,Ontario,Canada'],
-['YCN','CYCN','Cochrane Aerodrome','Cochrane,Ontario,Canada'],
-['YCO','CYCO','Kugluktuk Airport','Kugluktuk,Nunavut,Canada'],
-['YCQ','CYCQ','Chetwynd Airport','Chetwynd,British Columbia,Canada'],
-['YCR','CYCR','Cross Lake  Airport','Cross Lake,Manitoba,Canada'],
-['YCS','CYCS','Chesterfield Inlet Airport','Chesterfield Inlet,Nunavut,Canada'],
-['YCT','CYCT','Coronation Airport','Coronation,Alberta,Canada'],
-
-['YCW','CYCW','Chilliwack Airport','Chilliwack,British Columbia,Canada'],
-['YCY','CYCY','Clyde River Airport','Clyde River,Nunavut,Canada'],
-['YCZ','CYCZ','Fairmont Hot Springs Airport','Fairmont Hot Springs,British Columbia,Canada'],
-['YDA','CYDA','Dawson City Airport','Dawson City,Yukon,Canada'],
-['YDB','CYDB','Burwash Airport','Burwash Landing,Yukon,Canada'],
-
-
-
-['YDL','CYDL','Dease Lake Airport','Dease Lake,British Columbia,Canada'],
-['YDN','CYDN','Lt. Col W.G.  Barker VC Airport','Dauphin,Manitoba,Canada'],
-['YDO','CYDO','Dolbeau-Saint-Felicien Airport','Dolbeau-Mistassini,Quebec,Canada'],
-['YDP','CYDP','Nain Airport','Nain,Newfoundland and Labrador,Canada'],
-['YDQ','CYDQ','Dawson Creek Airport','Dawson Creek,British Columbia,Canada'],
-['YDT','CZBB','Boundary Bay Airport','Vancouver,British Columbia,Canada'],
-
-['YDV','CZTA','Bloodvein River Airport','Bloodvein,Manitoba,Canada'],
-
-
-
-['YEC','RKTY','Yecheon Air Base','Yecheon,South Korea'],
-['YEG','CYEG','Edmonton International Airport','Edmonton,Alberta,Canada'],
-['YEI','LTBR','Yeniehir Airport','Bursa,Turkey'],
-['YEK','CYEK','Arviat Airport','Arviat,Nunavut,Canada'],
-['YEL','CYEL','Elliot Lake Municipal Airport','Elliot Lake,Ontario,Canada'],
-['YEM','CYEM','Manitowaning Manitoulin East Municipal Airport','Manitowaning,Ontario,Canada'],
-['YEO','EGDY','Royal Naval Air Station Yeovilton','Yeovilton,England,United Kingdom'],
-
-['YER','CYER','Fort Severn Airport','Fort Severn,Ontario,Canada'],
-
-['YET','CYET','Edson Airport','Edson,Alberta,Canada'],
-['YEU','CYEU','Eureka Aerodrome','Eureka,Nunavut,Canada'],
-['YEV','CYEV','Inuvik  Airport','Inuvik,Northwest Territories,Canada'],
-['YEY','CYEY','Amos Magny Airport','Amos,Quebec,Canada'],
-['YFA','CYFA','Fort Albany Airport','Fort Albany,Ontario,Canada'],
-['YFB','CYFB','Iqaluit Airport','Iqaluit,Nunavut,Canada'],
-['YFC','CYFC','Fredericton International Airport','Fredericton,New Brunswick,Canada'],
-['YFE','CYFE','Forestville Airport','Forestville,Quebec,Canada'],
-
-['YFH','CYFH','Fort Hope Airport','Eabametoong ,Ontario,Canada'],
-
-['YFJ','CYWE','Wekweeti Airport[1] ','Wekweeti,Northwest Territories,Canada'],
-
-['YFO','CYFO','Flin Flon Airport','Flin Flon,Manitoba,Canada'],
-['YFR','CYFR','Fort Resolution Airport','Fort Resolution,Northwest Territories,Canada'],
-['YFS','CYFS','Fort Simpson Airport','Fort Simpson,Northwest Territories,Canada'],
-
-['YGB','CYGB','Texada Gillies Bay Airport','Gillies Bay,British Columbia,Canada'],
-
-
-
-['YGH','CYGH','Fort Good Hope Airport','Fort Good Hope,Northwest Territories,Canada'],
-['YGJ','RJOH','Miho-Yonago Airport','Yonago,Honshu,Japan'],
-['YGK','CYGK','Kingston Norman Rogers Airport','Kingston,Ontario,Canada'],
-['YGL','CYGL','La Grande Riviere Airport','Radisson,Quebec,Canada'],
-['YGM','CYGM','Gimli Industrial Park Airport','Gimli,Manitoba,Canada'],
-
-['YGO','CYGO','Gods Lake Narrows Airport','Gods Lake Narrows,Manitoba,Canada'],
-['YGP','CYGP','Michel-Pouliot Gaspe Airport','Gaspe,Quebec,Canada'],
-['YGQ','CYGQ','Geraldton ,Ontario,Canada'],
-['YGR','CYGR','Iles-de-la-Madeleine Airport','Les Iles-de-la-Madeleine,Quebec,Canada'],
-['YGT','CYGT','Igloolik Airport','Igloolik,Nunavut,Canada'],
-['YGV','CYGV','Havre Saint-Pierre Airport','Havre-Saint-Pierre,Quebec,Canada'],
-['YGW','CYGW','Kuujjuarapik Airport','Kuujjuarapik,Quebec,Canada'],
-['YGX','CYGX','Gillam Airport','Gillam,Manitoba,Canada'],
-['YGZ','CYGZ','Grise Fiord Airport','Grise Fiord,Nunavut,Canada'],
-
-['YHB','CYHB','Hudson Bay Airport','Hudson Bay,Saskatchewan,Canada'],
-
-['YHE','CYHE','Hope Aerodrome','Hope,British Columbia,Canada'],
-['YHF','CYHF','Hearst  Municipal Airport','Hearst,Ontario,Canada'],
-
-
-['YHI','CYHI','Ulukhaktok Holman Airport','Ulukhaktok,Northwest Territories,Canada'],
-['YHK','CYHK','Gjoa Haven Airport','Gjoa Haven,Nunavut,Canada'],
-['YHM','CYHM','John C. Munro Hamilton International Airport','Hamilton,Ontario,Canada'],
-['YHN','CYHN','Hornepayne Municipal Airport','Hornepayne,Ontario,Canada'],
-['YHO','CYHO','Hopedale Airport','Hopedale,Newfoundland and Labrador,Canada'],
-['YHP','CYHP','Poplar Hill Airport','Poplar Hill,Ontario,Canada'],
-['YHR','CYHR','Chevery Airport','Chevery,Quebec,Canada'],
-
-['YHT','CYHT','Haines Junction Airport','Haines Junction,Yukon,Canada'],
-['YHU','CYHU','Montreal Saint-Hubert Airport','Montreal,Quebec,Canada'],
-['YHY','CYHY','Hay River Merlyn Carter Airport','Hay River,Northwest Territories,Canada'],
-['YHZ','CYHZ','Halifax Stanfield International Airport','Halifax,Nova Scotia,Canada'],
-['YIB','CYIB','Atikokan Municipal Airport','Atikokan,Ontario,Canada'],
-
-
-['YIF','CYIF','Saint-Augustin Airport','Saint-Augustin Pakuashipi,Quebec,Canada'],
-
-
-['YIK','CYIK','Ivujivik Airport','Ivujivik,Quebec,Canada'],
-
-['YIO','CYIO','Pond Inlet Airport','Pond Inlet,Nunavut,Canada'],
-['YIP','KYIP','Willow Run Airport','Detroit,Michigan,United States'],
-['YIV','CYIV','Island Lake Airport ','Island Lake Garden Hill,Manitoba,Canada'],
-
-['YJA','CYJA','Jasper Airport','Jasper,Alberta,Canada'],
-['YJF','CYJF','Fort Liard Airport','Fort Liard,Northwest Territories,Canada'],
-['YJN','CYJN','Saint-Jean Airport','Saint-Jean-sur-Richelieu,Quebec,Canada'],
-
-['YJS','ZKSE','Samjiyon Airport[1]','Samjiyon,North Korea'],
-['YJT','CYJT','Stephenville International Airport','Stephenville,Newfoundland and Labrador,Canada'],
-['YKA','CYKA','Kamloops Airport','Kamloops,British Columbia,Canada'],
-['YKC','CYKC','Collins Bay Airport','Collins Bay,Saskatchewan,Canada'],
-['YKD','CYKM','Kincardine Municipal Airport','Kincardine,Ontario,Canada'],
-
-['YKF','CYKF','Region of Waterloo International Airport','Kitchener Cambridge Waterloo,Ontario,Canada'],
-['YKG','CYAS','Kangirsuk Airport','Kangirsuk,Quebec,Canada'],
-
-['YKJ','CYKJ','Key Lake Airport[1]','Key Lake,Saskatchewan,Canada'],
-
-['YKL','CYKL','Schefferville Airport','Schefferville,Quebec,Canada'],
-['YKM','KYKM','Yakima Air Terminal ','Yakima,Washington,United States'],
-
-['YKO','LTCW','Hakkari Yuksekova Airport[1]','Hakkari Yuksekova,Turkey'],
-['YKQ','CYKQ','Waskaganish Airport','Waskaganish,Quebec,Canada'],
-
-
-
-['YKX','CYKX','Kirkland Lake Airport','Kirkland Lake,Ontario,Canada'],
-['YKZ','CYKZ','Buttonville Municipal Airport','Toronto,Ontario,Canada'],
-['YLB','CYLB','Lac La Biche Airport','Lac La Biche,Alberta,Canada'],
-['YLC','CYLC','Kimmirut Airport','Kimmirut,Nunavut,Canada'],
-['YLD','CYLD','Chapleau Airport','Chapleau,Ontario,Canada'],
-
-
-['YLH','CYLH','Lansdowne House Airport','Neskantaga ,Ontario,Canada'],
-['YLI','EFYL','Ylivieska Airfield','Ylivieska,Finland'],
-['YLJ','CYLJ','Meadow Lake Airport','Meadow Lake,Saskatchewan,Canada'],
-['YLL','CYLL','Lloydminster Airport','Lloydminster,Alberta Saskatchewan,2 Canada'],
-
-
-['YLP','CYLP','Mingan Airport','Mingan,Quebec,Canada'],
-['YLQ','CYLQ','La Tuque Airport','La Tuque,Quebec,Canada'],
-['YLR','CYLR','Leaf Rapids Airport','Leaf Rapids,Manitoba,Canada'],
-
-['YLT','CYLT','Alert Airport','Alert,Nunavut,Canada'],
-
-['YLW','CYLW','Kelowna International Airport','Kelowna,British Columbia,Canada'],
-['YMA','CYMA','Mayo Airport','Mayo,Yukon,Canada'],
-
-['YMD','CYMD','Mould Bay Airport','Prince Patrick Island,Northwest Territories,Canada'],
-['YME','CYME','Matane Airport','Matane,Quebec,Canada'],
-
-['YMG','CYMG','Manitouwadge Airport','Manitouwadge,Ontario,Canada'],
-['YMH','CYMH','Marys Harbour Airport','Marys Harbour,Newfoundland and Labrador,Canada'],
-['YMJ','CYMJ','CFB Moose Jaw ','Moose Jaw,Saskatchewan,Canada'],
-
-['YML','CYML','Charlevoix Airport','La Malbaie,Quebec,Canada'],
-['YMM','CYMM','Fort McMurray International Airport','Fort McMurray,Alberta,Canada'],
-['YMN','CYFT','Makkovik Airport','Makkovik,Newfoundland and Labrador,Canada'],
-['YMO','CYMO','Moosonee Airport','Moosonee,Ontario,Canada'],
-
-
-['YMS','SPMS','Moises Benzaquen Rengifo Airport','Yurimaguas,Peru'],
-['YMT','CYMT','Chibougamau Chapais Airport','Chibougamau,Quebec,Canada'],
-
-
-['YMW','CYMW','Maniwaki Airport','Maniwaki,Quebec,Canada'],
-['YMX','CYMX','Montreal-Mirabel International Airport','Montreal,Quebec,Canada'],
-['YNA','CYNA','Natashquan Airport','Natashquan,Quebec,Canada'],
-
-['YNC','CYNC','Wemindji Airport','Wemindji,Quebec,Canada'],
-['YND','CYND','Gatineau-Ottawa Executive Airport','Gatineau Ottawa ,Quebec,Canada'],
-['YNE','CYNE','Norway House Airport','Norway House,Manitoba,Canada'],
-['YNH','CYNH','Hudsons Hope Airport','Hudsons Hope,British Columbia,Canada'],
-
-['YNL','CYNL','Points North Landing Airport','Points North Landing,Saskatchewan,Canada'],
-['YNM','CYNM','Matagami Airport','Matagami,Quebec,Canada'],
-
-
-
-['YNS','CYHH','Nemiscau Airport','Nemiscau,Quebec,Canada'],
-
-
-['YNY','RKNY','Yangyang International Airport[1]','Yangyang,South Korea'],
-
-['YOA','CYOA','Ekati Airport[1]','Ekati,Northwest Territories,Canada'],
-['YOC','CYOC','Old Crow Airport','Old Crow,Yukon,Canada'],
-['YOD','CYOD','CFB Cold Lake ','Cold Lake,Alberta,Canada'],
-
-['YOG','CYKP','Ogoki Post Airport','Marten Falls ,Ontario,Canada'],
-['YOH','CYOH','Oxford House Airport','Oxford House,Manitoba,Canada'],
-
-['YOJ','CYOJ','High Level Airport','High Level,Alberta,Canada'],
-
-['YON','VQTY','Yongphulla Airport[1] ','Trashigang,Bhutan'],
-['YOO','CYOO','Oshawa Airport','Oshawa,Ontario,Canada'],
-['YOP','CYOP','Rainbow Lake Airport','Rainbow Lake,Alberta,Canada'],
-['YOT','LLYT','Yotvata Airfield','Yotvata,Israel'],
-['YOW','CYOW','Ottawa Macdonald-Cartier International Airport','Ottawa,Ontario,Canada'],
-['YPA','CYPA','Prince Albert  Airport','Prince Albert,Saskatchewan,Canada'],
-['YPC','CYPC','Nora Aliqatchialuk Ruben Airport','Paulatuk,Northwest Territories,Canada'],
-
-['YPE','CYPE','Peace River Airport','Peace River,Alberta,Canada'],
-['YPG','CYPG','Portage la Prairie Southport Airport','Portage la Prairie,Manitoba,Canada'],
-['YPH','CYPH','Inukjuak Airport','Inukjuak,Quebec,Canada'],
-
-['YPJ','CYLA','Aupaluk Airport','Aupaluk,Quebec,Canada'],
-['YPL','CYPL','Pickle Lake Airport','Pickle Lake,Ontario,Canada'],
-['YPM','CYPM','Pikangikum Airport','Pikangikum,Ontario,Canada'],
-['YPN','CYPN','Port-Menier Airport','Port-Menier,Quebec,Canada'],
-['YPO','CYPO','Peawanuck Airport','Peawanuck,Ontario,Canada'],
-['YPQ','CYPQ','Peterborough Airport','Peterborough,Ontario,Canada'],
-['YPR','CYPR','Prince Rupert Airport','Prince Rupert,British Columbia,Canada'],
-['YPS','CYPD','Port Hawkesbury Airport','Port Hawkesbury,Nova Scotia,Canada'],
-
-['YPW','CYPW','Powell River Airport','Powell River,British Columbia,Canada'],
-['YPX','CYPX','Puvirnituq Airport','Puvirnituq,Quebec,Canada'],
-['YPY','CYPY','Fort Chipewyan Airport','Fort Chipewyan,Alberta,Canada'],
-['YPZ','CYPZ','Burns Lake Airport','Burns Lake,British Columbia,Canada'],
-['YQA','CYQA','Muskoka Airport','Muskoka,Ontario,Canada'],
-['YQB','CYQB','Quebec City Jean Lesage International Airport','Quebec City,Quebec,Canada'],
-['YQC','CYHA','Quaqtaq Airport','Quaqtaq,Quebec,Canada'],
-['YQD','CYQD','The Pas Airport','The Pas,Manitoba,Canada'],
-['YQG','CYQG','Windsor International Airport','Windsor,Ontario,Canada'],
-['YQH','CYQH','Watson Lake Airport','Watson Lake,Yukon,Canada'],
-['YQI','CYQI','Yarmouth Airport','Yarmouth,Nova Scotia,Canada'],
-
-['YQK','CYQK','Kenora Airport','Kenora,Ontario,Canada'],
-['YQL','CYQL','Lethbridge Airport','Lethbridge,Alberta,Canada'],
-['YQM','CYQM','Greater Moncton International Airport','Moncton,New Brunswick,Canada'],
-['YQN','CYQN','Nakina Airport','Greenstone ,Ontario,Canada'],
-['YQQ','CYQQ','CFB Comox','Comox,British Columbia,Canada'],
-['YQR','CYQR','Regina International Airport','Regina,Saskatchewan,Canada'],
-['YQS','CYQS','St. Thomas Municipal Airport','St. Thomas,Ontario,Canada'],
-['YQT','CYQT','Thunder Bay International Airport','Thunder Bay,Ontario,Canada'],
-['YQU','CYQU','Grande Prairie Airport','Grande Prairie,Alberta,Canada'],
-['YQV','CYQV','Yorkton Municipal Airport','Yorkton,Saskatchewan,Canada'],
-['YQW','CYQW','North Battleford Airport ','North Battleford,Saskatchewan,Canada'],
-['YQX','CYQX','Gander International Airport CFB Gander','Gander,Newfoundland and Labrador,Canada'],
-['YQY','CYQY','Sydney J.A. Douglas McCurdy Airport','Sydney,Nova Scotia,Canada'],
-['YQZ','CYQZ','Quesnel Airport','Quesnel,British Columbia,Canada'],
-['YRA','CYRA','Gameti Rae Lakes Airport','Gameti,Northwest Territories,Canada'],
-['YRB','CYRB','Resolute Bay Airport','Resolute,Nunavut,Canada'],
-
-
-['YRF','CYCA','Cartwright Airport','Cartwright,Newfoundland and Labrador,Canada'],
-
-['YRI','CYRI','Riviere-du-Loup Airport','Riviere-du-Loup,Quebec,Canada'],
-['YRJ','CYRJ','Roberval Airport','Roberval,Quebec,Canada'],
-['YRL','CYRL','Red Lake Airport','Red Lake,Ontario,Canada'],
-['YRM','CYRM','Rocky Mountain House Airport','Rocky Mountain House,Alberta,Canada'],
-
-['YRO','CYRO','Ottawa Rockcliffe Airport','Ottawa,Ontario,Canada'],
-['YRQ','CYRQ','Trois-Rivieres Airport','Trois-Rivieres,Quebec,Canada'],
-
-['YRS','CYRS','Red Sucker Lake Airport','Red Sucker Lake,Manitoba,Canada'],
-['YRT','CYRT','Rankin Inlet Airport','Rankin Inlet,Nunavut,Canada'],
-['YRV','CYRV','Revelstoke Airport','Revelstoke,British Columbia,Canada'],
-['YSA','CYSA','Sable Island Airport ','Sable Island,Nova Scotia,Canada'],
-['YSB','CYSB','Sudbury Airport','Greater Sudbury,Ontario,Canada'],
-['YSC','CYSC','Sherbrooke Airport','Sherbrooke,Quebec,Canada'],
-['YSD','CYSD','CFB Suffield','Suffield,Alberta,Canada'],
-['YSE','CYSE','Squamish Airport','Squamish,British Columbia,Canada'],
-['YSF','CYSF','Stony Rapids Airport','Stony Rapids,Saskatchewan,Canada'],
-['YSG','CYLK','Lutselke Airport','Lutselke,Northwest Territories,Canada'],
-['YSH','CYSH','Smiths Falls-Montague Airport','Smiths Falls,Ontario,Canada'],
-
-['YSJ','CYSJ','Saint John Airport','Saint John,New Brunswick,Canada'],
-['YSK','CYSK','Sanikiluaq Airport','Sanikiluaq,Nunavut,Canada'],
-['YSL','CYSL','Saint-Leonard Aerodrome','Saint-Leonard,New Brunswick,Canada'],
-['YSM','CYSM','Fort Smith Airport','Fort Smith,Northwest Territories,Canada'],
-['YSN','CZAM','Salmon Arm Airport','Salmon Arm,British Columbia,Canada'],
-
-['YSP','CYSP','Marathon Aerodrome','Marathon,Ontario,Canada'],
-['YST','CYST','St. Theresa Point Airport','St. Theresa Point,Manitoba,Canada'],
-['YSU','CYSU','Summerside Airport','Summerside,Prince Edward Island,Canada'],
-
-['YSY','CYSY','Sachs Harbour  Airport','Sachs Harbour,Northwest Territories,Canada'],
-['YTA','CYTA','Pembroke Airport','Pembroke,Ontario,Canada'],
-
-['YTD','CZLQ','Thicket Portage Airport','Thicket Portage,Manitoba,Canada'],
-['YTE','CYTE','Cape Dorset Airport','Cape Dorset,Nunavut,Canada'],
-['YTF','CYTF','Alma Airport','Alma,Quebec,Canada'],
-
-['YTH','CYTH','Thompson Airport','Thompson,Manitoba,Canada'],
-['YTL','CYTL','Big Trout Lake Airport','Kitchenuhmaykoosib Inninuwug ,Ontario,Canada'],
-['YTM','CYFJ','Mont Tremblant International Airport','Mont-Tremblant,Quebec,Canada'],
-
-
-['YTQ','CYTQ','Tasiujaq Airport','Tasiujaq,Quebec,Canada'],
-['YTR','CYTR','CFB Trenton','Trenton,Ontario,Canada'],
-['YTS','CYTS','Timmins Victor M. Power Airport','Timmins,Ontario,Canada'],
-
-
-
-
-['YTZ','CYTZ','Billy Bishop Toronto City Airport ','Toronto,Ontario,Canada'],
-
-['YUB','CYUB','Tuktoyaktuk James Gruben Airport','Tuktoyaktuk,Northwest Territories,Canada'],
-['YUD','CYMU','Umiujaq Airport','Umiujaq,Quebec,Canada'],
-
-['YUL','CYUL','Montreal-Pierre Elliott Trudeau International Airport','Montreal,Quebec,Canada'],
-['YUM','KNYL','Yuma International Airport MCAS Yuma ','Yuma,Arizona,United States'],
-
-['YUT','CYUT','Repulse Bay Airport','Naujaat ,Nunavut,Canada'],
-['YUX','CYUX','Hall Beach Airport','Hall Beach,Nunavut,Canada'],
-['YUY','CYUY','Rouyn-Noranda Airport','Rouyn-Noranda,Quebec,Canada'],
-['YVA','FMCN','Iconi Airport','Moroni,Comoros'],
-['YVB','CYVB','Bonaventure Airport','Bonaventure,Quebec,Canada'],
-['YVC','CYVC','La Ronge  Airport','La Ronge,Saskatchewan,Canada'],
-
-['YVG','CYVG','Vermilion Airport','Vermilion,Alberta,Canada'],
-['YVM','CYVM','Qikiqtarjuaq Airport','Qikiqtarjuaq,Nunavut,Canada'],
-['YVN','CYVN','Cape Dyer Airport[1]','Cape Dyer,Nunavut,Canada'],
-['YVO','CYVO','Val-dOr Airport','Val-dOr,Quebec,Canada'],
-['YVP','CYVP','Kuujjuaq Airport','Kuujjuaq,Quebec,Canada'],
-['YVQ','CYVQ','Norman Wells Airport','Norman Wells,Northwest Territories,Canada'],
-['YVR','CYVR','Vancouver International Airport','Vancouver,British Columbia,Canada'],
-['YVT','CYVT','Buffalo Narrows Airport','Buffalo Narrows,Saskatchewan,Canada'],
-['YVV','CYVV','Wiarton Airport','Wiarton,Ontario,Canada'],
-['YVZ','CYVZ','Deer Lake Airport','Deer Lake,Ontario,Canada'],
-['YWA','CYWA','Petawawa Airport','Petawawa,Ontario,Canada'],
-['YWB','CYKG','Kangiqsujuaq  Airport','Kangiqsujuaq,Quebec,Canada'],
-['YWG','CYWG','Winnipeg James Armstrong Richardson International Airport','Winnipeg,Manitoba,Canada'],
-['YWH','CYWH','Victoria Harbour Water Airport','Victoria,British Columbia,Canada'],
-['YWJ','CYWJ','Deline Airport','Deline,Northwest Territories,Canada'],
-['YWK','CYWK','Wabush Airport','Wabush,Newfoundland and Labrador,Canada'],
-['YWL','CYWL','Williams Lake Airport','Williams Lake,British Columbia,Canada'],
-
-['YWP','CYWP','Webequie Airport','Webequie,Ontario,Canada'],
-
-
-
-['YWY','CYWY','Wrigley Airport','Wrigley,Northwest Territories,Canada'],
-['YXC','CYXC','Cranbrook Canadian Rockies International Airport','Cranbrook,British Columbia,Canada'],
-['YXD','CYXD','Edmonton City Centre  Airport[1]','Edmonton,Alberta,Canada'],
-['YXE','CYXE','Saskatoon John G. Diefenbaker International Airport','Saskatoon,Saskatchewan,Canada'],
-['YXH','CYXH','Medicine Hat Airport','Medicine Hat,Alberta,Canada'],
-['YXJ','CYXJ','Fort St. John Airport ','Fort St. John,British Columbia,Canada'],
-['YXK','CYXK','Rimouski Airport','Rimouski,Quebec,Canada'],
-['YXL','CYXL','Sioux Lookout Airport','Sioux Lookout,Ontario,Canada'],
-['YXN','CYXN','Whale Cove Airport','Whale Cove,Nunavut,Canada'],
-['YXP','CYXP','Pangnirtung Airport','Pangnirtung,Nunavut,Canada'],
-['YXQ','CYXQ','Beaver Creek Airport','Beaver Creek,Yukon,Canada'],
-['YXR','CYXR','Earlton ,Ontario,Canada'],
-['YXS','CYXS','Prince George Airport','Prince George,British Columbia,Canada'],
-['YXU','CYXU','London International Airport','London,Ontario,Canada'],
-['YXX','CYXX','Abbotsford International Airport','Abbotsford,British Columbia,Canada'],
-['YXY','CYXY','Erik Nielsen Whitehorse International Airport','Whitehorse,Yukon,Canada'],
-['YXZ','CYXZ','Wawa Airport','Wawa,Ontario,Canada'],
-['YYB','CYYB','North Bay Jack Garland Airport','North Bay,Ontario,Canada'],
-['YYC','CYYC','Calgary International Airport','Calgary,Alberta,Canada'],
-['YYD','CYYD','Smithers Airport','Smithers,British Columbia,Canada'],
-['YYG','CYYG','Charlottetown Airport','Charlottetown,Prince Edward Island,Canada'],
-['YYH','CYYH','Taloyoak Airport','Taloyoak,Nunavut,Canada'],
-['YYI','CYYI','Rivers Airport','Rivers,Manitoba,Canada'],
-['YYJ','CYYJ','Victoria International Airport','Victoria,British Columbia,Canada'],
-['YYL','CYYL','Lynn Lake Airport','Lynn Lake,Manitoba,Canada'],
-['YYM','CYYM','Cowley Airport','Cowley,Alberta,Canada'],
-['YYN','CYYN','Swift Current Airport','Swift Current,Saskatchewan,Canada'],
-['YYQ','CYYQ','Churchill Airport','Churchill,Manitoba,Canada'],
-['YYR','CYYR','CFB Goose Bay','Happy Valley-Goose Bay,Newfoundland and Labrador,Canada'],
-['YYT','CYYT','St. Johns International Airport','St. Johns,Newfoundland and Labrador,Canada'],
-['YYU','CYYU','Kapuskasing Airport','Kapuskasing,Ontario,Canada'],
-['YYW','CYYW','Armstrong Airport','Armstrong,Ontario,Canada'],
-['YYY','CYYY','Mont-Joli Airport','Mont-Joli,Quebec,Canada'],
-['YYZ','CYYZ','Toronto Pearson International Airport','Toronto,Ontario,Canada'],
-['YZA','CYZA','Cache Creek Airport ','Cache Creek Ashcroft,British Columbia,Canada'],
-['YZE','CYZE','Gore Bay-Manitoulin Airport','Gore Bay,Ontario,Canada'],
-['YZF','CYZF','Yellowknife Airport','Yellowknife,Northwest Territories,Canada'],
-['YZG','CYZG','Salluit Airport','Salluit,Quebec,Canada'],
-['YZH','CYZH','Slave Lake Airport','Slave Lake,Alberta,Canada'],
-['YZP','CYZP','Sandspit Airport','Sandspit,British Columbia,Canada'],
-['YZR','CYZR','Sarnia Chris Hadfield Airport','Sarnia,Ontario,Canada'],
-['YZS','CYZS','Coral Harbour Airport','Coral Harbour,Nunavut,Canada'],
-['YZT','CYZT','Port Hardy Airport','Port Hardy,British Columbia,Canada'],
-['YZU','CYZU','Whitecourt Airport','Whitecourt,Alberta,Canada'],
-['YZV','CYZV','Sept-Iles Airport','Sept-Iles,Quebec,Canada'],
-['YZW','CYZW','Teslin Airport','Teslin,Yukon,Canada'],
-['YZX','CYZX','CFB Greenwood','Greenwood,Nova Scotia,Canada'],
-
-
-
-['ZAC','CZAC','York Landing Airport','York Landing,Manitoba,Canada'],
-['ZAD','LDZD','Zadar Airport','Zadar,Croatia'],
-['ZAG','LDZA','Franjo Tuman Airport','Zagreb,Croatia'],
-
-
-['ZAL','SCVD','Pichoy Airport','Valdivia,Chile'],
-['ZAM','RPMZ','Zamboanga International Airport','Zamboanga City,Philippines'],
-['ZAO','LFCC','Cahors - Lalbenque Airport','Cahors,Midi-Pyrenees,France'],
-
-
-['ZAZ','LEZG','Zaragoza Airport','Zaragoza,Aragon,Spain'],
-['ZBE','LKZA','Zabeh Airport','Dolni BeneSov,Czech Republic'],
-['ZBF','CZBF','Bathurst Airport','Bathurst,New Brunswick,Canada'],
-
-
-['ZBM','CZBM','Roland-Desourdy Airport','Bromont,Quebec,Canada'],
-
-
-['ZBY','VLSB','Sayaboury Airport','Sainyabuli ,Laos'],
-['ZCL','MMZC','General Leobardo C. Ruiz International Airport','Zacatecas City,Zacatecas,Mexico'],
-['ZCO','SCQP','La Araucania Airport','Temuco,Chile'],
-['ZDY','OMDL','Dalma Airport','Dalma Island ,United Arab Emirates'],
-['ZEC','FASC','Secunda Airport','Secunda,South Africa'],
-
-['ZEL','CBBC','Bella Bella  Airport','Bella Bella,British Columbia,Canada'],
-['ZEM','CZEM','Eastmain River Airport','Eastmain,Quebec,Canada'],
-
-['ZER','VEZO','Zero Airport ','Ziro,Arunachal Pradesh,India'],
-['ZFA','CZFA','Faro Airport','Faro,Yukon,Canada'],
-['ZFD','CZFD','Fond-du-Lac Airport','Fond-du-Lac,Saskatchewan,Canada'],
-['ZFM','CZFM','Fort McPherson Airport','Fort McPherson,Northwest Territories,Canada'],
-['ZFN','CZFN','Tulita Airport','Tulita,Northwest Territories,Canada'],
-
-['ZGF','CZGF','Grand Forks Airport','Grand Forks,British Columbia,Canada'],
-['ZGI','CZGI','Gods River Airport','Gods River,Manitoba,Canada'],
-
-['ZGM','FLNA','Ngoma Airport','Ngoma,Zambia'],
-['ZGR','CZGR','Little Grand Rapids Airport','Little Grand Rapids,Manitoba,Canada'],
-
-['ZGU','NVSQ','Gaua Airport','Gaua,Vanuatu'],
-
-['ZHM','VGSH','Shamshernagar Airport','Shamshernagar,Bangladesh'],
-['ZHP','CZHP','High Prairie Airport','High Prairie,Alberta,Canada'],
-
-
-['ZIC','SCTO','Victoria Airport','Victoria,Chile'],
-['ZIG','GOGG','Ziguinchor Airport','Ziguinchor,Senegal'],
-['ZIH','MMZH','Ixtapa-Zihuatanejo International Airport','Ixtapa Zihuatanejo,Guerrero,Mexico'],
-
-
-
-['ZJG','CZJG','Jenpeg Airport','Jenpeg,Manitoba,Canada'],
-['ZJN','CZJN','Swan River Airport','Swan River,Manitoba,Canada'],
-
-['ZKB','FLKY','Kasaba Bay Airport','Kasaba Bay,Zambia'],
-['ZKE','CZKE','Kashechewan Airport','Kashechewan,Ontario,Canada'],
-
-
-['ZLO','MMZO','Playa de Oro International Airport','Manzanillo,Colima,Mexico'],
-
-
-
-
-['ZMM','MMZM','Zamora National Airport','Zamora,Michoacan,Mexico'],
-['ZMT','CZMT','Masset Airport','Masset,British Columbia,Canada'],
-
-
-['ZND','DRZR','Zinder Airport','Zinder,Niger'],
-
-
-['ZNZ','HTZA','Abeid Amani Karume International Airport','Zanzibar,Tanzania'],
-
-['ZOS','SCJO','Canal Bajo Carlos Hott Siebert Airport','Osorno,Chile'],
-['ZPB','CZPB','Sachigo Lake Airport','Sachigo Lake,Ontario,Canada'],
-['ZPC','SCPC','Pucon Airport','Pucon,Chile'],
-
-['ZPO','CZPO','Pinehouse Lake Airport','Pinehouse,Saskatchewan,Canada'],
-['ZQN','NZQN','Queenstown Airport','Queenstown,New Zealand'],
-
-['ZQW','EDRZ','Zweibrucken Airport','Zweibrucken,Rhineland-Palatinate,Germany'],
-
-['ZRH','LSZH','Zurich Airport','Zurich,Switzerland'],
-['ZRI','WABO','Serui Airport','Serui,Indonesia'],
-['ZRJ','CZRJ','Round Lake ,Ontario,Canada'],
-['ZRM','WAJI','Sarmi Orai Airport','Sarmi,Indonesia'],
-['ZSA','MYSM','San Salvador Airport ','San Salvador Island,Bahamas'],
-['ZSE','FMEP','Pierrefonds Airport','Saint-Pierre,Reunion,France'],
-['ZSJ','CZSJ','Sandy Lake Airport','Sandy Lake,Ontario,Canada'],
-['ZSS','DISS','Sassandra Airport','Sassandra,Ivory Coast'],
-['ZST','CZST','Stewart Aerodrome','Stewart,British Columbia,Canada'],
-['ZSW','CZSW','Prince Rupert Seal Cove Water Airport','Prince Rupert,British Columbia,Canada'],
-['ZTA','NTGY','Tureia Airport','Tureia,Tuamotus,French Polynesia'],
-
-['ZTH','LGZA','Zakynthos International Airport ','Zakynthos,Greece'],
-['ZTM','CZTM','Shamattawa Airport','Shamattawa,Manitoba,Canada'],
-
-
-
-['ZUC','CZUC','Ignace Municipal Airport','Ignace,Ontario,Canada'],
-['ZUD','SCAC','Pupelde Airfield','Ancud,Chile'],
-
-
-['ZUM','CZUM','Churchill Falls Airport','Churchill Falls,Newfoundland and Labrador,Canada'],
-['ZVA','FMMN','Miandrivazo Airport','Miandrivazo,Madagascar'],
-
-['ZVK','VLSK','Savannakhet Airport','Savannakhet,Laos'],
-['ZWA','FMND','Andapa Airport','Andapa,Madagascar'],
-['ZWL','CZWL','Wollaston Lake Airport','Wollaston Lake,Saskatchewan,Canada'],
-
-
-['ZYL','VGSY','Osmani International Airport','Sylhet,Bangladesh']
-
-
+var airports =  [
+['AAA','Anaa Airport','Anaa,Tuamotus,French Polynesia'],
+['AAB','Arrabury Airport','Arrabury,Queensland, Australia'],
+['AAC','El Arish International Airport','El Arish,Egypt'],
+['AAE','Rabah Bitat Airport(Les Salines Airport)','Annaba,Algeria'],
+['AAF','Apalachicola Regional Airport','Apalachicola,Florida, United States'],
+['AAG','Arapoti Airport','Arapoti,Parana, Brazil'],
+['AAH','Merzbruck Airport','Aachen,North Rhine-Westphalia, Germany'],
+['AAI','Arraias Airport','Arraias,Tocantins, Brazil'],
+['AAJ','Cayana Airstrip','Awaradam,Suriname'],
+['AAK','Aranuka Airport','Aranuka,Kiribati'],
+['AAL','Aalborg Airport','Aalborg,Denmark'],
+['AAM','Mala Mala Airport','Mala Mala,South Africa'],
+['AAN','Al Ain International Airport','Al Ain,United Arab Emirates'],
+['AAO','Anaco Airport','Anaco,Venezuela'],
+['AAQ','Anapa Airport','Anapa,Krasnodar Krai, Russia'],
+['AAR','Aarhus Airport','Aarhus,Denmark'],
+['AAS','Apalapsili Airport','Apalapsili,Indonesia'],
+['AAT','Altay Airport','Altay,Xinjiang, China'],
+['AAU','Asau Airport','Asau,Savaii Island,Samoa'],
+['AAV','Allah Valley Airport','Surallah,Philippines'],
+['AAX','Araxa Airport','Araxa,Minas Gerais, Brazil'],
+['AAY','Al Ghaydah Airport','Al Ghaydah,Yemen'],
+['AAZ','Quetzaltenango Airport','Quetzaltenango,Guatemala'],
+['ABA','Abakan International Airport','Abakan,Republic of Khakassia, Russia'],
+['ABB','Asaba International Airport','Asaba,Nigeria'],
+['ABC','Albacete Airport','Albacete,Castilla-La Mancha, Spain'],
+['ABD','Abadan Airport','Abadan,Iran'],
+['ABE','Lehigh Valley International Airport','Allentown,Pennsylvania, United States'],
+['ABF','Abaiang Atoll Airport','Abaiang,Kiribati'],
+['ABG','Abingdon Airport','Abingdon,Queensland, Australia'],
+['ABH','Alpha Airport','Alpha,Queensland, Australia'],
+['ABI','Abilene Regional Airport','Abilene,Texas, United States'],
+['ABJ','Port Bouet Airport(Felix Houphouet Boigny Intl)','Abidjan,Cote dIvoire'],
+['ABK','Kabri Dar Airport','Kebri Dahar,Ethiopia'],
+['ABL','Ambler Airport(FAA: AFM)','Ambler,Alaska, United States'],
+['ABM','Northern Peninsula Airport','Bamaga,Queensland, Australia'],
+['ABN','Albina Airstrip','Albina,Suriname'],
+['ABO','Aboisso Airport','Aboisso,Cote dIvoire'],
+['ABP','Atkamba Airport','Atkamba,Papua New Guinea'],
+['ABQ','Albuquerque International Sunport','Albuquerque,New Mexico, United States'],
+['ABR','Aberdeen Regional Airport','Aberdeen,South Dakota, United States'],
+['ABS','Abu Simbel Airport','Abu Simbel,Egypt'],
+['ABT','Al-Baha Domestic Airport','Al-Baha,Saudi Arabia'],
+['ABU','Haliwen Airport','Atambua,Indonesia'],
+['ABV','Nnamdi Azikiwe International Airport','Abuja,Nigeria'],
+['ABW','Abau Airport','Abau,Papua New Guinea'],
+['ABX','Albury Airport','Albury,New South Wales, Australia'],
+['ABY','Southwest Georgia Regional Airport','Albany,Georgia, United States'],
+['ABZ','Aberdeen Airport','Aberdeen,Scotland, United Kingdom'],
+['ACA','General Juan N. alvarez International Airport','Acapulco,Guerrero, Mexico'],
+['ACB','Antrim County Airport','Bellaire,Michigan, United States'],
+['ACC','Kotoka International Airport','Accra,Ghana'],
+['ACD','Alcides Fernandez Airport','Acandi,Colombia'],
+['ACE','Lanzarote Airport','Lanzarote,Canary Islands, Spain'],
+['ACH','St. Gallen-Altenrhein Airport','Altenrhein,Switzerland'],
+['ACI','Alderney Airport','Alderney,Channel Islands, United Kingdom'],
+['ACJ','Anuradhapura Airport','Anuradhapura,Sri Lanka'],
+['ACK','Nantucket Memorial Airport','Nantucket,Massachusetts, United States'],
+['ACL','Aguaclara Airport','Aguaclara,Colombia'],
+['ACM','Arica Airport','Arica,Colombia'],
+['ACN','Ciudad Acuna International Airport','Ciudad Acuna,Coahuila, Mexico'],
+['ACP','Sahand Airport','Maragheh,Iran'],
+['ACR','Araracuara Airport','Araracuara,Colombia'],
+['ACS','Achinsk Airport','Achinsk,Krasnoyarsk Krai, Russia'],
+['ACT','Waco Regional Airport','Waco,Texas, United States'],
+['ACU','Achutupo Airport','Achutupo,Panama'],
+['ACV','Arcata-Eureka Airport','Eureka / Arcata,California, United States'],
+['ACX','Xingyi Wanfenglin Airport','Xingyi,Guizhou, China'],
+['ACY','Atlantic City International Airport','Atlantic City,New Jersey, United States'],
+['ACZ','Zabol Airport','Zabol,Iran'],
+['ADA','Adana ?akirpa?a Airport','Adana,Turkey'],
+['ADB','Adnan Menderes Airport','?zmir,Turkey'],
+['ADC','Andakombe Airport','Andakombe,Papua New Guinea'],
+['ADD','Bole International Airport','Addis Ababa,Ethiopia'],
+['ADE','Aden International Airport','Aden,Yemen'],
+['ADF','Ad?yaman Airport','Ad?yaman,Turkey'],
+['ADG','Lenawee County Airport','Adrian,Michigan, United States'],
+['ADH','Aldan Airport','Aldan,Yakutia, Russia'],
+['ADI','Arandis Airport','Arandis,Namibia'],
+['ADJ','Amman Civil Airport(Marka International Airport)','Amman,Jordan'],
+['ADK','Adak Airport','Adak Island,Alaska, United States'],
+['ADL','Adelaide Airport','Adelaide,South Australia, Australia'],
+['ADM','Ardmore Municipal Airport','Ardmore,Oklahoma, United States'],
+['ADN','Andes Airport','Andes,Colombia'],
+['ADO','Andamooka Airport','Andamooka,South Australia, Australia'],
+['ADP','Ampara Airport','Ampara,Sri Lanka'],
+['ADQ','Kodiak Airport','Kodiak,Alaska, United States'],
+['ADR','Robert F. Swinnie Airport(FAA: PHH)','Andrews,South Carolina, United States'],
+['ADS','Addison Airport','Dallas,Texas, United States'],
+['ADT','Ada Municipal Airport(FAA: ADH)','Ada,Oklahoma, United States'],
+['ADU','Ardabil Airport','Ardabil,Iran'],
+['ADV','Ed Daein Airport','Ed Daein,Sudan'],
+['ADW','Andrews Field(Andrews Air Force Base)','Camp Springs,Maryland, United States'],
+['ADX','RAF Leuchars','St Andrews,Scotland, United Kingdom'],
+['ADY','Alldays Airport','Alldays,South Africa'],
+['ADZ','Gustavo Rojas Pinilla International Airport','San Andres Island,Colombia'],
+['AEA','Abemama Atoll Airport','Abemama Atoll,Kiribati'],
+['AEB','Baise Bama Airport','Baise,Guangxi, China'],
+['AEE','Adareil Airport','Adareil,South Sudan'],
+['AEG','Aek Godang Airport','Padang Sidempuan,Indonesia'],
+['AEH','Abeche Airport','Abeche,Chad'],
+['AEK','Aseki Airport','Aseki,Papua New Guinea'],
+['AEL','Albert Lea Municipal Airport','Albert Lea,Minnesota, United States'],
+['AEO','Aioun el Atrouss Airport','Aioun el Atrouss,Mauritania'],
+['AEP','Jorge Newbery Airpark','Buenos Aires, Argentina'],
+['AER','Sochi International Airport','Sochi,Krasnodar Krai, Russia'],
+['AES','Ålesund Airport, Vigra','Ålesund,Norway'],
+['AET','Allakaket Airport(FAA: 6A8)','Allakaket,Alaska, United States'],
+['AEU','Abu Musa Airport','Abu Musa Island,Iran'],
+['AEX','Alexandria International Airport','Alexandria,Louisiana, United States'],
+['AEY','Akureyri Airport','Akureyri,Iceland'],
+['AFA','San Rafael Airport','San Rafael,Mendoza, Argentina'],
+['AFD','Port Alfred Airport','Port Alfred,South Africa'],
+['AFF','United States Air Force AcademyAirfield','Colorado Springs,Colorado, United States'],
+['AFI','Amalfi Airport','Amalfi,Colombia'],
+['AFK','Kondavattavan Tank Seaplane Base','Ampara,Sri Lanka'],
+['AFL','Alta Floresta Airport','Alta Floresta,Mato Grosso, Brazil'],
+['AFN','Jaffrey Airport-Silver Ranch','Jaffrey,New Hampshire, United States'],
+['AFO','Afton Municipal Airport','Afton,Wyoming, United States'],
+['AFR','Afore Airport','Afore,Papua New Guinea'],
+['AFS','Zarafshan Airport','Zarafshan,Uzbekistan'],
+['AFT','Afutara Airport','Afutara,Malaita,Solomon Islands'],
+['AFW','Fort Worth Alliance Airport','Fort Worth,Texas, United States'],
+['AFY','Afyon Airport','Afyon,Turkey'],
+['AFZ','Sabzevar Airport','Sabzevar,Iran'],
+['AGA','Agadir-Al Massira Airport','Agadir,Morocco'],
+['AGB','Augsburg Airport','Augsburg,Bavaria, Germany'],
+['AGC','Allegheny County Airport','Pittsburgh,Pennsylvania, United States'],
+['AGD','Anggi Airport','Anggi,Indonesia'],
+['AGE','Wangerooge Airport','Wangerooge,Lower Saxony, Germany'],
+['AGF','Agen La Garenne Airport','Agen,Aquitaine, France'],
+['AGG','Angoram Airport','Angoram,Papua New Guinea'],
+['AGH','Ängelholm-Helsingborg Airport(former ICAO: ESDB)','Ängelholm,Sweden'],
+['AGI','Wageningen Airstrip','Wageningen,Suriname'],
+['AGJ','Aguni Airport','Aguni,Okinawa, Japan'],
+['AGK','Kagua Airport','Kagua,Papua New Guinea'],
+['AGL','Wanigela Airport','Wanigela,Papua New Guinea'],
+['AGN','Angoon Seaplane Base','Angoon,Alaska, United States'],
+['AGO','Magnolia Municipal Airport','Magnolia,Arkansas, United States'],
+['AGP','Malaga Airport','Malaga,Andalusia, Spain'],
+['AGQ','Agrinion Airport','Agrinion,Greece'],
+['AGR','Agra Airport','Agra,Uttar Pradesh, India'],
+['AGS','Augusta Regional Airportat Bush Field','Augusta,Georgia, United States'],
+['AGT','Guarani International Airport','Ciudad del Este,Paraguay'],
+['AGU','Lic. Jesus Teran Peredo International Airport','Aguascalientes,Aguascalientes, Mexico'],
+['AGV','Oswaldo Guevara Mujica Airport','Acarigua,Venezuela'],
+['AGW','Agnew Airport','Agnew,Queensland, Australia'],
+['AGX','Agatti Aerodrome','Agatti Island,Lakshadweep, India'],
+['AGZ','Aggeneys Airport','Aggeneys,South Africa'],
+['AHB','Abha Regional Airport','Abha,Saudi Arabia'],
+['AHC','Amedee Army Airfield','Herlong,California, United States'],
+['AHD','Ardmore Downtown Executive Airport(FAA: 1F0)','Ardmore,Oklahoma, United States'],
+['AHE','Ahe Airport','Ahe,Tuamotus,French Polynesia'],
+['AHF','Arapahoe Municipal Airport(FAA: 37V)','Arapahoe,Nebraska, United States'],
+['AHH','Amery Municipal Airport','Amery,Wisconsin, United States'],
+['AHI','Amahai Airport','Amahai,Indonesia'],
+['AHJ','Hongyuan Airport','Hongyuan,Sichuan, China'],
+['AHL','Aishalton Airstrip','Aishalton,Guyana'],
+['AHM','Ashland Municipal Airport','Ashland,Oregon, United States'],
+['AHN','Athens Ben Epps Airport','Athens,Georgia, United States'],
+['AHO','Alghero-Fertilia Airport','Alghero,Sardinia, Italy'],
+['AHS','Ahuas Airport','Ahuas,Honduras'],
+['AHU','Cherif Al Idrissi Airport','Al Hoceima,Morocco'],
+['AHW','Saih Rawl Airport','Saih Rawl,Oman'],
+['AHY','Ambatolahy Airport','Ambatolahy,Madagascar'],
+['AHZ','Alpe dHuez Airport','Alpe dHuez,Rhone-Alpes, France'],
+['AIA','Alliance Municipal Airport','Alliance,Nebraska, United States'],
+['AIC','Ailinglaplap Airok Airport','Airok,Ailinglaplap Atoll,Marshall Islands'],
+['AID','Anderson Municipal Airport(Darlington Field)','Anderson,Indiana, United States'],
+['AIE','Aiome Airport','Aiome,Papua New Guinea'],
+['AIF','Assis Airport(former ICAO: SBAS)','Assis,Sao Paulo, Brazil'],
+['AIG','Yalinga Airport','Yalinga,Central African Republic'],
+['AIH','Aiambak Airport','Aiambak,Papua New Guinea'],
+['AII','Ali-Sabieh Airport','Ali Sabieh,Djibouti'],
+['AIK','Aiken Municipal Airport','Aiken,South Carolina, United States'],
+['AIL','Ailigandi Airport','Ailigandi,Panama'],
+['AIM','Ailuk Airport','Ailuk Atoll,Marshall Islands'],
+['AIN','Wainwright Airport(FAA: AWI)','Fort Wainwright,Alaska, United States'],
+['AIO','Atlantic Municipal Airport','Atlantic,Iowa, United States'],
+['AIR','Aripuana Airport','Aripuana,Mato Grosso, Brazil'],
+['AIS','Arorae Island Airport','Arorae Island,Kiribati'],
+['AIT','Aitutaki Airport','Aitutaki,Cook Islands'],
+['AIU','Atiu Island Airport','Atiu Island,Cook Islands'],
+['AIV','George Downer Airport','Aliceville,Alabama, United States'],
+['AIW','Ai-Ais Airport','Ai-Ais,Namibia'],
+['AIY','Atlantic City Municipal Airport(Bader Field)(closed 2006)','Atlantic City,New Jersey, United States'],
+['AIZ','Lee C. Fine Memorial Airport','Lake Ozark,Missouri, United States'],
+['AJA','Ajaccio Napoleon Bonaparte Airport','Ajaccio,Corsica, France'],
+['AJF','Al-Jawf Domestic Airport','Al-Jawf,Saudi Arabia'],
+['AJI','A?r? Airport','A?r?,Turkey'],
+['AJJ','Akjoujt Airport','Akjoujt,Mauritania'],
+['AJK','Arak Airport','Arak,Iran'],
+['AJL','Lengpui Airport','Aizawl,Mizoram, India'],
+['AJN','Ouani Airport','Anjouan,Comoros'],
+['AJR','Arvidsjaur Airport','Arvidsjaur,Sweden'],
+['AJS','Punta Abreojos Airstrip','Punta Abreojos,Baja California Sur, Mexico'],
+['AJU','Santa Maria Airport','Aracaju,Sergipe, Brazil'],
+['AJY','Mano Dayak International Airport','Agadez,Niger'],
+['AKA','Ankang Wulipu Airport','Ankang,Shaanxi, China'],
+['AKB','Atka Airport(FAA: AKA)','Atka,Alaska, United States'],
+['AKC','Akron Fulton International Airport(FAA: AKR)','Akron,Ohio, United States'],
+['AKD','Akola Airport','Akola,Maharashtra, India'],
+['AKE','Akieni Airport','Akieni,Gabon'],
+['AKF','Kufra Airport','Kufra,Libya'],
+['AKG','Anguganak Airport','Anguganak,Papua New Guinea'],
+['AKH','Prince Sultan Air Base','Al-Kharj,Saudi Arabia'],
+['AKI','Akiak Airport','Akiak,Alaska, United States'],
+['AKJ','Asahikawa Airport','Asahikawa,Hokkaido, Japan'],
+['AKK','Akhiok Airport','Akhiok,Alaska, United States'],
+['AKL','Auckland Airport','Auckland,New Zealand'],
+['AKM','Zakouma Airport','Zakouma National Park,Chad'],
+['AKN','King Salmon Airport','King Salmon,Alaska, United States'],
+['AKO','Colorado Plains Regional Airport','Akron,Colorado, United States'],
+['AKP','Anaktuvuk Pass Airport','Anaktuvuk Pass,Alaska, United States'],
+['AKQ','Gunung Batin Airport','Astraksetra,Indonesia'],
+['AKR','Akure Airport','Akure,Nigeria'],
+['AKS','Auki Gwaunaruu Airport','Auki,Malaita,Solomon Islands'],
+['AKT','RAF Akrotiri','Akrotiri,Cyprus'],
+['AKU','Aksu Airport','Aksu,Xinjiang, China'],
+['AKV','Akulivik Airport','Akulivik,Quebec, Canada'],
+['AKW','Aghajari Airport','Aghajari,Iran'],
+['AKX','Aktobe Airport','Aktobe,Kazakhstan'],
+['AKY','Sittwe Airport','Sittwe,Myanmar'],
+['ALA','Almaty International Airport','Almaty,Kazakhstan'],
+['ALB','Albany International Airport','Albany,New York, United States'],
+['ALC','Alicante-Elche Airport','Alicante,Valencia, Spain'],
+['ALD','Alerta Airport','Alerta,Peru'],
+['ALE','Alpine-Casparis Municipal Airport(FAA: E38)','Alpine,Texas, United States'],
+['ALF','Alta Airport','Alta,Norway'],
+['ALG','Houari Boumediene Airport','Algiers,Algeria'],
+['ALH','Albany Airport','Albany,Western Australia, Australia'],
+['ALI','Alice International Airport','Alice,Texas, United States'],
+['ALJ','Alexander Bay Airport','Alexander Bay,South Africa'],
+['ALK','Asella Airport','Asella,Ethiopia'],
+['ALL','Albenga Airport','Albenga,Liguria, Italy'],
+['ALM','Alamogordo-White Sands Regional Airport','Alamogordo,New Mexico, United States'],
+['ALN','St. Louis Regional Airport','Alton,Illinois, United States'],
+['ALO','Waterloo Regional Airport','Waterloo,Iowa, United States'],
+['ALP','Aleppo International Airport','Aleppo,Syria'],
+['ALQ','Alegrete Airport','Alegrete,Rio Grande do Sul, Brazil'],
+['ALR','Alexandra Aerodrome','Alexandra,New Zealand'],
+['ALS','San Luis Valley Regional Airport','Alamosa,Colorado, United States'],
+['ALT','Alenquer Airport','Alenquer,Para, Brazil'],
+['ALU','Alula Airport','Alula,Somalia'],
+['ALW','Walla Walla Regional Airport','Walla Walla,Washington, United States'],
+['ALX','Thomas C. Russell Field','Alexander City,Alabama, United States'],
+['ALY','El Nouzha Airport','Alexandria,Egypt'],
+['ALZ','Alitak Seaplane Base','Lazy Bay,Alaska, United States'],
+['AMA','Rick Husband Amarillo International Airport','Amarillo,Texas, United States'],
+['AMB','Ambilobe Airport','Ambilobe,Madagascar'],
+['AMC','Am Timan Airport','Am Timan,Chad'],
+['AMD','Sardar Vallabhbhai Patel International Airport','Ahmedabad,Gujarat, India'],
+['AME','Alto Molocue Airport','Alto Molocue,Mozambique'],
+['AMF','Ama Airport','Ama,Papua New Guinea'],
+['AMG','Amboin Airport','Amboin,Papua New Guinea'],
+['AMH','Arba Minch Airport','Arba Minch,Ethiopia'],
+['AMI','Selaparang Airport(closed 2011)','Mataram,Indonesia'],
+['AMJ','Almenara Airport','Almenara,Minas Gerais, Brazil'],
+['AMK','Animas Air Park(FAA: 00C)','Durango,Colorado, United States'],
+['AML','Puerto Armuelles Airport','Puerto Armuelles,Panama'],
+['AMM','Queen Alia International Airport','Amman,Jordan'],
+['AMN','Gratiot Community Airport','Alma,Michigan, United States'],
+['AMO','Mao Airport','Mao,Chad'],
+['AMP','Ampanihy Airport','Ampanihy,Madagascar'],
+['AMQ','Pattimura Airport','Ambon,Indonesia'],
+['AMS','Amsterdam Airport Schiphol','Amsterdam,Netherlands'],
+['AMT','Amata Airport','Amata,Northern Territory, Australia'],
+['AMU','Amanab Airport','Amanab,Papua New Guinea'],
+['AMV','Amderma Airport','Amderma,Nenets Autonomous Okrug, Russia'],
+['AMW','Ames Municipal Airport','Ames,Iowa, United States'],
+['AMX','Ammaroo Airport','Ammaroo,Northern Territory, Australia'],
+['AMY','Ambatomainty Airport','Ambatomainty,Madagascar'],
+['AMZ','Ardmore Airport','Ardmore,New Zealand'],
+['ANB','Anniston Regional Airport','Anniston,Alabama, United States'],
+['ANC','Ted Stevens Anchorage International Airport','Anchorage,Alaska, United States'],
+['AND','Anderson Regional Airport','Anderson,South Carolina, United States'],
+['ANE','Angers - Loire Airport','Angers,Pays de la Loire, France'],
+['ANF','Cerro Moreno International Airport','Antofagasta,Chile'],
+['ANG','Angouleme - Cognac International Airport','Angouleme,Poitou-Charentes, France'],
+['ANI','Aniak Airport','Aniak,Alaska, United States'],
+['ANJ','Zanaga Airport','Zanaga,Republic of the Congo'],
+['ANK','Etimesgut Air Base','Ankara,Turkey'],
+['ANL','Andulo Airport','Andulo,Angola'],
+['ANM','Antsirabato Airport','Antalaha,Madagascar'],
+['ANN','Annette Island Airport','Annette Island,Alaska, United States'],
+['ANO','Angoche Airport','Angoche,Mozambique'],
+['ANP','Lee Airport','Annapolis,Maryland, United States'],
+['ANQ','Tri-State Steuben County Airport','Angola,Indiana, United States'],
+['ANR','Antwerp International Airport','Antwerp,Belgium'],
+['ANS','Andahuaylas Airport','Andahuaylas,Peru'],
+['ANU','V. C. Bird International Airport','Antigua,Antigua and Barbuda'],
+['ANV','Anvik Airport','Anvik,Alaska, United States'],
+['ANW','Ainsworth Regional Airport','Ainsworth,Nebraska, United States'],
+['ANX','Andøya Airport, Andenes','Andenes,Norway'],
+['ANY','Anthony Municipal Airport','Anthony,Kansas, United States'],
+['ANZ','Angus Downs Airport','Angus Downs,Northern Territory, Australia'],
+['AOA','Aroa Airport','Aroa,Papua New Guinea'],
+['AOB','Annanberg Airport','Annanberg,Papua New Guinea'],
+['AOC','Leipzig-Altenburg Airport','Altenburg,Thuringia, Germany'],
+['AOD','Abou-Deia Airport','Abou-Deia,Chad'],
+['AOE','Anadolu Airport','Eski?ehir,Turkey'],
+['AOG','Anshan Tengao Airport','Anshan,Liaoning, China'],
+['AOH','Lima Allen County Airport','Lima,Ohio, United States'],
+['AOI','Ancona Falconara Airport','Ancona,Marche, Italy'],
+['AOJ','Aomori Airport','Aomori,Honshu, Japan'],
+['AOK','Karpathos Island National Airport','Karpathos,Greece'],
+['AOL','Paso de los Libres Airport','Paso de los Libres,Corrientes, Argentina'],
+['AOM','Adam Airport','Adam,Oman'],
+['AON','Arona Airport','Arona,Papua New Guinea'],
+['AOO','Altoona-Blair County Airport','Altoona,Pennsylvania, United States'],
+['AOP','Alferez FAP Alfredo Vladimir Sara Bauer Airport','Andoas,Peru'],
+['AOR','Sultan Abdul Halim Airport','Alor Setar,Kedah, Malaysia'],
+['AOS','Amook Bay Seaplane Base(FAA: AK81)','Amook Bay,Alaska, United States'],
+['AOT','Aosta Valley Airport','Aosta,Aosta Valley, Italy'],
+['AOU','Attapeu Airport','Attapeu,Laos'],
+['APA','Centennial Airport','Denver,Colorado, United States'],
+['APB','Apolo Airport','Apolo,Bolivia'],
+['APC','Napa County Airport','Napa,California, United States'],
+['APF','Naples Municipal Airport','Naples,Florida, United States'],
+['APG','Phillips Army Airfield','Aberdeen Proving Ground,Maryland, United States'],
+['APH','A.P. Hill Army Airfield','Fort A.P. Hill,Virginia, United States'],
+['API','Captain Luis F. Gomez Nino Air Base','Apiay,Colombia'],
+['APK','Apataki Airport','Apataki,Tuamotus,French Polynesia'],
+['APL','Nampula Airport','Nampula,Mozambique'],
+['APN','Alpena County Regional Airport','Alpena,Michigan, United States'],
+['APO','Antonio Roldan Betancourt Airport','Apartado,Colombia'],
+['APP','Asapa Airport','Asapa,Papua New Guinea'],
+['APQ','Arapiraca Airport','Arapiraca,Alagoas, Brazil'],
+['APR','April River Airport','April River,Papua New Guinea'],
+['APS','Anapolis Airport','Anapolis,Goias, Brazil'],
+['APT','Marion County Airport(Brown Field)','Jasper,Tennessee, United States'],
+['APU','Apucarana Airport','Apucarana,Parana, Brazil'],
+['APV','Apple Valley Airport','Apple Valley,California, United States'],
+['APW','Faleolo International Airport','Apia,Upolu Island,Samoa'],
+['APX','Arapongas Airport','Arapongas,Parana, Brazil'],
+['APY','Alto Parnaiba Airport','Alto Parnaiba,Maranhao, Brazil'],
+['APZ','Zapala Airport','Zapala,Neuquen, Argentina'],
+['AQA','Araraquara Airport','Araraquara,Sao Paulo, Brazil'],
+['AQB','Quiche Airport','Quiche,Guatemala'],
+['AQG','Anqing Tianzhushan Airport','Anqing,Anhui, China'],
+['AQI','Al Qaisumah/Hafr Al Batin Airport','Qaisumah/Hafar Al-Batin,Saudi Arabia'],
+['AQJ','King Hussein International Airport','Aqaba,Jordan'],
+['AQM','Ariquemes Airport','Ariquemes,Rondonia, Brazil'],
+['AQP','Rodriguez Ballon International Airport','Arequipa,Peru'],
+['AQS','Saqani Airport','Saqani,Fiji'],
+['AQY','Girdwood Airport','Girdwood,Alaska, United States'],
+['ARA','Acadiana Regional Airport','New Iberia,Louisiana, United States'],
+['ARB','Ann Arbor Municipal Airport','Ann Arbor,Michigan, United States'],
+['ARC','Arctic Village Airport','Arctic Village,Alaska, United States'],
+['ARD','Alor Island Airport','Alor Island,Indonesia'],
+['ARE','Antonio (Nery) Juarbe Pol Airport(FAA: ABO)','Arecibo,Puerto Rico, United States'],
+['ARF','Acaricuara Airport','Acaricuara,Colombia'],
+['ARG','Walnut Ridge Regional Airport','Walnut Ridge,Arkansas, United States'],
+['ARH','Talagi Airport','Arkhangelsk,Arkhangelsk Oblast, Russia'],
+['ARI','Chacalluta International Airport','Arica,Chile'],
+['ARJ','Arso Airport','Arso,Indonesia'],
+['ARK','Arusha Airport','Arusha,Tanzania'],
+['ARL','Arly Airport','Arly,Burkina Faso'],
+['ARM','Armidale Airport','Armidale,New South Wales, Australia'],
+['ARN','Stockholm Arlanda Airport','Stockholm,Sweden'],
+['ARO','Arboletes Airport','Arboletes,Colombia'],
+['ARP','Aragip Airport','Aragip,Papua New Guinea'],
+['ARQ','El Troncal Airport','Arauquita,Colombia'],
+['ARR','Alto Rio Senguer Airport','Alto Rio Senguer,Chubut, Argentina'],
+['ARS','Aragarcas Airport','Aragarcas,Goias, Brazil'],
+['ART','Watertown International Airport','Watertown,New York, United States'],
+['ARU','Aracatuba Airport','Aracatuba,Sao Paulo, Brazil'],
+['ARV','Lakeland Airport(Noble F. Lee Memorial Field)','Minocqua/Woodruff,Wisconsin, United States'],
+['ARW','Arad International Airport','Arad,Romania'],
+['ARY','Ararat Airport','Ararat,Victoria, Australia'],
+['ARZ','Nzeto Airport','Nzeto,Angola'],
+['ASA','Assab International Airport','Assab,Eritrea'],
+['ASB','Ashgabat International Airport','Ashgabat,Turkmenistan'],
+['ASC','Ascencion de Guarayos Airport','Ascencion de Guarayos,Bolivia'],
+['ASD','Andros Town International Airport','Andros Town,Andros Island,Bahamas'],
+['ASE','Aspen-Pitkin County Airport(Sardy Field)','Aspen,Colorado, United States'],
+['ASF','Narimanovo Airport','Astrakhan,Astrakhan Oblast, Russia'],
+['ASG','Ashburton Aerodrome','Ashburton,New Zealand'],
+['ASH','Nashua Airport(Boire Field)','Nashua,New Hampshire, United States'],
+['ASI','RAF Ascension Island(Wideawake Field)','Ascension Island,British Overseas Territory'],
+['ASJ','Amami Airport','Amami,Satsunan Islands, Japan'],
+['ASK','Yamoussoukro Airport','Yamoussoukro,Cote dIvoire'],
+['ASL','Harrison County Airport','Marshall,Texas, United States'],
+['ASM','Asmara International Airport','Asmara,Eritrea'],
+['ASN','Talladega Municipal Airport','Talladega,Alabama, United States'],
+['ASO','Asosa Airport','Asosa,Ethiopia'],
+['ASP','Alice Springs Airport','Alice Springs,Northern Territory, Australia'],
+['ASQ','Austin Airport(FAA: 9U3)','Austin,Nevada, United States'],
+['ASR','Erkilet International Airport','Kayseri,Turkey'],
+['AST','Astoria Regional Airport','Astoria,Oregon, United States'],
+['ASU','Silvio Pettirossi International Airport','Asuncion,Paraguay'],
+['ASV','Amboseli Airport','Amboseli,Kenya'],
+['ASW','Aswan International Airport','Aswan,Egypt'],
+['ASX','John F. Kennedy Memorial Airport','Ashland,Wisconsin, United States'],
+['ASY','Ashley Municipal Airport','Ashley,North Dakota, United States'],
+['ASZ','Asirim Airport','Asirim,Papua New Guinea'],
+['ATA','Comandante FAP German Arias Graziani Airport','Huaraz,Peru'],
+['ATB','Atbara Airport','Atbara,Sudan'],
+['ATC','Arthurs Town Airport','Arthurs Town,Cat Island,Bahamas'],
+['ATD','Uru Harbour Airport','Atoifi,Malaita,Solomon Islands'],
+['ATE','Antlers Municipal Airport(FAA: 80F)','Antlers,Oklahoma, United States'],
+['ATF','Chachoan Airport','Ambato,Ecuador'],
+['ATG','PAF Base Minhas','Attock,Pakistan'],
+['ATH','Athens International Airport(Eleftherios Venizelos Airport)','Athens,Greece'],
+['ATI','Artigas International Airport','Artigas,Uruguay'],
+['ATJ','Antsirabe Airport','Antsirabe,Madagascar'],
+['ATK','Atqasuk Edward Burnell Sr. Memorial Airport','Atqasuk,Alaska, United States'],
+['ATL','Hartsfield-Jackson Atlanta International Airport','Atlanta,Georgia, United States'],
+['ATM','Altamira Airport','Altamira,Para, Brazil'],
+['ATN','Namatanai Airport','Namatanai,Papua New Guinea'],
+['ATO','Ohio University Airport(Snyder Field) (FAA: UNI)','Athens/Albany,Ohio, United States'],
+['ATP','Aitape Airstrip','Aitape,Papua New Guinea'],
+['ATQ','Sri Guru Ram Dass Jee International Airport','Amritsar,Punjab, India'],
+['ATR','Atar International Airport','Atar,Mauritania'],
+['ATS','Artesia Municipal Airport','Artesia,New Mexico, United States'],
+['ATT','Atmautluak Airport(FAA: 4A2)','Atmautluak,Alaska, United States'],
+['ATU','Casco Cove Coast Guard Station','Attu Island,Alaska, United States'],
+['ATV','Ati Airport','Ati,Chad'],
+['ATW','Appleton International Airport','Appleton,Wisconsin, United States'],
+['ATX','Atbasar Airport','Atbasar,Kazakhstan'],
+['ATY','Watertown Regional Airport','Watertown,South Dakota, United States'],
+['ATZ','Assiut Airport','Assiut,Egypt'],
+['AUA','Queen Beatrix International Airport','Aruba,Kingdom of the Netherlands'],
+['AUC','Santiago Perez Quiroz Airport','Arauca,Colombia'],
+['AUD','Augustus Downs Airport','Augustus Downs,Queensland, Australia'],
+['AUE','Abu Rudeis Airport','Abu Rudeis,Egypt'],
+['AUF','Auxerre - Branches Aerodrome','Auxerre,Burgundy, France'],
+['AUG','Augusta State Airport','Augusta,Maine, United States'],
+['AUH','Abu Dhabi International Airport','Abu Dhabi,United Arab Emirates'],
+['AUI','Aua Island Airport','Aua Island,Papua New Guinea'],
+['AUJ','Ambunti Airport','Ambunti,Papua New Guinea'],
+['AUK','Alakanuk Airport','Alakanuk,Alaska, United States'],
+['AUL','Aur Airport','Aur Atoll,Marshall Islands'],
+['AUM','Austin Municipal Airport','Austin,Minnesota, United States'],
+['AUN','Auburn Municipal Airport','Auburn,California, United States'],
+['AUO','Auburn University Regional Airport','Auburn,Alabama, United States'],
+['AUP','Agaun Airport','Agaun,Papua New Guinea'],
+['AUQ','Atuona Airport','Atuona,Marquesas Islands,French Polynesia'],
+['AUR','Aurillac - Tronquieres Airport','Aurillac,Auvergne, France'],
+['AUS','Austin-Bergstrom International Airport','Austin,Texas, United States'],
+['AUT','Atauro Airport','Atauro Island,East Timor'],
+['AUU','Aurukun Airport','Aurukun,Queensland, Australia'],
+['AUV','Aumo Airport','Aumo,Papua New Guinea'],
+['AUW','Wausau Downtown Airport','Wausau,Wisconsin, United States'],
+['AUX','Araguaina Airport','Araguaina,Tocantins, Brazil'],
+['AUY','Anatom Airport','Anatom Island,Tafea,Vanuatu'],
+['AUZ','Aurora Municipal Airport(FAA: ARR)','Aurora,Illinois, United States'],
+['AVA','Anshun Huangguoshu Airport','Anshun,Guizhou, China'],
+['AVB','Aviano Air Base','Aviano,Pordenone, Italy'],
+['AVG','Auvergne Airport','Auvergne Station,Northern Territory, Australia'],
+['AVI','Maximo Gomez Airport','Ciego de avila,Cuba'],
+['AVK','Arvaikheer Airport','Arvaikheer,Mongolia'],
+['AVL','Asheville Regional Airport','Asheville,North Carolina, United States'],
+['AVN','Avignon - Provence Airport','Avignon,Provence-Alpes-Cote dAzur, France'],
+['AVO','Avon Park Executive Airport','Avon Park,Florida, United States'],
+['AVP','Wilkes-Barre/Scranton International Airport','Wilkes-Barre/Scranton,Pennsylvania, United States'],
+['AVU','Avu Avu Airport','Avu Avu,Guadalcanal,Solomon Islands'],
+['AVV','Avalon Airport','Avalon,Victoria, Australia'],
+['AVW','Marana Regional Airport(FAA: AVQ)','Tucson,Arizona, United States'],
+['AVX','Catalina Airport','Avalon,California, United States'],
+['AWA','Awasa Airport','Awasa,Ethiopia'],
+['AWB','Awaba Airport','Awaba,Papua New Guinea'],
+['AWD','Aniwa Airport','Aniwa Island,Tafea,Vanuatu'],
+['AWE','Alowe Airport','Alowe,Gabon'],
+['AWK','Wake Island Airfield','Wake Island,United States Minor Outlying Islands'],
+['AWM','West Memphis Municipal Airport','West Memphis,Arkansas, United States'],
+['AWN','Alton Downs Airport','Alton Downs,South Australia, Australia'],
+['AWP','Austral Downs Airport','Austral Downs,Northern Territory, Australia'],
+['AWR','Awar Airport','Awar,Papua New Guinea'],
+['AWZ','Ahvaz International Airport','Ahvaz,Iran'],
+['AXA','Clayton J. Lloyd International Airport','The Valley,British Overseas TerritoryofAnguilla'],
+['AXB','Maxson Airfield(FAA: 89N)','Alexandria Bay,New York, United States'],
+['AXC','Aramac Airport','Aramac,Queensland, Australia'],
+['AXD','Alexandroupoli Airport(Dimokritos Airport)','Alexandroupoli,Greece'],
+['AXE','Xanxere Airport','Xanxere,Santa Catarina, Brazil'],
+['AXF','Alxa Left Banner Bayanhot Airport','Alxa Left Banner,Inner Mongolia, China'],
+['AXG','Algona Municipal Airport(FAA: AXA)','Algona,Iowa, United States'],
+['AXJ','Amakusa Airfield','Amakusa,Amakusa Islands, Japan'],
+['AXK','Ataq Airport','Ataq,Yemen'],
+['AXL','Alexandria Airport','Alexandria Station,Northern Territory, Australia'],
+['AXM','El Eden International Airport','Armenia,Colombia'],
+['AXN','Alexandria Municipal Airport(Chandler Field)','Alexandria,Minnesota, United States'],
+['AXP','Spring Point Airport','Spring Point,Acklins Island,Bahamas'],
+['AXR','Arutua Airport','Arutua,Tuamotus,French Polynesia'],
+['AXS','Altus/Quartz Mountain Regional Airport','Altus,Oklahoma, United States'],
+['AXT','Akita Airport','Akita,Honshu, Japan'],
+['AXU','Axum Airport','Axum,Ethiopia'],
+['AXV','Neil Armstrong Airport','Wapakoneta,Ohio, United States'],
+['AXX','Angel Fire Airport','Angel Fire,New Mexico, United States'],
+['AYA','Ayapel Airport','Ayapel,Colombia'],
+['AYC','Ayacucho Airport','Ayacucho,Colombia'],
+['AYD','Alroy Downs Airport','Alroy Downs,Northern Territory, Australia'],
+['AYG','Yaguara Airport','Yaguara,Colombia'],
+['AYI','Yari Airport','Yari,Colombia'],
+['AYK','Arkalyk Airport','Arkalyk,Kazakhstan'],
+['AYL','Anthony Lagoon Airport','Anthony Lagoon,Northern Territory, Australia'],
+['AYM','Yas Island Seaplane Base','Yas Island,Abu Dhabi,United Arab Emirates'],
+['AYN','Anyang Airport','Anyang,Henan, China'],
+['AYO','Juan de Ayolas Airport','Ayolas,Paraguay'],
+['AYP','Coronel FAP Alfredo Mendivil Duarte Airport','Ayacucho,Peru'],
+['AYQ','Ayers Rock Airport','Yulara,Northern Territory, Australia'],
+['AYR','Ayr Airport','Ayr,Queensland, Australia'],
+['AYS','Waycross-Ware County Airport','Waycross,Georgia, United States'],
+['AYT','Antalya Airport','Antalya,Turkey'],
+['AYU','Aiyura Airport','Aiyura,Papua New Guinea'],
+['AYW','Ayawasi Airport','Ayawasi,Indonesia'],
+['AYY','Arugam Bay Seaplane Base','Pottuvil,Sri Lanka'],
+['AZA','Phoenix-Mesa Gateway Airport(FAA: IWA)','Phoenix,Arizona, United States'],
+['AZB','Amazon Bay Airport','Amazon Bay,Papua New Guinea'],
+['AZD','Shahid Sadooghi Airport','Yazd,Iran'],
+['AZG','Pablo L. Sidar Airport','Apatzingan,Michoacan, Mexico'],
+['AZI','Al Bateen Executive Airport','Abu Dhabi,United Arab Emirates'],
+['AZL','Fazenda Tucunare Airport','Sapezal,Mato Grosso, Brazil'],
+['AZN','Andizhan Airport','Andizhan,Uzbekistan'],
+['AZO','Kalamazoo/Battle Creek International Airport','Kalamazoo,Michigan, United States'],
+['AZP','Jorge Jimenez Cantu National Airport','Ciudad Lopez Mateos,State of Mexico, Mexico'],
+['AZR','Touat-Cheikh Sidi Mohamed Belkebir Airport','Adrar,Algeria'],
+['AZS','Samana El Catey International Airport','El Catey,Dominican Republic'],
+['AZT','Zapatoca Airport','Zapatoca,Colombia'],
+['AZZ','Ambriz Airport','Ambriz,Angola'],
+['BAA','Bialla Airport','Bialla,Papua New Guinea'],
+['BAB','Beale Air Force Base','Marysville,California, United States'],
+['BAC','Barranca de Upia Airport','Barranca de Upia,Colombia'],
+['BAD','Barksdale Air Force Base','Bossier City,Louisiana, United States'],
+['BAE','Barcelonnette - Saint-Pons Airport','Barcelonnette,Alpes-de-Haute-Provence, France'],
+['BAF','Westfield-Barnes Regional Airport','Westfield/Springfield,Massachusetts, United States'],
+['BAG','Loakan Airport','Baguio,Philippines'],
+['BAH','Bahrain International Airport','Manama,Bahrain'],
+['BAI','Buenos Aires Airport','Buenos Aires,Costa Rica'],
+['BAJ','Bali Airport','Bali,Papua New Guinea'],
+['BAK','metropolitan area2','Baku,Azerbaijan'],
+['BAL','Batman Airport','Batman,Turkey'],
+['BAM','Battle Mountain Airport(Lander County Airport)','Battle Mountain,Nevada, United States'],
+['BAN','Basongo Airport','Basongo,Democratic Republic of the Congo'],
+['BAP','Baibara Airport','Baibara,Papua New Guinea'],
+['BAQ','Ernesto Cortissoz International Airport','Barranquilla,Colombia'],
+['BAR','Qionghai Boao Airport','Qionghai,Hainan, China'],
+['BAS','Balalae Airport','Balalae Island,Western,Solomon Islands'],
+['BAT','Chafei Amsei Airport','Barretos,Sao Paulo, Brazil'],
+['BAV','Baotou Airport','Baotou,Inner Mongolia, China'],
+['BAW','Biawonque Airport','Biawonque,Gabon'],
+['BAX','Barnaul Airport','Barnaul,Altai Krai, Russia'],
+['BAY','Baia Mare Airport','Baia Mare,Romania'],
+['BAZ','Barcelos Airport','Barcelos,Amazonas, Brazil'],
+['BBA','Balmaceda Airport','Balmaceda,Chile'],
+['BBB','Benson Municipal Airport','Benson,Minnesota, United States'],
+['BBC','Bay City Municipal Airport(FAA: BYY)','Bay City,Texas, United States'],
+['BBD','Curtis Field','Brady,Texas, United States'],
+['BBG','Butaritari Atoll Airport','Butaritari Atoll,Kiribati'],
+['BBH','Stralsund-Barth Airport','Stralsund/Barth,Mecklenburg-Vorpommern, Germany'],
+['BBI','Biju Patnaik International Airport','Bhubaneswar,Odisha, India'],
+['BBJ','Bitburg Airport(former Bitburg Air Base)','Bitburg,Rhineland-Palatinate, Germany'],
+['BBK','Kasane Airport','Kasane,Botswana'],
+['BBL','Ballera Airport','Ballera,Queensland, Australia'],
+['BBM','Battambang Airport','Battambang,Cambodia'],
+['BBN','Bario Airport','Bario,Sarawak, Malaysia'],
+['BBO','Berbera Airport','Berbera,Somalia'],
+['BBP','Bembridge Airport','Bembridge,England, United Kingdom'],
+['BBQ','Barbuda Codrington Airport','Barbuda,Antigua and Barbuda'],
+['BBR','Baillif Airport','Basse-Terre,Guadeloupe'],
+['BBS','Blackbushe Airport','Yateley,England, United Kingdom'],
+['BBT','Berberati Airport','Berberati,Central African Republic'],
+['BBU','Aurel Vlaicu International Airport(B?neasa Airport)','Bucharest,Romania'],
+['BBV','Nero-Mer Airport','Grand-Bereby,Ivory Coast'],
+['BBW','Broken Bow Municipal Airport','Broken Bow,Nebraska, United States'],
+['BBX','Wings Field(FAA: LOM)','Philadelphia,Pennsylvania, United States'],
+['BBY','Bambari Airport','Bambari,Central African Republic'],
+['BBZ','Zambezi Airport','Zambezi,Zambia'],
+['BCA','Gustavo Rizo Airport','Baracoa,Cuba'],
+['BCB','Virginia Tech Montgomery Executive Airport','Blacksburg,Virginia, United States'],
+['BCC','Bear Creek 3 Airport(FAA: Z48)','Bear Creek,Alaska, United States'],
+['BCD','Bacolod-Silay International Airport','Bacolod,Philippines'],
+['BCE','Bryce Canyon Airport','Bryce Canyon,Utah, United States'],
+['BCF','Bouca Airport','Bouca,Central African Republic'],
+['BCG','Bemichi Airport','Kumaka,Guyana'],
+['BCH','Baucau Airport','Baucau,East Timor'],
+['BCI','Barcaldine Airport','Barcaldine,Queensland, Australia'],
+['BCK','Bolwarra Airport','Bolwarra,Queensland, Australia'],
+['BCL','Barra del Colorado Airport','Barra del Colorado,Costa Rica'],
+['BCM','Bac?u International Airport','Bac?u,Romania'],
+['BCN','Barcelona-El Prat Airport','Barcelona,Catalonia, Spain'],
+['BCO','Baco Airport(Jinka Airport)','Jinka,Ethiopia'],
+['BCP','Bambu Airport','Bambu,Papua New Guinea'],
+['BCQ','Brak Airport','Brak,Libya'],
+['BCR','Novo Campo Airport','Boca do Acre,Amazonas, Brazil'],
+['BCS','Southern Seaplane Airport(FAA: 65LA)','Belle Chasse,Louisiana, United States'],
+['BCT','Boca Raton Airport','Boca Raton,Florida, United States'],
+['BCU','Bauchi Airport','Bauchi,Nigeria'],
+['BCV','Hector Silva Airstrip','Belmopan,Belize'],
+['BCW','Benguerra Island Airport','Benguerra Island,Mozambique'],
+['BCX','Beloretsk Airport','Beloretsk,Republic of Bashkortostan, Russia'],
+['BCY','Bulchi Airport','Bulchi,Ethiopia'],
+['BCZ','Bickerton Island Airport','Bickerton Island,Northern Territory, Australia'],
+['BDA','L.F. Wade International Airport','Hamilton,British Overseas TerritoryofBermuda'],
+['BDB','Bundaberg Airport','Bundaberg,Queensland, Australia'],
+['BDC','Barra do Corda Airport','Barra do Corda,Maranhao, Brazil'],
+['BDD','Badu Island Airport','Badu Island,Queensland, Australia'],
+['BDE','Baudette International Airport','Baudette,Minnesota, United States'],
+['BDF','Rinkenberger RLA Airport(FAA: 3IS8)','Bradford,Illinois, United States'],
+['BDG','Blanding Municipal Airport','Blanding,Utah, United States'],
+['BDH','Bandar Lengeh Airport','Bandar Lengeh,Iran'],
+['BDI','Bird Island Airport','Bird Island,Seychelles'],
+['BDJ','Syamsudin Noor Airport','Banjarmasin,Indonesia'],
+['BDK','Soko Airport','Bondoukou,Ivory Coast'],
+['BDL','Bradley International Airport','Windsor Locks/Hartford,Connecticut, United States'],
+['BDM','Band?rma Airport','Band?rma,Turkey'],
+['BDN','Talhar Airport','Badin,Pakistan'],
+['BDO','Husein Sastranegara International Airport','Bandung,Indonesia'],
+['BDP','Bhadrapur Airport(Chandragadhi Airport)','Bhadrapur/Chandragadhi,Nepal'],
+['BDQ','Vadodara Airport(Civil Airport Harni)','Vadodara,Gujarat, India'],
+['BDR','Igor I. Sikorsky Memorial Airport','Bridgeport,Connecticut, United States'],
+['BDS','Brindisi - Salento Airport','Brindisi,Apulia, Italy'],
+['BDT','Gbadolite Airport','Gbadolite,Democratic Republic of the Congo'],
+['BDU','Bardufoss Airport','Bardufoss,Norway'],
+['BDV','Moba Airport','Moba,Democratic Republic of the Congo'],
+['BDW','Bedford Downs Airport','Bedford Downs,Western Australia, Australia'],
+['BDX','Broadus Airport','Broadus,Montana, United States'],
+['BDY','Bandon State Airport(FAA: S05)','Bandon,Oregon, United States'],
+['BDZ','Baindoung Airport','Baindoung,Papua New Guinea'],
+['BEA','Bereina Airport','Bereina,Papua New Guinea'],
+['BEB','Benbecula Airport','Benbecula,Scotland, United Kingdom'],
+['BEC','Beech Factory Airport','Wichita,Kansas, United States'],
+['BED','Laurence G. Hanscom Field','Bedford,Massachusetts, United States'],
+['BEE','Beagle Bay Airport','Beagle Bay,Western Australia, Australia'],
+['BEF','Bluefields Airport','Bluefields,Nicaragua'],
+['BEG','Belgrade Nikola Tesla Airport','Belgrade,Serbia'],
+['BEH','Southwest Michigan Regional Airport','Benton Harbor,Michigan, United States'],
+['BEI','Beica Airport','Beica,Ethiopia'],
+['BEJ','Kalimarau Airport','Tanjung Redeb,Indonesia'],
+['BEK','Bareilly Airport','Bareilly,Uttar Pradesh, India'],
+['BEL','Val de Cans International Airport','Belem,Para, Brazil'],
+['BEM','Beni Mellal Airport','Beni Mellal,Morocco'],
+['BEN','Benina International Airport','Benghazi,Libya'],
+['BEO','Belmont Airport','Newcastle,New South Wales, Australia'],
+['BEP','Bellary Airport','Bellary,Karnataka, India'],
+['BEQ','RAF Honington','Bury St Edmunds,England, United Kingdom'],
+['BER','Berlin Brandenburg Airport(in construction)','Berlin, Germany'],
+['BES','Brest Bretagne Airport','Brest,Brittany, France'],
+['BET','Bethel Airport','Bethel,Alaska, United States'],
+['BEU','Bedourie Airport','Bedourie,Queensland, Australia'],
+['BEV','Beersheba Airport','Beersheba,Israel'],
+['BEW','Beira Airport','Beira,Mozambique'],
+['BEX','RAF Benson','Benson,England, United Kingdom'],
+['BEY','Beirut-Rafic Hariri International Airport/Beirut Air Base','Beirut,Lebanon'],
+['BEZ','Beru Island Airport','Beru Island,Kiribati'],
+['BFA','Bahia Negra Airport','Bahia Negra,Paraguay'],
+['BFC','Bloomfield Airport','Bloomfield,Queensland, Australia'],
+['BFD','Bradford Regional Airport','Bradford,Pennsylvania, United States'],
+['BFE','Bielefeld Airport','Bielefeld,North Rhine-Westphalia, Germany'],
+['BFF','Western Nebraska Regional Airport(William B. Heilig Field)','Scottsbluff,Nebraska, United States'],
+['BFG','Bullfrog Basin Airport(FAA: U07)','Glen Canyon,Utah, United States'],
+['BFH','Bacacheri Airport','Curitiba,Parana, Brazil'],
+['BFI','Boeing Field/King County International Airport','Seattle,Washington, United States'],
+['BFJ','Bijie Feixiong Airport','Bijie,Guizhou, China'],
+['BFK','Buckley Air Force Base','Aurora,Colorado, United States'],
+['BFL','Meadows Field Airport','Bakersfield,California, United States'],
+['BFM','Mobile Downtown Airport','Mobile,Alabama, United States'],
+['BFN','Bloemfontein Airport','Bloemfontein,South Africa'],
+['BFO','Buffalo Range Airport','Chiredzi,Zimbabwe'],
+['BFP','Beaver County Airport(FAA: BVI)','Beaver Falls,Pennsylvania, United States'],
+['BFQ','Bahia Pina Airport','Puerto Pina,Panama'],
+['BFR','Virgil I. Grissom Municipal Airport','Bedford,Indiana, United States'],
+['BFS','Belfast International Airport','Belfast,Northern Ireland, United Kingdom'],
+['BFT','Beaufort County Airport(FAA: ARW)','Beaufort County,South Carolina, United States'],
+['BFU','Bengbu Airport','Bengbu,Anhui, China'],
+['BFV','Buriram Airport','Buriram,Thailand'],
+['BFW','Sidi Bel Abbes Airport','Sidi Bel Abbes,Algeria'],
+['BFX','Bafoussam Airport','Bafoussam,Cameroon'],
+['BGA','Palonegro International Airport','Bucaramanga,Colombia'],
+['BGB','Booue Airport','Booue,Gabon'],
+['BGC','Braganca Airport','Braganca,Portugal'],
+['BGD','Hutchinson County Airport','Borger,Texas, United States'],
+['BGE','Decatur County Industrial Air Park','Bainbridge,Georgia, United States'],
+['BGF','Bangui MPoko International Airport','Bangui,Central African Republic'],
+['BGG','Bingöl Airport','Bingöl,Turkey'],
+['BGH','Abbaye Airport','Bogue,Mauritania'],
+['BGI','Grantley Adams International Airport','Bridgetown,Barbados'],
+['BGJ','Borgarfjörour Airport','Borgarfjörour,Iceland'],
+['BGK','Big Creek Airport','Big Creek,Belize'],
+['BGL','Balewa Airport','Baglung,Nepal'],
+['BGM','Greater Binghamton Airport(Edwin A. Link Field)','Binghamton,New York, United States'],
+['BGN','Belaya Gora Airport','Belaya Gora,Yakutia, Russia'],
+['BGO','Bergen Airport, Flesland','Bergen,Norway'],
+['BGP','Bongo Airport','Bongo, Gabon'],
+['BGQ','Big Lake Airport','Big Lake,Alaska, United States'],
+['BGR','Bangor International Airport','Bangor,Maine, United States'],
+['BGT','Bagdad Airport(FAA: E51)','Bagdad,Arizona, United States'],
+['BGU','Bangassou Airport','Bangassou,Central African Republic'],
+['BGV','Bento Goncalves Airport','Bento Goncalves,Rio Grande do Sul, Brazil'],
+['BGW','Baghdad International Airport','Baghdad,Iraq'],
+['BGX','Comandante Gustavo Kraemer Airport','Bage,Rio Grande do Sul, Brazil'],
+['BGY','Il Caravaggio International Airport(Orio al Serio Airport)','Milan/Bergamo,Lombardy, Italy'],
+['BGZ','Braga Airport','Braga,Portugal'],
+['BHA','Los Perales Airport','Bahia de Caraquez,Ecuador'],
+['BHB','Hancock County-Bar Harbor Airport','Bar Harbor,Maine, United States'],
+['BHD','George Best Belfast City Airport','Belfast,Northern Ireland, United Kingdom'],
+['BHE','Woodbourne Airport','Blenheim,New Zealand'],
+['BHF','Bahia Cupica Airport','Bahia Cupica,Colombia'],
+['BHG','Brus Laguna Airport','Brus Laguna,Honduras'],
+['BHH','Bisha Domestic Airport','Bisha,Saudi Arabia'],
+['BHI','Comandante Espora Airport','Bahia Blanca,Buenos Aires, Argentina'],
+['BHJ','Bhuj Airport/Bhuj Rudra Mata Air Force Base','Bhuj,Gujarat, India'],
+['BHK','Bukhara International Airport','Bukhara,Uzbekistan'],
+['BHL','Bahia de los angeles Airport','Bahia de los angeles,Baja California, Mexico'],
+['BHM','Birmingham-Shuttlesworth International Airport','Birmingham,Alabama, United States'],
+['BHN','Beihan Airport','Beihan,Yemen'],
+['BHO','Raja Bhoj Airport','Bhopal,Madhya Pradesh, India'],
+['BHP','Bhojpur Airport','Bhojpur,Nepal'],
+['BHQ','Broken Hill Airport','Broken Hill,New South Wales, Australia'],
+['BHR','Bharatpur Airport','Bharatpur,Nepal'],
+['BHS','Bathurst Airport','Bathurst,New South Wales, Australia'],
+['BHT','Brighton Downs Airport','Brighton Downs,Queensland, Australia'],
+['BHU','Bhavnagar Airport','Bhavnagar,Gujarat, India'],
+['BHV','Bahawalpur Airport','Bahawalpur,Pakistan'],
+['BHW','Bhagatanwala Airport','Sargodha,Pakistan'],
+['BHX','Birmingham Airport','Birmingham,England, United Kingdom'],
+['BHY','Beihai Fucheng Airport','Beihai,Guangxi, China'],
+['BHZ','metropolitan area3','Belo Horizonte,Minas Gerais, Brazil'],
+['BIA','Bastia - Poretta Airport','Bastia,Corsica, France'],
+['BIB','Baidoa Airport','Baidoa,Somalia'],
+['BID','Block Island State Airport','Block Island,Rhode Island, United States'],
+['BIE','Beatrice Municipal Airport','Beatrice,Nebraska, United States'],
+['BIF','Biggs Army Airfield','El Paso,Texas, United States'],
+['BIG','Allen Army Airfield','Delta Junction,Alaska, United States'],
+['BIH','Eastern Sierra Regional Airport','Bishop,California, United States'],
+['BII','Bikini Atoll Airport','Bikini Atoll,Marshall Islands'],
+['BIJ','Biliau Airport','Biliau,Papua New Guinea'],
+['BIK','Frans Kaisiepo Airport','Biak,Indonesia'],
+['BIL','Billings Logan International Airport','Billings,Montana, United States'],
+['BIM','South Bimini Airport','Bimini,Bahamas'],
+['BIN','Bamyan Airport','Bamyan,Afghanistan'],
+['BIO','Bilbao Airport','Bilbao,Basque Country, Spain'],
+['BIP','Bulimba Airport','Bulimba,Queensland, Australia'],
+['BIQ','Biarritz Pays Basque Airport','Biarritz,Aquitaine, France'],
+['BIR','Biratnagar Airport','Biratnagar,Nepal'],
+['BIS','Bismarck Municipal Airport','Bismarck,North Dakota, United States'],
+['BIT','Baitadi Airport','Baitadi,Nepal'],
+['BIU','Bildudalur Airport','Bildudalur,Iceland'],
+['BIV','Bria Airport','Bria,Central African Republic'],
+['BIW','Billiluna Airport','Billiluna,Western Australia, Australia'],
+['BIX','Keesler Air Force Base','Biloxi,Mississippi, United States'],
+['BIY','Bhisho Airport','Bhisho,South Africa'],
+['BIZ','Bimin Airport','Bimin,Papua New Guinea'],
+['BJA','Soummam - Abane Ramdane Airport','Bejaia,Algeria'],
+['BJB','Bojnord Airport','Bojnord,Iran'],
+['BJC','Rocky Mountain Metropolitan Airport','Denver,Colorado, United States'],
+['BJD','Bakkafjörour Airport','Bakkafjörour,Iceland'],
+['BJE','Baleela Airport','Baleela,Sudan'],
+['BJF','Båtsfjord Airport','Båtsfjord,Norway'],
+['BJG','Kotamobagu Mopait Airport','Kotamobagu,Indonesia'],
+['BJH','Bajhang Airport','Bajhang,Nepal'],
+['BJI','Bemidji Regional Airport','Bemidji,Minnesota, United States'],
+['BJJ','Wayne County Airport','Wooster,Ohio, United States'],
+['BJK','Benjina Airport(Nangasuri Airport)','Benjina,Indonesia'],
+['BJL','Banjul International Airport','Banjul,Gambia'],
+['BJM','Bujumbura International Airport','Bujumbura,Burundi'],
+['BJN','Bajone Airport','Bajone,Mozambique'],
+['BJO','Bermejo Airport','Bermejo,Bolivia'],
+['BJP','Arthur Siqueira-Braganca Paulista State Airport','Braganca Paulista,Sao Paulo, Brazil'],
+['BJQ','Bahja Airport','Bahja,Oman'],
+['BJR','Bahir Dar Airport','Bahir Dar,Ethiopia'],
+['BJS','metropolitan area4','Beijing,China'],
+['BJT','Bentota River Airport','Bentota,Sri Lanka'],
+['BJU','Bajura Airport','Bajura,Nepal'],
+['BJV','Milas-Bodrum Airport','Milas/Bodrum,Turkey'],
+['BJW','Bajawa Soa Airport','Bajawa,Indonesia'],
+['BJX','Del Bajio International Airport(Guanajuato Intl Airport)','Leon,Guanajuato, Mexico'],
+['BJY','Batajnica Air Base','Batajnica,Serbia'],
+['BJZ','Badajoz Airport(Talavera la Real Air Base)','Badajoz,Extremadura, Spain'],
+['BKA','Bykovo Airport','Moscow, Russia'],
+['BKB','Nal Airport','Bikaner,Rajasthan, India'],
+['BKC','Buckland Airport(FAA: BVK)','Buckland,Alaska, United States'],
+['BKD','Stephens County Airport','Breckenridge,Texas, United States'],
+['BKE','Baker City Municipal Airport','Baker City,Oregon, United States'],
+['BKF','Lake Brooks Seaplane Base','Brooks Camp,Alaska, United States'],
+['BKG','Branson Airport(FAA: BBG)','Branson,Missouri, United States'],
+['BKH','Barking Sands PMRF','Kekaha,Hawaii, United States'],
+['BKI','Kota Kinabalu International Airport','Kota Kinabalu,Sabah, Malaysia'],
+['BKJ','Boke Baralande Airport','Boke,Guinea'],
+['BKK','Suvarnabhumi Airport','Bangkok,Thailand'],
+['BKL','Cleveland Burke Lakefront Airport','Cleveland,Ohio, United States'],
+['BKM','Bakelalan Airport','Bakelalan,Sarawak, Malaysia'],
+['BKN','Balkanabat Airport','Balkanabat,Turkmenistan'],
+['BKO','Bamako-Senou International Airport','Bamako,Mali'],
+['BKP','Barkly Downs Airport','Barkly Downs,Queensland, Australia'],
+['BKQ','Blackall Airport','Blackall,Queensland, Australia'],
+['BKR','Bokoro Airport','Bokoro,Chad'],
+['BKS','Fatmawati Soekarno Airport','Bengkulu,Indonesia'],
+['BKT','Blackstone Army Airfield(Allen C. Perkinson Airport)','Blackstone,Virginia, United States'],
+['BKU','Betioky Airport','Betioky,Madagascar'],
+['BKW','Raleigh County Memorial Airport','Beckley,West Virginia, United States'],
+['BKX','Brookings Regional Airport','Brookings,South Dakota, United States'],
+['BKY','Kavumu Airport','Bukavu,Democratic Republic of the Congo'],
+['BKZ','Bukoba Airport','Bukoba,Tanzania'],
+['BLA','General Jose Antonio Anzoategui International Airport','Barcelona,Venezuela'],
+['BLB','Panama Pacifico International Airport(formerHoward AFB)','Panama Pacifico,Panama'],
+['BLC','Bali Airport','Bali,Cameroon'],
+['BLD','Boulder City Municipal Airport(FAA: 61B)','Boulder City,Nevada, United States'],
+['BLE','Dala Airport(Borlänge Airport)','Borlänge,Sweden'],
+['BLF','Mercer County Airport','Bluefield,West Virginia, United States'],
+['BLG','Belaga Airport','Belaga,Sarawak, Malaysia'],
+['BLH','Blythe Airport','Blythe,California, United States'],
+['BLI','Bellingham International Airport','Bellingham,Washington, United States'],
+['BLJ','Mostepha Ben Boulaid Airport','Batna,Algeria'],
+['BLK','Blackpool Airport','Blackpool,England, United Kingdom'],
+['BLL','Billund Airport','Billund,Denmark'],
+['BLM','Monmouth Executive Airport','Belmar/Farmingdale,New Jersey, United States'],
+['BLN','Benalla Airport','Benalla,Victoria, Australia'],
+['BLO','Blönduos Airport','Blönduos,Iceland'],
+['BLP','Huallaga Airport','Bellavista,Peru'],
+['BLQ','Bologna Guglielmo Marconi Airport','Bologna,Emilia-Romagna, Italy'],
+['BLR','Kempegowda International Airport','Bangalore,Karnataka, India'],
+['BLS','Bollon Airport','Bollon,Queensland, Australia'],
+['BLT','Blackwater Airport','Blackwater,Queensland, Australia'],
+['BLU','Blue Canyon-Nyack Airport','Emigrant Gap,California, United States'],
+['BLV','MidAmerica St. Louis Airport/Scott Air Force Base','Belleville,Illinois, United States'],
+['BLX','Belluno Airport','Belluno,Veneto, Italy'],
+['BLY','Belmullet Aerodrome','Belmullet,Ireland'],
+['BLZ','Chileka International Airport','Blantyre,Malawi'],
+['BMA','Stockholm Bromma Airport','Stockholm,Sweden'],
+['BMB','Bumba Airport','Bumba,Democratic Republic of the Congo'],
+['BMC','Brigham City Airport','Brigham City,Utah, United States'],
+['BMD','Belo sur Tsiribihina Airport','Belo sur Tsiribihina,Madagascar'],
+['BME','Broome International Airport','Broome,Western Australia, Australia'],
+['BMF','Bakouma Airport','Bakouma,Central African Republic'],
+['BMG','Monroe County Airport','Bloomington,Indiana, United States'],
+['BMH','Bomai Airport','Bomai,Papua New Guinea'],
+['BMI','Central Illinois Regional Airport','Bloomington,Illinois, United States'],
+['BMJ','Baramita Airport','Baramita,Guyana'],
+['BMK','Borkum Airfield','Borkum,Lower Saxony, Germany'],
+['BML','Berlin Regional Airport','Berlin,New Hampshire, United States'],
+['BMM','Bitam Airport','Bitam,Gabon'],
+['BMN','Bamarni Airport','Bamarni,Iraq'],
+['BMO','Bhamo Airport','Bhamo,Myanmar'],
+['BMP','Brampton Island Airport','Brampton Island,Queensland, Australia'],
+['BMQ','Bamburi Airport','Bamburi,Kenya'],
+['BMR','Baltrum Airport','Baltrum,Lower Saxony, Germany'],
+['BMS','Socrates Mariani Bittencourt Airport','Brumado,Bahia, Brazil'],
+['BMT','Beaumont Municipal Airport','Beaumont,Texas, United States'],
+['BMU','Sultan Muhammad Salahudin Airport(Bima Airport)','Bima,Indonesia'],
+['BMV','Buon Ma Thuot Airport','Buon Ma Thuot,Vietnam'],
+['BMW','Bordj Mokhtar Airport','Bordj Badji Mokhtar,Algeria'],
+['BMX','Big Mountain Air Force Station(FAA: 37AK)','Big Mountain,Alaska, United States'],
+['BMY','Ile Art - Waala Airport','Waala,Belep Islands,New Caledonia'],
+['BMZ','Bamu Airport','Bamu,Papua New Guinea'],
+['BNA','Nashville International Airport','Nashville,Tennessee, United States'],
+['BNB','Boende Airport','Boende,Democratic Republic of the Congo'],
+['BNC','Beni Airport','Beni,Democratic Republic of the Congo'],
+['BND','Bandar Abbas International Airport','Bandar Abbas,Iran'],
+['BNE','Brisbane Airport','Brisbane,Queensland, Australia'],
+['BNF','Warm Springs Bay Seaplane Base','Baranof Warm Springs,Alaska, United States'],
+['BNG','Banning Municipal Airport','Banning,California, United States'],
+['BNI','Benin Airport','Benin City,Nigeria'],
+['BNK','Ballina Byron Gateway Airport','Ballina,New South Wales, Australia'],
+['BNL','Barnwell Regional Airport','Barnwell,South Carolina, United States'],
+['BNM','Bodinumu Airport','Bodinumu,Papua New Guinea'],
+['BNN','Brønnøysund Airport, Brønnøy','Brønnøysund,Norway'],
+['BNO','Burns Municipal Airport','Burns,Oregon, United States'],
+['BNP','Bannu Airport','Bannu,Pakistan'],
+['BNQ','Baganga Airport','Baganga,Philippines'],
+['BNR','Banfora Airport','Banfora,Burkina Faso'],
+['BNS','Barinas Airport','Barinas,Venezuela'],
+['BNT','Bundi Airport','Bundi,Papua New Guinea'],
+['BNU','Blumenau Airport','Blumenau,Santa Catarina, Brazil'],
+['BNV','Boana Airport','Boana,Papua New Guinea'],
+['BNW','Boone Municipal Airport','Boone,Iowa, United States'],
+['BNX','Banja Luka International Airport','Banja Luka,Bosnia and Herzegovina'],
+['BNY','Bellona/Anua Airport','Bellona Island,Rennell and Bellona,Solomon Islands'],
+['BNZ','Banz Airport','Banz,Papua New Guinea'],
+['BOA','Boma Airport','Boma,Democratic Republic of the Congo'],
+['BOB','Bora Bora Airport(Motu Mute Airport)','Bora Bora,French Polynesia'],
+['BOC','"Bocas del Toro ""Isla Colon"" International Airport"','Bocas Town,Panama'],
+['BOD','Bordeaux-Merignac Airport','Bordeaux,Aquitaine, France'],
+['BOE','Boundji Airport','Boundji,Republic of the Congo'],
+['BOG','El Dorado International Airport','Bogota,Colombia'],
+['BOH','Bournemouth Airport','Bournemouth,England, United Kingdom'],
+['BOI','Boise Air Terminal(Gowen Field)','Boise,Idaho, United States'],
+['BOJ','Burgas Airport','Burgas,Bulgaria'],
+['BOK','Brookings Airport','Brookings,Oregon, United States'],
+['BOL','Ballykelly Airfield(RAF Ballykelly)','Ballykelly,Northern Ireland, United Kingdom'],
+['BOM','Chhatrapati Shivaji International Airport','Mumbai,Maharashtra, India'],
+['BON','Flamingo International Airport','Kralendijk,Bonaire,Caribbean Netherlands'],
+['BOO','Bodø Airport','Bodø,Norway'],
+['BOP','Bouar Airport','Bouar,Central African Republic'],
+['BOQ','Boku Airport','Boku,Papua New Guinea'],
+['BOS','Logan International Airport','Boston,Massachusetts, United States'],
+['BOT','Bosset Airport','Bosset,Papua New Guinea'],
+['BOU','Bourges Airport','Bourges,Centre-Val de Loire, France'],
+['BOV','Boang Island Airport','Boang Island,Papua New Guinea'],
+['BOW','Bartow Municipal Airport','Bartow,Florida, United States'],
+['BOX','Borroloola Airport','Borroloola,Northern Territory, Australia'],
+['BOY','Bobo Dioulasso Airport','Bobo-Dioulasso,Burkina Faso'],
+['BOZ','Bozoum Airport','Bozoum,Central African Republic'],
+['BPB','Boridi Airport','Boridi,Papua New Guinea'],
+['BPC','Bamenda Airport','Bamenda,Cameroon'],
+['BPD','Bapi Airport','Bapi,Papua New Guinea'],
+['BPE','Qinhuangdao Beidaihe Airport','Qinhuangdao,Hebei, China'],
+['BPF','Batuna Airport','Batuna,Solomon Islands'],
+['BPG','Barra do Garcas Airport','Barra do Garcas,Mato Grosso, Brazil'],
+['BPH','Bislig Airport','Bislig,Philippines'],
+['BPI','Miley Memorial Field','Big Piney,Wyoming, United States'],
+['BPK','Biangabip Airport','Biangabip,Papua New Guinea'],
+['BPL','Bole Alashankou Airport','Bole,Xinjiang, China'],
+['BPM','Begumpet Airport','Hyderabad,Telangana, India'],
+['BPN','Sultan Aji Muhammad Sulaiman Airport','Balikpapan,Indonesia'],
+['BPS','Porto Seguro Airport','Porto Seguro,Bahia, Brazil'],
+['BPT','Jack Brooks Regional Airport','Beaumont/Port Arthur,Texas, United States'],
+['BPX','Qamdo Bamda Airport','Qamdo,Tibet Autonomous Region, China'],
+['BPY','Besalampy Airport','Besalampy,Madagascar'],
+['BQA','Dr. Juan C. Angara Airport','Baler,Philippines'],
+['BQB','Busselton Regional Airport','Busselton,Western Australia, Australia'],
+['BQE','Bubaque Airport','Bubaque,Guinea-Bissau'],
+['BQG','Bogorodskoye Airport','Bogorodskoye,Khabarovsk Krai, Russia'],
+['BQH','London Biggin Hill Airport','London/Biggin Hill,England, United Kingdom'],
+['BQI','Bagani Airport','Bagani,Namibia'],
+['BQJ','Batagay Airport','Batagay,Yakutia, Russia'],
+['BQK','Brunswick Golden Isles Airport','Brunswick,Georgia, United States'],
+['BQL','Boulia Airport','Boulia,Queensland, Australia'],
+['BQN','Rafael Hernandez Airport','Aguadilla,Puerto Rico, United States'],
+['BQO','Tehini Airport','Bouna,Ivory Coast'],
+['BQQ','Barra Airport','Barra,Bahia, Brazil'],
+['BQS','Ignatyevo Airport','Blagoveshchensk,Amur Oblast, Russia'],
+['BQT','Brest Airport','Brest,Belarus'],
+['BQU','J. F. Mitchell Airport','Bequia,Saint Vincent and the Grenadines'],
+['BQV','Bartlett Cove Seaplane Base','Bartlett Cove,Alaska, United States'],
+['BQW','Balgo Hill Airport','Balgo Hill,Western Australia, Australia'],
+['BRA','Barreiras Airport','Barreiras,Bahia, Brazil'],
+['BRB','Barreirinhas Airport','Barreirinhas,Maranhao, Brazil'],
+['BRC','San Carlos de Bariloche Airport','San Carlos de Bariloche,Rio Negro, Argentina'],
+['BRD','Brainerd Lakes Regional Airport','Brainerd,Minnesota, United States'],
+['BRE','Bremen Airport','Bremen,Bremen, Germany'],
+['BRH','Brahman Airport','Brahman,Papua New Guinea'],
+['BRI','Bari Karol Wojty?a Airport','Bari,Apulia, Italy'],
+['BRJ','Bright Airport','Bright,Victoria, Australia'],
+['BRK','Bourke Airport','Bourke,New South Wales, Australia'],
+['BRL','Southeast Iowa Regional Airport','Burlington,Iowa, United States'],
+['BRM','Jacinto Lara International Airport','Barquisimeto,Venezuela'],
+['BRN','Bern Airport','Bern,Switzerland'],
+['BRO','Brownsville/South Padre Island International Airport','Brownsville,Texas, United States'],
+['BRP','Biaru Airport','Biaru,Papua New Guinea'],
+['BRQ','Brno-Tu?any Airport','Brno,Czech Republic'],
+['BRR','Barra Airport','Barra,Scotland, United Kingdom'],
+['BRS','Bristol Airport','Bristol,England, United Kingdom'],
+['BRT','Bathurst Island Airport','Bathurst Island,Northern Territory, Australia'],
+['BRU','Brussels Airport(Zaventem Airport)','Brussels,Belgium'],
+['BRV','Bremerhaven Airport','Bremerhaven,Bremen, Germany'],
+['BRW','Wiley Post-Will Rogers Memorial Airport','Barrow,Alaska, United States'],
+['BRX','Maria Montez International Airport','Barahona,Dominican Republic'],
+['BRY','Samuels Field','Bardstown,Kentucky, United States'],
+['BSA','Bender Qassim International Airport','Bosaso,Somalia'],
+['BSB','Brasilia International Airport(Presidente J. Kubitschek Intl Airport)','Brasilia,Distrito Federal, Brazil'],
+['BSC','Jose Celestino Mutis Airport','Bahia Solano,Colombia'],
+['BSD','Baoshan Yunduan Airport','Baoshan,Yunnan, China'],
+['BSE','Sematan Airport','Sematan,Sarawak, Malaysia'],
+['BSF','Bradshaw Army Airfield','Camp Pohakuloa,Hawaii, United States'],
+['BSG','Bata Airport','Bata,Equatorial Guinea'],
+['BSJ','Bairnsdale Airport','Bairnsdale,Victoria, Australia'],
+['BSK','Biskra Airport','Biskra,Algeria'],
+['BSL','EuroAirport Basel-Mulhouse-Freiburg','Basel,Switzerland'],
+['BSM','Bishe Kola Air Base','Amol,Iran'],
+['BSN','Bossangoa Airport','Bossangoa,Central African Republic'],
+['BSO','Basco Airport','Basco,Philippines'],
+['BSP','Bensbach Airport','Bensbach,Papua New Guinea'],
+['BSQ','Bisbee Municipal Airport(FAA: P04)','Bisbee,Arizona, United States'],
+['BSR','Basra International Airport','Basra,Iraq'],
+['BSS','Balsas Airport','Balsas,Maranhao, Brazil'],
+['BST','Bost Airport','Lashkar Gah(Bost),Afghanistan'],
+['BSU','Basankusu Airport','Basankusu,Democratic Republic of the Congo'],
+['BSV','Besakoa Airport','Besakoa,Madagascar'],
+['BSW','Boswell Bay Airport(FAA: AK97)','Boswell Bay,Alaska, United States'],
+['BSX','Pathein Airport','Pathein,Myanmar'],
+['BSY','Bardera Airport','Bardera,Somalia'],
+['BTA','Bertoua Airport','Bertoua,Cameroon'],
+['BTB','Betou Airport','Betou,Republic of the Congo'],
+['BTC','Batticaloa Airport','Batticaloa,Sri Lanka'],
+['BTD','Brunette Downs Airport','Brunette Downs,Northern Territory, Australia'],
+['BTE','Sherbro International Airport','Bonthe,Sierra Leone'],
+['BTF','Skypark Airport','Bountiful,Utah, United States'],
+['BTG','Batangafo Airport','Batangafo,Central African Republic'],
+['BTH','Hang Nadim Airport','Batam,Indonesia'],
+['BTI','Barter Island LRRS Airport','Barter Island,Alaska, United States'],
+['BTJ','Sultan Iskandar Muda International Airport','Banda Aceh,Indonesia'],
+['BTK','Bratsk Airport','Bratsk,Irkutsk Oblast, Russia'],
+['BTL','W. K. Kellogg Airport','Battle Creek,Michigan, United States'],
+['BTM','Bert Mooney Airport','Butte,Montana, United States'],
+['BTN','Marlboro County Jetport(FAA: BBP)','Bennettsville,South Carolina, United States'],
+['BTO','Botopasi Airstrip','Botopasi,Suriname'],
+['BTP','Butler County Airport(K.W. Scholter Field)','Butler,Pennsylvania, United States'],
+['BTQ','Butare Airport','Butare,Rwanda'],
+['BTR','Baton Rouge Metropolitan Airport(Ryan Field)','Baton Rouge,Louisiana, United States'],
+['BTS','M. R. Stefanik Airport','Bratislava,Slovakia'],
+['BTT','Bettles Airport','Bettles,Alaska, United States'],
+['BTU','Bintulu Airport','Bintulu,Sarawak, Malaysia'],
+['BTV','Burlington International Airport','Burlington,Vermont, United States'],
+['BTW','Batu Licin Airport','Batu Licin,Indonesia'],
+['BTX','Betoota Airport','Betoota,Queensland, Australia'],
+['BTY','Beatty Airport','Beatty,Nevada, United States'],
+['BUA','Buka Island Airport','Buka Island,Papua New Guinea'],
+['BUB','Cram Field','Burwell,Nebraska, United States'],
+['BUC','Burketown Airport','Burketown,Queensland, Australia'],
+['BUD','Budapest Ferenc Liszt International Airport','Budapest,Hungary'],
+['BUE','metropolitan area5','Buenos Aires, Argentina'],
+['BUF','Buffalo Niagara International Airport','Buffalo,New York, United States'],
+['BUG','Benguela Airport(Gen. V. Deslandes Airport)','Benguela,Angola'],
+['BUH','metropolitan area6','Bucharest,Romania'],
+['BUI','Bokondini Airport','Bokondini,Indonesia'],
+['BUJ','Bou Saada Airport','Bou Saada,Algeria'],
+['BUK','Albuq Airport','Albuq,Yemen'],
+['BUL','Bulolo Airport','Bulolo,Papua New Guinea'],
+['BUM','Butler Memorial Airport','Butler,Missouri, United States'],
+['BUN','Gerardo Tobar Lopez Airport','Buenaventura,Colombia'],
+['BUO','Burao Airport','Burao,Somalia'],
+['BUP','Bathinda Airport(Bhisiana Air Force Station)','Bathinda,Punjab, India'],
+['BUQ','Joshua Mqabuko Nkomo International Airport','Bulawayo,Zimbabwe'],
+['BUR','Bob Hope Airport','Burbank,California, United States'],
+['BUS','Batumi International Airport(Alexander Kartveli Batumi Intl Airport)','Batumi,Georgia'],
+['BUT','Bathpalathang Airport','Jakar,Bhutan'],
+['BUV','Placeres Airport','Bella Union,Uruguay'],
+['BUW','Betoambari Airport','Bau-Bau,Indonesia'],
+['BUX','Bunia Airport','Bunia,Democratic Republic of the Congo'],
+['BUY','Bunbury Airport','Bunbury,Western Australia, Australia'],
+['BUZ','Bushehr Airport','Bushehr,Iran'],
+['BVA','Beauvais-Tille Airport','Beauvais,Picardy, France'],
+['BVB','Boa Vista International Airport','Boa Vista,Roraima, Brazil'],
+['BVC','Aristides Pereira International Airport(Rabil Airport)','Boa Vista,Cape Verde'],
+['BVE','Brive-Souillac Airport','Brive-la-Gaillarde,Limousin, France'],
+['BVF','Dama Airport','Bua,Fiji'],
+['BVG','Berlevåg Airport','Berlevåg,Norway'],
+['BVH','Vilhena Airport(Brigadeiro Camarao Airport)','Vilhena,Rondonia, Brazil'],
+['BVI','Birdsville Airport','Birdsville,Queensland, Australia'],
+['BVK','Huacaraje Airport','Huacaraje,Bolivia'],
+['BVL','Baures Airport','Baures,Bolivia'],
+['BVM','Belmonte Airport','Belmonte,Bahia, Brazil'],
+['BVO','Bartlesville Municipal Airport','Bartlesville,Oklahoma, United States'],
+['BVP','Bolovip Airport','Bolovip,Papua New Guinea'],
+['BVR','Esperadinha Airport','Brava,Cape Verde'],
+['BVS','Breves Airport','Breves,Para, Brazil'],
+['BVU','Beluga Airport(FAA: BLG)','Beluga,Alaska, United States'],
+['BVV','Burevestnik Airport','Burevestnik,Sakhalin Oblast, Russia'],
+['BVW','Batavia Downs Airport','Batavia Downs,Queensland, Australia'],
+['BVX','Batesville Regional Airport','Batesville,Arkansas, United States'],
+['BVY','Beverly Municipal Airport','Beverly,Massachusetts, United States'],
+['BVZ','Beverley Springs Airport','Beverley Springs,Western Australia, Australia'],
+['BWA','Gautam Buddha Airport','Siddharthanagar(Bhairawa),Nepal'],
+['BWB','Barrow Island Airport','Barrow Island,Western Australia, Australia'],
+['BWC','Brawley Municipal Airport','Brawley,California, United States'],
+['BWD','Brownwood Regional Airport','Brownwood,Texas, United States'],
+['BWE','Braunschweig-Wolfsburg Airport','Braunschweig,Lower Saxony, Germany'],
+['BWF','Barrow/Walney Island Airport','Barrow-in-Furness,England, United Kingdom'],
+['BWG','Bowling Green-Warren County Regional Airport','Bowling Green,Kentucky, United States'],
+['BWH','RMAF Butterworth','Butterworth,Penang, Malaysia'],
+['BWI','Baltimore/Washington International Thurgood Marshall Airport','Baltimore-Washington metropolitan area, United States'],
+['BWJ','Bawan Airport','Bawan,Papua New Guinea'],
+['BWK','Bol Airport(Bra? Airport)','Bol,Croatia'],
+['BWL','Blackwell-Tonkawa Municipal Airport(FAA: BKN)','Blackwell,Oklahoma, United States'],
+['BWM','Bowman Municipal Airport(FAA: BPP)','Bowman,North Dakota, United States'],
+['BWN','Brunei International Airport','Bandar Seri Begawan,Brunei'],
+['BWO','Balakovo Airport','Balakovo,Saratov Oblast, Russia'],
+['BWP','Bewani Airport','Bewani,Papua New Guinea'],
+['BWQ','Brewarrina Airport','Brewarrina,New South Wales, Australia'],
+['BWT','Burnie Airport','Burnie,Tasmania, Australia'],
+['BWU','Bankstown Airport','Bankstown,New South Wales, Australia'],
+['BWW','Las Brujas Airport','Cayo Santa Maria,Cuba'],
+['BWX','Blimbingsari Airport','Banyuwangi,Indonesia'],
+['BXA','George R. Carr Memorial Air Field','Bogalusa,Louisiana, United States'],
+['BXB','Babo Airport','Babo,Indonesia'],
+['BXD','Bade Airport','Bade,Indonesia'],
+['BXE','Bakel Airport','Bakel,Senegal'],
+['BXF','Bellburn Airstrip','Bellburn Camps,Western Australia, Australia'],
+['BXG','Bendigo Airport','Bendigo,Victoria, Australia'],
+['BXH','Balkhash Airport','Balkhash,Kazakhstan'],
+['BXI','Boundiali Airport','Boundiali,Ivory Coast'],
+['BXJ','Boraldai Airport','Almaty,Kazakhstan'],
+['BXK','Buckeye Municipal Airport','Buckeye,Arizona, United States'],
+['BXL','Blue Lagoon Seaplane Base','Nanuya Lailai,Fiji'],
+['BXM','Batom Airport','Batom,Indonesia'],
+['BXN','Bodrum-Imsik Airport','Bodrum,Turkey'],
+['BXO','Buochs Airport','Buochs,Switzerland'],
+['BXP','Bia?a Podlaska Airport','Bia?a Podlaska,Poland'],
+['BXR','Bam Airport','Bam,Iran'],
+['BXS','Borrego Valley Airport(FAA: L08)','Borrego Springs,California, United States'],
+['BXT','PT Badak Bontang Airport','Bontang,Indonesia'],
+['BXU','Bancasi Airport','Butuan,Philippines'],
+['BXV','Breiodalsvik Airport','Breiodalsvik,Iceland'],
+['BXX','Borama Airport','Borama,Somalia'],
+['BXZ','Bunsil Airport','Bunsil,Papua New Guinea'],
+['BYA','Boundary Airport','Boundary,Alaska, United States'],
+['BYB','Dibba Airport','Dibba Al-Baya,Oman'],
+['BYC','Yacuiba Airport','Yacuiba,Bolivia'],
+['BYD','Al Bayda Airport','Al Bayda,Yemen'],
+['BYF','Albert - Picardie Airport','Albert,Picardy, France'],
+['BYG','Johnson County Airport','Buffalo,Wyoming, United States'],
+['BYH','Arkansas International Airport','Blytheville,Arkansas, United States'],
+['BYI','Burley Municipal Airport','Burley,Idaho, United States'],
+['BYJ','Beja Airport','Beja,Portugal'],
+['BYK','Bouake Airport','Bouake,Ivory Coast'],
+['BYL','Bella Yella Airport','Bella Yella,Liberia'],
+['BYM','Carlos Manuel de Cespedes Airport','Bayamo,Cuba'],
+['BYN','Bayankhongor Airport','Bayankhongor,Mongolia'],
+['BYO','Bonito Airport','Bonito,Mato Grosso do Sul, Brazil'],
+['BYP','Barimunya Airport','Barimunya,Western Australia, Australia'],
+['BYQ','Bunyu Airport','Bunyu,Indonesia'],
+['BYR','Laesø Airport','Laesø,Denmark'],
+['BYS','Bicycle Lake Army Airfield(Fort Irwin)','Barstow,California, United States'],
+['BYT','Bantry Aerodrome','Bantry,Ireland'],
+['BYU','Bindlacher Berg Airport','Bayreuth,Bavaria, Germany'],
+['BYV','Beira Lake Seaplane Base','Colombo,Sri Lanka'],
+['BYW','Blakely Island Airport(FAA: 38WA)','Blakely Island,Washington, United States'],
+['BYX','Baniyala Airport','Baniyala,Northern Territory, Australia'],
+['BZA','San Pedro Airport','Bonanza,Nicaragua'],
+['BZB','Bazaruto Island Airport','Bazaruto Island,Mozambique'],
+['BZC','Umberto Modiano Airport','Armacao dos Buzios,Rio de Janeiro, Brazil'],
+['BZD','Balranald Airport','Balranald,New South Wales, Australia'],
+['BZE','Philip S. W. Goldson International Airport','Belize City,Belize'],
+['BZF','Benton Field','Redding,California, United States'],
+['BZG','Bydgoszcz Ignacy Jan Paderewski Airport','Bydgoszcz,Poland'],
+['BZH','Bumi Hills Airstrip','Bumi Hills,Zimbabwe'],
+['BZI','Bal?kesir Airport(Merkez Airport)','Bal?kesir,Turkey'],
+['BZK','Bryansk International Airport','Bryansk,Bryansk Oblast, Russia'],
+['BZL','Barisal Airport','Barisal,Bangladesh'],
+['BZM','Bemolanga Airport','Bemolanga,Madagascar'],
+['BZN','Bozeman Yellowstone International Airport(Gallatin Field)','Bozeman,Montana, United States'],
+['BZO','Bolzano Airport','Bolzano,Trentino-Alto Adige/Sudtirol, Italy'],
+['BZP','Bizant Airport','Bizant,Queensland, Australia'],
+['BZR','Beziers Cap dAgde Airport','Beziers,Languedoc-Roussillon, France'],
+['BZT','Eagle Air Park','Brazoria,Texas, United States'],
+['BZU','Buta Zega Airport','Buta,Democratic Republic of the Congo'],
+['BZV','Maya-Maya Airport','Brazzaville,Republic of the Congo'],
+['BZY','B?l?i International Airport','B?l?i,Moldova'],
+['BZZ','RAF Brize Norton','Carterton,England, United Kingdom'],
+['CAA','Catacamas Airport','Catacamas,Honduras'],
+['CAB','Cabinda Airport','Cabinda,Angola'],
+['CAC','Cascavel Airport(Adalberto Mendes da Silva Airport)','Cascavel,Parana, Brazil'],
+['CAD','Wexford County Airport','Cadillac,Michigan, United States'],
+['CAE','Columbia Metropolitan Airport','Columbia,South Carolina, United States'],
+['CAF','Carauari Airport','Carauari,Amazonas, Brazil'],
+['CAG','Cagliari Elmas Airport','Cagliari,Sardinia, Italy'],
+['CAH','Ca Mau Airport','Ca Mau,Vietnam'],
+['CAI','Cairo International Airport','Cairo,Egypt'],
+['CAJ','Canaima Airport','Canaima,Venezuela'],
+['CAK','Akron-Canton Airport','Akron/Canton,Ohio, United States'],
+['CAL','Campbeltown Airport/RAF Machrihanish','Campbeltown,Scotland, United Kingdom'],
+['CAM','Camiri Airport','Camiri,Bolivia'],
+['CAN','Guangzhou Baiyun International Airport','Guangzhou,Guangdong, China'],
+['CAO','Clayton Municipal Airpark','Clayton,New Mexico, United States'],
+['CAP','Hugo Chavez International Airport','Cap-Haitien,Haiti'],
+['CAQ','Juan H. White Airport','Caucasia,Colombia'],
+['CAR','Caribou Municipal Airport','Caribou,Maine, United States'],
+['CAS','Anfa Airport','Casablanca,Morocco'],
+['CAT','Cascais Municipal Aerodrome','Cascais,Portugal'],
+['CAU','Caruaru Airport(Oscar Laranjeiras Airport)','Caruaru,Pernambuco, Brazil'],
+['CAV','Cazombo Airport','Cazombo,Angola'],
+['CAW','Bartolomeu Lysandro Airport','Campos dos Goytacazes,Rio de Janeiro, Brazil'],
+['CAX','Carlisle Lake District Airport','Carlisle,England, United Kingdom'],
+['CAY','Cayenne - Felix Eboue Airport','Cayenne,French Guiana'],
+['CAZ','Cobar Airport','Cobar,New South Wales, Australia'],
+['CBB','Jorge Wilstermann International Airport','Cochabamba,Bolivia'],
+['CBC','Cherrabun Airport','Cherrabun,Western Australia, Australia'],
+['CBD','Car Nicobar Air Force Base','Car Nicobar,Andaman and Nicobar Islands, India'],
+['CBE','Greater Cumberland Regional Airport','Cumberland,Maryland, United States'],
+['CBF','Council Bluffs Municipal Airport','Council Bluffs,Iowa, United States'],
+['CBG','Cambridge Airport','Cambridge,England, United Kingdom'],
+['CBH','Boudghene Ben Ali Lotfi Airport','Bechar,Algeria'],
+['CBI','Cape Barren Island Airport','Cape Barren Island,Tasmania, Australia'],
+['CBJ','Cabo Rojo Airport','Pedernales,Dominican Republic'],
+['CBK','Colby Municipal Airport(Shalz Field)','Colby,Kansas, United States'],
+['CBL','Tomas de Heres Airport','Ciudad Bolivar,Venezuela'],
+['CBM','Columbus Air Force Base','Columbus,Mississippi, United States'],
+['CBN','Penggung Airport(Cakrabuwana Airport)','Cirebon,Indonesia'],
+['CBO','Awang Airport','Cotabato City,Philippines'],
+['CBP','Coimbra Airport','Coimbra,Portugal'],
+['CBQ','Margaret Ekpo International Airport','Calabar,Nigeria'],
+['CBR','Canberra Airport','Canberra,Australian Capital Territory, Australia'],
+['CBS','Oro Negro Airport','Cabimas,Venezuela'],
+['CBT','Catumbela Airport','Catumbela,Angola'],
+['CBU','Cottbus-Drewitz Airport','Cottbus,Brandenburg, Germany'],
+['CBV','Coban Airport','Coban,Guatemala'],
+['CBW','Campo Mourao Airport','Campo Mourao,Parana, Brazil'],
+['CBX','Condobolin Airport','Condobolin,New South Wales, Australia'],
+['CBY','Canobie Airport','Canobie Station,Queensland, Australia'],
+['CCB','Cable Airport','Upland,California, United States'],
+['CCC','Jardines del Rey Airport','Cayo Coco,Cuba'],
+['CCF','Carcassonne Airport','Carcassonne,Languedoc-Roussillon, France'],
+['CCG','Crane County Airport(FAA: E13)','Crane,Texas, United States'],
+['CCH','Chile Chico Airfield','Chile Chico,Chile'],
+['CCI','Concordia Airport','Concordia,Santa Catarina, Brazil'],
+['CCJ','Calicut International Airport','Kozhikode(Calicut),Kerala, India'],
+['CCK','Cocos (Keeling) Islands Airport','Cocos (Keeling) Islands, Australia'],
+['CCL','Chinchilla Airport','Chinchilla,Queensland, Australia'],
+['CCM','Diomicio Freitas Airport','Criciuma,Santa Catarina, Brazil'],
+['CCN','Chaghcharan Airport','Chaghcharan,Afghanistan'],
+['CCO','Carimagua Airport','Carimagua,Colombia'],
+['CCP','Carriel Sur International Airport','Concepcion,Chile'],
+['CCR','Buchanan Field Airport','Concord,California, United States'],
+['CCS','Simon Bolivar International Airport','Caracas,Venezuela'],
+['CCT','Colonia Catriel Airport','Catriel,Rio Negro, Argentina'],
+['CCU','Netaji Subhas Chandra Bose International Airport','Kolkata,West Bengal, India'],
+['CCV','Craig Cove Airport','Craig Cove,Ambrym Island,Malampa,Vanuatu'],
+['CCW','Cowell Airport','Cowell,South Australia, Australia'],
+['CCX','Caceres Airport','Caceres,Mato Grosso, Brazil'],
+['CCY','Northeast Iowa Regional Airport','Charles City,Iowa, United States'],
+['CCZ','Chub Cay International Airport','Chub Cay,Berry Islands,Bahamas'],
+['CDA','Cooinda Airport','Cooinda,Northern Territory, Australia'],
+['CDB','Cold Bay Airport','Cold Bay,Alaska, United States'],
+['CDC','Cedar City Regional Airport','Cedar City,Utah, United States'],
+['CDD','Cauquira Airport','Cauquira,Honduras'],
+['CDG','Charles de Gaulle Airport(Roissy Airport)','Paris,Ile-de-France, France'],
+['CDH','Harrell Field','Camden,Arkansas, United States'],
+['CDI','Cachoeiro de Itapemirim Airport(Raimundo de Andrade Airport)','Cachoeiro de Itapemirim,Espirito Santo, Brazil'],
+['CDJ','Conceicao do Araguaia Airport','Conceicao do Araguaia,Para, Brazil'],
+['CDK','George T. Lewis Airport','Cedar Key,Florida, United States'],
+['CDL','Candle 2 Airport(FAA: AK75)','Candle,Alaska, United States'],
+['CDN','Woodward Field','Camden,South Carolina, United States'],
+['CDO','Cradock Airport','Cradock,South Africa'],
+['CDP','Kadapa Airport','Kadapa,Andhra Pradesh, India'],
+['CDQ','Croydon Airport','Croydon,Queensland, Australia'],
+['CDR','Chadron Municipal Airport','Chadron,Nebraska, United States'],
+['CDS','Childress Municipal Airport','Childress,Texas, United States'],
+['CDT','Castellon-Costa Azahar Airport','Castellon de la Plana,Valencia, Spain'],
+['CDU','Camden Airport','Camden,New South Wales, Australia'],
+['CDV','Merle K. (Mudhole) Smith Airport','Cordova,Alaska, United States'],
+['CDW','Essex County Airport','Caldwell,New Jersey, United States'],
+['CDY','Cagayan de Sulu Airport','Mapun,Philippines'],
+['CEA','Cessna Aircraft Field','Wichita,Kansas, United States'],
+['CEB','Mactan-Cebu International Airport','Lapu-Lapu,Philippines'],
+['CEC','Del Norte County Airport(Jack McNamara Field)','Crescent City,California, United States'],
+['CED','Ceduna Airport','Ceduna,South Australia, Australia'],
+['CEE','Cherepovets Airport','Cherepovets,Vologda Oblast, Russia'],
+['CEF','Westover Metropolitan Airport/Westover Air Reserve Base','Springfield,Massachusetts, United States'],
+['CEG','Hawarden Airport(Chester Airport)','Chester,England, United Kingdom'],
+['CEH','Chelinda Airport','Chelinda,Malawi'],
+['CEI','Chiang Rai International Airport(Mae Fah Luang Intl)','Chiang Rai,Thailand'],
+['CEK','Chelyabinsk Airport','Chelyabinsk,Chelyabinsk Oblast, Russia'],
+['CEM','Central Airport','Central,Alaska, United States'],
+['CEN','Ciudad Obregon International Airport','Ciudad Obregon,Sonora, Mexico'],
+['CEO','Waco Kungo Airport','Waku-Kungo,Angola'],
+['CEP','Concepcion Airport','Concepcion,Bolivia'],
+['CEQ','Cannes - Mandelieu Airport','Cannes,Provence-Alpes-Cote dAzur, France'],
+['CER','Cherbourg - Maupertus Airport','Cherbourg-Octeville,Lower Normandy, France'],
+['CES','Cessnock Airport','Cessnock,New South Wales, Australia'],
+['CET','Cholet Le Pontreau Airport','Cholet,Pays de la Loire, France'],
+['CEU','Oconee County Regional Airport','Clemson,South Carolina, United States'],
+['CEV','Mettel Field','Connersville,Indiana, United States'],
+['CEW','Bob Sikes Airport','Crestview,Florida, United States'],
+['CEX','Chena Hot Springs Airport(FAA: AK13)','Chena Hot Springs,Alaska, United States'],
+['CEY','Murray-Calloway County Airport','Murray,Kentucky, United States'],
+['CEZ','Cortez Municipal Airport','Cortez,Colorado, United States'],
+['CFB','Cabo Frio International Airport','Cabo Frio,Rio de Janeiro, Brazil'],
+['CFC','Cacador Airport','Cacador,Santa Catarina, Brazil'],
+['CFD','Coulter Field','Bryan,Texas, United States'],
+['CFE','Clermont-Ferrand Auvergne Airport','Clermont-Ferrand,Auvergne, France'],
+['CFF','Cafunfo Airport','Cafunfo,Angola'],
+['CFG','Jaime Gonzalez Airport','Cienfuegos,Cuba'],
+['CFH','Clifton Hills Airport','Clifton Hills,South Australia, Australia'],
+['CFI','Camfield Airport','Camfield Station,Northern Territory, Australia'],
+['CFK','Chlef International Airport','Chlef,Algeria'],
+['CFN','Donegal Airport','Donegal,Ireland'],
+['CFO','Confresa Airport','Confresa,Mato Grosso, Brazil'],
+['CFP','Carpentaria Downs Airport','Carpentaria Downs,Queensland, Australia'],
+['CFQ','Creston Aerodrome(TC: CAJ3)','Creston,British Columbia, Canada'],
+['CFR','Caen - Carpiquet Airport','Caen,Lower Normandy, France'],
+['CFS','Coffs Harbour Airport','Coffs Harbour,New South Wales, Australia'],
+['CFT','Greenlee County Airport','Clifton/Morenci,Arizona, United States'],
+['CFU','Corfu International Airport(Ioannis Kapodistrias Intl Airport)','Corfu,Greece'],
+['CFV','Coffeyville Municipal Airport','Coffeyville,Kansas, United States'],
+['CGA','Craig Seaplane Base','Craig,Alaska, United States'],
+['CGB','Marechal Rondon International Airport','Cuiaba,Mato Grosso, Brazil'],
+['CGC','Cape Gloucester Airport','Cape Gloucester,Papua New Guinea'],
+['CGD','Changde Taohuayuan Airport','Changde,Hunan, China'],
+['CGE','Cambridge-Dorchester Airport','Cambridge,Maryland, United States'],
+['CGF','Cuyahoga County Airport','Cleveland,Ohio, United States'],
+['CGG','Casiguran Airport','Casiguran,Philippines'],
+['CGH','Sao Paulo-Congonhas Airport','Sao Paulo,Sao Paulo, Brazil'],
+['CGI','Cape Girardeau Regional Airport','Cape Girardeau,Missouri, United States'],
+['CGJ','Kasompe Airport','Chingola,Zambia'],
+['CGK','Soekarno-Hatta International Airport','Jakarta,Indonesia'],
+['CGM','Camiguin Airport','Mambajao,Philippines'],
+['CGN','Cologne Bonn Airport','Cologne/Bonn,North Rhine-Westphalia, Germany'],
+['CGO','Zhengzhou Xinzheng International Airport','Zhengzhou,Henan, China'],
+['CGP','Shah Amanat International Airport','Chittagong,Bangladesh'],
+['CGQ','Changchun Longjia International Airport','Changchun,Jilin, China'],
+['CGR','Campo Grande International Airport','Campo Grande,Mato Grosso do Sul, Brazil'],
+['CGS','College Park Airport','College Park,Maryland, United States'],
+['CGT','Chinguetti Airport','Chinguetti,Mauritania'],
+['CGV','Caiguna Airport','Caiguna,Western Australia, Australia'],
+['CGY','Laguindingan Airport','Cagayan de Oro,Philippines'],
+['CGZ','Casa Grande Municipal Airport','Casa Grande,Arizona, United States'],
+['CHA','Chattanooga Metropolitan Airport(Lovell Field)','Chattanooga,Tennessee, United States'],
+['CHB','Chilas Airport','Chilas,Pakistan'],
+['CHC','Christchurch International Airport','Christchurch,New Zealand'],
+['CHF','Jinhae Airport','Jinhae,South Korea'],
+['CHG','Chaoyang Airport','Chaoyang,Liaoning, China'],
+['CHH','Chachapoyas Airport','Chachapoyas,Peru'],
+['CHI','metropolitan area2','Chicago,Illinois, United States'],
+['CHJ','Chipinge Airport','Chipinge,Zimbabwe'],
+['CHK','Chickasha Municipal Airport','Chickasha,Oklahoma, United States'],
+['CHL','Challis Airport(FAA: LLJ)','Challis,Idaho, United States'],
+['CHM','Tnte. FAP Jaime Montreuil Morales Airport','Chimbote,Peru'],
+['CHN','Jeonju Airport','Jeonju,South Korea'],
+['CHO','Charlottesville-Albemarle Airport','Charlottesville,Virginia, United States'],
+['CHP','Circle Hot Springs Airport','Circle Hot Springs,Alaska, United States'],
+['CHQ','"Chania International Airport(""Ioannis Daskalogiannis"")"','Chania,Greece'],
+['CHR','"Chateauroux-Centre ""Marcel Dassault"" Airport"','Chateauroux,Centre-Val de Loire, France'],
+['CHS','Charleston International Airport/Charleston Air Force Base','Charleston,South Carolina, United States'],
+['CHT','Chatham Islands / Tuuta Airport','Chatham Islands,New Zealand'],
+['CHU','Chuathbaluk Airport(FAA: 9A3)','Chuathbaluk,Alaska, United States'],
+['CHV','Chaves Airport','Chaves,Portugal'],
+['CHX','"Changuinola ""Capitan Manuel Nino"" International Airport"','Changuinola,Panama'],
+['CHY','Choiseul Bay Airport','Choiseul Bay,Taro Island,Solomon Islands'],
+['CHZ','Chiloquin State Airport(FAA: 2S7)','Chiloquin,Oregon, United States'],
+['CIA','Ciampino-G. B. Pastine International Airport','Rome,Lazio, Italy'],
+['CIC','Chico Municipal Airport','Chico,California, United States'],
+['CID','The Eastern Iowa Airport','Cedar Rapids,Iowa, United States'],
+['CIE','Collie Airport','Collie,Western Australia, Australia'],
+['CIF','Chifeng Yulong Airport','Chifeng,Inner Mongolia, China'],
+['CIG','Craig-Moffat Airport(FAA: CAG)','Craig,Colorado, United States'],
+['CIH','Changzhi Wangcun Airport','Changzhi,Shanxi, China'],
+['CII','Ayd?n Airport(c?ld?r Airport)','Ayd?n,Turkey'],
+['CIJ','Captain Anibal Arab Airport','Cobija,Bolivia'],
+['CIK','Chalkyitsik Airport','Chalkyitsik,Alaska, United States'],
+['CIL','Council Airport(FAA: K29)','Council,Alaska, United States'],
+['CIM','Cimitarra Airport','Cimitarra,Colombia'],
+['CIN','Arthur N. Neu Airport','Carroll,Iowa, United States'],
+['CIO','Teniente Coronel Carmelo Peralta Airport','Concepcion,Paraguay'],
+['CIP','Chipata Airport','Chipata,Zambia'],
+['CIQ','Chiquimula Airport','Chiquimula,Guatemala'],
+['CIR','Cairo Regional Airport','Cairo,Illinois, United States'],
+['CIS','Canton Island Airport','Canton Island,Kiribati'],
+['CIT','Shymkent International Airport','Shymkent,Kazakhstan'],
+['CIU','Chippewa County International Airport','Sault Ste Marie,Michigan, United States'],
+['CIW','Canouan Airport','Canouan,Saint Vincent and the Grenadines'],
+['CIX','FAP Captain Jose Abelardo Quinones Gonzales International Airport','Chiclayo,Peru'],
+['CIY','Comiso Airport','Comiso,Sicily, Italy'],
+['CIZ','Coari Airport','Coari,Amazonas, Brazil'],
+['CJA','Mayor General FAP Armando Revoredo Iglesias Airport','Cajamarca,Peru'],
+['CJB','Coimbatore International Airport','Coimbatore,Tamil Nadu, India'],
+['CJC','El Loa Airport','Calama,Chile'],
+['CJD','Candilejas Airport','Candilejas,Colombia'],
+['CJF','Coondewanna Airport','Coondewanna,Western Australia, Australia'],
+['CJH','Chilko Lake (Tsylos Park Lodge) Aerodrome(TC: CAG3)','Chilko Lake,British Columbia, Canada'],
+['CJJ','Cheongju International Airport','Cheongju,South Korea'],
+['CJL','Chitral Airport','Chitral,Pakistan'],
+['CJM','Chumphon Airport','Chumphon,Thailand'],
+['CJS','Abraham Gonzalez International Airport','Ciudad Juarez,Chihuahua, Mexico'],
+['CJT','Copalar Airport','Comitan,Chiapas, Mexico'],
+['CJU','Jeju International Airport','Jeju,South Korea'],
+['CKA','Kegelman Air Force Auxiliary Field','Cherokee,Oklahoma, United States'],
+['CKB','North Central West Virginia Airport','Clarksburg,West Virginia, United States'],
+['CKC','Cherkasy International Airport','Cherkasy,Ukraine'],
+['CKD','Crooked Creek Airport(FAA: CJX)','Crooked Creek,Alaska, United States'],
+['CKE','Lampson Field(FAA: 1O2)','Lakeport,California, United States'],
+['CKG','Chongqing Jiangbei International Airport','Chongqing, China'],
+['CKH','Chokurdakh Airport','Chokurdakh,Yakutia, Russia'],
+['CKI','Croker Island Airport','Croker Island,Northern Territory, Australia'],
+['CKK','Sharp County Regional Airport(FAA: CVK)','Ash Flat,Arkansas, United States'],
+['CKL','Chkalovsky Airport','Shchyolkovo(Moscow Oblast), Russia'],
+['CKM','Fletcher Field','Clarksdale,Mississippi, United States'],
+['CKN','Crookston Municipal Airport(Kirkwood Field)','Crookston,Minnesota, United States'],
+['CKO','Cornelio Procopio Airport','Cornelio Procopio,Parana, Brazil'],
+['CKR','Crane Island Airstrip','Crane Island,Washington, United States'],
+['CKS','Carajas Airport','Parauapebas,Para, Brazil'],
+['CKT','Sarakhs Airport','Sarakhs,Iran'],
+['CKU','Cordova Municipal Airport','Cordova,Alaska, United States'],
+['CKV','Clarksville-Montgomery County Regional Airport(Outlaw Field)','Clarksville,Tennessee, United States'],
+['CKW','Graeme Rowley Aerodrome','Christmas Creek mine,Western Australia'],
+['CKX','Chicken Airport','Chicken,Alaska, United States'],
+['CKY','Conakry International Airport(Gbessia Intl Airport)','Conakry,Guinea'],
+['CKZ','canakkale Airport','canakkale,Turkey'],
+['CLA','Comilla Airport','Comilla,Bangladesh'],
+['CLD','McClellan-Palomar Airport(FAA: CRQ)','Carlsbad,California, United States'],
+['CLE','Cleveland Hopkins International Airport','Cleveland,Ohio, United States'],
+['CLG','New Coalinga Municipal Airport(FAA: C80)','Coalinga,California, United States'],
+['CLH','Coolah Airport','Coolah,New South Wales, Australia'],
+['CLI','Clintonville Municipal Airport','Clintonville,Wisconsin, United States'],
+['CLJ','Cluj-Napoca International Airport','Cluj-Napoca,Romania'],
+['CLK','Clinton Regional Airport','Clinton,Oklahoma, United States'],
+['CLL','Easterwood Airport(Easterwood Field)','College Station,Texas, United States'],
+['CLM','William R. Fairchild International Airport','Port Angeles,Washington, United States'],
+['CLN','Carolina Airport','Carolina,Maranhao, Brazil'],
+['CLO','Alfonso Bonilla Aragon International Airport','Cali,Colombia'],
+['CLP','Clarks Point Airport','Clarks Point,Alaska, United States'],
+['CLQ','Licenciado Miguel de la Madrid Airport','Colima City,Colima,Mexico'],
+['CLR','Cliff Hatfield Memorial Airport','Calipatria,California, United States'],
+['CLS','Chehalis-Centralia Airport','Chehalis,Washington, United States'],
+['CLT','Charlotte Douglas International Airport','Charlotte,North Carolina, United States'],
+['CLU','Columbus Municipal Airport(FAA: BAK)','Columbus,Indiana, United States'],
+['CLV','Caldas Novas Airport','Caldas Novas,Goias, Brazil'],
+['CLW','Clearwater Air Park','Clearwater,Florida, United States'],
+['CLX','Clorinda Airport','Clorinda,Formosa, Argentina'],
+['CLY','Calvi - Sainte-Catherine Airport','Calvi,Corsica, France'],
+['CLZ','Calabozo Airport','Calabozo,Venezuela'],
+['CMA','Cunnamulla Airport','Cunnamulla,Queensland, Australia'],
+['CMB','Bandaranaike International Airport','Colombo,Sri Lanka'],
+['CMC','Camocim Airport','Camocim,Ceara, Brazil'],
+['CMD','Cootamundra Airport','Cootamundra,New South Wales, Australia'],
+['CME','Ciudad del Carmen International Airport','Ciudad del Carmen,Campeche, Mexico'],
+['CMF','Chambery-Savoie Airport','Chambery,Rhone-Alpes, France'],
+['CMG','Corumba International Airport','Corumba,Mato Grosso do Sul, Brazil'],
+['CMH','Port Columbus International Airport','Columbus,Ohio, United States'],
+['CMI','University of Illinois Willard Airport','Champaign,Illinois, United States'],
+['CMJ','Qimei Airport','Qimei,Taiwan'],
+['CMK','Club Makokola Airport','Club Makokola,Malawi'],
+['CML','Camooweal Airport','Camooweal,Queensland, Australia'],
+['CMM','Carmelita Airport','Carmelita,Guatemala'],
+['CMN','Mohammed V International Airport','Casablanca,Morocco'],
+['CMO','Obbia Airport','Obbia,Somalia'],
+['CMP','Santana do Araguaia Airport','Santana do Araguaia,Para, Brazil'],
+['CMQ','Clermont Airport','Clermont,Queensland, Australia'],
+['CMR','Colmar - Houssen Airport','Colmar,Alsace, France'],
+['CMS','Iskushuban Airport','Iskushuban(Scusciuban),Somalia'],
+['CMT','Cameta Airport','Cameta,Para, Brazil'],
+['CMU','Chimbu Airport','Kundiawa,Papua New Guinea'],
+['CMV','Coromandel Aerodrome','Coromandel,New Zealand'],
+['CMW','Ignacio Agramonte International Airport','Camaguey,Cuba'],
+['CMX','Houghton County Memorial Airport','Hancock,Michigan, United States'],
+['CMY','Sparta/Fort McCoy Airport','Sparta,Wisconsin, United States'],
+['CMZ','Caia Airport','Caia,Mozambique'],
+['CNA','Cananea National Airport','Cananea,Sonora, Mexico'],
+['CNB','Coonamble Airport','Coonamble,New South Wales, Australia'],
+['CNC','Coconut Island Airport','Coconut (Poruma) Island,Queensland, Australia'],
+['CND','Mihail Kog?lniceanu International Airport','Constan?a,Romania'],
+['CNE','Fremont County Airport(FAA: 1V6)','Canon City,Colorado, United States'],
+['CNF','Tancredo Neves International Airport(Confins Intl Airport)','Belo Horizonte,Minas Gerais, Brazil'],
+['CNG','Cognac - Chateaubernard Air Base','Cognac,Poitou-Charentes, France'],
+['CNH','Claremont Municipal Airport','Claremont,New Hampshire, United States'],
+['CNI','Changhai Airport','Changhai,Liaoning, China'],
+['CNJ','Cloncurry Airport','Cloncurry,Queensland, Australia'],
+['CNK','Blosser Municipal Airport','Concordia,Kansas, United States'],
+['CNL','Sindal Airport','Sindal,Denmark'],
+['CNM','Cavern City Air Terminal','Carlsbad,New Mexico, United States'],
+['CNO','Chino Airport','Chino,California, United States'],
+['CNP','Nerlerit Inaat Airport(Constable Pynt Airport)','Ittoqqortoormiit,Greenland'],
+['CNQ','Doctor Fernando Piragine Niveyro International Airport','Corrientes,Corrientes, Argentina'],
+['CNR','Chanaral Airport','Chanaral,Chile'],
+['CNS','Cairns Airport','Cairns,Queensland, Australia'],
+['CNT','Charata Airport','Charata,Chaco, Argentina'],
+['CNU','Chanute Martin Johnson Airport','Chanute,Kansas, United States'],
+['CNV','Canavieiras Airport','Canavieiras,Bahia, Brazil'],
+['CNW','TSTC Waco Airport','Waco,Texas, United States'],
+['CNX','Chiang Mai International Airport','Chiang Mai,Thailand'],
+['CNY','Canyonlands Field','Moab,Utah, United States'],
+['CNZ','Cangamba Airport','Cangamba,Angola'],
+['COA','Columbia Airport(FAA: O22)','Columbia,California, United States'],
+['COB','Coolibah Airport','Coolibah Station,Northern Territory, Australia'],
+['COC','Comodoro Pierrestegui Airport','Concordia,Entre Rios, Argentina'],
+['COD','Yellowstone Regional Airport','Cody,Wyoming, United States'],
+['COE','Coeur dAlene Airport','Coeur dAlene,Idaho, United States'],
+['COF','Patrick Air Force Base','Cocoa Beach,Florida, United States'],
+['COG','Mandinga Airport','Condoto,Colombia'],
+['COH','Cooch Behar Airport','Cooch Behar,West Bengal, India'],
+['COI','Merritt Island Airport','Merritt Island,Florida, United States'],
+['COJ','Coonabarabran Airport','Coonabarabran,New South Wales, Australia'],
+['COK','Cochin International Airport(Nedumbassery Airport)','Kochi(Cochin),Kerala, India'],
+['COL','Coll Airport','Coll,Scotland, United Kingdom'],
+['COM','Coleman Municipal Airport','Coleman,Texas, United States'],
+['CON','Concord Municipal Airport','Concord,New Hampshire, United States'],
+['COO','Cadjehoun Airport','Cotonou,Benin'],
+['COP','Cooperstown-Westville Airport(FAA: K23)','Cooperstown,New York, United States'],
+['COQ','Choibalsan Airport','Choibalsan,Mongolia'],
+['COR','Ingeniero Aeronautico Ambrosio L.V. Taravella International Airport(Pajas Blancas)','Cordoba,Cordoba, Argentina'],
+['COS','Colorado Springs Airport','Colorado Springs,Colorado, United States'],
+['COT','Cotulla-La Salle County Airport','Cotulla,Texas, United States'],
+['COU','Columbia Regional Airport','Columbia,Missouri, United States'],
+['COW','Coquimbo Airport','Coquimbo,Chile'],
+['COY','Coolawanyah Station Airport','Coolawanyah Station,Western Australia, Australia'],
+['COZ','Constanza Airport','Constanza,Dominican Republic'],
+['CPA','Cape Palmas Airport','Harper,Liberia'],
+['CPB','Capurgana Airport','Capurgana,Colombia'],
+['CPC','Aviador Carlos Campos Airport','San Martin de los Andes,Neuquen, Argentina'],
+['CPD','Coober Pedy Airport','Coober Pedy,South Australia, Australia'],
+['CPE','Ing. Alberto Acuna Ongay International Airport','Campeche,Campeche, Mexico'],
+['CPF','Ngloram Airport','Cepu,Indonesia'],
+['CPG','Carmen de Patagones Airport','Carmen de Patagones,Buenos Aires, Argentina'],
+['CPH','Copenhagen Airport, Kastrup','Copenhagen,Denmark'],
+['CPI','Cape Orford Airport','Cape Orford,Papua New Guinea'],
+['CPL','General Navas Pardo Airport','Chaparral,Colombia'],
+['CPM','Compton/Woodley Airport','Compton,California, United States'],
+['CPN','Cape Rodney Airport','Cape Rodney,Papua New Guinea'],
+['CPO','Desierto de Atacama Airport','Copiapo,Chile'],
+['CPR','Casper-Natrona County International Airport','Casper,Wyoming, United States'],
+['CPS','St. Louis Downtown Airport','Cahokia(nearSt. Louis/MO),Illinois, United States'],
+['CPT','Cape Town International Airport','Cape Town,South Africa'],
+['CPU','Cururupu Airport','Cururupu,Maranhao, Brazil'],
+['CPV','Campina Grande Airport(Presidente Joao Suassuna Airport)','Campina Grande,Paraiba, Brazil'],
+['CPX','Benjamin Rivera Noriega Airport','Culebra,Puerto Rico, United States'],
+['CQA','Canarana Airport','Canarana,Mato Grosso, Brazil'],
+['CQD','Shahrekord Airport','Shahrekord,Iran'],
+['CQF','Calais-Dunkerque Airport','Calais/Dunkirk,Nord-Pas-de-Calais, France'],
+['CQM','Ciudad Real Central Airport','Ciudad Real,Castilla-La Mancha, Spain'],
+['CQP','Cape Flattery Airport','Cape Flattery,Queensland, Australia'],
+['CQS','Costa Marques Airport','Costa Marques,Rondonia, Brazil'],
+['CQT','Caquetania Airport','Caquetania,Colombia'],
+['CRA','Craiova International Airport','Craiova,Romania'],
+['CRB','Collarenebri Airport','Collarenebri,New South Wales, Australia'],
+['CRC','Santa Ana Airport','Cartago,Colombia'],
+['CRD','General Enrique Mosconi International Airport','Comodoro Rivadavia,Chubut, Argentina'],
+['CRE','Grand Strand Airport','North Myrtle Beach,South Carolina, United States'],
+['CRF','Carnot Airport','Carnot,Central African Republic'],
+['CRG','Jacksonville Executive at Craig Airport','Jacksonville,Florida, United States'],
+['CRH','Cherrabah Airport','Cherrabah,Queensland, Australia'],
+['CRI','Colonel Hill Airport(Crooked Island Airport)','Colonel Hill,Crooked Island,Bahamas'],
+['CRJ','Coorabie Airport','Coorabie,South Australia, Australia'],
+['CRK','Clark International Airport','Clark Special Economic Zone,Philippines'],
+['CRL','Brussels South Charleroi Airport','Charleroi,Belgium'],
+['CRM','Catarman National Airport','Catarman,Philippines'],
+['CRO','Corcoran Airport','Corcoran,California, United States'],
+['CRP','Corpus Christi International Airport','Corpus Christi,Texas, United States'],
+['CRQ','Caravelas Airport','Caravelas,Bahia, Brazil'],
+['CRR','Ceres Airport','Ceres,Santa Fe, Argentina'],
+['CRS','C. David Campbell Field(Corsicana Municipal Airport)','Corsicana,Texas, United States'],
+['CRT','Z. M. Jack Stell Field','Crossett,Arkansas, United States'],
+['CRU','Lauriston Airport(Carriacou Island Airport)','Carriacou,Grenada'],
+['CRV','Crotone Airport(SantAnna Airport)','Crotone,Calabria, Italy'],
+['CRW','Yeager Airport','Charleston,West Virginia, United States'],
+['CRX','Roscoe Turner Airport','Corinth,Mississippi, United States'],
+['CRY','Carlton Hill Airport','Carlton Hill Station,Western Australia, Australia'],
+['CRZ','Turkmenabat Airport','Turkmenabat,Turkmenistan'],
+['CSA','Colonsay Airport','Colonsay,Scotland, United Kingdom'],
+['CSB','Caransebe? Airport','Caransebe?,Romania'],
+['CSC','Canas Mojica Airport','Canas,Costa Rica'],
+['CSD','Cresswell Downs Airport','Cresswell Downs,Northern Territory, Australia'],
+['CSE','Buckhorn Ranch Airport(FAA: 0CO2)','Crested Butte,Colorado, United States'],
+['CSF','Creil Air Base','Creil,Picardy, France'],
+['CSG','Columbus Airport','Columbus,Georgia, United States'],
+['CSH','Solovki Airport','Solovetsky Islands,Arkhangelsk Oblast, Russia'],
+['CSI','Casino Airport','Casino,New South Wales, Australia'],
+['CSK','Cap Skirring Airport','Cap Skirring,Senegal'],
+['CSM','Clinton-Sherman Airport','Clinton,Oklahoma, United States'],
+['CSN','Carson Airport(FAA: CXP)','Carson City,Nevada, United States'],
+['CSO','Magdeburg-Cochstedt Airport','Magdeburg,Saxony-Anhalt, Germany'],
+['CSQ','Creston Municipal Airport','Creston,Iowa, United States'],
+['CSR','Casuarito Airport','Casuarito,Colombia'],
+['CSS','Cassilandia Airport','Cassilandia,Mato Grosso do Sul, Brazil'],
+['CST','Castaway Island Seaplane Base','Castaway Island,Mamanuca Islands,Fiji'],
+['CSU','Santa Cruz do Sul Airport','Santa Cruz do Sul,Rio Grande do Sul, Brazil'],
+['CSV','Crossville Memorial-Whitson Field','Crossville,Tennessee, United States'],
+['CSX','Changsha Huanghua International Airport','Changsha,Hunan, China'],
+['CSY','Cheboksary Airport','Cheboksary,Chuvashia, Russia'],
+['CSZ','Brigadier Hector Eduardo Ruiz Airport','Coronel Suarez,Buenos Aires, Argentina'],
+['CTA','Catania-Fontanarossa Airport','Catania,Sicily, Italy'],
+['CTB','Cut Bank Municipal Airport','Cut Bank,Montana, United States'],
+['CTC','Coronel Felipe Varela International Airport','Catamarca,Catamarca, Argentina'],
+['CTD','Chitre Alonso Valderrama Airport','Chitre,Panama'],
+['CTE','Carti Airport','Carti,Panama'],
+['CTF','Coatepeque Airport','Coatepeque,Guatemala'],
+['CTG','Rafael Nunez International Airport','Cartagena,Colombia'],
+['CTH','Chester County G. O. Carlson Airport(FAA: MQS)','Coatesville,Pennsylvania, United States'],
+['CTI','Cuito Cuanavale Airport','Cuito Cuanavale,Angola'],
+['CTK','Canton Municipal Airport(FAA: 7G9)','Canton,South Dakota, United States'],
+['CTL','Charleville Airport','Charleville,Queensland, Australia'],
+['CTM','Chetumal International Airport','Chetumal,Quintana Roo, Mexico'],
+['CTN','Cooktown Airport','Cooktown,Queensland, Australia'],
+['CTO','Calverton Executive Airpark(FAA: 3C8)','Calverton,New York, United States'],
+['CTP','Carutapera Airport','Carutapera,Maranhao, Brazil'],
+['CTQ','Do Palmar Airport','Santa Vitoria,Rio Grande do Sul, Brazil'],
+['CTR','Cattle Creek Airport','Cattle Creek,Northern Territory, Australia'],
+['CTS','New Chitose Airport','Sapporo,Hokkaido, Japan'],
+['CTT','Le Castellet Airport','Le Castellet,Provence-Alpes-Cote dAzur, France'],
+['CTU','Chengdu Shuangliu International Airport','Chengdu,Sichuan, China'],
+['CTW','Cottonwood Airport(FAA: P52)','Cottonwood,Arizona, United States'],
+['CTX','Cortland County Airport(Chase Field, FAA: N03)','Cortland,New York, United States'],
+['CTY','Cross City Airport','Cross City,Florida, United States'],
+['CTZ','Clinton-Sampson County Airport','Clinton,North Carolina, United States'],
+['CUA','Ciudad Constitucion Airport','Ciudad Constitucion,Baja California Sur, Mexico'],
+['CUB','Jim Hamilton-L.B. Owens Airport','Columbia,South Carolina, United States'],
+['CUC','Camilo Daza International Airport','Cucuta,Colombia'],
+['CUD','Caloundra Airport','Caloundra,Queensland, Australia'],
+['CUE','Mariscal Lamar International Airport','Cuenca,Ecuador'],
+['CUF','Cuneo International Airport','Cuneo,Piedmont, Italy'],
+['CUG','Cudal Airport','Cudal,New South Wales, Australia'],
+['CUH','Cushing Municipal Airport','Cushing,Oklahoma, United States'],
+['CUI','Curillo Airport','Curillo,Colombia'],
+['CUJ','Culion Airport','Culion,Philippines'],
+['CUK','Caye Caulker Airport','Caye Caulker,Belize'],
+['CUL','Bachigualato Federal International Airport','Culiacan,Sinaloa, Mexico'],
+['CUM','Antonio Jose de Sucre Airport','Cumana,Venezuela'],
+['CUN','Cancun International Airport','Cancun,Quintana Roo, Mexico'],
+['CUO','Caruru Airport','Caruru,Colombia'],
+['CUP','General Jose Francisco Bermudez Airport','Carupano,Venezuela'],
+['CUQ','Coen Airport','Coen,Queensland, Australia'],
+['CUR','Curacao International Airport(Hato Intl Airport)','Willemstad,Curacao'],
+['CUS','Columbus Municipal Airport(FAA: 0NM0)','Columbus,New Mexico, United States'],
+['CUT','Cutral Co Airport','Cutral Co,Neuquen, Argentina'],
+['CUU','General Roberto Fierro Villalobos International Airport','Chihuahua,Chihuahua, Mexico'],
+['CUV','Casigua El Cubo Airport','Casigua El Cubo,Venezuela'],
+['CUX','Cuddihy Field(FAA: 07TE)','Corpus Christi,Texas, United States'],
+['CUY','Cue Airport','Cue,Western Australia, Australia'],
+['CUZ','Alejandro Velasco Astete International Airport','Cusco,Peru'],
+['CVB','Chungrebu Airport','Chungrebu,Papua New Guinea'],
+['CVC','Cleve Airport','Cleve,South Australia, Australia'],
+['CVE','Covenas Airport','Covenas,Colombia'],
+['CVF','Courchevel Altiport','Courchevel,Rhone-Alpes, France'],
+['CVG','Cincinnati/Northern Kentucky International Airport','Hebron(nearCincinnati/OH),Kentucky, United States'],
+['CVH','Caviahue Airport','Caviahue,Neuquen, Argentina'],
+['CVI','Caleta Olivia Airport','Caleta Olivia,Santa Cruz, Argentina'],
+['CVJ','General Mariano Matamoros Airport','Cuernavaca,Morelos, Mexico'],
+['CVL','Cape Vogel Airport','Cape Vogel,Papua New Guinea'],
+['CVM','General Pedro J. Mendez International Airport','Ciudad Victoria,Tamaulipas, Mexico'],
+['CVN','Clovis Municipal Airport','Clovis,New Mexico, United States'],
+['CVO','Corvallis Municipal Airport','Corvallis,Oregon, United States'],
+['CVQ','Carnarvon Airport','Carnarvon,Western Australia, Australia'],
+['CVS','Cannon Air Force Base','Clovis,New Mexico, United States'],
+['CVT','Coventry Airport','Coventry,England, United Kingdom'],
+['CVU','Corvo Airport','Corvo Island,Azores,Portugal'],
+['CWA','Central Wisconsin Airport','Wausau,Wisconsin, United States'],
+['CWB','Afonso Pena International Airport','Curitiba,Parana, Brazil'],
+['CWC','Chernivtsi International Airport','Chernivtsi,Ukraine'],
+['CWF','Chennault International Airport','Lake Charles,Louisiana, United States'],
+['CWI','Clinton Municipal Airport','Clinton,Iowa, United States'],
+['CWL','Cardiff Airport','Cardiff,Wales, United Kingdom'],
+['CWR','Cowarie Airport','Cowarie,South Australia, Australia'],
+['CWS','Center Island Airport(FAA: 78WA)','Center Island,Washington, United States'],
+['CWT','Cowra Airport','Cowra,New South Wales, Australia'],
+['CWW','Corowa Airport','Corowa,New South Wales, Australia'],
+['CWX','Cochise County Airport(FAA: P33)','Willcox,Arizona, United States'],
+['CXA','Caicara del Orinoco Airport','Caicara del Orinoco,Venezuela'],
+['CXB','Coxs Bazar Airport','Coxs Bazar,Bangladesh'],
+['CXC','Chitina Airport','Chitina,Alaska, United States'],
+['CXF','Coldfoot Airport','Coldfoot,Alaska, United States'],
+['CXH','Vancouver Harbour Flight Centre(Coal Harbour Seaplane Base)','Vancouver,British Columbia, Canada'],
+['CXI','Cassidy International Airport','Christmas Island,Kiribati'],
+['CXJ','Caxias do Sul Airport(Hugo Cantergiani Regional Airport)','Caxias do Sul,Rio Grande do Sul, Brazil'],
+['CXL','Calexico International Airport','Calexico,California, United States'],
+['CXN','Candala Airport','Candala,Somalia'],
+['CXO','Lone Star Executive Airport','Houston,Texas, United States'],
+['CXP','Tunggul Wulung Airport','Cilacap,Indonesia'],
+['CXQ','Christmas Creek Airport','Christmas Creek Station,Western Australia, Australia'],
+['CXR','Cam Ranh International Airport','Cam Ranh,Vietnam'],
+['CXT','Charters Towers Airport','Charters Towers,Queensland, Australia'],
+['CXY','Cat Cay Airport','Cat Cays,Bimini,Bahamas'],
+['CYA','Antoine-Simon Airport','Les Cayes,Haiti'],
+['CYB','Charles Kirkconnell International Airport','Cayman Brac,British Overseas TerritoryofCayman Islands'],
+['CYC','Caye Chapel Airport','Caye Chapel,Belize'],
+['CYD','San Ignacio Town Airstrip','San Ignacio,Belize'],
+['CYF','Chefornak Airport(FAA: CFK)','Chefornak,Alaska, United States'],
+['CYG','Corryong Airport','Corryong,Victoria, Australia'],
+['CYI','Chiayi Airport','Chiayi,Taiwan'],
+['CYL','Coyoles Airport','Coyoles,Honduras'],
+['CYM','Chatham Seaplane Base','Chatham,Alaska, United States'],
+['CYO','Vilo Acuna Airport','Cayo Largo del Sur,Cuba'],
+['CYP','Calbayog Airport','Calbayog,Philippines'],
+['CYR','Colonia Airport(Laguna de los Patos Intnl Airport)','Colonia del Sacramento,Uruguay'],
+['CYS','Cheyenne Regional Airport(Jerry Olson Field)','Cheyenne,Wyoming, United States'],
+['CYT','Yakataga Airport','Yakataga,Alaska, United States'],
+['CYU','Cuyo Airport','Cuyo,Philippines'],
+['CYW','Captain Rogelio Castillo National Airport','Celaya,Guanajuato, Mexico'],
+['CYX','Chersky Airport','Chersky,Yakutia, Russia'],
+['CYZ','Cauayan Airport','Cauayan,Philippines'],
+['CZA','Chichen Itza International Airport','Chichen Itza,Yucatan, Mexico'],
+['CZB','Carlos Ruhl Airport','Cruz Alta,Rio Grande do Sul, Brazil'],
+['CZC','Copper Center 2 Airport(FAA: Z93)','Copper Center,Alaska, United States'],
+['CZE','Jose Leonardo Chirino Airport','Coro,Venezuela'],
+['CZF','Cape Romanzof LRRS Airport','Cape Romanzof,Alaska, United States'],
+['CZH','Corozal Airport','Corozal,Belize'],
+['CZJ','Corazon de Jesus Airport','Corazon de Jesus,Panama'],
+['CZK','Cascade Locks State Airport','Cascade Locks,Oregon, United States'],
+['CZL','Mohamed Boudiaf International Airport','Constantine,Algeria'],
+['CZM','Cozumel International Airport','Cozumel,Quintana Roo, Mexico'],
+['CZN','Chisana Airport','Chisana,Alaska, United States'],
+['CZO','Chistochina Airport','Chistochina,Alaska, United States'],
+['CZP','Cape Pole Seaplane Base(FAA: Z71)','Cape Pole,Alaska, United States'],
+['CZS','Cruzeiro do Sul International Airport','Cruzeiro do Sul,Acre, Brazil'],
+['CZT','Dimmit County Airport','Carrizo Springs,Texas, United States'],
+['CZU','Las Brujas Airport','Corozal,Colombia'],
+['CZW','Cz?stochowa-Rudniki Airport','Cz?stochowa,Poland'],
+['CZX','Changzhou Benniu Airport','Changzhou,Jiangsu, China'],
+['CZY','Cluny Airport','Cluny,Queensland, Australia'],
+['DAA','Davison Army Airfield','Fort Belvoir,Virginia, United States'],
+['DAB','Daytona Beach International Airport','Daytona Beach,Florida, United States'],
+['DAC','Shahjalal International Airport','Dhaka,Bangladesh'],
+['DAD','Da Nang International Airport','Da Nang,Vietnam'],
+['DAF','Daup Airport','Daup,Papua New Guinea'],
+['DAG','Barstow-Daggett Airport','Daggett,California, United States'],
+['DAH','Dathina Airport','Dathina,Yemen'],
+['DAK','Dakhla Oasis Airport','Dakhla Oasis,Egypt'],
+['DAL','Dallas Love Field','Dallas,Texas, United States'],
+['DAM','Damascus International Airport','Damascus,Syria'],
+['DAN','Danville Regional Airport','Danville,Virginia, United States'],
+['DAO','Dabo Airport','Dabo,Papua New Guinea'],
+['DAP','Darchula Airport','Darchula,Nepal'],
+['DAR','Julius Nyerere International Airport','Dar es Salaam,Tanzania'],
+['DAS','Great Bear Lake Airport(TC: CFF4)','Great Bear Lake,Northwest Territories, Canada'],
+['DAT','Datong Yungang Airport','Datong,Shanxi, China'],
+['DAU','Daru Airport','Daru,Papua New Guinea'],
+['DAV','Enrique Malek International Airport','David,Panama'],
+['DAX','Dazhou Heshi Airport','Dazhou,Sichuan, China'],
+['DAY','Dayton International Airport','Dayton,Ohio, United States'],
+['DAZ','Darwaz Airport','Darwaz,Afghanistan'],
+['DBA','Dalbandin Airport','Dalbandin,Pakistan'],
+['DBB','Al Alamain International Airport','El Alamein,Egypt'],
+['DBC','Baicheng Changan Airport','Baicheng,Jilin, China'],
+['DBD','Dhanbad Airport','Dhanbad,Jharkhand, India'],
+['DBK','Dutch Bay Seaplane Base','Kalpitiya,Sri Lanka'],
+['DBM','Debre Marqos Airport','Debre Marqos,Ethiopia'],
+['DBN','W. H. Bud Barron Airport','Dublin,Georgia, United States'],
+['DBO','Dubbo City Regional Airport','Dubbo,New South Wales, Australia'],
+['DBP','Debepare Airport','Debepare,Papua New Guinea'],
+['DBQ','Dubuque Regional Airport','Dubuque,Iowa, United States'],
+['DBS','Dubois Municipal Airport(FAA: U41)','Dubois,Idaho, United States'],
+['DBT','Debre Tabor Airport','Debre Tabor,Ethiopia'],
+['DBU','Dambulu Oya Tank Seaplane Base','Dambulla,Sri Lanka'],
+['DBV','Dubrovnik Airport','Dubrovnik,Croatia'],
+['DBY','Dalby Airport','Dalby,Queensland, Australia'],
+['DCA','Ronald Reagan Washington National Airport','Arlington County(nearWashington, D.C.),Virginia, United States'],
+['DCF','Canefield Airport','Canefield,Dominica'],
+['DCG','Dubai Creek Seaplane Base','Dubai,United Arab Emirates'],
+['DCI','Decimomannu Air Base','Decimomannu,Sardinia, Italy'],
+['DCK','Dahl Creek Airport','Dahl Creek,Alaska, United States'],
+['DCM','Castres-Mazamet Airport','Castres,Midi-Pyrenees, France'],
+['DCN','RAAF Base Curtin','Derby,Western Australia, Australia'],
+['DCT','Duncan Town Airport','Duncan Town,Ragged Island,Bahamas'],
+['DCU','Pryor Field Regional Airport','Decatur,Alabama, United States'],
+['DCY','Daocheng Yading Airport','Daocheng,Sichuan, China'],
+['DDC','Dodge City Regional Airport','Dodge City,Kansas, United States'],
+['DDG','Dandong Langtou Airport','Dandong,Liaoning, China'],
+['DDM','Dodoima Airport','Dodoima,Papua New Guinea'],
+['DDN','Delta Downs Airport','Delta Downs,Queensland, Australia'],
+['DDU','Dadu Airport','Dadu,Pakistan'],
+['DEA','Dera Ghazi Khan International Airport','Dera Ghazi Khan,Pakistan'],
+['DEB','Debrecen International Airport','Debrecen,Hungary'],
+['DEC','Decatur Airport','Decatur,Illinois, United States'],
+['DED','Jolly Grant Airport','Dehradun,Uttarakhand, India'],
+['DEE','Yuzhno-Kurilsk Mendeleyevo Airport','Yuzhno-Kurilsk,Sakhalin Oblast, Russia'],
+['DEF','Dezful Airport','Dezful,Iran'],
+['DEH','Decorah Municipal Airport','Decorah,Iowa, United States'],
+['DEI','Denis Island Airport','Denis Island,Seychelles'],
+['DEL','Indira Gandhi International Airport','Delhi, India'],
+['DEM','Dembidolo Airport','Dembidolo,Ethiopia'],
+['DEN','Denver International Airport','Denver,Colorado, United States'],
+['DEP','Daporijo Airport','Daporijo,Arunachal Pradesh, India'],
+['DER','Derim Airport','Derim,Papua New Guinea'],
+['DES','Desroches Airport','Desroches Island,Seychelles'],
+['DET','Coleman A. Young International Airport','Detroit,Michigan, United States'],
+['DEX','Nop Goliath Airport','Yahukimo,Indonesia'],
+['DEZ','Deir ez-Zor Airport','Deir ez-Zor,Syria'],
+['DFI','Defiance Memorial Airport','Defiance,Ohio, United States'],
+['DFP','Drumduff Airport','Drumduff,Queensland, Australia'],
+['DFW','Dallas/Fort Worth International Airport','Dallas/Fort Worth,Texas, United States'],
+['DGA','Dangriga Airport','Dangriga,Belize'],
+['DGC','Degeh Bur Airport','Degeh Bur,Ethiopia'],
+['DGD','Dalgaranga Airport','Dalgaranga Gold Mine,Western Australia, Australia'],
+['DGE','Mudgee Airport','Mudgee,New South Wales, Australia'],
+['DGF','Douglas Lake Airport','Douglas Lake,British Columbia, Canada'],
+['DGK','Dugong Beach Lodge Airstrip','Dugong Beach Lodge,Mozambique'],
+['DGL','Douglas Municipal Airport','Douglas,Arizona, United States'],
+['DGM','Dandugama Seaplane Base','Colombo,Sri Lanka'],
+['DGN','Naval Surface Warfare Center Dahlgren Division(FAA: NDY)','Dahlgren,Virginia, United States'],
+['DGO','General Guadalupe Victoria International Airport','Durango,Durango, Mexico'],
+['DGP','Daugavpils International Airport','Daugavpils,Latvia'],
+['DGR','Dargaville Aerodrome','Dargaville,New Zealand'],
+['DGT','Sibulan Airport(Dumaguete Airport)','Dumaguete,Philippines'],
+['DGU','Dedougou Airport','Dedougou,Burkina Faso'],
+['DGW','Converse County Airport','Douglas,Wyoming, United States'],
+['DHA','King Abdulaziz Air Base','Dhahran,Saudi Arabia'],
+['DHB','Deer Harbor Sea Plane Base','Deer Harbor,Washington, United States'],
+['DHD','Durham Downs Airport','Durham Downs,Queensland, Australia'],
+['DHF','Al Dhafra Air Base','Abu Dhabi,United Arab Emirates'],
+['DHI','Dhangadhi Airport','Dhangadhi,Nepal'],
+['DHL','Dhala Airport','Dhala,Yemen'],
+['DHM','Gaggal Airport','Kangra,Himachal Pradesh, India'],
+['DHN','Dothan Regional Airport','Dothan,Alabama, United States'],
+['DHR','De Kooy Airfield','Den Helder,Netherlands'],
+['DHT','Dalhart Municipal Airport','Dalhart,Texas, United States'],
+['DIB','Dibrugarh Airport(Mohanbari Airport)','Dibrugarh,Assam, India'],
+['DIE','Arrachart Airport','Antsiranana,Madagascar'],
+['DIG','Diqing Shangri-La Airport','Shangri-La,Yunnan, China'],
+['DIJ','Dijon Air Base','Dijon,Burgundy, France'],
+['DIK','Dickinson Theodore Roosevelt Regional Airport','Dickinson,North Dakota, United States'],
+['DIL','Presidente Nicolau Lobato International Airport','Dili,East Timor'],
+['DIM','Dimbokro Airport','Dimbokro,Ivory Coast'],
+['DIN','Dien Bien Phu Airport','Dien Bien Phu,Vietnam'],
+['DIP','Diapaga Airport','Diapaga,Burkina Faso'],
+['DIQ','Divinopolis Airport(Brigadeiro Cabral Airport)','Divinopolis,Minas Gerais, Brazil'],
+['DIR','Aba Tenna Dejazmach Yilma International Airport','Dire Dawa,Ethiopia'],
+['DIS','Dolisie Airport','Dolisie,Republic of the Congo'],
+['DIU','Diu Airport','Diu,Daman and Diu, India'],
+['DIV','Divo Airport','Divo,Ivory Coast'],
+['DIW','Mawella Lagoon Seaplane Base','Dickwella,Sri Lanka'],
+['DIY','Diyarbak?r Airport','Diyarbak?r,Turkey'],
+['DJA','Djougou Airport','Djougou,Benin'],
+['DJB','Sultan Thaha Airport','Jambi,Indonesia'],
+['DJE','Djerba-Zarzis International Airport','Djerba,Tunisia'],
+['DJG','Tiska Djanet Airport','Djanet,Algeria'],
+['DJH','Jebel Ali Seaplane Base','Dubai,United Arab Emirates'],
+['DJJ','Sentani Airport','Jayapura,Indonesia'],
+['DJM','Djambala Airport','Djambala,Republic of the Congo'],
+['DJN','Delta Junction Airport(FAA: D66)','Delta Junction,Alaska, United States'],
+['DJO','Daloa Airport','Daloa,Ivory Coast'],
+['DJU','Djupivogur Airport','Djupivogur,Iceland'],
+['DKA','Katsina Airport','Katsina,Nigeria'],
+['DKI','Dunk Island Airport','Dunk Island,Queensland, Australia'],
+['DKK','Chautauqua County/Dunkirk Airport','Dunkirk,New York, United States'],
+['DKR','Leopold Sedar Senghor International Airport','Dakar,Senegal'],
+['DKS','Dikson Airport','Dikson,Krasnoyarsk Krai, Russia'],
+['DKV','Docker River Airport','Docker River,Northern Territory, Australia'],
+['DLA','Douala International Airport','Douala,Cameroon'],
+['DLB','Dalbertis Airport','Dalbertis,Papua New Guinea'],
+['DLC','Dalian Zhoushuizi International Airport','Dalian,Liaoning, China'],
+['DLE','Dole-Jura Airport','Dole,Franche-Comte, France'],
+['DLF','Laughlin Air Force Base','Del Rio,Texas, United States'],
+['DLG','Dillingham Airport','Dillingham,Alaska, United States'],
+['DLH','Duluth International Airport','Duluth,Minnesota, United States'],
+['DLI','Lien Khuong Airport','Da Lat,Vietnam'],
+['DLK','Dulkaninna Airport','Dulkaninna,South Australia, Australia'],
+['DLL','Dillon County Airport(FAA: DLC)','Dillon,South Carolina, United States'],
+['DLM','Dalaman Airport','Dalaman,Turkey'],
+['DLN','Dillon Airport','Dillon,Montana, United States'],
+['DLS','Columbia Gorge Regional Airport(The Dalles Municipal Airport)','The Dalles,Oregon, United States'],
+['DLU','Dali Airport','Dali,Yunnan, China'],
+['DLV','Delissaville Airport','Delissaville,Northern Territory, Australia'],
+['DLY','Dillons Bay Airport','Dillons Bay,Erromango,Tafea,Vanuatu'],
+['DLZ','Dalanzadgad Airport','Dalanzadgad,Mongolia'],
+['DMA','Davis-Monthan Air Force Base','Tucson,Arizona, United States'],
+['DMB','Taraz Airport(Jambyl Airport)','Taraz,Kazakhstan'],
+['DMD','Doomadgee Airport','Doomadgee,Queensland, Australia'],
+['DME','Domodedovo International Airport','Moscow, Russia'],
+['DMK','Don Mueang International Airport','Bangkok,Thailand'],
+['DMM','King Fahd International Airport','Dammam,Saudi Arabia'],
+['DMN','Deming Municipal Airport','Deming,New Mexico, United States'],
+['DMO','Sedalia Regional Airport','Sedalia,Missouri, United States'],
+['DMR','Dhamar Airport','Dhamar,Yemen'],
+['DMT','Diamantino Airport','Diamantino,Mato Grosso, Brazil'],
+['DMU','Dimapur Airport','Dimapur,Nagaland, India'],
+['DNA','Kadena Air Base','Kadena,Okinawa, Japan'],
+['DNB','Dunbar Airport','Dunbar,Queensland, Australia'],
+['DND','Dundee Airport','Dundee,Scotland, United Kingdom'],
+['DNF','Martuba Air Base','Derna,Libya'],
+['DNG','Doongan Airport','Doongan,Western Australia, Australia'],
+['DNH','Dunhuang Airport','Dunhuang,Gansu, China'],
+['DNI','Wad Medani Airport','Wad Madani,Sudan'],
+['DNK','Dnipropetrovsk International Airport','Dnipropetrovsk,Ukraine'],
+['DNL','Daniel Field','Augusta,Georgia, United States'],
+['DNM','Denham Airport','Denham,Western Australia, Australia'],
+['DNN','Dalton Municipal Airport','Dalton,Georgia, United States'],
+['DNO','Dianopolis Airport','Dianopolis,Tocantins, Brazil'],
+['DNP','Tribhuvannagar Airport(Dang Airport)','Tribhuwannagar,Nepal'],
+['DNQ','Deniliquin Airport','Deniliquin,New South Wales, Australia'],
+['DNR','Dinard-Pleurtuit-Saint-Malo Airport','Dinard/Saint-Malo,Brittany, France'],
+['DNS','Denison Municipal Airport','Denison,Iowa, United States'],
+['DNU','Dinangat Airport','Dinangat,Papua New Guinea'],
+['DNV','Vermilion Regional Airport','Danville,Illinois, United States'],
+['DNX','Galegu Airport','Dinder,Sudan'],
+['DNZ','Denizli cardak Airport','Denizli,Turkey'],
+['DOA','Doany Airport','Doany,Madagascar'],
+['DOB','Dobo Airport','Dobo,Indonesia'],
+['DOC','Dornoch Airport','Dornoch,Scotland, United Kingdom'],
+['DOD','Dodoma Airport','Dodoma,Tanzania'],
+['DOE','Djoemoe Airstrip','Djoemoe,Suriname'],
+['DOG','Dongola Airport','Dongola,Sudan'],
+['DOH','Hamad International Airport','Doha,Qatar'],
+['DOI','Doini Island Airport','Doini Island,Papua New Guinea'],
+['DOK','Donetsk International Airport','Donetsk,Ukraine'],
+['DOL','Deauville - Saint-Gatien Airport','Deauville,Lower Normandy, France'],
+['DOM','Douglas-Charles Airport','St Andrew Parish,Dominica'],
+['DON','Dos Lagunas Airport','Dos Lagunas,Guatemala'],
+['DOO','Dorobisoro Airstrip','Dorobisoro,Papua New Guinea'],
+['DOP','Dolpa Airport','Dolpa,Nepal'],
+['DOR','Dori Airport','Dori,Burkina Faso'],
+['DOS','Dios Airport','Dios,Papua New Guinea'],
+['DOU','Dourados Airport(Francisco de Matos Pereira Airport)','Dourados,Mato Grosso do Sul, Brazil'],
+['DOV','Dover Air Force Base','Dover,Delaware, United States'],
+['DOX','Dongara Airport','Dongara,Western Australia, Australia'],
+['DOY','Dongying Shengli Airport','Dongying,Shandong, China'],
+['DPA','DuPage Airport','West Chicago,Illinois, United States'],
+['DPE','Dieppe - Saint-Aubin Airport','Dieppe,Upper Normandy, France'],
+['DPG','Michael Army Airfield','Dugway,Utah, United States'],
+['DPL','Dipolog Airport','Dipolog,Philippines'],
+['DPO','Devonport Airport','Devonport,Tasmania, Australia'],
+['DPS','Ngurah Rai International Airport','Denpasar(Bali),Indonesia'],
+['DPT','Deputatsky Airport','Deputatsky,Yakutia, Russia'],
+['DPU','Dumpu Airport','Dumpu,Papua New Guinea'],
+['DQA','Daqing Sartu Airport','Daqing,Heilongjiang, China'],
+['DQM','Duqm International Airport','Duqm,Oman'],
+['DRA','Desert Rock Airport','Mercury,Nevada, United States'],
+['DRB','Derby Airport','Derby,Western Australia, Australia'],
+['DRC','Dirico Airport','Dirico,Angola'],
+['DRD','Dorunda Airport','Dorunda,Queensland, Australia'],
+['DRE','Drummond Island Airport(FAA: DRM)','Drummond Island,Michigan, United States'],
+['DRF','Drift River Airport','Drift River,Alaska, United States'],
+['DRG','Deering Airport(FAA: DEE)','Deering,Alaska, United States'],
+['DRH','Dabra Airport','Dabra,Indonesia'],
+['DRI','Beauregard Regional Airport','DeRidder,Louisiana, United States'],
+['DRJ','Drietabbetje Airstrip','Drietabbetje,Suriname'],
+['DRK','Drake Bay Airport','Drake Bay,Costa Rica'],
+['DRN','Dirranbandi Airport','Dirranbandi,Queensland, Australia'],
+['DRO','Durango-La Plata County Airport','Durango,Colorado, United States'],
+['DRR','Durrie Airport','Durrie,Queensland, Australia'],
+['DRS','Dresden Airport','Dresden,Saxony, Germany'],
+['DRT','Del Rio International Airport','Del Rio,Texas, United States'],
+['DRU','Drummond Airport(FAA: M26)','Drummond,Montana, United States'],
+['DRV','Dharavandhoo Airport','Dharavandhoo Island,Baa Atoll,Maldives'],
+['DRW','Darwin International Airport','Darwin,Northern Territory, Australia'],
+['DRY','Drysdale River Airport','Drysdale River,Western Australia, Australia'],
+['DSA','Robin Hood Airport Doncaster Sheffield','Doncaster,England, United Kingdom'],
+['DSC','Dschang Airport','Dschang,Cameroon'],
+['DSD','La Desirade Airport(Grande-Anse Airport)','La Desirade,Guadeloupe'],
+['DSE','Combolcha Airport','Dessie/Kombolcha,Ethiopia'],
+['DSG','Dilasag Airport','Dilasag,Philippines'],
+['DSI','Destin Executive Airport(FAA: DTS)','Destin,Florida, United States'],
+['DSK','Dera Ismail Khan Airport','Dera Ismail Khan,Pakistan'],
+['DSM','Des Moines International Airport','Des Moines,Iowa, United States'],
+['DSN','Ordos Ejin Horo Airport','Ordos,Inner Mongolia, China'],
+['DSO','Sondok Airport','Sondok,North Korea'],
+['DSV','Dansville Municipal Airport','Dansville,New York, United States'],
+['DSX','Dongsha Island Airport','Pratas (Dongsha) Islands,Taiwan'],
+['DTA','Delta Municipal Airport','Delta,Utah, United States'],
+['DTB','Silangit Airport','Siborong-Borong,Indonesia'],
+['DTD','Datadawai Airport','Datadawai,Indonesia'],
+['DTE','Bagasbas Airport','Daet,Philippines'],
+['DTH','Furnace Creek Airport(FAA: L06)','Death Valley,California, United States'],
+['DTI','Diamantina Airport','Diamantina,Minas Gerais, Brazil'],
+['DTL','Detroit Lakes Airport(Wething Field)','Detroit Lakes,Minnesota, United States'],
+['DTM','Dortmund Airport','Dortmund,North Rhine-Westphalia, Germany'],
+['DTN','Shreveport Downtown Airport','Shreveport,Louisiana, United States'],
+['DTR','Decatur Shores Airport','Decatur Island,Washington, United States'],
+['DTT','metropolitan area1','Detroit,Michigan, United States'],
+['DTU','Wudalianchi Airport','Wudalianchi,Heilongjiang, China'],
+['DTW','Detroit Metropolitan Wayne County Airport','Detroit,Michigan, United States'],
+['DUA','Durant Regional Airport-Eaker Field','Durant,Oklahoma, United States'],
+['DUB','Dublin Airport','Dublin,Ireland'],
+['DUC','Halliburton Field','Duncan,Oklahoma, United States'],
+['DUD','Dunedin International Airport','Dunedin,New Zealand'],
+['DUE','Dundo Airport','Dundo,Angola'],
+['DUF','Pine Island Airport(FAA: 7NC2)','Corolla,North Carolina, United States'],
+['DUG','Bisbee Douglas International Airport','Bisbee/Douglas,Arizona, United States'],
+['DUJ','DuBois Regional Airport','DuBois,Pennsylvania, United States'],
+['DUK','Dukuduku Airport','Mtubatuba,South Africa'],
+['DUM','Pinang Kampai Airport','Dumai,Indonesia'],
+['DUQ','Duncan Airport','Duncan,British Columbia, Canada'],
+['DUR','King Shaka International Airport','Durban,South Africa'],
+['DUS','Dusseldorf Airport','Dusseldorf,North Rhine-Westphalia, Germany'],
+['DUT','Unalaska Airport','Unalaska,Alaska, United States'],
+['DVD','Andavadoaka Airport','Andavadoaka,Madagascar'],
+['DVK','Diavik Airport','Diavik Diamond Mine,Northwest Territories, Canada'],
+['DVL','Devils Lake Regional Airport(Devils Lake Municipal Airport)','Devils Lake,North Dakota, United States'],
+['DVN','Davenport Municipal Airport','Davenport,Iowa, United States'],
+['DVO','Francisco Bangoy International Airport','Davao City,Philippines'],
+['DVP','Davenport Downs Airport','Davenport Downs,Queensland, Australia'],
+['DVR','Daly River Airport','Daly River,Northern Territory, Australia'],
+['DVT','Phoenix Deer Valley Airport','Phoenix,Arizona, United States'],
+['DWA','Dwanga Airport(Dwangwa Airport)','Dwangwa,Malawi'],
+['DWB','Soalala Airport','Soalala,Madagascar'],
+['DWC','Al Maktoum International Airport','Dubai,United Arab Emirates'],
+['DWD','Dawadmi Domestic Airport(King Salman bin Abdul Aziz Domestic Airport)','Dawadmi,Saudi Arabia'],
+['DWH','David Wayne Hooks Memorial Airport','Houston,Texas, United States'],
+['DWO','Diyawanna Oya Seaplane Base','Sri Jayawardenepura Kotte,Sri Lanka'],
+['DWR','Dwyer Airport','Camp Dwyer,Afghanistan'],
+['DXB','Dubai International Airport','Dubai,United Arab Emirates'],
+['DXD','Dixie Airport','Dixie,Queensland, Australia'],
+['DXE','Bruce Campbell Field(FAA: MBO)','Madison,Mississippi, United States'],
+['DXR','Danbury Municipal Airport','Danbury,Connecticut, United States'],
+['DYA','Dysart Airport','Dysart,Queensland, Australia'],
+['DYG','Zhangjiajie Hehua Airport','Zhangjiajie,Hunan, China'],
+['DYL','Doylestown Airport','Doylestown,Pennsylvania, United States'],
+['DYM','Diamantina Lakes Airport','Diamantina Lakes,Queensland, Australia'],
+['DYR','Ugolny Airport','Anadyr,Chukotka, Russia'],
+['DYS','Dyess Air Force Base','Abilene,Texas, United States'],
+['DYU','Dushanbe International Airport','Dushanbe,Tajikistan'],
+['DYW','Daly Waters Airport','Daly Waters,Northern Territory, Australia'],
+['DZA','Dzaoudzi-Pamandzi International Airport','Dzaoudzi,Mayotte'],
+['DZI','Codazzi Airport','Codazzi,Colombia'],
+['DZN','Zhezkazgan Airport','Zhezkazgan,Kazakhstan'],
+['DZO','Santa Bernardina International Airport','Durazno,Uruguay'],
+['DZU','Dazu Air Base','Dazu,Chongqing, China'],
+['EAA','Eagle Airport','Eagle,Alaska, United States'],
+['EAB','Abbs Airport','Abbs,Yemen'],
+['EAE','Siwo Airport','Emae Island,Shefa,Vanuatu'],
+['EAL','Elenak Airport','Mejato Island, Kwajalein Atoll,Marshall Islands'],
+['EAM','Najran Domestic Airport','Najran,Saudi Arabia'],
+['EAN','Phifer Airfield','Wheatland,Wyoming, United States'],
+['EAP','metropolitan area2','Basel,Switzerland/Mulhouse,Alsace, France'],
+['EAR','Kearney Regional Airport','Kearney,Nebraska, United States'],
+['EAS','San Sebastian Airport','San Sebastian,Basque Country, Spain'],
+['EAT','Pangborn Memorial Airport','Wenatchee,Washington, United States'],
+['EAU','Chippewa Valley Regional Airport','Eau Claire,Wisconsin, United States'],
+['EBA','Marina di Campo Airport','Elba Island,Tuscany, Italy'],
+['EBB','Entebbe International Airport','Entebbe,Uganda'],
+['EBD','El Obeid Airport','El Obeid,Sudan'],
+['EBG','El Bagre Airport(El Tomin Airport)','El Bagre,Colombia'],
+['EBH','El Bayadh Airport','El Bayadh,Algeria'],
+['EBJ','Esbjerg Airport','Esbjerg,Denmark'],
+['EBL','Erbil International Airport','Erbil,Iraq'],
+['EBM','El Borma Airport','El Borma,Tunisia'],
+['EBN','Ebadon Airstrip','Ebadon Island, Kwajalein Atoll,Marshall Islands'],
+['EBO','Ebon Airport','Ebon Atoll,Marshall Islands'],
+['EBS','Webster City Municipal Airport','Webster City,Iowa, United States'],
+['EBU','Saint-etienne-Boutheon Airport','Saint-etienne,Rhone-Alpes, France'],
+['EBW','Ebolowa Airport','Ebolowa,Cameroon'],
+['ECA','Iosco County Airport(FAA: 6D9)','East Tawas,Michigan, United States'],
+['ECG','Elizabeth City Regional Airport','Elizabeth City,North Carolina, United States'],
+['ECH','Echuca Airport','Echuca,Victoria, Australia'],
+['ECI','Costa Esmeralda Airport','Rivas,Nicaragua'],
+['ECN','Ercan International Airport','Nicosia (Lefko?a),Northern Cyprus'],
+['ECO','El Encanto Airport','El Encanto,Colombia'],
+['ECP','Northwest Florida Beaches International Airport','Panama City,Florida, United States'],
+['ECR','El Charco Airport','El Charco,Colombia'],
+['ECS','Mondell Field','Newcastle,Wyoming, United States'],
+['EDA','Edna Bay Seaplane Base','Edna Bay,Alaska, United States'],
+['EDB','El Debba Airport','El Debba,Sudan'],
+['EDD','Erldunda Airport','Erldunda,Northern Territory, Australia'],
+['EDE','Northeastern Regional Airport','Edenton,North Carolina, United States'],
+['EDF','Elmendorf Air Force Base','Anchorage,Alaska, United States'],
+['EDI','Edinburgh Airport','Edinburgh,Scotland, United Kingdom'],
+['EDK','Captain Jack Thomas/El Dorado Airport(FAA: EQA)','El Dorado,Kansas, United States'],
+['EDL','Eldoret International Airport','Eldoret,Kenya'],
+['EDM','La Roche-sur-Yon Aerodrome','La Roche-sur-Yon,Pays de la Loire, France'],
+['EDO','Bal?kesir Koca Seyit Airport','Edremit,Turkey'],
+['EDQ','Erandique Airport','Erandique,Honduras'],
+['EDR','Edward River Airport','Pormpuraaw,Queensland, Australia'],
+['EDW','Edwards Air Force Base','Edwards,California, United States'],
+['EED','Needles Airport','Needles,California, United States'],
+['EEK','Eek Airport','Eek,Alaska, United States'],
+['EEN','Dillant-Hopkins Airport','Keene,New Hampshire, United States'],
+['EFD','Ellington Field','Houston,Texas, United States'],
+['EFG','Efogi Airport','Efogi,Papua New Guinea'],
+['EFK','Newport State Airport','Newport,Vermont, United States'],
+['EFL','Cephalonia International Airport','Cephalonia,Greece'],
+['EFW','Jefferson Municipal Airport','Jefferson,Iowa, United States'],
+['EGA','Engati Airport','Engati,Papua New Guinea'],
+['EGC','Bergerac Dordogne Perigord Airport','Bergerac,Aquitaine, France'],
+['EGE','Eagle County Regional Airport','Eagle/Vail,Colorado, United States'],
+['EGI','Duke Field(Eglin Auxiliary Field 3)','Crestview,Florida, United States'],
+['EGL','Neghelle Airport','Neghelle,Ethiopia'],
+['EGM','Seghe Airport','Seghe,Western Province,Solomon Islands'],
+['EGN','Geneina Airport','Geneina,Sudan'],
+['EGO','Belgorod International Airport','Belgorod,Belgorod Oblast, Russia'],
+['EGP','Maverick County Memorial International Airport','Eagle Pass,Texas, United States'],
+['EGS','Egilsstaoir Airport','Egilsstaoir,Iceland'],
+['EGV','Eagle River Union Airport','Eagle River,Wisconsin, United States'],
+['EGX','Egegik Airport(FAA: EII)','Egegik,Alaska, United States'],
+['EHL','El Bolson Airport','El Bolson,Rio Negro, Argentina'],
+['EHM','Cape Newenham LRRS Airport','Cape Newenham,Alaska, United States'],
+['EIA','Popondetta Airport','Eia,Papua New Guinea'],
+['EIB','Eisenach-Kindel Airport','Eisenach,Thuringia, Germany'],
+['EIE','Yeniseysk Airport','Yeniseysk,Krasnoyarsk Krai, Russia'],
+['EIH','Einasleigh Airport','Einasleigh,Queensland, Australia'],
+['EIK','Yeysk Airport','Yeysk,Krasnodar Krai, Russia'],
+['EIL','Eielson Air Force Base','Fairbanks,Alaska, United States'],
+['EIN','Eindhoven Airport','Eindhoven,Netherlands'],
+['EIS','Terrance B. Lettsome International Airport','Tortola,British Overseas TerritoryofVirgin Islands'],
+['EIY','Ein Yahav Airfield','Ein Yahav,Israel'],
+['EJA','Yariguies Airport','Barrancabermeja,Colombia'],
+['EJH','Al Wajh Domestic Airport','Al Wajh,Saudi Arabia'],
+['EJN','Ejin Banner Taolai Airport','Ejin Banner,Inner Mongolia, China'],
+['EJT','Enejit Airport','Enejit,Mili Atoll,Marshall Islands'],
+['EKA','Murray Field','Eureka,California, United States'],
+['EKB','Ekibastuz Airport','Ekibastuz,Kazakhstan'],
+['EKD','Elkedra Airport','Elkedra,Northern Territory, Australia'],
+['EKE','Ekereku Airport','Ekereku,Guyana'],
+['EKI','Elkhart Municipal Airport(FAA: EKM)','Elkhart,Indiana, United States'],
+['EKN','Elkins-Randolph County Airport','Elkins,West Virginia, United States'],
+['EKO','Elko Regional Airport','Elko,Nevada, United States'],
+['EKS','Shakhtyorsk Airport','Shakhtyorsk,Sakhalin Oblast, Russia'],
+['EKT','Eskilstuna Airport','Eskilstuna,Sweden'],
+['EKX','Elizabethtown Regional Airport(Addington Field)','Elizabethtown,Kentucky, United States'],
+['ELA','Eagle Lake Airport','Eagle Lake,Texas, United States'],
+['ELB','Las Flores Airport','El Banco,Colombia'],
+['ELC','Elcho Island Airport','Elcho Island,Northern Territory, Australia'],
+['ELD','South Arkansas Regional Airport at Goodwin Field','El Dorado,Arkansas, United States'],
+['ELE','El Real Airport','El Real,Panama'],
+['ELF','El Fasher Airport','El Fasher,Sudan'],
+['ELG','El Golea Airport','El Golea,Algeria'],
+['ELH','North Eleuthera Airport','North Eleuthera,Eleuthera Island,Bahamas'],
+['ELI','Elim Airport','Elim,Alaska, United States'],
+['ELJ','El Recreo Airport','El Recreo,Colombia'],
+['ELK','Elk City Regional Business Airport','Elk City,Oklahoma, United States'],
+['ELL','Ellisras Airport','Ellisras,South Africa'],
+['ELM','Elmira/Corning Regional Airport','Elmira/Corning,New York, United States'],
+['ELN','Bowers Field','Ellensburg,Washington, United States'],
+['ELO','Eldorado Airport','Eldorado,Misiones, Argentina'],
+['ELP','El Paso International Airport','El Paso,Texas, United States'],
+['ELQ','Prince Nayef bin Abdulaziz Regional Airport','Buraidah,Saudi Arabia'],
+['ELR','Elelim Airport','Elelim,Indonesia'],
+['ELS','East London Airport','East London,South Africa'],
+['ELT','El Tor Airport','El Tor,Egypt'],
+['ELU','Guemar Airport','El Oued,Algeria'],
+['ELV','Elfin Cove Seaplane Base','Elfin Cove,Alaska, United States'],
+['ELW','Ellamar Seaplane Base(FAA: 1Z9)','Ellamar,Alaska, United States'],
+['ELX','El Tigre Airport','El Tigre,Venezuela'],
+['ELY','Ely Airport','Ely,Nevada, United States'],
+['ELZ','Wellsville Municipal Airport(Tarantine Field)','Wellsville,New York, United States'],
+['EMA','East Midlands Airport','Nottingham/Leicester/Derby,England, United Kingdom'],
+['EMD','Emerald Airport','Emerald,Queensland, Australia'],
+['EME','Emden Airport','Emden,Lower Saxony, Germany'],
+['EMG','Empangeni Airport','Empangeni,South Africa'],
+['EMI','Emirau Airport','Emirau Island,Papua New Guinea'],
+['EMK','Emmonak Airport(FAA: ENM)','Emmonak,Alaska, United States'],
+['EML','Emmen Air Base','Emmen,Switzerland'],
+['EMM','Kemmerer Municipal Airport','Kemmerer,Wyoming, United States'],
+['EMN','Nema Airport','Nema,Mauritania'],
+['EMO','Emo Airport','Emo,Papua New Guinea'],
+['EMP','Emporia Municipal Airport','Emporia,Kansas, United States'],
+['EMS','Embessa Airport','Embessa,Papua New Guinea'],
+['EMT','San Gabriel Valley Airport','El Monte,California, United States'],
+['EMX','El Maiten Airport','El Maiten,Chubut, Argentina'],
+['EMY','El Minya Airport','El Minya,Egypt'],
+['ENA','Kenai Municipal Airport','Kenai,Alaska, United States'],
+['ENB','Eneabba Airport','Eneabba,Western Australia, Australia'],
+['ENC','Nancy-Essey Airport','Nancy,Lorraine, France'],
+['END','Vance Air Force Base','Enid,Oklahoma, United States'],
+['ENE','H. Hasan Aroeboesman Airport','Ende,Indonesia'],
+['ENF','Enontekiö Airport','Enontekiö,Finland'],
+['ENH','Enshi Xujiaping Airport','Enshi,Hubei, China'],
+['ENI','El Nido Airport','El Nido,Philippines'],
+['ENJ','El Naranjo Airport','El Naranjo,Guatemala'],
+['ENK','Enniskillen/St Angelo Airport','Enniskillen,Northern Ireland, United Kingdom'],
+['ENL','Centralia Municipal Airport','Centralia,Illinois, United States'],
+['ENN','Nenana Municipal Airport','Nenana,Alaska, United States'],
+['ENO','Teniente Amin Ayub Gonzalez Airport','Encarnacion,Paraguay'],
+['ENS','Enschede Airport Twente','Enschede,Netherlands'],
+['ENT','Enewetak Auxiliary Airfield','Enewetak,Marshall Islands'],
+['ENU','Akanu Ibiam International Airport','Enugu,Nigeria'],
+['ENV','Wendover Airport','Wendover,Utah, United States'],
+['ENW','Kenosha Regional Airport','Kenosha,Wisconsin, United States'],
+['ENY','Yanan Ershilipu Airport','Yanan,Shaanxi, China'],
+['EOH','Olaya Herrera Airport','Medellin,Colombia'],
+['EOI','Eday Airport','Eday,Scotland, United Kingdom'],
+['EOK','Keokuk Municipal Airport','Keokuk,Iowa, United States'],
+['EOR','El Dorado Airport','El Dorado,Venezuela'],
+['EOS','Neosho Hugh Robinson Airport','Neosho,Missouri, United States'],
+['EOZ','Elorza Airport','Elorza,Venezuela'],
+['EPA','El Palomar Airport','El Palomar,Buenos Aires, Argentina'],
+['EPG','Browns Airport(FAA: NE69)','Weeping Water,Nebraska, United States'],
+['EPH','Ephrata Municipal Airport','Ephrata,Washington, United States'],
+['EPL','epinal - Mirecourt Airport','epinal/Mirecourt,Lorraine, France'],
+['EPN','Epena Airport','Epena,Republic of the Congo'],
+['EPR','Esperance Airport','Esperance,Western Australia, Australia'],
+['EPS','Arroyo Barril Airport','Samana,Dominican Republic'],
+['EPT','Eliptamin Airport','Eliptamin,Papua New Guinea'],
+['EPU','Pärnu Airport','Pärnu,Estonia'],
+['EQS','Esquel Airport','Esquel,Chubut, Argentina'],
+['ERA','Erigavo Airport','Erigavo,Somalia'],
+['ERB','Pukatja Airport(Ernabella Airport)','Pukatja,South Australia, Australia'],
+['ERC','Erzincan Airport','Erzincan,Turkey'],
+['ERD','Berdiansk Airport','Berdiansk,Ukraine'],
+['ERE','Erave Airport','Erave,Papua New Guinea'],
+['ERF','Erfurt-Weimar Airport','Erfurt,Thuringia, Germany'],
+['ERG','Erbogachen Airport','Yerbogachen,Irkutsk Oblast, Russia'],
+['ERH','Moulay Ali Cherif Airport','Errachidia,Morocco'],
+['ERI','Erie International Airport(Tom Ridge Field)','Erie,Pennsylvania, United States'],
+['ERL','Erenhot Saiwusu International Airport','Erenhot,Inner Mongolia, China'],
+['ERM','Erechim Airport','Erechim,Rio Grande do Sul, Brazil'],
+['ERN','Eirunepe Airport(Amaury Feitosa Tomaz Airport)','Eirunepe,Amazonas, Brazil'],
+['ERQ','Elrose Airport','Eloise Copper Mine,Queensland, Australia'],
+['ERR','Errol Airport','Errol,New Hampshire, United States'],
+['ERS','Eros Airport','Windhoek,Namibia'],
+['ERT','Erdenet Airport','Erdenet,Mongolia'],
+['ERU','Erume Airport','Erume,Papua New Guinea'],
+['ERV','Kerrville Municipal Airport(Louis Schreiner Field)','Kerrville,Texas, United States'],
+['ERZ','Erzurum Airport','Erzurum,Turkey'],
+['ESA','Esaala Airport','Esaala,Papua New Guinea'],
+['ESB','Esenbo?a International Airport','Ankara,Turkey'],
+['ESC','Delta County Airport','Escanaba,Michigan, United States'],
+['ESD','Orcas Island Airport(FAA: ORS)','Eastsound,Washington, United States'],
+['ESE','Ensenada Airport','Ensenada,Baja California, Mexico'],
+['ESF','Esler Airfield(Esler Regional Airport)','Alexandria,Louisiana, United States'],
+['ESG','Dr. Luis Maria Argana International Airport','Mariscal Estigarribia,Paraguay'],
+['ESH','Shoreham Airport(Brighton City Airport)','Shoreham-by-Sea,England, United Kingdom'],
+['ESI','Espinosa Airport','Espinosa,Minas Gerais, Brazil'],
+['ESK','Eski?ehir Airport','Eski?ehir,Turkey'],
+['ESL','Elista Airport','Elista,Kalmykia, Russia'],
+['ESM','Carlos Concha Torres International Airport','Esmeraldas,Ecuador'],
+['ESN','Easton Airport(Newnam Field)','Easton,Maryland, United States'],
+['ESO','Ohkay Owingeh Airport(FAA: E14)','Espanola,New Mexico, United States'],
+['ESP','Stroudsburg-Pocono Airport(FAA: N53)','East Stroudsburg,Pennsylvania, United States'],
+['ESR','Ricardo Garcia Posada Airport','El Salvador,Chile'],
+['ESS','Essen/Mulheim Airport','Essen,North Rhine-Westphalia, Germany'],
+['EST','Estherville Municipal Airport','Estherville,Iowa, United States'],
+['ESU','Essaouira-Mogador Airport','Essaouira,Morocco'],
+['ESW','Easton State Airport','Easton,Washington, United States'],
+['ETB','West Bend Municipal Airport','West Bend,Wisconsin, United States'],
+['ETD','Etadunna Airport','Etadunna,South Australia, Australia'],
+['ETE','Genda Wuha Airport','Metemma,Ethiopia'],
+['ETH','J. Hozman Airport','Eilat,Israel'],
+['ETN','Eastland Municipal Airport','Eastland,Texas, United States'],
+['ETR','Santa Rosa International Airport','Santa Rosa,Ecuador'],
+['ETS','Enterprise Municipal Airport(FAA: EDN)','Enterprise,Alabama, United States'],
+['ETZ','Metz-Nancy-Lorraine Airport','Metz/Nancy,Lorraine, France'],
+['EUA','Eua Airport(Kaufana Airport)','Eua,Tonga'],
+['EUC','Eucla Airport','Eucla,Western Australia, Australia'],
+['EUE','Eureka Airport(FAA: 05U)','Eureka,Nevada, United States'],
+['EUF','Weedon Field','Eufaula,Alabama, United States'],
+['EUG','Eugene Airport(Mahlon Sweet Airport)','Eugene,Oregon, United States'],
+['EUM','Neumunster Airport','Neumunster,Schleswig-Holstein, Germany'],
+['EUN','Hassan I Airport','Laayoune,Morocco'],
+['EUO','Paratebueno Airport','Paratebueno,Colombia'],
+['EUQ','Evelio Javier Airport(Antique Airport)','San Jose de Buenavista,Philippines'],
+['EUX','F. D. Roosevelt Airport','Oranjestad,Sint Eustatius,Caribbean Netherlands'],
+['EVA','Ben Bruce Memorial Airpark(FAA: 4TE8)','Evadale,Texas, United States'],
+['EVD','Eva Downs Airport','Eva Downs,Northern Territory, Australia'],
+['EVE','Harstad/Narvik Airport, Evenes','Harstad/Narvik,Norway'],
+['EVG','Sveg Airport','Sveg,Sweden'],
+['EVH','Evans Head Memorial Aerodrome','Evans Head,New South Wales, Australia'],
+['EVM','Eveleth-Virginia Municipal Airport','Eveleth,Minnesota, United States'],
+['EVN','Zvartnots International Airport','Yerevan,Armenia'],
+['EVV','Evansville Regional Airport','Evansville,Indiana, United States'],
+['EVW','Evanston-Uinta County Burns Field','Evanston,Wyoming, United States'],
+['EVX','evreux-Fauville Air Base','evreux,Upper Normandy, France'],
+['EWB','New Bedford Regional Airport','New Bedford/Fall River,Massachusetts, United States'],
+['EWE','Ewer Airport','Ewer,Indonesia'],
+['EWI','Enarotali Airport','Enarotali,Indonesia'],
+['EWK','Newton City/County Airport','Newton,Kansas, United States'],
+['EWN','Coastal Carolina Regional Airport','New Bern,North Carolina, United States'],
+['EWO','Ewo Airport','Ewo,Republic of the Congo'],
+['EWR','Newark Liberty International Airport','Newark,New Jersey, United States'],
+['EXI','Excursion Inlet Seaplane Base','Excursion Inlet,Alaska, United States'],
+['EXM','Exmouth Airport','Exmouth,Western Australia, Australia'],
+['EXT','Exeter International Airport','Exeter,England, United Kingdom'],
+['EYK','Beloyarsk Airport','Beloyarsky,Khanty-Mansi Autonomous Okrug, Russia'],
+['EYL','Yelimane Airport','Yelimane,Mali'],
+['EYP','El Alcaravan Airport','Yopal,Colombia'],
+['EYR','Yerington Municipal Airport(FAA: O43)','Yerington,Nevada, United States'],
+['EYS','Eliye Springs Airport','Eliye Springs,Kenya'],
+['EYW','Key West International Airport','Key West,Florida, United States'],
+['EZE','Ministro Pistarini International Airport','Buenos Aires, Argentina'],
+['EZS','Elaz?? Airport','Elaz??,Turkey'],
+['EZV','Beryozovo Airport','Beryozovo,Khanty-Mansi Autonomous Okrug, Russia'],
+['FAA','Faranah Airport','Faranah,Guinea'],
+['FAB','Farnborough Airport','Farnborough,England, United Kingdom'],
+['FAC','Faaite Airport','Faaite,Tuamotus,French Polynesia'],
+['FAE','Vagar Airport','Vagar,Faroe Islands'],
+['FAF','Felker Army Airfield','Fort Eustis,Virginia, United States'],
+['FAG','Fagurholsmyri Airport','Fagurholsmyri,Iceland'],
+['FAH','Farah Airport','Farah,Afghanistan'],
+['FAI','Fairbanks International Airport','Fairbanks,Alaska, United States'],
+['FAJ','Diego Jimenez Torres Airport(FAA: X95)','Fajardo,Puerto Rico, United States'],
+['FAK','False Island Seaplane Base(FAA: 2Z6)','False Island,Alaska, United States'],
+['FAM','Farmington Regional Airport','Farmington,Missouri, United States'],
+['FAO','Faro Airport','Faro,Portugal'],
+['FAQ','Frieda River Airport','Frieda River,Papua New Guinea'],
+['FAR','Hector International Airport','Fargo,North Dakota, United States'],
+['FAS','Faskruosfjörour Airport','Faskruosfjörour,Iceland'],
+['FAT','Fresno Yosemite International Airport','Fresno,California, United States'],
+['FAU','Fahud Airport','Fahud,Oman'],
+['FAV','Fakarava Airport','Fakarava,Tuamotus,French Polynesia'],
+['FAY','Fayetteville Regional Airport(Grannis Field)','Fayetteville,North Carolina, United States'],
+['FAZ','Fasa Airport','Fasa,Iran'],
+['FBA','Fonte Boa Airport','Fonte Boa,Amazonas, Brazil'],
+['FBD','Fayzabad Airport','Fayzabad,Afghanistan'],
+['FBE','Francisco Beltrao Airport(Paulo Abdala Airport)','Francisco Beltrao,Parana, Brazil'],
+['FBG','Simmons Army Airfield','Fort Bragg,North Carolina, United States'],
+['FBK','Ladd Army Airfield','Fairbanks,Alaska, United States'],
+['FBL','Faribault Municipal Airport','Faribault,Minnesota, United States'],
+['FBM','Lubumbashi International Airport','Lubumbashi,Democratic Republic of the Congo'],
+['FBR','Fort Bridger Airport','Fort Bridger,Wyoming, United States'],
+['FBS','Friday Harbor Seaplane Base(FAA: W33)','Friday Harbor,Washington, United States'],
+['FBY','Fairbury Municipal Airport','Fairbury,Nebraska, United States'],
+['FCA','Glacier Park International Airport(FAA: GPI)','Kalispell,Montana, United States'],
+['FCB','Ficksburg Airport','Ficksburg,South Africa'],
+['FCH','Fresno Chandler Executive Airport','Fresno,California, United States'],
+['FCM','Flying Cloud Airport','Eden Prairie,Minnesota, United States'],
+['FCN','Nordholz Naval Airbase','Cuxhaven,Lower Saxony, Germany'],
+['FCO','Leonardo da Vinci-Fiumicino Airport','Rome,Lazio, Italy'],
+['FCS','Butts Army Airfield(Fort Carson)','Colorado Springs,Colorado, United States'],
+['FCY','Forrest City Municipal Airport','Forrest City,Arkansas, United States'],
+['FDE','Førde Airport, Bringeland','Førde,Norway'],
+['FDF','Martinique Aime Cesaire International Airport','Fort-de-France,Martinique'],
+['FDH','Friedrichshafen Airport(Bodensee Airport)','Friedrichshafen,Baden-Wurttemberg, Germany'],
+['FDK','Frederick Municipal Airport','Frederick,Maryland, United States'],
+['FDR','Frederick Regional Airport','Frederick,Oklahoma, United States'],
+['FDU','Bandundu Airport','Bandundu,Democratic Republic of the Congo'],
+['FDY','Findlay Airport','Findlay,Ohio, United States'],
+['FEA','Fetlar Airport','Fetlar,Scotland, United Kingdom'],
+['FEB','Sanfebagar Airport','Sanfebagar,Nepal'],
+['FEC','Feira de Santana Airport(Gov. Joao Durval Carneiro Airport)','Feira de Santana,Bahia, Brazil'],
+['FEG','Fergana International Airport','Fergana,Uzbekistan'],
+['FEJ','Feijo Airport','Feijo,Acre, Brazil'],
+['FEK','Ferkessedougou Airport','Ferkessedougou,Ivory Coast'],
+['FEL','Furstenfeldbruck Air Base','Furstenfeldbruck,Bavaria, Germany'],
+['FEN','Fernando de Noronha Airport(Gov. Carlos Wilson Airport)','Fernando de Noronha,Pernambuco, Brazil'],
+['FEP','Albertus Airport','Freeport,Illinois, United States'],
+['FET','Fremont Municipal Airport','Fremont,Nebraska, United States'],
+['FEZ','Fes-Saiss Airport','Fez,Morocco'],
+['FFA','First Flight Airport','Kill Devil Hills,North Carolina, United States'],
+['FFD','RAF Fairford','Fairford,England, United Kingdom'],
+['FFL','Fairfield Municipal Airport','Fairfield,Iowa, United States'],
+['FFM','Fergus Falls Municipal Airport(Einar Mickelson Field)','Fergus Falls,Minnesota, United States'],
+['FFO','Wright-Patterson Air Force Base','Dayton,Ohio, United States'],
+['FFT','Capital City Airport','Frankfort,Kentucky, United States'],
+['FFU','Futaleufu Airfield','Futaleufu,Chile'],
+['FGD','Fderik Airport','FderIck,Mauritania'],
+['FGI','Fagalii Airport','Apia,Upolu Island,Samoa'],
+['FGU','Fangatau Airport','Fangatau,Tuamotus,French Polynesia'],
+['FHU','Sierra Vista Municipal Airport(Libby Army Airfield)','Sierra Vista,Arizona, United States'],
+['FHZ','Fakahina Airport','Fakahina,Tuamotus,French Polynesia'],
+['FID','Elizabeth Field(FAA: 0B8)','Fishers Island,New York, United States'],
+['FIE','Fair Isle Airport','Fair Isle,Scotland, United Kingdom'],
+['FIG','Fria Airport','Fria,Guinea'],
+['FIH','Ndjili Airport(Kinshasa Intl Airport)','Kinshasa,Democratic Republic of the Congo'],
+['FIK','Finke Airport','Finke(Aputula),Northern Territory, Australia'],
+['FIL','Fillmore Municipal Airport(FAA: FOM)','Fillmore,Utah, United States'],
+['FIN','Finschhafen Airport','Finschhafen,Papua New Guinea'],
+['FIZ','Fitzroy Crossing Airport','Fitzroy Crossing,Western Australia, Australia'],
+['FJR','Fujairah International Airport','Fujairah,United Arab Emirates'],
+['FKB','Karlsruhe/Baden-Baden Airport','Karlsruhe/Baden-Baden,Baden-Wurttemberg, Germany'],
+['FKI','Bangoka International Airport','Kisangani,Democratic Republic of the Congo'],
+['FKJ','Fukui Airport','Fukui,Honshu, Japan'],
+['FKL','Venango Regional Airport(Chess Lamberton Field)','Franklin,Pennsylvania, United States'],
+['FKN','Franklin Municipal-John Beverly Rose Airport','Franklin,Virginia, United States'],
+['FKQ','Fakfak Torea Airport','Fakfak,Indonesia'],
+['FKS','Fukushima Airport','Sukagawa,Honshu, Japan'],
+['FLA','Gustavo Artunduaga Paredes Airport','Florencia (Caqueta),Colombia'],
+['FLB','Cangapara Airport','Floriano,Piaui, Brazil'],
+['FLD','Fond du Lac County Airport','Fond du Lac,Wisconsin, United States'],
+['FLF','Flensburg-Schäferhaus Airport','Flensburg,Schleswig-Holstein, Germany'],
+['FLG','Flagstaff Pulliam Airport','Flagstaff,Arizona, United States'],
+['FLH','Flotta Island Airport','Flotta,Scotland, United Kingdom'],
+['FLI','Holt Airport','Flateyri,Iceland'],
+['FLL','Fort Lauderdale-Hollywood International Airport','Fort Lauderdale/Hollywood,Florida, United States'],
+['FLM','Filadelfia Airport','Filadelfia,Paraguay'],
+['FLN','Hercilio Luz International Airport','Florianopolis,Santa Catarina, Brazil'],
+['FLO','Florence Regional Airport','Florence,South Carolina, United States'],
+['FLP','Marion County Regional Airport','Flippin,Arkansas, United States'],
+['FLR','Florence Airport, Peretola(Amerigo Vespucci Airport)','Florence,Tuscany, Italy'],
+['FLS','Flinders Island Airport','Flinders Island,Tasmania, Australia'],
+['FLT','Flat Airport','Flat,Alaska, United States'],
+['FLV','Sherman Army Airfield','Fort Leavenworth,Kansas, United States'],
+['FLW','Flores Airport','Flores Island,Azores,Portugal'],
+['FLX','Fallon Municipal Airport','Fallon,Nevada, United States'],
+['FLY','Finley Airport','Finley,New South Wales, Australia'],
+['FLZ','Ferdinand Lumban Tobing Airport','Sibolga,Indonesia'],
+['FMA','Formosa International Airport(El Pucu Airport)','Formosa, Argentina'],
+['FME','Tipton Airport','Fort Meade/Odenton,Maryland, United States'],
+['FMH','Otis Air National Guard Base','Falmouth,Massachusetts, United States'],
+['FMI','Kalemie Airport','Kalemie,Democratic Republic of the Congo'],
+['FMM','Memmingen Airport','Memmingen,Bavaria, Germany'],
+['FMN','Four Corners Regional Airport','Farmington,New Mexico, United States'],
+['FMO','Munster Osnabruck International Airport','Munster/Osnabruck (LS),North Rhine-Westphalia, Germany'],
+['FMS','Fort Madison Municipal Airport(FAA: FSW)','Fort Madison,Iowa, United States'],
+['FMU','Florence Municipal Airport(FAA: 6S2)','Florence,Oregon, United States'],
+['FMY','Page Field','Fort Myers,Florida, United States'],
+['FNA','Lungi International Airport','Freetown,Sierra Leone'],
+['FNB','Neubrandenburg Airport','Neubrandenburg,Mecklenburg-Vorpommern, Germany'],
+['FNC','Madeira Airport','Funchal,Madeira,Portugal'],
+['FNE','Fane Airport','Fane,Papua New Guinea'],
+['FNG','Fada Ngourma Airport','Fada Ngourma,Burkina Faso'],
+['FNH','Fincha Airport','Fincha,Ethiopia'],
+['FNI','NImes-Ales-Camargue-Cevennes Airport(Garons Airport)','NImes,Languedoc-Roussillon, France'],
+['FNJ','Pyongyang Sunan International Airport','Pyongyang,North Korea'],
+['FNL','Fort Collins-Loveland Municipal Airport','Fort Collins/Loveland,Colorado, United States'],
+['FNR','Funter Bay Seaplane Base','Funter Bay,Alaska, United States'],
+['FNT','Bishop International Airport','Flint,Michigan, United States'],
+['FNU','Oristano-Fenosu Airport','Oristano,Sardinia, Italy'],
+['FOA','Foula Airfield','Foula,Scotland, United Kingdom'],
+['FOB','Fort Bragg Airport(FAA: 82CL)','Fort Bragg,California, United States'],
+['FOC','Fuzhou Changle International Airport','Fuzhou,Fujian, China'],
+['FOD','Fort Dodge Regional Airport','Fort Dodge,Iowa, United States'],
+['FOE','Topeka Regional Airport','Topeka,Kansas, United States'],
+['FOG','"Foggia ""Gino Lisa"" Airport"','Foggia,Apulia, Italy'],
+['FOK','Francis S. Gabreski Airport','Westhampton Beach,New York, United States'],
+['FOM','Foumban Nkounja Airport','Foumban,Cameroon'],
+['FON','La Fortuna Airport','La Fortuna,Costa Rica'],
+['FOO','Kornasoren Airport(Numfoor Airport)','Numfoor,Indonesia'],
+['FOR','Pinto Martins - Fortaleza International Airport','Fortaleza,Ceara, Brazil'],
+['FOS','Forrest Airport','Forrest,Western Australia, Australia'],
+['FOT','Forster (Wallis Island) Airport','Forster,New South Wales, Australia'],
+['FOU','Fougamou Airport','Fougamou,Gabon'],
+['FOY','Foya Airport','Foya,Liberia'],
+['FPO','Grand Bahama International Airport','Freeport,Grand Bahama,Bahamas'],
+['FPR','St. Lucie County International Airport','Fort Pierce,Florida, United States'],
+['FPY','Perry-Foley Airport(FAA: 40J)','Perry,Florida, United States'],
+['FRA','Frankfurt Airport','Frankfurt,Hesse, Germany'],
+['FRB','Forbes Airport','Forbes,New South Wales, Australia'],
+['FRC','Franca Airport(Ten. Lund Presotto-Franca State Airport)','Franca,Sao Paulo, Brazil'],
+['FRD','Friday Harbor Airport(FAA: FHR)','Friday Harbor,Washington, United States'],
+['FRE','Fera Airport(Fera/Maringe Airport)','Fera Island,Isabel Province,Solomon Islands'],
+['FRG','Republic Airport','Farmingdale,New York, United States'],
+['FRH','French Lick Municipal Airport','French Lick,Indiana, United States'],
+['FRI','Marshall Army Airfield','Fort Riley,Kansas, United States'],
+['FRK','Fregate Island Airport','Fregate Island,Seychelles'],
+['FRL','Forli International Airport(Luigi Ridolfi Airport)','Forli,Emilia-Romagna, Italy'],
+['FRM','Fairmont Municipal Airport','Fairmont,Minnesota, United States'],
+['FRN','Bryant Army Airport','Anchorage,Alaska, United States'],
+['FRO','Florø Airport','Florø,Norway'],
+['FRQ','Feramin Airport','Feramin,Papua New Guinea'],
+['FRR','Front Royal-Warren County Airport','Front Royal,Virginia, United States'],
+['FRS','Mundo Maya International Airport','Flores,Guatemala'],
+['FRT','Frutillar Airport','Frutillar,Chile'],
+['FRU','Manas International Airport','Bishkek,Kyrgyzstan'],
+['FRW','Francistown Airport','Francistown,Botswana'],
+['FRY','Eastern Slopes Regional Airport(FAA: IZG)','Fryeburg,Maine, United States'],
+['FRZ','Fritzlar Air Base','Fritzlar,Hesse, Germany'],
+['FSC','Figari-Sud Corse Airport','Figari,Corsica, France'],
+['FSD','Sioux Falls Regional Airport(Joe Foss Field)','Sioux Falls,South Dakota, United States'],
+['FSI','Henry Post Army Airfield(Fort Sill)','Lawton,Oklahoma, United States'],
+['FSK','Fort Scott Municipal Airport','Fort Scott,Kansas, United States'],
+['FSL','Fossil Downs Airport','Fossil Downs Station,Western Australia, Australia'],
+['FSM','Fort Smith Regional Airport','Fort Smith,Arkansas, United States'],
+['FSP','Saint-Pierre Airport','Saint-Pierre,Saint Pierre and Miquelon'],
+['FSS','RAF Kinloss','Forres,Scotland, United Kingdom'],
+['FST','Fort Stockton-Pecos County Airport','Fort Stockton,Texas, United States'],
+['FSU','Fort Sumner Municipal Airport','Fort Sumner,New Mexico, United States'],
+['FSZ','Shizuoka Airport(Mt. Fuji Shizuoka Airport)','Shizuoka,Honshu, Japan'],
+['FTA','Futuna Airport','Futuna Island,Tafea,Vanuatu'],
+['FTE','Comandante Armando Tola International Airport','El Calafate,Santa Cruz, Argentina'],
+['FTI','Fitiuta Airport(FAA: FAQ)','Fitiuta,American Samoa, United States'],
+['FTK','Godman Army Airfield','Fort Knox,Kentucky, United States'],
+['FTU','Tolanaro Airport(Marillac Airport)','Tolanaro,Madagascar'],
+['FTW','Fort Worth Meacham International Airport','Fort Worth,Texas, United States'],
+['FTX','Owando Airport','Owando,Republic of the Congo'],
+['FTY','Fulton County Airport(Charlie Brown Field)','Atlanta,Georgia, United States'],
+['FUB','Fulleborn Airport','Fulleborn,Papua New Guinea'],
+['FUE','Fuerteventura Airport','Fuerteventura,Canary Islands, Spain'],
+['FUG','Fuyang Xiguan Airport','Fuyang,Anhui, China'],
+['FUJ','Fukue Airport(Got?-Fukue Airport)','Got?,Got? Islands, Japan'],
+['FUK','Fukuoka Airport(Itazuke Air Base)','Fukuoka,Kyushu, Japan'],
+['FUL','Fullerton Municipal Airport','Fullerton,California, United States'],
+['FUM','Fuma Airport','Fuma,Papua New Guinea'],
+['FUN','Funafuti International Airport','Funafuti,Tuvalu'],
+['FUO','Foshan Shadi Airport','Foshan,Guangdong, China'],
+['FUT','Pointe Vele Airport','Futuna Island,Wallis and Futuna'],
+['FVL','Flora Valley Airport','Flora Valley,Western Australia, Australia'],
+['FVM','Fuvahmulah Airport','Fuvahmulah,Gnaviyani Atoll,Maldives'],
+['FVR','Forrest River Airport','Forrest River Mission,Western Australia, Australia'],
+['FWA','Fort Wayne International Airport','Fort Wayne,Indiana, United States'],
+['FWH','NAS Fort Worth JRB/ Carswell Field (FAA: NFW)','Fort Worth,Texas, United States'],
+['FWL','Farewell Airport','Farewell,Alaska, United States'],
+['FXE','Fort Lauderdale Executive Airport','Fort Lauderdale,Florida, United States'],
+['FXO','Cuamba Airport','Cuamba,Mozambique'],
+['FXY','Forest City Municipal Airport','Forest City,Iowa, United States'],
+['FYJ','Fuyuan Dongji Airport','Fuyuan,Heilongjiang, China'],
+['FYM','Fayetteville Municipal Airport','Fayetteville,Tennessee, United States'],
+['FYN','Fuyun Koktokay Airport','Fuyun,Xinjiang, China'],
+['FYT','Faya-Largeau Airport','Faya-Largeau,Chad'],
+['FYU','Fort Yukon Airport','Fort Yukon,Alaska, United States'],
+['FYV','Drake Field(Fayetteville Executive Airport)','Fayetteville,Arkansas, United States'],
+['FZO','Bristol Filton Airport','Bristol,England, United Kingdom'],
+['GAA','Guamal Airport','Guamal,Colombia'],
+['GAB','Gabbs Airport','Gabbs,Nevada, United States'],
+['GAC','Gracias Airport','Gracias,Honduras'],
+['GAD','Northeast Alabama Regional Airport','Gadsden,Alabama, United States'],
+['GAE','Gabes - Matmata International Airport','Gabes,Tunisia'],
+['GAF','Gafsa - Ksar International Airport','Gafsa,Tunisia'],
+['GAG','Gage Airport','Gage,Oklahoma, United States'],
+['GAH','Gayndah Airport','Gayndah,Queensland, Australia'],
+['GAI','Montgomery County Airpark','Gaithersburg,Maryland, United States'],
+['GAJ','Yamagata Airport(Junmachi Airport)','Yamagata,Honshu, Japan'],
+['GAL','Edward G. Pitka Sr. Airport','Galena,Alaska, United States'],
+['GAM','Gambell Airport','Gambell,Alaska, United States'],
+['GAN','Gan International Airport','Gan Island,Addu Atoll,Maldives'],
+['GAO','Mariana Grajales Airport','Guantanamo,Cuba'],
+['GAP','Gusap Airport','Gusap,Papua New Guinea'],
+['GAQ','Gao International Airport(Korogoussou Airport)','Gao,Mali'],
+['GAR','Garaina Airport','Garaina,Papua New Guinea'],
+['GAS','Garissa Airport','Garissa,Kenya'],
+['GAT','Gap-Tallard Airport','Gap,Provence-Alpes-Cote dAzur, France'],
+['GAU','Lokpriya Gopinath Bordoloi International Airport','Guwahati,Assam, India'],
+['GAV','Gag Island Airport','Gag Island,Indonesia'],
+['GAW','Gangaw Airport','Gangaw,Myanmar'],
+['GAX','Gamba Airport','Gamba,Gabon'],
+['GAY','Gaya Airport(Bodhgaya Airport)','Gaya,Bihar, India'],
+['GAZ','Guasopa Airport','Guasopa,Papua New Guinea'],
+['GBA','Cotswold Airport','Kemble,England, United Kingdom'],
+['GBB','Qabala International Airport','Qabala,Azerbaijan'],
+['GBC','Gasuke Airport','Gasuke,Papua New Guinea'],
+['GBD','Great Bend Municipal Airport','Great Bend,Kansas, United States'],
+['GBE','Sir Seretse Khama International Airport','Gaborone,Botswana'],
+['GBF','Negarbo Airport','Negarbo,Papua New Guinea'],
+['GBG','Galesburg Municipal Airport','Galesburg,Illinois, United States'],
+['GBH','Galbraith Lake Airport','Galbraith Lake,Alaska, United States'],
+['GBJ','Marie-Galante Airport(Les Bases)','Grand-Bourg,Marie-Galante Island,Guadeloupe'],
+['GBK','Gbangbatok Airport','Gbangbatok,Sierra Leone'],
+['GBL','South Goulburn Island Airport','Goulburn Islands,Northern Territory, Australia'],
+['GBM','Garbaharey Airport','Garbaharey,Somalia'],
+['GBP','Gamboola Airport','Gamboola,Queensland, Australia'],
+['GBR','Walter J. Koladza Airport','Great Barrington,Massachusetts, United States'],
+['GBT','Gorgan Airport','Gorgan,Iran'],
+['GBU','Khashm el Girba Airport','Khashm el Girba,Sudan'],
+['GBV','Gibb River Airport','Gibb River,Western Australia, Australia'],
+['GBW','Ginbata Airport','Ginbata,Western Australia, Australia'],
+['GBZ','Great Barrier Aerodrome','Great Barrier Island,New Zealand'],
+['GCA','Guacamayas Airport','Guacamayas,Colombia'],
+['GCC','Gillette-Campbell County Airport','Gillette,Wyoming, United States'],
+['GCD','Grand Coulee Dam Airport(FAA: 3W7)','Electric City,Washington, United States'],
+['GCH','Gachsaran Airport','Gachsaran,Iran'],
+['GCI','Guernsey Airport','Guernsey,Channel Islands, United Kingdom'],
+['GCJ','Grand Central Airport','Johannesburg,South Africa'],
+['GCK','Garden City Regional Airport','Garden City,Kansas, United States'],
+['GCM','Owen Roberts International Airport','Grand Cayman,British Overseas TerritoryofCayman Islands'],
+['GCN','Grand Canyon National Park Airport','Tusayan,Arizona, United States'],
+['GCW','Grand Canyon West Airport(FAA: 1G4)','Peach Springs,Arizona, United States'],
+['GCY','Greeneville-Greene County Municipal Airport','Greeneville,Tennessee, United States'],
+['GDA','Gounda Airport','Gounda,Central African Republic'],
+['GDC','Donaldson Center Airport(FAA: GYH)','Greenville,South Carolina, United States'],
+['GDD','Gordon Downs Airport','Gordon Downs,Western Australia, Australia'],
+['GDE','Gode Airport','Gode,Ethiopia'],
+['GDG','Magdagachi Airport','Magdagachi,Amur Oblast, Russia'],
+['GDH','Golden Horn Lodge Seaplane Base(FAA: 3Z8)','Golden Horn Lodge,Alaska, United States'],
+['GDI','Gordil Airport','Gordil,Central African Republic'],
+['GDJ','Gandajika Airport','Gandajika,Democratic Republic of the Congo'],
+['GDL','Guadalajara International Airport(Miguel Hidalgo y Costilla Intl)','Guadalajara,Jalisco, Mexico'],
+['GDM','Gardner Municipal Airport','Gardner,Massachusetts, United States'],
+['GDN','Gda?sk Lech Wa??sa Airport','Gda?sk,Poland'],
+['GDO','Guasdualito Airport(Vare Maria Airport)','Guasdualito,Venezuela'],
+['GDP','Guadalupe Airport','Guadalupe,Piaui, Brazil'],
+['GDQ','Gondar Airport(Atse Tewodros Airport)','Gondar,Ethiopia'],
+['GDT','JAGS McCartney International Airport(Grand Turk Intl)','Grand Turk Island,British Overseas Territory'],
+['GDV','Dawson Community Airport','Glendive,Montana, United States'],
+['GDW','Gladwin Zettel Memorial Airport','Gladwin,Michigan, United States'],
+['GDX','Sokol Airport','Magadan,Magadan Oblast, Russia'],
+['GDZ','Gelendzhik Airport','Gelendzhik,Krasnodar Krai, Russia'],
+['GEA','Noumea Magenta Airport','Noumea,New Caledonia'],
+['GEB','Gebe Airport','Gebe,Indonesia'],
+['GEC','Gecitkale Air Base','Gecitkale,Northern Cyprus'],
+['GED','Delaware Coastal Airport','Georgetown,Delaware, United States'],
+['GEE','George Town Aerodrome','George Town,Tasmania, Australia'],
+['GEF','Geva Airport','Liangai,Vella Lavella,Solomon Islands'],
+['GEG','Spokane International Airport','Spokane,Washington, United States'],
+['GEL','Sepe Tiaraju Airport','Santo angelo,Rio Grande do Sul, Brazil'],
+['GEM','President Obiang Nguema International Airport','Mengomeyen,Equatorial Guinea'],
+['GEO','Cheddi Jagan International Airport','Georgetown,Guyana'],
+['GER','Rafael Cabrera Mustelier Airport','Nueva Gerona,Cuba'],
+['GES','General Santos International Airport(Tambler Airport)','General Santos,Philippines'],
+['GET','Geraldton Airport','Geraldton,Western Australia, Australia'],
+['GEV','Gällivare Airport','Gällivare,Sweden'],
+['GEW','Gewoia Airport','Gewoia,Papua New Guinea'],
+['GEX','Geelong Airport','Geelong,Victoria, Australia'],
+['GEY','South Big Horn County Airport','Greybull,Wyoming, United States'],
+['GFD','Pope Field','Greenfield,Indiana, United States'],
+['GFE','Grenfell Airport','Grenfell,New South Wales, Australia'],
+['GFF','Griffith Airport','Griffith,New South Wales, Australia'],
+['GFK','Grand Forks International Airport','Grand Forks,North Dakota, United States'],
+['GFL','Floyd Bennett Memorial Airport','Glens Falls,New York, United States'],
+['GFN','Clarence Valley Regional Airport','Grafton,New South Wales, Australia'],
+['GFO','Bartica Airport','Bartica,Guyana'],
+['GFR','Granville-Mont-Saint-Michel Airport','Granville,Lower Normandy, France'],
+['GFY','Grootfontein Air Base','Grootfontein,Namibia'],
+['GGC','Lumbala Nguimbo Airport','Lumbala Nguimbo,Angola'],
+['GGD','Gregory Downs Airport','Gregory Downs,Queensland, Australia'],
+['GGE','Georgetown County Airport','Georgetown,South Carolina, United States'],
+['GGG','East Texas Regional Airport','Longview,Texas, United States'],
+['GGL','Gilgal Airport','Gilgal,Colombia'],
+['GGM','Kakamega Airport','Kakamega,Kenya'],
+['GGN','Gagnoa Airport','Gagnoa,Ivory Coast'],
+['GGO','Guiglo Airport','Guiglo,Ivory Coast'],
+['GGR','Garowe International Airport','Garowe,Somalia'],
+['GGS','Gobernador Gregores Airport','Gobernador Gregores,Santa Cruz, Argentina'],
+['GGT','Exuma International Airport','Moss Town,Great Exuma Island,Bahamas'],
+['GGW','Glasgow Airport(Wokal Field)','Glasgow,Montana, United States'],
+['GHA','Noumerat - Moufdi Zakaria Airport','Ghardaia,Algeria'],
+['GHB','Governors Harbour Airport','Governors Harbour,Eleuthera Island,Bahamas'],
+['GHC','Great Harbour Cay Airport','Great Harbour Cay,Berry Islands,Bahamas'],
+['GHE','Garachine Airport','Garachine,Panama'],
+['GHF','Giebelstadt Airport','Giebelstadt,Bavaria, Germany'],
+['GHK','Gahcho Kue Aerodrome(TC: CGK2)','Kennedy Lake,Northwest Territories, Canada'],
+['GHM','Centerville Municipal Airport','Centerville,Tennessee, United States'],
+['GHN','Guanghan Airport','Guanghan,Sichuan, China'],
+['GHT','Ghat Airport','Ghat,Libya'],
+['GHU','Gualeguaychu Airport','Gualeguaychu,Entre Rios, Argentina'],
+['GIB','Gibraltar International Airport(North Front Airport)','British Overseas TerritoryofGibraltar'],
+['GIC','Boigu Island Airport','Boigu Island,Queensland, Australia'],
+['GID','Gitega Airport','Gitega,Burundi'],
+['GIF','Winter Havens Gilbert Airport','Winter Haven,Florida, United States'],
+['GIG','Rio de Janeiro-Galeao International Airport','Rio de Janeiro, Brazil'],
+['GII','Siguiri Airport','Siguiri,Guinea'],
+['GIL','Gilgit Airport','Gilgit,Pakistan'],
+['GIM','Miele Mimbale Airport','Miele Mimbale,Gabon'],
+['GIR','Santiago Vila Airport','Girardot,Colombia'],
+['GIS','Gisborne Airport','Gisborne,New Zealand'],
+['GIT','Geita Airport','Geita,Tanzania'],
+['GIU','Sigiriya Airport','Dambulla,Sri Lanka'],
+['GIY','Giyani Airport','Giyani,South Africa'],
+['GIZ','Jizan Regional Airport(King Abdullah bin Abdulaziz Airport)','Jizan,Saudi Arabia'],
+['GJA','Guanaja Airport','Guanaja,Honduras'],
+['GJL','Jijel Ferhat Abbas Airport','Jijel,Algeria'],
+['GJM','Guajara-Mirim Airport','Guajara-Mirim,Rondonia, Brazil'],
+['GJR','Gjögur Airport','Gjögur,Iceland'],
+['GJT','Grand Junction Regional Airport(Walker Field)','Grand Junction,Colorado, United States'],
+['GKA','Goroka Airport','Goroka,Papua New Guinea'],
+['GKD','Gökceada Airport','Gökceada,Turkey'],
+['GKE','NATO Air Base Geilenkirchen','Geilenkirchen,North Rhine-Westphalia, Germany'],
+['GKH','Palungtar Airport','Gorkha,Nepal'],
+['GKK','Kooddoo Airport','Kooddoo,Gaafu Alif Atoll,Maldives'],
+['GKL','Great Keppel Island Airport','Great Keppel Island,Queensland, Australia'],
+['GKN','Gulkana Airport','Gulkana,Alaska, United States'],
+['GKO','Kongo Boumba Airport','Kongo Boumba,Gabon'],
+['GKT','Gatlinburg-Pigeon Forge Airport','Sevierville,Tennessee, United States'],
+['GLA','Glasgow Airport','Glasgow,Scotland, United Kingdom'],
+['GLB','San Carlos Apache Airport(FAA: P13)','Globe,Arizona, United States'],
+['GLC','Geladi Airport','Geladi,Ethiopia'],
+['GLD','Goodland Municipal Airport(Renner Field)','Goodland,Kansas, United States'],
+['GLE','Gainesville Municipal Airport','Gainesville,Texas, United States'],
+['GLF','Golfito Airport','Golfito,Costa Rica'],
+['GLG','Glengyle Airport','Glengyle,Queensland, Australia'],
+['GLH','Mid-Delta Regional Airport','Greenville,Mississippi, United States'],
+['GLI','Glen Innes Airport','Glen Innes,New South Wales, Australia'],
+['GLK','Abdullahi Yusuf International Airport','Galkayo,Somalia'],
+['GLL','Gol Airport, Klanten','Gol,Norway'],
+['GLM','Glenormiston Airport','Glenormiston,Queensland, Australia'],
+['GLN','Guelmim Airport','Guelmim,Morocco'],
+['GLO','Gloucestershire Airport','Gloucester/Cheltenham,England, United Kingdom'],
+['GLP','Gulgubip Airport','Gulgubip,Papua New Guinea'],
+['GLR','Gaylord Regional Airport','Gaylord,Michigan, United States'],
+['GLS','Scholes International Airport at Galveston','Galveston,Texas, United States'],
+['GLT','Gladstone Airport','Gladstone,Queensland, Australia'],
+['GLU','Gelephu Airport','Gelephu,Bhutan'],
+['GLV','Golovin Airport','Golovin,Alaska, United States'],
+['GLW','Glasgow Municipal Airport','Glasgow,Kentucky, United States'],
+['GLX','Gamarmalamo Airport','Galela,Indonesia'],
+['GLY','Goldsworthy Airport','Goldsworthy,Western Australia, Australia'],
+['GLZ','Gilze-Rijen Air Base','Breda,Netherlands'],
+['GMA','Gemena Airport','Gemena,Democratic Republic of the Congo'],
+['GMB','Gambela Airport','Gambela,Ethiopia'],
+['GMC','Guerima Airport','Guerima,Colombia'],
+['GMD','Ben Slimane Airport','Ben Slimane,Morocco'],
+['GME','Gomel Airport','Gomel,Belarus'],
+['GMI','Gasmata Airport','Gasmata,Papua New Guinea'],
+['GMM','Gamboma Airport','Gamboma,Republic of the Congo'],
+['GMN','Greymouth Airport','Greymouth,New Zealand'],
+['GMO','Gombe Lawanti International Airport','Gombe,Nigeria'],
+['GMP','Gimpo International Airport','Seoul,South Korea'],
+['GMQ','Golog Dawu Airport','Golog,Qinghai, China'],
+['GMR','Totegegie Airport(Gambier Island Airport)','Mangareva,Gambier Islands,French Polynesia'],
+['GMS','Guimaraes Airport','Guimaraes,Maranhao, Brazil'],
+['GMT','Granite Mountain Air Station(FAA: GSZ)','Granite Mountain,Alaska, United States'],
+['GMU','Greenville Downtown Airport','Greenville,South Carolina, United States'],
+['GMV','Monument Valley Airport(FAA: UT25)','Monument Valley,Utah, United States'],
+['GMZ','La Gomera Airport','La Gomera/Canary Islands, Spain'],
+['GNA','Grodno Airport','Grodno,Belarus'],
+['GNB','Grenoble-Isere Airport','Grenoble,Rhone-Alpes, France'],
+['GND','Maurice Bishop International Airport','St. Georges,Grenada'],
+['GNF','Gansner Field(FAA: 2O1)','Quincy,California, United States'],
+['GNG','Gooding Municipal Airport','Gooding,Idaho, United States'],
+['GNI','Lyudao Airport(Green Island Airport)','Lyudao(Green Island),Taiwan'],
+['GNM','Guanambi Airport','Guanambi,Bahia, Brazil'],
+['GNN','Ginir Airport','Ginir,Ethiopia'],
+['GNR','Dr. Arturo Umberto Illia Airport','General Roca,Rio Negro, Argentina'],
+['GNS','Binaka Airport','Gunungsitoli,Indonesia'],
+['GNT','Grants-Milan Municipal Airport','Grants,New Mexico, United States'],
+['GNU','Goodnews Airport','Goodnews Bay,Alaska, United States'],
+['GNV','Gainesville Regional Airport','Gainesville,Florida, United States'],
+['GNY','?anl?urfa GAP Airport','?anl?urfa,Turkey'],
+['GNZ','Ghanzi Airport','Ghanzi,Botswana'],
+['GOA','Genoa Cristoforo Colombo Airport','Genoa,Liguria, Italy'],
+['GOB','Robe Airport','Goba,Ethiopia'],
+['GOC','Gora Airport','Gora,Papua New Guinea'],
+['GOE','Gonaili Airstrip','Gonaili,Papua New Guinea'],
+['GOG','Gobabis Airport','Gobabis,Namibia'],
+['GOH','Nuuk Airport','Nuuk,Greenland'],
+['GOI','Goa International Airport(Dabolim Airport)','Dabolim,Goa, India'],
+['GOJ','Nizhny Novgorod International Airport(Strigino Airport)','Nizhny Novgorod,Nizhny Novgorod Oblast, Russia'],
+['GOK','Guthrie-Edmond Regional Airport','Guthrie,Oklahoma, United States'],
+['GOL','Gold Beach Municipal Airport(FAA: 4S1)','Gold Beach,Oregon, United States'],
+['GOM','Goma International Airport','Goma,Democratic Republic of the Congo'],
+['GON','Groton-New London Airport','Groton/New London,Connecticut, United States'],
+['GOO','Goondiwindi Airport','Goondiwindi,Queensland, Australia'],
+['GOP','Gorakhpur Airport','Gorakhpur,Uttar Pradesh, India'],
+['GOQ','Golmud Airport','Golmud,Qinghai, China'],
+['GOR','Gore Airport','Gore,Ethiopia'],
+['GOS','Gosford Airport','Gosford,New South Wales, Australia'],
+['GOT','Göteborg Landvetter Airport','Gothenburg,Sweden'],
+['GOU','Garoua International Airport','Garoua, Cameroon'],
+['GOV','Gove Airport','Nhulunbuy,Northern Territory, Australia'],
+['GOZ','Gorna Oryahovitsa Airport','Gorna Oryahovitsa,Bulgaria'],
+['GPA','Araxos Airport','Patras,Greece'],
+['GPB','Tancredo Thomas de Faria Airport','Guarapuava,Parana, Brazil'],
+['GPD','Mount Gordon Airport','Mount Gordon Mine,Queensland, Australia'],
+['GPI','Guapi Airport(Juan Casiano Airport)','Guapi,Colombia'],
+['GPL','Guapiles Airport','Guapiles,Costa Rica'],
+['GPN','Garden Point Airport','Pularumpi,Northern Territory, Australia'],
+['GPO','General Pico Airport','General Pico,La Pampa, Argentina'],
+['GPS','Seymour Airport','Baltra Island,Galapagos Islands,Ecuador'],
+['GPT','Gulfport-Biloxi International Airport','Gulfport/Biloxi,Mississippi, United States'],
+['GPZ','Grand Rapids-Itasca County Airport(Gordon Newstrom Field)','Grand Rapids,Minnesota, United States'],
+['GQQ','Galion Municipal Airport','Galion,Ohio, United States'],
+['GRA','Gamarra Airport','Gamarra,Colombia'],
+['GRB','Austin Straubel International Airport','Green Bay,Wisconsin, United States'],
+['GRC','Grand Cess Airport','Grand Cess,Liberia'],
+['GRD','Greenwood County Airport','Greenwood,South Carolina, United States'],
+['GRE','Greenville Airport','Greenville,Illinois, United States'],
+['GRF','Gray Army Airfield','Tacoma,Washington, United States'],
+['GRG','Gardez Airport','Gardez,Afghanistan'],
+['GRH','Garuahi Airport','Garuahi,Papua New Guinea'],
+['GRI','Central Nebraska Regional Airport','Grand Island,Nebraska, United States'],
+['GRJ','George Airport','George,South Africa'],
+['GRK','Killeen-Fort Hood Regional Airport/Robert Gray Army Airfield','Fort Hood/Killeen,Texas, United States'],
+['GRL','Garasa Airport','Garasa,Papua New Guinea'],
+['GRM','Grand Marais/Cook County Airport(FAA: CKC)','Grand Marais,Minnesota, United States'],
+['GRN','Gordon Municipal Airport','Gordon,Nebraska, United States'],
+['GRO','Girona-Costa Brava Airport','Girona,Catalonia, Spain'],
+['GRP','Gurupi Airport','Gurupi,Tocantins, Brazil'],
+['GRQ','Groningen Airport Eelde','Groningen,Netherlands'],
+['GRR','Gerald R. Ford International Airport','Grand Rapids,Michigan, United States'],
+['GRS','Grosseto Airport','Grosseto,Tuscany, Italy'],
+['GRT','Gujrat Airport','Gujrat,Pakistan'],
+['GRU','Sao Paulo-Guarulhos International Airport','Sao Paulo, Brazil'],
+['GRV','Grozny Airport','Grozny,Chechnya, Russia'],
+['GRW','Graciosa Airport','Graciosa,Azores,Portugal'],
+['GRX','Federico Garcia Lorca Airport(Granada Jaen Airport)','Granada,Andalusia, Spain'],
+['GRY','Grimsey Airport','Grimsey,Iceland'],
+['GRZ','Graz Airport','Graz,Austria'],
+['GSA','Long Pasia Airport','Long Pasia,Sabah, Malaysia'],
+['GSB','Seymour Johnson Air Force Base','Goldsboro,North Carolina, United States'],
+['GSC','Gascoyne Junction Airport','Gascoyne Junction,Western Australia, Australia'],
+['GSE','Göteborg City Airport','Gothenburg,Sweden'],
+['GSH','Goshen Municipal Airport','Goshen,Indiana, United States'],
+['GSI','Grand-Santi Airport','Grand-Santi,French Guiana'],
+['GSJ','San Jose Airport','Puerto San Jose,Guatemala'],
+['GSL','Taltheilei Narrows Airport(TC: CFA7)','Taltheilei Narrows,Northwest Territories, Canada'],
+['GSM','Dayrestan Airport(Qeshm International Airport)','Qeshm,Iran'],
+['GSN','Mount Gunson Airport','Mount Gunson,South Australia, Australia'],
+['GSO','Piedmont Triad International Airport','Greensboro,North Carolina, United States'],
+['GSP','Greenville-Spartanburg International Airport','Greenville/Spartanburg,South Carolina, United States'],
+['GSQ','Sharq Al-Owainat Airport','Sharq Al-Owainat,Egypt'],
+['GSR','Qardho Airport','Qardho,Somalia'],
+['GSS','Sabi Sabi Airport','Sabie,South Africa'],
+['GST','Gustavus Airport','Gustavus,Alaska, United States'],
+['GSU','Azaza Airport','Gedaref,Sudan'],
+['GTA','Gatokae Aerodrome','Gatokae,Solomon Islands'],
+['GTE','Groote Eylandt Airport','Groote Eylandt,Northern Territory, Australia'],
+['GTF','Great Falls International Airport','Great Falls,Montana, United States'],
+['GTG','Grantsburg Municipal Airport','Grantsburg,Wisconsin, United States'],
+['GTI','Rugen Airport(Guttin Airfield)','Guttin,Mecklenburg-Vorpommern, Germany'],
+['GTN','Glentanner Aerodrome','Mount Cook,New Zealand'],
+['GTO','Jalaluddin Airport','Gorontalo,Indonesia'],
+['GTP','Grants Pass Airport(FAA: 3S8)','Grants Pass,Oregon, United States'],
+['GTR','Golden Triangle Regional Airport','Columbus/West Point/Starkville,Mississippi, United States'],
+['GTS','The Granites Airport','The Granites,Northern Territory, Australia'],
+['GTT','Georgetown Airport','Georgetown,Queensland, Australia'],
+['GTW','HoleSov Airport','Zlin,Czech Republic'],
+['GTY','Gettysburg Regional Airport(FAA: W05)','Gettysburg,Pennsylvania, United States'],
+['GTZ','Kirawira B Airstrip','Grumeti,Tanzania'],
+['GUA','La Aurora International Airport','Guatemala City,Guatemala'],
+['GUB','Guerrero Negro Airport','Guerrero Negro,Baja California Sur,2Mexico'],
+['GUC','Gunnison-Crested Butte Regional Airport','Gunnison,Colorado, United States'],
+['GUD','Goundam Airport','Goundam,Mali'],
+['GUE','Guriaso Airport','Guriaso,Papua New Guinea'],
+['GUF','Jack Edwards Airport(FAA: JKA)','Gulf Shores,Alabama, United States'],
+['GUG','Guari Airport','Guari,Papua New Guinea'],
+['GUH','Gunnedah Airport','Gunnedah,New South Wales, Australia'],
+['GUI','Guiria Airport','Guiria,Venezuela'],
+['GUJ','Guaratingueta Airport','Guaratingueta,Sao Paulo, Brazil'],
+['GUL','Goulburn Airport','Goulburn,New South Wales, Australia'],
+['GUM','Antonio B. Won Pat International Airport(Guam Intl)','Hagåtna,Guam'],
+['GUP','Gallup Municipal Airport','Gallup,New Mexico, United States'],
+['GUQ','Guanare Airport','Guanare,Venezuela'],
+['GUR','Gurney Airport','Alotau,Papua New Guinea'],
+['GUS','Grissom Air Reserve Base','Peru,Indiana, United States'],
+['GUT','RAF Gutersloh','Gutersloh,North Rhine-Westphalia, Germany'],
+['GUU','Grundarfjörour Airport','Grundarfjörour,Iceland'],
+['GUV','Mougulu Airport','Mougulu,Papua New Guinea'],
+['GUW','Atyrau Airport','Atyrau,Kazakhstan'],
+['GUX','Guna Airport','Guna,Madhya Pradesh, India'],
+['GUY','Guymon Municipal Airport','Guymon,Oklahoma, United States'],
+['GUZ','Guarapari Airport','Guarapari,Espirito Santo, Brazil'],
+['GVA','Geneva Airport','Geneva,Switzerland'],
+['GVE','Gordonsville Municipal Airport','Gordonsville,Virginia, United States'],
+['GVI','Green River Airport','Green River,Papua New Guinea'],
+['GVL','Lee Gilmer Memorial Airport','Gainesville,Georgia, United States'],
+['GVN','Sovetskaya Gavan Airport','Sovetskaya Gavan,Khabarovsk Krai, Russia'],
+['GVP','Greenvale Airport','Greenvale,Queensland, Australia'],
+['GVR','Coronel Altino Machado de Oliveira Airport','Governador Valadares,Minas Gerais, Brazil'],
+['GVT','Majors Airport','Greenville,Texas, United States'],
+['GVX','Gävle-Sandviken Airport','Gävle,Sweden'],
+['GWA','Gwa Airport','Gwa,Myanmar'],
+['GWD','Gwadar International Airport','Gwadar,Pakistan'],
+['GWE','Thornhill Air Base','Gweru,Zimbabwe'],
+['GWL','Rajmata Vijaya Raje Scindia Airport(Gwalior Airport)','Gwalior,Madhya Pradesh, India'],
+['GWN','Gnarowein Airport','Gnarowein,Papua New Guinea'],
+['GWO','Greenwood-Leflore Airport','Greenwood,Mississippi, United States'],
+['GWS','Glenwood Springs Municipal Airport','Glenwood Springs,Colorado, United States'],
+['GWT','Sylt Airport(Westerland Airport)','Sylt,Schleswig-Holstein, Germany'],
+['GWV','Glendale Fokker Field(FAA: WV66)','Glen Dale,West Virginia, United States'],
+['GWY','Galway Airport','Galway,Ireland'],
+['GXF','Sayun Airport','Sayun,Yemen'],
+['GXG','Negage Airport','Negage,Angola'],
+['GXH','Gannan Xiahe Airport','Xiahe,Gansu, China'],
+['GXQ','Teniente Vidal Airfield','Coyhaique,Chile'],
+['GXX','Yagoua Airport','Yagoua, Cameroon'],
+['GXY','Greeley-Weld County Airport','Greeley,Colorado, United States'],
+['GYA','Guayaramerin Airport','Guayaramerin,Bolivia'],
+['GYD','Heydar Aliyev International Airport','Baku,Azerbaijan'],
+['GYE','Jose Joaquin de Olmedo International Airport','Guayaquil,Ecuador'],
+['GYG','Magan Airport','Magan,Yakutia, Russia'],
+['GYI','Gisenyi Airport','Gisenyi, Rwanda'],
+['GYL','Argyle Airport','Argyle,Western Australia, Australia'],
+['GYM','General Jose Maria Yanez International Airport','Guaymas,Sonora, Mexico'],
+['GYN','Santa Genoveva Airport','Goiania,Goias, Brazil'],
+['GYP','Gympie Airport','Gympie,Queensland, Australia'],
+['GYR','Phoenix Goodyear Airport','Goodyear,Arizona, United States'],
+['GYS','Guangyuan Panlong Airport','Guangyuan,Sichuan, China'],
+['GYU','Guyuan Liupanshan Airport','Guyuan,Ningxia, China'],
+['GYY','Gary/Chicago International Airport','Gary,Indiana(nearChicago/IL), United States'],
+['GZA','Yasser Arafat International Airport','Gaza,Palestine'],
+['GZI','Ghazni Airport','Ghazni,Afghanistan'],
+['GZO','Nusatupe Airport','Gizo,Western Province,Solomon Islands'],
+['GZP','Gazipa?a-Alanya Airport','Gazipa?a,Turkey'],
+['GZT','Gaziantep O?uzeli International Airport','Gaziantep,Turkey'],
+['GZW','Qazvin Airport','Qazvin,Iran'],
+['HAA','Hasvik Airport','Hasvik,Norway'],
+['HAB','Marion County - Rankin Fite Airport','Hamilton,Alabama, United States'],
+['HAC','Hachijojima Airport','Hachij?-jima(Hachijojima),Izu Islands, Japan'],
+['HAD','Halmstad Airport(Halmstad City Airport)','Halmstad,Sweden'],
+['HAF','Half Moon Bay Airport','Half Moon Bay,California, United States'],
+['HAH','Prince Said Ibrahim International Airport','Moroni,Comoros'],
+['HAI','Three Rivers Municipal Airport(Dr. Haines Flying Field)','Three Rivers,Michigan, United States'],
+['HAJ','Hannover Airport','Hanover,Lower Saxony, Germany'],
+['HAK','Haikou Meilan International Airport','Haikou,Hainan, China'],
+['HAL','Halali Airport','Halali,Namibia'],
+['HAM','Hamburg Airport','Hamburg, Germany'],
+['HAN','Noi Bai International Airport','Hanoi,Vietnam'],
+['HAO','Butler County Regional Airport','Hamilton,Ohio, United States'],
+['HAQ','Hanimaadhoo International Airport','Hanimaadhoo,Haa Dhaalu Atoll,Maldives'],
+['HAR','Capital City Airport(FAA: CXY)','Harrisburg,Pennsylvania, United States'],
+['HAS','Hail Regional Airport','Hail(Hail),Saudi Arabia'],
+['HAT','Heathlands Airport','Heathlands,Queensland, Australia'],
+['HAU','Haugesund Airport, Karmøy','Haugesund,Norway'],
+['HAV','Jose Marti International Airport','Havana,Cuba'],
+['HAW','Haverfordwest Aerodrome','Haverfordwest,Wales, United Kingdom'],
+['HAZ','Hatzfeldthaven Airport','Hatzfeldthaven,Papua New Guinea'],
+['HBA','Hobart International Airport','Hobart,Tasmania, Australia'],
+['HBB','Hobbs Industrial Airpark','Hobbs,New Mexico, United States'],
+['HBD','Habi Airport','Habi,Papua New Guinea'],
+['HBE','Borg El Arab Airport','Alexandria/Borg El Arab,Egypt'],
+['HBG','Hattiesburg Bobby L. Chain Municipal Airport','Hattiesburg,Mississippi, United States'],
+['HBH','Entrance Island Seaplane Base(Hobart Bay) (FAA: 2Z1)','Entrance Island,Alaska, United States'],
+['HBK','Holbrook Municipal Airport(FAA: P14)','Holbrook,Arizona, United States'],
+['HBR','Hobart Regional Airport','Hobart,Oklahoma, United States'],
+['HBT','Hambantota Sea Plane Base','Hambantota,Sri Lanka'],
+['HBU','Bulgan Airport, Khovd','Bulgan (Khovd Province),Mongolia'],
+['HBX','Hubli Airport','Hubli/Dharwad,Karnataka, India'],
+['HCA','Big Spring McMahon-Wrinkle Airport(FAA: BPG)','Big Spring,Texas, United States'],
+['HCC','Columbia County Airport(FAA: 1B1)','Hudson,New York, United States'],
+['HCJ','Hechi Jinchengjiang Airport','Hechi,Guangxi, China'],
+['HCM','Eyl Airport','Eyl,Somalia'],
+['HCN','Hengchun Airport','Hengchun,Taiwan'],
+['HCQ','Halls Creek Airport','Halls Creek,Western Australia, Australia'],
+['HCR','Holy Cross Airport(FAA: HCA)','Holy Cross,Alaska, United States'],
+['HCW','Cheraw Municipal Airport(Lynch Bellinger Field, FAA: CQW)','Cheraw,South Carolina, United States'],
+['HDB','Heidelberg Airport','Heidelberg,Baden-Wurttemberg, Germany'],
+['HDD','Hyderabad Airport','Hyderabad,Pakistan'],
+['HDE','Brewster Field','Holdrege,Nebraska, United States'],
+['HDF','Heringsdorf Airport','Heringsdorf,Mecklenburg-Vorpommern, Germany'],
+['HDG','Handan Airport','Handan,Hebei, China'],
+['HDH','Dillingham Airfield','Mokul?ia,Hawaii, United States'],
+['HDM','Hamadan Airport','Hamadan,Iran'],
+['HDN','Yampa Valley Airport','Hayden,Colorado, United States'],
+['HDR','Havadarya Airport','Bandar Abbas,Iran'],
+['HDS','Air Force Base Hoedspruit','Hoedspruit,South Africa'],
+['HDY','Hat Yai International Airport','Hat Yai,Thailand'],
+['HEA','Herat International Airport','Herat,Afghanistan'],
+['HEB','Hinthada Airport','Hinthada,Myanmar'],
+['HED','Herendeen Bay Airport(FAA: AK33)','Herendeen Bay,Alaska, United States'],
+['HEE','Thompson-Robbins Airport','Helena-West Helena,Arkansas, United States'],
+['HEH','Heho Airport','Heho,Myanmar'],
+['HEI','Heide-Busum Airport','Heide/Busum,Schleswig-Holstein, Germany'],
+['HEK','Heihe Airport','Heihe,Heilongjiang, China'],
+['HEL','Helsinki Airport(Helsinki-Vantaa Airport)','Helsinki,Finland'],
+['HEM','Helsinki-Malmi Airport','Helsinki,Finland'],
+['HEO','Haelogo Airport','Haelogo,Papua New Guinea'],
+['HER','Heraklion International Airport(Nikos Kazantzakis Airport)','Heraklion,Greece'],
+['HES','Hermiston Municipal Airport(FAA: HRI)','Hermiston,Oregon, United States'],
+['HET','Hohhot Baita International Airport','Hohhot,Inner Mongolia, China'],
+['HEZ','Natchez-Adams County Airport(Hardy-Anders Field)','Natchez,Mississippi, United States'],
+['HFA','Haifa Airport(Uri Michaeli Airport)','Haifa,Israel'],
+['HFD','Hartford-Brainard Airport','Hartford,Connecticut, United States'],
+['HFE','Hefei Xinqiao International Airport(formerlyHefei Luogang International Airport)','Hefei,Anhui, China'],
+['HFF','Mackall Army Airfield','Hoffman,North Carolina, United States'],
+['HFN','Hornafjörour Airport','Höfn,Iceland'],
+['HFS','Hagfors Airport','Hagfors,Sweden'],
+['HFT','Hammerfest Airport','Hammerfest,Norway'],
+['HGA','Hargeisa International Airport(Egal Intl)','Hargeisa,Somalia'],
+['HGD','Hughenden Airport','Hughenden,Queensland, Australia'],
+['HGE','Higuerote Airport','Higuerote,Venezuela'],
+['HGH','Hangzhou Xiaoshan International Airport','Hangzhou,Zhejiang, China'],
+['HGI','Higlieg Airport','Higlieg,Sudan'],
+['HGL','Heligoland Airport(Dune Airport)','Heligoland,Schleswig-Holstein, Germany'],
+['HGN','Mae Hong Son Airport','Mae Hong Son,Thailand'],
+['HGO','Korhogo Airport','Korhogo,Ivory Coast'],
+['HGR','Hagerstown Regional Airport(Richard A. Henson Field)','Hagerstown,Maryland, United States'],
+['HGS','Hastings Airport','Freetown,Sierra Leone'],
+['HGU','Mount Hagen Airport','Mount Hagen,Papua New Guinea'],
+['HGZ','Hog River Airport(FAA: 2AK6)','Hogatza,Alaska, United States'],
+['HHE','JMSDF Hachinohe Air Base','Hachinohe,Honshu, Japan'],
+['HHH','Hilton Head Airport(FAA: HXD)','Hilton Head Island,South Carolina, United States'],
+['HHI','Wheeler Army Airfield','Wahiawa,Hawaii, United States'],
+['HHN','Frankfurt-Hahn Airport','Hahn,Rhineland-Palatinate, Germany'],
+['HHQ','Hua Hin Airport','Hua Hin,Thailand'],
+['HHR','Hawthorne Municipal Airport(Jack Northrop Field)','Hawthorne,California, United States'],
+['HHZ','Hikueru Airport','Hikueru Atoll,French Polynesia'],
+['HIA','Huaian Lianshui Airport','Huaian,Jiangsu, China'],
+['HIB','Range Regional Airport','Hibbing,Minnesota, United States'],
+['HID','Horn Island Airport','Horn Island,Queensland, Australia'],
+['HIE','Mount Washington Regional Airport','Whitefield,New Hampshire, United States'],
+['HIF','Hill Air Force Base','Ogden,Utah, United States'],
+['HIG','Highbury Airport','Highbury,Queensland, Australia'],
+['HII','Lake Havasu City Airport','Lake Havasu City,Arizona, United States'],
+['HIJ','Hiroshima Airport','Hiroshima,Honshu, Japan'],
+['HIL','Shilavo Airport','Shilavo,Ethiopia'],
+['HIM','Hingurakgoda Airport(Minneriya Airport)','Hingurakgoda,Sri Lanka'],
+['HIN','Sacheon Airport','Jinju,South Korea'],
+['HIO','Hillsboro Airport(Portland-Hillsboro Airport)','Hillsboro/Portland,Oregon, United States'],
+['HIP','Headingly Airport','Headingly,Queensland, Australia'],
+['HIR','Honiara International Airport','Honiara,Guadalcanal,Solomon Islands'],
+['HIT','Haivaro Airport','Haivaro,Papua New Guinea'],
+['HIW','Hiroshima-Nishi Airport','Hiroshima,Honshu, Japan'],
+['HJJ','Huaihua Zhijiang Airport','Huaihua,Hunan, China'],
+['HJR','Civil Aerodrome Khajuraho','Khajuraho,Madhya Pradesh, India'],
+['HJT','Khujirt Airport','Khujirt,Mongolia'],
+['HKA','Blytheville Municipal Airport','Blytheville,Arkansas, United States'],
+['HKB','Healy Lake Airport','Healy Lake,Alaska, United States'],
+['HKD','Hakodate Airport','Hakodate,Hokkaido, Japan'],
+['HKG','Hong Kong International Airport(Chek Lap Kok Airport)','Hong Kong'],
+['HKK','Hokitika Airport','Hokitika,New Zealand'],
+['HKN','Hoskins Airport','Kimbe,Papua New Guinea'],
+['HKS','Hawkins Field','Jackson,Mississippi, United States'],
+['HKT','Phuket International Airport','Phuket,Thailand'],
+['HKV','Haskovo Malevo Airport','Haskovo,Bulgaria'],
+['HKY','Hickory Regional Airport','Hickory,North Carolina, United States'],
+['HLA','Lanseria International Airport','Johannesburg,South Africa'],
+['HLB','Hillenbrand Industries Airport','Batesville,Indiana, United States'],
+['HLC','Hill City Municipal Airport','Hill City,Kansas, United States'],
+['HLD','Hulunbuir Hailar Airport','Hailar,Inner Mongolia, China'],
+['HLE','Saint Helena Airport(under construction)','Jamestown,British Overseas Territory'],
+['HLF','Hultsfred-Vimmerby Airport','Hultsfred/Vimmerby,Sweden'],
+['HLG','Wheeling Ohio County Airport','Wheeling,West Virginia, United States'],
+['HLH','Ulanhot Airport','Ulanhot,Inner Mongolia, China'],
+['HLI','Hollister Municipal Airport(FAA: CVH)','Hollister,California, United States'],
+['HLL','Hillside Airport','Hillside,Western Australia, Australia'],
+['HLM','Park Township Airport','Holland,Michigan, United States'],
+['HLN','Helena Regional Airport','Helena,Montana, United States'],
+['HLP','Halim Perdanakusuma International Airport','Jakarta,Indonesia'],
+['HLR','Hood Army Airfield','Fort Hood/Killeen,Texas, United States'],
+['HLS','St Helens Airport','St Helens,Tasmania, Australia'],
+['HLT','Hamilton Airport','Hamilton,Victoria, Australia'],
+['HLV','Helenvale Airport','Helenvale,Queensland, Australia'],
+['HLW','Hluhluwe Airport','Hluhluwe,South Africa'],
+['HLZ','Hamilton Airport','Hamilton,New Zealand'],
+['HMA','Khanty-Mansiysk Airport','Khanty-Mansiysk,Khanty-Mansi Autonomous Okrug, Russia'],
+['HMB','Sohag International Airport','Sohag,Egypt'],
+['HME','Oued Irara-Krim Belkacem Airport','Hassi Messaoud,Algeria'],
+['HMG','Hermannsburg Airport','Hermannsburg,Northern Territory, Australia'],
+['HMI','Hami Airport(Kumul Airport)','Hami,Xinjiang, China'],
+['HMJ','Khmelnytskyi Airport','Khmelnytsky,Ukraine'],
+['HMN','Holloman Air Force Base','Alamogordo,New Mexico, United States'],
+['HMO','General Ignacio Pesqueira Garcia International Airport','Hermosillo,Sonora, Mexico'],
+['HMR','Hamar Airport, Stafsberg','Hamar,Norway'],
+['HMT','Hemet-Ryan Airport','Hemet,California, United States'],
+['HMV','Hemavan Tärnaby Airport','Hemavan/Tärnaby,Sweden'],
+['HMY','Seosan Air Base','Seosan,South Korea'],
+['HNA','Hanamaki Airport','Hanamaki,Honshu, Japan'],
+['HNB','Huntingburg Airport','Huntingburg,Indiana, United States'],
+['HNC','Billy Mitchell Airport(FAA: HSE)','Hatteras,North Carolina, United States'],
+['HND','Haneda Airport','Tokyo,Honshu, Japan'],
+['HNH','Hoonah Airport','Hoonah,Alaska, United States'],
+['HNI','Heiweni Airport','Heiweni,Papua New Guinea'],
+['HNL','Honolulu International Airport','Honolulu,Hawaii, United States'],
+['HNM','Hana Airport','Hana,Hawaii, United States'],
+['HNN','Honinabi Airport','Honinabi,Papua New Guinea'],
+['HNS','Haines Airport','Haines,Alaska, United States'],
+['HNY','Hengyang Nanyue Airport','Hengyang,Hunan, China'],
+['HOA','Hola Airport','Hola,Kenya'],
+['HOB','Lea County Regional Airport','Hobbs,New Mexico, United States'],
+['HOC','Komako Airport','Komako,Papua New Guinea'],
+['HOD','Hodeida International Airport','Al Hudaydah(Hodeida),Yemen'],
+['HOE','Ban Huoeisay Airport','Ban Houayxay(Ban Huoeisay),Laos'],
+['HOF','Al-Ahsa International Airport','Hofuf,Saudi Arabia'],
+['HOG','Frank Pais Airport','Holguin,Cuba'],
+['HOH','Hohenems-Dornbirn Airport','Dornbirn,Austria'],
+['HOI','Hao Airport','Hao,Tuamotus,French Polynesia'],
+['HOK','Hooker Creek Airport','Lajamanu,Northern Territory, Australia'],
+['HOM','Homer Airport','Homer,Alaska, United States'],
+['HON','Huron Regional Airport','Huron,South Dakota, United States'],
+['HOO','Nhon Co Airport','Quang Duc,Vietnam'],
+['HOP','Campbell Army Airfield','Fort Campbell/Hopkinsville,Kentucky, United States'],
+['HOQ','Hof-Plauen Airport','Hof,Bavaria, Germany'],
+['HOR','Horta Airport','Horta,Azores,Portugal'],
+['HOS','Chos Malal Airport','Chos Malal,Neuquen, Argentina'],
+['HOT','Memorial Field Airport','Hot Springs,Arkansas, United States'],
+['HOU','William P. Hobby Airport','Houston,Texas, United States'],
+['HOV','Ørsta-Volda Airport, Hovden','Ørsta/Volda,Norway'],
+['HOX','Homalin Airport','Homalin,Myanmar'],
+['HOY','Hoy Island Airport','Longhope,Scotland, United Kingdom'],
+['HPA','Lifuka Island Airport(Salote Pilolevu Airport)','Lifuka,Ha?apai,Tonga'],
+['HPB','Hooper Bay Airport','Hooper Bay,Alaska, United States'],
+['HPE','Hopevale Airport','Hopevale,Queensland, Australia'],
+['HPG','Shennongjia Hongping Airport','Shennongjia,Hubei, China'],
+['HPH','Cat Bi International Airport','Haiphong,Vietnam'],
+['HPN','Westchester County Airport','White Plains,New York, United States'],
+['HPT','Hampton Municipal Airport','Hampton,Iowa, United States'],
+['HPV','Princeville Airport(FAA: HI01)','Hanalei,Hawaii, United States'],
+['HPY','Baytown Airport','Baytown,Texas, United States'],
+['HQM','Bowerman Airport','Hoquiam,Washington, United States'],
+['HRB','Harbin Taiping International Airport','Harbin,Heilongjiang, China'],
+['HRC','Zhayrem Airport','Zhayrem,Kazakhstan'],
+['HRE','Harare International Airport','Harare,Zimbabwe'],
+['HRG','Hurghada International Airport','Hurghada,Egypt'],
+['HRI','Mattala Rajapaksa International Airport','Hambantota,Sri Lanka'],
+['HRK','Kharkiv International Airport(Osnova Airport)','Kharkiv,Ukraine'],
+['HRL','Valley International Airport','Harlingen,Texas, United States'],
+['HRM','Hassi RMel Airport(Tilrempt Airport)','Hassi RMel,Algeria'],
+['HRO','Boone County Airport','Harrison,Arkansas, United States'],
+['HRR','La Herrera Airport','La Herrera,Colombia'],
+['HRS','Harrismith Airport','Harrismith,South Africa'],
+['HRT','RAF Linton-on-Ouse','Linton-on-Ouse,England, United Kingdom'],
+['HRY','Henbury Airport','Henbury,Northern Territory, Australia'],
+['HRZ','Horizontina Airport','Horizontina,Rio Grande do Sul, Brazil'],
+['HSB','Harrisburg-Raleigh Airport','Harrisburg,Illinois, United States'],
+['HSC','Shaoguan Guitou Airport','Shaoguan,Guangdong, China'],
+['HSG','Saga Airport','Saga,Kyushu, Japan'],
+['HSH','Henderson Executive Airport(FAA: HND)','Las Vegas,Nevada, United States'],
+['HSI','Hastings Municipal Airport','Hastings,Nebraska, United States'],
+['HSJ','Zhengzhou Shangjie Airport','Zhengzhou,Henan, China'],
+['HSK','Huesca-Pirineos Airport','Huesca,Aragon, Spain'],
+['HSL','Huslia Airport(FAA: HLA)','Huslia,Alaska, United States'],
+['HSM','Horsham Airport','Horsham,Victoria, Australia'],
+['HSN','Zhoushan Putuoshan Airport','Zhoushan,Zhejiang, China'],
+['HSP','Ingalls Field','Hot Springs,Virginia, United States'],
+['HSS','Hisar Airport','Hisar,Haryana, India'],
+['HST','Homestead Air Reserve Base','Homestead,Florida, United States'],
+['HSV','Huntsville International Airport(Carl T. Jones Field)','Huntsville,Alabama, United States'],
+['HSZ','Hsinchu Air Base','Hsinchu,Taiwan'],
+['HTA','Chita International Airport(Kadala Airport)','Chita,Zabaykalsky Krai, Russia'],
+['HTG','Khatanga Airport','Khatanga,Krasnoyarsk Krai, Russia'],
+['HTH','Hawthorne Industrial Airport','Hawthorne,Nevada, United States'],
+['HTI','Great Barrier Reef Airport','Hamilton Island,Queensland, Australia'],
+['HTL','Roscommon County-Blodgett Memorial Airport','Houghton Lake,Michigan, United States'],
+['HTM','Khatgal Airport','Khatgal,Mongolia'],
+['HTN','Hotan Airport','Hotan,Xinjiang, China'],
+['HTO','East Hampton Airport','East Hampton,New York, United States'],
+['HTR','Hateruma Airport','Hateruma,Yaeyama Islands, Japan'],
+['HTS','Tri-State Airport(Milton J. Ferguson Field)','Huntington,West Virginia, United States'],
+['HTT','Huatugou Airport','Huatugou,Qinghai, China'],
+['HTU','Hopetoun Airport','Hopetoun,Victoria, Australia'],
+['HTV','Huntsville Municipal Airport(Bruce Brothers Regional)','Huntsville,Texas, United States'],
+['HTW','Lawrence County Airpark','Chesapeake/Huntington (WV),Ohio, United States'],
+['HTY','Hatay Airport','Hatay,Turkey'],
+['HTZ','Hato Corozal Airport','Hato Corozal,Colombia'],
+['HUA','Redstone Army Airfield','Redstone Arsenal/Huntsville,Alabama, United States'],
+['HUB','Humbert River Airport','Humbert River,Northern Territory, Australia'],
+['HUC','Humacao Airport','Humacao,Puerto Rico, United States'],
+['HUD','Humboldt Municipal Airport(FAA: 0K7)','Humboldt,Iowa, United States'],
+['HUE','Humera Airport','Humera,Ethiopia'],
+['HUF','Terre Haute International Airport(Hulman Field)','Terre Haute,Indiana, United States'],
+['HUG','Huehuetenango Airport','Huehuetenango,Guatemala'],
+['HUH','Huahine - Fare Airport','Huahine,Society Islands,French Polynesia'],
+['HUI','Phu Bai International Airport','Hu?,Vietnam'],
+['HUJ','Stan Stamper Municipal Airport(FAA: HHW)','Hugo,Oklahoma, United States'],
+['HUK','Hukuntsi Airport','Hukuntsi,Botswana'],
+['HUL','Houlton International Airport','Houlton,Maine, United States'],
+['HUM','Houma-Terrebonne Airport','Houma,Louisiana, United States'],
+['HUN','Hualien Airport','Hualien,Taiwan'],
+['HUO','Huolinguole Huolinhe Airport','Holingol(Huolinguole),Inner Mongolia, China'],
+['HUQ','Hun Airport','Hun,Libya'],
+['HUS','Hughes Airport','Hughes,Alaska, United States'],
+['HUT','Hutchinson Municipal Airport','Hutchinson,Kansas, United States'],
+['HUU','Alferez FAP David Figueroa Fernandini Airport','Huanuco,Peru'],
+['HUV','Hudiksvall Airport','Hudiksvall,Sweden'],
+['HUW','Francisco Correa da Cruz Airport','Humaita,Amazonas, Brazil'],
+['HUX','Bahias de Huatulco International Airport','Huatulco,Oaxaca, Mexico'],
+['HUY','Humberside Airport','Humberside,England, United Kingdom'],
+['HUZ','Huizhou Pingtan Airport','Huizhou,Guangdong, China'],
+['HVA','Analalava Airport','Analalava,Madagascar'],
+['HVB','Hervey Bay Airport','Hervey Bay,Queensland, Australia'],
+['HVD','Khovd Airport','Khovd,Mongolia'],
+['HVE','Hanksville Airport','Hanksville,Utah, United States'],
+['HVG','Honningsvåg Airport, Valan','Honningsvåg,Norway'],
+['HVK','Holmavik Airport','Holmavik,Iceland'],
+['HVN','Tweed New Haven Airport','New Haven,Connecticut, United States'],
+['HVR','Havre City-County Airport','Havre,Montana, United States'],
+['HVS','Hartsville Regional Airport','Hartsville,South Carolina, United States'],
+['HWA','Hawabango Airport','Hawabango,Papua New Guinea'],
+['HWD','Hayward Executive Airport','Hayward,California, United States'],
+['HWI','Hawk Inlet Seaplane Base','Hawk Inlet,Alaska, United States'],
+['HWK','Wilpena Pound Airport','Hawker,South Australia, Australia'],
+['HWN','Hwange National Park Airport','Hwange National Park,Zimbabwe'],
+['HWO','North Perry Airport','Hollywood,Florida, United States'],
+['HXD','Delingha Airport','Delingha,Qinghai, China'],
+['HXX','Hay Airport','Hay,New South Wales, Australia'],
+['HYA','Barnstable Municipal Airport(Boardman/Polando Field)','Hyannis,Massachusetts, United States'],
+['HYC','Wycombe Air Park','High Wycombe,England, United Kingdom'],
+['HYD','Rajiv Gandhi International Airport','Hyderabad,Telangana, India'],
+['HYF','Hayfields Airport','Hayfields,Papua New Guinea'],
+['HYG','Hydaburg Seaplane Base','Hydaburg,Alaska, United States'],
+['HYL','Hollis Clark Bay Seaplane Base','Hollis,Alaska, United States'],
+['HYN','Taizhou Luqiao Airport','Taizhou,Zhejiang, China'],
+['HYR','Sawyer County Airport','Hayward,Wisconsin, United States'],
+['HYS','Hays Regional Airport','Hays,Kansas, United States'],
+['HYV','Hyvinkää Airfield','Hyvinkää,Finland'],
+['HZB','Merville-Calonne Airport','Hazebrouck,Nord-Pas-de-Calais, France'],
+['HZG','Hanzhong Chenggu Airport','Hanzhong,Shaanxi, China'],
+['HZH','Liping Airport','Liping,Guizhou, China'],
+['HZK','Husavik Airport','Husavik,Iceland'],
+['HZL','Hazleton Municipal Airport','Hazleton,Pennsylvania, United States'],
+['HZP','Fort MacKay/Horizon Airport','Fort MacKay,Alberta, Canada'],
+['HZV','Hazyview Airport','Hazyview,South Africa'],
+['IAA','Igarka Airport','Igarka,Krasnoyarsk Krai, Russia'],
+['IAB','McConnell Air Force Base','Wichita,Kansas, United States'],
+['IAD','Washington Dulles International Airport','Washington, D.C.,1United States'],
+['IAG','Niagara Falls International Airport','Niagara Falls,New York, United States'],
+['IAH','George Bush Intercontinental Airport','Houston,Texas, United States'],
+['IAM','In Amenas Airport(Zarzaitine Airport)','In Amenas,Algeria'],
+['IAN','Bob Baker Memorial Airport','Kiana,Alaska, United States'],
+['IAO','Sayak Airport(Siargao Airport)','Del Carmen,Philippines'],
+['IAQ','Bahregan Airport','Bahregan,Iran'],
+['IAR','Tunoshna Airport','Yaroslavl,Yaroslavl Oblast, Russia'],
+['IAS','Ia?i International Airport','Ia?i,Romania'],
+['IAU','Iaura Airport','Iaura,Papua New Guinea'],
+['IBA','Ibadan Airport','Ibadan,Nigeria'],
+['IBB','General Villamil Airport','Isabela Island,Galapagos Islands,Ecuador'],
+['IBE','Perales Airport','Ibague,Colombia'],
+['IBI','Iboki Airport','Iboki,Papua New Guinea'],
+['IBL','Indigo Bay Lodge Airport','Bazaruto Island,Mozambique'],
+['IBO','Ibo Island Airport','Ibo Island,Mozambique'],
+['IBP','Iberia Airport','Iberia,Peru'],
+['IBR','Ibaraki Airport','Omitama,Honshu, Japan'],
+['IBZ','Ibiza Airport','Ibiza,Balearic Islands, Spain'],
+['ICA','Icabaru Airport','Icabaru,Venezuela'],
+['ICC','Andres Miguel Salazar Marcano Airport','Coche Island,Venezuela'],
+['ICI','Cicia Airport','Cicia Island,Fiji'],
+['ICK','Majoor Henry Fernandes Airport(Nieuw Nickerie Airport)','Nieuw Nickerie,Suriname'],
+['ICL','Schenck Field','Clarinda,Iowa, United States'],
+['ICN','Incheon International Airport','Seoul,South Korea'],
+['ICO','Sicogon Airport','Sicogon,Philippines'],
+['ICS','Cascade Airport(FAA: KU70)','Cascade,Idaho, United States'],
+['ICT','Wichita Dwight D. Eisenhower National Airport','Wichita,Kansas, United States'],
+['ICY','Icy Bay Airport(FAA: 19AK)','Icy Bay,Alaska, United States'],
+['IDA','Idaho Falls Regional Airport','Idaho Falls,Idaho, United States'],
+['IDB','Idre Airport','Idre,Sweden'],
+['IDC','Chilonzuine Island Airstrip','Chilonzuine Island,Mozambique'],
+['IDF','Idiofa Airport','Idiofa,Democratic Republic of the Congo'],
+['IDG','Ida Grove Municipal Airport','Ida Grove,Iowa, United States'],
+['IDH','Idaho County Airport(FAA: GIC)','Grangeville,Idaho, United States'],
+['IDI','Indiana County-Jimmy Stewart Airport','Indiana,Pennsylvania, United States'],
+['IDK','Indulkana Airport','Indulkana,South Australia, Australia'],
+['IDN','Indagen Airport','Indagen,Papua New Guinea'],
+['IDO','Santa Isabel do Morro Airport','Santa Isabel do Morro,Tocantins, Brazil'],
+['IDP','Independence Municipal Airport','Independence,Kansas, United States'],
+['IDR','Devi Ahilyabai Holkar International Airport','Indore,Madhya Pradesh, India'],
+['IDY','Ile dYeu Aerodrome','Ile dYeu,Pays de la Loire, France'],
+['IEG','Zielona Gora Airport','Zielona Gora,Poland'],
+['IEJ','Iejima Airport','Iejima,Okinawa, Japan'],
+['IES','Riesa-Göhlis Airfield','Riesa,Saxony, Germany'],
+['IEV','Kyiv International Airport (Zhuliany)','Kiev,Ukraine'],
+['IFA','Iowa Falls Municipal Airport','Iowa Falls,Iowa, United States'],
+['IFF','Iffley Airport','Iffley,Queensland, Australia'],
+['IFH','Hesa Air Base','Shahin Shahr,Iran'],
+['IFJ','isafjörour Airport','isafjörour,Iceland'],
+['IFL','Innisfail Airport','Innisfail,Queensland, Australia'],
+['IFN','Isfahan International Airport(Shahid Beheshti Intl)','Isfahan,Iran'],
+['IFO','Ivano-Frankivsk International Airport','Ivano-Frankivsk,Ukraine'],
+['IFP','Laughlin/Bullhead International Airport','Bullhead City,Arizona, United States'],
+['IFU','Ifuru Airport','Ifuru,Raa Atoll,Maldives'],
+['IGA','Inagua Airport(Matthew Town Airport)','Inagua Islands,Bahamas'],
+['IGB','Ingeniero Jacobacci Airport(Capitan FAA H. R. Borden Airport)','Ingeniero Jacobacci,Rio Negro, Argentina'],
+['IGD','I?d?r Airport','I?d?r,Turkey'],
+['IGE','Tchongorove Airport','Iguela,Gabon'],
+['IGG','Igiugig Airport','Igiugig,Alaska, United States'],
+['IGH','Ingham Airport','Ingham,Queensland, Australia'],
+['IGL','ci?li Air Base','?zmir,Turkey'],
+['IGM','Kingman Airport','Kingman,Arizona, United States'],
+['IGN','Maria Cristina Airport(Iligan Airport)','Iligan,Philippines'],
+['IGO','Jaime Ortiz Betancur Airport','Chigorodo,Colombia'],
+['IGR','Cataratas del Iguazu International Airport','Puerto Iguazu,Misiones, Argentina'],
+['IGS','Ingolstadt Manching Airport','Ingolstadt,Bavaria, Germany'],
+['IGT','Magas Airport(Sleptsovskaya Airport)','Nazran,Ingushetia, Russia'],
+['IGU','Foz do Iguacu International Airport','Foz do Iguacu,Parana, Brazil'],
+['IHC','Inhaca Airport','Inhaca Island,Mozambique'],
+['IHN','Qishn Airport','Qishn,Yemen'],
+['IHO','Ihosy Airport','Ihosy,Madagascar'],
+['IHR','Iranshahr Airport','Iranshahr,Iran'],
+['IHU','Ihu Airport','Ihu,Papua New Guinea'],
+['IIA','Inishmaan Aerodrome','Inishmaan,Ireland'],
+['IIL','Ilam Airport','Ilam,Iran'],
+['IIS','Nissan Island Airport','Nissan Island,Papua New Guinea'],
+['IJK','Izhevsk Airport','Izhevsk,Udmurtia, Russia'],
+['IJU','Joao Batista Bos Filho Airport','Ijui,Rio Grande do Sul, Brazil'],
+['IJX','Jacksonville Municipal Airport','Jacksonville,Illinois, United States'],
+['IKA','Tehran Imam Khomeini International Airport','Tehran,Iran'],
+['IKB','Wilkes County Airport(FAA: UKF)','North Wilkesboro,North Carolina, United States'],
+['IKI','Iki Airport','Iki,Iki Island, Japan'],
+['IKK','Greater Kankakee Airport','Kankakee,Illinois, United States'],
+['IKL','Ikela Airport','Ikela,Democratic Republic of the Congo'],
+['IKO','Nikolski Air Station','Nikolski,Alaska, United States'],
+['IKP','Inkerman Airport','Inkerman,Queensland, Australia'],
+['IKS','Tiksi Airport','Tiksi,Yakutia, Russia'],
+['IKT','International Airport Irkutsk','Irkutsk,Irkutsk Oblast, Russia'],
+['ILA','Illaga Airport','Illaga,Indonesia'],
+['ILD','Lleida-Alguaire Airport','Lleida,Catalonia, Spain'],
+['ILE','Skylark Field','Killeen,Texas, United States'],
+['ILF','Ilford Airport','Ilford,Manitoba, Canada'],
+['ILG','Wilmington Airport(New Castle Airport)','Wilmington,Delaware, United States'],
+['ILH','Illesheim Army Airfield','Illesheim,Bavaria, Germany'],
+['ILI','Iliamna Airport','Iliamna,Alaska, United States'],
+['ILK','Ilaka-Est Airport(Atsinanana Airport)','Ilaka,Madagascar'],
+['ILL','Willmar Municipal Airport(John L. Rice Field)','Willmar,Minnesota, United States'],
+['ILM','Wilmington International Airport','Wilmington,North Carolina, United States'],
+['ILN','Wilmington Air Park','Wilmington,Ohio, United States'],
+['ILO','Iloilo International Airport','Iloilo,Philippines'],
+['ILP','Ile des Pins Airport','Ile des Pins,New Caledonia'],
+['ILQ','Ilo Airport','Ilo,Peru'],
+['ILR','Ilorin International Airport','Ilorin,Nigeria'],
+['ILU','Kilaguni Airport','Kilaguni,Kenya'],
+['ILX','Ileg Airport','Ileg,Papua New Guinea'],
+['ILY','Islay Airport(Glenegedale Airport)','Islay,Scotland, United Kingdom'],
+['ILZ','zilina Airport','zilina,Slovakia'],
+['IMA','Iamalele Airport','Iamalele,Papua New Guinea'],
+['IMB','Imbaimadai Airport','Imbaimadai,Guyana'],
+['IMD','Imonda Airport','Imonda,Papua New Guinea'],
+['IMF','Imphal International Airport(Tulihal Airport)','Imphal,Manipur, India'],
+['IMG','Inhaminga Airport','Inhaminga,Mozambique'],
+['IMI','Ine Airport(FAA: N20)','Ine,Arno Atoll,Marshall Islands'],
+['IMK','Simikot Airport','Simikot,Nepal'],
+['IML','Imperial Municipal Airport','Imperial,Nebraska, United States'],
+['IMM','Immokalee Regional Airport','Immokalee,Florida, United States'],
+['IMN','Imane Airport','Imane,Papua New Guinea'],
+['IMO','Zemio Airport','Zemio,Central African Republic'],
+['IMP','Imperatriz Airport(Prefeito Renato Moreira Airport)','Imperatriz,Maranhao, Brazil'],
+['IMT','Ford Airport','Iron Mountain/Kingsford,Michigan, United States'],
+['INA','Inta Airport','Inta,Komi Republic, Russia'],
+['INB','Independence Airport','Independence,Belize'],
+['INC','Yinchuan Hedong International Airport','Yinchuan,Ningxia, China'],
+['IND','Indianapolis International Airport','Indianapolis,Indiana, United States'],
+['INE','Chinde Airport','Chinde,Mozambique'],
+['INF','In Guezzam Airport','In Guezzam,Algeria'],
+['INH','Inhambane Airport','Inhambane,Mozambique'],
+['INI','NiS Constantine the Great Airport','NiS,Serbia'],
+['INJ','Injune Airport','Injune,Queensland, Australia'],
+['INK','Winkler County Airport','Wink,Texas, United States'],
+['INL','Falls International Airport','International Falls,Minnesota, United States'],
+['INM','Innamincka Airport','Innamincka,South Australia, Australia'],
+['INN','Innsbruck Airport(Kranebitten Airport)','Innsbruck,Austria'],
+['INO','Inongo Airport','Inongo,Democratic Republic of the Congo'],
+['INQ','Inisheer Aerodrome','Inisheer,Ireland'],
+['INS','Creech Air Force Base','Indian Springs,Nevada, United States'],
+['INT','Smith Reynolds Airport','Winston-Salem,North Carolina, United States'],
+['INU','Nauru International Airport','Yaren,Nauru'],
+['INV','Inverness Airport','Inverness,Scotland, United Kingdom'],
+['INW','Winslow-Lindbergh Regional Airport','Winslow,Arizona, United States'],
+['INX','Inanwatan Airport','Inanwatan,Indonesia'],
+['INY','Inyati Airport','Inyati,South Africa'],
+['INZ','In Salah Airport','In Salah,Algeria'],
+['IOA','Ioannina National Airport','Ioannina,Greece'],
+['IOK','Iokea Airport','Iokea,Papua New Guinea'],
+['IOM','Isle of Man Airport(Ronaldsway Airport)','Isle of Man, United Kingdom'],
+['ION','Impfondo Airport','Impfondo,Republic of the Congo'],
+['IOP','Ioma Airport','Ioma,Papua New Guinea'],
+['IOR','Inishmore Aerodrome(Kilronan Airport)','Inishmore,Ireland'],
+['IOS','Ilheus Jorge Amado Airport','Ilheus,Bahia, Brazil'],
+['IOW','Iowa City Municipal Airport','Iowa City,Iowa, United States'],
+['IPA','Ipota Airport','Erromango,Tafea,Vanuatu'],
+['IPC','Mataveri International Airport(Isla de Pascua Airport)','Easter Island,Chile'],
+['IPE','Ipil Airport','Ipil,Philippines'],
+['IPG','Ipiranga Airport','Santo Antonio do Ica,Amazonas, Brazil'],
+['IPH','Sultan Azlan Shah Airport','Ipoh,Perak, Malaysia'],
+['IPI','San Luis Airport','Ipiales,Colombia'],
+['IPL','Imperial County Airport(Boley Field)','Imperial/El Centro,California, United States'],
+['IPN','Usiminas Airport','Ipatinga,Minas Gerais, Brazil'],
+['IPT','Williamsport Regional Airport','Williamsport,Pennsylvania, United States'],
+['IPU','Ipiau Airport','Ipiau,Bahia, Brazil'],
+['IQA','Al Asad Airbase','Anbar Province,Iraq'],
+['IQM','Qiemo Airport','Qiemo,Xinjiang, China'],
+['IQN','Qingyang Airport','Qingyang,Gansu, China'],
+['IQQ','Diego Aracena International Airport','Iquique,Chile'],
+['IQT','Coronel FAP Francisco Secada Vignetta International Airport','Iquitos,Peru'],
+['IRA','Kirakira Airport(Ngorangora Airstrip)','Kirakira,Makira Island,Solomon Islands'],
+['IRB','Iraan Municipal Airport(FAA: 2F0)','Iraan,Texas, United States'],
+['IRC','Circle City Airport(FAA: CRC)','Circle,Alaska, United States'],
+['IRD','Ishwardi Airport','Ishwardi,Bangladesh'],
+['IRE','Irece Airport','Irece,Bahia, Brazil'],
+['IRG','Lockhart River Airport','Lockhart River,Queensland, Australia'],
+['IRI','Iringa Airport(Nduli Airport)','Iringa,Tanzania'],
+['IRJ','Capitan Vicente Almandos Almonacid Airport','La Rioja, Argentina'],
+['IRK','Kirksville Regional Airport','Kirksville,Missouri, United States'],
+['IRM','Igrim Airport','Igrim,Khanty-Mansi Autonomous Okrug, Russia'],
+['IRN','Iriona Airport','Iriona,Honduras'],
+['IRO','Birao Airport','Birao,Central African Republic'],
+['IRP','Matari Airport','Isiro,Democratic Republic of the Congo'],
+['IRS','Kirsch Municipal Airport','Sturgis,Michigan, United States'],
+['IRU','Iranamadu Waterdrome','Kilinochchi,Sri Lanka'],
+['IRZ','Tapuruquara Airport','Santa Isabel do Rio Negro,Amazonas, Brazil'],
+['ISA','Mount Isa Airport','Mount Isa,Queensland, Australia'],
+['ISB','Benazir Bhutto International Airport','Islamabad/Rawalpindi,Pakistan'],
+['ISC','St Marys Airport','St Marys,Isles of Scilly, United Kingdom'],
+['ISD','Iscuande Airport','Iscuande,Colombia'],
+['ISE','Isparta Suleyman Demirel Airport','Isparta,Turkey'],
+['ISG','New Ishigaki Airport','Ishigaki,Yaeyama Islands, Japan'],
+['ISI','Isisford Airport','Isisford,Queensland, Australia'],
+['ISJ','Isla Mujeres Airport','Isla Mujeres,Quintana Roo, Mexico'],
+['ISK','Ozar Airport','Nashik,Maharashtra, India'],
+['ISM','Kissimmee Gateway Airport','Orlando,Florida, United States'],
+['ISN','Sloulin Field International Airport','Williston,North Dakota, United States'],
+['ISO','Kinston Regional Jetport(Stallings Field)','Kinston,North Carolina, United States'],
+['ISP','Long Island MacArthur Airport','Islip,New York, United States'],
+['ISQ','Schoolcraft County Airport','Manistique,Michigan, United States'],
+['ISS','Wiscasset Airport(FAA: IWI)','Wiscasset,Maine, United States'],
+['IST','Istanbul Ataturk Airport','Istanbul,Turkey'],
+['ISU','Sulaimaniyah International Airport','Sulaymaniyah,Iraq'],
+['ISW','South Wood County Airport(Alexander Field)','Wisconsin Rapids,Wisconsin, United States'],
+['ITA','Itacoatiara Airport','Itacoatiara,Amazonas, Brazil'],
+['ITB','Itaituba Airport','Itaituba,Para, Brazil'],
+['ITE','Itubera Airport','Itubera,Bahia, Brazil'],
+['ITH','Ithaca Tompkins Regional Airport','Ithaca,New York, United States'],
+['ITI','Itambacuri Airport','Itambacuri,Minas Gerais, Brazil'],
+['ITK','Itokama Airport','Itokama,Papua New Guinea'],
+['ITM','Osaka International Airport(Itami Intl)','Osaka,Honshu, Japan'],
+['ITN','Itabuna Airport','Itabuna,Bahia, Brazil'],
+['ITO','Hilo International Airport','Hilo,Hawaii, United States'],
+['ITP','Itaperuna Airport','Itaperuna,Rio de Janeiro, Brazil'],
+['ITQ','Itaqui Airport','Itaqui,Rio Grande do Sul, Brazil'],
+['ITR','Itumbiara Airport','Itumbiara,Goias, Brazil'],
+['ITU','Iturup Airport','Kurilsk,Sakhalin Oblast, Russia'],
+['IUE','Niue International Airport(Hanan Intl)','Alofi,Niue'],
+['IUL','Ilu Airport','Ilu,Indonesia'],
+['IUS','Inus Airport','Inus,Papua New Guinea'],
+['IVA','Ambanja Airport','Ambanja,Madagascar'],
+['IVC','Invercargill Airport','Invercargill,New Zealand'],
+['IVG','Dolac Airport','Berane,Montenegro'],
+['IVI','Viveros Island Airport','Viveros Island,Panama'],
+['IVL','Ivalo Airport','Ivalo,Finland'],
+['IVO','Chibolo Airport','Chibolo,Colombia'],
+['IVR','Inverell Airport','Inverell,New South Wales, Australia'],
+['IVW','Inverway Airport','Inverway,Northern Territory, Australia'],
+['IWA','Ivanovo Yuzhny Airport','Ivanovo,Ivanovo Oblast, Russia'],
+['IWD','Gogebic-Iron County Airport','Ironwood,Michigan, United States'],
+['IWJ','Iwami Airport(Hagi-Iwami Airport)','Masuda,Honshu, Japan'],
+['IWK','Marine Corps Air Station Iwakuni','Iwakuni,Honshu, Japan'],
+['IWO','Iwo Jima Air Base','Iwo Jima,Bonin Islands, Japan'],
+['IWS','West Houston Airport','Houston,Texas, United States'],
+['IXA','Agartala Airport(Singerbhil Airport)','Agartala,Tripura, India'],
+['IXB','Bagdogra Airport','Siliguri,West Bengal, India'],
+['IXC','Chandigarh International Airport','Chandigarh, India'],
+['IXD','Allahabad Airport(Bamrauli Air Force Base)','Allahabad,Uttar Pradesh, India'],
+['IXE','Mangalore Airport','Mangalore,Karnataka, India'],
+['IXG','Belgaum Airport','Belgaum,Karnataka, India'],
+['IXH','Kailashahar Airport','Kailashahar,Tripura, India'],
+['IXI','Lilabari Airport','North Lakhimpur,Assam, India'],
+['IXJ','Jammu Airport(Satwari Airport)','Jammu,Jammu and Kashmir, India'],
+['IXK','Keshod Airport','Keshod,Gujarat, India'],
+['IXL','Kushok Bakula Rimpochee Airport','Leh,Jammu and Kashmir, India'],
+['IXM','Madurai Airport','Madurai,Tamil Nadu, India'],
+['IXN','Khowai Airport','Khowai,Tripura, India'],
+['IXP','Pathankot Airport','Pathankot,Punjab, India'],
+['IXQ','Kamalpur Airport','Kamalpur,Tripura, India'],
+['IXR','Birsa Munda Airport','Ranchi,Jharkhand, India'],
+['IXS','Silchar Airport(Kumbhirgram Air Force Base)','Silchar,Assam, India'],
+['IXT','Pasighat Airport','Pasighat,Arunachal Pradesh, India'],
+['IXU','Aurangabad Airport(Chikkalthana Airport)','Aurangabad,Maharashtra, India'],
+['IXV','Along Airport','Along(Aalo),Arunachal Pradesh, India'],
+['IXW','Sonari Airport','Jamshedpur,Jharkhand, India'],
+['IXY','Kandla Airport(Gandhidham Airport)','Kandla/Gandhidham,Gujarat, India'],
+['IXZ','Veer Savarkar International Airport(Port Blair Airport)','Port Blair,Andaman and Nicobar Islands, India'],
+['IYK','Inyokern Airport','Inyokern,California, United States'],
+['IZA','Presidente Itamar Franco Airport(Zona da Mata Regional Airport)','Juiz de Fora,Minas Gerais, Brazil'],
+['IZM','metropolitan area2','?zmir,Turkey'],
+['IZO','Izumo Airport','Izumo,Honshu, Japan'],
+['IZT','Ixtepec Airport','Ixtepec,Oaxaca,Mexico'],
+['JAA','Jalalabad Airport','Jalalabad,Afghanistan'],
+['JAB','Jabiru Airport','Jabiru,Northern Territory, Australia'],
+['JAC','Jackson Hole Airport','Jackson,Wyoming, United States'],
+['JAD','Jandakot Airport','Perth,Western Australia, Australia'],
+['JAE','Shumba Airport','Jaen,Peru'],
+['JAF','Jaffna Airport','Jaffna,Sri Lanka'],
+['JAG','PAF Base Shahbaz','Jacobabad,Pakistan'],
+['JAI','Jaipur International Airport','Jaipur,Rajasthan, India'],
+['JAK','Jacmel Airport','Jacmel,Haiti'],
+['JAL','El Lencero Airport','Xalapa(Jalapa),Veracruz, Mexico'],
+['JAM','Bezmer Air Base','Yambol,Bulgaria'],
+['JAN','Jackson-Evers International Airport','Jackson,Mississippi, United States'],
+['JAP','Chacarita Airport','Puntarenas,Costa Rica'],
+['JAQ','Jacquinot Bay Airport','Jacquinot Bay,Papua New Guinea'],
+['JAR','Jahrom Airport','Jahrom,Iran'],
+['JAS','Jasper County Airport(Bell Field)','Jasper,Texas, United States'],
+['JAT','Jabot Airport','Jabat Island,Marshall Islands'],
+['JAU','Francisco Carle Airport','Jauja,Peru'],
+['JAV','Ilulissat Airport','Ilulissat,Greenland'],
+['JAX','Jacksonville International Airport','Jacksonville,Florida, United States'],
+['JBB','Notohadinegoro Airport','Jember,Indonesia'],
+['JBQ','La Isabela International Airport(Dr. Joaquin Balaguer Intl)','La Isabela,Dominican Republic'],
+['JBR','Jonesboro Municipal Airport','Jonesboro,Arkansas, United States'],
+['JBT','Bethel Seaplane Base(FAA: Z59)','Bethel,Alaska, United States'],
+['JCB','Santa Terezinha Municipal Airport','Joacaba,Santa Catarina, Brazil'],
+['JCH','Qasigiannguit Heliport','Qasigiannguit,Greenland'],
+['JCI','New Century AirCenter(FAA: IXD)','Olathe,Kansas, United States'],
+['JCK','Julia Creek Airport','Julia Creek,Queensland, Australia'],
+['JCM','Jacobina Airport','Jacobina,Bahia, Brazil'],
+['JCR','Jacareacanga Airport','Jacareacanga,Para, Brazil'],
+['JCT','Kimble County Airport','Junction,Texas, United States'],
+['JCY','LBJ Ranch Airport(FAA: 0TE7)','Johnson City,Texas, United States'],
+['JDA','Grant County Regional Airport(Ogilvie Field) (FAA: GCD)','John Day,Oregon, United States'],
+['JDF','Francisco alvares de Assis Airport','Juiz de Fora,Minas Gerais, Brazil'],
+['JDG','Jeongseok Airport','Seogwipo,South Korea'],
+['JDH','Jodhpur Airport','Jodhpur,Rajasthan, India'],
+['JDN','Jordan Airport','Jordan,Montana, United States'],
+['JDO','Juazeiro do Norte Airport','Juazeiro do Norte,Ceara, Brazil'],
+['JDR','Prefeito Octavio de Almeida Neves Airport','Sao Joao del Rei,Minas Gerais, Brazil'],
+['JDZ','Jingdezhen Luojia Airport','Jingdezhen,Jiangxi, China'],
+['JED','King Abdulaziz International Airport','Jeddah,Saudi Arabia'],
+['JEE','Jeremie Airport','Jeremie,Haiti'],
+['JEF','Jefferson City Memorial Airport','Jefferson City,Missouri, United States'],
+['JEG','Aasiaat Airport','Aasiaat,Greenland'],
+['JEJ','Jeh Airport','Jeh Island,Ailinglaplap Atoll,Marshall Islands'],
+['JEK','Jeki Airstrip','Jeki,Zambia'],
+['JEQ','Jequie Airport','Jequie,Bahia, Brazil'],
+['JER','Jersey Airport','Jersey,Channel Islands, United Kingdom'],
+['JFK','John F. Kennedy International Airport','New York City,New York, United States'],
+['JFN','Northeast Ohio Regional Airport(FAA: HZY)','Ashtabula,Ohio, United States'],
+['JFR','Paamiut Airport','Paamiut,Greenland'],
+['JGA','Jamnagar Airport(Govardhanpur Airport)','Jamnagar,Gujarat, India'],
+['JGB','Jagdalpur Airport','Jagdalpur,Chhattisgarh, India'],
+['JGD','Jiagedaqi Airport','Jiagedaqi,Heilongjiang, China'],
+['JGN','Jiayuguan Airport','Jiayuguan,Gansu, China'],
+['JGS','Jinggangshan Airport','Jian,Jiangxi, China'],
+['JHB','Senai International Airport','Johor Bahru,Johor, Malaysia'],
+['JHG','Xishuangbanna Gasa Airport','Jinghong,Yunnan, China'],
+['JHL','Fort MacKay/Albian Aerodrome(TC: CAL4)','Fort MacKay,Alberta, Canada'],
+['JHM','Kapalua Airport','Kapalua,Hawaii, United States'],
+['JHS','Sisimiut Airport','Sisimiut,Greenland'],
+['JHW','Chautauqua County-Jamestown Airport','Jamestown,New York, United States'],
+['JIA','Juina Airport','Juina,Mato Grosso, Brazil'],
+['JIB','Djibouti-Ambouli International Airport','Djibouti,Djibouti'],
+['JIC','Jinchang Jinchuan Airport','Jinchang,Gansu, China'],
+['JIJ','Wilwal International Airport','Jijiga,Ethiopia'],
+['JIK','Ikaria Island National Airport','Ikaria Island,Greece'],
+['JIL','Jilin Ertaizi Airport','Jilin City,Jilin, China'],
+['JIM','Aba Segud Airport','Jimma,Ethiopia'],
+['JIN','Jinja Airport','Jinja,Uganda'],
+['JIP','Jipijapa Airport','Jipijapa,Ecuador'],
+['JIQ','Qianjiang Wulingshan Airport','Qianjiang,Chongqing, China'],
+['JIR','Jiri Airport','Jiri,Nepal'],
+['JIU','Jiujiang Lushan Airport','Jiujiang,Jiangxi, China'],
+['JIW','Jiwani Airport','Jiwani,Pakistan'],
+['JJA','Jajao Airport','Jajao,Isabel Province,Solomon Islands'],
+['JJG','Humberto Ghizzo Bortoluzzi Regional Airport','Jaguaruna,Santa Catarina, Brazil'],
+['JJI','Juanjui Airport','Juanjui,Peru'],
+['JJM','Mulika Lodge Airport','Meru National Park,Kenya'],
+['JJN','Quanzhou Jinjiang International Airport','Quanzhou,Fujian, China'],
+['JKG','Jönköping Airport','Jönköping,Sweden'],
+['JKH','Chios Island National Airport','Chios,Greece'],
+['JKL','Kalymnos Island National Airport','Kalymnos,Greece'],
+['JKR','Janakpur Airport','Janakpur,Nepal'],
+['JKT','metropolitan area2','Jakarta,Indonesia'],
+['JKV','Cherokee County Airport(FAA: JSO)','Jacksonville,Texas, United States'],
+['JLA','Quartz Creek Airport','Cooper Landing,Alaska, United States'],
+['JLN','Joplin Regional Airport','Joplin,Missouri, United States'],
+['JLR','Jabalpur Airport(Dumna Airport)','Jabalpur,Madhya Pradesh, India'],
+['JLS','Jales Airport','Jales,Sao Paulo, Brazil'],
+['JMB','Jamba Airport','Jamba,Angola'],
+['JMK','Mykonos Island National Airport','Mykonos,Greece'],
+['JMO','Jomsom Airport','Jomsom,Nepal'],
+['JMS','Jamestown Regional Airport','Jamestown,North Dakota, United States'],
+['JMU','Jiamusi Dongjiao Airport','Jiamusi,Heilongjiang, China'],
+['JNA','Januaria Airport','Januaria,Minas Gerais, Brazil'],
+['JNB','O. R. Tambo International Airport','Johannesburg,South Africa'],
+['JNG','Jining Qufu Airport','Jining,Shandong, China'],
+['JNI','Junin Airport','Junin,Buenos Aires, Argentina'],
+['JNJ','Duqm Jaaluni Airport','Duqm,Oman'],
+['JNU','Juneau International Airport','Juneau,Alaska, United States'],
+['JNX','Naxos Island National Airport','Naxos,Greece'],
+['JNZ','Jinzhou Bay Airport','Jinzhou,Liaoning, China'],
+['JOE','Joensuu Airport','Joensuu,Finland'],
+['JOG','Adisucipto International Airport','Yogyakarta,Indonesia'],
+['JOH','Port St. Johns Airport','Port St. Johns,South Africa'],
+['JOI','Joinville-Lauro Carneiro de Loyola Airport','Joinville,Santa Catarina, Brazil'],
+['JOJ','Doris Lake Aerodrome(TC: CDL7)','Doris Lake,Nunavut, Canada'],
+['JOK','Yoshkar-Ola Airport','Yoshkar-Ola,Mari El, Russia'],
+['JOL','Jolo Airport','Jolo,Philippines'],
+['JOM','Njombe Airport','Njombe,Tanzania'],
+['JOP','Josephstaal Airport','Josephstaal,Papua New Guinea'],
+['JOS','Yakubu Gowon Airport','Jos,Nigeria'],
+['JOT','Joliet Regional Airport','Joliet,Illinois, United States'],
+['JPA','Presidente Castro Pinto International Airport','Joao Pessoa,Paraiba, Brazil'],
+['JPR','Jose Coleto Airport','Ji-Parana,Rondonia, Brazil'],
+['JQA','Qaarsut Airport(Uummannaq/Qaarsut Airport)','Qaarsut,Greenland'],
+['JQE','Jaque Airport','Jaque,Panama'],
+['JRF','Kalaeloa Airport(John Rodgers Field)','Kapalua,Hawaii, United States'],
+['JRH','Jorhat Airport(Rowriah Airport)','Jorhat,Assam, India'],
+['JRN','Juruena Airport','Juruena,Mato Grosso, Brazil'],
+['JRO','Kilimanjaro International Airport','Kilimanjaro,Tanzania'],
+['JRS','Atarot Airport(Jerusalem International Airport)','Jerusalem,Israel1'],
+['JSA','Jaisalmer Airport','Jaisalmer,Rajasthan, India'],
+['JSH','Sitia Public Airport','Sitia,Greece'],
+['JSI','Skiathos Island National Airport','Skiathos,Greece'],
+['JSM','Jose de San Martin Airport','Jose de San Martin,Chubut, Argentina'],
+['JSR','Jessore Airport','Jessore,Bangladesh'],
+['JST','John Murtha Johnstown-Cambria County Airport','Johnstown,Pennsylvania, United States'],
+['JSU','Maniitsoq Airport','Maniitsoq,Greenland'],
+['JSY','Syros Island National Airport','Syros,Greece'],
+['JTC','Moussa Nakhl Tobias-Bauru/Arealva State Airport','Bauru,Sao Paulo, Brazil'],
+['JTI','Jatai Airport','Jatai,Goias, Brazil'],
+['JTR','Santorini (Thira) National Airport','Santorini(Thira),Greece'],
+['JTY','Astypalaia Island National Airport','Astypalaia,Greece'],
+['JUA','Inacio Luis do Nascimento Airport','Juara,Mato Grosso, Brazil'],
+['JUB','Juba International Airport','Juba,South Sudan'],
+['JUH','Chizhou Jiuhuashan Airport','Chizhou/Tongling,Anhui, China'],
+['JUI','Juist Airport','Juist,Lower Saxony, Germany'],
+['JUJ','Gobernador Horacio Guzman International Airport','San Salvador de Jujuy,Jujuy, Argentina'],
+['JUL','Inca Manco Capac International Airport','Juliaca,Peru'],
+['JUM','Jumla Airport','Jumla,Nepal'],
+['JUN','Jundah Airport','Jundah,Queensland, Australia'],
+['JUO','Jurado Airport','Jurado,Colombia'],
+['JUR','Jurien Bay Airport','Jurien Bay,Western Australia, Australia'],
+['JUT','Juticalpa Airport','Juticalpa,Honduras'],
+['JUV','Upernavik Airport','Upernavik,Greenland'],
+['JUZ','Quzhou Airport','Quzhou,Zhejiang, China'],
+['JVA','Ankavandra Airport','Ankavandra,Madagascar'],
+['JVI','Central Jersey Regional Airport(FAA: 47N)','Manville,New Jersey, United States'],
+['JVL','Southern Wisconsin Regional Airport','Janesville,Wisconsin, United States'],
+['JWA','Jwaneng Airport','Jwaneng,Botswana'],
+['JWN','Zanjan Airport','Zanjan,Iran'],
+['JWO','Jungwon Air Base','Chungju,South Korea'],
+['JXA','Jixi Xingkaihu Airport','Jixi,Heilongjiang, China'],
+['JXN','Jackson County Airport(Reynolds Field)','Jackson,Michigan, United States'],
+['JYR','Jiroft Airport','Jiroft,Iran'],
+['JYV','Jyväskylä Airport','Jyväskylä,Finland'],
+['JZH','Jiuzhai Huanglong Airport','Jiuzhaigou,Sichuan, China'],
+['KAA','Kasama Airport','Kasama,Zambia'],
+['KAB','Kariba Airport','Kariba,Zimbabwe'],
+['KAC','Kamishly Airport','Al-Qamishli(Kamishly),Syria'],
+['KAD','Kaduna Airport','Kaduna,Nigeria'],
+['KAE','Kake Airport(FAA: AFE)','Kake,Alaska, United States'],
+['KAF','Karato Airport','Karato,Papua New Guinea'],
+['KAG','Gangneung Air Base','Gangneung,South Korea'],
+['KAI','Kaieteur International Airport','Kaieteur,Guyana'],
+['KAJ','Kajaani Airport','Kajaani,Finland'],
+['KAK','Kar Airport','Kar,Papua New Guinea'],
+['KAL','Kaltag Airport','Kaltag,Alaska, United States'],
+['KAM','Kamaran Airport','Kamaran,Yemen'],
+['KAN','Mallam Aminu Kano International Airport','Kano,Nigeria'],
+['KAO','Kuusamo Airport','Kuusamo,Finland'],
+['KAP','Kapanga Airport','Kapanga,Democratic Republic of the Congo'],
+['KAQ','Kamulai Airport','Kamulai,Papua New Guinea'],
+['KAR','Kamarang Airport','Kamarang,Guyana'],
+['KAS','Karasburg Airport','Karasburg,Namibia'],
+['KAT','Kaitaia Airport','Kaitaia,New Zealand'],
+['KAU','Kauhava Airfield','Kauhava,Finland'],
+['KAV','Kavanayen Airport','Kavanayen,Venezuela'],
+['KAW','Kawthaung Airport','Kawthaung,Myanmar'],
+['KAX','Kalbarri Airport','Kalbarri,Western Australia, Australia'],
+['KAY','Wakaya Airport','Wakaya Island,Fiji'],
+['KAZ','Kao Airport','Kao,Indonesia'],
+['KBA','Kabala Airport','Kabala,Sierra Leone'],
+['KBB','Kirkimbie Airport','Kirkimbie Station,Northern Territory, Australia'],
+['KBC','Birch Creek Airport(FAA: Z91)','Birch Creek,Alaska, United States'],
+['KBD','Kimberley Downs Airport','Kimberley Downs,Western Australia, Australia'],
+['KBE','Bell Island Hot Springs Seaplane Base','Bell Island,Alaska, United States'],
+['KBF','Karubaga Airport','Karubaga,Indonesia'],
+['KBG','Kabalega Falls Airport','Kabalega Falls,Uganda'],
+['KBI','Kribi Airport','Kribi,Cameroon'],
+['KBJ','Kings Canyon Airport','Kings Canyon,Northern Territory, Australia'],
+['KBL','Hamid Karzai International Airport','Kabul,Afghanistan'],
+['KBM','Kabwum Airport','Kabwum,Papua New Guinea'],
+['KBN','Tunta Airport','Kabinda,Democratic Republic of the Congo'],
+['KBO','Kabalo Airport','Kabalo,Democratic Republic of the Congo'],
+['KBP','Boryspil International Airport','Kiev,Ukraine'],
+['KBQ','Kasungu Airport','Kasungu,Malawi'],
+['KBR','Sultan Ismail Petra Airport','Kota Bharu,Kelantan, Malaysia'],
+['KBS','Bo Airport','Bo,Sierra Leone'],
+['KBT','Kaben Airport','Kaben,Maloelap Atoll,Marshall Islands'],
+['KBU','Gusti Syamsir Alam Airport(Stagen Airport)','Kotabaru,Indonesia'],
+['KBV','Krabi Airport','Krabi,Thailand'],
+['KBW','Chignik Bay Seaplane Base(FAA: Z78)','Chignik,Alaska, United States'],
+['KBX','Kambuaya Airport','Ayamaru,Indonesia'],
+['KBY','Streaky Bay Airport','Streaky Bay,South Australia, Australia'],
+['KBZ','Kaikoura Aerodrome','Kaikoura,New Zealand'],
+['KCA','Kuqa Qiuci Airport','Kuqa,Xinjiang, China'],
+['KCB','Tepoe Airstrip','Kasikasima,Suriname'],
+['KCC','Coffman Cove Seaplane Base','Coffman Cove,Alaska, United States'],
+['KCD','Kamur Airport','Kamur,Indonesia'],
+['KCE','Collinsville Airport','Collinsville,Queensland, Australia'],
+['KCF','Kadanwari Airport','Kadanwari,Pakistan'],
+['KCG','Chignik Fisheries Airport(closed)','Chignik,Alaska, United States'],
+['KCH','Kuching International Airport','Kuching,Sarawak, Malaysia'],
+['KCI','Kon Airport','Kon,East Timor'],
+['KCJ','Komaio Airport','Komaio,Papua New Guinea'],
+['KCK','Kirensk Airport','Kirensk,Irkutsk Oblast, Russia'],
+['KCL','Chignik Lagoon Airport(Chignik Flats Airport)','Chignik Lagoon,Alaska, United States'],
+['KCM','Kahramanmara? Airport','Kahramanmara?,Turkey'],
+['KCN','Chernofski Harbor Seaplane Base','Chernofski Harbor,Alaska, United States'],
+['KCO','Cengiz Topel Naval Air Station','?zmit,Turkey'],
+['KCP','Kamianets-Podilskyi Airport','Kamianets-Podilskyi,Ukraine'],
+['KCQ','Chignik Lake Airport(FAA: A79)','Chignik Lake,Alaska, United States'],
+['KCR','Colorado Creek Airport','Colorado Creek,Alaska, United States'],
+['KCS','Kings Creek Station Airport','Kings Creek Station,Northern Territory, Australia'],
+['KCT','Koggala Airport','Koggala,Sri Lanka'],
+['KCU','Masindi Airport','Masindi,Uganda'],
+['KCZ','K?chi Ry?ma Airport','K?chi,Shikoku, Japan'],
+['KDA','Kolda North Airport','Kolda,Senegal'],
+['KDB','Kambalda Airport','Kambalda,Western Australia, Australia'],
+['KDC','Kandi Airport','Kandi,Benin'],
+['KDD','Khuzdar Airport','Khuzdar,Pakistan'],
+['KDE','Koroba Airport','Koroba,Papua New Guinea'],
+['KDH','Kandahar International Airport','Kandahar,Afghanistan'],
+['KDI','Haluoleo Airport','Kendari,Indonesia'],
+['KDJ','Ndjole Ville Airport','Ndjole,Gabon'],
+['KDK','Kodiak Municipal Airport','Kodiak,Alaska, United States'],
+['KDL','Kärdla Airport','Kärdla,Estonia'],
+['KDM','Kaadedhdhoo Airport','Kaadedhdhoo Island,Gaafu Dhaalu Atoll,Maldives'],
+['KDN','Ndende Airport','Ndende,Gabon'],
+['KDO','Kadhdhoo Airport','Kadhdhoo Island,Laamu Atoll,Maldives'],
+['KDP','Kandep Airport','Kandep,Papua New Guinea'],
+['KDQ','Kamberatoro Airport','Kamberatoro,Papua New Guinea'],
+['KDR','Kandrian Airport','Kandrian,Papua New Guinea'],
+['KDS','Kamaran Downs Airport','Kamaran Downs,Queensland, Australia'],
+['KDT','Kamphaeng Saen Airport','Kamphaeng Saen,Thailand'],
+['KDU','Skardu Airport','Skardu,Pakistan'],
+['KDV','Vunisea Airport','Vunisea,Kadavu Island,Fiji'],
+['KDW','Victoria Reservoir Seaplane Base','Kandy,Sri Lanka'],
+['KDX','Kadugli Airport','Kaduqli(Kadugli),Sudan'],
+['KDY','Teply Klyuch Airport','Khandyga,Yakutia, Russia'],
+['KDZ','Polgolla Reservoir Seaplane Base','Kandy,Sri Lanka'],
+['KEB','Nanwalek Airport','Nanwalek,Alaska, United States'],
+['KEC','Kasenga Airport','Kasenga,Democratic Republic of the Congo'],
+['KED','Kaedi Airport','Kaedi,Mauritania'],
+['KEE','Kelle Airport','Kelle,Republic of the Congo'],
+['KEF','Keflavik International Airport','Reykjavik,Iceland'],
+['KEG','Keglsugl Airport','Keglsugl,Papua New Guinea'],
+['KEH','Kenmore Air Harbor(FAA: S60)','Kenmore,Washington, United States'],
+['KEI','Kepi Airport','Kepi,Indonesia'],
+['KEJ','Kemerovo International Airport','Kemerovo,Kemerovo Oblast, Russia'],
+['KEK','Ekwok Airport','Ekwok,Alaska, United States'],
+['KEL','Kiel Airport','Kiel,Schleswig-Holstein, Germany'],
+['KEM','Kemi-Tornio Airport','Kemi/Tornio,Finland'],
+['KEN','Kenema Airport','Kenema,Sierra Leone'],
+['KEO','Odienne Airport','Odienne,Ivory Coast'],
+['KEP','Nepalgunj Airport','Nepalgunj,Nepal'],
+['KEQ','Kebar Airport','Kebar,Indonesia'],
+['KER','Kerman Airport','Kerman,Iran'],
+['KES','Kelsey Airport','Kelsey,Manitoba, Canada'],
+['KET','Kengtung Airport','Kengtung,Myanmar'],
+['KEU','Keekorok Airport','Keekorok,Kenya'],
+['KEV','Halli Airport','Kuorevesi,Finland'],
+['KEW','Keewaywin Airport(TC LID: CPV8)','Keewaywin,Ontario, Canada'],
+['KEX','Kanabea Airport','Kanabea,Papua New Guinea'],
+['KEY','Kericho Airport','Kericho,Kenya'],
+['KEZ','Kelani River-Peliyagoda Waterdrome','Colombo,Sri Lanka'],
+['KFA','Kiffa Airport','Kiffa,Mauritania'],
+['KFE','Fortescue Dave Forrest Airport','Cloudbreak,Western Australia, Australia'],
+['KFG','Kalkgurung Airport','Kalkarindji,Northern Territory, Australia'],
+['KFP','False Pass Airport','False Pass,Alaska, United States'],
+['KFS','Kastamonu Airport','Kastamonu,Turkey'],
+['KGA','Kananga Airport','Kananga,Democratic Republic of the Congo'],
+['KGB','Konge Airport','Konge,Papua New Guinea'],
+['KGC','Kingscote Airport','Kingscote,South Australia, Australia'],
+['KGD','Khrabrovo Airport','Kaliningrad,Kaliningrad Oblast, Russia'],
+['KGE','Kaghau Airport','Kaghau Island,Solomon Islands'],
+['KGF','Sary-Arka Airport','Karaganda,Kazakhstan'],
+['KGG','Kedougou Airport','Kedougou,Senegal'],
+['KGH','Yongai Airport','Yongai,Papua New Guinea'],
+['KGI','Kalgoorlie-Boulder Airport','Kalgoorlie,Western Australia, Australia'],
+['KGJ','Karonga Airport','Karonga,Malawi'],
+['KGK','Koliganek Airport(FAA: JZZ)','Koliganek,Alaska, United States'],
+['KGL','Kigali International Airport(Kanombe Airport)','Kigali,Rwanda'],
+['KGM','Kungim Airport','Kungim,Papua New Guinea'],
+['KGN','Kasongo Lunda Airport','Kasongo Lunda,Democratic Republic of the Congo'],
+['KGO','Kirovohrad Airport','Kropyvnytskyi,Ukraine'],
+['KGP','Kogalym International Airport','Kogalym,Khanty-Mansi Autonomous Okrug, Russia'],
+['KGR','Kulgera Airport','Kulgera,Northern Territory, Australia'],
+['KGS','Kos Island International Airport','Kos,Greece'],
+['KGT','Kangding Airport','Kangding,Sichuan, China'],
+['KGU','Keningau Airport','Keningau,Sabah, Malaysia'],
+['KGW','Kagi Airport','Kagi,Papua New Guinea'],
+['KGX','Grayling Airport','Grayling,Alaska, United States'],
+['KGY','Kingaroy Airport','Kingaroy,Queensland, Australia'],
+['KGZ','Glacier Creek Airport','Glacier Creek,Alaska, United States'],
+['KHA','Khaneh Airport(Piranshahr Airport)','Piranshahr(Khaneh),Iran'],
+['KHC','Kerch Airport(Voykovo Airport)','Kerch,Ukraine'],
+['KHD','Khorramabad Airport','Khorramabad,Iran'],
+['KHE','Kherson International Airport','Kherson,Ukraine'],
+['KHG','Kashgar Airport(Kashi Airport)','Kashgar,Xinjiang, China'],
+['KHH','Kaohsiung International Airport','Kaohsiung,Taiwan'],
+['KHI','Jinnah International Airport','Karachi,Pakistan'],
+['KHJ','Kauhajoki Airfield','Kauhajoki,Finland'],
+['KHK','Kharg Airport','Kharg Island,Iran'],
+['KHM','Khamti Airport','Khamti,Myanmar'],
+['KHN','Nanchang Changbei International Airport','Nanchang,Jiangxi, China'],
+['KHO','Khoka Moya Airport','Manyeleti,South Africa'],
+['KHR','Kharkhorin Airport','Kharkhorin,Mongolia'],
+['KHS','Khasab Airport','Khasab,Oman'],
+['KHT','Khost Airfield','Khost,Afghanistan'],
+['KHU','Kremenchuk Airport','Kremenchuk,Ukraine'],
+['KHV','Khabarovsk Novy Airport','Khabarovsk,Khabarovsk Krai, Russia'],
+['KHW','Khwai River Airport','Khwai River Lodge,Botswana'],
+['KHX','Kihihi Airstrip','Kihihi,Uganda'],
+['KHY','Khoy Airport','Khoy,Iran'],
+['KHZ','Kauehi Airport','Kauehi,Tuamotus,French Polynesia'],
+['KIA','Kaiapit Airport','Kaiapit,Papua New Guinea'],
+['KIB','Ivanof Bay Seaplane Base','Ivanof Bay,Alaska, United States'],
+['KIC','Mesa Del Rey Airport','King City,California, United States'],
+['KID','Kristianstad Airport','Kristianstad,Sweden'],
+['KIE','Aropa Airport','Kieta,Papua New Guinea'],
+['KIF','Kingfisher Lake Airport','Kingfisher Lake,Ontario, Canada'],
+['KIG','Koingnaas Airport','Koingnaas,South Africa'],
+['KIH','Kish International Airport','Kish Island,Iran'],
+['KII','Kibuli Airport','Kibuli,Papua New Guinea'],
+['KIJ','Niigata Airport','Niigata,Honshu, Japan'],
+['KIK','Kirkuk Airport','Kirkuk,Iraq'],
+['KIL','Kilwa Airport','Kilwa,Democratic Republic of the Congo'],
+['KIM','Kimberley Airport','Kimberley,South Africa'],
+['KIN','Norman Manley International Airport','Kingston,Jamaica'],
+['KIO','Kili Airport(FAA: Q51)','Kili Island,Marshall Islands'],
+['KIP','Kickapoo Downtown Airport(FAA: CWC)','Wichita Falls,Texas, United States'],
+['KIQ','Kira Airport','Kira,Papua New Guinea'],
+['KIR','Kerry Airport(Farranfore Airport)','Kerry,Ireland'],
+['KIS','Kisumu International Airport','Kisumu,Kenya'],
+['KIT','Kithira Island National Airport','Kythira,Greece'],
+['KIU','Kiunga Airport','Kiunga, Kenya'],
+['KIV','Chi?in?u International Airport','Chi?in?u,Moldova'],
+['KIW','Southdowns Airport','Kitwe,Zambia'],
+['KIX','Kansai International Airport','Osaka,Honshu, Japan'],
+['KIY','Kilwa Masoko Airport','Kilwa Masoko,Tanzania'],
+['KIZ','Kikinonda Airport','Kikinonda,Papua New Guinea'],
+['KJA','Yemelyanovo International Airport','Krasnoyarsk,Krasnoyarsk Krai, Russia'],
+['KJH','Kaili Huangping Airport','Kaili,Guizhou, China'],
+['KJI','Kanas Airport','Burqin,Xinjiang, China'],
+['KJK','Kortrijk-Wevelgem International Airport','Kortrijk,Belgium'],
+['KJP','Kerama Airport','Fukaji Island,Kerama Islands, Japan'],
+['KJU','Kamiraba Airport','Kamiraba,Papua New Guinea'],
+['KKA','Koyuk Alfred Adams Airport','Koyuk,Alaska, United States'],
+['KKB','Kitoi Bay Seaplane Base','Kitoi Bay,Alaska, United States'],
+['KKC','Khon Kaen Airport','Khon Kaen,Thailand'],
+['KKD','Kokoda Airport','Kokoda,Papua New Guinea'],
+['KKE','Kerikeri Airport(Bay of Islands Airport)','Kerikeri,New Zealand'],
+['KKG','Konawaruk Airport','Konawaruk,Guyana'],
+['KKH','Kongiganak Airport(FAA: DUY)','Kongiganak,Alaska, United States'],
+['KKI','Akiachak Airport(FAA: Z13)','Akiachak,Alaska, United States'],
+['KKJ','Kitakyushu Airport','Kitakyushu,Kyushu, Japan'],
+['KKK','Kalakaket Creek Air Station(FAA: 1KC)','Kalakaket Creek,Alaska, United States'],
+['KKL','Karluk Lake Seaplane Base','Karluk Lake,Alaska, United States'],
+['KKM','Khok Kathiam Air Force Base','Lopburi,Thailand'],
+['KKN','Kirkenes Airport, Høybuktmoen','Kirkenes,Norway'],
+['KKO','Kaikohe Aerodrome','Kaikohe,New Zealand'],
+['KKP','Koolburra Airport','Koolburra,Queensland, Australia'],
+['KKQ','Krasnoselkup Airport','Krasnoselkup,Yamalo-Nenets Autonomous Okrug, Russia'],
+['KKR','Kaukura Airport','Kaukura Atoll,Tuamotus,French Polynesia'],
+['KKT','Kentland Municipal Airport(FAA: 50I)','Kentland,Indiana, United States'],
+['KKU','Ekuk Airport','Ekuk,Alaska, United States'],
+['KKW','Kikwit Airport','Kikwit,Democratic Republic of the Congo'],
+['KKX','Kikai Airport(Kikaiga Shima Airport)','Kikai,Satsunan Islands, Japan'],
+['KKY','Kilkenny Airport','Kilkenny,Ireland'],
+['KKZ','Koh Kong Airport','Koh Kong,Cambodia'],
+['KLB','Kalabo Airport','Kalabo,Zambia'],
+['KLC','Kaolack Airport','Kaolack,Senegal'],
+['KLD','Migalovo Air Base','Tver,Tver Oblast, Russia'],
+['KLE','Kaele Airport','Kaele,Cameroon'],
+['KLF','Grabtsevo Airport','Kaluga,Kaluga Oblast, Russia'],
+['KLG','Kalskag Airport','Kalskag,Alaska, United States'],
+['KLH','Kolhapur Airport','Kolhapur,Maharashtra, India'],
+['KLI','Kotakoli Air Base','Kotakoli,Democratic Republic of the Congo'],
+['KLK','Kalokol Airport(Fergusons Gulf Airport)','Kalokol,Kenya'],
+['KLL','Levelock Airport(FAA: 9Z8)','Levelock,Alaska, United States'],
+['KLM','Kalaleh Airport','Kalaleh,Iran'],
+['KLN','Larsen Bay Airport(FAA: 2A3)','Larsen Bay,Alaska, United States'],
+['KLO','Kalibo International Airport','Kalibo,Philippines'],
+['KLQ','Keluang Airport','Keluang,Indonesia'],
+['KLR','Kalmar Airport','Kalmar,Sweden'],
+['KLS','Southwest Washington Regional Airport','Kelso,Washington, United States'],
+['KLU','Klagenfurt Airport','Klagenfurt,Austria'],
+['KLV','Karlovy Vary Airport','Karlovy Vary,Czech Republic'],
+['KLW','Klawock Airport(FAA: AKW)','Klawock,Alaska, United States'],
+['KLX','Kalamata International Airport','Kalamata,Greece'],
+['KLY','Kamisuku Airport','Kalima,Democratic Republic of the Congo'],
+['KLZ','Kleinzee Airport','Kleinzee,South Africa'],
+['KMA','Kerema Airport','Kerema,Papua New Guinea'],
+['KMB','Koinambe Airport','Koinambe,Papua New Guinea'],
+['KMC','King Khaled Military City Airport','King Khalid Military City,Saudi Arabia'],
+['KME','Kamembe Airport','Cyangugu,Rwanda'],
+['KMF','Kamina Airport','Kamina,Papua New Guinea'],
+['KMG','Kunming Changshui International Airport','Kunming,Yunnan, China'],
+['KMH','Johan Pienaar Airport','Kuruman,South Africa'],
+['KMI','Miyazaki Airport','Miyazaki,Kyushu, Japan'],
+['KMJ','Kumamoto Airport','Mashiki,Kyushu, Japan'],
+['KMK','Makabana Airport','Makabana,Republic of the Congo'],
+['KML','Kamileroi Airport','Kamileroi,Queensland, Australia'],
+['KMM','Kimam Airport','Kimam,Indonesia'],
+['KMN','Kamina Airport(Kamina Ville Airport)','Kamina,Democratic Republic of the Congo'],
+['KMO','Manokotak Airport(FAA: MBA)','Manokotak,Alaska, United States'],
+['KMP','Keetmanshoop Airport','Keetmanshoop,Namibia'],
+['KMQ','Komatsu Airport(Kanazawa Airport)','Komatsu,Honshu, Japan'],
+['KMR','Karimui Airport','Karimui,Papua New Guinea'],
+['KMS','Kumasi Airport','Kumasi,Ghana'],
+['KMT','Kampot Airport','Kampot,Cambodia'],
+['KMU','Kismayo Airport(Kisimayu Airport)','Kismayo,Somalia'],
+['KMV','Kalaymyo Airport(Kalemyo Airport)','Kalaymyo,Myanmar'],
+['KMW','Kostroma Airport','Kostroma,Kostroma Oblast, Russia'],
+['KMX','King Khalid Air Base','Khamis Mushait,Saudi Arabia'],
+['KMY','Moser Bay Seaplane Base','Moser Bay,Alaska, United States'],
+['KMZ','Kaoma Airport','Kaoma,Zambia'],
+['KNA','Vina del Mar Airport','Vina del Mar,Chile'],
+['KNB','Kanab Municipal Airport','Kanab,Utah, United States'],
+['KND','Kindu Airport','Kindu,Democratic Republic of the Congo'],
+['KNE','Kanainj Airport','Kanainj,Papua New Guinea'],
+['KNF','RAF Marham','Kings Lynn,England, United Kingdom'],
+['KNG','Kaimana Airport','Kaimana,Indonesia'],
+['KNH','Kinmen Airport(Shang Yi Airport)','Kinmen,Taiwan'],
+['KNI','Katanning Airport','Katanning,Western Australia, Australia'],
+['KNJ','Kindamba Airport','Kindamba,Republic of the Congo'],
+['KNK','Kokhanok Airport(FAA: 9K2)','Kokhanok,Alaska, United States'],
+['KNL','Kelanoa Airport','Kelanoa,Papua New Guinea'],
+['KNM','Kaniama Airport','Kaniama,Democratic Republic of the Congo'],
+['KNN','Kankan Airport(Diankana Airport)','Kankan,Guinea'],
+['KNO','Kualanamu International Airport','Medan,Indonesia'],
+['KNP','Kapanda Airport','Capanda,Angola'],
+['KNQ','Kone Airport','Kone,New Caledonia'],
+['KNR','Jam Airport','Kangan,Iran'],
+['KNS','King Island Airport','King Island,Tasmania, Australia'],
+['KNT','Kennett Memorial Airport(FAA: TKX)','Kennett,Missouri, United States'],
+['KNU','Kanpur Airport(Chakeri Air Force Station)','Kanpur,Uttar Pradesh, India'],
+['KNW','New Stuyahok Airport','New Stuyahok,Alaska, United States'],
+['KNX','East Kimberley Regional Airport','Kununurra,Western Australia, Australia'],
+['KNZ','Kenieba Airport','Kenieba,Mali'],
+['KOA','Kona International Airport at Ke?hole','Kailua/Kona,Hawaii, United States'],
+['KOC','Koumac Airport','Koumac,New Caledonia'],
+['KOD','Kotabangun Airport','Kotabangun,Indonesia'],
+['KOE','El Tari Airport','Kupang,Indonesia'],
+['KOF','Komatipoort Airport','Komatipoort,South Africa'],
+['KOG','Khong Island Airport','Khong,Laos'],
+['KOH','Koolatah Airport','Koolatah,Queensland, Australia'],
+['KOI','Kirkwall Airport','Kirkwall,Scotland, United Kingdom'],
+['KOJ','Kagoshima Airport','Kagoshima,Kyushu, Japan'],
+['KOK','Kokkola-Pietarsaari Airport','Kokkola/Jakobstad,Finland'],
+['KOL','Koumala Airport','Koumala,Central African Republic'],
+['KOM','Komo-Manda Airport','Komo-Manda,Papua New Guinea'],
+['KON','Kontum Airport','Kon Tum,Vietnam'],
+['KOO','Kongolo Airport','Kongolo,Democratic Republic of the Congo'],
+['KOP','Nakhon Phanom Airport','Nakhon Phanom,Thailand'],
+['KOQ','Köthen Airport','Köthen,Saxony-Anhalt, Germany'],
+['KOR','Kakoro Airport','Kakoro,Papua New Guinea'],
+['KOS','Sihanoukville International Airport(Kaong Kang Airport)','Sihanoukville,Cambodia'],
+['KOT','Kotlik Airport(FAA: 2A9)','Kotlik,Alaska, United States'],
+['KOU','Koulamoutou Airport','Koulamoutou,Gabon'],
+['KOV','Kokshetau Airport','Kokshetau,Kazakhstan'],
+['KOW','Ganzhou Huangjin Airport','Ganzhou,Jiangxi, China'],
+['KOX','Kokonao Airport','Kokonao,Indonesia'],
+['KOY','Olga Bay Seaplane Base','Olga Bay,Alaska, United States'],
+['KOZ','Ouzinkie Airport(FAA: 4K5)','Ouzinkie,Alaska, United States'],
+['KPA','Kopiago Airport','Kopiago,Papua New Guinea'],
+['KPB','Point Baker Seaplane Base','Point Baker,Alaska, United States'],
+['KPC','Port Clarence Coast Guard Station','Port Clarence,Alaska, United States'],
+['KPE','Yapsiei Airport','Yapsiei,Papua New Guinea'],
+['KPF','Kondubol Airport','Kondubol,Papua New Guinea'],
+['KPG','Kurupung Airport','Kurupung,Guyana'],
+['KPI','Kapit Airport','Kapit,Sarawak, Malaysia'],
+['KPL','Kapal Airport','Kapal,Papua New Guinea'],
+['KPM','Kompiam Airport','Kompiam,Papua New Guinea'],
+['KPN','Kipnuk Airport(FAA: IIK)','Kipnuk,Alaska, United States'],
+['KPO','Pohang Airport','Pohang,South Korea'],
+['KPP','Kalpowar Airport','Kalpowar,Queensland, Australia'],
+['KPR','Port Williams Seaplane Base','Port Williams,Alaska, United States'],
+['KPS','Kempsey Airport','Kempsey,New South Wales, Australia'],
+['KPT','Jackpot Airport(Hayden Field) (FAA: 06U)','Jackpot,Nevada, United States'],
+['KPV','Perryville Airport(FAA: PEV)','Perryville,Alaska, United States'],
+['KPW','Keperveyem Airport','Keperveyem,Chukotka, Russia'],
+['KPY','Port Bailey Seaplane Base','Port Bailey,Alaska, United States'],
+['KQA','Akutan Seaplane Base','Akutan,Alaska, United States'],
+['KQL','Kol Airport','Kol,Papua New Guinea'],
+['KQR','Karara Airport','Karara,Western Australia, Australia'],
+['KQT','Qurghonteppa International Airport','Qurghonteppa,Tajikistan'],
+['KRA','Kerang Airport','Kerang,Victoria, Australia'],
+['KRB','Karumba Airport','Karumba,Queensland, Australia'],
+['KRC','Depati Parbo Airport','Kerinci,Indonesia'],
+['KRD','Kurundi Airport','Kurundi Station,Northern Territory, Australia'],
+['KRE','Kirundo Airport','Kirundo,Burundi'],
+['KRF','Höga Kusten Airport(Kramfors-Sollefteå Airport)','Kramfors/Sollefteå,Sweden'],
+['KRG','Karasabai Airport','Karasabai,Guyana'],
+['KRI','Kikori Airport','Kikori,Papua New Guinea'],
+['KRJ','Karawari Airport','Karawari,Papua New Guinea'],
+['KRK','John Paul II International Airport Krakow-Balice','Krakow,Poland'],
+['KRL','Korla Airport','Korla,Xinjiang, China'],
+['KRM','Karanambo Airport','Karanambo,Guyana'],
+['KRN','Kiruna Airport','Kiruna,Sweden'],
+['KRO','Kurgan Airport','Kurgan,Kurgan Oblast, Russia'],
+['KRP','Karup Airport','Karup,Denmark'],
+['KRQ','Kramatorsk Airport','Kramatorsk,Ukraine'],
+['KRR','Krasnodar International Airport(Pashkovsky Airport)','Krasnodar,Krasnodar Krai, Russia'],
+['KRS','Kristiansand Airport, Kjevik','Kristiansand,Norway'],
+['KRT','Khartoum International Airport','Khartoum,Sudan'],
+['KRU','Kerau Airport','Kerau,Papua New Guinea'],
+['KRV','Kimwarer Airport(Kerio Valley Airport)','Kimwarer,Kenya'],
+['KRW','Turkmenbashi International Airport','Turkmenba?y,Turkmenistan'],
+['KRX','Karkar Airport','Karkar Island,Papua New Guinea'],
+['KRY','Karamay Airport','Karamay,Xinjiang, China'],
+['KRZ','Basango Mboliasa Airport','Kiri,Democratic Republic of the Congo'],
+['KSA','Kosrae International Airport(FAA: TTK)','Kosrae,Federated States of Micronesia'],
+['KSB','Kasanombe Airport','Kasanombe,Papua New Guinea'],
+['KSC','KoSice International Airport','KoSice,Slovakia'],
+['KSD','Karlstad Airport','Karlstad,Sweden'],
+['KSE','Kasese Airport','Kasese,Uganda'],
+['KSF','Kassel Airport','Kassel,Hesse, Germany'],
+['KSG','Kisengam Airport','Kisengam,Papua New Guinea'],
+['KSH','Shahid Ashrafi Esfahani Airport(Kermanshah Airport)','Kermanshah,Iran'],
+['KSI','Kissidougou Airport','Kissidougou,Guinea'],
+['KSJ','Kasos Island Public Airport','Kasos Island,Greece'],
+['KSK','Karlskoga Airport','Karlskoga,Sweden'],
+['KSL','Kassala Airport','Kassala,Sudan'],
+['KSM','St. Marys Airport','St. Marys,Alaska, United States'],
+['KSN','Kostanay Airport','Kostanay,Kazakhstan'],
+['KSO','Kastoria National Airport(Aristotelis Airport)','Kastoria,Greece'],
+['KSP','Kosipe Airport','Kosipe,Papua New Guinea'],
+['KSQ','Karshi Airport','Karshi,Uzbekistan'],
+['KSS','Sikasso Airport','Sikasso,Mali'],
+['KST','Rabak Airport','Kosti,Sudan'],
+['KSU','Kristiansund Airport, Kvernberget','Kristiansund,Norway'],
+['KSV','Springvale Airport','Springvale,Queensland, Australia'],
+['KSW','Kiryat Shmona Airport','Kiryat Shmona,Israel'],
+['KSX','Yasuru Airport','Yasuru,Papua New Guinea'],
+['KSY','Kars Harakani Airport','Kars,Turkey'],
+['KSZ','Kotlas Airport','Kotlas,Arkhangelsk Oblast, Russia'],
+['KTA','Karratha Airport','Karratha,Western Australia, Australia'],
+['KTB','Thorne Bay Seaplane Base','Thorne Bay,Alaska, United States'],
+['KTC','Katiola Airport','Katiola,Ivory Coast'],
+['KTD','Kitadaito Airport','Kitadaito,Dait? Islands, Japan'],
+['KTE','Kerteh Airport','Kerteh,Terengganu, Malaysia'],
+['KTF','Takaka Aerodrome','Takaka,New Zealand'],
+['KTG','Rahadi Osman Airport(Ketapang Airport)','Ketapang,Indonesia'],
+['KTH','Tikchik Lodge Seaplane Base(FAA: AK56)','Tikchik,Alaska, United States'],
+['KTI','Kratie Airport','Kratie,Cambodia'],
+['KTJ','Kichwa Tembo Airport','Kichwa Tembo,Kenya'],
+['KTK','Kunua Airport','Kunua,Papua New Guinea'],
+['KTL','Kitale Airport','Kitale,Kenya'],
+['KTM','Tribhuvan International Airport','Kathmandu,Nepal'],
+['KTN','Ketchikan International Airport','Ketchikan,Alaska, United States'],
+['KTO','Kato Airport','Kato,Guyana'],
+['KTP','Tinson Pen Aerodrome','Kingston,Jamaica'],
+['KTQ','Kitee Airfield','Kitee,Finland'],
+['KTR','RAAF Base Tindal','Katherine,Northern Territory, Australia'],
+['KTS','Brevig Mission Airport','Brevig Mission,Alaska, United States'],
+['KTT','Kittilä Airport','Kittilä,Finland'],
+['KTU','Kota Airport','Kota,Rajasthan, India'],
+['KTV','Kamarata Airport','Kamarata,Venezuela'],
+['KTW','Katowice International Airport','Katowice,Poland'],
+['KTX','Koutiala Airport','Koutiala,Mali'],
+['KTY','Katukurunda Airport','Kalutara,Sri Lanka'],
+['KUA','Sultan Haji Ahmad Shah Airport(RMAF Kuantan)','Kuantan,Pahang, Malaysia'],
+['KUC','Kuria Airport','Kuria,Kiribati'],
+['KUD','Kudat Airport','Kudat,Sabah, Malaysia'],
+['KUE','Kukundu Airport','Kolombangara,Western Province,Solomon Islands'],
+['KUF','Kurumoch International Airport','Samara,Samara Oblast, Russia'],
+['KUG','Kubin Airport','Moa Island,Queensland, Australia'],
+['KUH','Kushiro Airport','Kushiro,Hokkaido, Japan'],
+['KUK','Kasigluk Airport(FAA: Z09)','Kasigluk,Alaska, United States'],
+['KUL','Kuala Lumpur International Airport','Kuala Lumpur,1Malaysia'],
+['KUM','Yakushima Airport','Yakushima,?sumi Islands, Japan'],
+['KUN','Kaunas International Airport','Kaunas,Lithuania'],
+['KUO','Kuopio Airport','Kuopio,Finland'],
+['KUP','Kupiano Airport','Kupiano,Papua New Guinea'],
+['KUQ','Kuri Airport','Kuri,Papua New Guinea'],
+['KUR','Razer Airport','Koran va Monjan(Kiran wa Munjan),Afghanistan'],
+['KUS','Kulusuk Airport','Kulusuk,Greenland'],
+['KUT','David the Builder Kutaisi International Airport','Kutaisi,Georgia'],
+['KUU','Bhuntar Airport(Kullu Manali Airport)','Kullu,Himachal Pradesh, India'],
+['KUV','Gunsan Airport','Gunsan,South Korea'],
+['KUX','Kuyol Airport','Kuyol,Papua New Guinea'],
+['KUY','Kamusi Airport','Kamusi,Papua New Guinea'],
+['KVA','Kavala International Airport(Alexander the Great Airport)','Kavala,Greece'],
+['KVB','Skövde Airport','Skövde,Sweden'],
+['KVC','King Cove Airport','King Cove,Alaska, United States'],
+['KVD','Ganja International Airport','Ganja,Azerbaijan'],
+['KVE','Kitava Island Airport','Kitava Island,Papua New Guinea'],
+['KVG','Kavieng Airport','Kavieng,Papua New Guinea'],
+['KVK','Kirovsk-Apatity Airport(Khibiny Airport)','Kirovsk/Apatity,Murmansk Oblast, Russia'],
+['KVL','Kivalina Airport','Kivalina,Alaska, United States'],
+['KVM','Markovo Airport','Markovo,Chukotka, Russia'],
+['KVR','Kavalerovo Airport','Kavalerovo,Primorsky Krai, Russia'],
+['KVU','Korolevu Seaplane Base','Korolevu,Fiji'],
+['KVX','Pobedilovo Airport','Kirov,Kirov Oblast, Russia'],
+['KWA','Bucholz Army Airfield','Kwajalein,Marshall Islands'],
+['KWB','Dewadaru Airport','Karimun Java,Indonesia'],
+['KWD','Kavadja Airport','Kavadja,Central African Republic'],
+['KWE','Guiyang Longdongbao International Airport','Guiyang,Guizhou, China'],
+['KWF','Waterfall Seaplane Base','Waterfall,Alaska, United States'],
+['KWG','Kryvyi Rih International Airport','Kryvyi Rih(Krivoi Rog),Ukraine'],
+['KWH','Khwahan Airport','Khwahan,Afghanistan'],
+['KWI','Kuwait International Airport','Kuwait City,Kuwait'],
+['KWJ','Gwangju Airport','Gwangju(Kwangju),South Korea'],
+['KWK','Kwigillingok Airport(FAA: GGV)','Kwigillingok,Alaska, United States'],
+['KWL','Guilin Liangjiang International Airport','Guilin,Guangxi, China'],
+['KWM','Kowanyama Airport','Kowanyama,Queensland, Australia'],
+['KWN','Quinhagak Airport(FAA: AQH)','Quinhagak,Alaska, United States'],
+['KWO','Kawito Airport','Kawito,Papua New Guinea'],
+['KWP','West Point Village Seaplane Base','West Point,Alaska, United States'],
+['KWR','Kwai Harbour Airport','Kwai Harbour,Solomon Islands'],
+['KWS','Kwailabesi Airport','Kwailabesi,Solomon Islands'],
+['KWT','Kwethluk Airport','Kwethluk,Alaska, United States'],
+['KWV','Kurwina Airport','Kurwina,Papua New Guinea'],
+['KWX','Kiwai Island Airport','Kiwai Island,Papua New Guinea'],
+['KWY','Kiwayu Airport','Kiwayu,Kenya'],
+['KWZ','Kolwezi Airport','Kolwezi,Democratic Republic of the Congo'],
+['KXA','Kasaan Seaplane Base','Kasaan,Alaska, United States'],
+['KXD','Kondinskoye Airport','Kondinskoye,Khanty-Mansi Autonomous Okrug, Russia'],
+['KXE','Klerksdorp Airport(P.C. Pelser Airport)','Klerksdorp,South Africa'],
+['KXF','Koro Airport','Koro Island,Fiji'],
+['KXK','Komsomolsk-on-Amur Airport','Komsomolsk-on-Amur,Khabarovsk Krai, Russia'],
+['KXR','Karoola Airport','Karoola,Papua New Guinea'],
+['KXU','Katiu Airport','Katiu,Tuamotus,French Polynesia'],
+['KYA','Konya Airport','Konya,Turkey'],
+['KYD','Lanyu Airport','Orchid Island,Taiwan'],
+['KYE','Rene Mouawad Air Base(Kleyate Airport)','Tripoli,Lebanon'],
+['KYF','Yeelirrie Airport','Yeelirrie,Western Australia, Australia'],
+['KYI','Yalata Airport','Yalata Mission,South Australia, Australia'],
+['KYK','Karluk Airport','Karluk,Alaska, United States'],
+['KYO','Tampa North Aero Park(FAA: X39)','Tampa,Florida, United States'],
+['KYP','Kyaukpyu Airport','Kyaukpyu,Myanmar'],
+['KYS','Kayes Airport(Dag-Dag Airport)','Kayes,Mali'],
+['KYT','Kyauktu Airport','Kyauktu,Myanmar'],
+['KYU','Koyukuk Airport','Koyukuk,Alaska, United States'],
+['KYX','Yalumet Airport','Yalumet,Papua New Guinea'],
+['KYZ','Kyzyl Airport','Kyzyl,Tuva, Russia'],
+['KZB','Zachar Bay Seaplane Base','Zachar Bay,Alaska, United States'],
+['KZC','Kampong Chhnang Airport','Kampong Chhnang,Cambodia'],
+['KZD','Krakor Airport','Krakor,Cambodia'],
+['KZF','Kaintiba Airport','Kaintiba,Papua New Guinea'],
+['KZG','Kitzingen Airport','Kitzingen,Bavaria, Germany'],
+['KZI','Kozani National Airport(Filippos Airport)','Kozani,Greece'],
+['KZN','Kazan International Airport','Kazan,Tatarstan, Russia'],
+['KZO','Kyzylorda Airport','Kyzylorda,Kazakhstan'],
+['KZR','Zafer Airport','Kutahya,Turkey'],
+['KZS','Kastellorizo Island Public Airport','Kastellorizo,Greece'],
+['LAA','Lamar Municipal Airport','Lamar,Colorado, United States'],
+['LAB','Lab Lab Airport','Lab Lab,Papua New Guinea'],
+['LAC','Layang-Layang Airport(Swallow Reef Airport)','Layang-Layang Island,Sabah, Malaysia'],
+['LAD','Quatro de Fevereiro Airport','Luanda,Angola'],
+['LAE','Lae Nadzab Airport','Lae,Papua New Guinea'],
+['LAF','Purdue University Airport','Lafayette,Indiana, United States'],
+['LAH','Oesman Sadik Airport','Labuha,Indonesia'],
+['LAI','Lannion - Cote de Granit Airport','Lannion,Brittany, France'],
+['LAJ','Antonio Correia Pinto de Macedo Airport','Lages,Santa Catarina, Brazil'],
+['LAK','Aklavik/Freddie Carmichael Airport','Aklavik,Northwest Territories, Canada'],
+['LAL','Lakeland Linder Regional Airport','Lakeland,Florida, United States'],
+['LAM','Los Alamos County Airport','Los Alamos,New Mexico, United States'],
+['LAN','Capital Region International Airport','Lansing,Michigan, United States'],
+['LAO','Laoag International Airport','Laoag,Philippines'],
+['LAP','Manuel Marquez de Leon International Airport','La Paz,Baja California Sur, Mexico'],
+['LAQ','Al Abraq International Airport','Bayda,Libya'],
+['LAR','Laramie Regional Airport','Laramie,Wyoming, United States'],
+['LAS','McCarran International Airport','Las Vegas,Nevada, United States'],
+['LAU','Manda Airport','Lamu,Kenya'],
+['LAW','Lawton-Fort Sill Regional Airport','Lawton,Oklahoma, United States'],
+['LAX','Los Angeles International Airport','Los Angeles,California, United States'],
+['LAY','Ladysmith Airport','Ladysmith,South Africa'],
+['LAZ','Bom Jesus da Lapa Airport','Bom Jesus da Lapa,Bahia, Brazil'],
+['LBA','Leeds Bradford Airport','Leeds/Bradford,England, United Kingdom'],
+['LBB','Lubbock Preston Smith International Airport','Lubbock,Texas, United States'],
+['LBC','Lubeck Airport','Lubeck,Schleswig-Holstein, Germany'],
+['LBD','Khujand Airport','Khujand,Tajikistan'],
+['LBE','Arnold Palmer Regional Airport','Latrobe,Pennsylvania, United States'],
+['LBF','North Platte Regional Airport(Lee Bird Field)','North Platte,Nebraska, United States'],
+['LBG','Paris-Le Bourget Airport','Paris,Ile-de-France, France'],
+['LBH','Palm Beach Water Airport','Palm Beach,New South Wales, Australia'],
+['LBI','Le Sequestre Airport','Albi,Midi-Pyrenees, France'],
+['LBJ','Komodo Airport','Labuan Bajo,Indonesia'],
+['LBK','Liboi Airport','Liboi,Kenya'],
+['LBL','Liberal Mid-America Regional Airport','Liberal,Kansas, United States'],
+['LBM','Luabo Airport','Luabo,Mozambique'],
+['LBN','Lake Baringo Airport','Lake Baringo,Kenya'],
+['LBO','Lusambo Airport','Lusambo,Democratic Republic of the Congo'],
+['LBP','Long Banga Airport','Long Banga,Sarawak, Malaysia'],
+['LBQ','Lambarene Airport','Lambarene,Gabon'],
+['LBR','Labrea Airport','Labrea,Amazonas, Brazil'],
+['LBS','Labasa Airport','Labasa,Fiji'],
+['LBT','Lumberton Municipal Airport','Lumberton,North Carolina, United States'],
+['LBU','Labuan Airport','Labuan, Malaysia'],
+['LBV','Libreville International Airport','Libreville,Gabon'],
+['LBW','Juvai Semaring Airport(Long Bawan Airport)','Long Bawan,Indonesia'],
+['LBX','Lubang Airport','Lubang,Philippines'],
+['LBY','La Baule-Escoublac Airport','La Baule-Escoublac,Pays de la Loire, France'],
+['LBZ','Lucapa Airport','Lucapa,Angola'],
+['LCA','Larnaca International Airport','Larnaca,Cyprus'],
+['LCB','Pontes e Lacerda Airport','Pontes e Lacerda,Mato Grosso, Brazil'],
+['LCC','Lecce Galatina Air Base','Lecce,Apulia, Italy'],
+['LCD','Louis Trichardt Airport','Louis Trichardt,South Africa'],
+['LCE','Goloson International Airport','La Ceiba,Honduras'],
+['LCF','Rio Dulce Airport(Las Vegas Airport)','Rio Dulce,Guatemala'],
+['LCG','A Coruna Airport','A Coruna,Galicia, Spain'],
+['LCH','Lake Charles Regional Airport','Lake Charles,Louisiana, United States'],
+['LCI','Laconia Municipal Airport','Laconia,New Hampshire, United States'],
+['LCJ','?od? W?adys?aw Reymont Airport','?od?,Poland'],
+['LCK','Rickenbacker International Airport','Columbus,Ohio, United States'],
+['LCL','La Coloma Airport','Pinar del Rio,Cuba'],
+['LCM','La Cumbre Airport','La Cumbre,Cordoba, Argentina'],
+['LCN','Balcanoona Airport','Balcanoona,South Australia, Australia'],
+['LCO','Lague Airport','Lague,Republic of the Congo'],
+['LCP','Loncopue Airport','Loncopue,Neuquen, Argentina'],
+['LCQ','Lake City Gateway Airport','Lake City,Florida, United States'],
+['LCR','La Chorrera Airport','La Chorrera,Colombia'],
+['LCV','Lucca-Tassignano Airport','Lucca,Tuscany, Italy'],
+['LCX','Longyan Guanzhishan Airport','Longyan,Fujian, China'],
+['LCY','London City Airport','London,England, United Kingdom'],
+['LDA','Malda Airport','Malda,West Bengal, India'],
+['LDB','Londrina-Governador Jose Richa Airport','Londrina,Parana, Brazil'],
+['LDC','Lindeman Island Airport','Lindeman Island,Queensland, Australia'],
+['LDE','Tarbes-Lourdes-Pyrenees Airport','Tarbes/Lourdes,Midi-Pyrenees, France'],
+['LDG','Leshukonskoye Airport','Leshukonskoye,Arkhangelsk Oblast, Russia'],
+['LDH','Lord Howe Island Airport','Lord Howe Island,New South Wales, Australia'],
+['LDI','Lindi Airport(Kikwetu Airport)','Lindi,Tanzania'],
+['LDJ','Linden Airport','Linden,New Jersey, United States'],
+['LDK','Lidköping-Hovby Airport','Lidköping,Sweden'],
+['LDM','Mason County Airport','Ludington,Michigan, United States'],
+['LDN','Lamidanda Airport','Lamidanda,Nepal'],
+['LDO','Laduani Airstrip','Aurora,Suriname'],
+['LDR','Lawdar Airport','Lawdar,Yemen'],
+['LDS','Yichun Lindu Airport','Yichun,Heilongjiang, China'],
+['LDU','Lahad Datu Airport','Lahad Datu,Sabah, Malaysia'],
+['LDV','Landivisiau Air Base','Landivisiau,Brittany, France'],
+['LDW','Lansdowne Airport','Lansdowne,Western Australia, Australia'],
+['LDX','Saint-Laurent-du-Maroni Airport','Saint-Laurent-du-Maroni,French Guiana'],
+['LDY','City of Derry Airport','Derry(Londonderry),Northern Ireland, United Kingdom'],
+['LDZ','Londolozi Airport','Londolozi,South Africa'],
+['LEA','RAAF Learmonth(Learmonth Airport)','Exmouth,Western Australia, Australia'],
+['LEB','Lebanon Municipal Airport','Lebanon/Hanover,New Hampshire, United States'],
+['LEC','Coronel Horacio de Mattos Airport','Lencois,Bahia, Brazil'],
+['LED','Pulkovo Airport','Saint Petersburg, Russia'],
+['LEE','Leesburg International Airport','Leesburg,Florida, United States'],
+['LEF','Lebakeng Airport','Lebakeng,Lesotho'],
+['LEG','Aleg Airport','Aleg,Mauritania'],
+['LEH','Le Havre - Octeville Airport','Le Havre,Upper Normandy, France'],
+['LEI','Almeria Airport','Almeria,Andalusia, Spain'],
+['LEJ','Leipzig/Halle Airport','Leipzig,Saxony/Halle,Saxony-Anhalt,2Germany'],
+['LEK','Tata Airport','Labe,Guinea'],
+['LEL','Lake Evella Airport','Gapuwiyak,Northern Territory, Australia'],
+['LEM','Lemmon Municipal Airport','Lemmon,South Dakota, United States'],
+['LEN','Leon Airport','Leon,Castile and Leon, Spain'],
+['LEO','Lekoni Airport','Lekoni,Gabon'],
+['LEP','Leopoldina Airport','Leopoldina,Minas Gerais, Brazil'],
+['LEQ','Lands End Airport','St Just,England, United Kingdom'],
+['LER','Leinster Airport','Leinster,Western Australia, Australia'],
+['LES','Lesobeng Airport','Lesobeng,Lesotho'],
+['LET','Alfredo Vasquez Cobo International Airport','Leticia,Colombia'],
+['LEU','La Seu dUrgell Airport','La Seu dUrgell,Catalonia, Spain'],
+['LEV','Levuka Airfield(Bureta Airport)','Levuka,Ovalau Island,Fiji'],
+['LEW','Auburn/Lewiston Municipal Airport','Auburn/Lewiston,Maine, United States'],
+['LEX','Blue Grass Airport','Lexington,Kentucky, United States'],
+['LEY','Lelystad Airport','Lelystad,Netherlands'],
+['LEZ','La Esperanza Airport','La Esperanza,Honduras'],
+['LFB','Lumbo Airport','Lumbo,Mozambique'],
+['LFI','Langley Air Force Base','Hampton,Virginia, United States'],
+['LFK','Angelina County Airport','Lufkin,Texas, United States'],
+['LFM','Lamerd Airport','Lamerd,Iran'],
+['LFN','Triangle North Executive Airport(Franklin County Airport) (FAA: LHZ)','Louisburg,North Carolina, United States'],
+['LFO','Kelafo Airport','Kelafo,Ethiopia'],
+['LFP','Lakefield Airport','Lakefield,Queensland, Australia'],
+['LFQ','Linfen Qiaoli Airport','Linfen,Shanxi, China'],
+['LFR','La Fria Airport','La Fria,Venezuela'],
+['LFT','Lafayette Regional Airport','Lafayette,Louisiana, United States'],
+['LFW','Lome-Tokoin Airport(Gnassingbe Eyadema Intl)','Lome,Togo'],
+['LGA','LaGuardia Airport','New York City,New York, United States'],
+['LGB','Long Beach Airport','Long Beach,California, United States'],
+['LGC','LaGrange Callaway Airport','LaGrange,Georgia, United States'],
+['LGD','La Grande/Union County Airport','La Grande,Oregon, United States'],
+['LGE','Lake Gregory Airport','Lake Gregory,Western Australia, Australia'],
+['LGF','Laguna Army Airfield','Yuma Proving Ground,Arizona, United States'],
+['LGG','Liege Airport','Liege,Belgium'],
+['LGH','Leigh Creek Airport','Leigh Creek,South Australia, Australia'],
+['LGI','Deadmans Cay Airport','Deadmans Cay,Long Island,Bahamas'],
+['LGK','Langkawi International Airport','Langkawi,Kedah, Malaysia'],
+['LGL','Long Lellang Airport','Long Lellang,Sarawak, Malaysia'],
+['LGM','Laiagam Airport','Laiagam,Papua New Guinea'],
+['LGN','Linga Linga Airport','Linga Linga,Papua New Guinea'],
+['LGO','Langeoog Airport','Langeoog,Lower Saxony, Germany'],
+['LGP','Legazpi International Airport','Legazpi,Philippines'],
+['LGQ','Lago Agrio Airport','Nueva Loja(Lago Agrio),Ecuador'],
+['LGR','Cochrane Airfield','Cochrane,Chile'],
+['LGS','Comodoro D. Ricardo Salomon Airport','Malargue,Mendoza, Argentina'],
+['LGT','Las Gaviotas Airport','Gaviotas,Colombia'],
+['LGU','Logan-Cache Airport','Logan,Utah, United States'],
+['LGW','Gatwick Airport','London,England, United Kingdom'],
+['LGX','Lugh Ganane Airport','Lugh Ganane(Luuq),Somalia'],
+['LGY','Lagunillas Airport','Lagunillas,Venezuela'],
+['LHA','Black Forest Airport(Lahr Airport)','Lahr,Baden-Wurttemberg, Germany'],
+['LHE','Allama Iqbal International Airport','Lahore,Pakistan'],
+['LHG','Lightning Ridge Airport','Lightning Ridge,New South Wales, Australia'],
+['LHI','Lereh Airport','Lereh,Indonesia'],
+['LHK','Laohekou Airport','Laohekou,Hubei, China'],
+['LHP','Lehu Airport','Lehu,Papua New Guinea'],
+['LHR','Heathrow Airport','London,England, United Kingdom'],
+['LHS','Las Heras Airport','Las Heras,Santa Cruz, Argentina'],
+['LHU','Lianshulu Airport','Lianshulu,Namibia'],
+['LHV','William T. Piper Memorial Airport','Lock Haven,Pennsylvania, United States'],
+['LHW','Lanzhou Zhongchuan International Airport','Lanzhou,Gansu, China'],
+['LIA','Liangping Airport','Liangping,Chongqing, China'],
+['LIB','Limbunya Airport','Limbunya Station,Northern Territory, Australia'],
+['LIC','Limon Municipal Airport','Limon,Colorado, United States'],
+['LIE','Libenge Airport','Libenge,Democratic Republic of the Congo'],
+['LIF','Ouanaham Airport','Lifou,Loyalty Islands,New Caledonia'],
+['LIG','Limoges - Bellegarde Airport','Limoges,Limousin, France'],
+['LIH','Lihue Airport','Lihue,Hawaii, United States'],
+['LII','Mulia Airport','Mulia,Indonesia'],
+['LIK','Likiep Airport','Likiep Atoll,Marshall Islands'],
+['LIL','Lille Airport(Lille-Lesquin Airport)','Lille,Nord-Pas-de-Calais, France'],
+['LIM','Jorge Chavez International Airport','Lima,Peru'],
+['LIN','Linate Airport','Milan,Lombardy, Italy'],
+['LIO','Limon International Airport','Limon,Costa Rica'],
+['LIP','Lins Airport','Lins,Sao Paulo, Brazil'],
+['LIQ','Lisala Airport','Lisala,Democratic Republic of the Congo'],
+['LIR','Daniel Oduber Quiros International Airport','Liberia,Costa Rica'],
+['LIS','Lisbon Portela Airport','Lisbon,Portugal'],
+['LIT','Clinton National Airport(Adams Field)','Little Rock,Arkansas, United States'],
+['LIV','Livengood Camp Airport(FAA: 4AK)','Livengood,Alaska, United States'],
+['LIW','Loikaw Airport','Loikaw,Myanmar'],
+['LIX','Likoma Airport','Likoma Island,Malawi'],
+['LIY','MidCoast Regional Airport at Wright Army Airfield(FAA: LHW)','Fort Stewart/Hinesville,Georgia, United States'],
+['LIZ','Loring International Airport(FAA: ME16)','Limestone,Maine, United States'],
+['LJA','Lodja Airport','Lodja,Democratic Republic of the Congo'],
+['LJG','Lijiang Sanyi Airport','Lijiang,Yunnan, China'],
+['LJN','Texas Gulf Coast Regional Airport(FAA: LBX)','Angleton/Lake Jackson,Texas, United States'],
+['LJU','Ljubljana Joze Pu?nik Airport(Brnik Airport)','Ljubljana,Slovenia'],
+['LKA','Gewayantana Airport','Larantuka,Indonesia'],
+['LKB','Lakeba Airport','Lakeba Island,Fiji'],
+['LKC','Lekana Airport','Lekana,Republic of the Congo'],
+['LKD','Lakeland Downs Airport','Lakeland Downs,Queensland, Australia'],
+['LKE','Kenmore Air Harbor Seaplane Base(Seattle Lake Union SPB) (FAA: W55)','Seattle,Washington, United States'],
+['LKG','Lokichogio Airport','Lokichogio,Kenya'],
+['LKH','Long Akah Airport','Long Akah,Sarawak, Malaysia'],
+['LKK','Kulik Lake Airport','Kulik Lake,Alaska, United States'],
+['LKL','Lakselv Airport, Banak','Lakselv,Norway'],
+['LKN','Leknes Airport','Leknes,Norway'],
+['LKO','Chaudhary Charan Singh International Airport','Lucknow,Uttar Pradesh, India'],
+['LKP','Lake Placid Airport','Lake Placid,New York, United States'],
+['LKR','Las Khorey Airport','Las Khorey(Laasqoray),Somalia'],
+['LKU','Lake Turkana Airport','Lake Turkana,Kenya'],
+['LKV','Lake County Airport','Lakeview,Oregon, United States'],
+['LKW','Lekhwair Airport','Lekhwair,Oman'],
+['LKY','Lake Manyara Airport','Lake Manyara,Tanzania'],
+['LKZ','RAF Lakenheath','Brandon,England, United Kingdom'],
+['LLA','Luleå Airport(Kallax Airport)','Luleå,Sweden'],
+['LLB','Libo Airport(Qiannan Airport)','Libo,Guizhou, China'],
+['LLE','Malelane Airport','Malalane,South Africa'],
+['LLF','Yongzhou Lingling Airport','Yongzhou,Hunan, China'],
+['LLG','Chillagoe Airport','Chillagoe,Queensland, Australia'],
+['LLH','Las Limas Airport','Las Limas,Honduras'],
+['LLI','Lalibela Airport','Lalibela,Ethiopia'],
+['LLK','Lankaran International Airport','Lankaran,Azerbaijan'],
+['LLL','Lissadell Airport','Lissadell,Western Australia, Australia'],
+['LLN','Kelila Airport','Kelila,Indonesia'],
+['LLO','Palopo Lagaligo Airport','Palopo,Indonesia'],
+['LLP','Linda Downs Airport','Linda Downs,Queensland, Australia'],
+['LLS','Alferez Armando Rodriguez Airport','Las Lomitas,Formosa, Argentina'],
+['LLT','Lobito Airport','Lobito,Angola'],
+['LLV','Luliang Airport','Luliang,Shanxi, China'],
+['LLW','Lilongwe International Airport(Kamuzu Intl)','Lilongwe,Malawi'],
+['LLX','Caledonia County Airport(FAA: CDA)','Lyndonville,Vermont, United States'],
+['LLY','South Jersey Regional Airport(FAA: VAY)','Mount Holly,New Jersey, United States'],
+['LMA','Lake Minchumina Airport(FAA: MHM)','Lake Minchumina,Alaska, United States'],
+['LMB','Salima Airport','Salima,Malawi'],
+['LMC','La Macarena Airport','La Macarena,Colombia'],
+['LMD','Los Menucos Airport','Los Menucos,Rio Negro, Argentina'],
+['LME','Le Mans Arnage Airport','Le Mans,Pays de la Loire, France'],
+['LMG','Lamassa Airport','Lamassa,Papua New Guinea'],
+['LMH','Limon Airport','Limon,Honduras'],
+['LMI','Lumi Airport','Lumi,Papua New Guinea'],
+['LML','Lae Airport','Lae Atoll,Marshall Islands'],
+['LMM','Fort Valley Federal International Airport','Los Mochis,Sinaloa, Mexico'],
+['LMN','Limbang Airport','Limbang,Sarawak, Malaysia'],
+['LMO','RAF Lossiemouth','Lossiemouth,Scotland, United Kingdom'],
+['LMP','Lampedusa Airport','Lampedusa,Sicily, Italy'],
+['LMQ','Marsa Brega Airport','Brega,Libya'],
+['LMR','Finsch Mine Airport','Lime Acres,South Africa'],
+['LMS','Louisville Winston County Airport','Louisville,Mississippi, United States'],
+['LMT','Klamath Falls Airport','Klamath Falls,Oregon, United States'],
+['LMX','Lopez de Micay Airport','El Trapiche,Colombia'],
+['LMY','Lake Murray Airport','Lake Murray,Papua New Guinea'],
+['LMZ','Palma Airport','Palma,Mozambique'],
+['LNA','Palm Beach County Park Airport','West Palm Beach,Florida, United States'],
+['LNB','Lamen Bay Airport','Lamen Bay,Epi Island,Shefa Province,Vanuatu'],
+['LNC','Lengbati Airport','Lengbati,Papua New Guinea'],
+['LND','Hunt Field','Lander,Wyoming, United States'],
+['LNE','Lonorore Airport','Lonorore,Pentecost Island,Penama Province,Vanuatu'],
+['LNF','Munbil Airport','Munbil,Papua New Guinea'],
+['LNG','Lese Airport','Lese,Papua New Guinea'],
+['LNH','Lake Nash Airport','Alpurrurulam(Lake Nash),Northern Territory, Australia'],
+['LNI','Point Lonely Short Range Radar Site(FAA: AK71)','Lonely,Alaska, United States'],
+['LNJ','Lincang Airport','Lincang,Yunnan, China'],
+['LNK','Lincoln Airport','Lincoln,Nebraska, United States'],
+['LNM','Langimar Airport','Langimar,Papua New Guinea'],
+['LNN','Lost Nation Airport','Willoughby,Ohio, United States'],
+['LNO','Leonora Airport','Leonora,Western Australia, Australia'],
+['LNP','Lonesome Pine Airport','Wise,Virginia, United States'],
+['LNQ','Loani Airport','Loani,Papua New Guinea'],
+['LNR','Tri-County Regional Airport','Lone Rock,Wisconsin, United States'],
+['LNS','Lancaster Airport','Lancaster,Pennsylvania, United States'],
+['LNV','Lihir Island Airport','Lihir Island,Papua New Guinea'],
+['LNX','Smolensk South Airport','Smolensk,Smolensk Oblast, Russia'],
+['LNY','Lanai Airport','Lanai City,Hawaii, United States'],
+['LNZ','Linz Airport(Blue Danube Airport)','Linz,Austria'],
+['LOA','Lorraine Airport','Lorraine,Queensland, Australia'],
+['LOB','San Rafael Airport','Los Andes,Chile'],
+['LOC','Lock Airport','Lock,South Australia, Australia'],
+['LOD','Longana Airport','Longana,Aoba Island,Penama Province,Vanuatu'],
+['LOE','Loei Airport','Loei,Thailand'],
+['LOF','Loen Airport','Loen Island,Namu Atoll,Marshall Islands'],
+['LOH','Ciudad de Catamayo Airport','Loja,Ecuador'],
+['LOI','Helmuth Baungartem Airport','Lontras,Santa Catarina, Brazil'],
+['LOK','Lodwar Airport','Lodwar,Kenya'],
+['LOL','Derby Field','Lovelock,Nevada, United States'],
+['LOM','Francisco Primo de Verdad National Airport','Lagos de Moreno,Jalisco, Mexico'],
+['LON','metropolitan area3','London,England, United Kingdom'],
+['LOO','LMekrareg Airport(Laghouat Airport)','Laghouat,Algeria'],
+['LOP','Lombok International Airport','Praya,Indonesia'],
+['LOQ','Lobatse Airport','Lobatse,Botswana'],
+['LOS','Murtala Muhammed International Airport','Lagos,Nigeria'],
+['LOT','Lewis University Airport','Romeoville,Illinois, United States'],
+['LOU','Bowman Field','Louisville,Kentucky, United States'],
+['LOV','Venustiano Carranza International Airport','Monclova,Coahuila, Mexico'],
+['LOW','Louisa County Airport(Freeman Field) (FAA: LKU)','Louisa,Virginia, United States'],
+['LOX','Los Tablones Airport','Los Tablones,Guatemala'],
+['LOY','Loiyangalani Airport','Loiyangalani,Kenya'],
+['LOZ','London-Corbin Airport(Magee Field)','London,Kentucky, United States'],
+['LPA','Gran Canaria Airport','Gran Canaria,Canary Islands, Spain'],
+['LPB','El Alto International Airport','La Paz,Bolivia'],
+['LPC','Lompoc Airport','Lompoc,California, United States'],
+['LPD','La Pedrera Airport','La Pedrera,Colombia'],
+['LPE','La Primavera Airport','La Primavera,Colombia'],
+['LPF','Liupanshui Yuezhao Airport','Liupanshui,Guizhou, China'],
+['LPG','La Plata Airport','La Plata,Buenos Aires, Argentina'],
+['LPI','Linköping City Airport','Linköping,Sweden'],
+['LPJ','Armando Schwarck Airport','Los Pijiguaos,Venezuela'],
+['LPK','Lipetsk Airport','Lipetsk,Lipetsk Oblast, Russia'],
+['LPL','Liverpool John Lennon Airport','Liverpool,England, United Kingdom'],
+['LPM','Malekoula Airport(Lamap Airport)','Lamap,Malampa,Vanuatu'],
+['LPN','Leron Plains Airport','Leron Plains,Papua New Guinea'],
+['LPO','La Porte Municipal Airport(FAA: PPO)','La Porte,Indiana, United States'],
+['LPP','Lappeenranta Airport','Lappeenranta,Finland'],
+['LPQ','Luang Prabang International Airport','Luang Prabang,Laos'],
+['LPS','Fishermans Bay/LPS Seaplane Base','Lopez Island,Washington, United States'],
+['LPT','Lampang Airport','Lampang,Thailand'],
+['LPU','Long Apung Airport','Long Apung,Indonesia'],
+['LPX','Liep?ja International Airport','Liep?ja,Latvia'],
+['LPY','Le Puy - Loudes Airport','Le Puy-en-Velay,Auvergne, France'],
+['LQK','Pickens County Airport','Pickens,South Carolina, United States'],
+['LQM','Caucaya Airport','Puerto Leguizamo,Colombia'],
+['LQN','Qala i Naw Airport','Qala i Naw,Afghanistan'],
+['LRA','Larissa National Airport','Larissa,Greece'],
+['LRB','Leribe Airport','Leribe(Hlotse),Lesotho'],
+['LRD','Laredo International Airport','Laredo,Texas, United States'],
+['LRE','Longreach Airport','Longreach,Queensland, Australia'],
+['LRF','Little Rock Air Force Base','Jacksonville,Arkansas, United States'],
+['LRG','Loralai Airport','Loralai,Pakistan'],
+['LRH','La Rochelle - Ile de Re Airport','La Rochelle,Poitou-Charentes, France'],
+['LRI','Lorica Airport','Lorica,Colombia'],
+['LRJ','Le Mars Municipal Airport','Le Mars,Iowa, United States'],
+['LRL','Niamtougou International Airport','Niamtougou,Togo'],
+['LRM','La Romana International Airport(Casa de Campo International Airport)','La Romana,Dominican Republic'],
+['LRQ','Laurie River Airport','Laurie River,Manitoba, Canada'],
+['LRR','Larestan International Airport','Lar,Iran'],
+['LRS','Leros Municipal Airport','Leros,Greece'],
+['LRT','Lorient South Brittany Airport(Lann-Bihoue Airport)','Lorient,Brittany, France'],
+['LRU','Las Cruces International Airport','Las Cruces,New Mexico, United States'],
+['LRV','Los Roques Airport','Los Roques,Venezuela'],
+['LSA','Losuia Airport','Kiriwina Island,Papua New Guinea'],
+['LSB','Lordsburg Municipal Airport','Lordsburg,New Mexico, United States'],
+['LSC','La Florida Airport','La Serena,Chile'],
+['LSE','La Crosse Regional Airport','La Crosse,Wisconsin, United States'],
+['LSF','Lawson Army Airfield','Fort Benning/Columbus,Georgia, United States'],
+['LSH','Lashio Airport','Lashio,Myanmar'],
+['LSI','Sumburgh Airport','Shetland Islands,Scotland, United Kingdom'],
+['LSJ','Long Island Airport','Long Island,Papua New Guinea'],
+['LSK','Lusk Municipal Airport','Lusk,Wyoming, United States'],
+['LSL','Los Chiles Airport','Los Chiles,Costa Rica'],
+['LSM','Long Semado Airport','Long Semado,Sarawak, Malaysia'],
+['LSN','Los Banos Municipal Airport','Los Banos,California, United States'],
+['LSO','Les Sables-dOlonne - Talmont Airport','Les Sables-dOlonne,Pays de la Loire, France'],
+['LSP','Josefa Camejo International Airport','Punto Fijo,Venezuela'],
+['LSQ','Maria Dolores Airport','Los angeles,Chile'],
+['LSS','Les Saintes Airport','Terre-de-Haut Island,Iles des Saintes,Guadeloupe'],
+['LST','Launceston Airport','Launceston,Tasmania, Australia'],
+['LSU','Long Sukang Airport','Long Sukang,Sarawak, Malaysia'],
+['LSV','Nellis Air Force Base','Las Vegas,Nevada, United States'],
+['LSW','Malikus Saleh Airport','Lhokseumawe,Indonesia'],
+['LSX','Lhok Sukon Airport','Lhoksukon,Indonesia'],
+['LSY','Lismore Airport','Lismore,New South Wales, Australia'],
+['LSZ','LoSinj Airport','LoSinj,Croatia'],
+['LTA','Tzaneen Airport(Letaba Airport)','Tzaneen,South Africa'],
+['LTB','Latrobe Airport','Latrobe,Tasmania, Australia'],
+['LTC','Lai Airport','Lai,Chad'],
+['LTD','Ghadames Airport','Ghadames,Libya'],
+['LTF','Leitre Airport','Leitre,Papua New Guinea'],
+['LTG','Langtang Airport','Langtang,Nepal'],
+['LTI','Altai Airport','Altai,Mongolia'],
+['LTK','Bassel Al-Assad International Airport','Latakia,Syria'],
+['LTL','Lastourville Airport','Lastoursville,Gabon'],
+['LTM','Lethem Airport','Lethem,Guyana'],
+['LTN','Luton Airport','London,England, United Kingdom'],
+['LTO','Loreto International Airport','Loreto,Baja California Sur, Mexico'],
+['LTP','Lyndhurst Airport','Lyndhurst,Queensland, Australia'],
+['LTQ','Le Touquet - Cote dOpale Airport','Le Touquet-Paris-Plage,Nord-Pas-de-Calais, France'],
+['LTR','Letterkenny Airfield','Letterkenny,Ireland'],
+['LTS','Altus Air Force Base','Altus,Oklahoma, United States'],
+['LTT','La Mole - Saint-Tropez Airport','Saint-Tropez,Provence-Alpes-Cote dAzur, France'],
+['LTU','Latur Airport','Latur,Maharashtra, India'],
+['LTV','Lotus Vale Station Airport','Lotus Vale Station,Queensland, Australia'],
+['LTW','St. Marys County Regional Airport(FAA: 2W6)','Leonardtown,Maryland, United States'],
+['LTX','Cotopaxi International Airport','Latacunga,Ecuador'],
+['LUA','Tenzing-Hillary Airport','Lukla,Nepal'],
+['LUB','Lumid Pau Airport','Lumid Pau,Guyana'],
+['LUC','Laucala Airport','Laucala Island,Fiji'],
+['LUD','Luderitz Airport','Luderitz,Namibia'],
+['LUE','Bo?kovce Airport','Lu?enec,Slovakia'],
+['LUF','Luke Air Force Base','Glendale,Arizona, United States'],
+['LUG','Lugano Airport','Lugano,Switzerland'],
+['LUH','Sahnewal Airport(Ludhiana Airport)','Ludhiana,Punjab, India'],
+['LUI','La Union Airport','La Union,Honduras'],
+['LUK','Cincinnati Municipal Airport(Lunken Field)','Cincinnati,Ohio, United States'],
+['LUL','Hesler-Noble Field','Laurel,Mississippi, United States'],
+['LUM','Dehong Mangshi Airport','Mang City,Yunnan, China'],
+['LUN','Kenneth Kaunda International Airport','Lusaka,Zambia'],
+['LUO','Luena Airport','Luena,Angola'],
+['LUP','Kalaupapa Airport','Kalaupapa,Hawaii, United States'],
+['LUQ','Brigadier Mayor Cesar Raul Ojeda Airport','San Luis,San Luis, Argentina'],
+['LUR','Cape Lisburne LRRS Airport','Cape Lisburne,Alaska, United States'],
+['LUS','Lusanga Airport','Lusanga,Democratic Republic of the Congo'],
+['LUT','New Laura Airport','New Laura,Queensland, Australia'],
+['LUU','Laura Airport','Laura,Queensland, Australia'],
+['LUV','Dumatubun Airport','Langgur,Indonesia'],
+['LUW','Syukuran Aminuddin Amir Airport','Luwuk,Indonesia'],
+['LUX','Luxembourg Findel Airport','Luxembourg,Luxembourg'],
+['LUZ','Lublin Airport','Lublin,Poland'],
+['LVA','Laval Entrammes Airport','Laval,Pays de la Loire, France'],
+['LVB','Galpoes Airport','Santana do Livramento,Rio Grande do Sul, Brazil'],
+['LVD','Lime Village Airport(FAA: 2AK)','Lime Village,Alaska, United States'],
+['LVI','Harry Mwanga Nkumbula International Airport','Livingstone,Zambia'],
+['LVK','Livermore Municipal Airport','Livermore,California, United States'],
+['LVL','Lawrenceville/Brunswick Municipal Airport','Lawrenceville,Virginia, United States'],
+['LVM','Mission Field','Livingston,Montana, United States'],
+['LVO','Laverton Airport','Laverton,Western Australia, Australia'],
+['LVP','Lavan Airport','Lavan Island,Iran'],
+['LVR','Bom Futuro Municipal Airport','Lucas do Rio Verde,Mato Grosso, Brazil'],
+['LVS','Las Vegas Municipal Airport','Las Vegas,New Mexico, United States'],
+['LWA','Lebak Airport','Lebak,Philippines'],
+['LWB','Greenbrier Valley Airport','Lewisburg,West Virginia, United States'],
+['LWC','Lawrence Municipal Airport','Lawrence,Kansas, United States'],
+['LWE','Wonopito Airport','Lewoleba,Indonesia'],
+['LWH','Lawn Hill Airport','Lawn Hill,Queensland, Australia'],
+['LWI','Lowai Airport','Lowai,Papua New Guinea'],
+['LWK','Tingwall Airport(Lerwick/Tingwall Airport)','Lerwick,Scotland, United Kingdom'],
+['LWL','Wells Municipal Airport(Harriet Field)','Wells,Nevada, United States'],
+['LWM','Lawrence Municipal Airport','Lawrence,Massachusetts, United States'],
+['LWN','Shirak Airport','Gyumri,Armenia'],
+['LWO','Lviv Danylo Halytskyi International Airport','Lviv,Ukraine'],
+['LWR','Leeuwarden Air Base','Leeuwarden,Netherlands'],
+['LWS','Lewiston-Nez Perce County Airport','Lewiston,Idaho, United States'],
+['LWT','Lewistown Municipal Airport','Lewistown,Montana, United States'],
+['LWV','Lawrenceville-Vincennes International Airport','Lawrenceville,Illinois, United States'],
+['LWY','Lawas Airport','Lawas,Sarawak, Malaysia'],
+['LXA','Lhasa Gonggar Airport','Lhasa,Tibet, China'],
+['LXG','Louangnamtha Airport','Luang Namtha,Laos'],
+['LXN','Jim Kelly Field','Lexington,Nebraska, United States'],
+['LXR','Luxor International Airport','Luxor,Egypt'],
+['LXS','Lemnos International Airport','Lemnos(Limnos),Greece'],
+['LXU','Lukulu Airport','Lukulu,Zambia'],
+['LXV','Lake County Airport','Leadville,Colorado, United States'],
+['LYA','Luoyang Beijiao Airport','Luoyang,Henan, China'],
+['LYB','Edward Bodden Airfield','Little Cayman,British Overseas TerritoryofCayman Islands'],
+['LYC','Lycksele Airport','Lycksele,Sweden'],
+['LYE','RAF Lyneham','Lyneham,England, United Kingdom'],
+['LYG','Lianyungang Baitabu Airport','Lianyungang,Jiangsu, China'],
+['LYH','Lynchburg Regional Airport(Preston Glenn Field)','Lynchburg,Virginia, United States'],
+['LYI','Linyi Shubuling Airport','Linyi,Shandong, China'],
+['LYK','Lunyuk Airport','Lunyuk,Indonesia'],
+['LYN','Lyon-Bron Airport','Lyon,Rhone-Alpes, France'],
+['LYO','Lyons-Rice County Municipal Airport','Lyons,Kansas, United States'],
+['LYP','Faisalabad International Airport','Faisalabad,Pakistan'],
+['LYR','Svalbard Airport, Longyear','Longyearbyen,Svalbard,Norway'],
+['LYS','Lyon-Saint-Exupery Airport','Lyon,Rhone-Alpes, France'],
+['LYT','Lady Elliot Island Airport','Lady Elliot Island,Queensland, Australia'],
+['LYU','Ely Municipal Airport(FAA: ELO)','Ely,Minnesota, United States'],
+['LYX','Lydd Airport(London Ashford Airport)','Lydd,England, United Kingdom'],
+['LZA','Luiza Airport','Luiza,Democratic Republic of the Congo'],
+['LZC','Lazaro Cardenas Airport','Lazaro Cardenas,Michoacan, Mexico'],
+['LZH','Liuzhou Bailian Airport','Liuzhou,Guangxi, China'],
+['LZI','Luozi Airport','Luozi,Democratic Republic of the Congo'],
+['LZM','Cuango-Luzamba Airport','Cuango(Luzamba),Angola'],
+['LZN','Matsu Nangan Airport','Nangan,Taiwan'],
+['LZO','Luzhou Lantian Airport','Luzhou,Sichuan, China'],
+['LZR','Lizard Island Airport','Lizard Island,Queensland, Australia'],
+['LZU','Gwinnett County Airport(Briscoe Field)','LaGrange,Georgia, United States'],
+['LZY','Nyingchi Mainling Airport','Nyingchi(Linzhi),Tibet, China'],
+['MAA','Chennai International Airport','Chennai,Tamil Nadu, India'],
+['MAB','Joao Correa da Rocha Airport','Maraba,Para, Brazil'],
+['MAC','Macon Downtown Airport','Macon,Georgia, United States'],
+['MAD','Adolfo Suarez Madrid-Barajas Airport','Madrid, Spain'],
+['MAE','Madera Municipal Airport','Madera,California, United States'],
+['MAF','Midland International Air and Space Port','Midland,Texas, United States'],
+['MAG','Madang Airport','Madang,Papua New Guinea'],
+['MAH','Menorca Airport(Mahon Airport)','Menorca,Balearic Islands, Spain'],
+['MAI','Mangochi Airport','Mangochi,Malawi'],
+['MAJ','Marshall Islands International Airport(Amata Kabua Intl)','Majuro,Marshall Islands'],
+['MAK','Malakal Airport','Malakal,South Sudan'],
+['MAL','Mangole Airport','Mangole Island,Indonesia'],
+['MAM','General Servando Canales International Airport','Matamoros,Tamaulipas, Mexico'],
+['MAN','Manchester Airport','Manchester,England, United Kingdom'],
+['MAO','Eduardo Gomes International Airport','Manaus,Amazonas, Brazil'],
+['MAP','Mamai Airport','Mamai,Papua New Guinea'],
+['MAQ','Mae Sot Airport','Mae Sot,Thailand'],
+['MAR','La Chinita International Airport','Maracaibo,Venezuela'],
+['MAS','Momote Airport','Manus Island,Papua New Guinea'],
+['MAT','Matadi Tshimpi Airport','Matadi,Democratic Republic of the Congo'],
+['MAU','Maupiti Airport','Maupiti,Leeward Islands,French Polynesia'],
+['MAV','Maloelap Airport(FAA: 3N1)','Taroa Island,Maloelap Atoll,Marshall Islands'],
+['MAW','Malden Regional Airport','Malden,Missouri, United States'],
+['MAX','Ouro Sogui Airport','Matam,Senegal'],
+['MAY','Clarence A. Bain Airport','Mangrove Cay,Andros Island,Bahamas'],
+['MAZ','Eugenio Maria de Hostos Airport','Mayaguez,Puerto Rico, United States'],
+['MBA','Moi International Airport','Mombasa,Kenya'],
+['MBB','Marble Bar Airport','Marble Bar,Western Australia, Australia'],
+['MBC','Mbigou Airport','Mbigou,Gabon'],
+['MBD','Mahikeng Airport(Mmabatho Airport)','Mmabatho,South Africa'],
+['MBE','Monbetsu Airport','Monbetsu, Hokkaido,Hokkaido, Japan'],
+['MBF','Porepunkah Airfield','Mount Buffalo,Victoria, Australia'],
+['MBG','Mobridge Municipal Airport','Mobridge,South Dakota, United States'],
+['MBH','Maryborough Airport','Maryborough,Queensland, Australia'],
+['MBI','Mbeya Airport','Mbeya,Tanzania'],
+['MBJ','Sangster International Airport','Montego Bay,Jamaica'],
+['MBK','Orlando Villas-Boas Regional Airport','Matupa,Mato Grosso, Brazil'],
+['MBL','Manistee County Blacker Airport','Manistee,Michigan, United States'],
+['MBM','Mkambati Airport','Mkambati,South Africa'],
+['MBN','Mount Barnett Airport','Mount Barnett,Western Australia, Australia'],
+['MBO','Mamburao Airport','Mamburao,Philippines'],
+['MBP','Moyobamba Airport','Moyobamba,Peru'],
+['MBQ','Mbarara Airport','Mbarara,Uganda'],
+['MBR','MBout Airport','MBout,Mauritania'],
+['MBS','MBS International Airport','Saginaw/Midland/Bay City,Michigan, United States'],
+['MBT','Moises R. Espinosa Airport(Masbate Airport)','Masbate,Philippines'],
+['MBU','Mbambanakira Airport','Mbambanakira,Solomon Islands'],
+['MBV','Masa Airport','Masa,Papua New Guinea'],
+['MBW','Moorabbin Airport','Melbourne,Victoria, Australia'],
+['MBX','Maribor Edvard Rusjan Airport','Maribor,Slovenia'],
+['MBY','Omar N. Bradley Airport','Moberly,Missouri, United States'],
+['MBZ','Maues Airport','Maues,Amazonas, Brazil'],
+['MCA','Macenta Airport','Macenta,Guinea'],
+['MCB','McComb-Pike County Airport(John E. Lewis Field)','McComb,Mississippi, United States'],
+['MCC','McClellan Airfield','Sacramento,California, United States'],
+['MCD','Mackinac Island Airport','Mackinac Island,Michigan, United States'],
+['MCE','Merced Regional Airport(MacReady Field)','Merced,California, United States'],
+['MCF','MacDill Air Force Base','Tampa,Florida, United States'],
+['MCG','McGrath Airport','McGrath,Alaska, United States'],
+['MCH','General Manuel Serrano Airport','Machala,Ecuador'],
+['MCI','Kansas City International Airport','Kansas City,Missouri, United States'],
+['MCJ','Jorge Isaacs Airport(La Mina Airport)','Maicao,Colombia'],
+['MCK','McCook Ben Nelson Regional Airport','McCook,Nebraska, United States'],
+['MCL','McKinley National Park Airport(FAA: INR)','McKinley Park,Alaska, United States'],
+['MCN','Middle Georgia Regional Airport','Macon,Georgia, United States'],
+['MCO','Orlando International Airport','Orlando,Florida, United States'],
+['MCP','Alberto Alcolumbre International Airport','Macapa,Amapa, Brazil'],
+['MCQ','Miskolc Airport','Miskolc,Hungary'],
+['MCS','Monte Caseros Airport','Monte Caseros,Corrientes, Argentina'],
+['MCT','Muscat International Airport','Muscat,Oman'],
+['MCU','Montlucon - Gueret Airport','Montlucon,Auvergne, France'],
+['MCV','McArthur River Mine Airport','McArthur River,Northern Territory, Australia'],
+['MCW','Mason City Municipal Airport','Mason City,Iowa, United States'],
+['MCX','Uytash Airport','Makhachkala,Dagestan, Russia'],
+['MCY','Sunshine Coast Airport','Sunshine Coast,Queensland, Australia'],
+['MCZ','Zumbi dos Palmares International Airport','Maceio,Alagoas, Brazil'],
+['MDB','Melinda Airport','Melinda,Belize'],
+['MDC','Sam Ratulangi International Airport','Manado,Indonesia'],
+['MDD','Midland Airpark','Midland,Texas, United States'],
+['MDE','Jose Maria Cordova International Airport','Medellin,Colombia'],
+['MDF','Taylor County Airport','Medford,Wisconsin, United States'],
+['MDG','Mudanjiang Hailang Airport','Mudanjiang,Heilongjiang, China'],
+['MDH','Southern Illinois Airport','Carbondale/Murphysboro,Illinois, United States'],
+['MDI','Makurdi Airport','Makurdi,Nigeria'],
+['MDJ','Madras Municipal Airport(FAA: S33)','Madras,Oregon, United States'],
+['MDK','Mbandaka Airport','Mbandaka,Democratic Republic of the Congo'],
+['MDL','Mandalay International Airport','Mandalay,Myanmar'],
+['MDM','Munduku Airport','Munduku,Papua New Guinea'],
+['MDN','Madison Municipal Airport','Madison,Indiana, United States'],
+['MDO','Middleton Island Airport','Middleton Island,Alaska, United States'],
+['MDP','Mindiptana Airport','Mindiptana,Indonesia'],
+['MDQ','Astor Piazzolla International Airport','Mar del Plata,Buenos Aires, Argentina'],
+['MDS','Middle Caicos Airport','Middle Caicos,British Overseas Territory'],
+['MDT','Harrisburg International Airport','Harrisburg,Pennsylvania, United States'],
+['MDU','Mendi Airport','Mendi,Papua New Guinea'],
+['MDV','Medouneu Airport','Medouneu,Gabon'],
+['MDW','Midway International Airport','Chicago,Illinois, United States'],
+['MDX','Mercedes Airport','Mercedes,Corrientes, Argentina'],
+['MDY','Henderson Field','Sand Island,Midway Atoll, United States'],
+['MDZ','Gov. Francisco Gabrielli International Airport(El Plumerillo)','Mendoza,Mendoza, Argentina'],
+['MEA','Benedito Lacerda Airport','Macae,Rio de Janeiro, Brazil'],
+['MEB','Essendon Airport','Melbourne,Victoria, Australia'],
+['MEC','Eloy Alfaro International Airport','Manta,Ecuador'],
+['MED','Prince Mohammad bin Abdulaziz Airport','Medina,Saudi Arabia'],
+['MEE','Mare Airport','Mare,Loyalty Islands,New Caledonia'],
+['MEF','Melfi Airport','Melfi,Chad'],
+['MEG','Malanje Airport','Malanje,Angola'],
+['MEH','Mehamn Airport','Mehamn,Norway'],
+['MEI','Meridian Regional Airport(Key Field)','Meridian,Mississippi, United States'],
+['MEJ','Port Meadville Airport(FAA: GKJ)','Meadville,Pennsylvania, United States'],
+['MEK','Bassatine Air Base','Meknes,Morocco'],
+['MEL','Melbourne Airport','Melbourne,Victoria, Australia'],
+['MEM','Memphis International Airport','Memphis,Tennessee, United States'],
+['MEN','Brenoux Airport','Mende,Languedoc-Roussillon, France'],
+['MEO','Dare County Regional Airport(FAA: MQI)','Manteo,North Carolina, United States'],
+['MEP','Mersing Airport','Mersing,Johor, Malaysia'],
+['MEQ','Cut Nyak Dhien Airport','Meulaboh,Indonesia'],
+['MER','Castle Airport','Merced,California, United States'],
+['MES','Soewondo Air Force Base','Medan,Indonesia'],
+['MET','Moreton Airport','Moreton,Queensland, Australia'],
+['MEU','Serra do Areao Airport','Monte Dourado,Para, Brazil'],
+['MEV','Minden-Tahoe Airport','Minden,Nevada, United States'],
+['MEW','Mweka Airport','Mweka,Democratic Republic of the Congo'],
+['MEX','Mexico City International Airport','Mexico City, Mexico'],
+['MEY','Meghauli Airport','Meghauli,Nepal'],
+['MEZ','Messina Airport','Messina,South Africa'],
+['MFA','Mafia Airport','Mafia Island,Tanzania'],
+['MFB','Monfort Airport','Monfort,Colombia'],
+['MFC','Mafeteng Airport','Mafeteng,Lesotho'],
+['MFD','Mansfield Lahm Regional Airport','Mansfield,Ohio, United States'],
+['MFE','McAllen Miller International Airport','McAllen,Texas, United States'],
+['MFF','Moanda Airport','Moanda,Gabon'],
+['MFG','Muzaffarabad Airport','Muzaffarabad,Pakistan'],
+['MFH','Mesquite Airport(FAA: 67L)','Mesquite,Nevada, United States'],
+['MFI','Marshfield Municipal Airport','Marshfield,Wisconsin, United States'],
+['MFJ','Moala Airport','Moala Island,Fiji'],
+['MFK','Matsu Beigan Airport','Beigan,Taiwan'],
+['MFL','Mount Full Stop Airport','Wandovale,Queensland, Australia'],
+['MFM','Macau International Airport','Macau'],
+['MFN','Milford Sound Airport','Milford Sound,New Zealand'],
+['MFO','Manguna Airport','Manguna,Papua New Guinea'],
+['MFP','Manners Creek Airport','Manners Creek Station,Northern Territory, Australia'],
+['MFQ','Maradi Airport','Maradi,Niger'],
+['MFR','Rogue Valley International-Medford Airport','Medford,Oregon, United States'],
+['MFS','Miraflores Airport','Miraflores,Colombia'],
+['MFU','Mfuwe Airport','Mfuwe,Zambia'],
+['MFV','Accomack County Airport','Melfa,Virginia, United States'],
+['MFW','Magaruque Airport','Magaruque Island,Mozambique'],
+['MFX','Meribel Altiport','Meribel,Rhone-Alpes, France'],
+['MFY','Mayfaah Airport','Mayfaah,Yemen'],
+['MFZ','Meselia Airport','Meselia,Papua New Guinea'],
+['MGA','Augusto C. Sandino International Airport','Managua,Nicaragua'],
+['MGB','Mount Gambier Airport','Mount Gambier,South Australia, Australia'],
+['MGC','Michigan City Municipal Airport','Michigan City,Indiana, United States'],
+['MGD','Magdalena Airport','Magdalena,Bolivia'],
+['MGE','Dobbins Air Reserve Base','Marietta,Georgia, United States'],
+['MGF','Silvio Name Junior Regional Airport','Maringa,Parana, Brazil'],
+['MGG','Margarima Airport','Margarima,Papua New Guinea'],
+['MGH','Margate Airport','Margate,South Africa'],
+['MGI','Aransas National Wildlife Refuge Airport(FAA: XS10)','Matagorda Island,Texas, United States'],
+['MGJ','Orange County Airport','Montgomery,New York, United States'],
+['MGK','Mong Ton Airport','Mong Ton,Myanmar'],
+['MGL','Dusseldorf Mönchengladbach Airport','Mönchengladbach,North Rhine-Westphalia, Germany'],
+['MGM','Montgomery Regional Airport(Dannelly Field)','Montgomery,Alabama, United States'],
+['MGN','Baracoa Regional Airport','Magangue,Colombia'],
+['MGO','Manega Airport','Manega,Gabon'],
+['MGP','Manga Airport','Manga,Papua New Guinea'],
+['MGQ','Aden Adde International Airport','Mogadishu,Somalia'],
+['MGR','Moultrie Municipal Airport','Moultrie,Georgia, United States'],
+['MGS','Mangaia Airport','Mangaia Island,Cook Islands'],
+['MGT','Milingimbi Airport','Milingimbi Island,Northern Territory, Australia'],
+['MGU','Manaung Airport','Manaung,Myanmar'],
+['MGV','Margaret River Station Airport','Margaret River Station,Western Australia, Australia'],
+['MGW','Morgantown Municipal Airport(Walter L. Bill Hart Field)','Morgantown,West Virginia, United States'],
+['MGX','Moabi Airport','Moabi,Gabon'],
+['MGY','Dayton-Wright Brothers Airport','Dayton,Ohio, United States'],
+['MGZ','Myeik Airport','Myeik,Myanmar'],
+['MHA','Mahdia Airport','Mahdia,Guyana'],
+['MHC','Mocopulli Airport','Castro,Chile'],
+['MHD','Mashhad International Airport(Shahid Hashemi Nejad Airport)','Mashhad,Iran'],
+['MHE','Mitchell Municipal Airport','Mitchell,South Dakota, United States'],
+['MHF','Morichal Airport','Morichal,Colombia'],
+['MHG','Mannheim City Airport','Mannheim,Baden-Wurttemberg, Germany'],
+['MHH','Marsh Harbour Airport','Marsh Harbour,Abaco Islands,Bahamas'],
+['MHI','Moucha Airport','Moucha Island,Djibouti'],
+['MHK','Manhattan Regional Airport','Manhattan,Kansas, United States'],
+['MHL','Marshall Memorial Municipal Airport','Marshall,Missouri, United States'],
+['MHN','Hooker County Airport','Mullen,Nebraska, United States'],
+['MHO','Mount House Airport','Mount House Station,Western Australia, Australia'],
+['MHP','Minsk-1 Airport','Minsk,Belarus'],
+['MHQ','Mariehamn Airport','Mariehamn,Åland Islands,Finland'],
+['MHR','Sacramento Mather Airport','Sacramento,California, United States'],
+['MHS','Dunsmuir Municipal-Mott Airport(FAA: 1O6)','Mount Shasta,California, United States'],
+['MHT','Manchester-Boston Regional Airport','Manchester,New Hampshire, United States'],
+['MHU','Mount Hotham Airport','Mount Hotham,Victoria, Australia'],
+['MHV','Mojave Air and Space Port','Mojave,California, United States'],
+['MHW','Monteagudo Airport','Monteagudo,Bolivia'],
+['MHX','Manihiki Island Airport','Manihiki,Cook Islands'],
+['MHY','Morehead Airport','Morehead,Papua New Guinea'],
+['MHZ','RAF Mildenhall','Mildenhall,England, United Kingdom'],
+['MIA','Miami International Airport','Miami,Florida, United States'],
+['MIB','Minot Air Force Base','Minot,North Dakota, United States'],
+['MIC','Crystal Airport','Minneapolis/St Paul,Minnesota, United States'],
+['MID','Manuel Crescencio Rejon International Airport','Merida,Yucatan, Mexico'],
+['MIE','Delaware County Regional Airport','Muncie,Indiana, United States'],
+['MIF','Roy Hurd Memorial Airport(FAA: E01)','Monahans,Texas, United States'],
+['MIG','Mianyang Nanjiao Airport','Mianyang,Sichuan, China'],
+['MIH','Mitchell Plateau Airport','Mitchell Plateau,Western Australia, Australia'],
+['MII','Frank Miloye Milenkowichi-Marilia State Airport','Marilia,Sao Paulo, Brazil'],
+['MIJ','Mili Airport(FAA: 1Q9)','Mili Atoll,Marshall Islands'],
+['MIK','Mikkeli Airport','Mikkeli,Finland'],
+['MIL','metropolitan area1','Milan,Lombardy, Italy'],
+['MIM','Merimbula Airport','Merimbula,New South Wales, Australia'],
+['MIN','Minnipa Airport','Minnipa,South Australia, Australia'],
+['MIO','Miami Municipal Airport','Miami,Oklahoma, United States'],
+['MIP','Mitzpe Ramon Airport','Mitzpe Ramon,Israel'],
+['MIQ','Millard Airport(FAA: MLE)','Omaha,Nebraska, United States'],
+['MIR','Monastir Habib Bourguiba International Airport','Monastir,Tunisia'],
+['MIS','Misima Island Airport','Misima Island,Papua New Guinea'],
+['MIT','Shafter Airport(Minter Field)','Shafter,California, United States'],
+['MIU','Maiduguri International Airport','Maiduguri,Nigeria'],
+['MIV','Millville Municipal Airport','Millville,New Jersey, United States'],
+['MIW','Marshalltown Municipal Airport','Marshalltown,Iowa, United States'],
+['MIX','Miriti-Parana Airport','Miriti-Parana,Colombia'],
+['MIY','Mittiebah Airport','Mittiebah Station,Northern Territory, Australia'],
+['MIZ','Mainoru Airport','Mainoru,Northern Territory, Australia'],
+['MJA','Manja Airport','Manja,Madagascar'],
+['MJB','Mejit Airport(FAA: Q30)','Mejit Island,Marshall Islands'],
+['MJC','Man Airport','Man,Ivory Coast'],
+['MJD','Moenjodaro Airport','Mohenjo-daro,Pakistan'],
+['MJE','Majkin Airport','Majkin,Marshall Islands'],
+['MJF','Mosjøen Airport, Kjaerstad','Mosjøen,Norway'],
+['MJI','Mitiga International Airport','Tripoli,Libya'],
+['MJJ','Moki Airport','Moki,Papua New Guinea'],
+['MJK','Shark Bay Airport','Monkey Mia,Western Australia, Australia'],
+['MJL','Mouila Airport','Mouila,Gabon'],
+['MJM','Mbuji Mayi Airport','Mbuji-Mayi,Democratic Republic of the Congo'],
+['MJN','Amborovy Airport(Philibert Tsiranana Airport)','Mahajanga,Madagascar'],
+['MJO','Mount Etjo Airport','Mount Etjo,Namibia'],
+['MJP','Manjimup Airport','Manjimup,Western Australia, Australia'],
+['MJQ','Jackson Municipal Airport','Jackson,Minnesota, United States'],
+['MJR','Miramar Airport','Miramar,Buenos Aires, Argentina'],
+['MJS','Maganja da Costa Airport','Maganja da Costa,Mozambique'],
+['MJT','Mytilene International Airport','Mytilene,Lesbos,Greece'],
+['MJU','Tampa Padang Airport','Mamuju,Indonesia'],
+['MJV','Murcia-San Javier Airport','Murcia,Region of Murcia, Spain'],
+['MJW','Mahenye Airport','Mahenye,Zimbabwe'],
+['MJX','Robert J. Miller Air Park(Ocean County Airport)','Toms River,New Jersey, United States'],
+['MJZ','Mirny Airport','Mirny,Yakutia, Russia'],
+['MKA','Marianske Lazn? Airport','Marianske Lazn?,Czech Republic'],
+['MKB','Mekambo Airport','Mekambo,Gabon'],
+['MKC','Charles B. Wheeler Downtown Airport','Kansas City,Missouri, United States'],
+['MKE','General Mitchell International Airport','Milwaukee,Wisconsin, United States'],
+['MKG','Muskegon County Airport','Muskegon,Michigan, United States'],
+['MKH','Mokhotlong Airport','Mokhotlong,Lesotho'],
+['MKI','MBoki Airport','Obo,Central African Republic'],
+['MKJ','Makoua Airport','Makoua,Republic of the Congo'],
+['MKK','Molokai Airport','Kaunakakai,Hawaii, United States'],
+['MKL','McKellar-Sipes Regional Airport','Jackson,Tennessee, United States'],
+['MKM','Mukah Airport','Mukah,Sarawak, Malaysia'],
+['MKN','Malekolon Airport','Malekolon,Papua New Guinea'],
+['MKO','Davis Field','Muskogee,Oklahoma, United States'],
+['MKP','Makemo Airport','Makemo,French Polynesia'],
+['MKQ','Mopah Airport','Merauke,Indonesia'],
+['MKR','Meekatharra Airport','Meekatharra,Western Australia, Australia'],
+['MKS','Mekane Selam Airport','Mekane Selam,Ethiopia'],
+['MKT','Mankato Regional Airport','Mankato,Minnesota, United States'],
+['MKU','Makokou Airport','Makokou,Gabon'],
+['MKV','Mount Cavenagh Airport','Mount Cavenagh,Northern Territory, Australia'],
+['MKW','Rendani Airport','Manokwari,Indonesia'],
+['MKY','Mackay Airport','Mackay,Queensland, Australia'],
+['MKZ','Malacca International Airport','Malacca City,Malacca, Malaysia'],
+['MLA','Malta International Airport(Luqa Airport)','Luqa,Malta'],
+['MLB','Orlando Melbourne International Airport','Melbourne,Florida, United States'],
+['MLC','McAlester Regional Airport','McAlester,Oklahoma, United States'],
+['MLD','Malad City Airport','Malad City,Idaho, United States'],
+['MLE','Ibrahim Nasir International Airport','Male,Maldives'],
+['MLF','Milford Municipal Airport(Ben and Judy Briscoe Field)','Milford,Utah, United States'],
+['MLG','Abdul Rachman Saleh Airport','Malang,Indonesia'],
+['MLH','EuroAirport Basel Mulhouse Freiburg','Mulhouse,Alsace, France'],
+['MLI','Quad City International Airport','Moline,Illinois, United States'],
+['MLJ','Baldwin County Airport','Milledgeville,Georgia, United States'],
+['MLK','Malta Airport(FAA: M75)','Malta,Montana, United States'],
+['MLL','Marshall Don Hunter Sr. Airport(FAA: MDM)','Marshall,Alaska, United States'],
+['MLM','General Francisco J. Mujica International Airport','Morelia,Michoacan, Mexico'],
+['MLN','Melilla Airport','Melilla, Spain'],
+['MLO','Milos Island National Airport','Milos,Greece'],
+['MLP','Malabang Airport','Malabang,Philippines'],
+['MLQ','Malalaua Airport','Malalaua,Papua New Guinea'],
+['MLR','Millicent Airport','Millicent,South Australia, Australia'],
+['MLS','Miles City Airport(Frank Wiley Field)','Miles City,Montana, United States'],
+['MLT','Millinocket Municipal Airport','Millinocket,Maine, United States'],
+['MLU','Monroe Regional Airport','Monroe,Louisiana, United States'],
+['MLV','Merluna Airport','Merluna,Queensland, Australia'],
+['MLW','Spriggs Payne Airport','Monrovia,Liberia'],
+['MLX','Malatya Erhac Airport','Malatya,Turkey'],
+['MLY','Manley Hot Springs Airport','Manley Hot Springs,Alaska, United States'],
+['MLZ','Cerro Largo International Airport','Melo,Uruguay'],
+['MMA','metropolitan area2','Malmö,Sweden'],
+['MMB','Memanbetsu Airport','?zora,Hokkaido, Japan'],
+['MMC','Ciudad Mante National Airport','Ciudad Mante,Tamaulipas, Mexico'],
+['MMD','Minami-Daito Airport','Minamidait?,Dait? Islands, Japan'],
+['MME','Durham Tees Valley Airport','Teesside,England, United Kingdom'],
+['MMF','Mamfe Airport','Mamfe,Cameroon'],
+['MMG','Mount Magnet Airport','Mount Magnet,Western Australia, Australia'],
+['MMH','Mammoth Yosemite Airport','Mammoth Lakes,California, United States'],
+['MMI','McMinn County Airport','Athens,Tennessee, United States'],
+['MMJ','Matsumoto Airport','Matsumoto,Honshu, Japan'],
+['MMK','Murmansk Airport','Murmansk,Murmansk Oblast, Russia'],
+['MML','Southwest Minnesota Regional Airport(Marshall/Ryan Field)','Marshall,Minnesota, United States'],
+['MMM','Middlemount Airport','Middlemount,Queensland, Australia'],
+['MMN','Minute Man Air Field(FAA: 6B6)','Stow,Massachusetts, United States'],
+['MMO','Maio Airport','Maio Island,Cape Verde'],
+['MMP','San Bernardo Airport','Mompos(Mompox),Colombia'],
+['MMQ','Mbala Airport','Mbala,Zambia'],
+['MMS','Selfs Airport','Marks,Mississippi, United States'],
+['MMT','McEntire Joint National Guard Base','Columbia,South Carolina, United States'],
+['MMU','Morristown Municipal Airport','Morristown,New Jersey, United States'],
+['MMV','Mal Island Airport','Mal Island,Papua New Guinea'],
+['MMW','Moma Airport','Moma,Mozambique'],
+['MMX','Malmö Airport','Malmö,Sweden'],
+['MMY','Miyako Airport','Miyakojima,Miyako Islands, Japan'],
+['MMZ','Maymana Airport','Maymana,Afghanistan'],
+['MNA','Melangguane Airport','Melonguane,Indonesia'],
+['MNB','Muanda Airport(Moanda Airport)','Moanda,Democratic Republic of the Congo'],
+['MNC','Nacala Airport','Nacala,Mozambique'],
+['MND','Medina Airport','Medina,Colombia'],
+['MNE','Mungeranie Airport','Mungeranie,South Australia, Australia'],
+['MNF','Mana Island Airport','Mana Island,Fiji'],
+['MNG','Maningrida Airport','Maningrida,Northern Territory, Australia'],
+['MNH','Al-Musannah Airport','Al-Musannah,Oman'],
+['MNI','John A. Osborne Airport','British Overseas TerritoryofMontserrat'],
+['MNJ','Mananjary Airport','Mananjary,Madagascar'],
+['MNK','Maiana Airport','Maiana,Kiribati'],
+['MNL','Ninoy Aquino International Airport/Villamor Air Base','Manila,Philippines'],
+['MNM','Menominee-Marinette Twin County Airport','Menominee,Michigan, United States'],
+['MNN','Marion Municipal Airport','Marion,Ohio, United States'],
+['MNO','Manono Airport','Manono,Democratic Republic of the Congo'],
+['MNP','Maron Island Airport','Maron Island,Papua New Guinea'],
+['MNQ','Monto Airport','Monto,Queensland, Australia'],
+['MNR','Mongu Airport','Mongu,Zambia'],
+['MNS','Mansa Airport','Mansa,Zambia'],
+['MNT','Minto Al Wright Airport(FAA: 51Z)','Minto,Alaska, United States'],
+['MNU','Mawlamyaing Airport','Mawlamyine(Mawlamyaing),Myanmar'],
+['MNV','Mount Valley Airport','Mount Valley,Northern Territory, Australia'],
+['MNW','MacDonald Downs Airport','MacDonald Downs,Northern Territory, Australia'],
+['MNX','Manicore Airport','Manicore,Amazonas, Brazil'],
+['MNY','Mono Airport','Mono Island,Treasury Islands,Solomon Islands'],
+['MNZ','Manassas Regional Airport(FAA: HEF)','Manassas,Virginia, United States'],
+['MOA','Orestes Acosta Airport','Moa,Cuba'],
+['MOB','Mobile Regional Airport','Mobile,Alabama, United States'],
+['MOC','Montes Claros/Mario Ribeiro Airport','Montes Claros,Minas Gerais, Brazil'],
+['MOD','Modesto City-County Airport(Harry Sham Field)','Modesto,California, United States'],
+['MOE','Momeik Airport','Momeik,Myanmar'],
+['MOF','Frans Seda Airport(Wai Oti Airport)','Maumere,Indonesia'],
+['MOG','Monghsat Airport','Mong Hsat(Monghsat),Myanmar'],
+['MOI','Mitiaro Airport(Nukuroa Airport)','Mitiaro Island,Cook Islands'],
+['MOJ','Moengo Airstrip','Moengo,Suriname'],
+['MOL','Molde Airport, Årø','Molde,Norway'],
+['MOM','Letfotar Airport','Moudjeria,Mauritania'],
+['MON','Mount Cook Aerodrome','Mount Cook,New Zealand'],
+['MOO','Moomba Airport','Moomba,South Australia, Australia'],
+['MOP','Mount Pleasant Municipal Airport','Mount Pleasant,Michigan, United States'],
+['MOQ','Morondava Airport','Morondava,Madagascar'],
+['MOR','Morristown Regional Airport(Moore-Murrell Airport)','Morristown,Tennessee, United States'],
+['MOS','Moses Point Airport','Elim,Alaska, United States'],
+['MOT','Minot International Airport','Minot,North Dakota, United States'],
+['MOU','Mountain Village Airport','Mountain Village,Alaska, United States'],
+['MOV','Moranbah Airport','Moranbah,Queensland, Australia'],
+['MOW','metropolitan area3','Moscow, Russia'],
+['MOX','Morris Municipal Airport','Morris,Minnesota, United States'],
+['MOY','Monterrey Airport','Monterrey,Colombia'],
+['MOZ','Moorea Airport(Temae Airport)','Moorea,Windward Islands,French Polynesia'],
+['MPA','Katima Mulilo Airport(Mpacha Airport)','Katima Mulilo,Namibia'],
+['MPB','Miami Seaplane Base(FAA: X44)','Miami,Florida, United States'],
+['MPC','Muko-Muko Airport','Muko-Muko,Indonesia'],
+['MPD','Sindhri Airport','Mirpur Khas,Pakistan'],
+['MPF','Mapoda Airport','Mapoda,Papua New Guinea'],
+['MPG','Makini Airport','Makini,Papua New Guinea'],
+['MPH','Godofredo P. Ramos Airport(Caticlan Airport)','Malay,Philippines'],
+['MPI','Mamitupo Airport','Mamitupo,Panama'],
+['MPJ','Petit Jean Park Airport','Morrilton,Arkansas, United States'],
+['MPL','Montpellier-Mediterranee Airport(Frejorgues Airport)','Montpellier,Languedoc-Roussillon, France'],
+['MPM','Maputo International Airport','Maputo,Mozambique'],
+['MPN','RAF Mount Pleasant','British Overseas TerritoryofFalkland Islands'],
+['MPO','Pocono Mountains Municipal Airport','Mount Pocono,Pennsylvania, United States'],
+['MPP','Mulatupo Airport','Mulatupo,Panama'],
+['MPQ','Maan Airport','Maan,Jordan'],
+['MPR','McPherson Airport','McPherson,Kansas, United States'],
+['MPS','Mount Pleasant Regional Airport(FAA: OSA)','Mount Pleasant,Texas, United States'],
+['MPT','Maliana Airport','Maliana,East Timor'],
+['MPU','Mabua Airstrip','Mabua,Papua New Guinea'],
+['MPV','Edward F. Knapp State Airport','Barre/Montpelier,Vermont, United States'],
+['MPW','Mariupol International Airport','Mariupol,Ukraine'],
+['MPX','Miyanmin Airport','Miyanmin,Papua New Guinea'],
+['MPY','Maripasoula Airport','Maripasoula,French Guiana'],
+['MPZ','Mount Pleasant Municipal Airport','Mount Pleasant,Iowa, United States'],
+['MQA','Mandora Station Airport','Mandora Station,Western Australia, Australia'],
+['MQB','Macomb Municipal Airport','Macomb,Illinois, United States'],
+['MQC','Miquelon Airport','Miquelon,Saint Pierre and Miquelon'],
+['MQD','Maquinchao Airport','Maquinchao,Rio Negro, Argentina'],
+['MQE','Marqua Airport','Marqua,Northern Territory, Australia'],
+['MQF','Magnitogorsk International Airport','Magnitogorsk,Chelyabinsk Oblast, Russia'],
+['MQG','Midgard Airport','Midgard,Namibia'],
+['MQH','Minacu Airport','Minacu,Goias, Brazil'],
+['MQJ','Moma Airport','Khonuu,Yakutia, Russia'],
+['MQK','San Matias Airport','San Matias,Bolivia'],
+['MQL','Mildura Airport','Mildura,Victoria, Australia'],
+['MQM','Mardin Airport','Mardin,Turkey'],
+['MQN','Mo i Rana Airport, Røssvoll','Mo i Rana,Norway'],
+['MQO','Malam Airport','Malam,Papua New Guinea'],
+['MQP','Kruger Mpumalanga International Airport','Nelspruit,South Africa'],
+['MQQ','Moundou Airport','Moundou,Chad'],
+['MQR','Mosquera Airport','Mosquera,Colombia'],
+['MQS','Mustique Airport','Mustique Island,Saint Vincent and the Grenadines'],
+['MQT','Sawyer International Airport(FAA: SAW)','Marquette,Michigan, United States'],
+['MQU','Mariquita Airport','Mariquita,Colombia'],
+['MQV','Mostaganem Airport','Mostaganem,Algeria'],
+['MQW','Telfair-Wheeler Airport','McRae,Georgia, United States'],
+['MQX','Alula Aba Nega Airport','Mekele(Mekelle),Ethiopia'],
+['MQY','Smyrna Airport','Smyrna,Tennessee, United States'],
+['MQZ','Margaret River Airport','Margaret River,Western Australia, Australia'],
+['MRA','Misrata Airport','Misrata,Libya'],
+['MRB','Eastern WV Regional Airport(Shepherd Field)','Martinsburg,West Virginia, United States'],
+['MRC','Maury County Airport','Columbia/Mount Pleasant,Tennessee, United States'],
+['MRD','Alberto Carnevalli Airport','Merida,Venezuela'],
+['MRE','Mara Serena Airport','Maasai Mara,Kenya'],
+['MRF','Marfa Municipal Airport','Marfa,Texas, United States'],
+['MRG','Mareeba Airfield','Mareeba,Queensland, Australia'],
+['MRH','May River Airport','May River,Papua New Guinea'],
+['MRI','Merrill Field','Anchorage,Alaska, United States'],
+['MRJ','Marcala Airport','Marcala,Honduras'],
+['MRK','Marco Island Airport(FAA: MKY)','Marco Island,Florida, United States'],
+['MRL','Miners Lake Airport','Miners Lake,Queensland, Australia'],
+['MRM','Manari Airport','Manari,Papua New Guinea'],
+['MRN','Foothills Regional Airport(was Morganton-Lenoir Airport)','Morganton,North Carolina, United States'],
+['MRO','Hood Aerodrome','Masterton,New Zealand'],
+['MRP','Marla Airport','Marla,South Australia, Australia'],
+['MRQ','Marinduque Airport','Marinduque Island,Philippines'],
+['MRR','Jose Maria Velasco Ibarra Airport','Macara,Ecuador'],
+['MRS','Marseille Provence Airport','Marseille,Provence-Alpes-Cote dAzur, France'],
+['MRT','Moroak Airport','Moroak,Northern Territory, Australia'],
+['MRU','Sir Seewoosagur Ramgoolam International Airport','Plaine Magnien,Mauritius'],
+['MRV','Mineralnye Vody Airport','Mineralnye Vody,Stavropol Krai, Russia'],
+['MRW','Lolland Falster Airport','Maribo,Denmark'],
+['MRX','Mahshahr Airport','Bandar-e Mahshahr,Iran'],
+['MRY','Monterey Regional Airport','Monterey,California, United States'],
+['MRZ','Moree Airport','Moree,New South Wales, Australia'],
+['MSA','Muskrat Dam Airport','Muskrat Dam,Ontario, Canada'],
+['MSC','Falcon Field Airport(FAA: FFZ)','Phoenix,Arizona, United States'],
+['MSD','Mount Pleasant Airport(FAA: 43U)','Mount Pleasant,Utah, United States'],
+['MSE','Manston Airport(Kent International Airport)','Manston,England, United Kingdom'],
+['MSF','Mount Swan Airport','Mount Swan,Northern Territory, Australia'],
+['MSG','Matsaile Airport','Matsaile,Lesotho'],
+['MSH','Masirah Air Base','Masirah Island,Oman'],
+['MSI','Masalembo Airport','Masalembo,Indonesia'],
+['MSJ','Misawa Air Base','Misawa,Honshu, Japan'],
+['MSL','Northwest Alabama Regional Airport','Muscle Shoals/Florence,Alabama, United States'],
+['MSM','Masi-Manimba Airport','Masi-Manimba,Democratic Republic of the Congo'],
+['MSN','Dane County Regional Airport(Truax Field)','Madison,Wisconsin, United States'],
+['MSO','Missoula International Airport','Missoula,Montana, United States'],
+['MSP','Minneapolis-Saint Paul International Airport(Wold-Chamberlain Field)','Minneapolis/St Paul,Minnesota, United States'],
+['MSQ','Minsk National Airport','Minsk,Belarus'],
+['MSR','Mu? Airport','Mu?,Turkey'],
+['MSS','Massena International Airport(Richards Field)','Massena,New York, United States'],
+['MST','Maastricht Aachen Airport','Maastricht,Netherlands'],
+['MSU','Moshoeshoe I International Airport','Maseru,Lesotho'],
+['MSV','Sullivan County International Airport','Monticello,New York, United States'],
+['MSW','Massawa International Airport','Massawa,Eritrea'],
+['MSX','Mossendjo Airport','Mossendjo,Republic of the Congo'],
+['MSY','Louis Armstrong New Orleans International Airport','New Orleans,Louisiana, United States'],
+['MSZ','Namibe Airport(Yuri Gagarin Airport)','Namibe,Angola'],
+['MTA','Matamata Airport','Matamata,New Zealand'],
+['MTB','Montelibano Airport','Montelibano,Colombia'],
+['MTC','Selfridge Air National Guard Base','Mount Clemens,Michigan, United States'],
+['MTD','Mount Sandford Station Airport','Mount Sandford Station,Northern Territory, Australia'],
+['MTE','Monte Alegre Airport','Monte Alegre,Para, Brazil'],
+['MTF','Mizan Teferi Airport','Mizan Teferi,Ethiopia'],
+['MTG','Mato Grosso Airport','Mato Grosso, Brazil'],
+['MTH','Florida Keys Marathon Airport','Marathon,Florida, United States'],
+['MTI','Mosteiros Airport','Mosteiros,Cape Verde'],
+['MTJ','Montrose Regional Airport','Montrose,Colorado, United States'],
+['MTK','Makin Airport','Makin Island(Butaritari),Kiribati'],
+['MTL','Maitland Airport','Maitland,New South Wales, Australia'],
+['MTM','Metlakatla Seaplane Base','Metlakatla,Alaska, United States'],
+['MTN','Martin State Airport','Baltimore,Maryland, United States'],
+['MTO','Coles County Memorial Airport','Mattoon/Charleston,Illinois, United States'],
+['MTP','Montauk Airport','Montauk,New York, United States'],
+['MTQ','Mitchell Airport','Mitchell,Queensland, Australia'],
+['MTR','Los Garzones Airport','Monteria,Colombia'],
+['MTS','Matsapha Airport','Manzini,Swaziland'],
+['MTT','Minatitlan/Coatzacoalcos International Airport','Minatitlan,Veracruz, Mexico'],
+['MTU','Montepuez Airport','Montepuez,Mozambique'],
+['MTV','Mota Lava Airport','Mota Lava,Vanuatu'],
+['MTW','Manitowoc County Airport','Manitowoc,Wisconsin, United States'],
+['MTX','Metro Field(FAA: MTF)','Fairbanks,Alaska, United States'],
+['MTY','General Mariano Escobedo International Airport','Monterrey,Nuevo Leon, Mexico'],
+['MTZ','Bar Yehuda Airfield(Masada Airfield)','Masada,Israel'],
+['MUA','Munda Airport','Munda,New Georgia,Solomon Islands'],
+['MUB','Maun Airport','Maun,Botswana'],
+['MUC','Munich Airport','Munich,Bavaria, Germany'],
+['MUD','Mueda Airport','Mueda,Mozambique'],
+['MUE','Waimea-Kohala Airport','Kamuela,Hawaii, United States'],
+['MUF','Muting Airport','Muting,Indonesia'],
+['MUG','Mulege Airstrip','Mulege,Baja California Sur, Mexico'],
+['MUH','Marsa Matruh International Airport','Mersa Matruh,Egypt'],
+['MUI','Muir Army Airfield','Fort Indiantown Gap,Pennsylvania, United States'],
+['MUJ','Mui Airport','Mui,Ethiopia'],
+['MUK','Mauke Airport','Mauke Island,Cook Islands'],
+['MUL','Spence Airport','Moultrie,Georgia, United States'],
+['MUN','Jose Tadeo Monagas International Airport','Maturin,Venezuela'],
+['MUO','Mountain Home Air Force Base','Mountain Home,Idaho, United States'],
+['MUP','Mulga Park Airport','Mulga Park,Northern Territory, Australia'],
+['MUQ','Muccan Station Airport','Muccan Station,Western Australia, Australia'],
+['MUR','Marudi Airport','Marudi,Sarawak, Malaysia'],
+['MUS','Minami Torishima Airport','Minami-Tori-shima, Japan'],
+['MUT','Muscatine Municipal Airport','Muscatine,Iowa, United States'],
+['MUW','Ghriss Airport','Ghriss,Algeria'],
+['MUX','Multan International Airport','Multan,Pakistan'],
+['MUY','Mouyondzi Airport','Mouyondzi,Republic of the Congo'],
+['MUZ','Musoma Airport','Musoma,Tanzania'],
+['MVA','Myvatn Airport','Myvatn,Iceland'],
+['MVB','MVengue El Hadj Omar Bongo Ondimba International Airport','Franceville,Gabon'],
+['MVC','Monroe County Airport','Monroeville,Alabama, United States'],
+['MVD','Carrasco Gral. Cesareo L. Berisso International Airport','Montevideo,Uruguay'],
+['MVE','Montevideo-Chippewa County Airport','Montevideo,Minnesota, United States'],
+['MVF','Gov. Dix-Sept Rosado Airport','Mossoro,Rio Grande do Norte, Brazil'],
+['MVG','Mevang Airport','Mevang,Gabon'],
+['MVH','Macksville Airport','Macksville,New South Wales, Australia'],
+['MVI','Manetai Airport','Manetai,Papua New Guinea'],
+['MVK','Mulka Airport','Mulka,South Australia, Australia'],
+['MVL','Morrisville-Stowe State Airport','Morrisville/Stowe,Vermont, United States'],
+['MVM','Kayenta Airport(FAA: 0V7)','Kayenta,Arizona, United States'],
+['MVN','Mount Vernon Airport','Mount Vernon,Illinois, United States'],
+['MVO','Mongo Airport','Mongo,Chad'],
+['MVP','Fabio Alberto Leon Bentley Airport','Mitu,Colombia'],
+['MVQ','Mogilev Airport','Mogilev,Belarus'],
+['MVR','Salak Airport','Maroua,Cameroon'],
+['MVS','Mucuri Airport','Mucuri,Bahia, Brazil'],
+['MVT','Mataiva Airport','Mataiva,Tuamotus,French Polynesia'],
+['MVU','Musgrave Airport','Musgrave,Queensland, Australia'],
+['MVV','Megeve Altiport','Megeve,Rhone-Alpes, France'],
+['MVW','Skagit Regional Airport(FAA: BVS)','Burlington/Mount Vernon,Washington, United States'],
+['MVX','Minvoul Airport','Minvoul,Gabon'],
+['MVY','Marthas Vineyard Airport','Vineyard Haven,Massachusetts, United States'],
+['MVZ','Masvingo Airport','Masvingo,Zimbabwe'],
+['MWA','Williamson County Regional Airport','Marion,Illinois, United States'],
+['MWB','Morawa Airport','Morawa,Western Australia, Australia'],
+['MWC','Lawrence J. Timmerman Airport','Milwaukee,Wisconsin, United States'],
+['MWD','PAF Base M.M. Alam','Mianwali,Pakistan'],
+['MWE','Merowe Airport','Merowe,Sudan'],
+['MWF','Maewo-Naone Airport','Maewo,Vanuatu'],
+['MWG','Marawaka Airport','Marawaka,Papua New Guinea'],
+['MWH','Grant County International Airport','Moses Lake,Washington, United States'],
+['MWI','Maramuni Airport','Maramuni,Papua New Guinea'],
+['MWJ','Matthews Ridge Airport','Matthews Ridge,Guyana'],
+['MWK','Matak Airport(Tarempa Airport)','Matak,Indonesia'],
+['MWL','Mineral Wells Airport','Mineral Wells,Texas, United States'],
+['MWM','Windom Municipal Airport','Windom,Minnesota, United States'],
+['MWN','Mwadui Airport','Mwadui,Tanzania'],
+['MWO','Middletown Regional Airport(Hook Field)','Middletown,Ohio, United States'],
+['MWQ','Magway Airport','Magway,Myanmar'],
+['MWR','Motswari Airstrip','Motswari,South Africa'],
+['MWT','Moolawatana Airport','Moolawatana Station,South Australia, Australia'],
+['MWU','Mussau Island Airport','Mussau Island,Papua New Guinea'],
+['MWV','Mondulkiri Airport','Senmonorom,Cambodia'],
+['MWX','Muan International Airport','Muan,South Korea'],
+['MWY','Miranda Downs Airport','Miranda Downs,Queensland, Australia'],
+['MWZ','Mwanza Airport','Mwanza,Tanzania'],
+['MXA','Manila Municipal Airport','Manila,Arkansas, United States'],
+['MXB','Andi Jemma Airport','Masamba,Indonesia'],
+['MXC','Monticello Airport(FAA: U43)','Monticello,Utah, United States'],
+['MXD','Marion Downs Airport','Marion Downs Station,Queensland, Australia'],
+['MXE','Laurinburg-Maxton Airport(FAA: MEB)','Laurinburg/Maxton,North Carolina, United States'],
+['MXF','Maxwell Air Force Base','Montgomery,Alabama, United States'],
+['MXG','Marlboro Airport(FAA: 9B1)','Marlborough,Massachusetts, United States'],
+['MXH','Moro Airport','Moro,Papua New Guinea'],
+['MXI','Mati Airport(Imelda R. Marcos Airport)','Mati,Philippines'],
+['MXJ','Minna Airport','Minna,Nigeria'],
+['MXK','Mindik Airport','Mindik,Papua New Guinea'],
+['MXL','General Rodolfo Sanchez Taboada International Airport','Mexicali,Baja California, Mexico'],
+['MXM','Morombe Airport','Morombe,Madagascar'],
+['MXN','Morlaix - Ploujean Airport','Morlaix,Brittany, France'],
+['MXO','Monticello Regional Airport','Monticello,Iowa, United States'],
+['MXP','Milan-Malpensa Airport','Milan,Lombardy, Italy'],
+['MXR','Myrhorod Air Base','Myrhorod,Ukraine'],
+['MXS','Maota Airport','Maota,Samoa'],
+['MXT','Maintirano Airport','Maintirano,Madagascar'],
+['MXU','Mullewa Airport','Mullewa,Western Australia, Australia'],
+['MXV','Mörön Airport','Mörön,Mongolia'],
+['MXW','Mandalgovi Airport','Mandalgovi,Mongolia'],
+['MXX','Mora-Siljan Airport','Mora,Sweden'],
+['MXY','McCarthy Airport(FAA: 15Z)','McCarthy,Alaska, United States'],
+['MXZ','Meixian Airport','Meizhou,Guangdong, China'],
+['MYA','Moruya Airport','Moruya,New South Wales, Australia'],
+['MYB','Mayumba Airport','Mayumba,Gabon'],
+['MYC','Mariscal Sucre Airport','Maracay,Venezuela'],
+['MYD','Malindi Airport','Malindi,Kenya'],
+['MYE','Miyakejima Airport','Miyake-jima, Japan'],
+['MYF','Montgomery Field Airport','San Diego,California, United States'],
+['MYG','Mayaguana Airport(Abrahams Bay Airport)','Mayaguana,Bahamas'],
+['MYH','Marble Canyon Airport(FAA: L41)','Marble Canyon,Arizona, United States'],
+['MYI','Murray Island Airport','Murray Island,Queensland, Australia'],
+['MYJ','Matsuyama Airport','Matsuyama,Shikoku, Japan'],
+['MYK','May Creek Airport','May Creek,Alaska, United States'],
+['MYL','McCall Municipal Airport','McCall,Idaho, United States'],
+['MYM','Monkey Mountain Airport','Monkey Mountain,Guyana'],
+['MYN','Marib Airport','Marib,Yemen'],
+['MYO','Myroodah Airport','Myroodah Station,Western Australia, Australia'],
+['MYP','Mary International Airport','Mary,Turkmenistan'],
+['MYQ','Mysore Airport(Mandakalli Airport)','Mysore,Karnataka, India'],
+['MYR','Myrtle Beach International Airport','Myrtle Beach,South Carolina, United States'],
+['MYT','Myitkyina Airport','Myitkyina,Myanmar'],
+['MYU','Mekoryuk Airport','Mekoryuk,Alaska, United States'],
+['MYV','Yuba County Airport','Marysville,California, United States'],
+['MYW','Mtwara Airport','Mtwara,Tanzania'],
+['MYX','Menyamya Airport','Menyamya,Papua New Guinea'],
+['MYY','Miri Airport','Miri,Sarawak, Malaysia'],
+['MYZ','Monkey Bay Airport','Monkey Bay,Malawi'],
+['MZA','Manuel Prado Ugarteche Airport','Mazamari,Peru'],
+['MZB','Mocimboa da Praia Airport','Mocimboa da Praia,Mozambique'],
+['MZC','Mitzic Airport','Mitzic,Gabon'],
+['MZD','Mendez Airport','Santiago de Mendez,Ecuador'],
+['MZE','Manatee Airport','Manatee,Belize'],
+['MZF','Wild Coast Sun Airport','Mzamba,South Africa'],
+['MZG','Magong Airport','Magong,Taiwan'],
+['MZH','Amasya Merzifon Airport','Amasya,Turkey'],
+['MZI','Mopti Airport(Ambodedjo Airport)','Mopti,Mali'],
+['MZJ','Pinal Airpark','Marana,Arizona, United States'],
+['MZK','Marakei Airport','Marakei,Kiribati'],
+['MZL','La Nubia Airport(Santaguida Airport)','Manizales,Colombia'],
+['MZM','Metz-Frescaty Air Base','Metz,Lorraine, France'],
+['MZN','Minj Airport','Minj,Papua New Guinea'],
+['MZO','Sierra Maestra Airport','Manzanillo,Cuba'],
+['MZP','Motueka Aerodrome','Motueka,New Zealand'],
+['MZQ','Mkuze Airport','Mkuze,South Africa'],
+['MZR','Mazar-e Sharif International Airport','Mazar-i-Sharif,Afghanistan'],
+['MZT','General Rafael Buelna International Airport','Mazatlan,Sinaloa, Mexico'],
+['MZU','Muzaffarpur Airport','Muzaffarpur,Bihar, India'],
+['MZV','Mulu Airport','Mulu,Sarawak, Malaysia'],
+['MZW','Mecheria Airport','Mecheria,Algeria'],
+['MZX','Mena Airport','Mena,Ethiopia'],
+['MZY','Mossel Bay Airport','Mossel Bay,South Africa'],
+['MZZ','Marion Municipal Airport','Marion,Indiana, United States'],
+['NAA','Narrabri Airport','Narrabri,New South Wales, Australia'],
+['NAC','Naracoorte Airport','Naracoorte,South Australia, Australia'],
+['NAD','Macanal Airport','Macanal,Colombia'],
+['NAE','Boundetingou Airport','Natitingou,Benin'],
+['NAF','Banaina Airport','Banaina,Indonesia'],
+['NAG','Dr. Babasaheb Ambedkar International Airport','Nagpur,Maharashtra, India'],
+['NAH','Naha Airport','Tahuna,Indonesia'],
+['NAI','Annai Airport','Annai,Guyana'],
+['NAJ','Nakhchivan International Airport','Nakhchivan,Azerbaijan'],
+['NAK','Nakhon Ratchasima Airport','Nakhon Ratchasima,Thailand'],
+['NAL','Nalchik Airport','Nalchik,Kabardino-Balkaria, Russia'],
+['NAM','Namlea Airport','Namlea,Indonesia'],
+['NAN','Nadi International Airport','Nadi,Fiji'],
+['NAO','Nanchong Gaoping Airport','Nanchong,Sichuan, China'],
+['NAP','Naples International Airport','Naples,Campania, Italy'],
+['NAQ','Qaanaaq Airport','Qaanaaq,Greenland'],
+['NAR','Puerto Nare Airport','Puerto Nare,Colombia'],
+['NAS','Lynden Pindling International Airport','Nassau,New Providence,Bahamas'],
+['NAT','Sao Goncalo do Amarante-Governador Aluizio Alves International Airport','Natal,Rio Grande do Norte, Brazil'],
+['NAU','Napuka Airport','Napuka,Tuamotus,French Polynesia'],
+['NAV','Nev?ehir Kapadokya Airport','Nev?ehir,Turkey'],
+['NAW','Narathiwat Airport','Narathiwat,Thailand'],
+['NAY','Beijing Nanyuan Airport','Beijing, China'],
+['NAZ','Nana Airport','Star Harbour,Solomon Islands'],
+['NBA','Nambaiyufa Airport','Nambaiyufa,Papua New Guinea'],
+['NBB','Barranco Minas Airport','Barranco Minas,Colombia'],
+['NBC','Begishevo Airport','Nizhnekamsk/Naberezhnye Chelny,Tatarstan, Russia'],
+['NBE','Enfidha-Hammamet International Airport','Enfidha,Tunisia'],
+['NBG','NAS JRB New Orleans(Alvin Callender Field)','New Orleans,Louisiana, United States'],
+['NBH','Nambucca Heads Airport','Nambucca Heads,New South Wales, Australia'],
+['NBL','Wannukandi Airport','San Blas,Panama'],
+['NBN','Annobon Airport','Annobon,Equatorial Guinea'],
+['NBO','Jomo Kenyatta International Airport','Nairobi,Kenya'],
+['NBS','Changbaishan Airport','Baishan,Jilin, China'],
+['NBW','Guantanamo Bay Naval Base','Guantanamo Bay,Cuba'],
+['NBX','Nabire Airport','Nabire,Indonesia'],
+['NCA','North Caicos Airport','North Caicos,British Overseas Territory'],
+['NCE','Nice Cote dAzur Airport','Nice,Provence-Alpes-Cote dAzur, France'],
+['NCG','Nuevo Casas Grandes Municipal Airport','Nuevo Casas Grandes,Chihuahua, Mexico'],
+['NCH','Nachingwea Airport','Nachingwea,Tanzania'],
+['NCI','Antioquia Airport','Necocli,Colombia'],
+['NCJ','Sunchales Airport','Sunchales,Santa Fe, Argentina'],
+['NCL','Newcastle Airport','Newcastle upon Tyne,England, United Kingdom'],
+['NCN','Chenega Bay Airport(FAA: C05)','Chenega,Alaska, United States'],
+['NCO','Quonset State Airport(FAA: OQU)','North Kingstown,Rhode Island, United States'],
+['NCR','San Carlos Airport','San Carlos,Nicaragua'],
+['NCS','Newcastle Airport','Newcastle,South Africa'],
+['NCT','Nicoya Guanacaste Airport','Nicoya,Costa Rica'],
+['NCU','Nukus Airport','Nukus,Uzbekistan'],
+['NCY','Annecy - Haute-Savoie - Mont Blanc Airport','Annecy,Rhone-Alpes, France'],
+['NDA','Bandanaira Airport','Banda Islands,Indonesia'],
+['NDB','Nouadhibou International Airport','Nouadhibou,Mauritania'],
+['NDC','Shri Guru Gobind Singh Ji Airport','Nanded,Maharashtra, India'],
+['NDD','Sumbe Airport','Sumbe,Angola'],
+['NDE','Mandera Airport','Mandera,Kenya'],
+['NDF','Ndalatando Airport','Ndalatando,Angola'],
+['NDG','Qiqihar Sanjiazi Airport','Qiqihar,Heilongjiang, China'],
+['NDI','Namudi Airport','Namudi,Papua New Guinea'],
+['NDJ','NDjamena International Airport','NDjamena,Chad'],
+['NDK','Namorik Airport(Namdrik Airport) (FAA: 3N0)','Namdrik Atoll,Marshall Islands'],
+['NDL','NDele Airport','NDele(Ndele),Central African Republic'],
+['NDM','Mendi Airport','Mendi,Ethiopia'],
+['NDN','Nadunumu Airport','Nadunumu,Papua New Guinea'],
+['NDR','Nador International Airport','Nador,Morocco'],
+['NDS','Sandstone Airport','Sandstone,Western Australia, Australia'],
+['NDU','Rundu Airport','Rundu,Namibia'],
+['NDY','Sanday Airport','Sanday,Scotland, United Kingdom'],
+['NEA','Naval Air Station Glynco','Glynco, Georgia,Georgia, United States'],
+['NEC','Necochea Airport','Necochea,Buenos Aires, Argentina'],
+['NEF','Neftekamsk Airport','Neftekamsk,Bashkortostan, Russia'],
+['NEG','Negril Aerodrome','Negril,Jamaica'],
+['NEJ','Nejjo Airport','Nejo,Ethiopia'],
+['NEK','Nekemte Airport','Nekemte,Ethiopia'],
+['NEL','NAES Lakehurst(Maxfield Field)','Lakehurst,New Jersey, United States'],
+['NEN','NOLF Whitehouse','Jacksonville,Florida, United States'],
+['NER','Chulman Neryungri Airport','Neryungri,Yakutia, Russia'],
+['NEU','Sam Neua Airport','Sam Neua,Laos'],
+['NEV','Vance W. Amory International Airport','Nevis,Saint Kitts and Nevis'],
+['NEW','Lakefront Airport','New Orleans,Louisiana, United States'],
+['NFG','Nefteyugansk Airport','Nefteyugansk,Khanty-Mansi Autonomous Okrug, Russia'],
+['NFL','NAS Fallon(Van Voorhis Field)','Fallon,Nevada, United States'],
+['NFO','Niuafoou Airport','Niuafoou,Tonga'],
+['NFR','Nafoora Airport','Nafoora,Libya'],
+['NGA','Young Airport','Young,New South Wales, Australia'],
+['NGB','Ningbo Lishe International Airport','Ningbo,Zhejiang, China'],
+['NGD','Auguste George Airport','Anegada,British Overseas TerritoryofVirgin Islands'],
+['NGE','Ngaoundere Airport','Ngaoundere,Cameroon'],
+['NGF','MCAS Kaneohe Bay','Kaneohe,Hawaii, United States'],
+['NGI','Gau Airport','Gau Island,Fiji'],
+['NGK','Nogliki Airport','Nogliki,Sakhalin Oblast, Russia'],
+['NGL','Ngala Airfield','Ngala,South Africa'],
+['NGN','Nargana Airport','Nargana,Panama'],
+['NGO','Ch?bu Centrair International Airport','Nagoya,Honshu, Japan'],
+['NGP','NAS Corpus Christi(Truax Field)','Corpus Christi,Texas, United States'],
+['NGQ','Ngari Gunsa Airport','Shiquanhe,Tibet Autonomous Region, China'],
+['NGR','Ningerum Airport','Ningerum,Papua New Guinea'],
+['NGS','Nagasaki Airport','Nagasaki,Kyushu, Japan'],
+['NGU','NS Norfolk(Chambers Field)','Norfolk,Virginia, United States'],
+['NGW','NOLF Cabaniss Field','Corpus Christi,Texas, United States'],
+['NGX','Manang Airport','Manang,Nepal'],
+['NHA','Nha Trang Air Base','Nha Trang,Vietnam'],
+['NHD','Al Minhad Air Base','Dubai,United Arab Emirates'],
+['NHF','New Halfa Airport','New Halfa,Sudan'],
+['NHK','NAS Patuxent River(Trapnell Field)','Patuxent River,Maryland, United States'],
+['NHS','Nushki Airport','Nushki,Pakistan'],
+['NHT','RAF Northolt','Northolt,England, United Kingdom'],
+['NHV','Nuku Hiva Airport','Nuku Hiva,Marquesas Islands,French Polynesia'],
+['NHX','NOLF Barin(FAA: NBJ)','Foley,Alabama, United States'],
+['NHZ','Brunswick Executive Airport','Brunswick,Maine, United States'],
+['NIA','Nimba Airport','Nimba,Liberia'],
+['NIB','Nikolai Airport(FAA: FSP)','Nikolai,Alaska, United States'],
+['NIC','Nicosia International Airport1','Nicosia,Cyprus'],
+['NIF','Nifty Airport','Nifty,Western Australia, Australia'],
+['NIG','Nikunau Airport','Nikunau,Kiribati'],
+['NIK','Niokolo-Koba Airport','Niokolo-Koba,Senegal'],
+['NIM','Diori Hamani International Airport','Niamey,Niger'],
+['NIN','Ninilchik Airport','Ninilchik,Alaska, United States'],
+['NIO','Nioki Airport','Nioki,Democratic Republic of the Congo'],
+['NIP','NAS Jacksonville(Towers Field)','Jacksonville,Florida, United States'],
+['NIR','Chase Field Industrial Complex(FAA: 1XA2)','Beeville,Texas, United States'],
+['NIS','Simberi Airport','Simberi Island,Papua New Guinea'],
+['NIT','Niort - Souche Airport','Niort,Poitou-Charentes, France'],
+['NIU','Niau Airport','Niau,Tuamotus,French Polynesia'],
+['NIX','Nioro Airport','Nioro du Sahel,Mali'],
+['NJA','Naval Air Facility Atsugi','Atsugi,Honshu, Japan'],
+['NJC','Nizhnevartovsk Airport','Nizhnevartovsk,Khanty-Mansi Autonomous Okrug, Russia'],
+['NJF','Al Najaf International Airport','Al Najaf,Iraq'],
+['NJK','NAF El Centro','El Centro,California, United States'],
+['NKA','Nkan Airport','Ntoum(Nkan),Gabon'],
+['NKB','Noonkanbah Airport','Noonkanbah Station,Western Australia, Australia'],
+['NKC','Nouakchott-Oumtounsy International Airport','Nouakchott,Mauritania'],
+['NKD','Sinak Airport','Sinak,Indonesia'],
+['NKG','Nanjing Lukou International Airport','Nanjing,Jiangsu, China'],
+['NKI','Naukati Bay Seaplane Base(FAA: AK62)','Naukati Bay,Alaska, United States'],
+['NKL','Nkolo-Fuma Airport','Kolo Fuma,Democratic Republic of the Congo'],
+['NKM','Nagoya Airfield(Komaki Airport)','Nagoya,Honshu, Japan'],
+['NKN','Nankina Airport','Nankina,Papua New Guinea'],
+['NKO','Ankokoambo Airport','Ankokoambo,Madagascar'],
+['NKP','Nukutepipi Airport','Nukutepipi,Tuamotus,French Polynesia'],
+['NKS','Nkongsamba Airport','Nkongsamba,Cameroon'],
+['NKT','??rnak Airport','??rnak/Cizre,Turkey'],
+['NKU','Nkaus Airport','Nkau,Lesotho'],
+['NKX','MCAS Miramar','San Diego,California, United States'],
+['NKY','Yokangassi Airport','Nkayi(Nkayi),Republic of the Congo'],
+['NLA','Simon Mwansa Kapwepwe International Airport','Ndola,Zambia'],
+['NLC','NAS Lemoore(Reeves Field)','Lemoore,California, United States'],
+['NLD','Quetzalcoatl International Airport','Nuevo Laredo,Tamaulipas, Mexico'],
+['NLE','Jerry Tyler Memorial Airport(FAA: 3TR)','Niles,Michigan, United States'],
+['NLF','Darnley Island Airport','Darnley Island,Queensland, Australia'],
+['NLG','Nelson Lagoon Airport(FAA: OUL)','Nelson Lagoon,Alaska, United States'],
+['NLH','Ninglang Luguhu Airport','Ninglang,Yunnan, China'],
+['NLI','Nikolayevsk-on-Amur Airport','Nikolayevsk-on-Amur,Khabarovsk Krai, Russia'],
+['NLK','Norfolk Island Airport','Norfolk Island, Australia'],
+['NLL','Nullagine Airport','Nullagine,Western Australia, Australia'],
+['NLN','Kneeland Airport(FAA: O19)','Arcata/Eureka,California, United States'],
+['NLO','NDolo Airport','Kinshasa,Democratic Republic of the Congo'],
+['NLP','Nelspruit Airport','Nelspruit,South Africa'],
+['NLS','Nicholson Airport','Nicholson,Western Australia, Australia'],
+['NLT','Xinyuan Nalati Airport','Xinyuan,Xinjiang, China'],
+['NLU','Santa Lucia Air Force Base Num 1','Zumpango,State of Mexico, Mexico'],
+['NLV','Mykolaiv International Airport','Mykolaiv,Ukraine'],
+['NMA','Namangan Airport','Namangan,Uzbekistan'],
+['NMB','Daman Airport','Daman,Daman and Diu, India'],
+['NMC','Normans Cay Airport','Normans Cay,Exuma Islands,Bahamas'],
+['NME','Nightmute Airport(FAA: IGT)','Nightmute,Alaska, United States'],
+['NMG','San Miguel Airport','San Miguel,Panama'],
+['NML','Fort McMurray/Mildred Lake Airport(TC: CAJ3)','Fort McMurray,Alberta, Canada'],
+['NMN','Nomane Airport','Nomane,Papua New Guinea'],
+['NMP','New Moon Airport','New Moon,Queensland, Australia'],
+['NMR','Nappa Merrie Airport','Nappa Merrie,Queensland, Australia'],
+['NMS','Nansang Airport','Nansang(Namsang),Myanmar'],
+['NMT','Namtu Airport','Namtu,Myanmar'],
+['NNA','Kenitra Air Base','Kenitra,Morocco'],
+['NNB','Santa Ana Airport','Santa Ana Island(Owaraha),Solomon Islands'],
+['NND','Nangade Airport','Nangade,Mozambique'],
+['NNG','Nanning Wuxu International Airport','Nanning,Guangxi, China'],
+['NNI','Namutoni Airport','Namutoni,Namibia'],
+['NNK','Naknek Airport(FAA: 5NK)','Naknek,Alaska, United States'],
+['NNL','Nondalton Airport(FAA: 5NN)','Nondalton,Alaska, United States'],
+['NNM','Naryan-Mar Airport','Naryan-Mar,Nenets Autonomous Okrug, Russia'],
+['NNR','Connemara Airport','Spiddal,Ireland'],
+['NNT','Nan Nakhon Airport','Nan,Thailand'],
+['NNU','Nanuque Airport','Nanuque,Minas Gerais, Brazil'],
+['NNX','Nunukan Airport','Nunukan,Indonesia'],
+['NNY','Nanyang Jiangying Airport','Nanyang,Henan, China'],
+['NOA','NAS Nowra','Nowra,New South Wales, Australia'],
+['NOB','Nosara Airport','Nosara,Costa Rica'],
+['NOC','Ireland West Airport Knock','Knock,Ireland'],
+['NOD','Norddeich Airport','Norden,Lower Saxony, Germany'],
+['NOG','Nogales International Airport','Nogales,Sonora, Mexico'],
+['NOI','Novorossiysk Airport','Novorossiysk,Krasnodar Krai, Russia'],
+['NOJ','Noyabrsk Airport','Noyabrsk,Yamalo-Nenets Autonomous Okrug, Russia'],
+['NOK','Nova Xavantina Airport','Nova Xavantina,Mato Grosso, Brazil'],
+['NOM','Nomad River Airport','Nomad River,Papua New Guinea'],
+['NON','Nonouti Airport','Nonouti,Kiribati'],
+['NOO','Naoro Airport','Naoro,Papua New Guinea'],
+['NOP','Sinop Airport','Sinop,Turkey'],
+['NOR','Norofjörour Airport','Nordfjordur,Iceland'],
+['NOS','Fascene Airport','Nosy Be,Madagascar'],
+['NOT','Marin County Airport(Gnoss Field) (FAA: DVO)','Novato,California, United States'],
+['NOU','La Tontouta International Airport','Noumea,New Caledonia'],
+['NOV','Albano Machado Airport','Huambo,Angola'],
+['NOZ','Spichenkovo Airport','Novokuznetsk,Kemerovo Oblast, Russia'],
+['NPA','NAS Pensacola(Forrest Sherman Field)','Pensacola,Florida, United States'],
+['NPE','Hawkes Bay Airport','Napier/Hastings,New Zealand'],
+['NPG','Nipa Airport','Nipa,Papua New Guinea'],
+['NPH','Nephi Municipal Airport(FAA: U14)','Nephi,Utah, United States'],
+['NPL','New Plymouth Airport','New Plymouth,New Zealand'],
+['NPO','Nanga Pinoh Airport','Nanga Pinoh,Indonesia'],
+['NPP','Napperby Airport','Napperby,Northern Territory, Australia'],
+['NPR','Novo Progresso Airport','Novo Progresso,Para, Brazil'],
+['NPT','Newport State Airport(FAA: UUU)','Newport,Rhode Island, United States'],
+['NPU','San Pedro de Uraba Airport','San Pedro de Uraba,Colombia'],
+['NQA','Millington Regional Jetport','Millington,Tennessee, United States'],
+['NQI','NAS Kingsville','Kingsville,Texas, United States'],
+['NQL','Niquelandia Airport','Niquelandia,Goias, Brazil'],
+['NQN','Presidente Peron International Airport','Neuquen,Neuquen, Argentina'],
+['NQT','Nottingham Airport','Nottingham,England, United Kingdom'],
+['NQU','Reyes Murillo Airport','Nuqui,Colombia'],
+['NQX','NAS Key West(Boca Chica Field)','Key West,Florida, United States'],
+['NQY','Cornwall Airport Newquay','Newquay,England, United Kingdom'],
+['NRA','Narrandera Airport','Narrandera,New South Wales, Australia'],
+['NRB','NS Mayport(Admiral David L. McDonald Field)','Mayport,Florida, United States'],
+['NRC','NASA Crows Landing Airport','Crows Landing,California, United States'],
+['NRD','Norderney Airport','Norderney,Lower Saxony, Germany'],
+['NRE','Namrole Airport','Namrole,Indonesia'],
+['NRG','Narrogin Airport','Narrogin,Western Australia, Australia'],
+['NRI','Grand Lake Regional Airport(FAA: 3O9)','Afton,Oklahoma, United States'],
+['NRK','Norrköping Airport','Norrköping,Sweden'],
+['NRL','North Ronaldsay Airport','North Ronaldsay,Scotland, United Kingdom'],
+['NRM','Keibane Airport','Nara,Mali'],
+['NRN','Weeze Airport(Niederrhein Airport)','Weeze,North Rhine-Westphalia, Germany'],
+['NRR','Jose Aponte de la Torre Airport(FAA: RVR)','Ceiba,Puerto Rico, United States'],
+['NRS','NOLF Imperial Beach(Ream Field)','Imperial Beach,California, United States'],
+['NRT','Narita International Airport','Tokyo,Honshu, Japan'],
+['NRY','Newry Airport','Newry Station,Northern Territory, Australia'],
+['NSB','North Seaplane Base','Bimini,Bahamas'],
+['NSE','NAS Whiting Field - North','Milton,Florida, United States'],
+['NSH','Noshahr Airport','Nowshahr,Iran'],
+['NSI','Yaounde Nsimalen International Airport','Yaounde,Cameroon'],
+['NSK','Alykel Airport','Norilsk,Krasnoyarsk Krai, Russia'],
+['NSL','Slayton Municipal Airport(FAA: DVP)','Slayton,Minnesota, United States'],
+['NSM','Norseman Airport','Norseman,Western Australia, Australia'],
+['NSN','Nelson Airport','Nelson,New Zealand'],
+['NSO','Scone Airport','Scone,New South Wales, Australia'],
+['NST','Nakhon Si Thammarat Airport','Nakhon Si Thammarat,Thailand'],
+['NSV','Noosa Airport','Noosaville,Queensland, Australia'],
+['NSY','Naval Air Station Sigonella','Catania,Sicily, Italy'],
+['NTA','Natadola Seaplane Base','Natadola Bay,Fiji'],
+['NTB','Notodden Airport, Tuven','Notodden,Norway'],
+['NTC','Santa Carolina Airport','Santa Carolina,Mozambique'],
+['NTD','NAS Point Mugu(Naval Base Ventura County)','Point Mugu,California, United States'],
+['NTE','Nantes Atlantique Airport','Nantes,Pays de la Loire, France'],
+['NTG','Nantong Xingdong Airport','Nantong,Jiangsu, China'],
+['NTI','Stenkol Airport','Bintuni,Indonesia'],
+['NTJ','Manti-Ephraim Airport(FAA: 41U)','Manti,Utah, United States'],
+['NTL','Newcastle Airport/RAAF Base Williamtown','Newcastle,New South Wales, Australia'],
+['NTM','Miracema do Tocantins Airport','Miracema do Tocantins,Tocantins, Brazil'],
+['NTN','Normanton Airport','Normanton,Queensland, Australia'],
+['NTO','Agostinho Neto Airport','Santo Antao,Cape Verde'],
+['NTQ','Noto Airport','Wajima,Honshu, Japan'],
+['NTR','Del Norte International Airport','Monterrey,Nuevo Leon, Mexico'],
+['NTT','Niuatoputapu Airport','Niuatoputapu,Tonga'],
+['NTU','NAS Oceana(Apollo Soucek Field)','Virginia Beach,Virginia, United States'],
+['NTX','Ranai Airport','Natuna Islands,Indonesia'],
+['NTY','Pilanesberg International Airport','Sun City,South Africa'],
+['NUA','Gregory Lake Seaplane Base','Nuwara Eliya,Sri Lanka'],
+['NUB','Numbulwar Airport','Numbulwar,Northern Territory, Australia'],
+['NUD','En Nahud Airport','En Nahud,Sudan'],
+['NUE','Nuremberg Airport','Nuremberg,Bavaria, Germany'],
+['NUF','Castlereigh Reservoir Seaplane Base','Hatton,Sri Lanka'],
+['NUG','Nuguria Airport','Nuguria,Papua New Guinea'],
+['NUH','Nunchia Airport','Nunchia,Colombia'],
+['NUI','Nuiqsut Airport(FAA: AQT)','Nuiqsut,Alaska, United States'],
+['NUJ','Hamedan Air Base(Nogeh Airport)','Hamadan,Iran'],
+['NUK','Nukutavake Airport','Nukutavake,Tuamotus,French Polynesia'],
+['NUL','Nulato Airport','Nulato,Alaska, United States'],
+['NUN','NOLF Saufley Field','Pensacola,Florida, United States'],
+['NUP','Nunapitchuk Airport(FAA: 16A)','Nunapitchuk,Alaska, United States'],
+['NUQ','Moffett Federal Airfield','Mountain View,California, United States'],
+['NUR','Nullabor Motel Airport','Nullarbor,South Australia, Australia'],
+['NUS','Norsup Airport','Norsup,Malakula,Vanuatu'],
+['NUT','Nutuve Airport','Nutuve,Papua New Guinea'],
+['NUU','Nakuru Airport','Nakuru,Kenya'],
+['NUW','NAS Whidbey Island(Ault Field)','Oak Harbor,Washington, United States'],
+['NUX','Novy Urengoy Airport','Novy Urengoy,Yamalo-Nenets Autonomous Okrug, Russia'],
+['NVA','Benito Salas Airport','Neiva,Colombia'],
+['NVD','Nevada Municipal Airport','Nevada,Missouri, United States'],
+['NVG','Nueva Guinea Airport','Nueva Guinea,Nicaragua'],
+['NVI','Navoi International Airport','Navoiy,Uzbekistan'],
+['NVK','Narvik Airport, Framnes','Narvik,Norway'],
+['NVN','Nervino Airport(FAA: O02)','Beckwourth,California, United States'],
+['NVP','Novo Aripuana Airport','Novo Aripuana,Amazonas, Brazil'],
+['NVR','Novgorod Airport','Veliky Novgorod,Novgorod Oblast, Russia'],
+['NVS','Nevers - Fourchambault Airport','Nevers,Burgundy, France'],
+['NVT','Navegantes-Ministro Victor Konder International Airport','Navegantes,Santa Catarina, Brazil'],
+['NVY','Neyveli Airport','Neyveli,Tamil Nadu, India'],
+['NWA','Moheli Bandar Es Eslam Airport','Moheli,Comoros'],
+['NWH','Parlin Field(FAA: 2B3)','Newport,New Hampshire, United States'],
+['NWI','Norwich International Airport','Norwich,England, United Kingdom'],
+['NWT','Nowata Airport','Nowata,Papua New Guinea'],
+['NYA','Nyagan Airport','Nyagan,Khanty-Mansi Autonomous Okrug, Russia'],
+['NYC','metropolitan area2','New York City,New York, United States'],
+['NYE','Nyeri Airport','Nyeri,Kenya'],
+['NYG','MCAF Quantico(Turner Field)','Quantico,Virginia, United States'],
+['NYI','Sunyani Airport','Sunyani,Ghana'],
+['NYK','Nanyuki Airport','Nanyuki,Kenya'],
+['NYM','Nadym Airport','Nadym,Yamalo-Nenets Autonomous Okrug, Russia'],
+['NYN','Nyngan Airport','Nyngan,New South Wales, Australia'],
+['NYO','Stockholm Skavsta Airport','Stockholm/Nyköping,Sweden'],
+['NYR','Nyurba Airport','Nyurba,Yakutia, Russia'],
+['NYT','Naypyidaw Airport','Naypyidaw(Nay Pyi Taw),Myanmar'],
+['NYU','Nyaung U Airport','Bagan/Nyaung-U,Myanmar'],
+['NYW','Monywa Airport','Monywa,Myanmar'],
+['NZA','Nzagi Airport','Nzagi,Angola'],
+['NZC','Maria Reiche Neuman Airport','Nazca,Peru'],
+['NZE','Nzerekore Airport','Nzerekore,Guinea'],
+['NZH','Manzhouli Xijiao Airport','Manzhouli,Inner Mongolia, China'],
+['NZL','Zhalantun Chengjisihan Airport','Zhalantun,Inner Mongolia, China'],
+['NZY','NAS North Island(Halsey Field)','San Diego,California, United States'],
+['OAA','Forward Operating Base Shank','Gardez,Afghanistan'],
+['OAG','Orange Airport','Orange,New South Wales, Australia'],
+['OAH','Shindand Air Base','Shindand,Afghanistan'],
+['OAI','Bagram Airfield','Bagram,Afghanistan'],
+['OAJ','Albert J. Ellis Airport','Jacksonville,North Carolina, United States'],
+['OAK','Oakland International Airport','Oakland,California, United States'],
+['OAL','Capital do Cafe Airport','Cacoal,Rondonia, Brazil'],
+['OAM','Oamaru Airport','Oamaru,New Zealand'],
+['OAN','El Arrayan Airport','Olanchito,Honduras'],
+['OAR','Marina Municipal Airport','Monterey/Marina,California, United States'],
+['OAS','Sharana Airstrip/Forward Operating Base Sharana','Sharana,Afghanistan'],
+['OAX','Xoxocotlan International Airport','Oaxaca de Juarez,Oaxaca, Mexico'],
+['OAZ','Camp Bastion Air Base','Girishk(Gereshk),Afghanistan'],
+['OBA','Oban Airport','Oban,Queensland, Australia'],
+['OBC','Obock Airport','Obock,Djibouti'],
+['OBD','Obano Airport','Obano,Indonesia'],
+['OBE','Okeechobee County Airport','Okeechobee,Florida, United States'],
+['OBF','Oberpfaffenhofen Airport','Oberpfaffenhofen,Bavaria, Germany'],
+['OBI','obidos Airport','obidos,Para, Brazil'],
+['OBL','Oostmalle Airfield','Zoersel,Belgium'],
+['OBM','Morobe Airport','Morobe,Papua New Guinea'],
+['OBN','Oban Airport(North Connel Airport)','Oban,Scotland, United Kingdom'],
+['OBO','Tokachi-Obihiro Airport','Obihiro,Hokkaido, Japan'],
+['OBS','Aubenas Aerodrome(Ardeche Meridionale Aerodrome)','Aubenas,Rhone-Alpes, France'],
+['OBU','Kobuk Airport','Kobuk,Alaska, United States'],
+['OBX','Obo Airport','Obo,Papua New Guinea'],
+['OCA','Ocean Reef Club Airport(FAA: 07FA)','Key Largo,Florida, United States'],
+['OCC','Francisco de Orellana Airport','Puerto Francisco de Orellana(Coca),Ecuador'],
+['OCF','Ocala International Airport(Jim Taylor Field)','Ocala,Florida, United States'],
+['OCH','A.L. Mangham Jr. Regional Airport','Nacogdoches,Texas, United States'],
+['OCJ','Ian Fleming International Airport','Ocho Rios,Jamaica'],
+['OCM','Boolgeeda Airport','Boolgeeda,Western Australia, Australia'],
+['OCN','Oceanside Municipal Airport(FAA: OKB)','Oceanside,California, United States'],
+['OCS','Corisco International Airport','Corisco Island,Equatorial Guinea'],
+['OCV','Aguas Claras Airport','Ocana,Colombia'],
+['OCW','Washington-Warren Airport(Warren Field)','Washington,North Carolina, United States'],
+['ODA','Ouadda Airport','Ouadda,Central African Republic'],
+['ODB','Cordoba Airport','Cordoba,Andalusia, Spain'],
+['ODC','Oakdale Airport(FAA: O27)','Oakdale,California, United States'],
+['ODD','Oodnadatta Airport','Oodnadatta,South Australia, Australia'],
+['ODE','Hans Christian Andersen Airport','Odense,Denmark'],
+['ODH','RAF Odiham','Odiham,England, United Kingdom'],
+['ODJ','Ouanda Djalle Airport','Ouanda Djalle,Central African Republic'],
+['ODL','Cordillo Downs Airport','Cordillo Downs,South Australia, Australia'],
+['ODM','Garrett County Airport(FAA: 2G4)','Oakland,Maryland, United States'],
+['ODN','Long Seridan Airport','Long Seridan,Sarawak, Malaysia'],
+['ODO','Bodaybo Airport','Bodaybo,Irkutsk Oblast, Russia'],
+['ODR','Ord River Airport','Ord River,Western Australia, Australia'],
+['ODS','Odessa International Airport','Odessa,Ukraine'],
+['ODW','A.J. Eisenberg Airport(FAA: OKH)','Oak Harbor,Washington, United States'],
+['ODY','Oudomsay Airport','Muang Xay(Oudomxai),Laos'],
+['OEC','Oecusse Airport','Oecussi,East Timor'],
+['OEL','Oryol Yuzhny Airport','Oryol(Orel),Oryol Oblast, Russia'],
+['OEM','Vincent Fayks Airport','Paloemeu,Suriname'],
+['OEO','L.O. Simenstad Municipal Airport','Osceola,Wisconsin, United States'],
+['OER','Örnsköldsvik Airport','Örnsköldsvik,Sweden'],
+['OES','Antoine de Saint Exupery Airport','San Antonio Oeste,Rio Negro, Argentina'],
+['OFF','Offutt Air Force Base','Omaha,Nebraska, United States'],
+['OFI','Ouango Fitini Airport','Ouango Fitini,Ivory Coast'],
+['OFJ','olafsfjörour Airport','olafsfjörour,Iceland'],
+['OFK','Norfolk Regional Airport(Karl Stefan Memorial Field)','Norfolk,Nebraska, United States'],
+['OFU','Ofu Airport(FAA: Z08)','Ofu Island,American Samoa'],
+['OGA','Searle Field','Ogallala,Nebraska, United States'],
+['OGB','Orangeburg Municipal Airport','Orangeburg,South Carolina, United States'],
+['OGD','Ogden-Hinckley Airport','Ogden,Utah, United States'],
+['OGE','Ogeramnang Airport','Ogeramnang,Papua New Guinea'],
+['OGG','Kahului Airport','Kahului,Hawaii, United States'],
+['OGL','Ogle Airport','Georgetown,Guyana'],
+['OGM','Ustupu-Ogobsucum Airport','Ustupo,Panama'],
+['OGN','Yonaguni Airport','Yonaguni,Yaeyama Islands, Japan'],
+['OGO','Abengourou Airport','Abengourou,Ivory Coast'],
+['OGR','Bongor Airport','Bongor,Chad'],
+['OGS','Ogdensburg International Airport','Ogdensburg,New York, United States'],
+['OGU','Ordu-Giresun Airport','Ordu/Giresun,Turkey'],
+['OGV','Ongava Airstrip','Ongava,Namibia'],
+['OGX','Ain Beida Airport','Ouargla,Algeria'],
+['OGZ','Beslan Airport','Vladikavkaz,North Ossetia-Alania, Russia'],
+['OHA','RNZAF Base Ohakea','Bulls,New Zealand'],
+['OHB','Ambohibary Airport','Moramanga,Madagascar'],
+['OHD','"Ohrid ""St. Paul the Apostle"" Airport"','Ohrid,Republic of Macedonia'],
+['OHE','Mohe Gulian Airport','Mohe,Heilongjiang, China'],
+['OHH','Okha Airport(Novostroyka Airport)','Okha,Sakhalin Oblast, Russia'],
+['OHI','Oshakati Airport','Oshakati,Namibia'],
+['OHO','Okhotsk Airport','Okhotsk,Khabarovsk Krai, Russia'],
+['OHR','Wyk auf Föhr Airport','Wyk auf Föhr,Schleswig-Holstein, Germany'],
+['OHS','Sohar Airport','Sohar,Oman'],
+['OHT','PAF Base Kohat','Kohat,Pakistan'],
+['OIA','Ourilandia do Norte Airport','Ourilandia do Norte,Para, Brazil'],
+['OIC','Lt. Warren Eaton Airport','Norwich,New York, United States'],
+['OIM','Oshima Airport','?shima,Izu Islands, Japan'],
+['OIR','Okushiri Airport','Okushiri,Okushiri Island, Japan'],
+['OIT','Oita Airport','Oita,Kyushu, Japan'],
+['OJC','Johnson County Executive Airport','Olathe,Kansas, United States'],
+['OKA','Naha Airport','Okinawa,Ryukyu Islands, Japan'],
+['OKB','Orchid Beach Airport','Fraser Island,Queensland, Australia'],
+['OKC','Will Rogers World Airport','Oklahoma City,Oklahoma, United States'],
+['OKD','Okadama Airport','Sapporo,Hokkaido, Japan'],
+['OKE','Okinoerabu Airport','Okinoerabujima,Amami Islands, Japan'],
+['OKF','Okaukuejo Airport','Okaukuejo,Namibia'],
+['OKG','Okoyo Airport','Okoyo,Republic of the Congo'],
+['OKH','RAF Cottesmore','Oakham,England, United Kingdom'],
+['OKI','Oki Airport','Dogo,Oki Islands, Japan'],
+['OKJ','Okayama Airport','Okayama,Honshu, Japan'],
+['OKK','Kokomo Municipal Airport','Kokomo,Indiana, United States'],
+['OKL','Gunung Bintang Airport','Oksibil,Indonesia'],
+['OKM','Okmulgee Regional Airport','Okmulgee,Oklahoma, United States'],
+['OKN','Okondja Airport','Okondja,Gabon'],
+['OKO','Yokota Air Base','Fussa,Honshu, Japan'],
+['OKP','Oksapmin Airport','Oksapmin,Papua New Guinea'],
+['OKQ','Okaba Airport','Okaba,Indonesia'],
+['OKR','Yorke Island Airport','Yorke Island,Queensland, Australia'],
+['OKS','Garden County Airport','Oshkosh,Nebraska, United States'],
+['OKT','Oktyabrsky Airport','Oktyabrsky,Bashkortostan, Russia'],
+['OKU','Mokuti Lodge Airport','Mokuti Lodge,Namibia'],
+['OKV','Okao Airport','Okao,Papua New Guinea'],
+['OKY','Oakey Army Aviation Centre','Oakey,Queensland, Australia'],
+['OLA','Ørland Airport','Ørland,Norway'],
+['OLB','Olbia Costa Smeralda Airport','Olbia,Sardinia, Italy'],
+['OLC','Senadora Eunice Michiles Airport','Sao Paulo de Olivenca,Amazonas, Brazil'],
+['OLD','Old Town Municipal Airport and Seaplane Base(Dewitt Field)','Old Town,Maine, United States'],
+['OLE','Cattaraugus County-Olean Airport','Olean,New York, United States'],
+['OLF','L. M. Clayton Airport','Wolf Point,Montana, United States'],
+['OLH','Old Harbor Airport(FAA: 6R7)','Old Harbor,Alaska, United States'],
+['OLI','Rif Airport','olafsvik,Iceland'],
+['OLJ','Olpoi Airport(North West Santo Airport)','Olpoi,Vanuatu'],
+['OLK','Fuerte Olimpo Airport','Fuerte Olimpo,Paraguay'],
+['OLL','Oyo Ollombo Airport','Oyo,Republic of the Congo'],
+['OLM','Olympia Regional Airport','Olympia,Washington, United States'],
+['OLN','Lago Musters Airport','Sarmiento,Chubut, Argentina'],
+['OLO','Olomouc Airport(Ne?edin Airport)','Olomouc,Czech Republic'],
+['OLP','Olympic Dam Airport','Olympic Dam,South Australia, Australia'],
+['OLQ','Olsobip Airport','Olsobip,Papua New Guinea'],
+['OLR','Forward Operating Base Salerno','Khost,Afghanistan'],
+['OLS','Nogales International Airport','Nogales,Arizona, United States'],
+['OLU','Columbus Municipal Airport','Columbus,Nebraska, United States'],
+['OLV','Olive Branch Airport','Olive Branch,Mississippi, United States'],
+['OLX','Olkiombo Airstrip','Olkiombo,Kenya'],
+['OLY','Olney-Noble Airport','Olney/Noble,Illinois, United States'],
+['OLZ','Olyokminsk Airport','Olyokminsk,Yakutia, Russia'],
+['OMA','Eppley Airfield','Omaha,Nebraska, United States'],
+['OMB','Omboue Hospital Airport','Omboue,Gabon'],
+['OMC','Ormoc Airport','Ormoc,Philippines'],
+['OMD','Oranjemund Airport','Oranjemund,Namibia'],
+['OME','Nome Airport','Nome,Alaska, United States'],
+['OMF','King Hussein Air Base','Mafraq,Jordan'],
+['OMG','Omega Airport','Omega,Namibia'],
+['OMH','Urmia Airport','Urmia(Ur?miyeh),Iran'],
+['OMI','Omidiyeh Air Base','Omidiyeh,Iran'],
+['OMJ','?mura Airport','Nagasaki/?mura,Kyushu, Japan'],
+['OMK','Omak Airport','Omak,Washington, United States'],
+['OML','Omkalai Airport','Omkalai,Papua New Guinea'],
+['OMM','Marmul Airport','Marmul,Oman'],
+['OMO','Mostar Airport','Mostar,Bosnia and Herzegovina'],
+['OMR','Oradea International Airport','Oradea,Romania'],
+['OMS','Omsk Tsentralny Airport','Omsk,Omsk Oblast, Russia'],
+['OMY','Thbeng Meanchey Airport(Preah Vinhear Airport)','Phnom Tbeng Meanchey,Cambodia'],
+['ONA','Winona Municipal Airport(Max Conrad Field)','Winona,Minnesota, United States'],
+['ONB','Ononge Airport','Ononge,Papua New Guinea'],
+['OND','Ondangwa Airport','Ondangwa,Namibia'],
+['ONE','Onepusu Airport','Onepusu,Solomon Islands'],
+['ONG','Mornington Island Airport','Mornington Island,Queensland, Australia'],
+['ONH','Oneonta Municipal Airport(FAA: N66)','Oneonta,New York, United States'],
+['ONI','Moanamani Airport','Moanemani(Moanamani),Indonesia'],
+['ONJ','Odate-Noshiro Airport','?date/Noshiro,Honshu, Japan'],
+['ONK','Olenyok Airport','Olenyok,Yakutia, Russia'],
+['ONL','ONeill Municipal Airport(John L. Baker Field)','ONeill,Nebraska, United States'],
+['ONM','Socorro Municipal Airport','Socorro,New Mexico, United States'],
+['ONO','Ontario Municipal Airport','Ontario,Oregon, United States'],
+['ONP','Newport Municipal Airport','Newport,Oregon, United States'],
+['ONQ','Zonguldak Airport','Zonguldak,Turkey'],
+['ONR','Monkira Airport','Monkira,Queensland, Australia'],
+['ONS','Onslow Airport','Onslow,Western Australia, Australia'],
+['ONT','Ontario International Airport','Ontario,California, United States'],
+['ONU','Ono-i-Lau Airport','Ono-i-Lau,Fiji'],
+['ONX','Enrique Adolfo Jimenez Airport','Colon,Panama'],
+['ONY','Olney Municipal Airport','Olney,Texas, United States'],
+['OOA','Oskaloosa Municipal Airport','Oskaloosa,Iowa, United States'],
+['OOK','Toksook Bay Airport','Toksook Bay,Alaska, United States'],
+['OOL','Gold Coast Airport(Coolangatta Airport)','Gold Coast,Queensland, Australia'],
+['OOM','Cooma-Snowy Mountains Airport','Cooma,New South Wales, Australia'],
+['OOR','Mooraberree Airport','Mooraberree,Queensland, Australia'],
+['OOT','Onotoa Airport','Onotoa,Kiribati'],
+['OPA','Kopasker Airport','Kopasker,Iceland'],
+['OPB','Open Bay Airport','Open Bay,Papua New Guinea'],
+['OPF','Miami-Opa Locka Executive Airport','Miami,Florida, United States'],
+['OPI','Oenpelli Airport','Gunbalanya(Oenpelli),Queensland, Australia'],
+['OPL','St. Landry Parish Airport(Ahart Field)','Opelousas,Louisiana, United States'],
+['OPO','Francisco de Sa Carneiro Airport','Porto,Portugal'],
+['OPS','Presidente Joao Figueiredo Airport','Sinop,Mato Grosso, Brazil'],
+['OPU','Balimo Airport','Balimo,Papua New Guinea'],
+['OPW','Opuwa Airport','Opuwo,Namibia'],
+['ORA','Oran Airport','Oran,Salta, Argentina'],
+['ORB','Örebro Airport','Örebro,Sweden'],
+['ORC','Orocue Airport','Orocue,Colombia'],
+['ORD','OHare International Airport','Chicago,Illinois, United States'],
+['ORE','Orleans - Saint-Denis-de-lHotel Airport','Orleans,Centre-Val de Loire, France'],
+['ORF','Norfolk International Airport','Norfolk,Virginia, United States'],
+['ORG','Zorg en Hoop Airport','Paramaribo,Suriname'],
+['ORH','Worcester Regional Airport','Worcester,Massachusetts, United States'],
+['ORI','Port Lions Airport','Port Lions,Alaska, United States'],
+['ORJ','Orinduik Airport','Orinduik,Guyana'],
+['ORK','Cork Airport','Cork,Ireland'],
+['ORL','Orlando Executive Airport','Orlando,Florida, United States'],
+['ORM','Sywell Aerodrome','Northampton,England, United Kingdom'],
+['ORN','Oran Es Senia Airport','Oran,Algeria'],
+['ORO','Yoro Airport','Yoro,Honduras'],
+['ORP','Orapa Airport','Orapa,Botswana'],
+['ORR','Yorketown Airport','Yorketown,South Australia, Australia'],
+['ORS','Orpheus Island Resort Waterport','Orpheus Island,Queensland, Australia'],
+['ORT','Northway Airport','Northway,Alaska, United States'],
+['ORU','Juan Mendoza Airport','Oruro,Bolivia'],
+['ORV','Robert (Bob) Curtis Memorial Airport(FAA: D76)','Noorvik,Alaska, United States'],
+['ORW','Ormara Airport','Ormara,Pakistan'],
+['ORX','Oriximina Airport','Oriximina,Para, Brazil'],
+['ORY','Orly Airport','Paris,Ile-de-France, France'],
+['ORZ','Orange Walk Airport','Orange Walk Town,Belize'],
+['OSA','metropolitan area1','Osaka,Honshu, Japan'],
+['OSB','Grand Glaize-Osage Beach Airport(FAA: K15)','Osage Beach,Missouri, United States'],
+['OSC','Oscoda-Wurtsmith Airport','Oscoda,Michigan, United States'],
+['OSD','Åre Östersund Airport','Östersund,Sweden'],
+['OSE','Omora Airport','Omora,Papua New Guinea'],
+['OSF','Ostafyevo International Airport','Moscow/Podolsk,Moscow Oblast, Russia'],
+['OSG','Ossima Airport','Ossima,Papua New Guinea'],
+['OSH','Wittman Regional Airport','Oshkosh,Wisconsin, United States'],
+['OSI','Osijek Airport','Osijek,Croatia'],
+['OSK','Oskarshamn Airport','Oskarshamn,Sweden'],
+['OSL','Oslo Airport, Gardermoen','Oslo,Norway'],
+['OSM','Mosul International Airport','Mosul,Iraq'],
+['OSN','Osan Air Base','Osan,South Korea'],
+['OSO','Osborne Mine Airport','Osborne Mine,Queensland, Australia'],
+['OSR','LeoS Jana?ek Airport Ostrava','Ostrava,Czech Republic'],
+['OSS','Osh Airport','Osh,Kyrgyzstan'],
+['OST','Ostend-Bruges International Airport','Ostend/Bruges,Belgium'],
+['OSU','Ohio State University Airport','Columbus,Ohio, United States'],
+['OSW','Orsk Airport','Orsk,Orenburg Oblast, Russia'],
+['OSX','Kosciusko-Attala County Airport','Kosciusko,Mississippi, United States'],
+['OSY','Namsos Airport, Høknesøra','Namsos,Norway'],
+['OSZ','Koszalin-Zegrze Pomorskie Airport','Koszalin,Poland'],
+['OTA','Mota Airport','Mota,Ethiopia'],
+['OTC','Bol-Berim Airport','Bol,Chad'],
+['OTD','Contadora Airport','Contadora Island,Panama'],
+['OTG','Worthington Municipal Airport','Worthington,Minnesota, United States'],
+['OTH','Southwest Oregon Regional Airport','North Bend,Oregon, United States'],
+['OTI','Pitu Airport','Morotai Island,Indonesia'],
+['OTJ','Otjiwarongo Airport','Otjiwarongo,Namibia'],
+['OTK','Tillamook Airport(FAA: TMK)','Tillamook,Oregon, United States'],
+['OTL','Boutilimit Airport','Boutilimit,Mauritania'],
+['OTM','Ottumwa Regional Airport','Ottumwa,Iowa, United States'],
+['OTN','Ed-Air Airport(FAA: 2IG4)','Oaktown,Indiana, United States'],
+['OTP','Henri Coand? International Airport','Bucharest,Romania'],
+['OTR','Coto 47 Airport','Coto 47,Costa Rica'],
+['OTS','Anacortes Airport(FAA: 74S)','Anacortes,Washington, United States'],
+['OTT','Andre Maggi Airport','Cotriguacu,Mato Grosso, Brazil'],
+['OTU','Otu Airport','Remedios,Colombia'],
+['OTV','Ontong Java Airport','Ontong Java Atoll,Solomon Islands'],
+['OTY','Oria Airport','Oria,Papua New Guinea'],
+['OTZ','Ralph Wien Memorial Airport','Kotzebue,Alaska, United States'],
+['OUA','Ouagadougou Airport','Ouagadougou,Burkina Faso'],
+['OUD','Angads Airport','Oujda,Morocco'],
+['OUE','Ouesso Airport','Ouesso,Republic of the Congo'],
+['OUG','Ouahigouya Airport','Ouahigouya,Burkina Faso'],
+['OUH','Oudtshoorn Airport','Oudtshoorn,South Africa'],
+['OUK','Out Skerries Airport','Out Skerries,Scotland, United Kingdom'],
+['OUL','Oulu Airport','Oulu,Finland'],
+['OUM','Oum Hadjer Airport','Oum Hadjer,Chad'],
+['OUN','University of Oklahoma Westheimer Airport(Max Westheimer Airport)','Norman,Oklahoma, United States'],
+['OUR','Batouri Airport','Batouri,Cameroon'],
+['OUS','Jornalista Benedito Pimentel-Ourinhos State Airport','Ourinhos,Sao Paulo, Brazil'],
+['OUT','Bousso Airport','Bousso,Chad'],
+['OUU','Ouanga Airport','Ouanga,Gabon'],
+['OUZ','Tazadit Airport','Zouerate,Mauritania'],
+['OVA','Bekily Airport','Bekily,Madagascar'],
+['OVB','Tolmachevo Airport','Novosibirsk,Novosibirsk Oblast, Russia'],
+['OVD','Asturias Airport(Oviedo Airport)','Oviedo,Asturias, Spain'],
+['OVE','Oroville Municipal Airport','Oroville,California, United States'],
+['OVG','Air Force Base Overberg','Bredasdorp,South Africa'],
+['OVL','El Tuqui Airport','Ovalle,Chile'],
+['OVR','Olavarria Airport','Olavarria,Buenos Aires, Argentina'],
+['OVS','Sovetsky Airport','Sovetsky,Khanty-Mansi Autonomous Okrug, Russia'],
+['OWA','Owatonna Degner Regional Airport','Owatonna,Minnesota, United States'],
+['OWB','Owensboro-Daviess County Airport','Owensboro,Kentucky, United States'],
+['OWD','Norwood Memorial Airport','Norwood,Massachusetts, United States'],
+['OWE','Owendo Airport','Owendo,Gabon'],
+['OWK','Central Maine Airport of Norridgewock','Norridgewock,Maine, United States'],
+['OXB','Osvaldo Vieira International Airport','Bissau,Guinea-Bissau'],
+['OXC','Waterbury-Oxford Airport','Oxford,Connecticut, United States'],
+['OXD','Miami University Airport','Oxford,Ohio, United States'],
+['OXF','Oxford Airport(London Oxford Airport)','Oxford,England, United Kingdom'],
+['OXO','Orientos Airport','Orientos,Queensland, Australia'],
+['OXR','Oxnard Airport','Oxnard,California, United States'],
+['OXY','Morney Airport','Morney,Queensland, Australia'],
+['OYA','Goya Airport','Goya,Corrientes, Argentina'],
+['OYE','Oyem Airport','Oyem,Gabon'],
+['OYG','Moyo Airport','Moyo Town,Uganda'],
+['OYK','Oiapoque Airport','Oiapoque,Amapa, Brazil'],
+['OYL','Moyale Airport','Moyale,Kenya'],
+['OYN','Ouyen Airport','Ouyen,Victoria, Australia'],
+['OYO','Tres Arroyos Airport','Tres Arroyos,Buenos Aires, Argentina'],
+['OYP','Saint-Georges-de-lOyapock Airport','Saint-Georges-de-lOyapock,French Guiana'],
+['OZA','Ozona Municipal Airport','Ozona,Texas, United States'],
+['OZC','Labo Airport','Ozamiz,Philippines'],
+['OZG','Zagora Airport','Zagora,Morocco'],
+['OZH','Zaporizhia International Airport','Zaporizhia,Ukraine'],
+['OZP','Moron Air Base','Moron de la Frontera,Andalusia, Spain'],
+['OZR','Cairns Army Airfield','Fort Rucker/Ozark,Alabama, United States'],
+['OZZ','Ouarzazate Airport','Ouarzazate,Morocco'],
+['PAA','Hpa-An Airport','Hpa-An,Myanmar'],
+['PAB','Bilaspur Airport','Bilaspur,Chhattisgarh, India'],
+['PAC','"Albrook ""Marcos A. Gelabert"" International Airport"','Panama City,Panama'],
+['PAD','Paderborn Lippstadt Airport','Paderborn/Lippstadt,North Rhine-Westphalia, Germany'],
+['PAE','Paine Field(Snohomish County Airport)','Everett,Washington, United States'],
+['PAF','Pakuba Airfield','Pakuba,Uganda'],
+['PAG','Pagadian Airport','Pagadian,Philippines'],
+['PAH','Barkley Regional Airport','Paducah,Kentucky, United States'],
+['PAJ','Parachinar Airport','Parachinar,Pakistan'],
+['PAK','Port Allen Airport','Hanapepe,Hawaii, United States'],
+['PAL','Captain German Olano Moreno Air Base','Palanquero,Colombia'],
+['PAM','Tyndall Air Force Base','Panama City,Florida, United States'],
+['PAN','Pattani Airport','Pattani,Thailand'],
+['PAO','Palo Alto Airport(Santa Clara County Airport)','Palo Alto,California, United States'],
+['PAP','Toussaint LOuverture International Airport','Port-au-Prince,Haiti'],
+['PAQ','Palmer Municipal Airport','Palmer,Alaska, United States'],
+['PAR','metropolitan area1','Paris,Ile-de-France, France'],
+['PAS','Paros National Airport','Paros,Greece'],
+['PAT','Lok Nayak Jayaprakash Airport','Patna,Bihar, India'],
+['PAU','Pauk Airport','Pauk,Myanmar'],
+['PAV','Paulo Afonso Airport','Paulo Afonso,Bahia, Brazil'],
+['PAW','Pambwa Airport','Pambwa,Papua New Guinea'],
+['PAX','Port-de-Paix Airport','Port-de-Paix,Haiti'],
+['PAY','Pamol Airport','Pamol,Sabah, Malaysia'],
+['PAZ','El Tajin National Airport','Poza Rica,Veracruz, Mexico'],
+['PBB','Paranaiba Airport','Paranaiba,Mato Grosso do Sul, Brazil'],
+['PBC','Hermanos Serdan International Airport','Puebla City,Puebla, Mexico'],
+['PBD','Porbandar Airport','Porbandar,Gujarat, India'],
+['PBE','Morela Airport(Puerto Berrio Airport)','Puerto Berrio,Colombia'],
+['PBF','Grider Field','Pine Bluff,Arkansas, United States'],
+['PBG','Plattsburgh International Airport','Plattsburgh,New York, United States'],
+['PBH','Paro Airport','Paro,Bhutan'],
+['PBI','Palm Beach International Airport','West Palm Beach,Florida, United States'],
+['PBJ','Paama Airport','Paama,Vanuatu'],
+['PBL','Bartolome Salom Airport','Puerto Cabello,Venezuela'],
+['PBM','Johan Adolf Pengel International Airport','Paramaribo,Suriname'],
+['PBN','Porto Amboim Airport','Porto Amboim,Angola'],
+['PBO','Paraburdoo Airport','Paraburdoo,Western Australia, Australia'],
+['PBP','Punta Islita Airport','Punta Islita,Costa Rica'],
+['PBQ','Pimenta Bueno Airport','Pimenta Bueno,Rondonia, Brazil'],
+['PBR','Puerto Barrios Airport','Puerto Barrios,Guatemala'],
+['PBT','Puerto Leda Airport','Puerto Leda,Paraguay'],
+['PBU','Putao Airport','Putao,Myanmar'],
+['PBV','Porto dos Gauchos Airport','Porto dos Gauchos,Mato Grosso, Brazil'],
+['PBX','Fazenda Piraguassu Airport','Porto Alegre do Norte,Mato Grosso, Brazil'],
+['PBZ','Plettenberg Bay Airport','Plettenberg Bay,South Africa'],
+['PCA','Portage Creek Airport(FAA: A14)','Portage Creek,Alaska, United States'],
+['PCB','Pondok Cabe Airport','South Tangerang,Indonesia'],
+['PCC','Puerto Rico Airport','Puerto Rico,Colombia'],
+['PCD','Prairie du Chien Municipal Airport(FAA: PDC)','Prairie du Chien,Wisconsin, United States'],
+['PCF','Potchefstroom Airport','Potchefstroom,South Africa'],
+['PCH','Palacios Airport','Palacios,Honduras'],
+['PCJ','Puerto La Victoria Airport','Puerto Casado(La Victoria),Paraguay'],
+['PCL','FAP Captain David Abensur Rengifo International Airport','Pucallpa,Peru'],
+['PCM','Playa del Carmen Airport','Playa del Carmen,Quintana Roo, Mexico'],
+['PCN','Picton Aerodrome','Picton,New Zealand'],
+['PCO','Punta Colorada Airstrip','La Ribera,Baja California Sur, Mexico'],
+['PCP','Principe Airport','Principe Island,Sao Tome and Principe'],
+['PCQ','Boun Neua Airport','Phongsaly,Laos'],
+['PCR','German Olano Airport','Puerto Carreno,Colombia'],
+['PCS','Picos Airport','Picos,Piaui, Brazil'],
+['PCT','Princeton Airport(FAA: 39N)','Princeton/Rocky Hill,New Jersey, United States'],
+['PCU','Poplarville-Pearl River County Airport(FAA: M13)','Poplarville,Mississippi, United States'],
+['PCV','Punta Chivato Airstrip','Punta Chivato,Baja California Sur, Mexico'],
+['PDA','Obando Airport','Puerto Inirida,Colombia'],
+['PDB','Pedro Bay Airport(FAA: 4K0)','Pedro Bay,Alaska, United States'],
+['PDC','Mueo/Nickel Airport','Mueo,New Caledonia'],
+['PDD','Ponta do Ouro Airport','Ponta do Ouro,Mozambique'],
+['PDE','Pandie Pandie Airport','Pandie Pandie Station,South Australia, Australia'],
+['PDF','Faz Taua Airport','Prado,Bahia, Brazil'],
+['PDG','Minangkabau International Airport','Padang,Indonesia'],
+['PDI','Pindiu Airport','Pindiu,Papua New Guinea'],
+['PDK','DeKalb-Peachtree Airport','Atlanta,Georgia, United States'],
+['PDL','Joao Paulo II Airport','Ponta Delgada,Azores,Portugal'],
+['PDM','Pedasi Airport(Capt. J. Montenegro Airport)','Pedasi,Panama'],
+['PDN','Parndana Airport','Parndana,South Australia, Australia'],
+['PDO','Pendopo Airport','Pendopo,Indonesia'],
+['PDP','Capitan de Corbeta Carlos A. Curbelo International Airport','Punta del Este,Uruguay'],
+['PDR','Presidente Dutra Airport','Presidente Dutra,Maranhao, Brazil'],
+['PDS','Piedras Negras International Airport','Piedras Negras,Coahuila, Mexico'],
+['PDT','Eastern Oregon Regional Airport','Pendleton,Oregon, United States'],
+['PDU','Tydeo Larre Borges International Airport','Paysandu,Uruguay'],
+['PDV','Plovdiv Airport','Plovdiv,Bulgaria'],
+['PDX','Portland International Airport','Portland,Oregon, United States'],
+['PDZ','Pedernales Airport','Pedernales,Venezuela'],
+['PEA','Penneshaw Airport','Penneshaw,South Australia, Australia'],
+['PEB','Pebane Airport','Pebane,Mozambique'],
+['PEC','Pelican Seaplane Base','Pelican,Alaska, United States'],
+['PED','Pardubice Airport','Pardubice,Czech Republic'],
+['PEE','Perm International Airport(Bolshoye Savino Airport)','Perm,Perm Krai, Russia'],
+['PEF','Peenemunde Airfield','Peenemunde,Mecklenburg-Vorpommern, Germany'],
+['PEG','Perugia San Francesco dAssisi - Umbria International Airport','Perugia,Umbria, Italy'],
+['PEH','Comodoro Pedro Zanni Airport','Pehuajo,Buenos Aires, Argentina'],
+['PEI','Matecana International Airport','Pereira,Colombia'],
+['PEK','Beijing Capital International Airport','Beijing, China'],
+['PEL','Pelaneng Airport','Pelaneng,Lesotho'],
+['PEM','Padre Aldamiz International Airport','Puerto Maldonado,Peru'],
+['PEN','Penang International Airport','Penang, Malaysia'],
+['PEP','Peppimenarti Airport','Peppimenarti,Northern Territory, Australia'],
+['PEQ','Pecos Municipal Airport','Pecos,Texas, United States'],
+['PER','Perth Airport','Perth,Western Australia, Australia'],
+['PES','Petrozavodsk Airport(Besovets Airport)','Petrozavodsk,Karelia, Russia'],
+['PET','Joao Simoes Lopes Neto International Airport','Pelotas,Rio Grande do Sul, Brazil'],
+['PEU','Puerto Lempira Airport','Puerto Lempira,Honduras'],
+['PEV','Pecs-Pogany International Airport','Pecs,Hungary'],
+['PEW','Bacha Khan International Airport','Peshawar,Pakistan'],
+['PEX','Pechora Airport','Pechora,Komi Republic, Russia'],
+['PEY','Penong Airport','Penong,South Australia, Australia'],
+['PEZ','Penza Airport(Ternovka Airport)','Penza,Penza Oblast, Russia'],
+['PFB','Lauro Kurtz Airport','Passo Fundo,Rio Grande do Sul, Brazil'],
+['PFC','Pacific City State Airport','Pacific City,Oregon, United States'],
+['PFJ','Patreksfjörour Airport','Patreksfjörour,Iceland'],
+['PFO','Paphos International Airport','Paphos,Cyprus'],
+['PFQ','Parsabad-Moghan Airport','Parsabad,Iran'],
+['PFR','Ilebo Airport','Ilebo,Democratic Republic of the Congo'],
+['PGA','Page Municipal Airport','Page,Arizona, United States'],
+['PGB','Pangoa Airport','Pangoa,Papua New Guinea'],
+['PGC','Grant County Airport(FAA: W99)','Petersburg,West Virginia, United States'],
+['PGD','Punta Gorda Airport','Punta Gorda,Florida, United States'],
+['PGE','Yegepa Airport','Yegepa,Papua New Guinea'],
+['PGF','Perpignan-Rivesaltes Airport','Perpignan,Languedoc-Roussillon, France'],
+['PGH','Pantnagar Airport','Pantnagar,Uttarakhand, India'],
+['PGI','Chitato Airport','Chitato,Angola'],
+['PGK','Depati Amir Airport','Pangkal Pinang(Pangkalpinang),Indonesia'],
+['PGL','Trent Lott International Airport(FAA: PQL)','Pascagoula,Mississippi, United States'],
+['PGM','Port Graham Airport','Port Graham,Alaska, United States'],
+['PGN','Pangia Airport','Pangia,Papua New Guinea'],
+['PGO','Stevens Field(FAA: PSO)','Pagosa Springs,Colorado, United States'],
+['PGR','Kirk Field','Paragould,Arkansas, United States'],
+['PGS','Grand Canyon Caverns Airport(FAA: L37)','Peach Springs,Arizona, United States'],
+['PGU','Persian Gulf Airport','Asaluyeh(Asaloyeh),Iran'],
+['PGV','Pitt-Greenville Airport','Greenville,North Carolina, United States'],
+['PGX','Perigueux Bassillac Airport','Perigueux,Aquitaine, France'],
+['PGZ','Comte. Antonio Amilton Beraldo Airport','Ponta Grossa,Parana, Brazil'],
+['PHA','Phan Rang Air Base','Phan Rang-Thap Cham,Vietnam'],
+['PHB','Parnaiba-Prefeito Dr. Joao Silva Filho International Airport','Parnaiba,Piaui, Brazil'],
+['PHC','Port Harcourt International Airport','Port Harcourt,Nigeria'],
+['PHD','Harry Clever Field','New Philadelphia,Ohio, United States'],
+['PHE','Port Hedland International Airport','Port Hedland,Western Australia, Australia'],
+['PHF','Newport News/Williamsburg International Airport','Newport News/Williamsburg,Virginia, United States'],
+['PHG','Port Harcourt City Airport','Port Harcourt,Nigeria'],
+['PHI','Pinheiro Airport','Pinheiro,Maranhao, Brazil'],
+['PHK','Palm Beach County Glades Airport','Pahokee,Florida, United States'],
+['PHL','Philadelphia International Airport','Philadelphia,Pennsylvania, United States'],
+['PHN','St. Clair County International Airport','Port Huron,Michigan, United States'],
+['PHO','Point Hope Airport','Point Hope,Alaska, United States'],
+['PHP','Philip Airport','Philip,South Dakota, United States'],
+['PHQ','The Monument Airport','Phosphate Hill,Queensland, Australia'],
+['PHR','Pacific Harbour Airport','Pacific Harbour,Fiji'],
+['PHS','Phitsanulok Airport','Phitsanulok,Thailand'],
+['PHT','Henry County Airport','Paris,Tennessee, United States'],
+['PHW','Hendrik Van Eck Airport','Phalaborwa,South Africa'],
+['PHX','Phoenix Sky Harbor International Airport','Phoenix,Arizona, United States'],
+['PHY','Phetchabun Airport','Phetchabun,Thailand'],
+['PIA','General Wayne A. Downing Peoria International Airport','Peoria,Illinois, United States'],
+['PIB','Hattiesburg-Laurel Regional Airport','Hattiesburg/Laurel,Mississippi, United States'],
+['PIC','Pine Cay Airport','Pine Cay,British Overseas TerritoryofTurks and Caicos Islands'],
+['PIE','St. Pete-Clearwater International Airport','St. Petersburg/Clearwater, United States'],
+['PIF','Pingtung South Airport','Pingtung City,Taiwan'],
+['PIH','Pocatello Regional Airport','Pocatello,Idaho, United States'],
+['PIK','Glasgow Prestwick Airport','Glasgow,Scotland, United Kingdom'],
+['PIL','Carlos Miguel Jimenez Airport','Pilar,Paraguay'],
+['PIM','Harris County Airport','Pine Mountain,Georgia, United States'],
+['PIN','Julio Belem Airport','Parintins,Amazonas, Brazil'],
+['PIO','Capitan FAP Renan Elias Olivera Airport','Pisco,Peru'],
+['PIP','Pilot Point Airport(FAA: PNP)','Pilot Point,Alaska, United States'],
+['PIQ','Pipillipai Airport','Pipillipai,Guyana'],
+['PIR','Pierre Regional Airport','Pierre,South Dakota, United States'],
+['PIS','Poitiers-Biard Airport','Poitiers,Poitou-Charentes, France'],
+['PIT','Pittsburgh International Airport','Pittsburgh,Pennsylvania, United States'],
+['PIU','FAP Captain Guillermo Concha Iberico International Airport','Piura,Peru'],
+['PIV','Pirapora Airport','Pirapora,Minas Gerais, Brazil'],
+['PIW','Pikwitonei Airport','Pikwitonei,Manitoba, Canada'],
+['PIX','Pico Airport','Pico Island,Azores,Portugal'],
+['PIZ','Point Lay LRRS Airport','Point Lay,Alaska, United States'],
+['PJA','Pajala Airport','Pajala,Sweden'],
+['PJB','Payson Airport(FAA: PAN)','Payson,Arizona, United States'],
+['PJC','Dr. Augusto Roberto Fuster International Airport','Pedro Juan Caballero,Paraguay'],
+['PJG','Panjgur Airport','Panjgur,Pakistan'],
+['PJM','Puerto Jimenez Airport','Puerto Jimenez,Costa Rica'],
+['PKA','Napaskiak Airport','Napaskiak,Alaska, United States'],
+['PKB','Mid-Ohio Valley Regional Airport','Parkersburg,West Virginia, United States'],
+['PKC','Petropavlovsk-Kamchatsky Airport(Yelizovo Airport)','Petropavlovsk-Kamchatsky,Kamchatka Krai, Russia'],
+['PKD','Park Rapids Municipal Airport(Konshok Field)','Park Rapids,Minnesota, United States'],
+['PKE','Parkes Airport','Parkes,New South Wales, Australia'],
+['PKF','Park Falls Municipal Airport','Park Falls,Wisconsin, United States'],
+['PKG','Pangkor Airport','Pangkor Island,Perak, Malaysia'],
+['PKH','Porto Cheli Airport','Porto Cheli(Portochelion),Greece'],
+['PKJ','Playa Grande Airport','Playa Grande,Guatemala'],
+['PKK','Pakokku Airport','Pakokku,Myanmar'],
+['PKM','Port Kaituma Airstrip','Port Kaituma,Guyana'],
+['PKN','Iskandar Airport','Pangkalan Bun(Pangkalanbuun),Indonesia'],
+['PKO','Parakou Airport','Parakou,Benin'],
+['PKP','Puka-Puka Airport','Puka-Puka,Tuamotus,French Polynesia'],
+['PKR','Pokhara Airport','Pokhara,Nepal'],
+['PKT','Port Keats Airfield','Wadeye(Port Keats),Northern Territory, Australia'],
+['PKU','Sultan Syarif Kasim II International Airport','Pekanbaru,Indonesia'],
+['PKV','Pskov Airport','Pskov,Pskov Oblast, Russia'],
+['PKW','Selebi-Phikwe Airport','Selebi-Phikwe,Botswana'],
+['PKY','Tjilik Riwut Airport','Palangkaraya,Indonesia'],
+['PKZ','Pakse International Airport','Pakse,Laos'],
+['PLA','Planadas Airport','Planadas,Colombia'],
+['PLC','Planeta Rica Airport','Planeta Rica,Colombia'],
+['PLD','Carrillo Airport(Playa Samara/Carrillo Airport)','Samara/Puerto Carrillo,Costa Rica'],
+['PLE','Paiela Airport','Paiela,Papua New Guinea'],
+['PLF','Pala Airport','Pala,Chad'],
+['PLH','Plymouth City Airport','Plymouth,England, United Kingdom'],
+['PLI','Palm Island Airport','Palm Island,Saint Vincent and the Grenadines'],
+['PLJ','Placencia Airport','Placencia,Belize'],
+['PLK','M. Graham Clark Downtown Airport','Point Lookout,Missouri, United States'],
+['PLL','Manaus Air Force Base','Manaus,Amazonas, Brazil'],
+['PLM','Sultan Mahmud Badaruddin II International Airport','Palembang,Indonesia'],
+['PLN','Pellston Regional Airport(Emmet County)','Pellston,Michigan, United States'],
+['PLO','Port Lincoln Airport','Port Lincoln,South Australia, Australia'],
+['PLP','Captain Ramon Xatruch Airport','La Palma,Panama'],
+['PLQ','Palanga International Airport','Palanga,Lithuania'],
+['PLR','St. Clair County Airport','Pell City,Alabama, United States'],
+['PLS','Providenciales International Airport','Providenciales,British Overseas Territory'],
+['PLT','Plato Airport','Plato,Colombia'],
+['PLU','Belo Horizonte/Pampulha - Carlos Drummond de Andrade Airport','Belo Horizonte,Minas Gerais, Brazil'],
+['PLV','Poltava Airport','Poltava,Ukraine'],
+['PLW','Mutiara Airport','Palu,Indonesia'],
+['PLX','Semey Airport','Semey,Kazakhstan'],
+['PLY','Plymouth Municipal Airport(FAA: C65)','Plymouth,Indiana, United States'],
+['PLZ','Port Elizabeth Airport','Port Elizabeth,South Africa'],
+['PMA','Pemba Airport','Pemba Island,Tanzania'],
+['PMB','Pembina Municipal Airport','Pembina,North Dakota, United States'],
+['PMC','El Tepual Airport','Puerto Montt,Chile'],
+['PMD','Palmdale Regional Airport','Palmdale,California, United States'],
+['PMF','Parma Airport(Giuseppe Verdi Airport)','Parma,Emilia-Romagna, Italy'],
+['PMG','Ponta Pora International Airport','Ponta Pora,Mato Grosso do Sul, Brazil'],
+['PMH','Greater Portsmouth Regional Airport','Portsmouth,Ohio, United States'],
+['PMI','Palma de Mallorca Airport','Palma de Mallorca,Balearic Islands, Spain'],
+['PMK','Palm Island Airport','Palm Island,Queensland, Australia'],
+['PML','Port Moller Airport(FAA: 1AK3)','Cold Bay,Alaska, United States'],
+['PMM','Phanom Sarakham Airport','Phanom Sarakham,Thailand'],
+['PMN','Pumani Airport','Pumani,Papua New Guinea'],
+['PMO','Falcone-Borsellino Airport(Punta Raisi Airport)','Palermo,Sicily, Italy'],
+['PMP','Pimaga Airport','Pimaga,Papua New Guinea'],
+['PMQ','Perito Moreno Airport','Perito Moreno,Santa Cruz, Argentina'],
+['PMR','Palmerston North Airport','Palmerston North,New Zealand'],
+['PMS','Palmyra Airport','Palmyra(Tadmur),Syria'],
+['PMT','Paramakatoi Airstrip','Paramakatoi,Guyana'],
+['PMV','Santiago Marino Caribbean International Airport','Porlamar,Venezuela'],
+['PMW','Palmas-Brigadeiro Lysias Rodrigues Airport','Palmas,Tocantins, Brazil'],
+['PMX','Metropolitan Airport(FAA: 13MA)','Palmer,Massachusetts, United States'],
+['PMY','El Tehuelche Airport','Puerto Madryn,Chubut, Argentina'],
+['PMZ','Palmar Sur Airport','Palmar Sur,Costa Rica'],
+['PNA','Pamplona Airport','Pamplona,Navarre, Spain'],
+['PNB','Porto Nacional Airport','Porto Nacional,Tocantins, Brazil'],
+['PNC','Ponca City Regional Airport','Ponca City,Oklahoma, United States'],
+['PND','Punta Gorda Airport','Punta Gorda,Belize'],
+['PNE','Northeast Philadelphia Airport','Philadelphia,Pennsylvania, United States'],
+['PNG','Santos Dumont Airport','Paranagua,Parana, Brazil'],
+['PNH','Phnom Penh International Airport','Phnom Penh,Cambodia'],
+['PNI','Pohnpei International Airport','Pohnpei,Federated States of Micronesia'],
+['PNJ','Penglai Shahekou Airport','Penglai,Shandong, China'],
+['PNK','Supadio Airport','Pontianak,Indonesia'],
+['PNL','Pantelleria Airport','Pantelleria,Sicily, Italy'],
+['PNN','Princeton Municipal Airport','Princeton,Maine, United States'],
+['PNP','Girua Airport','Popondetta,Papua New Guinea'],
+['PNQ','Pune Airport','Pune,Maharashtra, India'],
+['PNR','Pointe Noire Airport','Pointe-Noire,Republic of the Congo'],
+['PNS','Pensacola International Airport','Pensacola,Florida, United States'],
+['PNT','Teniente Julio Gallardo Airport','Puerto Natales,Chile'],
+['PNU','Panguitch Municipal Airport(FAA: U55)','Panguitch,Utah, United States'],
+['PNV','Panev?zys Air Base(Pajuostis Airport)','Panev?zys,Lithuania'],
+['PNX','North Texas Regional Airport(FAA: GYI)','Sherman/Denison,Texas, United States'],
+['PNY','Puducherry Airport','Pondicherry,Puducherry, India'],
+['PNZ','Senador Nilo Coelho Airport','Petrolina,Pernambuco, Brazil'],
+['POA','Salgado Filho International Airport','Porto Alegre,Rio Grande do Sul, Brazil'],
+['POB','Pope Field(Pope AFB)','Fort Bragg,North Carolina, United States'],
+['POC','Brackett Field','La Verne,California, United States'],
+['POD','Podor Airport','Podor,Senegal'],
+['POE','Polk Army Airfield','Fort Polk,Louisiana, United States'],
+['POF','Poplar Bluff Municipal Airport','Poplar Bluff,Missouri, United States'],
+['POG','Port-Gentil International Airport','Port-Gentil,Gabon'],
+['POH','Pocahontas Municipal Airport','Pocahontas,Iowa, United States'],
+['POI','Captain Nicolas Rojas Airport','Potosi,Bolivia'],
+['POJ','Pedro Pereira dos Santos Airport','Patos de Minas,Minas Gerais, Brazil'],
+['POL','Pemba Airport','Pemba,Mozambique'],
+['POM','Jacksons International Airport','Port Moresby,Papua New Guinea'],
+['PON','Poptun Airport','Poptun,Guatemala'],
+['POO','Pocos de Caldas Airport','Pocos de Caldas,Minas Gerais, Brazil'],
+['POP','Gregorio Luperon International Airport','San Felipe de Puerto Plata,Dominican Republic'],
+['POR','Pori Airport','Pori,Finland'],
+['POS','Piarco International Airport','Port of Spain,Trinidad and Tobago'],
+['POT','Ken Jones Aerodrome','Port Antonio,Jamaica'],
+['POU','Dutchess County Airport','Poughkeepsie,New York, United States'],
+['POV','PreSov Air Base','PreSov,Slovakia'],
+['POW','Portoroz Airport','Portoroz,Slovenia'],
+['POX','Pontoise - Cormeilles Aerodrome','Paris,Ile-de-France, France'],
+['POY','Powell Municipal Airport','Powell/Lovell,Wyoming, United States'],
+['POZ','Pozna?-?awica Airport','Pozna?,Poland'],
+['PPA','Perry Lefors Field','Pampa,Texas, United States'],
+['PPB','Presidente Prudente Airport','Presidente Prudente,Sao Paulo, Brazil'],
+['PPC','Prospect Creek Airport','Prospect Creek,Alaska, United States'],
+['PPE','Puerto Penasco International Airport','Puerto Penasco,Sonora, Mexico'],
+['PPF','Tri-City Airport','Parsons,Kansas, United States'],
+['PPG','Pago Pago International Airport','Pago Pago,American Samoa'],
+['PPH','Parai-tepui Airport','Parai-tepui(Peraitepuy),Venezuela'],
+['PPI','Port Pirie Airport','Port Pirie,South Australia, Australia'],
+['PPJ','Panjang Island Airport','Panjang Island,Indonesia'],
+['PPK','Petropavl Airport','Petropavl(Petropavlovsk),Kazakhstan'],
+['PPL','Phaplu Airport','Phaphlu,Nepal'],
+['PPM','Pompano Beach Airpark(FAA: PMP)','Pompano Beach,Florida, United States'],
+['PPN','Guillermo Leon Valencia Airport','Popayan,Colombia'],
+['PPP','Whitsunday Coast Airport','Proserpine,Queensland, Australia'],
+['PPQ','Kapiti Coast Airport','Paraparaumu Beach,New Zealand'],
+['PPR','Tuanku Tambusai Airport','Pasir Pangaraian(Pasir Pangarayan),Indonesia'],
+['PPS','Puerto Princesa International Airport','Puerto Princesa,Philippines'],
+['PPT','Faa? International Airport','Papeete,Tahiti,French Polynesia'],
+['PPU','Papun Airport','Papun,Myanmar'],
+['PPV','Port Protection Seaplane Base(FAA: 19P)','Port Protection,Alaska, United States'],
+['PPW','Papa Westray Airport','Papa Westray,Scotland, United Kingdom'],
+['PPX','Param Airport','Param,Papua New Guinea'],
+['PPY','Pouso Alegre Airport','Pouso Alegre,Minas Gerais, Brazil'],
+['PPZ','Puerto Paez Airport','Puerto Paez,Venezuela'],
+['PQC','Phu Quoc International Airport','Phu Quoc Island,Vietnam'],
+['PQD','Batticaloa Seaplane Base','Batticaloa,Sri Lanka'],
+['PQI','Northern Maine Regional Airport at Presque Isle','Presque Isle,Maine, United States'],
+['PQM','Palenque International Airport','Palenque,Chiapas, Mexico'],
+['PQQ','Port Macquarie Airport','Port Macquarie,New South Wales, Australia'],
+['PQS','Pilot Station Airport(FAA: 0AK)','Pilot Station,Alaska, United States'],
+['PRA','General Justo Jose de Urquiza Airport','Parana,Entre Rios, Argentina'],
+['PRB','Paso Robles Municipal Airport','Paso Robles,California, United States'],
+['PRC','Ernest A. Love Field','Prescott,Arizona, United States'],
+['PRD','Pardoo Airport','Pardoo Station,Western Australia, Australia'],
+['PRE','Pore Airport','Pore,Colombia'],
+['PRG','Vaclav Havel Airport Prague','Prague,Czech Republic'],
+['PRH','Phrae Airport','Phrae,Thailand'],
+['PRI','Praslin Island Airport','Praslin Island,Seychelles'],
+['PRK','Prieska Airport','Prieska,South Africa'],
+['PRM','Portimao Airport','Portimao,Portugal'],
+['PRN','Pristina International Airport','Pristina,Kosovo'],
+['PRO','Perry Municipal Airport','Perry,Iowa, United States'],
+['PRP','Propriano Airport','Propriano,Corsica, France'],
+['PRQ','Presidencia Roque Saenz Pena','Presidencia Roque Saenz Pena,Chaco, Argentina'],
+['PRR','Paruima Airport','Paruima,Guyana'],
+['PRS','Parasi Airport','Parasi,Solomon Islands'],
+['PRU','Pyay Airport','Pyay(Prome),Myanmar'],
+['PRV','P?erov Airport','P?erov,Czech Republic'],
+['PRW','Prentice Airport(FAA: 5N2)','Prentice,Wisconsin, United States'],
+['PRX','Cox Field','Paris,Texas, United States'],
+['PRY','Wonderboom Airport','Pretoria,South Africa'],
+['PRZ','Prineville Airport(FAA: S39)','Prineville,Oregon, United States'],
+['PSA','Pisa International Airport(Galileo Galilei Airport)','Pisa,Tuscany, Italy'],
+['PSB','Bellefonte Airport(FAA: N96)','Philipsburg,Pennsylvania, United States'],
+['PSC','Tri-Cities Airport','Pasco,Washington, United States'],
+['PSD','Port Said Airport','Port Said,Egypt'],
+['PSE','Mercedita Airport','Ponce,Puerto Rico'],
+['PSF','Pittsfield Municipal Airport','Pittsfield,Massachusetts, United States'],
+['PSG','Petersburg James A. Johnson Airport','Petersburg,Alaska, United States'],
+['PSH','Sankt Peter-Ording Airport','Sankt Peter-Ording,Schleswig-Holstein, Germany'],
+['PSI','Pasni Airport','Pasni,Pakistan'],
+['PSJ','Kasiguncu Airport','Poso,Indonesia'],
+['PSK','New River Valley Airport','Dublin,Virginia, United States'],
+['PSL','Perth Airport(Scone Airport)','Perth,Scotland, United Kingdom'],
+['PSM','Portsmouth International Airport at Pease','Portsmouth,New Hampshire, United States'],
+['PSN','Palestine Municipal Airport','Palestine,Texas, United States'],
+['PSO','Antonio Narino Airport','Pasto,Colombia'],
+['PSP','Palm Springs International Airport','Palm Springs,California, United States'],
+['PSQ','Philadelphia Seaplane Base(FAA: 9N2)','Philadelphia,Pennsylvania, United States'],
+['PSR','Abruzzo Airport','Pescara,Abruzzo, Italy'],
+['PSS','Libertador General Jose de San Martin Airport','Posadas,Misiones, Argentina'],
+['PSU','Pangsuma Airport','Putussibau,Indonesia'],
+['PSV','Papa Stour Airport','Papa Stour,Scotland, United Kingdom'],
+['PSW','Passos Airport','Passos,Minas Gerais, Brazil'],
+['PSX','Palacios Municipal Airport','Palacios,Texas, United States'],
+['PSY','Port Stanley Airport','Stanley,British Overseas TerritoryofFalkland Islands'],
+['PSZ','Puerto Suarez International Airport','Puerto Suarez,Bolivia'],
+['PTA','Port Alsworth Airport(FAA: TPO)','Port Alsworth,Alaska, United States'],
+['PTB','Dinwiddie County Airport','Petersburg,Virginia, United States'],
+['PTC','Port Alice Seaplane Base(FAA: 16K)','Port Alice,Alaska, United States'],
+['PTD','Port Alexander Seaplane Base(FAA: AHP)','Port Alexander,Alaska, United States'],
+['PTF','Malolo Lailai Airport','Malolo Lailai,Fiji'],
+['PTG','Polokwane International Airport','Polokwane,South Africa'],
+['PTH','Port Heiden Airport','Port Heiden,Alaska, United States'],
+['PTJ','Portland Airport','Portland,Victoria, Australia'],
+['PTK','Oakland County International Airport','Pontiac,Michigan, United States'],
+['PTM','Palmarito Airport','Palmarito,Venezuela'],
+['PTN','Harry P. Williams Memorial Airport','Patterson,Louisiana, United States'],
+['PTO','Juvenal Loureiro Cardoso Airport','Pato Branco,Parana, Brazil'],
+['PTP','Pointe-a-Pitre International Airport(Le Raizet Airport)','Pointe-a-Pitre,Guadeloupe'],
+['PTQ','Porto de Moz Airport','Porto de Moz,Para, Brazil'],
+['PTS','Atkinson Municipal Airport','Pittsburg,Kansas, United States'],
+['PTT','Pratt Regional Airport','Pratt,Kansas, United States'],
+['PTU','Platinum Airport','Platinum,Alaska, United States'],
+['PTV','Porterville Municipal Airport','Porterville,California, United States'],
+['PTW','Heritage Field','Pottstown,Pennsylvania, United States'],
+['PTX','Contador Airport','Pitalito,Colombia'],
+['PTY','Tocumen International Airport','Panama City,Panama'],
+['PTZ','Rio Amazonas Airport','Shell Mera,Ecuador'],
+['PUA','Puas Airport','Puas,Papua New Guinea'],
+['PUB','Pueblo Memorial Airport','Pueblo,Colorado, United States'],
+['PUC','Carbon County Regional Airport','Price,Utah, United States'],
+['PUD','Puerto Deseado Airport','Puerto Deseado,Santa Cruz, Argentina'],
+['PUE','Puerto Obaldia Airport','Puerto Obaldia,Panama'],
+['PUF','Pau Pyrenees Airport','Pau,Aquitaine, France'],
+['PUG','Port Augusta Airport','Port Augusta,South Australia, Australia'],
+['PUI','Pureni Airport','Pureni,Papua New Guinea'],
+['PUJ','Punta Cana International Airport','Punta Cana,Dominican Republic'],
+['PUK','Pukarua Airport','Pukarua,Tuamotus,French Polynesia'],
+['PUL','Port of Poulsbo Marina Moorage Seaplane Base(FAA: 83Q)','Poulsbo,Washington, United States'],
+['PUM','Kolaka Pomala Airport','Kolaka,Indonesia'],
+['PUN','Punia Airport','Punia,Democratic Republic of the Congo'],
+['PUP','Po Airport','Po,Burkina Faso'],
+['PUQ','Presidente Carlos Ibanez del Campo International Airport','Punta Arenas,Chile'],
+['PUR','Puerto Rico Airport','Puerto Rico,Bolivia'],
+['PUS','Gimhae International Airport','Busan,South Korea'],
+['PUT','Sri Sathya Sai Airport','Puttaparthi,Andhra Pradesh, India'],
+['PUU','Tres de Mayo Airport','Puerto Asis,Colombia'],
+['PUV','Malabou Airport','Poum,New Caledonia'],
+['PUW','Pullman-Moscow Regional Airport','Pullman/Moscow (ID),Washington, United States'],
+['PUX','El Mirador Airport','Puerto Varas,Chile'],
+['PUY','Pula Airport','Pula,Croatia'],
+['PUZ','Puerto Cabezas Airport','Puerto Cabezas,Nicaragua'],
+['PVA','El Embrujo Airport','Providencia Island,Colombia'],
+['PVC','Provincetown Municipal Airport','Provincetown,Massachusetts, United States'],
+['PVD','Theodore Francis Green State Airport','Providence,Rhode Island, United States'],
+['PVE','El Porvenir Airport','El Porvenir,Panama'],
+['PVF','Placerville Airport','Placerville,California, United States'],
+['PVG','Shanghai Pudong International Airport','Shanghai, China'],
+['PVH','Governador Jorge Teixeira de Oliveira International Airport','Porto Velho,Rondonia, Brazil'],
+['PVI','Edu Chaves Airport','Paranavai,Parana, Brazil'],
+['PVK','Aktion National Airport','Preveza/Lefkada,Greece'],
+['PVL','Pike County Airport(FAA: PBX)','Pikeville,Kentucky, United States'],
+['PVO','Reales Tamarindos Airport','Portoviejo,Ecuador'],
+['PVR','Licenciado Gustavo Diaz Ordaz International Airport','Puerto Vallarta,Jalisco, Mexico'],
+['PVS','Provideniya Bay Airport','Provideniya,Chukotka, Russia'],
+['PVU','Provo Municipal Airport','Provo,Utah, United States'],
+['PVW','Hale County Airport','Plainview,Texas, United States'],
+['PWA','Wiley Post Airport','Oklahoma City,Oklahoma, United States'],
+['PWD','Sher-Wood Airport','Plentywood,Montana, United States'],
+['PWE','Pevek Airport','Pevek,Chukotka, Russia'],
+['PWI','Beles Airport','Pawi,Ethiopia'],
+['PWK','Chicago Executive Airport','Chicago,Illinois, United States'],
+['PWL','Wirasaba Airport','Purwokerto,Indonesia'],
+['PWM','Portland International Jetport','Portland,Maine, United States'],
+['PWN','Pitts Town Airport','Pitts Town,Crooked Island,Bahamas'],
+['PWO','Pweto Airport','Pweto,Democratic Republic of the Congo'],
+['PWQ','Pavlodar Airport','Pavlodar,Kazakhstan'],
+['PWR','Port Walter Seaplane Base','Port Walter,Alaska, United States'],
+['PWT','Bremerton National Airport','Bremerton,Washington, United States'],
+['PWY','Ralph Wenz Field(FAA: PNA)','Pinedale,Wyoming, United States'],
+['PXH','Prominent Hill Airport','Prominent Hill,South Australia, Australia'],
+['PXL','Polacca Airport(FAA: P10)','Polacca,Arizona, United States'],
+['PXM','Puerto Escondido International Airport','Puerto Escondido,Oaxaca, Mexico'],
+['PXO','Porto Santo Airport','Porto Santo Island,Madeira,Portugal'],
+['PXR','Surin Airport','Surin,Thailand'],
+['PXU','Pleiku Airport','Pleiku,Vietnam'],
+['PYA','Velasquez Airport','Puerto Boyaca,Colombia'],
+['PYB','Jeypore Airport','Jeypore,Odisha, India'],
+['PYC','Playon Chico Airport','Ukupseni(Playon Chico),Panama'],
+['PYE','Tongareva Airport','Penrhyn Atoll,Cook Islands'],
+['PYH','Cacique Aramare Airport','Puerto Ayacucho,Venezuela'],
+['PYJ','Polyarny Airport','Polyarny,Yakutia, Russia'],
+['PYK','Payam International Airport','Karaj,Iran'],
+['PYL','Perry Island Seaplane Base','Perry Island,Alaska, United States'],
+['PYM','Plymouth Municipal Airport','Plymouth,Massachusetts, United States'],
+['PYN','Payan Airport','Payan,Colombia'],
+['PYO','Putumayo Airport','Puerto El Carmen de Putumayo,Ecuador'],
+['PYR','Andravida Air Base','Pyrgos,Greece'],
+['PYS','Paradise Skypark(FAA: CA92)','Paradise,California, United States'],
+['PYV','Yaviza Airport','Yaviza,Panama'],
+['PYX','Pattaya Airpark','Pattaya,Thailand'],
+['PYY','Pai Airport','Pai,Thailand'],
+['PZA','Paz de Ariporo Airport','Paz de Ariporo,Colombia'],
+['PZB','Pietermaritzburg Airport','Pietermaritzburg,South Africa'],
+['PZH','Zhob Airport','Zhob,Pakistan'],
+['PZI','Panzhihua Baoanying Airport','Panzhihua,Sichuan, China'],
+['PZK','Pukapuka Island Airfield','Pukapuka Island,Cook Islands'],
+['PZL','Zulu Inyala Airport','Phinda,South Africa'],
+['PZO','Manuel Carlos Piar Guayana Airport','Ciudad Guayana/Puerto Ordaz,Venezuela'],
+['PZS','Maquehue Airport','Temuco,Chile'],
+['PZU','Port Sudan New International Airport','Port Sudan,Sudan'],
+['PZY','PieS?any Airport','PieS?any,Slovakia'],
+['QAQ','LAquila-Preturo Airport','LAquila,Abruzzo, Italy'],
+['QBC','Bella Coola Airport','Bella Coola,British Columbia, Canada'],
+['QCY','RAF Coningsby','Coningsby,England, United Kingdom'],
+['QHU','Husum Schwesing Airport','Husum,Schleswig-Holstein, Germany'],
+['QOW','Sam Mbakwe Airport','Owerri,Nigeria'],
+['QPG','Paya Lebar Air Base','Singapore'],
+['QRA','Rand Airport','Johannesburg,South Africa'],
+['QRO','Queretaro Intercontinental Airport','Queretaro City,Queretaro, Mexico'],
+['QRW','Warri Airport(Osubi Airport)','Warri,Nigeria'],
+['QSC','Mario Pereira Lopes Airport','Sao Carlos,Sao Paulo, Brazil'],
+['QSF','Ain Arnat Airport','Setif,Algeria'],
+['QSR','Salerno Costa dAmalfi Airport(Pontecagnano Airport)','Salerno,Campania, Italy'],
+['QUB','Ubari Airport','Ubari,Libya'],
+['QUG','Chichester/Goodwood Airport','Chichester,England, United Kingdom'],
+['QUO','Akwa Ibom International Airport','Uyo,Nigeria'],
+['QUY','RAF Wyton','Wyton,England, United Kingdom'],
+['QWG','Wilgrove Air Park(FAA: 8A6)','Charlotte,North Carolina, United States'],
+['QXB','Aix les Milles, France','Bouches-du-Rhone,Provence-Alpes-Cote dAzur region, France'],
+['RAA','Rakanda Airport','Rakanda,Papua New Guinea'],
+['RAB','Rabaul Airport(Tokua Airport)','Rabaul,Papua New Guinea'],
+['RAC','John H. Batten Airport','Racine,Wisconsin, United States'],
+['RAD','Road Town Seaplane Base','Tortola,British Overseas TerritoryofVirgin Islands'],
+['RAE','Arar Domestic Airport','Arar,Saudi Arabia'],
+['RAF','Rafaela Airport','Rafaela,Santa Fe, Argentina'],
+['RAG','Raglan Aerodrome','Raglan,New Zealand'],
+['RAH','Rafha Domestic Airport','Rafha,Saudi Arabia'],
+['RAI','Nelson Mandela International Airport','Praia,Cape Verde'],
+['RAJ','Rajkot Airport','Rajkot,Gujarat, India'],
+['RAK','Marrakesh Menara Airport','Marrakesh,Morocco'],
+['RAL','Riverside Municipal Airport','Riverside,California, United States'],
+['RAM','Ramingining Airport','Ramingining,Northern Territory, Australia'],
+['RAN','Ravenna Airport','Ravenna,Emilia-Romagna, Italy'],
+['RAO','Leite Lopes Airport','Ribeirao Preto,Sao Paulo, Brazil'],
+['RAP','Rapid City Regional Airport','Rapid City,South Dakota, United States'],
+['RAQ','Sugimanuru Airport','Muna Island,Indonesia'],
+['RAR','Rarotonga International Airport','Avarua,Rarotonga,Cook Islands'],
+['RAS','Rasht Airport','Rasht,Iran'],
+['RAT','Raduzhny Airport','Raduzhny,Khanty-Mansi Autonomous Okrug, Russia'],
+['RAV','Cravo Norte Airport','Cravo Norte,Colombia'],
+['RAW','Arawa Airport','Arawa,Papua New Guinea'],
+['RAX','Oram Airport','Oram,Papua New Guinea'],
+['RAZ','Rawalakot Airport','Rawalakot,Pakistan'],
+['RBA','Rabat-Sale Airport','Rabat,Morocco'],
+['RBB','Borba Airport','Borba,Amazonas, Brazil'],
+['RBC','Robinvale Airport','Robinvale,Victoria, Australia'],
+['RBD','Dallas Executive Airport','Dallas,Texas, United States'],
+['RBE','Ratanakiri Airport','Ratanakiri,Cambodia'],
+['RBF','Big Bear City Airport(FAA: L35)','Big Bear City,California, United States'],
+['RBG','Roseburg Regional Airport','Roseburg,Oregon, United States'],
+['RBI','Rabi Airport','Rabi Island,Fiji'],
+['RBJ','Rebun Airport','Rebun,Rebun Island, Japan'],
+['RBK','French Valley Airport(FAA: F70)','Murrieta/Temecula,California, United States'],
+['RBL','Red Bluff Municipal Airport','Red Bluff,California, United States'],
+['RBM','Straubing Wallmuhle Airport','Straubing,Bavaria, Germany'],
+['RBO','Robore Airport','Robore,Bolivia'],
+['RBP','Rabaraba Airport','Rabaraba,Papua New Guinea'],
+['RBQ','Rurrenabaque Airport','Rurrenabaque,Bolivia'],
+['RBR','Placido de Castro International Airport','Rio Branco,Acre, Brazil'],
+['RBS','Orbost Airport','Orbost,Victoria, Australia'],
+['RBT','Marsabit Airport','Marsabit,Kenya'],
+['RBU','Roebourne Airport','Roebourne,Western Australia, Australia'],
+['RBV','Ramata Airport','Ramata Island,Solomon Islands'],
+['RBW','Lowcountry Regional Airport','Walterboro,South Carolina, United States'],
+['RBX','Rumbek Airport','Rumbek,South Sudan'],
+['RBY','Ruby Airport','Ruby,Alaska, United States'],
+['RCA','Ellsworth Air Force Base','Rapid City,South Dakota, United States'],
+['RCB','Richards Bay Airport','Richards Bay,South Africa'],
+['RCE','Roche Harbor Seaplane Base','Roche Harbor,Washington, United States'],
+['RCH','Almirante Padilla Airport','Riohacha,Colombia'],
+['RCK','H. H. Coffield Regional Airport','Rockdale,Texas, United States'],
+['RCL','Redcliffe Airport','Redcliffe,Aoba Island,Vanuatu'],
+['RCM','Richmond Airport','Richmond,Queensland, Australia'],
+['RCN','American River Airport','American River,South Australia, Australia'],
+['RCO','Rochefort - Saint-Agnant Airport','Rochefort,Poitou-Charentes, France'],
+['RCQ','Reconquista Airport','Reconquista,Santa Fe, Argentina'],
+['RCR','Fulton County Airport','Rochester,Indiana, United States'],
+['RCS','Rochester Airport','Rochester,England, United Kingdom'],
+['RCT','Nartron Field','Reed City,Michigan, United States'],
+['RCU','Las Higueras Airport','Rio Cuarto,Cordoba, Argentina'],
+['RCY','Port Nelson Airport','Port Nelson,Rum Cay Island,Bahamas'],
+['RDA','Rockhampton Downs Airport','Rockhampton Downs,Northern Territory, Australia'],
+['RDB','Red Dog Airport','Red Dog,Alaska, United States'],
+['RDC','Redencao Airport','Redencao,Para, Brazil'],
+['RDD','Redding Municipal Airport','Redding,California, United States'],
+['RDE','Merdey Airport(Jahabra Airport)','Merdey,Indonesia'],
+['RDG','Reading Regional Airport(Carl A. Spaatz Field)','Reading,Pennsylvania, United States'],
+['RDM','Roberts Field','Redmond/Bend,Oregon, United States'],
+['RDN','Redang Airport','Redang Island,Terengganu, Malaysia'],
+['RDO','Radom Airport','Radom,Poland'],
+['RDP','Kazi Nazrul Islam Airport','Durgapur,West Bengal, India'],
+['RDR','Grand Forks Air Force Base','Grand Forks,North Dakota, United States'],
+['RDS','Rincon de los Sauces Airport','Rincon de los Sauces,Neuquen, Argentina'],
+['RDT','Richard Toll Airport','Richard Toll,Senegal'],
+['RDU','Raleigh-Durham International Airport','Raleigh/Durham,North Carolina, United States'],
+['RDV','Red Devil Airport','Red Devil,Alaska, United States'],
+['RDZ','Rodez-Marcillac Airport','Rodez,Midi-Pyrenees, France'],
+['REA','Reao Airport','Reao,Tuamotus,French Polynesia'],
+['REB','Rechlin-Lärz Airfield','Rechlin,Mecklenburg-Vorpommern, Germany'],
+['REC','Recife/Guararapes-Gilberto Freyre International Airport','Recife,Pernambuco, Brazil'],
+['RED','Mifflin County Airport(FAA: RVL)','Reedsville/Lewistown,Pennsylvania, United States'],
+['REE','Reese Airpark(FAA: 8XS8)','Lubbock,Texas, United States'],
+['REG','Reggio di Calabria Airport','Reggio di Calabria,Calabria, Italy'],
+['REI','Regina Airport','Regina,French Guiana'],
+['REK','metropolitan area1','Reykjavik,Iceland'],
+['REL','Almirante Marcos A. Zar Airport','Trelew,Chubut, Argentina'],
+['REN','Orenburg Tsentralny Airport','Orenburg,Orenburg Oblast, Russia'],
+['REO','Rome State Airport','Rome,Oregon, United States'],
+['REP','Siem Reap International Airport(Angkor Intl)','Siem Reap,Cambodia'],
+['REQ','Reko Diq Airport','Reko Diq,Pakistan'],
+['RER','Retalhuleu Airport','Retalhuleu,Guatemala'],
+['RES','Resistencia International Airport','Resistencia,Chaco, Argentina'],
+['RET','Røst Airport','Røst,Norway'],
+['REU','Reus Airport','Reus,Catalonia, Spain'],
+['REW','Churhata Airport','Rewa,Madhya Pradesh, India'],
+['REX','General Lucio Blanco International Airport','Reynosa,Tamaulipas, Mexico'],
+['REY','Reyes Airport','Reyes,Bolivia'],
+['REZ','Resende Airport','Resende,Rio de Janeiro, Brazil'],
+['RFA','Rafai Airport','Rafai,Central African Republic'],
+['RFD','Chicago Rockford International Airport(Greater Rockford Airport)','Rockford,Illinois, United States'],
+['RFG','Rooke Field','Refugio,Texas, United States'],
+['RFK','Rollang Field(FAA: 5MS1)','Rolling Fork,Mississippi, United States'],
+['RFN','Raufarhöfn Airport','Raufarhöfn,Iceland'],
+['RFP','Raiatea Airport(Uturoa Airport)','Raiatea,Society Islands,French Polynesia'],
+['RFR','Rio Frio Airport','Rio Frio,Costa Rica'],
+['RFS','Rosita Airport','Rosita,Nicaragua'],
+['RGA','Hermes Quijada International Airport','Rio Grande,Tierra del Fuego, Argentina'],
+['RGE','Porgera Airport','Porgera,Papua New Guinea'],
+['RGH','Balurghat Airport','Balurghat,West Bengal, India'],
+['RGI','Rangiroa Airport','Rangiroa,Tuamotus,French Polynesia'],
+['RGK','Gorno-Altaysk Airport','Gorno-Altaysk,Altai Republic, Russia'],
+['RGL','Piloto Civil Norberto Fernandez International Airport','Rio Gallegos,Santa Cruz, Argentina'],
+['RGN','Yangon International Airport','Yangon,Myanmar'],
+['RGO','Chongjin Airport','Chongjin,North Korea'],
+['RGR','Ranger Municipal Airport(FAA: F23)','Ranger,Texas, United States'],
+['RGS','Burgos Airport','Burgos,Castile and Leon, Spain'],
+['RGT','Japura Airport','Rengat,Indonesia'],
+['RHA','Reykholar Airport','Reykholar,Iceland'],
+['RHD','Termas de Rio Hondo Airport','Termas de Rio Hondo,Santiago del Estero, Argentina'],
+['RHE','Reims - Champagne Air Base','Reims,Champagne-Ardenne, France'],
+['RHG','Ruhengeri Airport','Ruhengeri,Rwanda'],
+['RHI','Rhinelander-Oneida County Airport','Rhinelander,Wisconsin, United States'],
+['RHL','Roy Hill Station Airport','Roy Hill Station,Western Australia, Australia'],
+['RHN','Skorpion Mine Airport','Rosh Pinah,Namibia'],
+['RHO','Rhodes International Airport','Rhodes,Greece'],
+['RHP','Ramechhap Airport','Ramechhap,Nepal'],
+['RHR','Al Hamra Seaplane Base','Ras al-Khaimah,United Arab Emirates'],
+['RHT','Alxa Right Banner Badanjilin Airport','Alxa Right Banner,Inner Mongolia, China'],
+['RHV','Reid-Hillview Airport of Santa Clara County','San Jose,California, United States'],
+['RIA','Santa Maria Airport','Santa Maria,Rio Grande do Sul, Brazil'],
+['RIB','Riberalta Airport','Riberalta,Bolivia'],
+['RIC','Richmond International Airport','Richmond,Virginia, United States'],
+['RID','Richmond Municipal Airport','Richmond,Indiana, United States'],
+['RIE','Rice Lake Regional Airport(Carls Field) (FAA: RPD)','Rice Lake,Wisconsin, United States'],
+['RIF','Richfield Municipal Airport','Richfield,Utah, United States'],
+['RIG','Rio Grande Regional Airport','Rio Grande,Rio Grande do Sul, Brazil'],
+['RIH','Scarlett Martinez International Airport','Rio Hato,Panama'],
+['RIJ','Juan Simons Vela Airport','Rioja,Peru'],
+['RIL','Garfield County Regional Airport','Rifle,Colorado, United States'],
+['RIM','San Nicolas Airport','Rodriguez de Mendoza,Peru'],
+['RIN','Ringgi Cove Airport','Ringgi Cove,Solomon Islands'],
+['RIO','metropolitan area2','Rio de Janeiro, Brazil'],
+['RIR','Flabob Airport','Riverside,California, United States'],
+['RIS','Rishiri Airport','Rishiri,Rishiri Island, Japan'],
+['RIV','March Air Reserve Base','Riverside,California, United States'],
+['RIW','Riverton Regional Airport','Riverton,Wyoming, United States'],
+['RIX','Riga International Airport','Riga,Latvia'],
+['RIY','Riyan Airport','Al Mukalla,Yemen'],
+['RIZ','Rizhao Shanzihe Airport','Rizhao,Shandong, China'],
+['RJA','Rajahmundry Airport','Rajahmundry,Andhra Pradesh, India'],
+['RJB','Rajbiraj Airport','Rajbiraj,Nepal'],
+['RJH','Shah Makhdum Airport','Rajshahi,Bangladesh'],
+['RJI','Rajauri Airport','Rajauri,Jammu and Kashmir, India'],
+['RJK','Rijeka Airport','Rijeka,Croatia'],
+['RJL','Logrono-Agoncillo Airport','Logrono,La Rioja, Spain'],
+['RJM','Marinda Airport','Waisai,Indonesia'],
+['RJN','Rafsanjan Airport','Rafsanjan,Iran'],
+['RKA','Aratika-Nord Airport','Aratika,Tuamotus,French Polynesia'],
+['RKD','Knox County Regional Airport','Rockland,Maine, United States'],
+['RKE','Roskilde Airport','Copenhagen,Denmark'],
+['RKH','Rock Hill/York County Airport(FAA: UZA)','Rock Hill,South Carolina, United States'],
+['RKI','Rokot Airport','Sipura,Indonesia'],
+['RKP','Aransas County Airport','Rockport,Texas, United States'],
+['RKR','Robert S. Kerr Airport','Poteau,Oklahoma, United States'],
+['RKS','Rock Springs-Sweetwater County Airport','Rock Springs,Wyoming, United States'],
+['RKT','Ras Al Khaimah International Airport','Ras al-Khaimah,United Arab Emirates'],
+['RKU','Kairuku Airport','Yule Island,Papua New Guinea'],
+['RKV','Reykjavik Airport','Reykjavik,Iceland'],
+['RKW','Rockwood Municipal Airport','Rockwood,Tennessee, United States'],
+['RKY','Rokeby Airport','Rokeby,Queensland, Australia'],
+['RKZ','Shigatse Peace Airport','Shigatse,Tibet Autonomous Region, China'],
+['RLD','Richland Airport','Richland,Washington, United States'],
+['RLG','Rostock-Laage Airport','Rostock,Mecklenburg-Vorpommern, Germany'],
+['RLK','Bayannur Tianjitai Airport','Bayannur,Inner Mongolia, China'],
+['RLO','Valle del Conlara Airport','Villa de Merlo,San Luis, Argentina'],
+['RLP','Rosella Plains Airport','Rosella Plains,Queensland, Australia'],
+['RLR','Relais de la Reine Airport','Isalo,Madagascar'],
+['RLT','Arlit Airport','Arlit,Niger'],
+['RMA','Roma Airport','Roma,Queensland, Australia'],
+['RMB','Buraimi Airport','Buraimi,Oman'],
+['RMD','Ramagundam Airport(Basanth Nagar Airport)','Ramagundam,Telangana, India'],
+['RME','Griffiss International Airport','Rome,New York, United States'],
+['RMF','Marsa Alam International Airport','Marsa Alam,Egypt'],
+['RMG','Richard B. Russell Airport','Rome,Georgia, United States'],
+['RMI','Federico Fellini International Airport','Rimini,Emilia-Romagna, Italy'],
+['RMK','Renmark Airport','Renmark,South Australia, Australia'],
+['RML','Ratmalana Airport','Colombo,Sri Lanka'],
+['RMN','Rumginae Airport','Rumginae,Papua New Guinea'],
+['RMP','Rampart Airport','Rampart,Alaska, United States'],
+['RMQ','Taichung Airport(Taichung Ching Chuan Kang Airport)','Taichung,Taiwan'],
+['RMS','Ramstein Air Base','Ramstein,Rhineland-Palatinate, Germany'],
+['RMT','Rimatara Airport','Rimatara,Austral Islands,French Polynesia'],
+['RMU','Region de Murcia International Airport','Murcia/Cartagena,Murcia, Spain'],
+['RMY','Mariposa-Yosemite Airport(FAA: MPI)','Mariposa,California, United States'],
+['RNA','Ulawa Airport','Arona,Ulawa Island,Solomon Islands'],
+['RNB','Ronneby Airport','Ronneby/Karlskrona,Sweden'],
+['RNC','Warren County Memorial Airport','McMinnville,Tennessee, United States'],
+['RND','Randolph Air Force Base','San Antonio,Texas, United States'],
+['RNE','Roanne Renaison Airport','Roanne,Rhone-Alpes, France'],
+['RNG','Rangely Airport(FAA: 4V0)','Rangely,Colorado, United States'],
+['RNH','New Richmond Regional Airport','New Richmond,Wisconsin, United States'],
+['RNI','Corn Island Airport','Corn Islands,Nicaragua'],
+['RNJ','Yoron Airport','Yoronjima,Amami Islands, Japan'],
+['RNL','Rennell/Tingoa Airport','Rennell Island,Solomon Islands'],
+['RNM','Qarn Alam Airport','Qarn Alam,Oman'],
+['RNN','Bornholm Airport','Rønne,Denmark'],
+['RNO','Reno-Tahoe International Airport','Reno,Nevada, United States'],
+['RNP','Rongelap Airport','Rongelap Atoll,Marshall Islands'],
+['RNR','Robinson River Airport','Robinson River,Papua New Guinea'],
+['RNS','Rennes-Saint-Jacques Airport','Rennes,Brittany, France'],
+['RNT','Renton Municipal Airport','Renton,Washington, United States'],
+['RNU','Ranau Airport','Ranau,Sabah, Malaysia'],
+['RNZ','Jasper County Airport(FAA: RZL)','Rensselaer,Indiana, United States'],
+['ROA','Roanoke-Blacksburg Regional Airport(Woodrum Field)','Roanoke,Virginia, United States'],
+['ROB','Roberts International Airport','Monrovia,Liberia'],
+['ROC','Greater Rochester International Airport','Rochester,New York, United States'],
+['ROD','Robertson Airfield','Robertson,South Africa'],
+['ROF','Montague Airport(Yreka Rohrer Field) (FAA: 1O5)','Montague/Yreka,California, United States'],
+['ROG','Rogers Municipal Airport(Carter Field)','Rogers,Arkansas, United States'],
+['ROH','Robinhood Airport','Robinhood,Queensland, Australia'],
+['ROI','Roi Et Airport','Roi Et,Thailand'],
+['ROK','Rockhampton Airport','Rockhampton,Queensland, Australia'],
+['ROL','Roosevelt Municipal Airport','Roosevelt,Utah, United States'],
+['ROM','metropolitan area3','Rome,Lazio, Italy'],
+['RON','Juan Jose Rondon Airport','Paipa,Colombia'],
+['ROO','Maestro Marinho Franco Airport','Rondonopolis,Mato Grosso, Brazil'],
+['ROP','Rota International Airport(FAA: GRO)','Rota,Northern Mariana Islands'],
+['ROR','Roman Tmetuchl International Airport','Koror,Palau'],
+['ROS','Rosario - Islas Malvinas International Airport','Rosario,Santa Fe, Argentina'],
+['ROT','Rotorua Regional Airport','Rotorua,New Zealand'],
+['ROU','Ruse Airport','Ruse,Bulgaria'],
+['ROV','Rostov-on-Don Airport','Rostov-on-Don,Rostov Oblast, Russia'],
+['ROW','Roswell International Air Center','Roswell,New Mexico, United States'],
+['ROX','Roseau Municipal Airport(Rudy Billberg Field)','Roseau,Minnesota, United States'],
+['ROY','Rio Mayo Airport','Rio Mayo,Chubut, Argentina'],
+['ROZ','US Naval Station Rota','Rota,Andalusia, Spain'],
+['RPA','Rolpa Airport','Rolpa,Nepal'],
+['RPB','Roper Bar Airport','Roper Bar,Northern Territory, Australia'],
+['RPM','Ngukurr Airport','Ngukurr,Northern Territory, Australia'],
+['RPN','Rosh Pina Airport','Rosh Pinna,Israel'],
+['RPR','Swami Vivekananda Airport','Raipur,Chhattisgarh, India'],
+['RPV','Roper Valley Airport','Roper Valley,Northern Territory, Australia'],
+['RPX','Roundup Airport','Roundup,Montana, United States'],
+['RQW','Qayyarah Airfield West','Qayyarah,Iraq'],
+['RRE','Marree Airport','Marree,South Australia, Australia'],
+['RRG','Sir Gaëtan Duval Airport','Rodrigues Island,Mauritius'],
+['RRI','Barora Airport','Barora,Solomon Islands'],
+['RRK','Rourkela Airport','Rourkela,Odisha, India'],
+['RRL','Merrill Municipal Airport','Merrill,Wisconsin, United States'],
+['RRM','Marromeu Airport','Marromeu,Mozambique'],
+['RRR','Raroia Airport','Raroia,Tuamotus,French Polynesia'],
+['RRS','Røros Airport','Røros,Norway'],
+['RRT','Warroad International Memorial Airport(Swede Carlson Field)','Warroad,Minnesota, United States'],
+['RRV','Robinson River Airport','Robinson River,Northern Territory, Australia'],
+['RSA','Santa Rosa Airport','Santa Rosa,La Pampa, Argentina'],
+['RSB','Roseberth Airport','Roseberth,Queensland, Australia'],
+['RSD','Rock Sound International Airport','Rock Sound,Eleuthera Island,Bahamas'],
+['RSE','Rose Bay Seaplane Base','Sydney,New South Wales, Australia'],
+['RSH','Russian Mission Airport','Russian Mission,Alaska, United States'],
+['RSJ','Rosario Seaplane Base(FAA: W49)','Orcas Island,Washington, United States'],
+['RSK','Abresso Airport','Ransiki,Indonesia'],
+['RSL','Russell Municipal Airport','Russell,Kansas, United States'],
+['RSN','Ruston Regional Airport','Ruston,Louisiana, United States'],
+['RSS','Damazin Airport','Ad-Damazin,Sudan'],
+['RST','Rochester International Airport','Rochester,Minnesota, United States'],
+['RSU','Yeosu/Suncheon Airport','Yeosu/Suncheon,South Korea'],
+['RSW','Southwest Florida International Airport','Fort Myers,Florida, United States'],
+['RSX','Rouses Point Seaplane Base(FAA: K21)','Rouses Point,New York, United States'],
+['RTA','Rotuma Airport','Rotuma Island,Fiji'],
+['RTB','Juan Manuel Galvez International Airport','Roatan,Honduras'],
+['RTC','Ratnagiri Airport','Ratnagiri,Maharashtra, India'],
+['RTG','Frans Sales Lega Airport','Ruteng,Indonesia'],
+['RTI','Rote Airport','Rote Island(Roti),Indonesia'],
+['RTL','Spirit Lake Municipal Airport(FAA: 0F3)','Spirit Lake,Iowa, United States'],
+['RTM','Rotterdam The Hague Airport','Rotterdam,Netherlands'],
+['RTN','Raton Municipal Airport(Crews Field)','Raton,New Mexico, United States'],
+['RTP','Rutland Plains Airport','Rutland Plains,Queensland, Australia'],
+['RTS','Rottnest Island Airport','Rottnest Island,Western Australia, Australia'],
+['RTW','Saratov Tsentralny Airport','Saratov,Saratov Oblast, Russia'],
+['RTY','Merty Merty Airport','Merty Merty,South Australia, Australia'],
+['RUA','Arua Airport','Arua,Uganda'],
+['RUD','Shahroud Airport','Shahrud,Iran'],
+['RUE','Butembo Airport','Butembo,Democratic Republic of the Congo'],
+['RUF','Yuruf Airport','Yuruf,Indonesia'],
+['RUG','Rugao Air Base','Rugao,Jiangsu, China'],
+['RUH','King Khalid International Airport','Riyadh,Saudi Arabia'],
+['RUI','Sierra Blanca Regional Airport(FAA: SRR)','Ruidoso,New Mexico, United States'],
+['RUK','Chaurjahari Airport','Rukumkot,Nepal'],
+['RUM','Rumjatar Airport','Rumjatar,Nepal'],
+['RUN','Roland Garros Airport','St-Denis,Reunion, France'],
+['RUP','Rupsi Airport','Rupsi,Assam, India'],
+['RUR','Rurutu Airport','Rurutu,French Polynesia'],
+['RUS','Marau Airport','Marau,Solomon Islands'],
+['RUT','Rutland - Southern Vermont Regional Airport','Rutland,Vermont, United States'],
+['RUU','Ruti Airport','Kawbenaberi,Papua New Guinea'],
+['RUV','Rubelsanto Airport','Rubelsanto,Guatemala'],
+['RUY','Copan Ruinas Airport','Copan Ruinas,Honduras'],
+['RVA','Farafangana Airport','Farafangana,Madagascar'],
+['RVC','River Cess Airport','River Cess,Liberia'],
+['RVD','General Leite de Castro Airport','Rio Verde,Goias, Brazil'],
+['RVE','Los Colonizadores Airport','Saravena,Colombia'],
+['RVH','Rzhevka Airport','Saint Petersburg, Russia'],
+['RVK','Rørvik Airport, Ryum','Rørvik,Norway'],
+['RVN','Rovaniemi Airport','Rovaniemi,Finland'],
+['RVO','Reivilo Airport','Reivilo,South Africa'],
+['RVR','Green River Municipal Airport(FAA: U34)','Green River,Utah, United States'],
+['RVS','Richard Lloyd Jones Jr. Airport','Tulsa,Oklahoma, United States'],
+['RVT','Ravensthorpe Airport','Ravensthorpe,Western Australia, Australia'],
+['RVV','Raivavae Airport','Raivavae,Austral Islands,French Polynesia'],
+['RVY','Pres. Gral. oscar D. Gestido International Airport','Rivera,Uruguay'],
+['RWF','Redwood Falls Municipal Airport','Redwood Falls,Minnesota, United States'],
+['RWI','Rocky Mount-Wilson Regional Airport','Rocky Mount,North Carolina, United States'],
+['RWL','Rawlins Municipal Airport(Harvey Field)','Rawlins,Wyoming, United States'],
+['RWN','Rivne International Airport','Rivne,Ukraine'],
+['RXA','Ar Rawdah Airport','Ar Rawdah(Raudha),Yemen'],
+['RXE','Rexburg-Madison County Airport','Rexburg,Idaho, United States'],
+['RXS','Roxas Airport','Roxas,Philippines'],
+['RYB','Staroselye Airport','Rybinsk,Yaroslavl Oblast, Russia'],
+['RYG','Moss Airport, Rygge/Rygge Air Station','Oslo/Moss,Norway'],
+['RYK','Shaikh Zayed International Airport','Rahim Yar Khan,Pakistan'],
+['RYL','Royal Airstrip','Lower Zambezi National Park,Zambia'],
+['RYN','Royan - Medis Aerodrome','Royan,Poitou-Charentes, France'],
+['RYO','Rio Turbio Airport','Rio Turbio,Santa Cruz, Argentina'],
+['RZA','Santa Cruz Airport','Puerto Santa Cruz,Santa Cruz, Argentina'],
+['RZE','Rzeszow-Jasionka Airport','Rzeszow,Poland'],
+['RZN','Turlatovo Airport','Ryazan,Ryazan Oblast, Russia'],
+['RZP','Cesar Lim Rodriguez Airport','Taytay,Philippines'],
+['RZR','Ramsar International Airport','Ramsar,Iran'],
+['RZS','Sawan Airport','Sawan,Pakistan'],
+['RZZ','Halifax County Airport','Roanoke Rapids,North Carolina, United States'],
+['SAA','Shively Field','Saratoga,Wyoming, United States'],
+['SAB','Juancho E. Yrausquin Airport','Saba,Caribbean Netherlands'],
+['SAC','Sacramento Executive Airport','Sacramento,California, United States'],
+['SAD','Safford Regional Airport','Safford,Arizona, United States'],
+['SAF','Santa Fe Municipal Airport','Santa Fe,New Mexico, United States'],
+['SAH','Sanaa International Airport(El Rahaba Airport)','Sanaa,Yemen'],
+['SAK','Sauoarkrokur Airport','Sauoarkrokur,Iceland'],
+['SAL','Monsenor oscar Arnulfo Romero International Airport','San Salvador,El Salvador'],
+['SAM','Salamo Airport','Salamo,Papua New Guinea'],
+['SAN','San Diego International Airport','San Diego,California, United States'],
+['SAO','metropolitan area1','Sao Paulo,Sao Paulo, Brazil'],
+['SAP','Ramon Villeda Morales International Airport','San Pedro Sula,Honduras'],
+['SAQ','San Andros Airport','Nicholls Town,Andros Island,Bahamas'],
+['SAR','Sparta Community Airport(Hunter Field)','Sparta,Illinois, United States'],
+['SAS','Salton Sea Airport','Salton City,California, United States'],
+['SAT','San Antonio International Airport','San Antonio,Texas, United States'],
+['SAU','Tardamu Airport','Savu(Sawu),Indonesia'],
+['SAV','Savannah/Hilton Head International Airport','Savannah,Georgia, United States'],
+['SAW','Sabiha Gökcen International Airport','Istanbul,Turkey'],
+['SAX','Sambu Airport','Sambu,Panama'],
+['SAY','Siena-Ampugnano Airport','Siena,Tuscany, Italy'],
+['SAZ','Sasstown Airport','Sasstown,Liberia'],
+['SBA','Santa Barbara Municipal Airport','Santa Barbara,California, United States'],
+['SBB','Santa Barbara de Barinas Airport','Santa Barbara,Venezuela'],
+['SBC','Selbang Airport','Selbang,Papua New Guinea'],
+['SBD','San Bernardino International Airport','San Bernardino,California, United States'],
+['SBE','Suabi Airport','Suabi,Papua New Guinea'],
+['SBF','Sardeh Band Airport','Band-e Sardeh Dam,Afghanistan'],
+['SBG','Maimun Saleh Airport','Sabang,Indonesia'],
+['SBH','Gustaf III Airport','Gustavia,Saint Barthelemy'],
+['SBI','Sambailo Airport','Koundara,Guinea'],
+['SBJ','Sao Mateus Airport','Sao Mateus,Espirito Santo, Brazil'],
+['SBK','Saint-Brieuc - Armor Airport','Saint-Brieuc,Brittany, France'],
+['SBL','Santa Ana del Yacuma Airport','Santa Ana del Yacuma,Bolivia'],
+['SBM','Sheboygan County Memorial Airport','Sheboygan,Wisconsin, United States'],
+['SBN','South Bend International Airport','South Bend,Indiana, United States'],
+['SBO','Salina-Gunnison Airport(FAA: 44U)','Salina/Gunnison,Utah, United States'],
+['SBP','San Luis Obispo County Regional Airport(McChesney Field)','San Luis Obispo,California, United States'],
+['SBQ','Sibi Airport','Sibi,Pakistan'],
+['SBR','Saibai Island Airport','Saibai Island,Queensland, Australia'],
+['SBS','Steamboat Springs Airport(Bob Adams Field)','Steamboat Springs,Colorado, United States'],
+['SBT','Sabetta International Airport','Sabetta,Yamalo-Nenets Autonomous Okrug, Russia'],
+['SBU','Springbok Airport','Springbok,South Africa'],
+['SBV','Sabah Airport','Sabah,Papua New Guinea'],
+['SBW','Sibu Airport','Sibu,Sarawak, Malaysia'],
+['SBX','Shelby Airport','Shelby,Montana, United States'],
+['SBY','Salisbury-Ocean City-Wicomico Regional Airport','Salisbury/Ocean City,Maryland, United States'],
+['SBZ','Sibiu International Airport','Sibiu,Romania'],
+['SCA','Santa Catalina Airport','Santa Catalina,Colombia'],
+['SCB','Scribner State Airport','Scribner,Nebraska, United States'],
+['SCC','Deadhorse Airport','Prudhoe Bay/Deadhorse,Alaska, United States'],
+['SCD','Sulaco Airport','Sulaco,Honduras'],
+['SCE','University Park Airport(FAA: UNV)','State College,Pennsylvania, United States'],
+['SCF','Scottsdale Airport(FAA: SDL)','Phoenix/Scottsdale,Arizona, United States'],
+['SCG','Spring Creek Airport','Spring Creek,Queensland, Australia'],
+['SCH','Schenectady County Airport','Schenectady,New York, United States'],
+['SCI','Paramillo Airport','San Cristobal,Venezuela'],
+['SCK','Stockton Metropolitan Airport','Stockton,California, United States'],
+['SCL','Comodoro Arturo Merino Benitez International Airport','Santiago,Chile'],
+['SCM','Scammon Bay Airport','Scammon Bay,Alaska, United States'],
+['SCN','Saarbrucken Airport','Saarbrucken,Saarland, Germany'],
+['SCO','Aktau Airport','Aktau,Kazakhstan'],
+['SCP','Mont-Dauphin - Saint-Crepin Airport','Mont-Dauphin,Provence-Alpes-Cote dAzur, France'],
+['SCQ','Santiago de Compostela Airport','Santiago de Compostela,Galicia, Spain'],
+['SCS','Scatsta Airport','Shetland Islands,Scotland, United Kingdom'],
+['SCT','Socotra Airport','Socotra,Yemen'],
+['SCU','Antonio Maceo International Airport','Santiago de Cuba,Cuba'],
+['SCV','Suceava International Airport(?tefan cel Mare Intl)','Suceava,Romania'],
+['SCW','Syktyvkar Airport','Syktyvkar,Komi Republic, Russia'],
+['SCX','Salina Cruz Airport','Salina Cruz,Oaxaca, Mexico'],
+['SCY','San Cristobal Airport','San Cristobal Island,Galapagos Islands,Ecuador'],
+['SCZ','Santa Cruz/Graciosa Bay/Luova Airport','Santa Cruz Islands,Solomon Islands'],
+['SDB','Air Force Base Langebaanweg','Saldanha Bay,South Africa'],
+['SDC','Sand Creek Airport','Sand Creek Village,Guyana'],
+['SDD','Lubango Mukanka Airport','Lubango,Angola'],
+['SDE','Vicecomodoro angel de la Paz Aragones Airport','Santiago del Estero,Santiago del Estero, Argentina'],
+['SDF','Louisville International Airport(Standiford Field)','Louisville,Kentucky, United States'],
+['SDG','Sanandaj Airport','Sanandaj,Iran'],
+['SDH','Santa Rosa de Copan Airport','Santa Rosa de Copan,Honduras'],
+['SDI','Saidor Airport','Saidor,Papua New Guinea'],
+['SDJ','Sendai Airport','Sendai,Honshu, Japan'],
+['SDK','Sandakan Airport','Sandakan,Sabah, Malaysia'],
+['SDL','Sundsvall-Timrå Airport(Midlanda Airport)','Sundsvall/Härnösand,Sweden'],
+['SDM','Brown Field Municipal Airport','San Diego,California, United States'],
+['SDN','Sandane Airport, Anda','Sandane,Norway'],
+['SDP','Sand Point Airport','Sand Point,Alaska, United States'],
+['SDQ','Las Americas International Airport','Santo Domingo,Dominican Republic'],
+['SDR','Santander Airport','Santander,Cantabria, Spain'],
+['SDS','Sado Airport','Sado,Niigata, Japan'],
+['SDT','Saidu Sharif Airport','Saidu Sharif,Pakistan'],
+['SDU','Santos Dumont Airport','Rio de Janeiro,Rio de Janeiro, Brazil'],
+['SDV','Sde Dov Airport','Tel Aviv,Israel'],
+['SDX','Sedona Airport(FAA: SEZ)','Sedona,Arizona, United States'],
+['SDY','Sidney-Richland Municipal Airport','Sidney,Montana, United States'],
+['SDZ','metropolitan area2','Shetland Islands,Scotland, United Kingdom'],
+['SEA','Seattle-Tacoma International Airport','Seattle,Washington, United States'],
+['SEB','Sabha Airport','Sabha(Sebha),Libya'],
+['SED','Sdom Airfield(Hashnayim Airfield)','Neve Zohar(Sedom),Israel'],
+['SEE','Gillespie Field','San Diego,California, United States'],
+['SEF','Sebring Regional Airport','Sebring,Florida, United States'],
+['SEG','Penn Valley Airport','Selinsgrove,Pennsylvania, United States'],
+['SEH','Senggeh Airport','Senggeh,Indonesia'],
+['SEK','Srednekolymsk Airport','Srednekolymsk,Yakutia, Russia'],
+['SEL','metropolitan area3','Seoul,South Korea'],
+['SEM','Craig Field','Selma,Alabama, United States'],
+['SEN','London Southend Airport','London/Southend,EnglandUnited Kingdom'],
+['SEO','Seguela Airport','Seguela,Ivory Coast'],
+['SEP','Stephenville Clark Regional Airport','Stephenville,Texas, United States'],
+['SEQ','Sei Pakning Airport','Bengkalis,Indonesia'],
+['SER','Freeman Municipal Airport','Seymour,Indiana, United States'],
+['SEU','Seronera Airstrip','Seronera,Tanzania'],
+['SEV','Severodonetsk Airport','Severodonetsk,Ukraine'],
+['SEW','Siwa Oasis North Airport','Siwa Oasis,Egypt'],
+['SEY','Selibaby Airport','Selibaby,Mauritania'],
+['SEZ','Seychelles International Airport','Mahe,Seychelles'],
+['SFA','Sfax-Thyna International Airport','Sfax,Tunisia'],
+['SFB','Orlando Sanford International Airport','Orlando,Florida, United States'],
+['SFC','Saint-Francois Airport','Saint-Francois,Guadeloupe'],
+['SFD','Las Flecheras Airport','San Fernando de Apure,Venezuela'],
+['SFE','San Fernando Airport','San Fernando,Philippines'],
+['SFF','Felts Field','Spokane,Washington, United States'],
+['SFG','LEsperance Airport(Grand Case Airport)','Grand Case,Saint Martin'],
+['SFH','San Felipe International Airport','San Felipe,Baja California, Mexico'],
+['SFJ','Kangerlussuaq Airport','Kangerlussuaq,Greenland'],
+['SFK','Soure Airport','Soure,Para, Brazil'],
+['SFL','Sao Filipe Airport','Sao Filipe,Fogo,Cape Verde'],
+['SFM','Sanford Seacoast Regional Airport','Sanford,Maine, United States'],
+['SFN','Sauce Viejo Airport','Santa Fe de la Vera Cruz,Santa Fe, Argentina'],
+['SFO','San Francisco International Airport','San Francisco,California, United States'],
+['SFQ','?anl?urfa Airport','?anl?urfa,Turkey'],
+['SFS','Subic Bay International Airport','Subic Bay,Philippines'],
+['SFT','Skellefteå Airport','Skellefteå,Sweden'],
+['SFU','Safia Airport','Safia,Papua New Guinea'],
+['SFV','Santa Fe do Sul Airport','Santa Fe do Sul,Sao Paulo, Brazil'],
+['SFX','Macagua Airport','San Felix,Venezuela'],
+['SFY','metropolitan area4','Springfield,Massachusetts, United States'],
+['SFZ','North Central State Airport','Pawtucket,Rhode Island, United States'],
+['SGA','Sheghnan Airport','Shighnan,Afghanistan'],
+['SGB','Singaua Airport','Singaua,Papua New Guinea'],
+['SGC','Surgut International Airport','Surgut,Khanty-Mansi Autonomous Okrug, Russia'],
+['SGD','Sønderborg Airport','Sønderborg,Denmark'],
+['SGE','Siegerland Airport','Siegen,North Rhine-Westphalia, Germany'],
+['SGF','Springfield-Branson National Airport','Springfield,Missouri, United States'],
+['SGH','Springfield-Beckley Municipal Airport','Springfield,Ohio, United States'],
+['SGI','PAF Base Mushaf','Sargodha,Pakistan'],
+['SGJ','Sagarai Airport','Sagarai,Papua New Guinea'],
+['SGK','Sangapi Airport','Sangapi,Papua New Guinea'],
+['SGL','Danilo Atienza Air Base','Manila,Philippines'],
+['SGM','San Ignacio Airfield','San Ignacio,Baja California Sur, Mexico'],
+['SGN','Tan Son Nhat International Airport','Ho Chi Minh City,Vietnam'],
+['SGO','St George Airport','St George,Queensland, Australia'],
+['SGP','Shay Gap Airport','Shay Gap,Western Australia, Australia'],
+['SGQ','Sangkimah Airport','Sangatta,Indonesia'],
+['SGR','Sugar Land Regional Airport','Houston/Sugar Land,Texas, United States'],
+['SGT','Stuttgart Municipal Airport','Stuttgart,Arkansas, United States'],
+['SGU','St. George Regional Airport','St. George,Utah, United States'],
+['SGV','Sierra Grande Airport','Sierra Grande,Rio Negro, Argentina'],
+['SGW','Saginaw Seaplane Base(FAA: A23)','Saginaw Bay,Alaska, United States'],
+['SGX','Songea Airport','Songea,Tanzania'],
+['SGY','Skagway Airport','Skagway,Alaska, United States'],
+['SGZ','Songkhla Airport','Songkhla,Thailand'],
+['SHA','Shanghai Hongqiao International Airport','Shanghai, China'],
+['SHB','Nakashibetsu Airport','Nakashibetsu,Hokkaido, Japan'],
+['SHC','Shire Airport','Shire(Inda Selassie),Ethiopia'],
+['SHD','Shenandoah Valley Regional Airport','Staunton/Waynesboro/Harrisonburg,Virginia, United States'],
+['SHE','Shenyang Taoxian International Airport','Shenyang,Liaoning, China'],
+['SHF','Shihezi Huayuan Airport','Shihezi,Xinjiang, China'],
+['SHG','Shungnak Airport','Shungnak,Alaska, United States'],
+['SHH','Shishmaref Airport','Shishmaref,Alaska, United States'],
+['SHI','Shimojishima Airport','Shimoji-shima,Miyako Islands, Japan'],
+['SHJ','Sharjah International Airport','Sharjah,United Arab Emirates'],
+['SHK','Sehonghong Airport','Sehonghong,Lesotho'],
+['SHL','Shillong Airport(Barapani Airport)','Shillong,Meghalaya, India'],
+['SHM','Nanki-Shirahama Airport','Shirahama,Honshu, Japan'],
+['SHN','Sanderson Field','Shelton,Washington, United States'],
+['SHO','King Mswati III International Airport(Sikhuphe Intl)','Manzini,Swaziland'],
+['SHQ','Southport Airport','Southport,Queensland, Australia'],
+['SHR','Sheridan County Airport','Sheridan,Wyoming, United States'],
+['SHS','Shashi Airport','Jingzhou,Hubei, China'],
+['SHT','Shepparton Airport','Shepparton,Victoria, Australia'],
+['SHU','Smith Point Airport','Smith Point,Northern Territory, Australia'],
+['SHV','Shreveport Regional Airport','Shreveport,Louisiana, United States'],
+['SHW','Sharurah Domestic Airport','Sharurah,Saudi Arabia'],
+['SHX','Shageluk Airport','Shageluk,Alaska, United States'],
+['SHY','Shinyanga Airport','Shinyanga,Tanzania'],
+['SHZ','Seshutes Airport','Seshote,Lesotho'],
+['SIA','Xian Xiguan Airport','Xian,Shaanxi, China'],
+['SIB','Sibiti Airport','Sibiti,Republic of the Congo'],
+['SIC','San Jose Airport','San Jose Island,Panama'],
+['SID','Amilcar Cabral International Airport','Sal,Cape Verde'],
+['SIE','Sines Airport','Sines,Portugal'],
+['SIF','Simara Airport','Simara,Nepal'],
+['SIG','Fernando Luis Ribas Dominicci Airport','San Juan,Puerto Rico'],
+['SIH','Silgadhi Airport','Dipayal Silgadhi,Nepal'],
+['SII','Sidi Ifni Airport(Sania Ramel Airport)','Sidi Ifni,Morocco'],
+['SIJ','Siglufjörour Airport','Siglufjörour,Iceland'],
+['SIK','Sikeston Memorial Municipal Airport','Sikeston,Missouri, United States'],
+['SIL','Sila Airport','Sila,Papua New Guinea'],
+['SIM','Simbai Airport','Simbai,Papua New Guinea'],
+['SIN','Singapore Changi Airport','Singapore'],
+['SIO','Smithton Airport','Smithton,Tasmania, Australia'],
+['SIP','Simferopol International Airport','Simferopol,Ukraine'],
+['SIQ','Dabo Singkep Airport','Singkep,Indonesia'],
+['SIR','Sion Airport','Sion,Switzerland'],
+['SIS','Sishen Airport','Dingleton,South Africa'],
+['SIT','Sitka Rocky Gutierrez Airport','Sitka,Alaska, United States'],
+['SIU','Siuna Airport','Siuna,Nicaragua'],
+['SIV','Sullivan County Airport','Sullivan,Indiana, United States'],
+['SIW','Sibisa Airport','Parapat,Indonesia'],
+['SIX','Singleton Airport','Singleton,New South Wales, Australia'],
+['SIY','Siskiyou County Airport','Montague/Yreka,California, United States'],
+['SIZ','Sissano Airport','Sissano,Papua New Guinea'],
+['SJA','San Juan de Marcona Airport','San Juan de Marcona,Peru'],
+['SJB','San Joaquin Airport','San Joaquin,Bolivia'],
+['SJC','San Jose International Airport','San Jose,California, United States'],
+['SJD','Los Cabos International Airport','San Jose del Cabo,Baja California Sur, Mexico'],
+['SJE','Jorge Enrique Gonzalez Torres Airport','San Jose del Guaviare,Colombia'],
+['SJF','Cruz Bay Seaplane Base','Saint John,United States Virgin Islands'],
+['SJG','San Pedro de Jagua Airport','San Pedro de Jagua,Colombia'],
+['SJH','San Juan del Cesar Airport','San Juan del Cesar,Colombia'],
+['SJI','San Jose Airport','San Jose,Philippines'],
+['SJJ','Sarajevo International Airport','Sarajevo,Bosnia and Herzegovina'],
+['SJK','Professor Urbano Ernesto Stumpf Airport','Sao Jose dos Campos,Sao Paulo, Brazil'],
+['SJL','Sao Gabriel da Cachoeira Airport','Sao Gabriel da Cachoeira,Amazonas, Brazil'],
+['SJN','St. Johns Industrial Air Park','St. Johns,Arizona, United States'],
+['SJO','Juan Santamaria International Airport','San Jose,Costa Rica'],
+['SJP','Prof. Eribelto Manoel Reino State Airport','Sao Jose do Rio Preto,Sao Paulo, Brazil'],
+['SJQ','Sesheke Airport','Sesheke,Zambia'],
+['SJR','San Juan de Uraba Airport','San Juan de Uraba,Colombia'],
+['SJS','San Jose de Chiquitos Airport','San Jose de Chiquitos,Bolivia'],
+['SJT','San Angelo Regional Airport(Mathis Field)','San Angelo,Texas, United States'],
+['SJU','Luis Munoz Marin International Airport','San Juan,Puerto Rico'],
+['SJV','San Javier Airport','San Javier,Bolivia'],
+['SJW','Shijiazhuang Zhengding International Airport','Shijiazhuang,Hebei, China'],
+['SJX','Sarteneja Airport','Sarteneja,Belize'],
+['SJY','Seinäjoki Airport','Seinäjoki,Finland'],
+['SJZ','Sao Jorge Airport','Sao Jorge Island,Azores,Portugal'],
+['SKA','Fairchild Air Force Base','Spokane,Washington, United States'],
+['SKB','Robert L. Bradshaw International Airport','Saint Kitts,Saint Kitts and Nevis'],
+['SKC','Suki Airport','Suki,Papua New Guinea'],
+['SKD','Samarkand International Airport','Samarkand,Uzbekistan'],
+['SKE','Skien Airport, Geiteryggen','Skien,Norway'],
+['SKF','Kelly Field Annex/Lackland Air Force Base','San Antonio,Texas, United States'],
+['SKG','"Thessaloniki Airport ""Macedonia"""','Thessaloniki,Greece'],
+['SKH','Surkhet Airport','Surkhet,Nepal'],
+['SKI','Skikda Airport','Skikda,Algeria'],
+['SKK','Shaktoolik Airport(FAA: 2C7)','Shaktoolik,Alaska, United States'],
+['SKL','Broadford Airfield','Isle of Skye,Scotland, United Kingdom'],
+['SKM','Skeldon Airport','Skeldon,Guyana'],
+['SKN','Stokmarknes Airport, Skagen','Stokmarknes,Norway'],
+['SKO','Sadiq Abubakar III International Airport','Sokoto,Nigeria'],
+['SKP','"Skopje ""Alexander the Great"" Airport"','Skopje,Macedonia'],
+['SKQ','Sekake Airport','Sekake,Lesotho'],
+['SKR','Shakiso Airport','Shakiso,Ethiopia'],
+['SKS','Vojens Airport(Skrydstrup Airport)','Vojens,Denmark'],
+['SKT','Sialkot International Airport','Sialkot,Pakistan'],
+['SKU','Skyros Island National Airport','Skyros,Greece'],
+['SKV','St. Catherine International Airport','Saint Catherine,Egypt'],
+['SKW','Skwentna Airport','Skwentna,Alaska, United States'],
+['SKX','Saransk Airport','Saransk,Mordovia, Russia'],
+['SKY','Griffing Sandusky Airport','Sandusky,Ohio, United States'],
+['SKZ','Sukkur Airport','Sukkur,Pakistan'],
+['SLA','Martin Miguel de Guemes International Airport','Salta,Salta, Argentina'],
+['SLB','Storm Lake Municipal Airport','Storm Lake,Iowa, United States'],
+['SLC','Salt Lake City International Airport','Salt Lake City,Utah, United States'],
+['SLD','Slia? Airport','Slia?,Slovakia'],
+['SLE','McNary Field','Salem,Oregon, United States'],
+['SLF','Sulayel Airport','As Sulayyil(Sulayel),Saudi Arabia'],
+['SLG','Smith Field','Siloam Springs,Arkansas, United States'],
+['SLH','Vanua Lava Airport','Sola,Vanua Lava,Vanuatu'],
+['SLI','Solwezi Airport','Solwezi,Zambia'],
+['SLJ','Solomon Airport','Karijini National Park,Western Australia, Australia'],
+['SLK','Adirondack Regional Airport','Saranac Lake,New York, United States'],
+['SLL','Salalah International Airport','Salalah,Oman'],
+['SLM','Salamanca Airport','Salamanca,Castile and Leon, Spain'],
+['SLN','Salina Regional Airport','Salina,Kansas, United States'],
+['SLO','Salem-Leckrone Airport','Salem,Illinois, United States'],
+['SLP','Ponciano Arriaga International Airport','San Luis Potosi City,San Luis Potosi, Mexico'],
+['SLQ','Sleetmute Airport','Sleetmute,Alaska, United States'],
+['SLR','Sulphur Springs Municipal Airport','Sulphur Springs,Texas, United States'],
+['SLS','Silistra Airfield','Silistra,Bulgaria'],
+['SLT','Harriet Alexander Field(FAA: ANK)','Salida,Colorado, United States'],
+['SLU','George F. L. Charles Airport','Castries,Saint Lucia'],
+['SLV','Shimla Airport','Simla,Himachal Pradesh, India'],
+['SLW','Plan de Guadalupe International Airport','Saltillo,Coahuila, Mexico'],
+['SLX','Salt Cay Airport','Salt Cay,British Overseas TerritoryofTurks and Caicos Islands'],
+['SLY','Salekhard Airport','Salekhard,Yamalo-Nenets Autonomous Okrug, Russia'],
+['SLZ','Marechal Cunha Machado International Airport','Sao Luis,Maranhao, Brazil'],
+['SMA','Santa Maria Airport','Santa Maria Island,Azores,Portugal'],
+['SMB','Franco Bianco Airport','Cerro Sombrero,Chile'],
+['SMC','Santa Maria Airport','Santa Maria,Colombia'],
+['SMD','Smith Field','Fort Wayne,Indiana, United States'],
+['SME','Lake Cumberland Regional Airport','Somerset,Kentucky, United States'],
+['SMF','Sacramento International Airport','Sacramento,California, United States'],
+['SMG','Santa Maria Airport','Santa Maria del Mar,Peru'],
+['SMH','Sapmanga Airport','Sapmanga,Papua New Guinea'],
+['SMI','"Samos International Airport""Aristarchos of Samos"""','Samos,Greece'],
+['SMJ','Sim Airport','Sim,Papua New Guinea'],
+['SMK','St. Michael Airport','St. Michael,Alaska, United States'],
+['SML','Stella Maris Airport','Stella Maris,Long Island,Bahamas'],
+['SMM','Semporna Airport','Semporna,Sabah, Malaysia'],
+['SMN','Lemhi County Airport','Salmon,Idaho, United States'],
+['SMO','Santa Monica Municipal Airport','Santa Monica,California, United States'],
+['SMP','Stockholm Airport','Stockholm,Papua New Guinea'],
+['SMQ','H. Asan Airport','Sampit,Indonesia'],
+['SMR','Simon Bolivar International Airport','Santa Marta,Colombia'],
+['SMS','Sainte Marie Airport','Ile Sainte-Marie,Madagascar'],
+['SMU','Sheep Mountain Airport','Sheep Mountain,Alaska, United States'],
+['SMV','Samedan Airport(Engadin Airport)','St. Moritz,Switzerland'],
+['SMW','Smara Airport','Smara,Morocco'],
+['SMX','Santa Maria Public Airport(Capt. G. Allan Hancock Field)','Santa Maria,California, United States'],
+['SMY','Simenti Airport','Simenti,Senegal'],
+['SMZ','Stoelmans Eiland Airstrip','Stoelmans Eiland(Stoelmanseiland),Suriname'],
+['SNA','John Wayne Airport(Orange County Airport)','Santa Ana,California, United States'],
+['SNB','Snake Bay Airport','Milikapiti,Northern Territory, Australia'],
+['SNC','General Ulpiano Paez Airport','Salinas,Ecuador'],
+['SNE','Preguica Airport','Sao Nicolau,Cape Verde'],
+['SNF','Sub Teniente Nestor Arias Airport','San Felipe,Venezuela'],
+['SNG','Capitan Av. Juan Cochamanidis Airport','San Ignacio de Velasco,Bolivia'],
+['SNH','Stanthorpe Airport','Stanthorpe,Queensland, Australia'],
+['SNI','Greenville/Sinoe Airport(R.E. Murray Airport)','Greenville,Liberia'],
+['SNJ','San Julian Air Base','Guane,Cuba'],
+['SNK','Winston Field','Snyder,Texas, United States'],
+['SNL','Shawnee Regional Airport','Shawnee,Oklahoma, United States'],
+['SNM','San Ignacio de Moxos Airport','San Ignacio de Moxos,Bolivia'],
+['SNN','Shannon Airport','Shannon,Ireland'],
+['SNO','Sakon Nakhon Airport','Sakon Nakhon,Thailand'],
+['SNP','St. Paul Island Airport','St. Paul Island,Alaska, United States'],
+['SNQ','San Quintin Military Airstrip','San Quintin,Baja California, Mexico'],
+['SNR','Saint-Nazaire Montoir Airport','Saint-Nazaire,Pays de la Loire, France'],
+['SNS','Salinas Municipal Airport','Salinas,California, United States'],
+['SNT','Las Cruces Airport','Sabana de Torres,Colombia'],
+['SNU','Abel Santamaria Airport','Santa Clara,Cuba'],
+['SNV','Santa Elena de Uairen Airport','Santa Elena de Uairen,Venezuela'],
+['SNW','Thandwe Airport','Thandwe,Myanmar'],
+['SNY','Sidney Municipal Airport(Lloyd W. Carr Field)','Sidney,Nebraska, United States'],
+['SNZ','Santa Cruz Air Force Base','Rio de Janeiro,Rio de Janeiro, Brazil'],
+['SOA','Soc Tr?ng Airfield','Soc Tr?ng,Vietnam'],
+['SOB','Heviz-Balaton Airport','Heviz,Hungary'],
+['SOC','Adisumarmo International Airport','Surakarta(Solo),Indonesia'],
+['SOD','Bertram Luiz Leupolz-Sorocaba Airport','Sorocaba,Sao Paulo, Brazil'],
+['SOE','Souanke Airport','Souanke,Republic of the Congo'],
+['SOF','Sofia Airport','Sofia,Bulgaria'],
+['SOG','Sogndal Airport, Haukåsen','Sogndal,Norway'],
+['SOJ','Sørkjosen Airport','Sørkjosen,Norway'],
+['SOK','Semonkong Airport','Semonkong,Lesotho'],
+['SOL','Solomon State Field Airport(FAA: AK26)','Solomon,Alaska, United States'],
+['SOM','San Tome Airport','San Tome,Venezuela'],
+['SON','Santo-Pekoa International Airport','Luganville,Vanuatu'],
+['SOO','Söderhamn Airport(Helsinge Airport)','Söderhamn,Sweden'],
+['SOP','Moore County Airport','Pinehurst/Southern Pines,North Carolina, United States'],
+['SOQ','Dominique Edward Osok Airport','Sorong,Indonesia'],
+['SOT','Sodankylä Airfield','Sodankylä,Finland'],
+['SOU','Southampton Airport','Southampton,England, United Kingdom'],
+['SOV','Seldovia Airport','Seldovia,Alaska, United States'],
+['SOW','Show Low Regional Airport','Show Low,Arizona, United States'],
+['SOX','Alberto Lleras Camargo Airport','Sogamoso,Colombia'],
+['SOY','Stronsay Airport','Stronsay,Scotland, United Kingdom'],
+['SOZ','Solenzara Air Base','Sari-Solenzara,Corsica, France'],
+['SPA','Spartanburg Downtown Memorial Airport','Spartanburg,South Carolina, United States'],
+['SPB','Charlotte Amalie Harbor Seaplane Base(St. Thomas Seaplane Base) (FAA: VI22)','St. Thomas Island,United States Virgin Islands'],
+['SPC','La Palma Airport','La Palma,Canary Islands, Spain'],
+['SPD','Saidpur Airport','Saidpur,Bangladesh'],
+['SPE','Sepulot Airport','Sapulut,Sabah, Malaysia'],
+['SPF','Black Hills Airport(Clyde Ice Field)','Spearfish,South Dakota, United States'],
+['SPG','Albert Whitted Airport','St. Petersburg,Florida, United States'],
+['SPH','Sopu Airport','Sopu,Papua New Guinea'],
+['SPI','Abraham Lincoln Capital Airport','Springfield,Illinois, United States'],
+['SPJ','Sparti Airport','Sparti(Sparta),Greece'],
+['SPK','metropolitan area5','Sapporo,Hokkaido, Japan'],
+['SPM','Spangdahlem Air Base','Spangdahlem,Rhineland-Palatinate, Germany'],
+['SPN','Saipan International Airport(Francisco C. Ada Intl) (FAA: GSN)','Saipan,Northern Mariana Islands'],
+['SPP','Menongue Airport','Menongue,Angola'],
+['SPR','San Pedro Airport','San Pedro Town,Belize'],
+['SPS','Sheppard Air Force Base/Wichita Falls Municipal Airport','Wichita Falls,Texas, United States'],
+['SPT','Sipitang Airstrip','Sipitang,Sabah, Malaysia'],
+['SPU','Split Airport','Split,Croatia'],
+['SPV','Sepik Plains Airport','Sepik Plains,Papua New Guinea'],
+['SPW','Spencer Municipal Airport','Spencer,Iowa, United States'],
+['SPY','San Pedro Airport','San-Pedro,Ivory Coast'],
+['SPZ','Springdale Municipal Airport(FAA: ASG)','Springdale,Arkansas, United States'],
+['SQA','Santa Ynez Airport(FAA: IZA)','Santa Ynez,California, United States'],
+['SQB','Santa Ana Airport','Piedras,Colombia'],
+['SQC','Southern Cross Airport','Southern Cross,Western Australia, Australia'],
+['SQD','Shangrao Sanqingshan Airport','Shangrao,Jiangxi, China'],
+['SQE','San Luis de Palenque Airport','San Luis de Palenque,Colombia'],
+['SQG','Sintang Airport(Susilo Airport)','Sintang,Indonesia'],
+['SQH','Na S?n Airport','S?n La,Vietnam'],
+['SQI','Whiteside County Airport(Jos. H. Bittorf Field)','Sterling/Rock Falls,Illinois, United States'],
+['SQJ','Sanming Shaxian Airport','Sanming,Fujian, China'],
+['SQK','Sidi Barrani Airport','Sidi Barrani,Egypt'],
+['SQL','San Carlos Airport','San Carlos,California, United States'],
+['SQM','Sao Miguel do Araguaia Airport','Sao Miguel do Araguaia,Goias, Brazil'],
+['SQN','Sanana Airport','Sanana Island,Indonesia'],
+['SQO','Storuman Airport','Storuman,Sweden'],
+['SQQ','Siauliai International Airport','Siauliai,Lithuania'],
+['SQR','Soroako Airport','Soroako,Indonesia'],
+['SQS','Matthew Spain Airport','San Ignacio,Belize'],
+['SQT','China Strait Airstrip','Samarai,Papua New Guinea'],
+['SQU','Saposoa Airport','Saposoa,Peru'],
+['SQV','Sequim Valley Airport(FAA: W28)','Sequim,Washington, United States'],
+['SQW','Skive Airport','Skive,Denmark'],
+['SQX','Helio Wasum Airport','Sao Miguel do Oeste,Santa Catarina, Brazil'],
+['SQY','Sao Lourenco do Sul Airport','Sao Lourenco do Sul,Rio Grande do Sul, Brazil'],
+['SQZ','RAF Scampton','Scampton,England, United Kingdom'],
+['SRA','Santa Rosa Airport','Santa Rosa,Rio Grande do Sul, Brazil'],
+['SRB','Santa Rosa Airport','Santa Rosa de Yacuma,Bolivia'],
+['SRC','Searcy Municipal Airport','Searcy,Arkansas, United States'],
+['SRD','San Ramon Airport','San Ramon,Bolivia'],
+['SRE','Juana Azurduy de Padilla International Airport','Sucre,Bolivia'],
+['SRF','San Rafael Airport(Hamilton Field)','San Rafael,California, United States'],
+['SRG','Achmad Yani International Airport','Semarang,Indonesia'],
+['SRH','Sarh Airport','Sarh,Chad'],
+['SRI','Temindung Airport','Samarinda,Indonesia'],
+['SRJ','Capitan German Quiroga Guardia Airport','San Borja,Bolivia'],
+['SRL','Palo Verde Airport','Santa Rosalia,Baja California Sur, Mexico'],
+['SRM','Sandringham Station Airport','Sandringham Station,Queensland, Australia'],
+['SRN','Strahan Airport','Strahan,Tasmania, Australia'],
+['SRO','Santana Ramos Airport','Santana Ramos,Colombia'],
+['SRP','Stord Airport, Sørstokken','Stord,Norway'],
+['SRQ','Sarasota-Bradenton International Airport','Sarasota/Bradenton,Florida, United States'],
+['SRR','Dunwich Airport','North Stradbroke Island,Queensland, Australia'],
+['SRS','San Marcos Airport','San Marcos,Colombia'],
+['SRT','Soroti Airport','Soroti,Uganda'],
+['SRV','Stony River Airport','Stony River,Alaska, United States'],
+['SRW','Rowan County Airport(FAA: RUQ)','Salisbury,North Carolina, United States'],
+['SRX','Gardabya Airport','Sirte,Libya'],
+['SRY','Dasht-e Naz Airport','Sari,Iran'],
+['SRZ','El Trompillo Airport','Santa Cruz de la Sierra,Bolivia'],
+['SSA','Deputado Luis Eduardo Magalhaes International Airport','Salvador,Bahia, Brazil'],
+['SSB','Christiansted Harbor Seaplane Base(St. Croix Seaplane Base) (FAA: VI32)','Saint Croix,United States Virgin Islands'],
+['SSC','Shaw Air Force Base','Sumter,South Carolina, United States'],
+['SSD','San Felipe Airport','San Felipe,Colombia'],
+['SSE','Solapur Airport','Solapur,Maharashtra, India'],
+['SSF','Stinson Municipal Airport','San Antonio,Texas, United States'],
+['SSG','Malabo International Airport(Saint Isabel Airport)','Malabo,Equatorial Guinea'],
+['SSH','Sharm el-Sheikh International Airport','Sharm el-Sheikh,Egypt'],
+['SSI','Malcolm McKinnon Airport','Brunswick,Georgia, United States'],
+['SSJ','Sandnessjøen Airport, Stokka','Sandnessjøen,Norway'],
+['SSK','Sturt Creek Airport','Sturt Creek,Western Australia, Australia'],
+['SSL','Santa Rosalia Airport','Santa Rosalia,Colombia'],
+['SSN','Seoul Air Base','Seoul,South Korea'],
+['SSO','Sao Lourenco Airport','Sao Lourenco,Minas Gerais, Brazil'],
+['SSP','Silver Plains Airport','Silver Plains,Queensland, Australia'],
+['SSQ','La Sarre Airport(TC: CSR8)','La Sarre,Quebec, Canada'],
+['SSR','Sara Airport','Sara,Vanuatu'],
+['SSS','Siassi Airport','Umboi Island(Siassi),Papua New Guinea'],
+['SST','Santa Teresita Airport','Santa Teresita,Buenos Aires, Argentina'],
+['SSV','Siasi Airport','Siasi,Philippines'],
+['SSW','Stuart Island Airpark(FAA: 7WA5)','Stuart Island,Washington, United States'],
+['SSY','Mbanza Congo Airport','Mbanza-Kongo,Angola'],
+['SSZ','Santos Air Force Base','Santos,Sao Paulo, Brazil'],
+['STA','Stauning Vestjylland Airport','Skjern,Denmark'],
+['STB','Miguel Urdaneta Fernandez Airport','Santa Barbara del Zulia,Venezuela'],
+['STC','St. Cloud Regional Airport','St. Cloud,Minnesota, United States'],
+['STD','Mayor Buenaventura Vivas Airport','Santo Domingo,Venezuela'],
+['STE','Stevens Point Municipal Airport','Stevens Point,Wisconsin, United States'],
+['STF','Stephens Island Airport','Stephens Island,Queensland, Australia'],
+['STG','St. George Airport(FAA: PBV)','St. George,Alaska, United States'],
+['STH','Strathmore Airport','Strathmore Station,Queensland, Australia'],
+['STI','Cibao International Airport','Santiago de los Caballeros,Dominican Republic'],
+['STJ','Rosecrans Memorial Airport','St. Joseph,Missouri, United States'],
+['STK','Sterling Municipal Airport','Sterling,Colorado, United States'],
+['STL','Lambert-St. Louis International Airport','St. Louis,Missouri, United States'],
+['STM','Santarem-Maestro Wilson Fonseca Airport','Santarem,Para, Brazil'],
+['STN','London Stansted Airport','London,England, United Kingdom'],
+['STO','metropolitan area6','Stockholm,Sweden'],
+['STP','St. Paul Downtown Airport(Holman Field)','St. Paul/Minneapolis,Minnesota, United States'],
+['STQ','St. Marys Municipal Airport(FAA: OYM)','St. Marys,Pennsylvania, United States'],
+['STR','Stuttgart Airport','Stuttgart,Baden-Wurttemberg, Germany'],
+['STS','Charles M. Schulz-Sonoma County Airport','Santa Rosa,California, United States'],
+['STT','Cyril E. King Airport','St. Thomas Island,United States Virgin Islands'],
+['STV','Surat Airport','Surat,Gujarat, India'],
+['STW','Stavropol Shpakovskoye Airport','Stavropol,Stavropol Krai, Russia'],
+['STX','Henry E. Rohlsen Airport','Saint Croix,United States Virgin Islands'],
+['STY','Nueva Hesperides International Airport','Salto,Uruguay'],
+['STZ','Santa Terezinha Airport','Santa Terezinha,Mato Grosso, Brazil'],
+['SUA','Witham Field','Stuart,Florida, United States'],
+['SUB','Juanda International Airport','Surabaya,Indonesia'],
+['SUD','Stroud Municipal Airport','Stroud,Oklahoma, United States'],
+['SUE','Door County Cherryland Airport','Sturgeon Bay,Wisconsin, United States'],
+['SUF','Lamezia Terme International Airport','Lamezia Terme,Calabria, Italy'],
+['SUG','Surigao Airport','Surigao City,Philippines'],
+['SUH','Sur Airport','Sur,Oman'],
+['SUI','Sukhumi Babushara Airport(Dranda Airport)','Sukhumi,Georgia'],
+['SUJ','Satu Mare International Airport','Satu Mare,Romania'],
+['SUK','Sakkyryr Airport','Batagay-Alyta(Sakkyryr),Yakutia, Russia'],
+['SUL','Sui Airport','Sui,Pakistan'],
+['SUM','Sumter Airport(FAA: SMS)','Sumter,South Carolina, United States'],
+['SUN','Friedman Memorial Airport','Hailey/Sun Valley,Idaho, United States'],
+['SUO','Sunriver Airport(FAA: S21)','Sunriver,Oregon, United States'],
+['SUP','Trunojoyo Airport','Sumenep,Indonesia'],
+['SUQ','Sucua Airport','Sucua,Ecuador'],
+['SUR','Summer Beaver Airport(TC: CJV7)','Summer Beaver,Ontario, Canada'],
+['SUS','Spirit of St. Louis Airport','St. Louis,Missouri, United States'],
+['SUT','Sumbawanga Airport','Sumbawanga,Tanzania'],
+['SUU','Travis Air Force Base','Fairfield,California, United States'],
+['SUV','Nausori International Airport','Suva,Fiji'],
+['SUW','Richard I. Bong Airport','Superior,Wisconsin, United States'],
+['SUX','Sioux Gateway Airport(Colonel Bud Day Field)','Sioux City,Iowa, United States'],
+['SUY','Suntar Airport','Suntar,Yakutia, Russia'],
+['SUZ','Suria Airport','Suria,Papua New Guinea'],
+['SVA','Savoonga Airport','Savoonga,Alaska, United States'],
+['SVB','Sambava Airport','Sambava,Madagascar'],
+['SVC','Grant County Airport','Silver City,New Mexico, United States'],
+['SVD','E. T. Joshua Airport','Saint Vincent,Saint Vincent and the Grenadines'],
+['SVE','Susanville Municipal Airport','Susanville,California, United States'],
+['SVF','Save Airport','Save,Benin'],
+['SVG','Stavanger Airport, Sola','Stavanger,Norway'],
+['SVH','Statesville Regional Airport','Statesville,North Carolina, United States'],
+['SVI','Eduardo Falla Solano Airport','San Vicente del Caguan,Colombia'],
+['SVJ','Svolvaer Airport, Helle','Svolvaer,Norway'],
+['SVK','Silver Creek Airport','Silver Creek,Belize'],
+['SVL','Savonlinna Airport','Savonlinna,Finland'],
+['SVM','St Pauls Airport','St Pauls,Queensland, Australia'],
+['SVN','Hunter Army Airfield','Savannah,Georgia, United States'],
+['SVO','Sheremetyevo International Airport','Moscow, Russia'],
+['SVP','Kuito Airport','Kuito,Angola'],
+['SVQ','Seville Airport','Seville,Andalusia, Spain'],
+['SVS','Stevens Village Airport','Stevens Village,Alaska, United States'],
+['SVT','Savuti Airport','Savuti,Botswana'],
+['SVU','Savusavu Airport','Savusavu,Fiji'],
+['SVW','Sparrevohn LRRS Airport','Sparrevohn,Alaska, United States'],
+['SVX','Koltsovo International Airport','Yekaterinburg,Sverdlovsk Oblast, Russia'],
+['SVY','Savo Airport','Savo Island,Solomon Islands'],
+['SVZ','Juan Vicente Gomez International Airport','San Antonio del Tachira,Venezuela'],
+['SWA','Jieyang Chaoshan International Airport','Shantou/Jieyang/Chaozhou,Guangdong, China'],
+['SWB','Shaw River Airport','Shaw River,Western Australia, Australia'],
+['SWC','Stawell Airport','Stawell,Victoria, Australia'],
+['SWD','Seward Airport','Seward,Alaska, United States'],
+['SWE','Siwea Airport','Siwea,Papua New Guinea'],
+['SWF','Stewart International Airport','Newburgh,New York, United States'],
+['SWG','Satwag Airport','Satwag,Papua New Guinea'],
+['SWH','Swan Hill Airport','Swan Hill,Victoria, Australia'],
+['SWJ','South West Bay Airport','South West Bay,Vanuatu'],
+['SWM','Suia-Missu Airport','Alto Boa Vista,Mato Grosso, Brazil'],
+['SWN','Sahiwal Airport','Sahiwal,Pakistan'],
+['SWO','Stillwater Regional Airport','Stillwater,Oklahoma, United States'],
+['SWP','Swakopmund Airport','Swakopmund,Namibia'],
+['SWQ','Sultan Muhammad Kaharuddin III Airport(Brangbiji Airport)','Sumbawa Besar,Indonesia'],
+['SWR','Silur Airport','Silur,Papua New Guinea'],
+['SWS','Swansea Airport','Swansea,Wales, United Kingdom'],
+['SWT','Strezhevoy Airport','Strezhevoy,Tomsk Oblast, Russia'],
+['SWU','Suwon Air Base','Suwon,South Korea'],
+['SWV','Severo-Evensk Airport','Evensk,Magadan Oblast, Russia'],
+['SWW','Avenger Field','Sweetwater,Texas, United States'],
+['SWX','Shakawe Airport','Shakawe,Botswana'],
+['SWY','Sitiawan Airport','Sitiawan,Perak, Malaysia'],
+['SXA','Sialum Airport','Sialum,Papua New Guinea'],
+['SXB','Strasbourg Airport','Strasbourg,Alsace, France'],
+['SXE','West Sale Airport','Sale,Victoria, Australia'],
+['SXF','Berlin Schönefeld Airport','Berlin, Germany'],
+['SXG','Senanga Airport','Senanga,Zambia'],
+['SXH','Sehulea Airport','Sehulea,Papua New Guinea'],
+['SXI','Sirri Island Airport','Sirri Island,Iran'],
+['SXJ','Shanshan Airport','Shanshan,Xinjiang, China'],
+['SXK','Saumlaki Airport(Olilit Airport)','Saumlaki,Indonesia'],
+['SXL','Sligo Airport','Sligo,Ireland'],
+['SXM','Princess Juliana International Airport','Sint Maarten,Kingdom of the Netherlands'],
+['SXN','Sua Pan Airport','Sua Pan,Botswana'],
+['SXO','Sao Felix do Araguaia Airport','Sao Felix do Araguaia,Mato Grosso, Brazil'],
+['SXP','Sheldon Point Airport','Nunam Iqua,Alaska, United States'],
+['SXQ','Soldotna Airport','Soldotna,Alaska, United States'],
+['SXR','Srinagar International Airport(Sheikh ul Alam Airport)','Srinagar,Jammu and Kashmir, India'],
+['SXS','Sahabat Airport','Sahabat,Sabah, Malaysia'],
+['SXT','Sungai Tiang Airport','Taman Negara,Pahang, Malaysia'],
+['SXU','Soddu Airport','Sodo,Ethiopia'],
+['SXV','Salem Airport','Salem,Tamil Nadu, India'],
+['SXW','Sauren Airport','Sauren,Papua New Guinea'],
+['SXX','Sao Felix do Xingu Airport','Sao Felix do Xingu,Para, Brazil'],
+['SXY','Sidney Municipal Airport(FAA: N23)','Sidney,New York, United States'],
+['SXZ','Siirt Airport','Siirt,Turkey'],
+['SYA','Eareckson Air Station','Shemya,Alaska, United States'],
+['SYB','Seal Bay Seaplane Base','Seal Bay,Alaska, United States'],
+['SYC','Shiringayoc Airport','Shiringayoc,Peru'],
+['SYD','Sydney Airport(Kingsford Smith Airport)','Sydney,New South Wales, Australia'],
+['SYE','Saadah Airport','Sadah,Yemen'],
+['SYF','Silva Bay Seaplane Base','Gabriola Island,British Columbia, Canada'],
+['SYG','Syangboche Airport','Namche Bazaar,Nepal'],
+['SYI','Shelbyville Municipal Airport(Bomar Field)','Shelbyville,Tennessee, United States'],
+['SYJ','Sirjan Airport','Sirjan,Iran'],
+['SYK','Stykkisholmur Airport','Stykkisholmur,Iceland'],
+['SYM','Puer Simao Airport','Simao,Yunnan, China'],
+['SYN','Stanton Airfield','Stanton,Minnesota, United States'],
+['SYO','Shonai Airport','Sh?nai,Honshu, Japan'],
+['SYP','Ruben Cantu Airport','Santiago de Veraguas,Panama'],
+['SYQ','Tobias Bolanos International Airport','San Jose,Costa Rica'],
+['SYR','Syracuse Hancock International Airport','Syracuse,New York, United States'],
+['SYS','Saskylakh Airport','Saskylakh,Yakutia, Russia'],
+['SYT','Saint-Yan Airport(Charolais Bourgogne Sud Airport)','Saint-Yan,Burgundy, France'],
+['SYU','Warraber Island Airport','Sue Islet,Queensland, Australia'],
+['SYV','Sylvester Airport','Sylvester,Georgia, United States'],
+['SYW','Sehwan Sharif Airport','Sehwan Sharif,Pakistan'],
+['SYX','Sanya Phoenix International Airport','Sanya,Hainan, China'],
+['SYY','Stornoway Airport','Stornoway,Scotland, United Kingdom'],
+['SYZ','Shiraz International Airport(Shahid Dastghaib Intl)','Shiraz,Iran'],
+['SZA','Soyo Airport','Soyo,Angola'],
+['SZB','Sultan Abdul Aziz Shah Airport','Kuala Lumpur,7Malaysia'],
+['SZE','Semera Airport','Semera,Ethiopia'],
+['SZF','Samsun-car?amba Airport','Samsun,Turkey'],
+['SZG','Salzburg Airport','Salzburg,Austria'],
+['SZI','Zaysan Airport','Zaysan,Kazakhstan'],
+['SZJ','Siguanea Airport','Isla de la Juventud,Cuba'],
+['SZK','Skukuza Airport','Skukuza,South Africa'],
+['SZL','Whiteman Air Force Base','Knob Noster,Missouri, United States'],
+['SZM','Sesriem Airport','Sesriem,Namibia'],
+['SZN','Santa Cruz Island Airport','Santa Cruz Island,California, United States'],
+['SZP','Santa Paula Airport','Santa Paula,California, United States'],
+['SZR','Stara Zagora Airport','Stara Zagora,Bulgaria'],
+['SZS','Ryans Creek Aerodrome','Stewart Island,New Zealand'],
+['SZU','Segou Airport','Segou,Mali'],
+['SZV','Suzhou Guangfu Airport','Suzhou,Jiangsu, China'],
+['SZW','Schwerin-Parchim International Airport','Schwerin,Mecklenburg-Vorpommern, Germany'],
+['SZX','Shenzhen Baoan International Airport','Shenzhen,Guangdong, China'],
+['SZY','Olsztyn-Mazury Regional Airport','Szczytno/Olsztyn,Poland'],
+['SZZ','"""Solidarity"" Szczecin-Goleniow Airport"','Szczecin,Poland'],
+['TAA','Tarapaina Airport','Tarapaina,Solomon Islands'],
+['TAB','Arthur Napoleon Raymond Robinson International Airport','Tobago,Trinidad and Tobago'],
+['TAC','Daniel Z. Romualdez Airport','Tacloban,Philippines'],
+['TAD','Perry Stokes Airport','Trinidad,Colorado, United States'],
+['TAE','Daegu International Airport','Daegu,South Korea'],
+['TAF','Oran Tafaraoui Airport','Oran,Algeria'],
+['TAG','Tagbilaran Airport','Tagbilaran,Philippines'],
+['TAH','Whitegrass Airport','Tanna Island,Vanuatu'],
+['TAI','Taiz International Airport','Taiz(Taizz),Yemen'],
+['TAJ','Tadji Airport','Aitape,Papua New Guinea'],
+['TAK','Takamatsu Airport','Takamatsu,Shikoku, Japan'],
+['TAL','Ralph M. Calhoun Memorial Airport','Tanana,Alaska, United States'],
+['TAM','General Francisco Javier Mina International Airport','Tampico,Tamaulipas, Mexico'],
+['TAN','Tangalooma Airport','Tangalooma,Queensland, Australia'],
+['TAO','Qingdao Liuting International Airport','Qingdao,Shandong, China'],
+['TAP','Tapachula International Airport','Tapachula,Chiapas, Mexico'],
+['TAQ','Tarcoola Airport','Tarcoola,South Australia, Australia'],
+['TAR','Taranto-Grottaglie Airport','Taranto,Apulia, Italy'],
+['TAS','Tashkent International Airport','Tashkent,Uzbekistan'],
+['TAT','Poprad-Tatry Airport','Poprad,Slovakia'],
+['TAU','Tauramena Airport','Tauramena,Colombia'],
+['TAV','Tau Airport(FAA: HI36)','Tau,American Samoa'],
+['TAW','Tacuarembo Airport','Tacuarembo,Uruguay'],
+['TAX','Taliabu Airport','Taliabu,Indonesia'],
+['TAY','Tartu Airport','Tartu,Estonia'],
+['TAZ','Da?oguz Airport','Da?oguz(Dashoguz),Turkmenistan'],
+['TBA','Tabibuga Airport','Tabibuga,Papua New Guinea'],
+['TBB','Dong Tac Airport','Tuy Hòa,Vietnam'],
+['TBC','Tuba City Airport(FAA: T03)','Tuba City,Arizona, United States'],
+['TBD','Timbiqui Airport','Timbiqui,Colombia'],
+['TBE','Timbunke Airport','Timbunke,Papua New Guinea'],
+['TBF','Tabiteuea North Airport','Tabiteuea North,Kiribati'],
+['TBG','Tabubil Airport','Tabubil,Papua New Guinea'],
+['TBH','Tugdan Airport','Tablas Island,Philippines'],
+['TBI','New Bight Airport','New Bight,Cat Island,Bahamas'],
+['TBJ','Tabarka-Ain Draham International Airport','Tabarka,Tunisia'],
+['TBK','Timber Creek Airport','Timber Creek,Northern Territory, Australia'],
+['TBL','Tableland Homestead Airport','Tableland,Western Australia, Australia'],
+['TBM','Tumbang Samba Airport','Tumbang Samba,Indonesia'],
+['TBN','Waynesville-St. Robert Regional Airport(Forney Field)','Fort Leonard Wood,Missouri, United States'],
+['TBO','Tabora Airport','Tabora,Tanzania'],
+['TBP','Cap. FAP Pedro Canga Rodriguez Airport','Tumbes,Peru'],
+['TBQ','Tarabo Airport','Tarabo,Papua New Guinea'],
+['TBR','Statesboro-Bulloch County Airport','Statesboro,Georgia, United States'],
+['TBS','Tbilisi International Airport','Tbilisi,Georgia'],
+['TBT','Tabatinga International Airport','Tabatinga,Amazonas, Brazil'],
+['TBU','Fua?amotu International Airport','Nuku?alofa,Tonga'],
+['TBV','Tabal Airport','Tabal Island,Aur Atoll,Marshall Islands'],
+['TBW','Tambov Donskoye Airport','Tambov,Tambov Oblast, Russia'],
+['TBY','Tshabong Airport','Tsabong,Botswana'],
+['TBZ','Tabriz International Airport','Tabriz,Iran'],
+['TCA','Tennant Creek Airport','Tennant Creek,Northern Territory, Australia'],
+['TCB','Treasure Cay Airport','Treasure Cay,Abaco Islands,Bahamas'],
+['TCC','Tucumcari Municipal Airport','Tucumcari,New Mexico, United States'],
+['TCD','Tarapaca Airport','Tarapaca,Colombia'],
+['TCE','Tulcea Danube Delta Airport','Tulcea,Romania'],
+['TCF','Tocoa Airport','Tocoa,Honduras'],
+['TCG','Tacheng Airport','Tacheng,Xinjiang, China'],
+['TCH','Tchibanga Airport','Tchibanga,Gabon'],
+['TCI','metropolitan area1','Tenerife,Canary Islands, Spain'],
+['TCJ','Torembi Airport','Torembi,Papua New Guinea'],
+['TCK','Tinboli Airport','Tinboli,Papua New Guinea'],
+['TCL','Tuscaloosa Regional Airport','Tuscaloosa,Alabama, United States'],
+['TCM','McChord Field','Tacoma,Washington, United States'],
+['TCN','Tehuacan Airport','Tehuacan,Puebla, Mexico'],
+['TCO','La Florida Airport','Tumaco,Colombia'],
+['TCP','Taba International Airport','Taba,Egypt'],
+['TCQ','Coronel FAP Carlos Ciriani Santa Rosa International Airport','Tacna,Peru'],
+['TCR','Tuticorin Airport','Thoothukudi(Tuticorin),Tamil Nadu, India'],
+['TCS','Truth or Consequences Municipal Airport','Truth or Consequences,New Mexico, United States'],
+['TCT','Takotna Airport','Takotna,Alaska, United States'],
+['TCU','Thaba Nchu Airport','Thaba Nchu,South Africa'],
+['TCW','Tocumwal Airport','Tocumwal,New South Wales, Australia'],
+['TCX','Tabas Airport','Tabas,Iran'],
+['TCY','Terrace Bay Airport','Terrace Bay,Namibia'],
+['TCZ','Tengchong Tuofeng Airport','Tengchong,Yunnan, China'],
+['TDA','Trinidad Airport','Trinidad,Colombia'],
+['TDB','Tetebedi Airport','Tetebedi,Papua New Guinea'],
+['TDD','Teniente Jorge Henrich Arauz Airport','Trinidad,Bolivia'],
+['TDG','Tandag Airport','Tandag,Philippines'],
+['TDJ','Tadjoura Airport','Tadjoura,Djibouti'],
+['TDK','Taldykorgan Airport','Taldykorgan,Kazakhstan'],
+['TDL','Tandil Airport','Tandil,Buenos Aires, Argentina'],
+['TDN','Theda Station Airport','Theda Station,Western Australia, Australia'],
+['TDO','South Lewis County Airport(Ed Carlson Memorial Field)','Toledo,Washington, United States'],
+['TDP','Trompeteros Airport','Trompeteros,Peru'],
+['TDR','Theodore Airport','Theodore,Queensland, Australia'],
+['TDS','Sasereme Airport','Sasereme,Papua New Guinea'],
+['TDT','Tanda Tula Airport','Timbavati,South Africa'],
+['TDV','Samangoky Airport','Tanandava,Madagascar'],
+['TDW','Tradewind Airport','Amarillo,Texas, United States'],
+['TDX','Trat Airport','Trat,Thailand'],
+['TDZ','Toledo Executive Airport','Toledo,Ohio, United States'],
+['TEA','Tela Airport','Tela,Honduras'],
+['TEB','Teterboro Airport','Teterboro,New Jersey, United States'],
+['TEC','Telemaco Borba Airport','Telemaco Borba,Parana, Brazil'],
+['TED','Thisted Airport','Thisted,Denmark'],
+['TEE','Cheikh Larbi Tebessi Airport','Tebessa,Algeria'],
+['TEF','Telfer Airport','Telfer,Western Australia, Australia'],
+['TEG','Tenkodogo Airport','Tenkodogo,Burkina Faso'],
+['TEH','Tetlin Airport(FAA: 3T4)','Tetlin,Alaska, United States'],
+['TEI','Tezu Airport','Tezu,Arunachal Pradesh, India'],
+['TEK','Tatitlek Airport(FAA: 7KA)','Tatitlek,Alaska, United States'],
+['TEL','Telupid Airport','Telupid,Sabah, Malaysia'],
+['TEM','Temora Airport','Temora,New South Wales, Australia'],
+['TEN','Tongren Fenghuang Airport','Tongren,Guizhou, China'],
+['TEO','Terapo Airport','Terapo,Papua New Guinea'],
+['TEP','Teptep Airport','Teptep,Papua New Guinea'],
+['TEQ','Tekirda? corlu Airport','Tekirda?,Turkey'],
+['TER','Lajes Field','Terceira Island,Azores,Portugal'],
+['TES','Teseney Airport','Teseney,Eritrea'],
+['TET','Chingozi Airport','Tete,Mozambique'],
+['TEU','Te Anau Airport(Manapouri Airport)','Te Anau,New Zealand'],
+['TEV','Teruel Airport','Teruel,Aragon, Spain'],
+['TEX','Telluride Regional Airport','Telluride,Colorado, United States'],
+['TEY','Thingeyri Airport','Thingeyri(Þingeyri),Iceland'],
+['TEZ','Tezpur Airport','Tezpur,Assam, India'],
+['TFB','Tifalmin Airport','Tifalmin,Papua New Guinea'],
+['TFF','Tefe Airport','Tefe,Amazonas, Brazil'],
+['TFI','Tufi Airport','Tufi,Papua New Guinea'],
+['TFL','Teofilo Otoni Airport(Juscelino Kubitscheck Airport)','Teofilo Otoni,Minas Gerais, Brazil'],
+['TFM','Telefomin Airport','Telefomin,Papua New Guinea'],
+['TFN','Tenerife-North Airport(Los Rodeos Airport)','Tenerife,Canary Islands, Spain'],
+['TFR','Wadi al Jandali Airport','10th of Ramadan City,Egypt'],
+['TFS','Tenerife-South Airport(Reina Sofia Airport)','Tenerife,Canary Islands, Spain'],
+['TFT','Taftan Airport','Taftan,Pakistan'],
+['TGA','Tengah Air Base','Singapore'],
+['TGB','Tagbita Airport','Rizal,Philippines'],
+['TGC','Tanjung Manis Airport','Tanjung Manis,Sarawak, Malaysia'],
+['TGD','Podgorica Airport','Podgorica,Montenegro'],
+['TGE','Sharpe Field(FAA: AL73)','Tuskegee,Alabama, United States'],
+['TGG','Sultan Mahmud Airport','Kuala Terengganu,Terengganu, Malaysia'],
+['TGH','Tongoa Airport','Tongoa,Shefa,Vanuatu'],
+['TGI','Tingo Maria Airport','Tingo Maria,Peru'],
+['TGJ','Tiga Airport','Tiga Island,Loyalty Islands,New Caledonia'],
+['TGK','Taganrog Airport','Taganrog,Rostov Oblast, Russia'],
+['TGL','Tagula Airport','Vanatinai(Tagula Island),Papua New Guinea'],
+['TGM','Targu Mure? International Airport','Targu Mure?,Romania'],
+['TGN','Latrobe Regional Airport','Traralgon,Victoria, Australia'],
+['TGO','Tongliao Airport','Tongliao,Inner Mongolia, China'],
+['TGP','Podkamennaya Tunguska Airport','Bor,Krasnoyarsk Krai, Russia'],
+['TGQ','Tangara da Serra Airport','Tangara da Serra,Mato Grosso, Brazil'],
+['TGR','Sidi Mahdi Airport','Touggourt,Algeria'],
+['TGS','Chokwe Airport','Chokwe,Mozambique'],
+['TGT','Tanga Airport','Tanga,Tanzania'],
+['TGU','Toncontin International Airport','Tegucigalpa,Honduras'],
+['TGV','Targovishte Airport(Buhovtsi Airfield)','Targovishte,Bulgaria'],
+['TGZ','angel Albino Corzo International Airport','Tuxtla Gutierrez,Chiapas, Mexico'],
+['THA','Tullahoma Regional Airport(William Northern Field)','Tullahoma,Tennessee, United States'],
+['THB','Thaba Tseka Airport','Thaba-Tseka,Lesotho'],
+['THC','Tchien Airport','Tchien,Liberia'],
+['THD','Tho Xuan Airport','Thanh Hoa,Vietnam'],
+['THE','Teresina-Senador Petronio Portella Airport','Teresina,Piaui, Brazil'],
+['THG','Thangool Airport','Thangool,Queensland, Australia'],
+['THH','Taharoa Aerodrome','Taharoa,New Zealand'],
+['THI','Tichitt Airport','Tichit,Mauritania'],
+['THK','Thakhek Airport','Thakhek,Laos'],
+['THL','Tachilek Airport','Tachileik(Tachilek),Myanmar'],
+['THM','Thompson Falls Airport','Thompson Falls,Montana, United States'],
+['THN','Trollhättan-Vänersborg Airport','Trollhättan/Vänersborg,Sweden'],
+['THO','Thorshofn Airport','Thorshofn(Þorshöfn),Iceland'],
+['THP','Hot Springs County-Thermopolis Municipal Airport','Thermopolis,Wyoming, United States'],
+['THQ','Tianshui Maijishan Airport','Tianshui,Gansu, China'],
+['THR','Mehrabad International Airport','Tehran,Iran'],
+['THS','Sukhothai Airport','Sukhothai,Thailand'],
+['THT','Tamchakett Airport','Tamchakett,Mauritania'],
+['THU','Thule Air Base','Pituffik,Greenland'],
+['THV','York Airport','York,Pennsylvania, United States'],
+['THW','Trincomalee Harbour Seaplane Base','Trincomalee,Sri Lanka'],
+['THX','Turukhansk Airport','Turukhansk,Krasnoyarsk Krai, Russia'],
+['THY','P.R. Mphephu Airport','Thohoyandou,South Africa'],
+['THZ','Tahoua Airport','Tahoua,Niger'],
+['TIA','Tirana International Airport Nënë Tereza','Tirana,Albania'],
+['TIB','Tibu Airport','Tibu,Colombia'],
+['TIC','Tinak Airport(FAA: N18)','Tinak Island,Arno Atoll,Marshall Islands'],
+['TID','Abdelhafid Boussouf Bou Chekif Airport','Tiaret,Algeria'],
+['TIE','Tippi Airport','Tepi(Tippi),Ethiopia'],
+['TIF','Ta’if Regional Airport','Taif,Saudi Arabia'],
+['TIG','Tingwon Airport','Tingwon,Papua New Guinea'],
+['TIH','Tikehau Airport','Tikehau,Tuamotus,French Polynesia'],
+['TII','Tarinkot Airport','Tarinkot(Tarin Kowt),Afghanistan'],
+['TIJ','Tijuana International Airport','Tijuana,Baja California, Mexico'],
+['TIK','Tinker Air Force Base','Oklahoma City,Oklahoma, United States'],
+['TIL','Cheadle Airport(TC: CFQ4)','Cheadle,Alberta, Canada'],
+['TIM','Mozes Kilangin Airport','Tembagapura/Timika,Indonesia'],
+['TIN','Tindouf Airport','Tindouf,Algeria'],
+['TIO','Tilin Airport','Htilin(Tilin),Myanmar'],
+['TIP','Tripoli International Airport','Tripoli,Libya'],
+['TIQ','Tinian International Airport(West Tinian Airport) (FAA: TNI)','Tinian,Northern Mariana Islands'],
+['TIR','Tirupati Airport','Tirupati,Andhra Pradesh, India'],
+['TIU','Richard Pearse Airport','Timaru,New Zealand'],
+['TIV','Tivat Airport','Tivat,Montenegro'],
+['TIW','Tacoma Narrows Airport','Tacoma,Washington, United States'],
+['TIX','Space Coast Regional Airport','Titusville,Florida, United States'],
+['TIY','Tidjikja Airport','Tidjikja,Mauritania'],
+['TIZ','Tari Airport','Tari,Papua New Guinea'],
+['TJA','Capitan Oriel Lea Plaza Airport','Tarija,Bolivia'],
+['TJB','Sei Bati Airport','Tanjung Balai,Indonesia'],
+['TJC','Ticantiqui Airport','Ticantiqui,Panama'],
+['TJG','Warukin Airport','Tanjung,Indonesia'],
+['TJH','Tajima Airport','Toyooka,Honshu, Japan'],
+['TJI','Trujillo Airport(Capiro Airport)','Trujillo,Honduras'],
+['TJK','Tokat Airport','Tokat,Turkey'],
+['TJL','Plinio Alarcom Airport','Tres Lagoas,Mato Grosso do Sul, Brazil'],
+['TJM','Roshchino International Airport','Tyumen,Tyumen Oblast, Russia'],
+['TJN','Takume Airport','Takume,Tuamotus,French Polynesia'],
+['TJQ','H.A.S. Hanandjoeddin Airport(Buluh Tumbang Airport)','Tanjung Pandan,Indonesia'],
+['TJS','Tanjung Harapan Airport','Tanjung Selor,Indonesia'],
+['TJU','Kulob Airport','Kulob,Tajikistan'],
+['TJV','Thanjavur Air Force Station','Thanjavur,Tamil Nadu, India'],
+['TKA','Talkeetna Airport','Talkeetna,Alaska, United States'],
+['TKB','Tekadu Airport','Tekadu,Papua New Guinea'],
+['TKC','Tiko Airport','Tiko,Cameroon'],
+['TKD','Takoradi Airport','Sekondi-Takoradi,Ghana'],
+['TKE','Tenakee Seaplane Base','Tenakee Springs,Alaska, United States'],
+['TKF','Truckee Tahoe Airport(FAA: TRK)','Truckee,California, United States'],
+['TKG','Radin Inten II Airport','Bandar Lampung,Indonesia'],
+['TKH','Takhli Royal Thai Air Force Base','Takhli,Thailand'],
+['TKI','Tokeen Seaplane Base(FAA: 57A)','Tokeen,Alaska, United States'],
+['TKJ','Tok Junction Airport(FAA: 6K8)','Tok,Alaska, United States'],
+['TKK','Chuuk International Airport','Chuuk,Federated States of Micronesia'],
+['TKL','Taku Lodge Seaplane Base','Taku Lodge,Alaska, United States'],
+['TKN','Tokunoshima Airport','Tokunoshima,Amami Islands, Japan'],
+['TKO','Tlokoeng Airport','Tlokoeng,Lesotho'],
+['TKP','Takapoto Airport','Takapoto,Tuamotus,French Polynesia'],
+['TKQ','Kigoma Airport','Kigoma,Tanzania'],
+['TKR','Thakurgaon Airport','Thakurgaon,Bangladesh'],
+['TKS','Tokushima Airport','Tokushima,Shikoku, Japan'],
+['TKT','Tak Airport','Tak,Thailand'],
+['TKU','Turku Airport','Turku,Finland'],
+['TKV','Tatakoto Airport','Tatakoto,Tuamotus,French Polynesia'],
+['TKW','Tekin Airport','Tekin,Papua New Guinea'],
+['TKX','Takaroa Airport','Takaroa,Tuamotus,French Polynesia'],
+['TKY','Turkey Creek Airport','Warmun(Turkey Creek),Western Australia, Australia'],
+['TKZ','Tokoroa Aerodrome','Tokoroa,New Zealand'],
+['TLA','Teller Airport(FAA: TER)','Teller,Alaska, United States'],
+['TLB','Tarbela Dam Airport','Tarbela Dam,Pakistan'],
+['TLC','Licenciado Adolfo Lopez Mateos International Airport','Toluca,State of Mexico, Mexico'],
+['TLD','Tuli Lodge Airport','Tuli Lodge,Botswana'],
+['TLE','Toliara Airport','Toliara,Madagascar'],
+['TLF','Telida Airport(FAA: 2K5)','Telida,Alaska, United States'],
+['TLG','Tulaghi Heliport','Tulagi,Solomon Islands'],
+['TLH','Tallahassee International Airport','Tallahassee,Florida, United States'],
+['TLI','Sultan Bantilan Airport(Lalos Airport)','Tolitoli,Indonesia'],
+['TLJ','Tatalina LRRS Airport','Tatalina,Alaska, United States'],
+['TLK','Talakan Airport','Talakan,Yakutia, Russia'],
+['TLL','Tallinn Airport(Lennart Meri Tallinn Airport)','Tallinn,Estonia'],
+['TLM','Zenata - Messali El Hadj Airport','Tlemcen,Algeria'],
+['TLN','Toulon-Hyeres Airport(Hyeres Le Palyvestre Airport)','Toulon/Hyeres,Provence-Alpes-Cote dAzur, France'],
+['TLO','Tol Airport','Tol,Papua New Guinea'],
+['TLP','Tumolbil Airport','Tumolbil,Papua New Guinea'],
+['TLQ','Turpan Jiaohe Airport','Turpan,Xinjiang, China'],
+['TLR','Mefford Field Airport','Tulare,California, United States'],
+['TLS','Toulouse-Blagnac Airport','Toulouse,Midi-Pyrenees, France'],
+['TLT','Tuluksak Airport','Tuluksak,Alaska, United States'],
+['TLU','Golfo de Morrosquillo Airport','Tolu,Colombia'],
+['TLV','Ben Gurion Airport','Tel Aviv,Israel'],
+['TLW','Talasea Airport','Talasea,Papua New Guinea'],
+['TLX','Panguilemo Airport','Talca,Chile'],
+['TLY','Plastun Airport','Plastun,Primorsky Krai, Russia'],
+['TLZ','Catalao Airport','Catalao,Goias, Brazil'],
+['TMA','Henry Tift Myers Airport','Tifton,Georgia, United States'],
+['TMB','Miami Executive Airport','Miami,Florida, United States'],
+['TMC','Tambolaka Airport(Waikabubak Airport)','Tambolaka,Indonesia'],
+['TMD','Timbedra Airport','Timbedra,Mauritania'],
+['TME','Gabriel Vargas Santos Airport','Tame,Colombia'],
+['TMF','Thimarafushi Airport','Thimarafushi,Thaa Atoll,Maldives'],
+['TMG','Tommanggong Airport','Tommanggong,Sabah, Malaysia'],
+['TMH','Tanah Merah Airport','Tanahmerah,Indonesia'],
+['TMI','Tumlingtar Airport','Tumlingtar,Nepal'],
+['TMJ','Termez Airport','Termez,Uzbekistan'],
+['TMK','Tam K? Airport','Tam K?,Vietnam'],
+['TML','Tamale Airport','Tamale,Ghana'],
+['TMM','Toamasina Airport','Toamasina,Madagascar'],
+['TMN','Tamana Airport','Tamana,Kiribati'],
+['TMO','Tumeremo Airport','Tumeremo,Venezuela'],
+['TMP','Tampere-Pirkkala Airport','Tampere,Finland'],
+['TMQ','Tambao Airport','Tambao,Burkina Faso'],
+['TMR','Aguenar - Hadj Bey Akhamok Airport','Tamanrasset,Algeria'],
+['TMS','Sao Tome International Airport','Sao Tome,Sao Tome and Principe'],
+['TMT','Porto Trombetas Airport','Porto Trombetas/Oriximina,Para, Brazil'],
+['TMU','Tambor Airport','Tambor,Costa Rica'],
+['TMW','Tamworth Airport','Tamworth,New South Wales, Australia'],
+['TMX','Timimoun Airport','Timimoun,Algeria'],
+['TMY','Tiom Airport','Tiom,Indonesia'],
+['TMZ','Thames Aerodrome','Thames,New Zealand'],
+['TNA','Jinan Yaoqiang International Airport','Jinan,Shandong, China'],
+['TNB','Tanah Grogot Airport','Tanah Grogot,Indonesia'],
+['TNC','Tin City LRRS Airport','Tin City,Alaska, United States'],
+['TND','Alberto Delgado Airport','Trinidad,Cuba'],
+['TNE','New Tanegashima Airport','Tanegashima,?sumi Islands, Japan'],
+['TNF','Toussus-le-Noble Airport','Toussus-le-Noble,Ile-de-France, France'],
+['TNG','Tangier Ibn Battouta Airport','Tangier,Morocco'],
+['TNH','Tonghua Sanyuanpu Airport','Tonghua,Jilin, China'],
+['TNI','Satna Airport','Satna,Madhya Pradesh, India'],
+['TNJ','Raja Haji Fisabilillah Airport','Tanjung Pinang,Indonesia'],
+['TNK','Tununak Airport(FAA: 4KA)','Tununak,Alaska, United States'],
+['TNL','Ternopil International Airport','Ternopil,Ukraine'],
+['TNM','Teniente R. Marsh Airport','King George Island,Antarctica'],
+['TNN','Tainan Airport','Tainan,Taiwan'],
+['TNO','Tamarindo Airport','Tamarindo,Costa Rica'],
+['TNP','Twentynine Palms Airport','Twentynine Palms,California, United States'],
+['TNQ','Teraina Airport','Teraina,Kiribati'],
+['TNR','Ivato International Airport','Antananarivo,Madagascar'],
+['TNS','Tungsten (Cantung) Airport(TC: CBX5)','Tungsten,Northwest Territories, Canada'],
+['TNT','Dade-Collier Training and Transition Airport','Miami,Florida, United States'],
+['TNU','Newton Municipal Airport','Newton,Iowa, United States'],
+['TNV','Tabuaeran Island Airport','Tabuaeran,Kiribati'],
+['TNW','Jumandy Airport','Tena,Ecuador'],
+['TNX','Steung Treng Airport','Stung Treng,Cambodia'],
+['TNZ','Tosontsengel Airport','Tosontsengel,Mongolia'],
+['TOA','Zamperini Field','Torrance,California, United States'],
+['TOB','Tobruk Airport','Tobruk,Libya'],
+['TOC','Toccoa Airport(R.G. LeTourneau Field)','Toccoa,Georgia, United States'],
+['TOD','Tioman Airport','Tioman Island,Pahang, Malaysia'],
+['TOE','Tozeur-Nefta International Airport','Tozeur,Tunisia'],
+['TOF','Bogashevo Airport','Tomsk,Tomsk Oblast, Russia'],
+['TOG','Togiak Airport','Togiak,Alaska, United States'],
+['TOH','Torres Airport','Torres Islands,Vanuatu'],
+['TOI','Troy Municipal Airport','Troy,Alabama, United States'],
+['TOJ','Madrid-Torrejon Airport','Madrid,Community of Madrid, Spain'],
+['TOK','Torokina Airport','Torokina,Papua New Guinea'],
+['TOL','Toledo Express Airport','Toledo,Ohio, United States'],
+['TOM','Timbuktu Airport','Timbuktu(Tombouctou),Mali'],
+['TON','Tonu Airport','Tonu,Papua New Guinea'],
+['TOO','San Vito de Java Airport','San Vito,Costa Rica'],
+['TOP','Philip Billard Municipal Airport','Topeka,Kansas, United States'],
+['TOQ','Barriles Airport','Tocopilla,Chile'],
+['TOR','Torrington Municipal Airport','Torrington,Wyoming, United States'],
+['TOS','Tromsø Airport, Langnes','Tromsø,Norway'],
+['TOT','Totness Airstrip','Totness,Suriname'],
+['TOU','Touho Airport','Touho,New Caledonia'],
+['TOV','West End Seaplane Base','Tortola,British Overseas TerritoryofVirgin Islands'],
+['TOW','Luiz dal Canalle Filho Airport','Toledo,Parana, Brazil'],
+['TOX','Tobolsk Airport','Tobolsk,Tyumen Oblast, Russia'],
+['TOY','Toyama Airport','Toyama,Honshu, Japan'],
+['TOZ','Mahana Airport','Touba,Ivory Coast'],
+['TPA','Tampa International Airport','Tampa,Florida, United States'],
+['TPC','Tarapoa Airport','Tarapoa,Ecuador'],
+['TPE','Taiwan Taoyuan International Airport','Taipei,Taiwan'],
+['TPF','Peter O. Knight Airport','Tampa,Florida, United States'],
+['TPG','Taiping Airport','Taiping,Perak, Malaysia'],
+['TPH','Tonopah Airport','Tonopah,Nevada, United States'],
+['TPI','Tapini Airport','Tapini,Papua New Guinea'],
+['TPJ','Taplejung Airport','Taplejung,Nepal'],
+['TPK','Teuku Cut Ali Airport','Tapaktuan,Indonesia'],
+['TPL','Draughon-Miller Central Texas Regional Airport','Temple,Texas, United States'],
+['TPN','Tiputini Airport','Tiputini,Ecuador'],
+['TPP','Cad. FAP Guillermo del Castillo Paredes Airport','Tarapoto,Peru'],
+['TPQ','Amado Nervo International Airport','Tepic,Nayarit, Mexico'],
+['TPR','Tom Price Airport','Tom Price,Western Australia, Australia'],
+['TPS','Vincenzo Florio Airport Trapani-Birgi','Trapani,Sicily, Italy'],
+['TPT','Tapeta Airport','Tapeta,Liberia'],
+['TPU','Tikapur Airport','Tikapur,Nepal'],
+['TPX','Tupai Airport','T?pai,Society Islands,French Polynesia'],
+['TQD','Al-Taqaddum Air Base','Fallujah,Iraq'],
+['TQL','Tarko-Sale Airport','Tarko-Sale,Yamalo-Nenets Autonomous Okrug, Russia'],
+['TQN','Taloqan Airport','Taloqan,Afghanistan'],
+['TQP','Trepell Airport','Trepell,Queensland, Australia'],
+['TQQ','Maranggo Airport','Tomia Island,Indonesia'],
+['TQS','Captain Ernesto Esguerra Cubides Air Base','Tres Esquinas,Colombia'],
+['TRA','Tarama Airport','Tarama,Miyako Islands, Japan'],
+['TRB','Gonzalo Mejia Airport','Turbo,Colombia'],
+['TRC','Francisco Sarabia International Airport(Torreon Intl)','Torreon,Coahuila, Mexico'],
+['TRD','Trondheim Airport, Vaernes','Trondheim,Norway'],
+['TRE','Tiree Airport','Tiree,Scotland, United Kingdom'],
+['TRF','Sandefjord Airport, Torp','Sandefjord/Oslo,Norway'],
+['TRG','Tauranga Airport','Tauranga,New Zealand'],
+['TRH','Trona Airport(FAA: L72)','Trona,California, United States'],
+['TRI','Tri-Cities Regional Airport','Bristol/Johnson City/Kingsport,Tennessee, United States'],
+['TRJ','Tarakbits Airport','Tarakbits,Papua New Guinea'],
+['TRK','Juwata International Airport','Tarakan,Indonesia'],
+['TRL','Terrell Municipal Airport','Terrell,Texas, United States'],
+['TRM','Jacqueline Cochran Regional Airport','Thermal,California, United States'],
+['TRN','Turin Airport(Caselle Airport)','Turin,Piedmont, Italy'],
+['TRO','Taree Airport','Taree,New South Wales, Australia'],
+['TRQ','Jose Galera dos Santos Airport','Tarauaca,Acre, Brazil'],
+['TRR','China Bay Airport','Trincomalee,Sri Lanka'],
+['TRS','Trieste - Friuli Venezia Giulia Airport(Ronchi dei Legionari Airport)','Trieste,Friuli-Venezia Giulia, Italy'],
+['TRU','FAP Captain Carlos Martinez de Pinillos International Airport','Trujillo,Peru'],
+['TRV','Trivandrum International Airport','Thiruvananthapuram,Kerala, India'],
+['TRW','Bonriki International Airport','Tarawa,Kiribati'],
+['TRX','Trenton Municipal Airport','Trenton,Missouri, United States'],
+['TRY','Tororo Airport','Tororo,Uganda'],
+['TRZ','Tiruchirappalli International Airport','Tiruchirappalli(Tiruchchirappalli),Tamil Nadu, India'],
+['TSA','Taipei Songshan Airport','Taipei,Taiwan'],
+['TSB','Tsumeb Airport','Tsumeb,Namibia'],
+['TSC','Taisha Airport','Taisha,Ecuador'],
+['TSD','Tshipise Airport','Tshipise,South Africa'],
+['TSE','Astana International Airport','Astana,Kazakhstan'],
+['TSF','Treviso-SantAngelo Airport','Treviso/Venice,Veneto, Italy'],
+['TSG','Tanacross Airport','Tanacross,Alaska, United States'],
+['TSH','Tshikapa Airport','Tshikapa,Democratic Republic of the Congo'],
+['TSI','Tsile Tsile Airport','Tsili Tsili(Tsile Tsile),Papua New Guinea'],
+['TSJ','Tsushima Airport','Tsushima,Tsushima Island, Japan'],
+['TSK','Taskul Airport','Taskul,Papua New Guinea'],
+['TSL','Tamuin National Airport','Tamuin,San Luis Potosi, Mexico'],
+['TSM','Taos Regional Airport(FAA: SKX)','Taos,New Mexico, United States'],
+['TSN','Tianjin Binhai International Airport','Tianjin, China'],
+['TSP','Tehachapi Municipal Airport','Tehachapi,California, United States'],
+['TSQ','Torres Airport','Torres,Rio Grande do Sul, Brazil'],
+['TSR','Timi?oara Traian Vuia International Airport','Timi?oara,Romania'],
+['TST','Trang Airport','Trang,Thailand'],
+['TSU','Tabiteuea South Airport','Tabiteuea South,Kiribati'],
+['TSV','Townsville Airport','Townsville,Queensland, Australia'],
+['TSW','Tsewi Airport','Tsewi,Papua New Guinea'],
+['TSX','Tanjung Santan Airport','Tanjung Santan,Indonesia'],
+['TSY','Tasikmalaya Airport(Wiriadinata Airport)','Tasikmalaya,West Java,Indonesia'],
+['TSZ','Tsetserleg Airport','Tsetserleg,Mongolia'],
+['TTA','Tan Tan Airport(Plage Blanche Airport)','Tan-Tan,Morocco'],
+['TTB','Tortoli Airport(Arbatax Airport)','Tortoli,Sardinia, Italy'],
+['TTC','Las Breas Airport','Taltal,Chile'],
+['TTD','Portland-Troutdale Airport','Portland,Oregon, United States'],
+['TTE','Sultan Babullah Airport','Ternate,Indonesia'],
+['TTG','"Tartagal ""General Enrique Mosconi"" Airport"','Tartagal,Salta, Argentina'],
+['TTH','RAFO Thumrait','Thumrait,Oman'],
+['TTI','Tetiaroa Airport','Tetiaroa,Society Islands,French Polynesia'],
+['TTJ','Tottori Airport','Tottori,Honshu, Japan'],
+['TTL','Turtle Island Seaplane Base','Nanuya Levu,Fiji'],
+['TTM','Tablon de Tamara Airport','Tablon de Tamara,Colombia'],
+['TTN','Trenton-Mercer Airport','Trenton,New Jersey, United States'],
+['TTO','Britton Municipal Airport(FAA: BTN)','Britton,South Dakota, United States'],
+['TTQ','Tortuguero Airport(Barra de Tortuguero Airport)','Tortuguero,Costa Rica'],
+['TTR','Pongtiku Airport','Tana Toraja,Indonesia'],
+['TTS','Tsaratanana Airport','Tsaratanana,Madagascar'],
+['TTT','Taitung Airport(Taitung Fongnian Airport)','Taitung,Taiwan'],
+['TTU','Sania Ramel Airport','Tetouan,Morocco'],
+['TTW','Tissa Tank Waterdrome','Tissamaharama,Sri Lanka'],
+['TTX','Truscott-Mungalalu Airport','Mungalalu,Western Australia, Australia'],
+['TUA','Teniente Coronel Luis a Mantilla International Airport','Tulcan,Ecuador'],
+['TUB','Tubuai - Mataura Airport','Tubuai,French Polynesia'],
+['TUC','Teniente General Benjamin Matienzo International Airport','San Miguel de Tucuman,Tucuman, Argentina'],
+['TUD','Tambacounda Airport','Tambacounda,Senegal'],
+['TUF','Tours Val de Loire Airport','Tours,Centre-Val de Loire, France'],
+['TUG','Tuguegarao Airport','Tuguegarao,Philippines'],
+['TUI','Turaif Domestic Airport','Turaif,Saudi Arabia'],
+['TUJ','Tum Airport','Tum,Ethiopia'],
+['TUK','Turbat International Airport','Turbat,Pakistan'],
+['TUL','Tulsa International Airport','Tulsa,Oklahoma, United States'],
+['TUM','Tumut Airport','Tumut,New South Wales, Australia'],
+['TUN','Tunis-Carthage International Airport','Tunis,Tunisia'],
+['TUO','Taupo Airport','Taupo,New Zealand'],
+['TUP','Tupelo Regional Airport','Tupelo,Mississippi, United States'],
+['TUQ','Tougan Airport','Tougan,Burkina Faso'],
+['TUR','Tucurui Airport','Tucurui,Para, Brazil'],
+['TUS','Tucson International Airport','Tucson,Arizona, United States'],
+['TUT','Tauta Airport','Tauta,Papua New Guinea'],
+['TUU','Tabuk Regional Airport','Tabuk,Saudi Arabia'],
+['TUV','San Rafael Airport','Tucupita,Venezuela'],
+['TUW','Tubala Airport','Tubala(Tubuala),Panama'],
+['TUX','Tumbler Ridge Airport(TC: CBX7)','Tumbler Ridge,British Columbia, Canada'],
+['TUY','Tulum Airport','Tulum,Quintana Roo, Mexico'],
+['TUZ','Tucuma Airport','Tucuma,Para, Brazil'],
+['TVA','Morafenobe Airport','Morafenobe,Madagascar'],
+['TVC','Cherry Capital Airport','Traverse City,Michigan, United States'],
+['TVF','Thief River Falls Regional Airport','Thief River Falls,Minnesota, United States'],
+['TVI','Thomasville Regional Airport','Thomasville,Georgia, United States'],
+['TVL','Lake Tahoe Airport','South Lake Tahoe,California, United States'],
+['TVS','Tangshan Sannuhe Airport','Tangshan,Hebei, China'],
+['TVU','Matei Airport','Taveuni,Fiji'],
+['TVY','Dawei Airport','Dawei,Myanmar'],
+['TWA','Twin Hills Airport(FAA: A63)','Twin Hills,Alaska, United States'],
+['TWB','Toowoomba Airport','Toowoomba,Queensland, Australia'],
+['TWD','Jefferson County International Airport(FAA: 0S9)','Port Townsend,Washington, United States'],
+['TWE','Taylor Airport(FAA: AK49)','Taylor,Alaska, United States'],
+['TWF','Magic Valley Regional Airport(Joslin Field)','Twin Falls,Idaho, United States'],
+['TWN','Tewantin Airport','Tewantin,Queensland, Australia'],
+['TWP','Torwood Airport','Torwood,Queensland, Australia'],
+['TWT','Sanga-Sanga Airport','Tawitawi Island(Tawi-Tawi),Philippines'],
+['TWU','Tawau Airport','Tawau,Sabah, Malaysia'],
+['TWY','Tawa Airport','Tawa,Papua New Guinea'],
+['TWZ','Pukaki Airport(Twizel Airport)','Twizel,New Zealand'],
+['TXF','Teixeira de Freitas Airport(9 de maio Airport)','Teixeira de Freitas,Bahia, Brazil'],
+['TXK','Texarkana Regional Airport(Webb Field)','Texarkana,Arkansas, United States'],
+['TXL','Berlin Tegel Airport','Berlin, Germany'],
+['TXM','Teminabuan Airport','Teminabuan,Indonesia'],
+['TXN','Huangshan Tunxi International Airport','Huangshan,Anhui, China'],
+['TXR','Tanbar Airport','Tanbar,Queensland, Australia'],
+['TXU','Tabou Airport','Tabou,Ivory Coast'],
+['TYA','Klokovo Airport','Tula,Tula Oblast, Russia'],
+['TYB','Tibooburra Airport','Tibooburra,New South Wales, Australia'],
+['TYD','Tynda Airport','Tynda,Amur Oblast, Russia'],
+['TYE','Tyonek Airport','Tyonek,Alaska, United States'],
+['TYF','Torsby Airport','Torsby,Sweden'],
+['TYG','Thylungra Airport','Thylungra,Queensland, Australia'],
+['TYL','Capitan FAP Victor Montes Arias International Airport','Talara,Peru'],
+['TYM','Staniel Cay Airport','Staniel Cay,Exuma Islands,Bahamas'],
+['TYN','Taiyuan Wusu International Airport','Taiyuan,Shanxi, China'],
+['TYO','metropolitan area2','Tokyo,Honshu, Japan'],
+['TYP','Tobermorey Airport','Tobermorey,Northern Territory, Australia'],
+['TYR','Tyler Pounds Regional Airport','Tyler,Texas, United States'],
+['TYS','McGhee Tyson Airport','Knoxville,Tennessee, United States'],
+['TYT','Treinta y Tres Airport','Treinta y Tres,Uruguay'],
+['TYZ','Taylor Airport(FAA: TYL)','Taylor,Arizona, United States'],
+['TZA','Belize City Municipal Airport','Belize City,Belize'],
+['TZC','Tuscola Area Airport(FAA: CFS)','Caro,Michigan, United States'],
+['TZL','Tuzla International Airport','Tuzla,Bosnia and Herzegovina'],
+['TZM','Cupul National Airport','Tizimin,Yucatan, Mexico'],
+['TZN','South Andros Airport(Congo Town Airport)','South Andros,Andros Island,Bahamas'],
+['TZO','Tsimiroro Airport','Ankisatra,Madagascar'],
+['TZX','Trabzon Airport','Trabzon,Turkey'],
+['UAB','Incirlik Air Base','Adana,Turkey'],
+['UAC','San Luis Rio Colorado Airport','San Luis Rio Colorado,Sonora, Mexico'],
+['UAE','Mount Aue Airport','Mount Aue,Papua New Guinea'],
+['UAH','Ua Huka Airport','Ua Huka,Marquesas Islands,French Polynesia'],
+['UAI','Suai Airport','Suai,East Timor'],
+['UAK','Narsarsuaq Airport','Narsarsuaq,Greenland'],
+['UAL','Luau Airport','Luau,Angola'],
+['UAM','Andersen Air Force Base','Hagåtna(Agana),Guam'],
+['UAP','Ua Pou Airport','Ua Pu,Marquesas Islands,French Polynesia'],
+['UAQ','Domingo Faustino Sarmiento Airport','San Juan,San Juan, Argentina'],
+['UAR','Bouarfa Airport','Bouarfa,Morocco'],
+['UAS','Samburu Airport(Buffalo Spring Airport)','Samburu,Kenya'],
+['UAX','Uaxactun Airport','Uaxactun,Guatemala'],
+['UBA','Mario de Almeida Franco Airport','Uberaba,Minas Gerais, Brazil'],
+['UBB','Mabuiag Island Airport','Mabuiag Island,Queensland, Australia'],
+['UBI','Buin Airport','Buin,Papua New Guinea'],
+['UBJ','Yamaguchi Ube Airport','Ube,Honshu, Japan'],
+['UBP','Ubon Ratchathani Airport','Ubon Ratchathani,Thailand'],
+['UBR','Ubrub Airport','Ubrub,Indonesia'],
+['UBS','Columbus-Lowndes County Airport','Columbus,Mississippi, United States'],
+['UBT','Ubatuba Airport(Gastao Madeira Airport)','Ubatuba,Sao Paulo, Brazil'],
+['UBU','Kalumburu Airport','Kalumburu,Western Australia, Australia'],
+['UCB','Ulanqab Airport','Ulanqab,Inner Mongolia, China'],
+['UCC','Yucca Airstrip(FAA: NV11)','Mercury,Nevada, United States'],
+['UCE','Eunice Airport(FAA: 4R7)','Eunice,Louisiana, United States'],
+['UCK','Lutsk Airport','Lutsk,Ukraine'],
+['UCN','Buchanan Airport','Buchanan,Liberia'],
+['UCT','Ukhta Airport','Ukhta,Komi Republic, Russia'],
+['UCY','Everett-Stewart Regional Airport','Union City,Tennessee, United States'],
+['UDA','Undara Airport','Undara,Queensland, Australia'],
+['UDD','Bermuda Dunes Airport','Palm Springs,California, United States'],
+['UDE','Volkel Air Base','Uden,Netherlands'],
+['UDI','Ten. Cel. Av. Cesar Bombonato Airport','Uberlandia,Minas Gerais, Brazil'],
+['UDJ','Uzhhorod International Airport','Uzhhorod,Ukraine'],
+['UDN','Campoformido Airport','Udine,Friuli-Venezia Giulia, Italy'],
+['UDR','Maharana Pratap Airport','Udaipur,Rajasthan, India'],
+['UEE','Queenstown Airport','Queenstown,Tasmania, Australia'],
+['UEL','Quelimane Airport','Quelimane,Mozambique'],
+['UEN','Urengoy Airport','Urengoy,Yamalo-Nenets Autonomous Okrug, Russia'],
+['UEO','Kumejima Airport','Kumejima,Okinawa Islands, Japan'],
+['UES','Waukesha County Airport(Crites Field)','Waukesha,Wisconsin, United States'],
+['UET','Quetta International Airport','Quetta,Pakistan'],
+['UFA','Ufa International Airport','Ufa,Bashkortostan, Russia'],
+['UGA','Bulgan Airport','Bulgan,Mongolia'],
+['UGB','Ugashik Bay Airport','Pilot Point,Alaska, United States'],
+['UGC','Urgench International Airport','Urgench,Uzbekistan'],
+['UGI','San Juan (Uganik) Seaplane Base(FAA: WSJ)','Uganik,Alaska, United States'],
+['UGN','Waukegan National Airport','Waukegan,Illinois, United States'],
+['UGO','Uige Airport','Uige,Angola'],
+['UGS','Ugashik Airport(FAA: 9A8)','Ugashik,Alaska, United States'],
+['UGT','Bulagtai Airport','Bulagtai,Mongolia'],
+['UGU','Bilogai Airport','Bilogai,Indonesia'],
+['UHE','Kunovice Airport','Uherske HradiSt?,Czech Republic'],
+['UIB','El Carano Airport','Quibdo,Colombia'],
+['UIH','Phu Cat Airport','Qui Nh?n,Vietnam'],
+['UII','utila Airport','utila,Honduras'],
+['UIK','Ust-Ilimsk Airport','Ust-Ilimsk,Irkutsk Oblast, Russia'],
+['UIL','Quillayute Airport','Forks,Washington, United States'],
+['UIN','Quincy Regional Airport(Baldwin Field)','Quincy,Illinois, United States'],
+['UIO','Mariscal Sucre International Airport','Quito,Ecuador'],
+['UIP','Quimper-Cornouaille Airport(Pluguffan)','Quimper,Brittany, France'],
+['UIQ','Quoin Hill Airfield','Quoin Hill,Vanuatu'],
+['UIR','Quirindi Airport','Quirindi,New South Wales, Australia'],
+['UIT','Jaluit Airport(FAA: N55)','Jaluit Atoll,Marshall Islands'],
+['UJE','Ujae Airport','Ujae Atoll,Marshall Islands'],
+['UJN','Uljin Airport','Uljin,South Korea'],
+['UJU','Uiju Airfield','Uiju,North Korea'],
+['UKA','Ukunda Airport(Diani Airport)','Ukunda,Kenya'],
+['UKB','Kobe Airport','Kobe/Osaka,Honshu, Japan'],
+['UKG','Ust-Kuyga Airport','Ust-Kuyga,Yakutia, Russia'],
+['UKH','Mukhaizna Airport','Mukhaizna,Oman'],
+['UKI','Ukiah Municipal Airport','Ukiah,California, United States'],
+['UKK','Oskemen Airport(Ust-Kamenogorsk Airport)','Oskemen(Ust-Kamenogorsk),Kazakhstan'],
+['UKN','Waukon Municipal Airport(FAA: Y01)','Waukon,Iowa, United States'],
+['UKR','Mukeiras Airport','Mukayras,Yemen'],
+['UKS','Sevastopol International Airport','Sevastopol,Ukraine'],
+['UKT','Quakertown Airport','Quakertown,Pennsylvania, United States'],
+['UKU','Nuku Airport','Nuku,Papua New Guinea'],
+['UKX','Ust-Kut Airport','Ust-Kut,Irkutsk Oblast, Russia'],
+['ULA','Capitan Jose Daniel Vazquez Airport','Puerto San Julian,Santa Cruz, Argentina'],
+['ULB','Ulei Airport','Ulei,Vanuatu'],
+['ULD','Ulundi Airport','Ulundi,South Africa'],
+['ULE','Sule Airport','Sule,Papua New Guinea'],
+['ULG','Ölgii Airport','Ölgii,Mongolia'],
+['ULH','Prince Abdul Majeed bin Abdulaziz Domestic Airport','Al-Ula,Saudi Arabia'],
+['ULI','Ulithi Airport(FAA: TT02)','Ulithi,Federated States of Micronesia'],
+['ULK','Lensk Airport','Lensk,Yakutia, Russia'],
+['ULL','Glenforsa Airfield','Mull,Scotland, United Kingdom'],
+['ULM','New Ulm Municipal Airport','New Ulm,Minnesota, United States'],
+['ULN','Chinggis Khaan International Airport','Ulaanbaatar,Mongolia'],
+['ULO','Ulaangom Airport','Ulaangom,Mongolia'],
+['ULP','Quilpie Airport','Quilpie,Queensland, Australia'],
+['ULQ','Heriberto Gil Martinez Airport','Tulua,Colombia'],
+['ULS','Mulatos Airport','Mulatos,Colombia'],
+['ULU','Gulu Airport','Gulu,Uganda'],
+['ULV','Ulyanovsk Baratayevka Airport','Ulyanovsk,Ulyanovsk Oblast, Russia'],
+['ULX','Ulusaba Airstrip','Ulusaba,South Africa'],
+['ULY','Ulyanovsk Vostochny Airport','Ulyanovsk,Ulyanovsk Oblast, Russia'],
+['ULZ','Donoi Airport','Uliastai,Mongolia'],
+['UMA','Punta de Maisi Airport','Maisi,Cuba'],
+['UMC','Umba Airport','Umba,Papua New Guinea'],
+['UME','Umeå Airport','Umeå,Sweden'],
+['UMI','Quince Mil Airport','Quince Mil,Peru'],
+['UMM','Summit Airport','Summit,Alaska, United States'],
+['UMR','RAAF Woomera Airfield','Woomera,South Australia, Australia'],
+['UMS','Ust-Maya Airport','Ust-Maya,Yakutia, Russia'],
+['UMT','Umiat Airport','Umiat,Alaska, United States'],
+['UMU','Orlando de Carvalho Airport','Umuarama,Parana, Brazil'],
+['UMY','Sumy Airport','Sumy,Ukraine'],
+['UNA','Una-Comandatuba Airport','Una/Comandatuba Island,Bahia, Brazil'],
+['UNC','Unguia Airport','Unguia,Colombia'],
+['UND','Kunduz Airport','Kunduz,Afghanistan'],
+['UNE','Qachas Nek Airport','Qachas Nek,Lesotho'],
+['UNG','Kiunga Airport','Kiunga,Papua New Guinea'],
+['UNI','Union Island Airport','Union Island,Saint Vincent and the Grenadines'],
+['UNK','Unalakleet Airport','Unalakleet,Alaska, United States'],
+['UNN','Ranong Airport','Ranong,Thailand'],
+['UNR','Öndörkhaan Airport','Öndörkhaan,Mongolia'],
+['UNT','Baltasound Airport','Unst,Scotland, United Kingdom'],
+['UNU','Dodge County Airport','Juneau,Wisconsin, United States'],
+['UOA','Mururoa Airport','Moruroa(Mururoa),Tuamotus,French Polynesia'],
+['UOL','Pogogul Airport','Buol,Indonesia'],
+['UOS','Franklin County Airport','Sewanee,Tennessee, United States'],
+['UOX','University-Oxford Airport','Oxford,Mississippi, United States'],
+['UPB','Playa Baracoa Airport','Havana,Cuba'],
+['UPG','Sultan Hasanuddin International Airport','Makassar,Indonesia'],
+['UPL','Upala Airport','Upala,Costa Rica'],
+['UPN','Ignacio Lopez Rayon International Airport','Uruapan,Michoacan, Mexico'],
+['UPP','Upolu Airport','Hawi,Hawaii, United States'],
+['UPR','Upiara Airport','Upiara,Papua New Guinea'],
+['UPV','RAF Upavon','Upavon,England, United Kingdom'],
+['URA','Oral Ak Zhol Airport','Oral(Uralsk),Kazakhstan'],
+['URB','Castilho Airport(Urubupunga Airport)','Castilho,Sao Paulo, Brazil'],
+['URC','urumqi Diwopu International Airport','urumqi,Xinjiang, China'],
+['URD','Burg Feuerstein Airport','Burg Feuerstein,Bavaria, Germany'],
+['URE','Kuressaare Airport','Kuressaare,Estonia'],
+['URG','Rubem Berta International Airport','Uruguaiana,Rio Grande do Sul, Brazil'],
+['URI','Uribe Airport','La Uribe,Colombia'],
+['URJ','Uray Airport','Uray,Khanty-Mansi Autonomous Okrug,'],
+['URM','Uriman Airport','Uriman,Venezuela'],
+['URN','Urgun Airport','Urgun,Afghanistan'],
+['URO','Rouen Airport(Vallee de Seine Airport)','Rouen,Upper Normandy, France'],
+['URR','Ali Piedrahita Airport','Urrao,Colombia'],
+['URS','Kursk Vostochny Airport','Kursk,Kursk Oblast, Russia'],
+['URT','Surat Thani Airport','Surat Thani,Thailand'],
+['URU','Uroubi Airport','Uroubi,Papua New Guinea'],
+['URY','Gurayat Domestic Airport','Qurayyat(Gurayat),Saudi Arabia'],
+['URZ','Uruzgan Airport','Khas Uruzgan,Afghanistan'],
+['USA','Concord Regional Airport(FAA: JQF)','Concord,North Carolina, United States'],
+['USH','Ushuaia - Malvinas Argentinas International Airport','Ushuaia,Tierra del Fuego, Argentina'],
+['USI','Mabaruma Airport','Mabaruma,Guyana'],
+['USK','Usinsk Airport','Usinsk,Komi Republic, Russia'],
+['USL','Useless Loop Airport','Useless Loop,Western Australia, Australia'],
+['USM','Samui Airport','Ko Samui,Thailand'],
+['USN','Ulsan Airport','Ulsan,South Korea'],
+['USO','Usino Airport','Usino,Papua New Guinea'],
+['USQ','U?ak Airport','U?ak,Turkey'],
+['USR','Ust-Nera Airport','Ust-Nera,Yakutia, Russia'],
+['USS','Sancti Spiritus Airport','Sancti Spiritus,Cuba'],
+['UST','Northeast Florida Regional Airport(FAA: SGJ)','St. Augustine,Florida, United States'],
+['USU','Francisco B. Reyes Airport','Busuanga,Philippines'],
+['UTA','Mutare Airport','Mutare,Zimbabwe'],
+['UTB','Muttaburra Airport','Muttaburra,Queensland, Australia'],
+['UTC','Soesterberg Air Base','Utrecht,Netherlands'],
+['UTD','Nutwood Downs Airport','Nutwood Downs,Northern Territory, Australia'],
+['UTG','Quthing Airport','Quthing,Lesotho'],
+['UTH','Udon Thani International Airport','Udon Thani,Thailand'],
+['UTI','Utti Airport','Utti,Finland'],
+['UTK','Utirik Airport(FAA: 03N)','Utirik Atoll,Marshall Islands'],
+['UTM','Tunica Municipal Airport(FAA: UTA)','Tunica,Mississippi, United States'],
+['UTN','Upington Airport','Upington,South Africa'],
+['UTO','Indian Mountain LRRS Airport','Utopia Creek,Alaska, United States'],
+['UTP','U-Tapao International Airport','Rayong,Thailand'],
+['UTR','Uttaradit Airport','Uttaradit,Thailand'],
+['UTS','Ust-Tsilma Airport','Ust-Tsilma,Komi Republic, Russia'],
+['UTT','Mthatha Airport','Mthatha(Umtata),South Africa'],
+['UTU','Ustupo Airport','Ustupo,Panama'],
+['UTW','Queenstown Airport','Queenstown,South Africa'],
+['UUA','Bugulma Airport','Bugulma,Tatarstan, Russia'],
+['UUD','Baikal International Airport','Ulan-Ude,Buryatia, Russia'],
+['UUK','Ugnu-Kuparuk Airport(FAA: UBW)','Kuparuk,Alaska, United States'],
+['UUN','Baruun-Urt Airport','Baruun-Urt,Mongolia'],
+['UUS','Yuzhno-Sakhalinsk Airport(Khomutovo Airport)','Yuzhno-Sakhalinsk,Sakhalin Oblast, Russia'],
+['UUU','Manumu Airport','Manumu,Papua New Guinea'],
+['UVA','Garner Field','Uvalde,Texas, United States'],
+['UVE','Ouvea Airport(Ouloup Airport)','Ouvea,New Caledonia'],
+['UVF','Hewanorra International Airport','Vieux Fort,Saint Lucia'],
+['UVL','El Kharga Airport','Kharga Oasis,Egypt'],
+['UVO','Uvol Airport','Uvol,Papua New Guinea'],
+['UWA','Ware Airport(FAA: MA53)','Ware,Massachusetts, United States'],
+['UYL','Nyala Airport','Nyala,Sudan'],
+['UYN','Yulin Yuyang Airport','Yulin,Shaanxi, China'],
+['UYU','Uyuni Airport(Joya Andina Airport)','Uyuni,Bolivia'],
+['UZC','Uzice-Ponikve Airport','Uzice,Serbia'],
+['UZH','Unaizah Airport','Unaizah(Unayzah),Saudi Arabia'],
+['UZM','Hope Bay Aerodrome(TC: CHB3)','Hope Bay,Nunavut, Canada'],
+['UZR','Urzhar Airport','Urzhar(Urdzhar),Kazakhstan'],
+['UZU','Curuzu Cuatia Airport','Curuzu Cuatia,Corrientes, Argentina'],
+['VAA','Vaasa Airport','Vaasa,Finland'],
+['VAB','Yavarate Airport','Yavarate,Colombia'],
+['VAC','Varrelbusch Airport','Cloppenburg,Lower Saxony, Germany'],
+['VAD','Moody Air Force Base','Valdosta,Georgia, United States'],
+['VAF','Valence-Chabeuil Airport','Valence,Rhone-Alpes, France'],
+['VAG','Major Brigadeiro Trompowsky Airport','Varginha,Minas Gerais, Brazil'],
+['VAH','Cap. Av. Vidal Villagomez Toledo Airport','Vallegrande,Bolivia'],
+['VAI','Vanimo Airport','Vanimo,Papua New Guinea'],
+['VAK','Chevak Airport','Chevak,Alaska, United States'],
+['VAL','Valenca Airport','Valenca,Bahia, Brazil'],
+['VAM','Villa International Airport','Maamigili,Maldives'],
+['VAN','Van Ferit Melen Airport','Van,Turkey'],
+['VAO','Suavanao Airport','Suavanao,Solomon Islands'],
+['VAP','Rodelillo Airfield','Valparaiso,Chile'],
+['VAR','Varna Airport','Varna,Bulgaria'],
+['VAS','Sivas Airport','Sivas,Turkey'],
+['VAT','Vatomandry Airport','Vatomandry,Madagascar'],
+['VAU','Vatukoula Airport','Vatukoula,Fiji'],
+['VAV','Vava?u International Airport','Vava?u,Tonga'],
+['VAW','Vardø Airport, Svartnes','Vardø,Norway'],
+['VBA','Ann Airport','Ann,Myanmar'],
+['VBC','Mandalay Chanmyathazi Airport','Mandalay,Myanmar'],
+['VBG','Vandenberg Air Force Base','Lompoc,California, United States'],
+['VBP','Bokpyin Airport','Bokpyin,Myanmar'],
+['VBS','Brescia Airport(Gabriele DAnnunzio Airport)','Brescia,Lombardy, Italy'],
+['VBV','Vanuabalavu Airport','Vanua Balavu,Fiji'],
+['VBY','Visby Airport','Visby,Sweden'],
+['VCA','Can Tho International Airport','Can Tho(C?n Th?),Vietnam'],
+['VCD','Victoria River Downs Airport','Victoria River Downs Station,Northern Territory, Australia'],
+['VCE','Venice Marco Polo Airport','Venice,Veneto, Italy'],
+['VCF','Valcheta Airport','Valcheta,Rio Negro, Argentina'],
+['VCH','Vichadero Airport','Vichadero,Uruguay'],
+['VCL','Chu Lai International Airport','Chu Lai,Vietnam'],
+['VCP','Viracopos/Campinas International Airport','Sao Paulo/Campinas,Sao Paulo, Brazil'],
+['VCR','Carora Airport','Carora,Venezuela'],
+['VCS','Con Dao Airport(C? ?ng Airport)','Con Dao Island(Con ??o),Vietnam'],
+['VCT','Victoria Regional Airport','Victoria,Texas, United States'],
+['VCV','Southern California Logistics Airport','Victorville,California, United States'],
+['VDA','Ovda Airport','Ovda(Uvda),Israel'],
+['VDB','Fagernes Airport, Leirin','Fagernes,Norway'],
+['VDC','Pedro Otacilio Figueiredo Airport','Vitoria da Conquista,Bahia, Brazil'],
+['VDE','El Hierro Airport','Valverde,Canary Islands, Spain'],
+['VDH','Dong Hoi Airport','Dong Hoi(??ng H?i),Vietnam'],
+['VDI','Vidalia Regional Airport','Vidalia,Georgia, United States'],
+['VDM','Gobernador Edgardo Castello Airport','Viedma,Rio Negro, Argentina'],
+['VDP','Valle de la Pascua Airport','Valle de la Pascua,Venezuela'],
+['VDR','Villa Dolores Airport','Villa Dolores,Cordoba, Argentina'],
+['VDS','Vadsø Airport','Vadsø,Norway'],
+['VDY','Vidyanagar Airport(Jindal Airport)','Toranagallu,Karnataka, India'],
+['VDZ','Valdez Airport(Pioneer Field)','Valdez,Alaska, United States'],
+['VEE','Venetie Airport','Venetie,Alaska, United States'],
+['VEG','Maikwak Airport','Maikwak,Guyana'],
+['VEL','Vernal Regional Airport','Vernal,Utah, United States'],
+['VER','General Heriberto Jara International Airport','Veracruz,Veracruz, Mexico'],
+['VEV','Barakoma Airport','Barakoma,Solomon Islands'],
+['VEX','Tioga Municipal Airport(FAA: D60)','Tioga,North Dakota, United States'],
+['VEY','Vestmannaeyjar Airport','Vestmannaeyjar,Iceland'],
+['VFA','Victoria Falls Airport','Victoria Falls,Zimbabwe'],
+['VGA','Vijayawada Airport','Vijayawada,Andhra Pradesh, India'],
+['VGD','Vologda Airport','Vologda,Vologda Oblast, Russia'],
+['VGO','Vigo-Peinador Airport','Vigo,Galicia, Spain'],
+['VGS','General Villegas Airport','General Villegas,Buenos Aires, Argentina'],
+['VGT','North Las Vegas Airport','Las Vegas,Nevada, United States'],
+['VGZ','Villa Garzon Airport','Villagarzon,Colombia'],
+['VHC','Henrique de Carvalho Airport','Saurimo,Angola'],
+['VHM','Vilhelmina Airport','Vilhelmina,Sweden'],
+['VHN','Culberson County Airport','Van Horn,Texas, United States'],
+['VHV','Verkhnevilyuysk Airport','Verkhnevilyuysk,Yakutia, Russia'],
+['VHY','Vichy — Charmeil Airport','Vichy,Auvergne, France'],
+['VHZ','Vahitahi Airport','Vahitahi,Tuamotus,French Polynesia'],
+['VIA','angelo Ponzoni Municipal Airport','Videira,Santa Catarina, Brazil'],
+['VIB','Villa Constitucion Airport','Ciudad Constitucion,Baja California Sur, Mexico'],
+['VIC','Vicenza Airport','Vicenza,Veneto, Italy'],
+['VIE','Vienna International Airport','Vienna,Austria'],
+['VIG','Juan Pablo Perez Alfonzo Airport','El Vigia,Venezuela'],
+['VIH','Rolla National Airport','Rolla/Vichy,Missouri, United States'],
+['VII','Vinh International Airport','Vinh,Vietnam'],
+['VIJ','Virgin Gorda Airport','Virgin Gorda,British Overseas TerritoryofVirgin Islands'],
+['VIL','Dakhla Airport','Dakhla,Morocco'],
+['VIN','Havryshivka Vinnytsia International Airport','Vinnytsia,Ukraine'],
+['VIQ','Viqueque Airport','Viqueque,East Timor'],
+['VIR','Virginia Airport','Durban,South Africa'],
+['VIS','Visalia Municipal Airport','Visalia,California, United States'],
+['VIT','Vitoria Airport','Vitoria-Gasteiz,Basque Country, Spain'],
+['VIU','Viru Harbour Airport','Viru Harbour,Solomon Islands'],
+['VIV','Vivigani Airfield','Vivigani,Papua New Guinea'],
+['VIX','Eurico de Aguiar Salles Airport','Vitoria,Espirito Santo, Brazil'],
+['VIY','Velizy - Villacoublay Air Base','Paris,Ile-de-France, France'],
+['VJB','Xai-Xai Airport','Xai-Xai,Mozambique'],
+['VJI','Virginia Highlands Airport','Abingdon,Virginia, United States'],
+['VJQ','Gurue Airport','Gurue,Mozambique'],
+['VKG','Rach Gia Airport','Rach Gia(R?ch Gia),Vietnam'],
+['VKO','Vnukovo International Airport','Moscow, Russia'],
+['VKS','Vicksburg Municipal Airport','Vicksburg,Mississippi, United States'],
+['VKT','Vorkuta Airport','Vorkuta,Komi Republic, Russia'],
+['VLA','Vandalia Municipal Airport','Vandalia,Illinois, United States'],
+['VLC','Valencia Airport','Valencia,Valencian Community, Spain'],
+['VLD','Valdosta Regional Airport','Valdosta,Georgia, United States'],
+['VLE','Valle Airport(FAA: 40G)','Grand Canyon,Arizona, United States'],
+['VLG','Villa Gesell Airport','Villa Gesell,Buenos Aires, Argentina'],
+['VLI','Bauerfield International Airport','Port Vila,Vanuatu'],
+['VLK','Volgodonsk Airport','Volgodonsk,Rostov Oblast, Russia'],
+['VLL','Valladolid Airport','Valladolid,Castile and Leon, Spain'],
+['VLM','Lieutenant Colonel Rafael Pabon Airport','Villamontes,Bolivia'],
+['VLN','Arturo Michelena International Airport','Valencia,Venezuela'],
+['VLP','Vila Rica Municipal Airport','Vila Rica,Mato Grosso, Brazil'],
+['VLR','Vallenar Airport','Vallenar,Chile'],
+['VLS','Valesdir Airport','Valesdir,Vanuatu'],
+['VLU','Velikiye Luki Airport','Velikiye Luki,Pskov Oblast, Russia'],
+['VLV','Dr. Antonio Nicolas Briceno Airport','Valera,Venezuela'],
+['VLY','Anglesey Airport/RAF Valley','Anglesey,Wales, United Kingdom'],
+['VME','Villa Reynolds Airport','Villa Mercedes,San Luis, Argentina'],
+['VMI','Dr. Juan Plate Airport','Puerto Valle-Mi,Paraguay'],
+['VMU','Baimuru Airport','Baimuru,Papua New Guinea'],
+['VNA','Salavan Airport','Salavan(Saravane),Laos'],
+['VNC','Venice Municipal Airport','Venice,Florida, United States'],
+['VND','Vangaindrano Airport','Vangaindrano,Madagascar'],
+['VNE','Meucon Airport','Vannes,Brittany, France'],
+['VNO','Vilnius Airport','Vilnius,Lithuania'],
+['VNR','Vanrook Airport','Vanrook Station,Queensland, Australia'],
+['VNS','Lal Bahadur Shastri Airport','Varanasi,Uttar Pradesh, India'],
+['VNT','Ventspils International Airport','Ventspils,Latvia'],
+['VNX','Vilankulo Airport','Vilankulo,Mozambique'],
+['VNY','Van Nuys Airport','Los Angeles,California, United States'],
+['VOD','Vodochody Airport','Prague,Czech Republic'],
+['VOG','Volgograd International Airport','Volgograd,Volgograd Oblast, Russia'],
+['VOH','Vohemar Airport','Vohemar(Vohimarina),Madagascar'],
+['VOI','Voinjama Airport(Tenebu Airport)','Voinjama,Liberia'],
+['VOK','Volk Field Air National Guard Base','Camp Douglas,Wisconsin, United States'],
+['VOL','Nea Anchialos National Airport','Volos,Greece'],
+['VOT','Votuporanga Airport(Domingos Pignatari Airport)','Votuporanga,Sao Paulo, Brazil'],
+['VOZ','Voronezh International Airport(Chertovitskoye Airport)','Voronezh,Voronezh Oblast, Russia'],
+['VPE','Ondjiva Pereira Airport','Ondjiva,Angola'],
+['VPG','Vipingo Airport','Vipingo,Kenya'],
+['VPN','Vopnafjörour Airport','Vopnafjörour,Iceland'],
+['VPS','Destin-Fort Walton Beach Airport/Eglin Air Force Base','Destin/Fort Walton Beach,Florida, United States'],
+['VPY','Chimoio Airport','Chimoio,Mozambique'],
+['VPZ','Porter County Regional Airport','Valparaiso,Indiana, United States'],
+['VQQ','Cecil Airport','Jacksonville,Florida, United States'],
+['VQS','Antonio Rivera Rodriguez Airport','Vieques,Puerto Rico, United States'],
+['VRA','Juan Gualberto Gomez Airport','Varadero,Cuba'],
+['VRB','Vero Beach Municipal Airport','Vero Beach,Florida, United States'],
+['VRC','Virac Airport','Virac,Philippines'],
+['VRE','Vredendal Airport','Vredendal,South Africa'],
+['VRI','Varandey Airport','Varandey,Nenets Autonomous Okrug, Russia'],
+['VRK','Varkaus Airport','Varkaus,Finland'],
+['VRL','Vila Real Airport','Vila Real,Portugal'],
+['VRN','Verona Villafranca Airport','Verona,Veneto, Italy'],
+['VRO','Kawama Airport','Varadero,Cuba'],
+['VRS','Roy Otten Memorial Airfield(FAA: 3VS)','Versailles,Missouri, United States'],
+['VRU','Vryburg Airport','Vryburg,South Africa'],
+['VSA','Carlos Rovirosa Perez International Airport','Villahermosa,Tabasco, Mexico'],
+['VSE','Viseu Airport','Viseu,Portugal'],
+['VSF','Hartness State Airport','Springfield,Vermont, United States'],
+['VSG','Luhansk International Airport','Luhansk,Ukraine'],
+['VST','Stockholm Västerås Airport','Stockholm/Västerås,Sweden'],
+['VTB','Vitebsk Vostochny Airport','Vitebsk,Belarus'],
+['VTE','Wattay International Airport','Vientiane,Laos'],
+['VTF','Vatulele Airport','Vatulele,Fiji'],
+['VTG','Vung Tau Airport','Vung Tau(V?ng Tau),Vietnam'],
+['VTL','Vittel - Champ-de-Courses Airport','Vittel,Lorraine, France'],
+['VTM','Nevatim Airbase','Nevatim,Israel'],
+['VTN','Miller Field','Valentine,Nebraska, United States'],
+['VTU','Hermanos Ameijeiras Airport','Las Tunas,Cuba'],
+['VTZ','Visakhapatnam Airport','Visakhapatnam(Vishakhapatnam),Andhra Pradesh, India'],
+['VUP','Alfonso Lopez Pumarejo Airport','Valledupar,Colombia'],
+['VUS','Veliky Ustyug Airport','Veliky Ustyug,Vologda Oblast, Russia'],
+['VUU','Mvuu Camp Airport','Liwonde,Malawi'],
+['VVB','Mahanoro Airport','Mahanoro,Madagascar'],
+['VVC','La Vanguardia Airport','Villavicencio,Colombia'],
+['VVI','Viru Viru International Airport','Santa Cruz de la Sierra,Bolivia'],
+['VVK','Västervik Airport','Västervik,Sweden'],
+['VVN','Las Malvinas Airport','Las Malvinas,Peru'],
+['VVO','Vladivostok International Airport','Vladivostok,Primorsky Krai, Russia'],
+['VVZ','Takhamalt Airport','Illizi,Algeria'],
+['VXC','Lichinga Airport','Lichinga,Mozambique'],
+['VXE','Cesaria evora Airport(Sao Pedro Airport)','Sao Vicente,Cape Verde'],
+['VXO','Växjö Småland Airport','Växjö,Sweden'],
+['VYD','Vryheid Airport','Vryheid,South Africa'],
+['VYI','Vilyuysk Airport','Vilyuysk,Yakutia, Russia'],
+['VYS','Illinois Valley Regional Airport(Walter A. Duncan Field)','Peru,Illinois, United States'],
+['WAA','Wales Airport(FAA: IWK)','Wales,Alaska, United States'],
+['WAB','Wabag Airport','Wabag,Papua New Guinea'],
+['WAC','Wacca Airport','Wacca,Ethiopia'],
+['WAD','Andriamena Airport','Andriamena,Madagascar'],
+['WAE','Wadi al-Dawasir Domestic Airport','Wadi ad-Dawasir(Wadi al-Dawaser),Saudi Arabia'],
+['WAF','Wana Airport','Wana,Pakistan'],
+['WAG','Whanganui Airport','Whanganui,New Zealand'],
+['WAH','Harry Stern Airport(FAA: BWP)','Wahpeton,North Dakota, United States'],
+['WAI','Ambalabe Airport','Antsohihy,Madagascar'],
+['WAJ','Wawoi Falls Airport','Wawoi Falls,Papua New Guinea'],
+['WAK','Ankazoabo Airport','Ankazoabo,Madagascar'],
+['WAL','Wallops Flight Facility','Wallops Island,Virginia, United States'],
+['WAM','Ambatondrazaka Airport','Ambatondrazaka,Madagascar'],
+['WAN','Waverney Airport','Waverney,Queensland, Australia'],
+['WAO','Wabo Airport','Wabo,Papua New Guinea'],
+['WAP','Alto Palena Airfield','Palena,Chile'],
+['WAQ','Antsalova Airport','Antsalova,Madagascar'],
+['WAR','Waris Airport','Waris,Indonesia'],
+['WAS','metropolitan area1','Washington, D.C., United States'],
+['WAT','Waterford Airport','Waterford,Ireland'],
+['WAU','Wauchope Airport','Wauchope,New South Wales, Australia'],
+['WAV','Wave Hill Airport','Kalkarindji(Wave Hill),Northern Territory, Australia'],
+['WAW','Warsaw Chopin Airport','Warsaw,Poland'],
+['WAX','Zuwarah Airport','Zuwarah(Zuara),Libya'],
+['WAY','Greene County Airport','Waynesburg,Pennsylvania, United States'],
+['WAZ','Warwick Airport','Warwick,Queensland, Australia'],
+['WBA','Wahai Airport','Seram Island,Indonesia'],
+['WBB','Stebbins Airport','Stebbins,Alaska, United States'],
+['WBC','Wapolu Airport','Wapolu,Papua New Guinea'],
+['WBD','Befandriana Airport','Befandriana-Avaratra,Madagascar'],
+['WBE','Ankaizina Airport','Bealanana,Madagascar'],
+['WBG','Schleswig Air Base','Schleswig,Schleswig-Holstein, Germany'],
+['WBK','West Branch Community Airport(FAA: Y31)','West Branch,Michigan, United States'],
+['WBM','Wapenamanda Airport','Wapenamanda,Papua New Guinea'],
+['WBO','Antsoa Airport','Beroroha,Madagascar'],
+['WBQ','Beaver Airport','Beaver,Alaska, United States'],
+['WBR','Roben-Hood Airport(FAA: RQB)','Big Rapids,Michigan, United States'],
+['WBU','Boulder Municipal Airport(FAA: BDU)','Boulder,Colorado, United States'],
+['WBW','Wilkes-Barre Wyoming Valley Airport','Wilkes-Barre,Pennsylvania, United States'],
+['WCA','Gamboa Airport','Castro,Chile'],
+['WCH','Chaiten Airfield','Chaiten,Chile'],
+['WCR','Chandalar Lake Airport','Chandalar Lake,Alaska, United States'],
+['WDA','Wadi Ain Airport','Wadi Ain,Yemen'],
+['WDG','Enid Woodring Regional Airport','Enid,Oklahoma, United States'],
+['WDH','Hosea Kutako International Airport','Windhoek,Namibia'],
+['WDI','Wondai Airport','Wondai,Queensland, Australia'],
+['WDN','Waldronaire Airport(FAA: 90WA)','Waldron Island,Washington, United States'],
+['WDR','Barrow County Airport','Winder,Georgia, United States'],
+['WDS','Shiyan Wudangshan Airport','Shiyan,Hubei, China'],
+['WEA','Parker County Airport','Weatherford,Texas, United States'],
+['WED','Wedau Airport','Wedau,Papua New Guinea'],
+['WEF','Weifang Airport','Weifang,Shandong, China'],
+['WEH','Weihai Dashuibo Airport','Weihai,Shandong, China'],
+['WEI','Weipa Airport','Weipa,Queensland, Australia'],
+['WEL','Welkom Airport','Welkom,South Africa'],
+['WEP','Weam Airport','Weam,Papua New Guinea'],
+['WET','Waghete Airport','Waghete,Indonesia'],
+['WEW','Wee Waa Airport','Wee Waa,New South Wales, Australia'],
+['WFB','Ketchikan Harbor Seaplane Base(FAA: 5KE)','Ketchikan,Alaska, United States'],
+['WFD','Woodford Aerodrome','Woodford,England, United Kingdom'],
+['WFI','Fianarantsoa Airport','Fianarantsoa,Madagascar'],
+['WFK','Northern Aroostook Regional Airport(FAA: FVE)','Frenchville,Maine, United States'],
+['WGA','Wagga Wagga Airport','Wagga Wagga,New South Wales, Australia'],
+['WGC','Warangal Airport','Warangal,Telangana, India'],
+['WGE','Walgett Airport','Walgett,New South Wales, Australia'],
+['WGO','Winchester Regional Airport(FAA: OKV)','Winchester,Virginia, United States'],
+['WGP','Mau Hau Airport(Umbu Mehang Kunda Airport)','Waingapu,Indonesia'],
+['WGT','Wangaratta Airport','Wangaratta,Victoria, Australia'],
+['WGU','Wagau Airport','Wagau,Papua New Guinea'],
+['WGY','Wagny Airport','Wagny,Gabon'],
+['WHD','Hyder Seaplane Base(FAA: 4Z7)','Hyder,Alaska, United States'],
+['WHF','Wadi Halfa Airport','Wadi Halfa,Sudan'],
+['WHK','Whakatane Airport','Whakatane,New Zealand'],
+['WHL','Welshpool Airport','Welshpool,Victoria, Australia'],
+['WHO','Franz Josef Glacier Aerodrome','Franz Josef Glacier,New Zealand'],
+['WHP','Whiteman Airport','Los Angeles,California, United States'],
+['WHS','Whalsay Airstrip','Whalsay,Scotland, United Kingdom'],
+['WHT','Wharton Regional Airport(FAA: ARM)','Wharton,Texas, United States'],
+['WHU','Wuhu Airport','Wuhu,Anhui, China'],
+['WIB','Wilbarger County Airport(FAA: F05)','Vernon,Texas, United States'],
+['WIC','Wick Airport','Wick,Scotland, United Kingdom'],
+['WIE','Wiesbaden Army Airfield','Wiesbaden,Hesse, Germany'],
+['WIK','Waiheke Island Aerodrome','Waiheke Island,New Zealand'],
+['WIL','Wilson Airport','Nairobi,Kenya'],
+['WIN','Winton Airport','Winton,Queensland, Australia'],
+['WIO','Wilcannia Airport','Wilcannia,New South Wales, Australia'],
+['WIR','Wairoa Aerodrome','Wairoa,New Zealand'],
+['WIT','Wittenoom Airport','Wittenoom,Western Australia, Australia'],
+['WIU','Witu Airport','Witu,Papua New Guinea'],
+['WJA','Woja Airport','Woja,Ailinglaplap Atoll,Marshall Islands'],
+['WJF','General William J. Fox Airfield','Lancaster,California, United States'],
+['WJR','Wajir Airport','Wajir,Kenya'],
+['WJU','Wonju Airport','Wonju,South Korea'],
+['WKA','Wanaka Airport','Wanaka,New Zealand'],
+['WKB','Warracknabeal Airport','Warracknabeal,Victoria, Australia'],
+['WKF','Air Force Base Waterkloof','Pretoria,South Africa'],
+['WKI','Hwange Town Airport','Hwange,Zimbabwe'],
+['WKJ','Wakkanai Airport','Wakkanai,Hokkaido, Japan'],
+['WKK','Aleknagik Airport(FAA: 5A8)','Aleknagik,Alaska, United States'],
+['WKL','Waikoloa Heliport(FAA: HI07)','Waikoloa Village,Hawaii, United States'],
+['WKN','Wakunai Airport','Wakunai,Papua New Guinea'],
+['WKR','Walkers Cay Airport','Walkers Cay,Abaco Islands,Bahamas'],
+['WLA','Wallal Airport','Wallal(Wallal Downs),Western Australia, Australia'],
+['WLC','Walcha Airport','Walcha,New South Wales, Australia'],
+['WLD','Strother Field','Winfield/Arkansas City,Kansas, United States'],
+['WLE','Miles Airport','Miles,Queensland, Australia'],
+['WLG','Wellington International Airport','Wellington,New Zealand'],
+['WLH','Walaha Airport','Walaha,Vanuatu'],
+['WLK','Selawik Airport','Selawik,Alaska, United States'],
+['WLL','Wollogorang Airport','Wollogorang Station,Northern Territory, Australia'],
+['WLO','Waterloo Airport','Waterloo,Northern Territory, Australia'],
+['WLP','West Angelas Airport','West Angelas,Western Australia, Australia'],
+['WLR','Loring Seaplane Base(FAA: 13Z)','Loring,Alaska, United States'],
+['WLS','Hihifo Airport','Wallis Island,Wallis and Futuna'],
+['WLW','Willows-Glenn County Airport','Willows,California, United States'],
+['WMA','Mandritsara Airport','Mandritsara,Madagascar'],
+['WMB','Warrnambool Airport','Warrnambool,Victoria, Australia'],
+['WMC','Winnemucca Municipal Airport','Winnemucca,Nevada, United States'],
+['WMD','Mandabe Airport','Mandabe,Madagascar'],
+['WME','Mount Keith Airport','Mount Keith,Western Australia, Australia'],
+['WMH','Ozark Regional Airport(FAA: BPK)','Mountain Home,Arkansas, United States'],
+['WMI','Warsaw Modlin Airport','Warsaw,Poland'],
+['WMK','Meyers Chuck Seaplane Base(FAA: 84K)','Meyers Chuck,Alaska, United States'],
+['WML','Malaimbandy Airport','Malaimbandy,Madagascar'],
+['WMN','Maroantsetra Airport','Maroantsetra,Madagascar'],
+['WMO','White Mountain Airport','White Mountain,Alaska, United States'],
+['WMP','Mampikony Airport','Mampikony,Madagascar'],
+['WMR','Mananara Nord Airport','Mananara Nord(Mananara Avaratra),Madagascar'],
+['WMV','Madirovalo Airport','Madirovalo,Madagascar'],
+['WMX','Wamena Airport','Wamena,Indonesia'],
+['WNA','Napakiak Airport','Napakiak,Alaska, United States'],
+['WND','Windarra Airport','Windarra,Western Australia, Australia'],
+['WNE','Wora na Yeno Airport','Wora na Yeno,Gabon'],
+['WNH','Wenshan Puzhehei Airport','Wenshan,Yunnan, China'],
+['WNN','Wunnummin Lake Airport(TC: CKL3)','Wunnumin Lake,Ontario, Canada'],
+['WNP','Naga Airport','Naga,Philippines'],
+['WNR','Windorah Airport','Windorah,Queensland, Australia'],
+['WNS','Nawabshah Airport','Nawabshah(Shaheed Benazirabad),Pakistan'],
+['WNU','Wanuma Airport','Wanuma,Papua New Guinea'],
+['WNZ','Wenzhou Longwan International Airport','Wenzhou,Zhejiang, China'],
+['WOA','Wonenara Airport','Wonenara,Papua New Guinea'],
+['WOE','Woensdrecht Air Base','Bergen op Zoom,Netherlands'],
+['WOK','Uonquen Airport','Uonquen,Venezuela'],
+['WOL','Illawarra Regional Airport','Wollongong,New South Wales, Australia'],
+['WON','Wondoola Airport','Wondoola,Queensland, Australia'],
+['WOR','Moramba Airport','Ankorefo,Madagascar'],
+['WOS','Wonsan Kalma International Airport','Wonsan,North Korea'],
+['WOT','Wang-an Airport','Wangan,Taiwan'],
+['WOW','Willow Airport(FAA: UUO)','Willow,Alaska, United States'],
+['WPA','Cabo Juan Roman Airfield','Puerto Aisen,Chile'],
+['WPB','Port Berge Airport','Boriziny(Port Berge),Madagascar'],
+['WPC','Pincher Creek Airport','Pincher Creek,Alberta, Canada'],
+['WPK','Wrotham Park Airport','Wrotham Park,Queensland, Australia'],
+['WPL','Powell Lake Water Aerodrome(TC: CAQ8)','Powell River,British Columbia, Canada'],
+['WPM','Wipim Airport','Wipim,Papua New Guinea'],
+['WPO','North Fork Valley Airport(FAA: 7V2)','Paonia,Colorado, United States'],
+['WPR','Capitan Fuentes Martinez Airport','Porvenir,Chile'],
+['WPU','Guardiamarina Zanartu Airport','Puerto Williams,Chile'],
+['WRA','Warder Airport','Werder(Warder),Ethiopia'],
+['WRB','Robins Air Force Base','Warner Robins,Georgia, United States'],
+['WRE','Whangarei Airport','Whangarei,New Zealand'],
+['WRG','Wrangell Airport','Wrangell,Alaska, United States'],
+['WRI','McGuire Air Force Base','Wrightstown,New Jersey, United States'],
+['WRL','Worland Municipal Airport','Worland,Wyoming, United States'],
+['WRN','Windarling Airport','Windarling,Western Australia, Australia'],
+['WRO','Copernicus Airport Wroc?aw','Wroc?aw,Poland'],
+['WRT','Warton Aerodrome','Warton,England, United Kingdom'],
+['WRW','Warrawagine Airport','Warrawagine Station,Western Australia, Australia'],
+['WRY','Westray Airport','Westray,Scotland, United Kingdom'],
+['WRZ','Weerawila Airport','Weerawila,Sri Lanka'],
+['WSA','Wasua Airport','Wasua,Papua New Guinea'],
+['WSB','Steamboat Bay Seaplane Base','Steamboat Bay,Alaska, United States'],
+['WSD','Condron Army Airfield','White Sands,New Mexico, United States'],
+['WSF','Cape Sarichef Airport(FAA: 26AK)','Cape Sarichef,Alaska, United States'],
+['WSG','Washington County Airport(FAA: AFJ)','Washington,Pennsylvania, United States'],
+['WSH','Brookhaven Airport(FAA: HWV)','Shirley,New York, United States'],
+['WSM','Wiseman Airport','Wiseman,Alaska, United States'],
+['WSN','South Naknek Airport','South Naknek,Alaska, United States'],
+['WSO','Washabo Airport','Washabo(Wasjabo),Suriname'],
+['WSP','Waspam Airport','Waspam,Nicaragua'],
+['WSR','Wasior Airport','Wasior,Indonesia'],
+['WST','Westerly State Airport','Westerly,Rhode Island, United States'],
+['WSU','Wasu Airport','Wasu,Papua New Guinea'],
+['WSX','Westsound Seaplane Base(FAA: WA83)','West Sound,Washington, United States'],
+['WSY','Whitsunday Airport','Airlie Beach/Shute Harbour,Queensland, Australia'],
+['WSZ','Westport Airport','Westport,New Zealand'],
+['WTA','Tambohorano Airport','Tambohorano,Madagascar'],
+['WTB','Brisbane West Wellcamp Airport','Toowoomba,Queensland, Australia'],
+['WTD','West End Airport','West End,Grand Bahama,Bahamas'],
+['WTE','Wotje Airport(FAA: N36)','Wotje Atoll,Marshall Islands'],
+['WTK','Noatak Airport','Noatak,Alaska, United States'],
+['WTL','Tuntutuliak Airport(FAA: A61)','Tuntutuliak,Alaska, United States'],
+['WTN','RAF Waddington','Waddington,England, United Kingdom'],
+['WTO','Wotho Airport','Wotho Atoll,Marshall Islands'],
+['WTP','Woitape Airport','Woitape,Papua New Guinea'],
+['WTR','Whiteriver Airport(FAA: E24)','Whiteriver,Arizona, United States'],
+['WTS','Tsiroanomandidy Airport','Tsiroanomandidy,Madagascar'],
+['WTT','Wantoat Airport','Wantoat,Papua New Guinea'],
+['WTZ','Whitianga Aerodrome','Whitianga,New Zealand'],
+['WUA','Wuhai Airport','Wuhai,Inner Mongolia, China'],
+['WUD','Wudinna Airport','Wudinna,South Australia, Australia'],
+['WUG','Wau Airport','Wau,Papua New Guinea'],
+['WUH','Wuhan Tianhe International Airport','Wuhan,Hubei, China'],
+['WUI','Murrin Murrin Airport','Murrin Murrin,Western Australia, Australia'],
+['WUM','Wasum Airport','Wasum,Papua New Guinea'],
+['WUN','Wiluna Airport','Wiluna,Western Australia, Australia'],
+['WUS','Wuyishan Airport','Wuyishan,Fujian, China'],
+['WUT','Xinzhou Wutaishan Airport','Xinzhou,Shanxi, China'],
+['WUU','Wau Airport','Wau,South Sudan'],
+['WUV','Wuvulu Island Airport','Wuvulu Island,Papua New Guinea'],
+['WUX','Sunan Shuofang International Airport','Wuxi/Suzhou,Jiangsu, China'],
+['WUZ','Wuzhou Changzhoudao Airport','Wuzhou,Guangxi, China'],
+['WVB','Walvis Bay Airport','Walvis Bay,Namibia'],
+['WVI','Watsonville Municipal Airport','Watsonville,California, United States'],
+['WVK','Manakara Airport','Manakara,Madagascar'],
+['WVL','Waterville Robert LaFleur Airport','Waterville,Maine, United States'],
+['WVN','JadeWeserAirport','Wilhelmshaven,Lower Saxony, Germany'],
+['WWA','Wasilla Airport(FAA: IYS)','Wasilla,Alaska, United States'],
+['WWD','Cape May Airport','Wildwood,New Jersey, United States'],
+['WWI','Woodie Woodie Airport','Woodie Woodie,Western Australia, Australia'],
+['WWK','Wewak Airport','Wewak,Papua New Guinea'],
+['WWP','North Whale Seaplane Base(FAA: 96Z)','Whale Pass,Alaska, United States'],
+['WWR','West Woodward Airport','Woodward,Oklahoma, United States'],
+['WWT','Newtok Airport(FAA: EWU)','Newtok,Alaska, United States'],
+['WWY','West Wyalong Airport','West Wyalong,New South Wales, Australia'],
+['WXN','Wanzhou Wuqiao Airport','Wanzhou,Chongqing, China'],
+['WYA','Whyalla Airport','Whyalla,South Australia, Australia'],
+['WYB','Yes Bay Lodge Seaplane Base(FAA: 78K)','Yes Bay,Alaska, United States'],
+['WYE','Yengema Airport','Yengema,Sierra Leone'],
+['WYN','Wyndham Airport','Wyndham,Western Australia, Australia'],
+['WYS','Yellowstone Airport','West Yellowstone,Montana, United States'],
+['WZQ','Urad Middle Banner Airport','Urad Middle Banner,Inner Mongolia, China'],
+['XAL','alamos Airport','alamos,Sonora, Mexico'],
+['XAP','Serafin Enoss Bertaso Airport','Chapeco,Santa Catarina, Brazil'],
+['XAR','Aribinda Airport','Aribinda,Burkina Faso'],
+['XAU','Saul Airport','Saul,French Guiana'],
+['XBB','Blubber Bay Seaplane Base','Blubber Bay,British Columbia, Canada'],
+['XBE','Bearskin Lake Airport(TC: CNE3)','Bearskin Lake,Ontario, Canada'],
+['XBG','Bogande Airport','Bogande,Burkina Faso'],
+['XBJ','Birjand International Airport','Birjand,Iran'],
+['XBL','Bedele Airport(Buno Bedele Airport)','Bedele,Ethiopia'],
+['XBN','Biniguni Airport','Biniguni,Papua New Guinea'],
+['XBO','Boulsa Airport','Boulsa,Burkina Faso'],
+['XBR','Brockville Regional Tackaberry Airport(TC: CNL3)','Brockville,Ontario, Canada'],
+['XCH','Christmas Island Airport','Christmas Island, Australia'],
+['XCL','Cluff Lake Airport(TC: CJS3)','Cluff Lake,Saskatchewan, Canada'],
+['XCM','Chatham-Kent Airport','Chatham-Kent,Ontario, Canada'],
+['XCN','Coron Airport','Coron,Philippines'],
+['XCO','Colac Airport','Colac,Victoria, Australia'],
+['XCR','Chalons Vatry Airport','Chalons-en-Champagne,Champagne-Ardenne, France'],
+['XDE','Diebougou Airport','Diebougou,Burkina Faso'],
+['XDJ','Djibo Airport','Djibo,Burkina Faso'],
+['XEN','Xingcheng Airport','Xingcheng,Liaoning, China'],
+['XES','Grand Geneva Resort Airport(FAA: C02)','Lake Geneva,Wisconsin, United States'],
+['XFN','Xiangyang Liuji Airport','Xiangyang,Hubei, China'],
+['XFW','Hamburg Finkenwerder Airport','Hamburg, Germany'],
+['XGA','Gaoua Airport(Amilcar Cabral Airport)','Gaoua,Burkina Faso'],
+['XGG','Gorom Gorom Airport','Gorom-Gorom,Burkina Faso'],
+['XGL','Granville Lake Airport','Granville Lake,Manitoba, Canada'],
+['XGN','Xangongo Airport','Xangongo,Angola'],
+['XGR','Kangiqsualujjuaq (Georges River) Airport','Kangiqsualujjuaq,Quebec, Canada'],
+['XIC','Xichang Qingshan Airport','Xichang,Sichuan, China'],
+['XIE','Xienglom Airport','Xienglom,Laos'],
+['XIG','Xinguara Municipal Airport','Xinguara,Para, Brazil'],
+['XIJ','Ahmed Al Jaber Air Base','Al Ahmadi,Kuwait'],
+['XIL','Xilinhot Airport','Xilinhot,Inner Mongolia, China'],
+['XIN','Xingning Air Base','Xingning,Guangdong, China'],
+['XIY','Xian Xianyang International Airport','Xian,Shaanxi, China'],
+['XJD','Al Udeid Air Base','Al Rayyan,Qatar'],
+['XJM','Mangla Airport','Mangla,Pakistan'],
+['XKA','Kantchari Airport','Kantchari,Burkina Faso'],
+['XKH','Xieng Khouang Airport','Phonsavan,Laos'],
+['XKS','Kasabonika Airport','Kasabonika,Ontario, Canada'],
+['XKY','Kaya Airport','Kaya,Burkina Faso'],
+['XLB','Lac Brochet Airport','Lac Brochet,Manitoba, Canada'],
+['XLO','Long Xuyen Airport','Long Xuyen,Vietnam'],
+['XLS','Saint-Louis Airport','Saint-Louis,Senegal'],
+['XLU','Leo Airport','Leo,Burkina Faso'],
+['XLW','Lemwerder Airport','Lemwerder,Lower Saxony, Germany'],
+['XMA','Maramag Airport','Maramag,Philippines'],
+['XMC','Mallacoota Airport','Mallacoota,Victoria, Australia'],
+['XMD','Madison Municipal Airport(FAA: MDS)','Madison,South Dakota, United States'],
+['XMG','Mahendranagar Airport','Bhimdatta(Mahendranagar),Nepal'],
+['XMH','Manihi Airport','Manihi,Tuamotus,French Polynesia'],
+['XMI','Masasi Airport','Masasi,Tanzania'],
+['XML','Minlaton Airport','Minlaton,South Australia, Australia'],
+['XMN','Xiamen Gaoqi International Airport','Xiamen,Fujian, China'],
+['XMP','Macmillan Pass Airport(TC: CFC4)','Macmillan Pass,Yukon, Canada'],
+['XMS','Edmundo Carvajal Airport','Macas,Ecuador'],
+['XMY','Yam Island Airport','Yam Island,Queensland, Australia'],
+['XNA','Northwest Arkansas Regional Airport','Fayetteville/Springdale,Arkansas, United States'],
+['XNG','Quang Ngai Airport','Quang Ngai(Qu?ng Ngai),Vietnam'],
+['XNN','Xining Caojiabao Airport','Xining,Qinghai, China'],
+['XNT','Xingtai Dalian Airport','Xingtai,Hebei, China'],
+['XNU','Nouna Airport','Nouna,Burkina Faso'],
+['XPA','Pama Airport','Pama,Burkina Faso'],
+['XPK','Pukatawagan Airport','Pukatawagan,Manitoba, Canada'],
+['XPL','Soto Cano Air Base','Comayagua,Honduras'],
+['XPP','Poplar River Airport','Poplar River,Manitoba, Canada'],
+['XPR','Pine Ridge Airport(FAA: IEN)','Pine Ridge,South Dakota, United States'],
+['XQP','Quepos La Managua Airport','Quepos,Costa Rica'],
+['XQU','Qualicum Beach Airport(TC: CAT4)','Qualicum Beach,British Columbia, Canada'],
+['XRH','RAAF Base Richmond','Richmond,New South Wales, Australia'],
+['XRR','Ross River Airport','Ross River,Yukon, Canada'],
+['XRY','Jerez Airport(La Parra Airport)','Jerez de la Frontera,Andalusia, Spain'],
+['XSB','Sir Bani Yas Airport','Sir Bani Yas,United Arab Emirates'],
+['XSC','South Caicos Airport','South Caicos,British Overseas TerritoryofTurks and Caicos Islands'],
+['XSD','Tonopah Test Range Airport(FAA: TNX)','Tonopah,Nevada, United States'],
+['XSE','Sebba Airport','Sebba,Burkina Faso'],
+['XSI','South Indian Lake Airport','South Indian Lake,Manitoba, Canada'],
+['XSO','Siocon Airport','Siocon,Philippines'],
+['XSP','Seletar Airport','Singapore'],
+['XTG','Thargomindah Airport','Thargomindah,Queensland, Australia'],
+['XTL','Tadoule Lake Airport','Tadoule Lake,Manitoba, Canada'],
+['XTO','Taroom Airport','Taroom,Queensland, Australia'],
+['XTR','Tara Airport','Tara,Queensland, Australia'],
+['XUZ','Xuzhou Guanyin Airport','Xuzhou,Jiangsu, China'],
+['XVL','Vinh Long Airport','Vinh Long(V?nh Long),Vietnam'],
+['XYA','Yandina Airport','Yandina,Solomon Islands'],
+['XYE','Ye Airport','Ye,Myanmar'],
+['XYR','Edwaki Airport','Yellow River,Papua New Guinea'],
+['XZA','Zabre Airport','Zabre,Burkina Faso'],
+['YAA','Anahim Lake Airport(TC: CAJ4)','Anahim Lake,British Columbia, Canada'],
+['YAB','Arctic Bay Airport(TC: CJX7)','Arctic Bay,Nunavut, Canada'],
+['YAC','Cat Lake Airport','Cat Lake,Ontario, Canada'],
+['YAD','Moose Lake Airport(TC: CJB4)','Moose Lake,Manitoba, Canada'],
+['YAG','Fort Frances Municipal Airport','Fort Frances,Ontario, Canada'],
+['YAH','La Grande-4 Airport','La Grande-4,Quebec, Canada'],
+['YAI','General Bernardo OHiggins Airport','Chillan,Chile'],
+['YAJ','Lyall Harbour Seaplane Base','Saturna Island,British Columbia, Canada'],
+['YAK','Yakutat Airport','Yakutat,Alaska, United States'],
+['YAL','Alert Bay Airport','Alert Bay,British Columbia, Canada'],
+['YAM','Sault Ste. Marie Airport','Sault Ste. Marie,Ontario, Canada'],
+['YAN','Yangambi Airport','Yangambi,Democratic Republic of the Congo'],
+['YAO','Yaounde Airport','Yaounde,Cameroon'],
+['YAP','Yap International Airport(FAA: T11)','Yap,Federated States of Micronesia'],
+['YAQ','Maple Bay Seaplane Base','Maple Bay,British Columbia, Canada'],
+['YAR','La Grande-3 Airport','La Grande-3,Quebec, Canada'],
+['YAS','Yasawa Island Airport','Yasawa,Fiji'],
+['YAT','Attawapiskat Airport','Attawapiskat,Ontario, Canada'],
+['YAU','Kattiniq/Donaldson Airport(TC: CTP9)','Raglan Mine,Quebec, Canada'],
+['YAV','Mayne Island Water Aerodrome(Miners Bay Seaplane Base) (TC: CAW7)','Mayne Island,British Columbia, Canada'],
+['YAX','Angling Lake/Wapekeka Airport(TC: CKB6)','Wapekeka,Ontario, Canada'],
+['YAY','St. Anthony Airport','St. Anthony,Newfoundland and Labrador, Canada'],
+['YAZ','Tofino/Long Beach Airport','Tofino,British Columbia, Canada'],
+['YBA','Banff Airport','Banff,Alberta, Canada'],
+['YBB','Kugaaruk Airport','Kugaaruk,Nunavut, Canada'],
+['YBC','Baie-Comeau Airport','Baie-Comeau,Quebec, Canada'],
+['YBE','Uranium City Airport','Uranium City,Saskatchewan, Canada'],
+['YBF','Bamfield Water Aerodrome(TC: CAE9)','Bamfield,British Columbia, Canada'],
+['YBG','Canadian Forces Base Bagotville','La Baie(Bagotville),Quebec, Canada'],
+['YBH','Bull Harbour Waterdrome','Bull Harbour,British Columbia, Canada'],
+['YBI','Black Tickle Airport(TC: CCE4)','Black Tickle,Newfoundland and Labrador, Canada'],
+['YBJ','Baie-Johan-Beetz Seaplane Base','Baie-Johan-Beetz,Quebec, Canada'],
+['YBK','Baker Lake Airport','Baker Lake,Nunavut, Canada'],
+['YBL','Campbell River Airport','Campbell River,British Columbia, Canada'],
+['YBO','Bob Quinn Lake Airport(TC: CBW4)','Bob Quinn Lake,British Columbia, Canada'],
+['YBP','Yibin Caiba Airport','Yibin,Sichuan, China'],
+['YBQ','Telegraph Harbour Seaplane Base','Thetis Island,British Columbia, Canada'],
+['YBR','Brandon Municipal Airport(McGill Field)','Brandon,Manitoba, Canada'],
+['YBS','Opapimiskan Lake Airport(TC: CKM8)','Opapimiskan Lake,Ontario, Canada'],
+['YBT','Brochet Airport','Brochet,Manitoba, Canada'],
+['YBV','Berens River Airport','Berens River,Manitoba, Canada'],
+['YBW','Bedwell Harbour Water Aerodrome(TC: CAB3)','Bedwell Harbour,British Columbia, Canada'],
+['YBX','Lourdes-de-Blanc-Sablon Airport','Blanc-Sablon,Quebec, Canada'],
+['YBY','Bonnyville Airport','Bonnyville,Alberta, Canada'],
+['YCA','Courtenay Airpark(TC: CAH3)','Courtenay,British Columbia, Canada'],
+['YCB','Cambridge Bay Airport','Cambridge Bay,Nunavut, Canada'],
+['YCC','Cornwall Regional Airport','Cornwall,Ontario, Canada'],
+['YCD','Nanaimo Airport','Nanaimo,British Columbia, Canada'],
+['YCE','Centralia/James T. Field Memorial Aerodrome','Centralia,Ontario, Canada'],
+['YCF','Cortes Island Aerodrome(TC: CCI9)','Cortes Island,British Columbia, Canada'],
+['YCG','West Kootenay Regional Airport(Castlegar Airport)','Castlegar,British Columbia, Canada'],
+['YCH','Miramichi Airport','Miramichi,New Brunswick, Canada'],
+['YCK','Colville Lake/Tommy Kochon Aerodrome','Colville Lake,Northwest Territories, Canada'],
+['YCL','Charlo Airport','Charlo,New Brunswick, Canada'],
+['YCM','St. Catharines/Niagara District Airport','St. Catharines,Ontario, Canada'],
+['YCN','Cochrane Aerodrome','Cochrane,Ontario, Canada'],
+['YCO','Kugluktuk Airport','Kugluktuk,Nunavut, Canada'],
+['YCQ','Chetwynd Airport','Chetwynd,British Columbia, Canada'],
+['YCR','Cross Lake (Charlie Sinclair Memorial) Airport','Cross Lake,Manitoba, Canada'],
+['YCS','Chesterfield Inlet Airport','Chesterfield Inlet,Nunavut, Canada'],
+['YCT','Coronation Airport','Coronation,Alberta, Canada'],
+['YCU','Yuncheng Guangong Airport','Yuncheng,Shanxi, China'],
+['YCW','Chilliwack Airport','Chilliwack,British Columbia, Canada'],
+['YCY','Clyde River Airport','Clyde River,Nunavut, Canada'],
+['YCZ','Fairmont Hot Springs Airport','Fairmont Hot Springs,British Columbia, Canada'],
+['YDA','Dawson City Airport','Dawson City,Yukon, Canada'],
+['YDB','Burwash Airport','Burwash Landing,Yukon, Canada'],
+['YDC','Drayton Valley Industrial Airport(TC: CER3)','Drayton Valley,Alberta, Canada'],
+['YDE','Paradise River Airport(TC: CDF4)','Paradise River,Newfoundland and Labrador, Canada'],
+['YDF','Deer Lake Regional Airport','Deer Lake,Newfoundland and Labrador, Canada'],
+['YDG','Digby/Annapolis Regional Airport','Digby,Nova Scotia, Canada'],
+['YDJ','Hatchet Lake Airport(TC: CJL2)','Hatchet Lake,Saskatchewan, Canada'],
+['YDL','Dease Lake Airport','Dease Lake,British Columbia, Canada'],
+['YDN','Lt. Col W.G. (Billy) Barker VC Airport','Dauphin,Manitoba, Canada'],
+['YDO','Dolbeau-Saint-Felicien Airport','Dolbeau-Mistassini,Quebec, Canada'],
+['YDP','Nain Airport','Nain,Newfoundland and Labrador, Canada'],
+['YDQ','Dawson Creek Airport','Dawson Creek,British Columbia, Canada'],
+['YDT','Boundary Bay Airport','Vancouver,British Columbia, Canada'],
+['YDU','Kasba Lake Airport(TC: CJL8)','Kasba Lake,Northwest Territories, Canada'],
+['YDV','Bloodvein River Airport','Bloodvein,Manitoba, Canada'],
+['YDW','Obre Lake/North of Sixty Airport(TC: CKV4)','Obre Lake,Northwest Territories, Canada'],
+['YEA','metropolitan area1','Edmonton,Alberta, Canada'],
+['YEB','Bar River Airport(TC: CPF2)','Bar River,Ontario, Canada'],
+['YEC','Yecheon Air Base','Yecheon,South Korea'],
+['YEG','Edmonton International Airport','Edmonton,Alberta, Canada'],
+['YEI','Yeni?ehir Airport','Bursa,Turkey'],
+['YEK','Arviat Airport','Arviat,Nunavut, Canada'],
+['YEL','Elliot Lake Municipal Airport','Elliot Lake,Ontario, Canada'],
+['YEM','Manitowaning/Manitoulin East Municipal Airport','Manitowaning,Ontario, Canada'],
+['YEN','Estevan Regional Aerodrome','Estevan,Saskatchewan, Canada'],
+['YEO','Royal Naval Air Station Yeovilton','Yeovilton,England, United Kingdom'],
+['YEQ','Yankisa Airport','Yankisa,Papua New Guinea'],
+['YER','Fort Severn Airport','Fort Severn,Ontario, Canada'],
+['YES','Yasuj Airport','Yasuj(Yasouj),Iran'],
+['YET','Edson Airport','Edson,Alberta, Canada'],
+['YEU','Eureka Aerodrome','Eureka,Nunavut, Canada'],
+['YEV','Inuvik (Mike Zubko) Airport','Inuvik,Northwest Territories, Canada'],
+['YEY','Amos/Magny Airport','Amos,Quebec, Canada'],
+['YFA','Fort Albany Airport','Fort Albany,Ontario, Canada'],
+['YFB','Iqaluit Airport','Iqaluit,Nunavut, Canada'],
+['YFC','Fredericton International Airport','Fredericton,New Brunswick, Canada'],
+['YFE','Forestville Airport','Forestville,Quebec, Canada'],
+['YFG','Fontanges Airport(TC: CTU2)','Fontanges,Quebec, Canada'],
+['YFH','Fort Hope Airport','Eabametoong(Fort Hope),Ontario, Canada'],
+['YFI','Fort MacKay/Firebag Aerodrome(TC: CFG6)','Fort MacKay,Alberta, Canada'],
+['YFJ','Wekweeti Airport(Snare Lake Airport) (TC: CFJ7)','Wekweeti,Northwest Territories, Canada'],
+['YFL','Fort Reliance Water Aerodrome(CJN8)','Fort Reliance,Northwest Territories, Canada'],
+['YFO','Flin Flon Airport','Flin Flon,Manitoba, Canada'],
+['YFR','Fort Resolution Airport','Fort Resolution,Northwest Territories, Canada'],
+['YFS','Fort Simpson Airport','Fort Simpson,Northwest Territories, Canada'],
+['YFX','St. Lewis (Fox Harbour) Airport(TC: CCK4)','St. Lewis,Newfoundland and Labrador, Canada'],
+['YGB','Texada/Gillies Bay Airport','Gillies Bay,British Columbia, Canada'],
+['YGC','Grande Cache Airport(TC: CEQ5)','Grande Cache,Alberta, Canada'],
+['YGE','Gorge Harbour Water Aerodrome','Gorge Harbour,British Columbia, Canada'],
+['YGG','Ganges Water Aerodrome(TC: CAX6)','Ganges,British Columbia, Canada'],
+['YGH','Fort Good Hope Airport','Fort Good Hope,Northwest Territories, Canada'],
+['YGJ','Miho-Yonago Airport','Yonago,Honshu, Japan'],
+['YGK','Kingston/Norman Rogers Airport','Kingston,Ontario, Canada'],
+['YGL','La Grande Riviere Airport','Radisson,Quebec, Canada'],
+['YGM','Gimli Industrial Park Airport','Gimli,Manitoba, Canada'],
+['YGN','Greenway Sound Water Aerodrome','Greenway Sound,British Columbia, Canada'],
+['YGO','Gods Lake Narrows Airport','Gods Lake Narrows,Manitoba, Canada'],
+['YGP','Michel-Pouliot Gaspe Airport','Gaspe,Quebec, Canada'],
+['YGQ','Geraldton (Greenstone Regional) Airport','Greenstone(Geraldton),Ontario, Canada'],
+['YGR','Iles-de-la-Madeleine Airport','Les Iles-de-la-Madeleine,Quebec, Canada'],
+['YGT','Igloolik Airport','Igloolik,Nunavut, Canada'],
+['YGV','Havre Saint-Pierre Airport','Havre-Saint-Pierre,Quebec, Canada'],
+['YGW','Kuujjuarapik Airport','Kuujjuarapik,Quebec, Canada'],
+['YGX','Gillam Airport','Gillam,Manitoba, Canada'],
+['YGZ','Grise Fiord Airport','Grise Fiord,Nunavut, Canada'],
+['YHA','Port Hope Simpson Airport(TC: CCP4)','Port Hope Simpson,Newfoundland and Labrador, Canada'],
+['YHB','Hudson Bay Airport','Hudson Bay,Saskatchewan, Canada'],
+['YHC','Hakai Passage Water Aerodrome','Hakai Passage,British Columbia, Canada'],
+['YHD','Dryden Regional Airport','Dryden,Ontario, Canada'],
+['YHE','Hope Aerodrome','Hope,British Columbia, Canada'],
+['YHF','Hearst (Rene Fontaine) Municipal Airport','Hearst,Ontario, Canada'],
+['YHG','Charlottetown Airport(TC: CCH4)','Charlottetown,Newfoundland and Labrador, Canada'],
+['YHH','Campbell River Water Aerodrome(TC: CAE3)','Campbell River,British Columbia, Canada'],
+['YHI','Ulukhaktok/Holman Airport','Ulukhaktok,Northwest Territories, Canada'],
+['YHK','Gjoa Haven Airport','Gjoa Haven,Nunavut, Canada'],
+['YHM','John C. Munro Hamilton International Airport','Hamilton,Ontario, Canada'],
+['YHN','Hornepayne Municipal Airport','Hornepayne,Ontario, Canada'],
+['YHO','Hopedale Airport','Hopedale,Newfoundland and Labrador, Canada'],
+['YHP','Poplar Hill Airport','Poplar Hill,Ontario, Canada'],
+['YHR','Chevery Airport','Chevery,Quebec, Canada'],
+['YHS','Sechelt Aerodrome(TC: CAP3)','Sechelt,British Columbia, Canada'],
+['YHT','Haines Junction Airport','Haines Junction,Yukon, Canada'],
+['YHU','Montreal/Saint-Hubert Airport','Montreal,Quebec, Canada'],
+['YHY','Hay River/Merlyn Carter Airport','Hay River,Northwest Territories, Canada'],
+['YHZ','Halifax Stanfield International Airport','Halifax,Nova Scotia, Canada'],
+['YIB','Atikokan Municipal Airport','Atikokan,Ontario, Canada'],
+['YIC','Yichun Mingyueshan Airport','Yichun,Jiangxi, China'],
+['YIE','Arxan Yiershi Airport','Arxan(Aershan),Inner Mongolia, China'],
+['YIF','Saint-Augustin Airport','Saint-Augustin/Pakuashipi,Quebec, Canada'],
+['YIG','Big Bay Water Aerodrome(TC: CAF6)','Stuart Island,British Columbia, Canada'],
+['YIH','Yichang Sanxia Airport','Yichang,Hubei, China'],
+['YIK','Ivujivik Airport','Ivujivik,Quebec, Canada'],
+['YIN','Yining Airport','Yining(Ghulja),Xinjiang, China'],
+['YIO','Pond Inlet Airport','Pond Inlet,Nunavut, Canada'],
+['YIP','Willow Run Airport','Detroit,Michigan, United States'],
+['YIV','Island Lake Airport(Garden Hill Airport)','Island Lake/Garden Hill,Manitoba, Canada'],
+['YIW','Yiwu Airport','Yiwu,Zhejiang, China'],
+['YJA','Jasper Airport','Jasper,Alberta, Canada'],
+['YJF','Fort Liard Airport','Fort Liard,Northwest Territories, Canada'],
+['YJN','Saint-Jean Airport','Saint-Jean-sur-Richelieu,Quebec, Canada'],
+['YJP','Hinton/Jasper-Hinton Airport(TC: CEC4)','Hinton,Alberta, Canada'],
+['YJS','Samjiyon Airport','Samjiyon,North Korea'],
+['YJT','Stephenville International Airport','Stephenville,Newfoundland and Labrador, Canada'],
+['YKA','Kamloops Airport','Kamloops,British Columbia, Canada'],
+['YKC','Collins Bay Airport','Collins Bay,Saskatchewan, Canada'],
+['YKD','Kincardine Municipal Airport','Kincardine,Ontario, Canada'],
+['YKE','Knee Lake Airport(TC: CJT3)','Knee Lake,Manitoba, Canada'],
+['YKF','Region of Waterloo International Airport','Kitchener/Cambridge/Waterloo,Ontario, Canada'],
+['YKG','Kangirsuk Airport','Kangirsuk,Quebec, Canada'],
+['YKH','Yingkou Lanqi Airport','Yingkou,Liaoning, China'],
+['YKJ','Key Lake Airport','Key Lake,Saskatchewan, Canada'],
+['YKK','Kitkatla Water Aerodrome(TC: CAP7)','Kitkatla,British Columbia, Canada'],
+['YKL','Schefferville Airport','Schefferville,Quebec, Canada'],
+['YKM','Yakima Air Terminal(McAllister Field)','Yakima,Washington, United States'],
+['YKN','Chan Gurney Municipal Airport','Yankton,South Dakota, United States'],
+['YKO','Hakkari Yuksekova Airport','Hakkari/Yuksekova,Turkey'],
+['YKQ','Waskaganish Airport','Waskaganish,Quebec, Canada'],
+['YKS','Yakutsk Airport','Yakutsk,Yakutia, Russia'],
+['YKT','Klemtu Water Aerodrome','Klemtu,British Columbia, Canada'],
+['YKU','Chisasibi Airport(TC: CSU2)','Chisasibi,Quebec, Canada'],
+['YKX','Kirkland Lake Airport','Kirkland Lake,Ontario, Canada'],
+['YKY','Kindersley Regional Airport','Kindersley,Saskatchewan, Canada'],
+['YKZ','Buttonville Municipal Airport','Toronto,Ontario, Canada'],
+['YLB','Lac La Biche Airport','Lac La Biche,Alberta, Canada'],
+['YLC','Kimmirut Airport','Kimmirut,Nunavut, Canada'],
+['YLD','Chapleau Airport','Chapleau,Ontario, Canada'],
+['YLE','Whati Airport(TC: CEM3)','Whati,Northwest Territories, Canada'],
+['YLG','Yalgoo Airport','Yalgoo,Western Australia, Australia'],
+['YLH','Lansdowne House Airport','Neskantaga(Lansdowne House Indian Band),Ontario, Canada'],
+['YLI','Ylivieska Airfield','Ylivieska,Finland'],
+['YLJ','Meadow Lake Airport','Meadow Lake,Saskatchewan, Canada'],
+['YLK','Lake Simcoe Regional Airport','Barrie/Orillia,Ontario, Canada'],
+['YLL','Lloydminster Airport','Lloydminster,Alberta/Saskatchewan,2Canada'],
+['YLM','Clinton Creek Airport','Clinton Creek,Yukon, Canada'],
+['YLN','Yilan Airport','Yilan,Heilongjiang, China'],
+['YLP','Mingan Airport','Mingan,Quebec, Canada'],
+['YLQ','La Tuque Airport','La Tuque,Quebec, Canada'],
+['YLR','Leaf Rapids Airport','Leaf Rapids,Manitoba, Canada'],
+['YLS','Lebel-sur-Quevillon Airport(TC: CSH4)','Lebel-sur-Quevillon,Quebec, Canada'],
+['YLT','Alert Airport','Alert,Nunavut, Canada'],
+['YLV','Yevlakh Airport','Yevlakh,Azerbaijan'],
+['YLW','Kelowna International Airport','Kelowna,British Columbia, Canada'],
+['YLY','Langley Regional Airport','Langley,British Columbia, Canada'],
+['YMA','Mayo Airport','Mayo,Yukon, Canada'],
+['YMB','Merritt Airport(TC: CAD5)','Merritt,British Columbia, Canada'],
+['YMD','Mould Bay Airport','Prince Patrick Island,Northwest Territories, Canada'],
+['YME','Matane Airport','Matane,Quebec, Canada'],
+['YMF','Montague Harbour Water Aerodrome','Galiano Island,British Columbia, Canada'],
+['YMG','Manitouwadge Airport','Manitouwadge,Ontario, Canada'],
+['YMH','Marys Harbour Airport','Marys Harbour,Newfoundland and Labrador, Canada'],
+['YMJ','CFB Moose Jaw(C.M. McEwen Airport)','Moose Jaw,Saskatchewan, Canada'],
+['YMK','Mys-Kamenny Airport','Mys-Kamenny,Yamalo-Nenets Autonomous Okrug, Russia'],
+['YML','Charlevoix Airport','La Malbaie,Quebec, Canada'],
+['YMM','Fort McMurray International Airport','Fort McMurray,Alberta, Canada'],
+['YMN','Makkovik Airport','Makkovik,Newfoundland and Labrador, Canada'],
+['YMO','Moosonee Airport','Moosonee,Ontario, Canada'],
+['YMP','Port McNeill Airport(TC: CAT5)','Port McNeill,British Columbia, Canada'],
+['YMQ','metropolitan area3','Montreal,Quebec, Canada'],
+['YMS','Moises Benzaquen Rengifo Airport','Yurimaguas,Peru'],
+['YMT','Chibougamau/Chapais Airport','Chibougamau,Quebec, Canada'],
+['YMU','Mansons Landing Water Aerodrome(TC: CAV7)','Mansons Landing,British Columbia, Canada'],
+['YMV','Mary River Aerodrome(TC: CMR2)','Mary River,Nunavut, Canada'],
+['YMW','Maniwaki Airport','Maniwaki,Quebec, Canada'],
+['YMX','Montreal-Mirabel International Airport','Montreal,Quebec, Canada'],
+['YNA','Natashquan Airport','Natashquan,Quebec, Canada'],
+['YNB','Yanbu Airport(Yenbo Airport)','Yanbu al Bahr(Yenbo),Saudi Arabia'],
+['YNC','Wemindji Airport','Wemindji,Quebec, Canada'],
+['YND','Gatineau-Ottawa Executive Airport','Gatineau/Ottawa (ON),Quebec, Canada'],
+['YNE','Norway House Airport','Norway House,Manitoba, Canada'],
+['YNG','Youngstown-Warren Regional Airport','Youngstown/Warren,Ohio, United States'],
+['YNH','Hudsons Hope Airport','Hudsons Hope,British Columbia, Canada'],
+['YNJ','Yanji Chaoyangchuan Airport','Yanji,Jilin, China'],
+['YNL','Points North Landing Airport','Points North Landing,Saskatchewan, Canada'],
+['YNM','Matagami Airport','Matagami,Quebec, Canada'],
+['YNN','Yandicoogina Airport','Yandicoogina,Western Australia, Australia'],
+['YNO','North Spirit Lake Airport(TC: CKQ3)','North Spirit Lake,Ontario, Canada'],
+['YNP','Natuashish Airport(TC: CNH2)','Natuashish,Newfoundland and Labrador, Canada'],
+['YNS','Nemiscau Airport','Nemiscau,Quebec, Canada'],
+['YNT','Yantai Penglai International Airport','Yantai,Shandong, China'],
+['YNX','Snap Lake Airport(TC: CSK6)','Snap Lake,Northwest Territories, Canada'],
+['YNY','Yangyang International Airport','Yangyang,South Korea'],
+['YNZ','Yancheng Nanyang International Airport','Yancheng,Jiangsu, China'],
+['YOA','Ekati Airport','Ekati,Northwest Territories, Canada'],
+['YOC','Old Crow Airport','Old Crow,Yukon, Canada'],
+['YOD','CFB Cold Lake(R.W. McNair Airport)','Cold Lake,Alberta, Canada'],
+['YOE','Donnelly Airport(TC: CFM4)','Donnelly,Alberta, Canada'],
+['YOG','Ogoki Post Airport','Marten Falls(Ogoki),Ontario, Canada'],
+['YOH','Oxford House Airport','Oxford House,Manitoba, Canada'],
+['YOI','Opinaca Aerodrome(TC: CPN8)','Opinaca,Quebec, Canada'],
+['YOJ','High Level Airport','High Level,Alberta, Canada'],
+['YOL','Yola Airport','Yola,Nigeria'],
+['YON','Yongphulla Airport(Yonphula Airport)','Trashigang,Bhutan'],
+['YOO','Oshawa Airport','Oshawa,Ontario, Canada'],
+['YOP','Rainbow Lake Airport','Rainbow Lake,Alberta, Canada'],
+['YOS','Billy Bishop Regional Airport','Owen Sound,Ontario, Canada'],
+['YOT','Yotvata Airfield','Yotvata,Israel'],
+['YOW','Ottawa Macdonald-Cartier International Airport','Ottawa,Ontario, Canada'],
+['YPA','Prince Albert (Glass Field) Airport','Prince Albert,Saskatchewan, Canada'],
+['YPB','Alberni Valley Regional Airport(TC: CBS8)','Port Alberni,British Columbia, Canada'],
+['YPC','Nora Aliqatchialuk Ruben Airport','Paulatuk,Northwest Territories, Canada'],
+['YPD','Parry Sound Area Municipal Airport(TC: CNK4)','Parry Sound,Ontario, Canada'],
+['YPE','Peace River Airport','Peace River,Alberta, Canada'],
+['YPG','Portage la Prairie/Southport Airport','Portage la Prairie,Manitoba, Canada'],
+['YPH','Inukjuak Airport','Inukjuak,Quebec, Canada'],
+['YPI','Port Simpson Water Aerodrome(TC: CAN8)','Lax Kwalaams(Port Simpson),British Columbia, Canada'],
+['YPJ','Aupaluk Airport','Aupaluk,Quebec, Canada'],
+['YPL','Pickle Lake Airport','Pickle Lake,Ontario, Canada'],
+['YPM','Pikangikum Airport','Pikangikum,Ontario, Canada'],
+['YPN','Port-Menier Airport','Port-Menier,Quebec, Canada'],
+['YPO','Peawanuck Airport','Peawanuck,Ontario, Canada'],
+['YPQ','Peterborough Airport','Peterborough,Ontario, Canada'],
+['YPR','Prince Rupert Airport','Prince Rupert,British Columbia, Canada'],
+['YPS','Port Hawkesbury Airport','Port Hawkesbury,Nova Scotia, Canada'],
+['YPT','Pender Harbour Water Aerodrome(TC: CAG8)','Pender Harbour,British Columbia, Canada'],
+['YPW','Powell River Airport','Powell River,British Columbia, Canada'],
+['YPX','Puvirnituq Airport','Puvirnituq,Quebec, Canada'],
+['YPY','Fort Chipewyan Airport','Fort Chipewyan,Alberta, Canada'],
+['YPZ','Burns Lake Airport','Burns Lake,British Columbia, Canada'],
+['YQA','Muskoka Airport','Muskoka,Ontario, Canada'],
+['YQB','Quebec City Jean Lesage International Airport','Quebec City,Quebec, Canada'],
+['YQC','Quaqtaq Airport','Quaqtaq,Quebec, Canada'],
+['YQD','The Pas Airport','The Pas,Manitoba, Canada'],
+['YQF','Red Deer Regional Airport','Red Deer,Alberta, Canada'],
+['YQG','Windsor International Airport','Windsor,Ontario, Canada'],
+['YQH','Watson Lake Airport','Watson Lake,Yukon, Canada'],
+['YQI','Yarmouth Airport','Yarmouth,Nova Scotia, Canada'],
+['YQJ','April Point Water Aerodrome','Quadra Island,British Columbia, Canada'],
+['YQK','Kenora Airport','Kenora,Ontario, Canada'],
+['YQL','Lethbridge Airport','Lethbridge,Alberta, Canada'],
+['YQM','Greater Moncton International Airport','Moncton,New Brunswick, Canada'],
+['YQN','Nakina Airport','Greenstone(Nakina),Ontario, Canada'],
+['YQQ','CFB Comox','Comox,British Columbia, Canada'],
+['YQR','Regina International Airport','Regina,Saskatchewan, Canada'],
+['YQS','St. Thomas Municipal Airport','St. Thomas,Ontario, Canada'],
+['YQT','Thunder Bay International Airport','Thunder Bay,Ontario, Canada'],
+['YQU','Grande Prairie Airport','Grande Prairie,Alberta, Canada'],
+['YQV','Yorkton Municipal Airport','Yorkton,Saskatchewan, Canada'],
+['YQW','North Battleford Airport(Cameron McIntosh Airport)','North Battleford,Saskatchewan, Canada'],
+['YQX','Gander International Airport/CFB Gander','Gander,Newfoundland and Labrador, Canada'],
+['YQY','Sydney/J.A. Douglas McCurdy Airport','Sydney,Nova Scotia, Canada'],
+['YQZ','Quesnel Airport','Quesnel,British Columbia, Canada'],
+['YRA','Gameti/Rae Lakes Airport','Gameti,Northwest Territories, Canada'],
+['YRB','Resolute Bay Airport','Resolute,Nunavut, Canada'],
+['YRC','Refuge Cove Water Aerodrome','Refuge Cove,British Columbia, Canada'],
+['YRD','Dean River Airport','Dean River,British Columbia, Canada'],
+['YRF','Cartwright Airport','Cartwright,Newfoundland and Labrador, Canada'],
+['YRG','Rigolet Airport(TC: CCZ2)','Rigolet,Newfoundland and Labrador, Canada'],
+['YRI','Riviere-du-Loup Airport','Riviere-du-Loup,Quebec, Canada'],
+['YRJ','Roberval Airport','Roberval,Quebec, Canada'],
+['YRL','Red Lake Airport','Red Lake,Ontario, Canada'],
+['YRM','Rocky Mountain House Airport','Rocky Mountain House,Alberta, Canada'],
+['YRN','Rivers Inlet Water Aerodrome(TC: CAU8)','Rivers Inlet,British Columbia, Canada'],
+['YRO','Ottawa/Rockcliffe Airport','Ottawa,Ontario, Canada'],
+['YRQ','Trois-Rivieres Airport','Trois-Rivieres,Quebec, Canada'],
+['YRR','Stuart Island Airport','Stuart Island,British Columbia, Canada'],
+['YRS','Red Sucker Lake Airport','Red Sucker Lake,Manitoba, Canada'],
+['YRT','Rankin Inlet Airport','Rankin Inlet,Nunavut, Canada'],
+['YRV','Revelstoke Airport','Revelstoke,British Columbia, Canada'],
+['YSA','Sable Island Airport(TC: CSB2)','Sable Island,Nova Scotia, Canada'],
+['YSB','Sudbury Airport','Greater Sudbury,Ontario, Canada'],
+['YSC','Sherbrooke Airport','Sherbrooke,Quebec, Canada'],
+['YSD','CFB Suffield','Suffield,Alberta, Canada'],
+['YSE','Squamish Airport','Squamish,British Columbia, Canada'],
+['YSF','Stony Rapids Airport','Stony Rapids,Saskatchewan, Canada'],
+['YSG','Lutselke Airport','Lutselke,Northwest Territories, Canada'],
+['YSH','Smiths Falls-Montague Airport','Smiths Falls,Ontario, Canada'],
+['YSI','Parry Sound/Frying Pan Island-Sans Souci Water Aerodrome(TC: CPS9)','Fryingpan Island,Ontario, Canada'],
+['YSJ','Saint John Airport','Saint John,New Brunswick, Canada'],
+['YSK','Sanikiluaq Airport','Sanikiluaq,Nunavut, Canada'],
+['YSL','Saint-Leonard Aerodrome','Saint-Leonard,New Brunswick, Canada'],
+['YSM','Fort Smith Airport','Fort Smith,Northwest Territories, Canada'],
+['YSN','Salmon Arm Airport','Salmon Arm,British Columbia, Canada'],
+['YSO','Postville Airport(TC: CCD4)','Postville,Newfoundland and Labrador, Canada'],
+['YSP','Marathon Aerodrome','Marathon,Ontario, Canada'],
+['YST','St. Theresa Point Airport','St. Theresa Point,Manitoba, Canada'],
+['YSU','Summerside Airport','Summerside,Prince Edward Island, Canada'],
+['YSX','Bella Bella/Shearwater Water Aerodrome(TC: CAW8)','Bella Bella,British Columbia, Canada'],
+['YSY','Sachs Harbour (David Nasogaluak Jr. Saaryuaq) Airport','Sachs Harbour,Northwest Territories, Canada'],
+['YTA','Pembroke Airport','Pembroke,Ontario, Canada'],
+['YTB','Hartley Bay Water Aerodrome(TC: CAY4)','Hartley Bay,British Columbia, Canada'],
+['YTD','Thicket Portage Airport','Thicket Portage,Manitoba, Canada'],
+['YTE','Cape Dorset Airport','Cape Dorset,Nunavut, Canada'],
+['YTF','Alma Airport','Alma,Quebec, Canada'],
+['YTG','Sullivan Bay Water Aerodrome(TC: CAV5)','Sullivan Bay,British Columbia, Canada'],
+['YTH','Thompson Airport','Thompson,Manitoba, Canada'],
+['YTL','Big Trout Lake Airport','Kitchenuhmaykoosib Inninuwug(Big Trout Lake),Ontario, Canada'],
+['YTM','Mont Tremblant International Airport','Mont-Tremblant,Quebec, Canada'],
+['YTO','metropolitan area4','Toronto,Ontario, Canada'],
+['YTP','Tofino Harbour Water Aerodrome(TC: CAB4)','Tofino,British Columbia, Canada'],
+['YTQ','Tasiujaq Airport','Tasiujaq,Quebec, Canada'],
+['YTR','CFB Trenton','Trenton,Ontario, Canada'],
+['YTS','Timmins/Victor M. Power Airport','Timmins,Ontario, Canada'],
+['YTT','Tisdale Airport(TC: CJY3)','Tisdale,Saskatchewan, Canada'],
+['YTU','Tasu Water Aerodrome','Tasu,British Columbia, Canada'],
+['YTX','Telegraph Creek Airport(TC: CBM5)','Telegraph Creek,British Columbia, Canada'],
+['YTY','Yangzhou Taizhou Airport','Yangzhou/Taizhou,Jiangsu, China'],
+['YTZ','Billy Bishop Toronto City Airport(Toronto Island Airport)','Toronto,Ontario, Canada'],
+['YUA','Yuanmou Air Base','Yuanmou,Yunnan, China'],
+['YUB','Tuktoyaktuk/James Gruben Airport','Tuktoyaktuk,Northwest Territories, Canada'],
+['YUD','Umiujaq Airport','Umiujaq,Quebec, Canada'],
+['YUE','Yuendumu Airport','Yuendumu,Northern Territory, Australia'],
+['YUL','Montreal-Pierre Elliott Trudeau International Airport','Montreal,Quebec, Canada'],
+['YUM','Yuma International Airport/MCAS Yuma(FAA: NYL)','Yuma,Arizona, United States'],
+['YUS','Yushu Batang Airport','Yushu City,Qinghai, China'],
+['YUT','Repulse Bay Airport','Naujaat(Repulse Bay),Nunavut, Canada'],
+['YUX','Hall Beach Airport','Hall Beach,Nunavut, Canada'],
+['YUY','Rouyn-Noranda Airport','Rouyn-Noranda,Quebec, Canada'],
+['YVA','Iconi Airport','Moroni,Comoros'],
+['YVB','Bonaventure Airport','Bonaventure,Quebec, Canada'],
+['YVC','La Ronge (Barber Field) Airport','La Ronge,Saskatchewan, Canada'],
+['YVD','Yeva Airport','Yeva,Papua New Guinea'],
+['YVE','Vernon Regional Airport','Vernon,British Columbia, Canada'],
+['YVG','Vermilion Airport','Vermilion,Alberta, Canada'],
+['YVM','Qikiqtarjuaq Airport','Qikiqtarjuaq,Nunavut, Canada'],
+['YVN','Cape Dyer Airport','Cape Dyer,Nunavut, Canada'],
+['YVO','Val-dOr Airport','Val-dOr,Quebec, Canada'],
+['YVP','Kuujjuaq Airport','Kuujjuaq,Quebec, Canada'],
+['YVQ','Norman Wells Airport','Norman Wells,Northwest Territories, Canada'],
+['YVR','Vancouver International Airport','Vancouver,British Columbia, Canada'],
+['YVT','Buffalo Narrows Airport','Buffalo Narrows,Saskatchewan, Canada'],
+['YVV','Wiarton Airport','Wiarton,Ontario, Canada'],
+['YVZ','Deer Lake Airport','Deer Lake,Ontario, Canada'],
+['YWA','Petawawa Airport','Petawawa,Ontario, Canada'],
+['YWB','Kangiqsujuaq (Wakeham Bay) Airport','Kangiqsujuaq,Quebec, Canada'],
+['YWG','Winnipeg James Armstrong Richardson International Airport','Winnipeg,Manitoba, Canada'],
+['YWH','Victoria Harbour Water Airport','Victoria,British Columbia, Canada'],
+['YWJ','Deline Airport','Deline,Northwest Territories, Canada'],
+['YWK','Wabush Airport','Wabush,Newfoundland and Labrador, Canada'],
+['YWL','Williams Lake Airport','Williams Lake,British Columbia, Canada'],
+['YWM','Williams Harbour Airport(TC: CCA6)','Williams Harbour,Newfoundland and Labrador, Canada'],
+['YWP','Webequie Airport','Webequie,Ontario, Canada'],
+['YWQ','Chutes-des-Passes/Lac Margane Water Aerodrome(TC: CTM3)','Passes-Dangereuses(Chute-des-Passes),Quebec, Canada'],
+['YWR','White River Water Aerodrome(TC: CNJ8)','White River,Ontario, Canada'],
+['YWS','Whistler/Green Lake Water Aerodrome(TC: CAE5)','Whistler,British Columbia, Canada'],
+['YWY','Wrigley Airport','Wrigley,Northwest Territories, Canada'],
+['YXC','Cranbrook/Canadian Rockies International Airport','Cranbrook,British Columbia, Canada'],
+['YXD','Edmonton City Centre (Blatchford Field) Airport','Edmonton,Alberta, Canada'],
+['YXE','Saskatoon John G. Diefenbaker International Airport','Saskatoon,Saskatchewan, Canada'],
+['YXH','Medicine Hat Airport','Medicine Hat,Alberta, Canada'],
+['YXJ','Fort St. John Airport(North Peace Airport)','Fort St. John,British Columbia, Canada'],
+['YXK','Rimouski Airport','Rimouski,Quebec, Canada'],
+['YXL','Sioux Lookout Airport','Sioux Lookout,Ontario, Canada'],
+['YXN','Whale Cove Airport','Whale Cove,Nunavut, Canada'],
+['YXP','Pangnirtung Airport','Pangnirtung,Nunavut, Canada'],
+['YXQ','Beaver Creek Airport','Beaver Creek,Yukon, Canada'],
+['YXR','Earlton (Timiskaming Regional) Airport','Armstrong(Earlton),Ontario, Canada'],
+['YXS','Prince George Airport','Prince George,British Columbia, Canada'],
+['YXT','Northwest Regional Airport','Terrace,British Columbia, Canada'],
+['YXU','London International Airport','London,Ontario, Canada'],
+['YXX','Abbotsford International Airport','Abbotsford,British Columbia, Canada'],
+['YXY','Erik Nielsen Whitehorse International Airport','Whitehorse,Yukon, Canada'],
+['YXZ','Wawa Airport','Wawa,Ontario, Canada'],
+['YYB','North Bay/Jack Garland Airport','North Bay,Ontario, Canada'],
+['YYC','Calgary International Airport','Calgary,Alberta, Canada'],
+['YYD','Smithers Airport','Smithers,British Columbia, Canada'],
+['YYE','Northern Rockies Regional Airport','Fort Nelson,British Columbia, Canada'],
+['YYF','Penticton Regional Airport','Penticton,British Columbia, Canada'],
+['YYG','Charlottetown Airport','Charlottetown,Prince Edward Island, Canada'],
+['YYH','Taloyoak Airport','Taloyoak,Nunavut, Canada'],
+['YYI','Rivers Airport','Rivers,Manitoba, Canada'],
+['YYJ','Victoria International Airport','Victoria,British Columbia, Canada'],
+['YYL','Lynn Lake Airport','Lynn Lake,Manitoba, Canada'],
+['YYM','Cowley Airport','Cowley,Alberta, Canada'],
+['YYN','Swift Current Airport','Swift Current,Saskatchewan, Canada'],
+['YYQ','Churchill Airport','Churchill,Manitoba, Canada'],
+['YYR','CFB Goose Bay','Happy Valley-Goose Bay,Newfoundland and Labrador, Canada'],
+['YYT','St. Johns International Airport','St. Johns,Newfoundland and Labrador, Canada'],
+['YYU','Kapuskasing Airport','Kapuskasing,Ontario, Canada'],
+['YYW','Armstrong Airport','Armstrong,Ontario, Canada'],
+['YYY','Mont-Joli Airport','Mont-Joli,Quebec, Canada'],
+['YYZ','Toronto Pearson International Airport','Toronto,Ontario, Canada'],
+['YZA','Cache Creek Airport(Ashcroft Regional Airport)','Cache Creek/Ashcroft,British Columbia, Canada'],
+['YZE','Gore Bay-Manitoulin Airport','Gore Bay,Ontario, Canada'],
+['YZF','Yellowknife Airport','Yellowknife,Northwest Territories, Canada'],
+['YZG','Salluit Airport','Salluit,Quebec, Canada'],
+['YZH','Slave Lake Airport','Slave Lake,Alberta, Canada'],
+['YZP','Sandspit Airport','Sandspit,British Columbia, Canada'],
+['YZR','Sarnia Chris Hadfield Airport','Sarnia,Ontario, Canada'],
+['YZS','Coral Harbour Airport','Coral Harbour,Nunavut, Canada'],
+['YZT','Port Hardy Airport','Port Hardy,British Columbia, Canada'],
+['YZU','Whitecourt Airport','Whitecourt,Alberta, Canada'],
+['YZV','Sept-Iles Airport','Sept-Iles,Quebec, Canada'],
+['YZW','Teslin Airport','Teslin,Yukon, Canada'],
+['YZX','CFB Greenwood','Greenwood,Nova Scotia, Canada'],
+['YZY','Zhangye Ganzhou Airport','Zhangye,Gansu, China'],
+['YZZ','Trail Airport(TC: CAD4)','Trail,British Columbia, Canada'],
+['ZAA','Alice Arm/Silver City Water Aerodrome(TC: CAC3)','Alice Arm,British Columbia, Canada'],
+['ZAC','York Landing Airport','York Landing,Manitoba, Canada'],
+['ZAD','Zadar Airport','Zadar,Croatia'],
+['ZAG','Franjo Tu?man Airport','Zagreb,Croatia'],
+['ZAH','Zahedan Airport','Zahedan,Iran'],
+['ZAJ','Zaranj Airport','Zaranj,Afghanistan'],
+['ZAL','Pichoy Airport','Valdivia,Chile'],
+['ZAM','Zamboanga International Airport','Zamboanga City,Philippines'],
+['ZAO','Cahors - Lalbenque Airport','Cahors,Midi-Pyrenees, France'],
+['ZAR','Zaria Airport','Zaria,Nigeria'],
+['ZAT','Zhaotong Airport','Zhaotong,Yunnan, China'],
+['ZAZ','Zaragoza Airport','Zaragoza,Aragon, Spain'],
+['ZBE','Zab?eh Airport','Dolni BeneSov,Czech Republic'],
+['ZBF','Bathurst Airport','Bathurst,New Brunswick, Canada'],
+['ZBK','zabljak Airport','zabljak,Montenegro'],
+['ZBL','Biloela Airport','Biloela,Queensland, Australia'],
+['ZBM','Roland-Desourdy Airport','Bromont,Quebec, Canada'],
+['ZBO','Bowen Airport','Bowen,Queensland, Australia'],
+['ZBR','Konarak Airport','Chabahar(Chah Bahar),Iran'],
+['ZBY','Sayaboury Airport','Sainyabuli(Sayaboury),Laos'],
+['ZCL','General Leobardo C. Ruiz International Airport','Zacatecas City,Zacatecas, Mexico'],
+['ZCO','La Araucania Airport','Temuco,Chile'],
+['ZDY','Dalma Airport','Dalma Island(Delma Island),United Arab Emirates'],
+['ZEC','Secunda Airport','Secunda,South Africa'],
+['ZEG','Senggo Airport','Senggo,Indonesia'],
+['ZEL','Bella Bella (Campbell Island) Airport','Bella Bella,British Columbia, Canada'],
+['ZEM','Eastmain River Airport','Eastmain,Quebec, Canada'],
+['ZEN','Zenag Airport','Zenag,Papua New Guinea'],
+['ZER','Zero Airport(Ziro Airport)','Ziro,Arunachal Pradesh, India'],
+['ZFA','Faro Airport','Faro,Yukon, Canada'],
+['ZFD','Fond-du-Lac Airport','Fond-du-Lac,Saskatchewan, Canada'],
+['ZFM','Fort McPherson Airport','Fort McPherson,Northwest Territories, Canada'],
+['ZFN','Tulita Airport','Tulita,Northwest Territories, Canada'],
+['ZFW','Fairview Airport(TC: CEB5)','Fairview,Alberta, Canada'],
+['ZGF','Grand Forks Airport','Grand Forks,British Columbia, Canada'],
+['ZGI','Gods River Airport','Gods River,Manitoba, Canada'],
+['ZGL','South Galway Airport','South Galway Station,Queensland, Australia'],
+['ZGM','Ngoma Airport','Ngoma,Zambia'],
+['ZGR','Little Grand Rapids Airport','Little Grand Rapids,Manitoba, Canada'],
+['ZGS','La Romaine Airport(TC: CTT5)','La Romaine,Quebec, Canada'],
+['ZGU','Gaua Airport','Gaua,Vanuatu'],
+['ZHA','Zhanjiang Airport','Zhanjiang,Guangdong, China'],
+['ZHM','Shamshernagar Airport','Shamshernagar,Bangladesh'],
+['ZHP','High Prairie Airport','High Prairie,Alberta, Canada'],
+['ZHY','Zhongwei Shapotou Airport(Zhongwei Xiangshan Airport)','Zhongwei,Ningxia, China'],
+['ZIA','Ramenskoye Airport(Zhukovsky Airport)','Zhukovsky,Moscow Oblast, Russia'],
+['ZIC','Victoria Airport','Victoria,Chile'],
+['ZIG','Ziguinchor Airport','Ziguinchor,Senegal'],
+['ZIH','Ixtapa-Zihuatanejo International Airport','Ixtapa/Zihuatanejo,Guerrero, Mexico'],
+['ZIS','Zintan Airport','Zintan,Libya'],
+['ZIX','Zhigansk Airport','Zhigansk,Yakutia, Russia'],
+['ZIZ','Zamzama Airport','Zamzama,Pakistan'],
+['ZJG','Jenpeg Airport','Jenpeg,Manitoba, Canada'],
+['ZJN','Swan River Airport','Swan River,Manitoba, Canada'],
+['ZJT','Tanjung Pelepas Port Airport','Tanjung Pelepas,Johor, Malaysia'],
+['ZKB','Kasaba Bay Airport','Kasaba Bay,Zambia'],
+['ZKE','Kashechewan Airport','Kashechewan,Ontario, Canada'],
+['ZKG','Kegaska Airport(TC: CTK6)','Kegaska(Kegashka),Quebec, Canada'],
+['ZKP','Zyryanka Airport','Zyryanka,Yakutia, Russia'],
+['ZLO','Playa de Oro International Airport','Manzanillo,Colima, Mexico'],
+['ZLT','La Tabatiere Airport(TC: CTU5)','Gros-Mecatina(La Tabatiere),Quebec, Canada'],
+['ZLW','Pasir Gudang Port Airport','Pasir Gudang,Johor, Malaysia'],
+['ZLX','Zalingei Airport','Zalingei(Zalengei),Sudan'],
+['ZMD','Sena Madureira Airport','Sena Madureira,Acre, Brazil'],
+['ZMH','South Cariboo Regional Airport','108 Mile Ranch,British Columbia, Canada'],
+['ZMM','Zamora National Airport','Zamora,Michoacan, Mexico'],
+['ZMT','Masset Airport','Masset,British Columbia, Canada'],
+['ZNA','Nanaimo Harbour Water Airport(TC: CAC8)','Nanaimo,British Columbia, Canada'],
+['ZNC','Nyac Airport','Nyac,Alaska, United States'],
+['ZND','Zinder Airport','Zinder,Niger'],
+['ZNE','Newman Airport','Newman,Western Australia, Australia'],
+['ZNU','Namu Water Aerodrome','Namu,British Columbia, Canada'],
+['ZNZ','Abeid Amani Karume International Airport','Zanzibar,Tanzania'],
+['ZOF','Ocean Falls Water Aerodrome(TC: CAH2)','Ocean Falls,British Columbia, Canada'],
+['ZOS','Canal Bajo Carlos Hott Siebert Airport','Osorno,Chile'],
+['ZPB','Sachigo Lake Airport','Sachigo Lake,Ontario, Canada'],
+['ZPC','Pucon Airport','Pucon,Chile'],
+['ZPH','Zephyrhills Municipal Airport','Zephyrhills,Florida, United States'],
+['ZPO','Pinehouse Lake Airport','Pinehouse,Saskatchewan, Canada'],
+['ZQN','Queenstown Airport','Queenstown,New Zealand'],
+['ZQS','Queen Charlotte City Water Aerodrome(TC: CAQ6)','Queen Charlotte,British Columbia, Canada'],
+['ZQW','Zweibrucken Airport','Zweibrucken,Rhineland-Palatinate, Germany'],
+['ZQZ','Zhangjiakou Ningyuan Airport','Zhangjiakou,Hebei, China'],
+['ZRH','Zurich Airport','Zurich,Switzerland'],
+['ZRI','Serui Airport','Serui,Indonesia'],
+['ZRJ','Round Lake (Weagamow Lake) Airport','North Caribou Lake(Round Lake),Ontario, Canada'],
+['ZRM','Sarmi Orai Airport','Sarmi,Indonesia'],
+['ZSA','San Salvador Airport(Cockburn Town Airport)','San Salvador Island,Bahamas'],
+['ZSE','Pierrefonds Airport','Saint-Pierre,Reunion, France'],
+['ZSJ','Sandy Lake Airport','Sandy Lake,Ontario, Canada'],
+['ZSS','Sassandra Airport','Sassandra,Ivory Coast'],
+['ZST','Stewart Aerodrome','Stewart,British Columbia, Canada'],
+['ZSW','Prince Rupert/Seal Cove Water Airport','Prince Rupert,British Columbia, Canada'],
+['ZTA','Tureia Airport','Tureia,Tuamotus,French Polynesia'],
+['ZTB','Tete-a-la-Baleine Airport(TC: CTB6)','Tete-a-la-Baleine,Quebec, Canada'],
+['ZTH','Zakynthos International Airport(Dionysios SolomosAirport)','Zakynthos,Greece'],
+['ZTM','Shamattawa Airport','Shamattawa,Manitoba, Canada'],
+['ZTR','Zhytomyr Airport','Zhytomyr,Ukraine'],
+['ZTS','Tahsis Water Aerodrome(TC: CAL9)','Tahsis,British Columbia, Canada'],
+['ZTU','Zaqatala International Airport','Zaqatala,Azerbaijan'],
+['ZUC','Ignace Municipal Airport','Ignace,Ontario, Canada'],
+['ZUD','Pupelde Airfield','Ancud,Chile'],
+['ZUH','Zhuhai Jinwan Airport(Zhuhai Sanzao Airport)','Zhuhai,Guangdong, China'],
+['ZUL','Zilfi Airport','Al Zulfi(Zilfi),Saudi Arabia'],
+['ZUM','Churchill Falls Airport','Churchill Falls,Newfoundland and Labrador, Canada'],
+['ZVA','Miandrivazo Airport','Miandrivazo,Madagascar'],
+['ZVG','Springvale Airport','Springvale,Western Australia, Australia'],
+['ZVK','Savannakhet Airport','Savannakhet,Laos'],
+['ZWA','Andapa Airport','Andapa,Madagascar'],
+['ZWL','Wollaston Lake Airport','Wollaston Lake,Saskatchewan, Canada'],
+['ZXT','Zabrat Airport','Baku,Azerbaijan'],
+['ZYI','Zunyi Xinzhou Airport','Zunyi,Guizhou, China'],
+['ZYL','Osmani International Airport','Sylhet,Bangladesh'],
+['ZZO','Zonalnoye Airport','Tymovskoye,Sakhalin Oblast, Russia'],
+['ZZU','Mzuzu Airport','Mzuzu,Malawi'],
+['ZZV','Zanesville Municipal Airport','Zanesville,Ohio, United States']
 ];
