@@ -3937,7 +3937,7 @@ var airports = [
 ['KUG','YKUB','Kubin Airport','Moa Island,Queensland,Australia'],
 ['KUH','RJCK','Kushiro Airport','Kushiro,Hokkaido,Japan'],
 ['KUK','PFKA','Kasigluk Airport ','Kasigluk,Alaska,United States'],
-['KUL','WMKK','Kuala Lumpur International Airport','Kuala Lumpur,1 Malaysia'],
+['KUL','WMKK','Kuala Lumpur International Airport','Kuala Lumpur,Malaysia'],
 ['KUM','RJFC','Yakushima Airport','Yakushima,sumi Islands,Japan'],
 ['KUN','EYKA','Kaunas International Airport','Kaunas,Lithuania'],
 ['KUO','EFKU','Kuopio Airport','Kuopio,Finland'],
